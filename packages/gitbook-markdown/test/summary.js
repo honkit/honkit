@@ -4,13 +4,10 @@ var assert = require('assert');
 
 var summary = require('../').parse.summary;
 
-
 var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/SUMMARY.md'), 'utf8');
 var LEXED = summary(CONTENT);
 
-
 describe('Summary parsing', function () {
-
     it('should detect chapters', function() {
         assert.equal(LEXED.chapters.length, 6);
     });

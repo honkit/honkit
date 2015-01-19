@@ -3,6 +3,7 @@ var _ = require("lodash");
 
 module.exports = {
 	parse: {
-		summary: require("./summary")
+		summary: require("./summary"),
+		glossary: require("./glossary")
 	}
 };
