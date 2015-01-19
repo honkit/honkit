@@ -3,5 +3,6 @@ var _ = require("lodash");
 
 module.exports = {
 	summary: require("./summary"),
-	glossary: require("./glossary")
+	glossary: require("./glossary"),
+	langs: require("./langs")
 };
