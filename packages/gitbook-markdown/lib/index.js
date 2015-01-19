@@ -2,8 +2,6 @@ var kramed = require("kramed");
 var _ = require("lodash");
 
 module.exports = {
-	parse: {
-		summary: require("./summary"),
-		glossary: require("./glossary")
-	}
+	summary: require("./summary"),
+	glossary: require("./glossary")
 };

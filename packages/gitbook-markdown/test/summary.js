@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 
-var summary = require('../').parse.summary;
+var summary = require('../').summary;
 
 var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/SUMMARY.md'), 'utf8');
 var LEXED = summary(CONTENT);
@@ -34,7 +34,7 @@ describe('Summary parsing', function () {
         assert(LEXED.chapters[5].title);
     });
 
-    it('should normalize paths from .md to .html', function() {
+    it('should normalize paths from .md', function() {
         assert.equal(LEXED.chapters[0].path,'README.md');
         assert.equal(LEXED.chapters[1].path,'chapter-1/README.md');
         assert.equal(LEXED.chapters[2].path,'chapter-2/README.md');
