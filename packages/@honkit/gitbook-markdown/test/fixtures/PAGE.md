@@ -1,0 +1,14 @@
+# Python basics
+
+Python is a nice language, you can add stuff. Bla bla bla.
+
+Some more nice content ....
+
+[Cool stuff](http://gitbook.io)
+
+[Link to another Markdown file](./xyz/file.md)
+
+And look at this pretty picture:
+![Pretty](../assets/my-pretty-picture.png "Pretty")
+
+Lets go for another exercise but this time with some context :
