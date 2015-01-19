@@ -99,7 +99,7 @@ function parseChapter(nodes, nums) {
     });
 }
 
-function defaultChapterList(chapterList) {
+function defaultChapterList(chapterList, entryPoint) {
     var first = _.first(chapterList);
 
     // Check if introduction node was specified in SUMMARY.md
@@ -107,14 +107,14 @@ function defaultChapterList(chapterList) {
         var chapter = parseChapter(first, [0]);
 
         // Already have README node, we're good to go
-        if(chapter.path === 'README.md') {
+        if(chapter.path === entryPoint) {
             return chapterList;
         }
     }
 
     // It wasn't specified, so add in default
     return [
-        [ { type: 'text', text: '[Introduction](README.md)' } ]
+        [ { type: 'text', text: '[Introduction]('+entryPoint+')' } ]
     ].concat(chapterList);
 }
 
@@ -128,9 +128,11 @@ function listGroups(src) {
     );
 }
 
-function parseSummary(src) {
+function parseSummary(src, entryPoint) {
+    entryPoint = entryPoint || "README.md";
+
     // Split out chapter sections
-    var chapters = defaultChapterList(listGroups(src))
+    var chapters = defaultChapterList(listGroups(src), entryPoint)
     .map(parseChapter);
 
     return {
