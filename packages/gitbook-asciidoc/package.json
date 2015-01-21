@@ -1,0 +1,38 @@
+{
+    "name": "gitbook-asciidoc",
+    "version": "0.0.0",
+    "homepage": "https://www.gitbook.com",
+    "description": "Parse AsciiDoc content for gitbook",
+    "main": "lib/index.js",
+    "dependencies": {
+        "q": "1.0.1",
+        "lodash": "2.4.1",
+        "asciidoctor.js": "1.5.2",
+        "cheerio": "0.18.0"
+    },
+    "devDependencies": {
+        "mocha": "1.18.2"
+    },
+    "scripts": {
+        "test": "export TESTING=true; mocha --reporter list"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GitbookIO/gitbook-asciidoc.git"
+    },
+    "author": "FriendCode Inc. <contact@gitbook.com>",
+    "license": "Apache 2",
+    "bugs": {
+        "url": "https://github.com/GitbookIO/gitbook-asciidoc/issues"
+    },
+    "contributors": [
+        {
+            "name": "Aaron O'Mullan",
+            "email": "aaron@gitbook.com"
+        },
+        {
+            "name": "Samy Pessé",
+            "email": "samy@gitbook.com"
+        }
+    ]
+}
