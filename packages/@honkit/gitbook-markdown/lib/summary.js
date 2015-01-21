@@ -62,24 +62,20 @@ function filterList(nodes) {
 
 // Parses an Article or Chapter title
 // supports extracting links
-function parseTitle(src, nums) {
+function parseTitle(src) {
     // Check if it's a link
     var matches = kramed.InlineLexer.rules.link.exec(src);
-
-    var level = nums.join('.');
 
     // Not a link, return plain text
     if(!matches) {
         return {
             title: src,
-            level: level,
             path: null,
         };
     }
 
     return {
         title: matches[1],
-        level: level,
 
         // Normalize path
         // 1. Convert Window's "\" to "/"
@@ -88,13 +84,10 @@ function parseTitle(src, nums) {
     };
 }
 
-function parseChapter(nodes, nums) {
-    // Convert single number to an array
-    nums = _.isArray(nums) ? nums : [nums];
-
-    return _.extend(parseTitle(_.first(nodes).text, nums), {
+function parseChapter(nodes) {
+    return _.extend(parseTitle(_.first(nodes).text), {
         articles: _.map(listSplit(filterList(nodes), 'list_item_start', 'list_item_end'), function(nodes, i) {
-            return parseChapter(nodes, nums.concat(i + 1));
+            return parseChapter(nodes);
         })
     });
 }
