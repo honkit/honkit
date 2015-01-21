@@ -1,3 +1,3 @@
-# GitBook Markdown Parser
+# GitBook AsciiDoc Parser
 
-This node module uses kramed to parse markdown for gitbook (SUMMARY.md, README.md).
+This node module uses AsciiDoctor to parse AsciiDoc for gitbook (SUMMARY.adoc, README.adoc).
