@@ -35,10 +35,10 @@ describe('Summary parsing', function () {
     });
 
     it('should normalize paths from .md', function() {
-        assert.equal(LEXED.chapters[0].path,'README.md');
-        assert.equal(LEXED.chapters[1].path,'chapter-1/README.md');
-        assert.equal(LEXED.chapters[2].path,'chapter-2/README.md');
-        assert.equal(LEXED.chapters[3].path,'chapter-3/README.md');
+        assert.equal(LEXED.chapters[0].path,'README.adoc');
+        assert.equal(LEXED.chapters[1].path,'chapter-1/README.adoc');
+        assert.equal(LEXED.chapters[2].path,'chapter-2/README.adoc');
+        assert.equal(LEXED.chapters[3].path,'chapter-3/README.adoc');
     });
 
     it('should detect levels correctly', function() {
