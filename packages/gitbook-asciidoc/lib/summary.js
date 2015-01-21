@@ -50,23 +50,11 @@ function defaultChapterList(chapterList, entryPoint) {
     ].concat(chapterList);
 }
 
-function parseChaptersLevel(chapterList, level, base) {
-	var i = base || 0;
-	return _.map(chapterList, function(chapter) {
-		chapter.level = (level? [level || "", i] : [i]).join(".");
-		chapter.article = parseChaptersLevel(chapter.articles || [], chapter.level, 1);
-
-		i = i + 1;
-		return chapter;
-	});
-};
-
 function parseSummary(src, entryPoint) {
 	entryPoint = entryPoint || "README.adoc";
 
     var chapters = parseEntries(src);
     chapters = defaultChapterList(chapters, entryPoint);
-    chapters = parseChaptersLevel(chapters);
 
     return {
     	chapters: chapters
