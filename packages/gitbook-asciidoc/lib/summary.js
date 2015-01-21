@@ -64,10 +64,7 @@ function parseChaptersLevel(chapterList, level, base) {
 function parseSummary(src, entryPoint) {
 	entryPoint = entryPoint || "README.adoc";
 
-    var html = convert(src);
-    $ = cheerio.load(html);
-
-    var chapters = parseList($("ol").first(), $);
+    var chapters = parseEntries(src);
     chapters = defaultChapterList(chapters, entryPoint);
     chapters = parseChaptersLevel(chapters);
 
@@ -77,7 +74,11 @@ function parseSummary(src, entryPoint) {
 }
 
 function parseEntries (src) {
-    return [];
+    var html = convert(src);
+    $ = cheerio.load(html);
+
+    var chapters = parseList($("ol").first(), $);
+    return chapters;
 }
 
 
