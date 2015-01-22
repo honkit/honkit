@@ -16,7 +16,6 @@ function parseGlossary(src) {
     	var entry = {};
 
     	entry.name = $h2.text();
-        entry.id = entryId(entry.name);
         entry.description = $p.text();
 
     	entries.push(entry);
@@ -25,10 +24,4 @@ function parseGlossary(src) {
     return entries;
 }
 
-// Normalizes a glossary entry's name to create an ID
-function entryId(name) {
-    return name.toLowerCase();
-}
-
 module.exports = parseGlossary;
-module.exports.entryId = entryId;
