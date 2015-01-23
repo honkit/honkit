@@ -37,6 +37,6 @@
         }
     ],
     "browser": {
-        "lib/utils/hljs.js": "lib/utils/hljs-browser.js"
+        "highlight.js": false
     }
 }

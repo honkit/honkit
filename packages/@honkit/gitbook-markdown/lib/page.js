@@ -2,7 +2,7 @@ var Q = require('q');
 var _ = require('lodash');
 var kramed = require('kramed');
 
-var hljs = require('./utils/hljs.js');
+var hljs = require('highlight.js');
 
 var lnormalize = require('./utils/lang').normalize;
 
@@ -10,7 +10,7 @@ function parsePage(src) {
     var options = _.extend({}, kramed.defaults, {
         // Synchronous highlighting with highlight.js
         highlight: function (code, lang) {
-            if(!lang) return code;
+            if(!lang || !hljs) return code;
 
             // Normalize lang
             lang = lnormalize(lang);
