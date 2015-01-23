@@ -1,7 +1,8 @@
 var Q = require('q');
 var _ = require('lodash');
 var kramed = require('kramed');
-var hljs = require('highlight.js');
+
+var hljs = require('./utils/hljs.js');
 
 var lnormalize = require('./utils/lang').normalize;
 

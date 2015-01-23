@@ -35,5 +35,8 @@
             "name": "Samy Pessé",
             "email": "samy@gitbook.com"
         }
-    ]
+    ],
+    "browser": {
+        "lib/utils/hljs.js": "lib/utils/hljs-browser.js"
+    }
 }
