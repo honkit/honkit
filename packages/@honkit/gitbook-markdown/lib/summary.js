@@ -92,25 +92,6 @@ function parseChapter(nodes) {
     });
 }
 
-function defaultChapterList(chapterList, entryPoint) {
-    var first = _.first(chapterList);
-
-    // Check if introduction node was specified in SUMMARY.md
-    if (first) {
-        var chapter = parseChapter(first, [0]);
-
-        // Already have README node, we're good to go
-        if(chapter.path === entryPoint) {
-            return chapterList;
-        }
-    }
-
-    // It wasn't specified, so add in default
-    return [
-        [ { type: 'text', text: '[Introduction]('+entryPoint+')' } ]
-    ].concat(chapterList);
-}
-
 function listGroups(src) {
     var nodes = kramed.lexer(src);
 
@@ -121,11 +102,9 @@ function listGroups(src) {
     );
 }
 
-function parseSummary(src, entryPoint) {
-    entryPoint = entryPoint || "README.md";
-
+function parseSummary(src) {
     // Split out chapter sections
-    var chapters = defaultChapterList(listGroups(src), entryPoint)
+    var chapters = listGroups(src)
     .map(parseChapter);
 
     return {
