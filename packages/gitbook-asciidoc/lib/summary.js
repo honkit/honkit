@@ -33,28 +33,8 @@ function parseList($ul, $) {
 	return articles;
 }
 
-function defaultChapterList(chapterList, entryPoint) {
-    var first = _.first(chapterList);
-
-    // Check if introduction node was specified in SUMMARY.md
-    if (first && first.path == entryPoint) {
-        return chapterList;
-    }
-
-    // It wasn't specified, so add in default
-    return [
-        {
-        	path: entryPoint,
-        	title: 'Introduction'
-        }
-    ].concat(chapterList);
-}
-
-function parseSummary(src, entryPoint) {
-	entryPoint = entryPoint || "README.adoc";
-
+function parseSummary(src) {
     var chapters = parseEntries(src);
-    chapters = defaultChapterList(chapters, entryPoint);
 
     return {
     	chapters: chapters

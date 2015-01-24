@@ -9,13 +9,13 @@ var LEXED = summary(CONTENT);
 
 describe('Summary parsing', function () {
     it('should detect chapters', function() {
-        assert.equal(LEXED.chapters.length, 6);
+        assert.equal(LEXED.chapters.length, 5);
     });
 
     it('should support articles', function() {
-        assert.equal(LEXED.chapters[1].articles.length, 2);
+        assert.equal(LEXED.chapters[0].articles.length, 2);
+        assert.equal(LEXED.chapters[1].articles.length, 0);
         assert.equal(LEXED.chapters[2].articles.length, 0);
-        assert.equal(LEXED.chapters[3].articles.length, 0);
     });
 
     it('should detect paths and titles', function() {
@@ -23,21 +23,18 @@ describe('Summary parsing', function () {
         assert(LEXED.chapters[1].path);
         assert(LEXED.chapters[2].path);
         assert(LEXED.chapters[3].path);
-        assert(LEXED.chapters[4].path);
-        assert.equal(LEXED.chapters[5].path, null);
+        assert.equal(LEXED.chapters[4].path, null);
 
         assert(LEXED.chapters[0].title);
         assert(LEXED.chapters[1].title);
         assert(LEXED.chapters[2].title);
         assert(LEXED.chapters[3].title);
         assert(LEXED.chapters[4].title);
-        assert(LEXED.chapters[5].title);
     });
 
     it('should normalize paths from .md', function() {
-        assert.equal(LEXED.chapters[0].path,'README.adoc');
-        assert.equal(LEXED.chapters[1].path,'chapter-1/README.adoc');
-        assert.equal(LEXED.chapters[2].path,'chapter-2/README.adoc');
-        assert.equal(LEXED.chapters[3].path,'chapter-3/README.adoc');
+        assert.equal(LEXED.chapters[0].path,'chapter-1/README.adoc');
+        assert.equal(LEXED.chapters[1].path,'chapter-2/README.adoc');
+        assert.equal(LEXED.chapters[2].path,'chapter-3/README.adoc');
     });
 });
