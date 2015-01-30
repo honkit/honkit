@@ -1,6 +1,6 @@
 {
     "name": "gitbook-markdown",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "homepage": "https://www.gitbook.com",
     "description": "Parse markdown content for gitbook",
     "main": "lib/index.js",
