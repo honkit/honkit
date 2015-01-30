@@ -10,11 +10,9 @@ var LEXED = langs(CONTENT);
 describe('Languages parsing', function () {
     it('should detect paths and titles', function() {
         assert.equal(LEXED[0].path,'en/');
-        assert.equal(LEXED[0].lang,'en');
         assert.equal(LEXED[0].title,'English');
 
         assert.equal(LEXED[1].path,'fr/');
-        assert.equal(LEXED[1].lang,'fr');
         assert.equal(LEXED[1].title,'French');
     });
 });
