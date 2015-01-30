@@ -3,20 +3,7 @@ var parseEntries = require("./summary").entries;
 
 
 var parseLangs = function(content) {
-    var entries = parseEntries(content);
-
-    return _.chain(entries)
-        .filter(function(entry) {
-            return Boolean(entry.path);
-        })
-        .map(function(entry) {
-            return {
-                title: entry.title,
-                path: entry.path,
-                lang: entry.path.replace("/", "")
-            };
-        })
-        .value();
+    return parseEntries(content);
 };
 
 module.exports = parseLangs;
