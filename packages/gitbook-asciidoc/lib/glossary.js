@@ -5,7 +5,7 @@ var convert = require('./utils/convert');
 
 function parseGlossary(src) {
 	var html = convert(src);
-    $ = cheerio.load(html);
+    var $ = cheerio.load(html);
 
     var entries = [];
 

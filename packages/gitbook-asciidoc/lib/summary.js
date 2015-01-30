@@ -43,7 +43,7 @@ function parseSummary(src) {
 
 function parseEntries (src) {
     var html = convert(src);
-    $ = cheerio.load(html);
+    var $ = cheerio.load(html);
 
     var chapters = parseList($("ol").first(), $);
     return chapters;

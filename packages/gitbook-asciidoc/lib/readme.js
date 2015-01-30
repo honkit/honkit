@@ -5,7 +5,7 @@ var convert = require('./utils/convert');
 
 function parseReadme(src) {
     var html = convert(src);
-    $ = cheerio.load(html);
+    var $ = cheerio.load(html);
 
     return {
         title: $("h1:first-child").text().trim(),
