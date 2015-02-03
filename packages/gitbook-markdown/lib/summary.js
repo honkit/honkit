@@ -34,6 +34,26 @@ function splitBy(list, starter, ender) {
     }, []);
 }
 
+function skipSpace(nodes) {
+    return _.filter(nodes, function(node) {
+        return node && node.type != 'space';
+    });
+}
+
+function correctLoose(nodes) {
+    return _.map(nodes, function(node) {
+        // Return normal nodes
+        if(!node || node.type != 'loose_item_start') {
+            return node
+        }
+
+        // Correct loose items
+        node.type = 'list_item_start';
+
+        return node;
+    })
+}
+
 function listSplit(nodes, start_type, end_type) {
     return splitBy(nodes, function(el) {
         return el.type === start_type;
@@ -97,7 +117,7 @@ function listGroups(src) {
 
     // Get out groups of lists
     return listSplit(
-        filterList(nodes),
+        filterList(correctLoose(skipSpace(nodes))),
         'list_item_start', 'list_item_end'
     );
 }

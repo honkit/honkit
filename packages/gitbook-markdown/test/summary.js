@@ -4,8 +4,16 @@ var assert = require('assert');
 
 var summary = require('../').summary;
 
-var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/SUMMARY.md'), 'utf8');
-var LEXED = summary(CONTENT);
+function lex(fixtureFile) {
+    return summary(
+        fs.readFileSync(
+            path.join(__dirname, 'fixtures', fixtureFile),
+            'utf8'
+        )
+    );
+}
+
+var LEXED = lex('SUMMARY.md');
 
 describe('Summary parsing', function () {
     it('should detect chapters', function() {
@@ -36,5 +44,10 @@ describe('Summary parsing', function () {
         assert.equal(LEXED.chapters[0].path,'chapter-1/README.md');
         assert.equal(LEXED.chapters[1].path,'chapter-2/README.md');
         assert.equal(LEXED.chapters[2].path,'chapter-3/README.md');
+    });
+
+    it('should allow lists separated by whitespace', function() {
+        var l = lex('SUMMARY_WHITESPACE.md');
+        assert.equal(l.chapters.length, 5);
     });
 });
