@@ -41,9 +41,11 @@ function parseGlossary(src) {
 function glossaryToMarkdown(glossary) {
     var bl = "\n";
 
-    return _.map(glossary, function(entry) {
+    var body = _.map(glossary, function(entry) {
         return "## "+entry.name+bl+bl+entry.description;
     }).join(bl+bl);
+
+    return "# Glossary"+bl+bl+body;
 }
 
 module.exports = parseGlossary;
