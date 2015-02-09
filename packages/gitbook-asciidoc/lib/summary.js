@@ -49,7 +49,36 @@ function parseEntries (src) {
     return chapters;
 }
 
+function summaryToText(summary) {
+    var bl = "\n";
+    var content = "= Summary"+bl+bl;
 
-// Exports
+    var _base = function(_article) {
+        var article = _article.toJSON();
+        if (article.path) {
+            return "link:"+article.path+"["+article.title+"]";
+        } else {
+            return article.title;
+        }
+    };
+
+    var convertArticle = function(article, d) {
+        content = content + Array(d+1).join(".") + " " + _base(article)+bl;
+        article.articles.each(function(_article) {
+            convertArticle(_article, d + 1);
+        });
+    };
+
+    _.each(summary.chapters, function(chapter) {
+        convertArticle(chapter, 0);
+    });
+
+    content = content+bl;
+
+    return content;
+};
+
+
 module.exports = parseSummary;
 module.exports.entries = parseEntries;
+module.exports.toText = summaryToText;

@@ -24,4 +24,16 @@ function parseGlossary(src) {
     return entries;
 }
 
+
+function glossaryToText(glossary) {
+    var bl = "\n";
+
+    var body = _.map(glossary, function(entry) {
+        return "== "+entry.name+bl+bl+entry.description;
+    }).join(bl+bl);
+
+    return "= Glossary"+bl+bl+body;
+}
+
 module.exports = parseGlossary;
+module.exports.toText = glossaryToText;
