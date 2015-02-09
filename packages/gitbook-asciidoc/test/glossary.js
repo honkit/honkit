@@ -17,4 +17,9 @@ describe('Glossary parsing', function () {
             return !Boolean(e.name && e.description);
         })));
     });
+
+    it('should correctly convert it to text', function() {
+    	var text = glossary.toText(LEXED);
+    	assertObjectsEqual(glossary(text), LEXED);
+    });
 });

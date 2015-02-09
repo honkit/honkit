@@ -15,4 +15,9 @@ describe('Languages parsing', function () {
         assert.equal(LEXED[1].path,'fr/');
         assert.equal(LEXED[1].title,'French');
     });
+
+    it('should correctly convert it to text', function() {
+        var text = langs.toText(LEXED);
+        assertObjectsEqual(langs(text), LEXED);
+    });
 });

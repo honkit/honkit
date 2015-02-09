@@ -53,8 +53,7 @@ function summaryToText(summary) {
     var bl = "\n";
     var content = "= Summary"+bl+bl;
 
-    var _base = function(_article) {
-        var article = _article.toJSON();
+    var _base = function(article) {
         if (article.path) {
             return "link:"+article.path+"["+article.title+"]";
         } else {
@@ -63,8 +62,8 @@ function summaryToText(summary) {
     };
 
     var convertArticle = function(article, d) {
-        content = content + Array(d+1).join(".") + " " + _base(article)+bl;
-        article.articles.each(function(_article) {
+        content = content + Array(d+2).join(".") + " " + _base(article)+bl;
+        _.each(article.articles, function(_article) {
             convertArticle(_article, d + 1);
         });
     };

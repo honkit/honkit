@@ -37,4 +37,9 @@ describe('Summary parsing', function () {
         assert.equal(LEXED.chapters[1].path,'chapter-2/README.adoc');
         assert.equal(LEXED.chapters[2].path,'chapter-3/README.adoc');
     });
+
+    it('should correctly convert it to text', function() {
+        var text = summary.toText(LEXED);
+        assertObjectsEqual(summary(text), LEXED);
+    });
 });
