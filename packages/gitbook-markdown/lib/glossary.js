@@ -37,4 +37,14 @@ function parseGlossary(src) {
         };
     });
 }
+
+function glossaryToMarkdown(glossary) {
+    var bl = "\n";
+
+    return _.map(glossary, function(entry) {
+        return "## "+entry.name+bl+bl+entry.description;
+    }).join(bl+bl);
+}
+
 module.exports = parseGlossary;
+module.exports.toText = glossaryToMarkdown;
