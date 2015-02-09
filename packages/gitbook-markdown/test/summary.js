@@ -50,4 +50,9 @@ describe('Summary parsing', function () {
         var l = lex('SUMMARY_WHITESPACE.md');
         assert.equal(l.chapters.length, 5);
     });
+
+    it('should correctly convert it to text', function() {
+        var text = summary.toText(LEXED);
+        assertObjectsEqual(summary(text), LEXED);
+    });
 });

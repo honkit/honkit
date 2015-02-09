@@ -141,8 +141,7 @@ function summaryToMarkdown(summary) {
     var bl = "\n";
     var content = "# Summary"+bl+bl;
 
-    var _base = function(_article) {
-        var article = _article.toJSON();
+    var _base = function(article) {
         if (article.path) {
             return "* ["+article.title+"]("+article.path+")";
         } else {
@@ -152,7 +151,7 @@ function summaryToMarkdown(summary) {
 
     var convertArticle = function(article, d) {
         content = content + Array(4*d).join(" ") + _base(article)+bl;
-        article.articles.each(function(_article) {
+        _.each(article.articles, function(_article) {
             convertArticle(_article, d + 1);
         });
     };
