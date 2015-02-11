@@ -9,6 +9,7 @@ var LEXED = langs(CONTENT);
 
 describe('Languages parsing', function () {
     it('should detect paths and titles', function() {
+        assert.equal(LEXED.length, 2);
         assert.equal(LEXED[0].path,'en/');
         assert.equal(LEXED[0].title,'English');
 

@@ -67,12 +67,12 @@ function listSplit(nodes, start_type, end_type) {
 function filterList(nodes) {
     return _.chain(nodes)
     .toArray()
-    .rest(function(el) {
+    .dropWhile(function(el) {
         // Get everything after list_start
         return el.type !== 'list_start';
     })
     .reverse()
-    .rest(function(el) {
+    .dropWhile(function(el) {
         // Get everything after list_end (remember we're reversed)
         return el.type !== 'list_end';
     })
