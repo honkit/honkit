@@ -5,8 +5,8 @@
     "description": "Parse AsciiDoc content for gitbook",
     "main": "lib/index.js",
     "dependencies": {
-        "q": "1.0.1",
-        "lodash": "2.4.1",
+        "q": "1.1.2",
+        "lodash": "3.1.0",
         "asciidoctor.js": "1.5.2",
         "cheerio": "0.18.0"
     },
