@@ -19,7 +19,7 @@ describe('Glossary parsing', function () {
     });
 
     it('should correctly convert it to text', function() {
-    	var text = glossary.toText(LEXED);
-    	assertObjectsEqual(glossary(text), LEXED);
+        var text = glossary.toText(LEXED);
+        assertObjectsEqual(glossary(text), LEXED);
     });
 });
