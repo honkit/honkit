@@ -7,14 +7,14 @@ function parseLangs(content) {
 }
 
 function langsToMarkdown(langs) {
-	var bl = "\n";
+    var bl = "\n";
     var content = "# Languages"+bl+bl;
 
     _.each(langs, function(lang) {
-    	content = content + "* ["+lang.title+"]("+lang.path+")"+bl;
+        content = content + "* ["+lang.title+"]("+lang.path+")"+bl;
     });
 
-	return content;
+    return content;
 }
 
 module.exports = parseLangs;
