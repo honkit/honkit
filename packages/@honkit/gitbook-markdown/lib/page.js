@@ -1,9 +1,32 @@
 var _ = require('lodash');
 var kramed = require('kramed');
-
 var hljs = require('highlight.js');
 
 var lnormalize = require('./utils/lang').normalize;
+
+var RAW_START = "{% raw %}";
+var RAW_END = "{% endraw %}";
+var CODEBLOCKS = {
+    md: /(?:\n\n|^)((?:(?:[ ]{4}|\t).*\n+)+)(\n*[ ]{0,3}[^ \t\n]|(?=~0))/,
+    fences: /`([^`]+)`/g
+};
+
+function preparePage(src) {
+    // GFM Fences
+    src = src.replace(CODEBLOCKS.fences, function(all) {
+        return RAW_START+all+RAW_END;
+    });
+
+    // Normal codeblocks
+    src += "~0";
+    src = src.replace(CODEBLOCKS.md, function(all, m1, m2) {
+        all = all.slice(0, -m2.length);
+        return RAW_START+all+RAW_END+m2;
+    });
+    src = src.replace(/~0/, "");
+
+    return src;
+}
 
 function parsePage(src) {
     var options = _.extend({}, kramed.defaults, {
@@ -34,3 +57,4 @@ function parsePage(src) {
 
 // Exports
 module.exports = parsePage;
+module.exports.prepare = preparePage;
