@@ -8,13 +8,14 @@ var RAW_START = "{% raw %}";
 var RAW_END = "{% endraw %}";
 var CODEBLOCKS = {
     md: /(?:\n\n|^)((?:(?:[ ]{4}|\t).*\n+)+)(\n*[ ]{0,3}[^ \t\n]|(?=~0))/,
-    fences: /`([^`]+)`/g
+    fences: /(^|[^\\])(`+)([^\r]*?[^`])\2(?!`)/gm
 };
 
 function preparePage(src) {
     // GFM Fences
-    src = src.replace(CODEBLOCKS.fences, function(all) {
-        return RAW_START+all+RAW_END;
+    src = src.replace(CODEBLOCKS.fences, function(wholeMatch, m1, m2, m3, m4) {
+        wholeMatch = wholeMatch.slice(m1.length);
+        return m1+RAW_START+wholeMatch+RAW_END;
     });
 
     // Normal codeblocks

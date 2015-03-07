@@ -20,8 +20,14 @@ describe('Page parsing', function() {
         assert(LEXED[0].content);
     });
 
-    it('should escape codeblocks in preparation', function() {
+    it('should escape codeblocks in preparation (1)', function() {
         assert.equal(page.prepare("Hello `world`"), "Hello {% raw %}`world`{% endraw %}");
+        assert.equal(page.prepare("Hello `world test`"), "Hello {% raw %}`world test`{% endraw %}");
+        assert.equal(page.prepare("Hello ```world test```"), "Hello {% raw %}```world test```{% endraw %}");
+        assert.equal(page.prepare("Hello\n```js\nworld test\n```\n"), "Hello\n{% raw %}```js\nworld test\n```{% endraw %}\n");
+    });
+
+    it('should escape codeblocks in preparation (2)', function() {
         assert.equal(
             page.prepare("Hello\n\n\n\tworld\n\thello\n\n\ntest"),
             "Hello\n{% raw %}\n\n\tworld\n\thello\n\n\n{% endraw %}test"
