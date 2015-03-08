@@ -38,4 +38,11 @@ describe('Page parsing', function() {
             "\nHello\n{% raw %}\n```\nworld\nhello\n```\n{% endraw %}"
         );
     });
+
+    it('should escape codeblocks with nunjucks tags', function() {
+        assert.equal(
+            page.prepare('Hello {{ "Bonjour" }} ```test```'),
+            '\nHello {{ "Bonjour" }} {% raw %}`test`{% endraw %}\n'
+        );
+    });
 });
