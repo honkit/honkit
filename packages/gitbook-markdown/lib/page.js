@@ -19,7 +19,8 @@ function preparePage(src) {
     renderer.codespan = _.wrap(renderer.codespan, escape);
 
     var options = _.extend({}, kramed.defaults, {
-        renderer: renderer
+        renderer: renderer,
+        escape: false
     });
 
     return kramed(src, options);
