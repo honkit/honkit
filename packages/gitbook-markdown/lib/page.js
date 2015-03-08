@@ -3,30 +3,26 @@ var kramed = require('kramed');
 var hljs = require('highlight.js');
 
 var lnormalize = require('./utils/lang').normalize;
+var mdRenderer = require('kramed-markdown-renderer');
 
 var RAW_START = "{% raw %}";
 var RAW_END = "{% endraw %}";
-var CODEBLOCKS = {
-    md: /(?:\n\n|^)((?:(?:[ ]{4}|\t).*\n+)+)(\n*[ ]{0,3}[^ \t\n]|(?=~0))/,
-    fences: /(^|[^\\])(`+)([^\r]*?[^`])\2(?!`)/gm
-};
 
 function preparePage(src) {
-    // GFM Fences
-    src = src.replace(CODEBLOCKS.fences, function(wholeMatch, m1, m2, m3, m4) {
-        wholeMatch = wholeMatch.slice(m1.length);
-        return m1+RAW_START+wholeMatch+RAW_END;
+    var renderer = mdRenderer();
+
+    var escape = function(func, code, lang, escaped) {
+        return RAW_START+func(code, lang, escaped)+RAW_END;
+    };
+
+    renderer.code = _.wrap(renderer.code, escape);
+    renderer.codespan = _.wrap(renderer.codespan, escape);
+
+    var options = _.extend({}, kramed.defaults, {
+        renderer: renderer
     });
 
-    // Normal codeblocks
-    src += "~0";
-    src = src.replace(CODEBLOCKS.md, function(all, m1, m2) {
-        all = all.slice(0, -m2.length);
-        return RAW_START+all+RAW_END+m2;
-    });
-    src = src.replace(/~0/, "");
-
-    return src;
+    return kramed(src, options);
 }
 
 function parsePage(src) {

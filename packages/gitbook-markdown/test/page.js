@@ -21,20 +21,21 @@ describe('Page parsing', function() {
     });
 
     it('should escape codeblocks in preparation (1)', function() {
-        assert.equal(page.prepare("Hello `world`"), "Hello {% raw %}`world`{% endraw %}");
-        assert.equal(page.prepare("Hello `world test`"), "Hello {% raw %}`world test`{% endraw %}");
-        assert.equal(page.prepare("Hello ```world test```"), "Hello {% raw %}```world test```{% endraw %}");
-        assert.equal(page.prepare("Hello\n```js\nworld test\n```\n"), "Hello\n{% raw %}```js\nworld test\n```{% endraw %}\n");
+        assert.equal(page.prepare("Hello `world`"), "\nHello {% raw %}`world`{% endraw %}\n");
+        assert.equal(page.prepare("Hello `world test`"), "\nHello {% raw %}`world test`{% endraw %}\n");
+        assert.equal(page.prepare("Hello ```world test```"), "\nHello {% raw %}`world test`{% endraw %}\n");
+        assert.equal(page.prepare("Hello\n```js\nworld test\n```\n"), "\nHello\n{% raw %}\n```js\nworld test\n```\n{% endraw %}");
+        assert.equal(page.prepare("Hello\n```\ntest\n\tworld\n\ttest\n```"), "\nHello\n{% raw %}\n```\ntest\n    world\n    test\n```\n{% endraw %}");
     });
 
     it('should escape codeblocks in preparation (2)', function() {
         assert.equal(
             page.prepare("Hello\n\n\n\tworld\n\thello\n\n\ntest"),
-            "Hello\n{% raw %}\n\n\tworld\n\thello\n\n\n{% endraw %}test"
+            "\nHello\n{% raw %}\n```\nworld\nhello\n```\n{% endraw %}\ntest\n"
         );
         assert.equal(
             page.prepare("Hello\n\n\n\tworld\n\thello\n\n\n"),
-            "Hello\n{% raw %}\n\n\tworld\n\thello\n\n\n{% endraw %}"
+            "\nHello\n{% raw %}\n```\nworld\nhello\n```\n{% endraw %}"
         );
     });
 });
