@@ -17,16 +17,35 @@ function combine(nodes) {
     return _.pluck(nodes, 'raw').join('');
 }
 
-function preparePage(src) {
-    var lexed = annotate(src);
+function escapeCodeElement(el) {
+    if(el.type == 'code') {
+        el.raw = escape(el.raw);
+    }
+    return el;
+}
 
+function preparePage(src) {
+    var lexed = annotate.blocks(src);
+
+
+    var escaped = lexed
     // Escape code blocks
-    var escaped = lexed.map(function(el) {
-        if(el.type == 'code') {
-            el.raw = escape(el.raw);
+    .map(escapeCodeElement)
+    // Escape inline code blocks
+    .map(function(el) {
+        // Only escape paragraphs and headings
+        if(!(el.type == 'paragraph' || el.type == 'heading')) {
+            return el;
         }
+
+        // Escape inline code blocks
+        var newInline = annotate.inline(el.raw).map(escapeCodeElement);
+
+        // Change raw source code
+        el.raw = combine(newInline);
+
         return el;
-    })
+    });
 
     return combine(escaped);
 }
