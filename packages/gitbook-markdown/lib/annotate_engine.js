@@ -37,7 +37,7 @@ function annotateEngine(src, rules, ruleTypes, ruleMap) {
         src = src.substring(raw.length);
     }
 
-    return tokens
+    return tokens;
 }
 
 module.exports = annotateEngine;

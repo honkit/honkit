@@ -35,7 +35,7 @@ var ruleMap = {
     'nptable': 'table',
     'lheading': 'heading',
     'newline': 'space',
-}
+};
 
 function annotate(src) {
     return engine(src, rules, ruleTypes, ruleMap);
