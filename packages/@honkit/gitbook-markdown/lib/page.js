@@ -3,27 +3,32 @@ var kramed = require('kramed');
 var hljs = require('highlight.js');
 
 var lnormalize = require('./utils/lang').normalize;
-var mdRenderer = require('kramed-markdown-renderer');
+var annotate = require('./annotate');
 
 var RAW_START = "{% raw %}";
 var RAW_END = "{% endraw %}";
 
+function escape(str) {
+    return RAW_START + str + RAW_END;
+}
+
+// Combines annotated nodes
+function combine(nodes) {
+    return _.pluck(nodes, 'raw').join('');
+}
+
 function preparePage(src) {
-    var renderer = mdRenderer();
+    var lexed = annotate(src);
 
-    var escape = function(func, code, lang, escaped) {
-        return RAW_START+func(code, lang, escaped)+RAW_END;
-    };
+    // Escape code blocks
+    var escaped = lexed.map(function(el) {
+        if(el.type == 'code') {
+            el.raw = escape(el.raw);
+        }
+        return el;
+    })
 
-    renderer.code = _.wrap(renderer.code, escape);
-    renderer.codespan = _.wrap(renderer.codespan, escape);
-
-    var options = _.extend({}, kramed.defaults, {
-        renderer: renderer,
-        escape: false
-    });
-
-    return kramed(src, options);
+    return combine(escaped);
 }
 
 function parsePage(src) {
