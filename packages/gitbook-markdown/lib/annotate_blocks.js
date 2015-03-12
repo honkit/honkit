@@ -2,7 +2,7 @@ var engine = require('./annotate_engine');
 
 // Pulled from "kramed.Lexer.rules.tables"
 var rules = { newline: /^\n+/,
-    code: /^( {4}[^\n]+\n*)+/,
+    code: /^( {4}|\t[^\n]+\n*)+/,
     fences: /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/,
     hr: /^( *[-*_]){3,} *(?:\n+|$)/,
     heading: /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,
