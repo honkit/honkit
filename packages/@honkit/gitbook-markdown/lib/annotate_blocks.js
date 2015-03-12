@@ -35,6 +35,7 @@ var ruleMap = {
     'nptable': 'table',
     'lheading': 'heading',
     'newline': 'space',
+    'fences': 'code',
 };
 
 function annotate(src) {
