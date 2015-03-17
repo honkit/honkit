@@ -34,5 +34,8 @@
             "name": "Samy Pessé",
             "email": "samy@gitbook.com"
         }
-    ]
+    ],
+    "browser": {
+        "highlight.js": false
+    }
 }
