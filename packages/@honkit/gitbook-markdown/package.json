@@ -7,8 +7,7 @@
     "dependencies": {
         "lodash": "^3.2.0",
         "kramed": "0.4.6",
-        "kramed-text-renderer": "0.2.1",
-        "highlight.js": "8.4.0"
+        "kramed-text-renderer": "0.2.1"
     },
     "devDependencies": {
         "mocha": "1.18.2"
@@ -34,8 +33,5 @@
             "name": "Samy Pessé",
             "email": "samy@gitbook.com"
         }
-    ],
-    "browser": {
-        "highlight.js": false
-    }
+    ]
 }
