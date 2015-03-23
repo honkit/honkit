@@ -1,7 +1,6 @@
 var _ = require('lodash');
 var kramed = require('kramed');
 
-var lnormalize = require('./utils/lang').normalize;
 var annotate = require('./annotate');
 
 var RAW_START = "{% raw %}";
