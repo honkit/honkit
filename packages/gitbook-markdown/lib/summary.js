@@ -96,11 +96,7 @@ function parseTitle(src) {
 
     return {
         title: matches[1],
-
-        // Normalize path
-        // 1. Convert Window's "\" to "/"
-        // 2. Remove leading "/" if exists
-        path: matches[2].replace(/\\/g, '/').replace(/^\/+/, ''),
+        path: matches[2],
     };
 }
 
