@@ -1,6 +1,6 @@
 {
     "name": "gitbook-asciidoc",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "homepage": "https://www.gitbook.com",
     "description": "Parse AsciiDoc content for gitbook",
     "main": "lib/index.js",
