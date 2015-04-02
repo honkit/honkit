@@ -27,7 +27,7 @@ var rules = { newline: /^\n+/,
 
 // List of all the regexes we want to run
 var ruleTypes = [
-'newline', 'rawStart', 'rawEnd', 'code', 'fences', 'footnote', 'math', 'heading',
+'rawStart', 'rawEnd', 'newline', 'code', 'fences', 'footnote', 'math', 'heading',
 'nptable', 'lheading', 'hr', 'blockquote', 'list',
 'html', 'def', 'table', 'paragraph', 'text',
 ];
