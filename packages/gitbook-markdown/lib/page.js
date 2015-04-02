@@ -49,7 +49,9 @@ function preparePage(src) {
 }
 
 function parsePage(src) {
-    var options = _.extend({}, kramed.defaults);
+    var options = _.extend({}, kramed.defaults, {
+        mathjax: false
+    });
 
     return {
         sections: [

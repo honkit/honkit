@@ -45,4 +45,9 @@ describe('Page parsing', function() {
             'Hello {{ "Bonjour" }} {% raw %}```test```{% endraw %}'
         );
     });
+
+    it('should not process math', function() {
+        assert.equal(page.prepare("Hello $world$"), "Hello $world$");
+        assert.equal(page.prepare("Hello $$world$$"), "Hello $$world$$");
+    });
 });
