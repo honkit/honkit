@@ -15,8 +15,6 @@ function combine(nodes) {
     return _.pluck(nodes, 'raw').join('');
 }
 
-
-
 function preparePage(src) {
     var lexed = annotate.blocks(src);
     var levelRaw = 0;
@@ -26,31 +24,29 @@ function preparePage(src) {
             el.raw = escape(el.raw);
         } else if (el.type == 'rawStart') {
             levelRaw = levelRaw + 1;
-        } else if (el.type == 'rawStart') {
-            levelRaw = levelRaw - 1;
+        } else if (el.type == 'rawEnd') {
+            levelRaw = 0;
         }
         return el;
     };
 
     var escaped = lexed
 
-    // Escape code blocks
-    .map(escapeCodeElement)
-
-    // Escape inline code blocks
     .map(function(el) {
         // Only escape paragraphs and headings
-        if(!(el.type == 'paragraph' || el.type == 'heading')) {
+        if(el.type == 'paragraph' || el.type == 'heading') {
+            var line = annotate.inline(el.raw);
+
+            // Escape inline code blocks
+            line = line.map(escapeCodeElement);
+
+            // Change raw source code
+            el.raw = combine(line);
+
             return el;
+        } else {
+            return escapeCodeElement(el);
         }
-
-        // Escape inline code blocks
-        var newInline = annotate.inline(el.raw).map(escapeCodeElement);
-
-        // Change raw source code
-        el.raw = combine(newInline);
-
-        return el;
     });
 
     return combine(escaped);
