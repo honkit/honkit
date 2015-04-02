@@ -17,6 +17,8 @@ var rules = { newline: /^\n+/,
     paragraph: /^((?:[^\n]+\n?(?! *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\2 *(?:\n+|$)|( *)((?:[*+-]|\d+\.)) [\s\S]+?(?:\n+(?=\3?(?:[-*_] *){3,}(?:\n+|$))|\n+(?= *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$))|\n{2,}(?! )(?!\1(?:[*+-]|\d+\.) )\n*|\s*$)|( *[-*_]){3,} *(?:\n+|$)| *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)|([^\n]+)\n *(=|-){2,} *(?:\n+|$)|( *>[^\n]+(\n(?! *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$))[^\n]+)*\n*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b| *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)| *(\${2,}) *([\s\S]+?)\s*\1 *(?:\n+|$)))+)\n*/,
     text: /^[^\n]+/,
     math: /^ *(\${2,}) *([\s\S]+?)\s*\1 *(?:\n+|$)/,
+    rawStart: /^{%([\s]*)raw([\s]*)%}/,
+    rawEnd: /^{%([\s]*)endraw([\s]*)%}/
     // These are lower level, ignore them
     //bullet: /(?:[*+-]|\d+\.)/,
     //item: /^( *)((?:[*+-]|\d+\.)) [^\n]*(?:\n(?!\1(?:[*+-]|\d+\.) )[^\n]*)*/gm,
@@ -25,7 +27,7 @@ var rules = { newline: /^\n+/,
 
 // List of all the regexes we want to run
 var ruleTypes = [
-'newline', 'code', 'fences', 'footnote', 'math', 'heading',
+'newline', 'rawStart', 'rawEnd', 'code', 'fences', 'footnote', 'math', 'heading',
 'nptable', 'lheading', 'hr', 'blockquote', 'list',
 'html', 'def', 'table', 'paragraph', 'text',
 ];

@@ -17,13 +17,15 @@ var rules = {
     del: /^~~(?=\S)([\s\S]*?\S)~~/,
     text: /^[\s\S]+?(?=[\\<!\[_*`$~]|https?:\/\/| {2,}\n|$)/,
     math: /^\$\$\s*([\s\S]*?[^\$])\s*\$\$(?!\$)/,
+    rawStart: /^{%([\s]*)raw([\s]*)%}/,
+    rawEnd: /^{%([\s]*)endraw([\s]*)%}/
     //_inside: /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/,
     //_href: /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/
 };
 
 // List of all the regexes we want to run
 var ruleTypes = [
-'escape', 'autolink', 'url', 'tag', 'link', 'reflink',
+'escape', 'rawStart', 'rawEnd', 'autolink', 'url', 'tag', 'link', 'reflink',
 'nolink', 'reffn', 'strong', 'em', 'code', 'br',
 'del', 'text', 'math'
 ];

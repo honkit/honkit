@@ -46,6 +46,13 @@ describe('Page parsing', function() {
         );
     });
 
+    it('should escape codeblocks with nunjucks tags in {% raw %} tags', function() {
+        assert.equal(
+            page.prepare('{% raw %}Hello {{ "Bonjour" }} ```test```{% endraw %}'),
+            '{% raw %}Hello {{ "Bonjour" }} ```test```{% endraw %}'
+        );
+    });
+
     it('should not process math', function() {
         assert.equal(page.prepare("Hello $world$"), "Hello $world$");
         assert.equal(page.prepare("Hello $$world$$"), "Hello $$world$$");
