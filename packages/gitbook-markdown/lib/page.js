@@ -15,20 +15,28 @@ function combine(nodes) {
     return _.pluck(nodes, 'raw').join('');
 }
 
-function escapeCodeElement(el) {
-    if(el.type == 'code') {
-        el.raw = escape(el.raw);
-    }
-    return el;
-}
+
 
 function preparePage(src) {
     var lexed = annotate.blocks(src);
+    var levelRaw = 0;
 
+    var escapeCodeElement = function(el) {
+        if (el.type == 'code' && levelRaw == 0) {
+            el.raw = escape(el.raw);
+        } else if (el.type == 'rawStart') {
+            levelRaw = levelRaw + 1;
+        } else if (el.type == 'rawStart') {
+            levelRaw = levelRaw - 1;
+        }
+        return el;
+    };
 
     var escaped = lexed
+
     // Escape code blocks
     .map(escapeCodeElement)
+
     // Escape inline code blocks
     .map(function(el) {
         // Only escape paragraphs and headings
