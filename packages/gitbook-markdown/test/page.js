@@ -55,6 +55,10 @@ describe('Page parsing', function() {
             page.prepare('{% raw %}Hello {{ "Bonjour" }} {% raw %}{% endraw %}```test```'),
             '{% raw %}Hello {{ "Bonjour" }} {% raw %}{% endraw %}{% raw %}```test```{% endraw %}'
         );
+        assert.equal(
+            page.prepare('```{% raw %}Hello {{ "Bonjour" }} {% raw %}```'),
+            '{% raw %}```{% raw %}Hello {{ "Bonjour" }} {% raw %}```{% endraw %}'
+        );
     });
 
     it('should not process math', function() {

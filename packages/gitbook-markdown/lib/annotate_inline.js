@@ -15,19 +15,18 @@ var rules = {
     code: /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
     br: /^ {2,}\n(?!\s*$)/,
     del: /^~~(?=\S)([\s\S]*?\S)~~/,
-    text: /^[\s\S]+?(?=[\\<!\[_*`$~]|https?:\/\/| {2,}\n|$)/,
-    math: /^\$\$\s*([\s\S]*?[^\$])\s*\$\$(?!\$)/,
+    text: /^[\s\S]+?(?=[\\<!\[_*`$~]|{%([\s]*)raw([\s]*)%}|{%([\s]*)endraw([\s]*)|https?:\/\/| {2,}\n|$)/,
     rawStart: /^{%([\s]*)raw([\s]*)%}/,
-    rawEnd: /[\s\S]*{%([\s]*)endraw([\s]*)%}/ // /^{%([\s]*)endraw([\s]*)%}/
+    rawEnd:  /^{%([\s]*)endraw([\s]*)%}/ ///[\s\S]*{%([\s]*)endraw([\s]*)%}/
     //_inside: /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/,
     //_href: /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/
 };
 
 // List of all the regexes we want to run
 var ruleTypes = [
-'escape', 'rawStart', 'rawEnd', 'autolink', 'url', 'tag', 'link', 'reflink',
-'nolink', 'reffn', 'strong', 'em', 'code', 'br',
-'del', 'text', 'math'
+    'escape', 'autolink', 'url', 'tag', 'link', 'reflink',
+    'nolink', 'reffn', 'strong', 'em', 'code', 'br',
+    'del', 'rawStart', 'rawEnd', 'text'
 ];
 
 // Mapping if rule type is different from token type
