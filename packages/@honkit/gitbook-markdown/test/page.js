@@ -62,7 +62,7 @@ describe('Page parsing', function() {
 
         assert.equal(
             page.prepare('```\ntest\n```\n\n\n### Test'),
-            '{% raw %}```\ntest\n```{% endraw %}\n\n\n### Test'
+            '{% raw %}```\ntest\n```\n{% endraw %}\n\n### Test'
         );
     });
 
