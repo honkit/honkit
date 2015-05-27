@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var kramed = require('kramed');
 
-var annotate = require('./annotate');
+var annotate = require('kramed/lib/annotate/');
 
 var RAW_START = "{% raw %}";
 var RAW_END = "{% endraw %}";
@@ -22,10 +22,13 @@ function preparePage(src) {
     var escapeCodeElement = function(el) {
         if (el.type == 'code' && levelRaw == 0) {
             el.raw = escape(el.raw);
-        } else if (el.type == 'rawStart') {
-            levelRaw = levelRaw + 1;
-        } else if (el.type == 'rawEnd') {
-            levelRaw = 0;
+        } else if (el.type == 'tplexpr') {
+            var expr = el.matches[0];
+            if(expr === 'raw') {
+                levelRaw = levelRaw + 1;
+            } else if(expr === 'endraw') {
+                levelRaw = 0;
+            }
         }
         return el;
     };
