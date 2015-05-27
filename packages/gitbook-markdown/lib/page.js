@@ -31,7 +31,6 @@ function preparePage(src) {
     };
 
     var escaped = lexed
-
     .map(function(el) {
         // Only escape paragraphs and headings
         if(el.type == 'paragraph' || el.type == 'heading') {
