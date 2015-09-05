@@ -21,7 +21,7 @@
         "url": "https://github.com/GitbookIO/gitbook-asciidoc.git"
     },
     "author": "FriendCode Inc. <contact@gitbook.com>",
-    "license": "Apache 2",
+    "license": "Apache-2.0",
     "bugs": {
         "url": "https://github.com/GitbookIO/gitbook-asciidoc/issues"
     },
