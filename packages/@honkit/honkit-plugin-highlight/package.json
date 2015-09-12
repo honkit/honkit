@@ -1,0 +1,27 @@
+{
+    "name": "gitbook-plugin-highlight",
+    "description": "Code highlighting for GitBook",
+    "main": "index.js",
+    "version": "0.0.0",
+    "engines": {
+        "gitbook": ">=2.4.0"
+    },
+    "homepage": "https://github.com/GitbookIO/plugin-highlight",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GitbookIO/plugin-highlight.git"
+    },
+    "license": "Apache 2",
+    "bugs": {
+        "url": "https://github.com/GitbookIO/plugin-highlight/issues"
+    },
+    "dependencies": {
+        "highlight.js": "8.8.0"
+    },
+    "devDependencies": {
+        "less": "2.5.1"
+    },
+    "scripts": {
+        "prepublish": "lessc ./less/website.less > ./css/website.css; lessc ./less/ebook.less > ./css/ebook.css"
+    }
+}
