@@ -45,7 +45,7 @@ module.exports = {
     },
     blocks: {
         code: function(block) {
-            return highlight(block.kwargs.language, block.content);
+            return highlight(block.kwargs.language, block.body);
         }
     }
 };

@@ -22,6 +22,6 @@
         "less": "2.5.1"
     },
     "scripts": {
-        "prepublish": "lessc ./less/website.less > ./css/website.css; lessc ./less/ebook.less > ./css/ebook.css"
+        "prepublish": "mkdir -p css && lessc ./less/website.less > ./css/website.css; lessc ./less/ebook.less > ./css/ebook.css"
     }
 }
