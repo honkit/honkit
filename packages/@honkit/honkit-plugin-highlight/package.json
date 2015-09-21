@@ -2,7 +2,7 @@
     "name": "gitbook-plugin-highlight",
     "description": "Default code highlighter for GitBook",
     "main": "index.js",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "engines": {
         "gitbook": ">=2.4.0"
     },
