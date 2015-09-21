@@ -17,7 +17,7 @@ function normalize(lang) {
 }
 
 function highlight(lang, code) {
-    if(!lang) return hljs.highlightAuto(code);
+    if(!lang) return code;
 
     // Normalize lang
     lang = normalize(lang);
