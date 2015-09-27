@@ -101,10 +101,16 @@ function parseTitle(src) {
 }
 
 function parseChapter(nodes) {
-    return _.extend(parseTitle(_.first(nodes).text), {
-        articles: _.map(listSplit(filterList(nodes), 'list_item_start', 'list_item_end'), function(nodes, i) {
-            return parseChapter(nodes);
-        })
+    var node = _.first(nodes);
+    if (!node) return null;
+
+    return _.extend(parseTitle(node.text), {
+        articles: _.chain(listSplit(filterList(nodes), 'list_item_start', 'list_item_end'))
+            .map(function(nodes, i) {
+                return parseChapter(nodes);
+            })
+            .compact()
+            .value()
     });
 }
 
@@ -120,16 +126,21 @@ function listGroups(src) {
 
 function parseSummary(src) {
     // Split out chapter sections
-    var chapters = listGroups(src)
-    .map(parseChapter);
+    var chapters = _.chain(listGroups(src))
+        .map(parseChapter)
+        .compact()
+        .value();
 
     return {
         chapters: chapters
     };
 }
 
-function parseEntries (src) {
-    return listGroups(src).map(parseChapter);
+function parseEntries(src) {
+    return _.chain(listGroups(src))
+        .map(parseChapter)
+        .compact()
+        .value();
 }
 
 
