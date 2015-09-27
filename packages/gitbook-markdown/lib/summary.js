@@ -103,6 +103,7 @@ function parseTitle(src) {
 function parseChapter(nodes) {
     var node = _.first(nodes);
     if (!node) return null;
+    if (!node.text) throw new Error("Invalid entry in the SUMMARY");
 
     return _.extend(parseTitle(node.text), {
         articles: _.chain(listSplit(filterList(nodes), 'list_item_start', 'list_item_end'))

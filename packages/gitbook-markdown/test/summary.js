@@ -56,6 +56,15 @@ describe('Summary parsing', function () {
         assert.equal(l.chapters.length, 1);
     });
 
+    it('should throw error for sublist entries', function() {
+        assert.throws(
+            function() {
+                var l = lex('SUMMARY_SUBLIST.md');
+            },
+            "Invalid entry in the SUMMARY"
+        );
+    });
+
     it('should correctly convert it to text', function() {
         var text = summary.toText(LEXED);
         assertObjectsEqual(summary(text), LEXED);
