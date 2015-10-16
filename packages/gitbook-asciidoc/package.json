@@ -7,7 +7,7 @@
     "dependencies": {
         "q": "^1.1.2",
         "lodash": "^3.2.0",
-        "asciidoctor.js": "1.5.2",
+        "asciidoctor.js": "1.5.3-preview.1",
         "cheerio": "^0.19.0"
     },
     "devDependencies": {
