@@ -20,6 +20,11 @@ describe('Page parsing', function() {
         assert(LEXED[0].content);
     });
 
+    it('should not add id to headings', function() {
+        assert.equal(page('# Hello').sections[0].content, '<h1>Hello</h1>\n');
+         assert.equal(page('# Hello {#test}').sections[0].content, '<h1 id="test">Hello </h1>\n');
+    });
+
     it('should escape codeblocks in preparation (1)', function() {
         assert.equal(page.prepare("Hello `world`"), "Hello {% raw %}`world`{% endraw %}");
         assert.equal(page.prepare("Hello `world test`"), "Hello {% raw %}`world test`{% endraw %}");
