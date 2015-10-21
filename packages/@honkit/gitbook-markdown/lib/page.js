@@ -58,7 +58,11 @@ function parsePage(src) {
     var options = _.extend({}, kramed.defaults, {
         mathjax: false,
         renderer: new kramed.Renderer({
-            headerAutoId: false
+            langPrefix: 'lang-',
+            smartypants: false,
+            headerPrefix: '',
+            headerAutoId: false,
+            xhtml: false
         })
     });
 
