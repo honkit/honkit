@@ -1,0 +1,41 @@
+{% macro articles(_articles) %}
+    {% for article in _articles %}
+        <li class="chapter {% if article.path == file.path %}active{% endif %}" data-level="{{ article.level }}" {% if article.path %}data-path="{{ article.path|contentURL }}"{% endif %}>
+            {% if article.path %}
+                <a href="{{ {{ article.path|resolveFile|contentURL }}">
+            {% else %}
+                <a target="_blank" href="{{ article.url }}">
+            {% endif %}
+                    {% if item.level != "0" %}
+                        <b>{{ item.level }}.</b>
+                    {% endif %}
+                    {{ item.title }}
+                </a>
+
+            {% if article.articles.length > 0 %}
+            <ul class="articles">
+                {{ articles(article.articles) }}
+            </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            {% for part in summary.parts %}
+            {{ articles(part.articles) }}
+            <li class="divider"></li>
+            {% endfor %}
+
+            <li class="divider"></li>
+
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    {{ __("GITBOOK_LINK") }}
+                </a>
+            </li>
+        </ul>
+    </nav>
+</ul>

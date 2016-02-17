@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="{{ book.language }}" {% if book.direction == "rtl" %}dir="rtl"{% endif %}>
+    <head>
+        <title>{% block title %}{{ book.title }}{% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="{% block description %}{{ book.description }}{% endblock %}">
+        <meta name="generator" content="GitBook {{ gitbook.version }}">
+        {% if book.author %}<meta name="author" content="{{ book.author }}">{% endif %}
+        {% if book.isbn %}<meta name="identifier" content="{{ book.isbn }}" scheme="ISBN">{% endif %}
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ staticBase }}/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="{{ staticBase }}/images/favicon.ico" type="image/x-icon">
+        {% block style %}{% endblock %}
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascript %}{% endblock %}
+    </body>
+</html>

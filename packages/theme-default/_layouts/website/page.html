@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+
+    {% if page.next %}
+    <link rel="next" href="{{ page.next.path|resolveFile|contentURL }}" />
+    {% endif %}
+    {% if page.previous %}
+    <link rel="prev" href="{{ page.previous.path|resolveFile|contentURL }}" />
+    {% endif %}
+{% endblock %}
+
+
+{% block body %}
+<div class="book">
+
+
+
+</div>
+{% endblock %}
