@@ -2,14 +2,14 @@
     {% for article in _articles %}
         <li class="chapter {% if article.path == file.path %}active{% endif %}" data-level="{{ article.level }}" {% if article.path %}data-path="{{ article.path|contentURL }}"{% endif %}>
             {% if article.path %}
-                <a href="{{ {{ article.path|resolveFile|contentURL }}">
+                <a href="{{ article.path|resolveFile|contentURL }}">
             {% else %}
                 <a target="_blank" href="{{ article.url }}">
             {% endif %}
-                    {% if item.level != "0" %}
-                        <b>{{ item.level }}.</b>
+                    {% if article.level != "0" %}
+                        <b>{{ article.level }}.</b>
                     {% endif %}
-                    {{ item.title }}
+                    {{ article.title }}
                 </a>
 
             {% if article.articles.length > 0 %}
@@ -22,6 +22,7 @@
 {% endmacro %}
 
 <div class="book-summary">
+    {% block book_summary %}
     <nav role="navigation">
         <ul class="summary">
             {% for part in summary.parts %}
@@ -38,4 +39,5 @@
             </li>
         </ul>
     </nav>
+    {% endblock %}
 </ul>

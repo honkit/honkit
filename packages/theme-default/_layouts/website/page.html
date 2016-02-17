@@ -14,8 +14,37 @@
 
 {% block body %}
 <div class="book">
+    {% include "website/summary.html" %}
 
+    <div class="book-body">
+        {% block book_body %}
+            <div class="body-inner">
+                {% block book_inner %}
+                    {% include "website/header.html" %}
 
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            {% block page %}
+                            {{ page.content|safe }}
+                            {% endblock %}
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
 
+            {% block book_navigation %}
+                {% if progress.current.prev and progress.current.prev.path %}
+                <a href="{{ page.previous.path|resolveFile|contentURL }}" class="navigation navigation-prev {% if not page.next %}navigation-unique{% endif %}" aria-label="Previous page: {{ page.previous.title }}">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                {% endif %}
+                {% if progress.current.next and progress.current.next.path %}
+                <a href="{{ page.next.path|resolveFile|contentURL }}" class="navigation navigation-next {% if not page.previous %}navigation-unique{% endif %}" aria-label="Next page: {{ page.next.title }}">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                {% endif %}
+            {% endblock %}
+        {% endblock %}
+    </div>
 </div>
 {% endblock %}
