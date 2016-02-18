@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="{{ book.language }}" {% if book.direction == "rtl" %}dir="rtl"{% endif %}>
+<html lang="{{ book.language }}" {% if page.dir == "rtl" %}dir="rtl"{% endif %}>
     <head>
         <title>{% block title %}{{ book.title|d("GitBook", true) }}{% endblock %}</title>
         <meta charset="UTF-8">
