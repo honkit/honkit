@@ -7,6 +7,7 @@
     },
     "devDependencies": {
         "less": "2.6.0",
+        "less-plugin-clean-css": "1.5.1",
         "browserify": "13.0.0",
         "uglify-js": "2.6.1",
         "lodash": "3.10.1",

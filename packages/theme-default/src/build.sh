@@ -8,16 +8,17 @@ mkdir -p _assets/website/
 mkdir -p _assets/ebook/
 
 # Compile JS
-browserify src/js/main.js | uglifyjs -mc > _assets/website/app.js
+#  | uglifyjs -mc
+browserify src/js/main.js > _assets/website/app.js
 
 # Compile Website CSS
-lessc src/less/website.less _assets/website/style.css
+lessc -clean-css src/less/website.less _assets/website/style.css
 
 # Compile eBook CSS
-lessc src/less/ebook.less _assets/ebook/ebook.css
-lessc src/less/pdf.less _assets/ebook/pdf.css
-lessc src/less/mobi.less _assets/ebook/mobi.css
-lessc src/less/epub.less _assets/ebook/epub.css
+lessc -clean-css src/less/ebook.less _assets/ebook/ebook.css
+lessc -clean-css src/less/pdf.less _assets/ebook/pdf.css
+lessc -clean-css src/less/mobi.less _assets/ebook/mobi.css
+lessc -clean-css src/less/epub.less _assets/ebook/epub.css
 
 # Copy fonts
 mkdir -p _assets/website/fonts
