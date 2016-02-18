@@ -62,9 +62,11 @@
 
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
+                            <section class="section-normal">
                             {% block page %}
                             {{ page.content|safe }}
                             {% endblock %}
+                            </section>
                         </div>
                     </div>
                 {% endblock %}
