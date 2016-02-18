@@ -36,16 +36,22 @@
         {% if resource.url %}
         <link rel="stylesheet" href="{{ resource.url }}">
         {% else %}
-        <link rel="stylesheet" href="{{ staticBase }}/plugins/{{ resource.path }}">
+        <link rel="stylesheet" href="{{ resource.path|resolveAsset }}">
         {% endif %}
     {% endfor %}
     {% for type, style in styles %}
-        <link rel="stylesheet" href="{{ basePath }}/{{ style }}">
+        <link rel="stylesheet" href="{{ style|resolveFile }}">
     {% endfor %}
 {% endblock %}
 
 {% block body %}
-<div class="book">
+<div class="book"
+    data-level="{{ page.level }}"
+    data-chapter-title="{{ page.title }}"
+    data-filepath="{{ file.path }}"
+    data-basepath="{{ './'|resolveFile }}"
+    data-revision="{{ gitbook.time }}"
+    data-innerlanguage="{{ innerlanguage }}">
     {% include "website/summary.html" %}
 
     <div class="book-body">
