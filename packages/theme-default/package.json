@@ -22,12 +22,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/GitbookIO/gitbook-theme-default.git"
+        "url": "https://github.com/GitbookIO/theme-default.git"
     },
     "author": "FriendCode Inc. <contact@gitbook.com>",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/GitbookIO/gitbook-theme-default/issues"
+        "url": "https://github.com/GitbookIO/theme-default/issues"
     },
     "contributors": [
         {
