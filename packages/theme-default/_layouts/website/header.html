@@ -1,7 +1,7 @@
 {% block book_header %}
 <div class="book-header" role="navigation">
     {% if glossary.length > 0 %}
-    <a href="{{ ('/' + glossary.path)|resolveFile }}" class="btn pull-left" aria-label="{{ __("GLOSSARY_OPEN") }}"><i class="fa fa-sort-alpha-asc"></i></a>
+    <a href="{{ ('/' + glossary.path)|resolveFile }}" class="btn pull-left" aria-label="{{ "GLOSSARY_OPEN"|t }}"><i class="fa fa-sort-alpha-asc"></i></a>
     {% endif %}
 
     <!-- Title -->

@@ -4,7 +4,7 @@ var fs = require('fs');
 var i18n = require('i18n');
 
 // Root folder for i18n locales
-var I18N_PATH = path.resolve(__dirname, '../_i18n/');
+var I18N_PATH = path.resolve(__dirname, '_i18n');
 
 // Default language is english
 var DEFAULT_LANGUAGE = 'en';
@@ -35,6 +35,8 @@ function compareLocales(lang, locale) {
     return 0;
 }
 
+// Normalize a language
+// en-us -> en
 var normalizeLanguage = _.memoize(function(lang) {
     var language = _.chain(LOCALES)
         .values()
@@ -54,31 +56,21 @@ var normalizeLanguage = _.memoize(function(lang) {
     return language || lang;
 });
 
+// Translate a phrase in a specific language
 function translate(locale, phrase) {
     var args = Array.prototype.slice.call(arguments, 2);
 
     return i18n.__.apply({}, [{
-        locale: locale,
+        locale: normalizeLanguage(locale),
         phrase: phrase
     }].concat(args));
 }
 
-function getCatalog(locale) {
-    locale = normalizeLanguage(locale);
-    return i18n.getCatalog(locale);
-}
-
-function getLocales() {
-    return LOCALES;
-}
-
-function hasLocale(locale) {
-    return _.contains(LOCALES, locale);
-}
-
 module.exports = {
     filters: {
-
+        't': function(phrase) {
+            return translate(this.book.config.get('language'), phrase);
+        }
     }
 };
 
