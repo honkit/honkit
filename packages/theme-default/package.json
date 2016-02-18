@@ -1,7 +1,36 @@
 {
     "name": "gitbook-plugin-theme-default",
     "description": "Default theme for GitBook > 3.0.0",
+    "main": "./index.js",
     "engines": {
         "gitbook": ">=3.0.0"
-    }
+    },
+    "devDependencies": {
+        "less": "2.6.0",
+        "browserify": "13.0.0",
+        "uglify-js": "2.6.1",
+        "lodash": "3.10.1",
+        "jquery": "2.1.4",
+        "mousetrap": "1.5.3",
+        "font-awesome": "4.1.0",
+        "gitbook-markdown-css": "1.0.1"
+    },
+    "scripts": {
+        "prepublish": "./src/build.sh"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GitbookIO/gitbook-theme-default.git"
+    },
+    "author": "FriendCode Inc. <contact@gitbook.com>",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/GitbookIO/gitbook-theme-default/issues"
+    },
+    "contributors": [
+        {
+            "name": "Samy Pessé",
+            "email": "samy@gitbook.com"
+        }
+    ]
 }
