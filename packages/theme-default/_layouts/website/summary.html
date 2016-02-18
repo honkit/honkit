@@ -2,7 +2,7 @@
     {% for article in _articles %}
         <li class="chapter {% if article.path == file.path %}active{% endif %}" data-level="{{ article.level }}" {% if article.path %}data-path="{{ article.path|contentURL }}"{% endif %}>
             {% if article.path %}
-                <a href="{{ article.path|resolveFile|contentURL }}">
+                <a href="{{ article.path|resolveFile }}">
             {% else %}
                 <a target="_blank" href="{{ article.url }}">
             {% endif %}
