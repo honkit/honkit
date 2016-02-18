@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="{{ book.language }}" {% if book.direction == "rtl" %}dir="rtl"{% endif %}>
     <head>
-        <title>{% block title %}{{ book.title }}{% endblock %}</title>
+        <title>{% block title %}{{ book.title|d("GitBook", true) }}{% endblock %}</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
