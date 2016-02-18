@@ -12,8 +12,9 @@
         "lodash": "3.10.1",
         "jquery": "2.1.4",
         "mousetrap": "1.5.3",
-        "font-awesome": "4.1.0",
-        "gitbook-markdown-css": "1.0.1"
+        "font-awesome": "4.5.0",
+        "gitbook-markdown-css": "1.0.1",
+        "gitbook-logos": "git+https://github.com/GitbookIO/logos.git#2.0.2"
     },
     "scripts": {
         "prepublish": "./src/build.sh"
