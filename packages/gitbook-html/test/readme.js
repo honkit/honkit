@@ -4,11 +4,13 @@ var assert = require('assert');
 
 var readme = require('../').readme;
 
-
-var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/README.html'), 'utf8');
-var LEXED = readme(CONTENT);
-
 describe('Readme parsing', function () {
+    var LEXED;
+
+    before(function() {
+        var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/README.html'), 'utf8');
+        LEXED = readme(CONTENT);
+    });
 
     it('should contain a title', function() {
         assert(LEXED.title);

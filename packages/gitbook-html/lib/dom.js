@@ -3,10 +3,16 @@ var cheerio = require('cheerio');
 
 // Parse an HTML string and return its content
 function parse(html) {
-    var $ = cheerio.load('<div>'+html+'</div>');
+    var $ = cheerio.load(html);
     var $el = $('html, body').first();
 
     return $el.length > 0? $el : $;
+}
+
+// Return main element
+function root($) {
+    var $el = $('html, body, > div').first();
+    return $el.length > 0? $el : $.root();
 }
 
 // Return text node of an element
@@ -19,5 +25,6 @@ function textNode($el) {
 
 module.exports = {
     parse: parse,
-    textNode: textNode
+    textNode: textNode,
+    root: root
 };

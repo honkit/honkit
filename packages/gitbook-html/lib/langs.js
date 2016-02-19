@@ -1,9 +1,9 @@
 var _ = require('lodash');
-var parseEntries = require('./summary').entries;
+var parseSummary = require('./summary');
 
 // HTML -> Languages
 function parseLangs(content) {
-    return parseEntries(content);
+    return parseSummary(content).parts[0].articles;
 }
 
 // Languages -> HTML

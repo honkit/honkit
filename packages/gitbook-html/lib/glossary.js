@@ -7,9 +7,10 @@ function parseGlossary(html) {
 
     var entries = [];
 
-    $("h2").each(function() {
+    $('h2').each(function() {
         var $heading = $(this);
-        var $p = $heading.next();
+        var $next = $heading.next()
+        var $p =  $next.is('p')? $next.first() : $next.find('p').first();
 
         var entry = {};
 

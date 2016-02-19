@@ -1,14 +1,17 @@
 var _ = require('lodash');
 var dom = require('./dom');
 
+var SELECTOR_LIST = '.olist > ol, ol, ul';
+var SELECTOR_LINK = 'a, p > a';
+
+var BL = '\n';
 
 // parse a ul list and return list of chapters recursvely
 function parseList($ul, $) {
     var articles = [];
 
-    $ul.children('>li').each(function() {
+    $ul.children('li').each(function() {
         var article = {};
-
         var $li = $(this);
 
         // Get text for the entry
@@ -16,14 +19,14 @@ function parseList($ul, $) {
         article.title = $p.text() ||  dom.textNode($li.get(0));
 
         // Parse link
-        var $a = $li.find('> a, > p > a');
+        var $a = $li.children(SELECTOR_LINK);
         if ($a.length > 0) {
             article.title = $a.first().text();
             article.path = $a.attr('href').replace(/\\/g, '/').replace(/^\/+/, '')
         }
 
         // Sub articles
-        var $sub = $li.children('> .olist > ol, > ol, > ul');
+        var $sub = $li.children(SELECTOR_LIST).first();
         article.articles = parseList($sub, $);
 
         articles.push(article);
@@ -32,55 +35,73 @@ function parseList($ul, $) {
     return articles;
 }
 
-// Return a list of entries in a div
-function parseEntries (html) {
-    var $ = dom.parse(html);
-    var chapters = parseList($("> ol, > ul").first(), $);
-    return chapters;
-}
-
 // HTML -> Summary
-function parseSummary(src) {
-    var chapters = parseEntries(src);
+function parseSummary(html) {
+    var $ = dom.parse(html);
+    var $root = dom.root($);
+
+    var $lists = $root.children(SELECTOR_LIST);
+    var parts = [];
+
+    $lists.each(function() {
+        var $list = $(this);
+
+        parts.push({
+            articles: parseList($(SELECTOR_LIST).first(), $)
+        });
+    });
 
     return {
-        chapters: chapters
+        parts: parts
     };
 }
 
 // Summary -> HTML
-function summaryToText(summary) {
-    var bl = '\n';
+function textPrefix(d) {
+    return Array(d*4).join(' ');
+}
 
-    var _base = function(article) {
-        if (article.path) {
-            return '<a href="'+article.path+'">'+article.title+'</a>';
-        } else {
-            return article.title;
-        }
-    };
+function articleToText(article, d) {
+    var prefix = textPrefix(d);
+    var content = prefix + '<li>';
 
-    var convertArticle = function(article, d) {
-        var content = Array(d+2).join(' ') + '<li>' + _base(article);
-
-        if (article.articles.length > 0) {
-            content += convertArticles(article.articles, d);
-        }
-        return content + '</li>' + bl;
-    };
-
-    var convertArticles = function(articles, d) {
-        var content = '<ul>' + bl;
-        _.each(articles, function(_article) {
-            content += convertArticle(_article, d + 1);
-        });
-        return content + '<ul>' + bl;
+    if (article.path) {
+        content += '<a href="'+article.path+'">'+article.title+'</a>';
+    } else {
+        content += article.title;
     }
 
-    return '<h1>Summary</h1>'+ bl+bl + convertArticles(summary.chapters, 0) + bl;
+    if (article.articles.length > 0) {
+        content += BL + articlesToText(article.articles, d) + prefix;
+    }
+    content +=  '</li>' + BL;
+
+    return content;
+}
+
+function articlesToText(articles, d) {
+    var prefix = textPrefix(d);
+    var content = prefix + '<ul>' + BL;
+    _.each(articles, function(_article) {
+        content += articleToText(_article, d + 1);
+    });
+    return content + '</ul>' + BL;
+}
+
+function partsToText(part) {
+    return articlesToText(part.articles, 0) + BL + BL;
+}
+
+function summaryToText(summary) {
+    var content = '<h1>Summary</h1>' + BL;
+
+    _.each(summary.parts, function(part) {
+        content += partsToText(part);
+    });
+
+    return content + BL;
 };
 
 
 module.exports = parseSummary;
-module.exports.entries = parseEntries;
 module.exports.toText = summaryToText;
