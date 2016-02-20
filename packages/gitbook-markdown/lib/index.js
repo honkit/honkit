@@ -1,10 +1,8 @@
-var kramed = require("kramed");
-var _ = require("lodash");
+var htmlParser = require('gitbook-html');
 
-module.exports = {
-    summary: require("./summary"),
-    glossary: require("./glossary"),
-    langs: require("./langs"),
-    readme: require("./readme"),
-    page: require("./page")
-};
+var toHTML = require('./tohtml');
+var toMarkdown = require('./tomarkdown');
+var page = require('./page');
+
+module.exports = htmlParser.createParser(toHTML, toMarkdown);
+module.exports.page.prepare = page.prepare;
