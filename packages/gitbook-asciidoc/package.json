@@ -5,16 +5,15 @@
     "description": "Parse AsciiDoc content for gitbook",
     "main": "lib/index.js",
     "dependencies": {
-        "q": "^1.1.2",
         "lodash": "^3.2.0",
-        "asciidoctor.js": "1.5.3-preview.1",
-        "cheerio": "^0.19.0"
+        "asciidoctor.js": "1.5.5-1",
+        "gitbook-html": "1.0.0"
     },
     "devDependencies": {
         "mocha": "2.3.2"
     },
     "scripts": {
-        "test": "export TESTING=true; mocha --reporter list"
+        "test": "export TESTING=true; mocha --reporter list --bail"
     },
     "repository": {
         "type": "git",

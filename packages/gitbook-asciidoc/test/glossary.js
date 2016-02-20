@@ -4,10 +4,14 @@ var assert = require('assert');
 
 var glossary = require('../').glossary;
 
-var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/GLOSSARY.adoc'), 'utf8');
-var LEXED = glossary(CONTENT);
-
 describe('Glossary parsing', function () {
+    var LEXED;
+
+    before(function() {
+        var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/GLOSSARY.adoc'), 'utf8');
+        LEXED = glossary(CONTENT);
+    });
+
     it('should only get heading + paragraph pairs', function() {
         assert.equal(LEXED.length, 5);
     });

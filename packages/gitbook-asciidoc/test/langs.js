@@ -4,10 +4,14 @@ var assert = require('assert');
 
 var langs = require('../').langs;
 
-var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/LANGS.adoc'), 'utf8');
-var LEXED = langs(CONTENT);
-
 describe('Languages parsing', function () {
+    var LEXED;
+
+    before(function() {
+        var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/LANGS.adoc'), 'utf8');
+        LEXED = langs(CONTENT);
+    });
+
     it('should detect paths and titles', function() {
         assert.equal(LEXED[0].path,'en/');
         assert.equal(LEXED[0].title,'English');

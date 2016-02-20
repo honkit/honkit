@@ -1,8 +1,5 @@
+var htmlParser = require('gitbook-html');
+var toHTML = require('./tohtml');
+var toAsciidoc = require('./toasciidoc');
 
-module.exports = {
-    summary: require("./summary"),
-    glossary: require("./glossary"),
-    langs: require("./langs"),
-    readme: require("./readme"),
-    page: require("./page")
-};
+module.exports = htmlParser.createParser(toHTML, toAsciidoc);
