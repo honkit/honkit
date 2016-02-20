@@ -123,6 +123,8 @@ ToText.prototype._summaryArticles = function(articles, level) {
 ToText.prototype._summaryPart = function(part) {
     var content = '';
 
+    if (part.title) content += this.onTitleStart(2) + this.onText(part.title) + this.onTitleEnd(2);
+
     content += this._summaryArticles(part.articles);
     content += this.onSection();
 

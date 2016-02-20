@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var dom = require('./dom');
 
-var SELECTOR_LIST = '.olist > ol, ol, ul';
+var SELECTOR_LIST = 'ol, ul';
 var SELECTOR_LINK = '> a, p > a';
 
 var BL = '\n';
@@ -54,9 +54,11 @@ function parseSummary(html) {
 
     $lists.each(function() {
         var $list = $(this);
+        var $title = $list.prevUntil(SELECTOR_LIST, 'h2, h3, h4').first();
 
         parts.push({
-            articles: parseList($(SELECTOR_LIST).first(), $)
+            title: $title.text().trim(),
+            articles: parseList($list, $)
         });
     });
 

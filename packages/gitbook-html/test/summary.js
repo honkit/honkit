@@ -13,12 +13,24 @@ describe('Summary parsing', function () {
         PART = LEXED.parts[0];
     });
 
-    it('should detect parts', function() {
-        assert.equal(LEXED.parts.length, 3);
+    describe('Parts', function() {
+        it('should detect parts', function() {
+            assert.equal(LEXED.parts.length, 3);
+        });
+
+        it('should detect title', function() {
+            assert.equal(LEXED.parts[0].title, '');
+            assert.equal(LEXED.parts[1].title, 'Part 2');
+            assert.equal(LEXED.parts[2].title, '');
+        });
     });
 
     it('should detect chapters', function() {
         assert.equal(PART.articles.length, 5);
+    });
+
+    it('should detect chapters in other parts', function() {
+        assert.equal(LEXED.parts[1].articles.length, 1);
     });
 
     it('should support articles', function() {
