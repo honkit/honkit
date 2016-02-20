@@ -1,10 +1,9 @@
 var _ = require('lodash');
 var kramed = require('kramed');
-
 var annotate = require('kramed/lib/annotate/');
 
-var RAW_START = "{% raw %}";
-var RAW_END = "{% endraw %}";
+var RAW_START = '{% raw %}';
+var RAW_END = '{% endraw %}';
 
 function escape(str) {
     return RAW_START + str + RAW_END;
@@ -15,6 +14,7 @@ function combine(nodes) {
     return _.pluck(nodes, 'raw').join('');
 }
 
+// Add templating "raw" to code blocks
 function preparePage(src) {
     var lexed = annotate.blocks(src);
     var levelRaw = 0;
@@ -54,28 +54,6 @@ function preparePage(src) {
     return combine(escaped);
 }
 
-function parsePage(src) {
-    var options = _.extend({}, kramed.defaults, {
-        mathjax: false,
-        renderer: new kramed.Renderer({
-            langPrefix: 'lang-',
-            smartypants: false,
-            headerPrefix: '',
-            headerAutoId: false,
-            xhtml: false
-        })
-    });
-
-    return {
-        sections: [
-            {
-                type: "normal",
-                content: kramed(src, options)
-            }
-        ]
-    };
-}
-
-// Exports
-module.exports = parsePage;
-module.exports.prepare = preparePage;
+module.exports = {
+    prepare: preparePage
+};
