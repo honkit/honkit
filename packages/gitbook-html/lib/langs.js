@@ -3,7 +3,9 @@ var parseSummary = require('./summary');
 
 // HTML -> Languages
 function parseLangs(content) {
-    return parseSummary(content).parts[0].articles;
+    var parts = parseSummary(content).parts;
+    if (parts.length > 0) return parts[0].articles;
+    return [];
 }
 
 module.exports = parseLangs;
