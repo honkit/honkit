@@ -24,7 +24,7 @@ function parseList($ul, $) {
 
         // Get text for the entry
         var $p = $li.children('p');
-        article.title = $p.text() ||  dom.textNode($li.get(0));
+        article.title = ($p.text() ||  dom.textNode($li.get(0))).trim();
 
         // Parse link
         var $a = $li.find(SELECTOR_LINK);
@@ -37,6 +37,7 @@ function parseList($ul, $) {
         var $sub = findList($li);
         article.articles = parseList($sub, $);
 
+        if (!article.title) return;
         articles.push(article);
     });
 
@@ -64,52 +65,4 @@ function parseSummary(html) {
     };
 }
 
-// Summary -> HTML
-function textPrefix(d) {
-    return Array(d*4).join(' ');
-}
-
-function articleToText(article, d) {
-    var prefix = textPrefix(d);
-    var content = prefix + '<li>';
-
-    if (article.path) {
-        content += '<a href="'+article.path+'">'+article.title+'</a>';
-    } else {
-        content += article.title;
-    }
-
-    if (article.articles.length > 0) {
-        content += BL + articlesToText(article.articles, d) + prefix;
-    }
-    content +=  '</li>' + BL;
-
-    return content;
-}
-
-function articlesToText(articles, d) {
-    var prefix = textPrefix(d);
-    var content = prefix + '<ul>' + BL;
-    _.each(articles, function(_article) {
-        content += articleToText(_article, d + 1);
-    });
-    return content + '</ul>' + BL;
-}
-
-function partsToText(part) {
-    return articlesToText(part.articles, 0) + BL + BL;
-}
-
-function summaryToText(summary) {
-    var content = '<h1>Summary</h1>' + BL;
-
-    _.each(summary.parts, function(part) {
-        content += partsToText(part);
-    });
-
-    return content + BL;
-};
-
-
 module.exports = parseSummary;
-module.exports.toText = summaryToText;

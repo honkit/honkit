@@ -23,17 +23,4 @@ function parseGlossary(html) {
     return entries;
 }
 
-// Glossary -> HTML
-function glossaryToText(glossary) {
-    var bl = '\n';
-
-    var body = _.map(glossary, function(entry) {
-        return '<h2>' + entry.name + '</h2>' + bl + bl
-        + '<p>' + entry.description + '</p>';
-    }).join(bl+bl);
-
-    return '<h1>Glossary</h1>'+bl+bl+body;
-}
-
 module.exports = parseGlossary;
-module.exports.toText = glossaryToText;
