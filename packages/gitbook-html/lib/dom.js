@@ -23,8 +23,22 @@ function textNode($el) {
     }, '');
 }
 
+// Cleanup a dom
+// Remove all divs
+function cleanup($el, $) {
+    $el.find('div').each(function() {
+        var $div = $(this);
+        cleanup($div, $);
+
+        $div.replaceWith($div.html());
+    });
+
+    return $el;
+}
+
 module.exports = {
     parse: parse,
     textNode: textNode,
-    root: root
+    root: root,
+    cleanup: cleanup
 };

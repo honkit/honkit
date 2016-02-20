@@ -2,11 +2,19 @@ var _ = require('lodash');
 var dom = require('./dom');
 
 var SELECTOR_LIST = '.olist > ol, ol, ul';
-var SELECTOR_LINK = 'a, p > a';
+var SELECTOR_LINK = '> a, p > a';
 
 var BL = '\n';
 
-// parse a ul list and return list of chapters recursvely
+// Find a list
+function findList($parent) {
+    var $container = $parent.children('.olist');
+    if ($container.length > 0) $parent = $container.first();
+
+    return $parent.children('ul, ol');
+}
+
+// Parse a ul list and return list of chapters recursvely
 function parseList($ul, $) {
     var articles = [];
 
@@ -15,18 +23,18 @@ function parseList($ul, $) {
         var $li = $(this);
 
         // Get text for the entry
-        var $p = $li.children('> p');
+        var $p = $li.children('p');
         article.title = $p.text() ||  dom.textNode($li.get(0));
 
         // Parse link
-        var $a = $li.children(SELECTOR_LINK);
+        var $a = $li.find(SELECTOR_LINK);
         if ($a.length > 0) {
             article.title = $a.first().text();
             article.path = $a.attr('href').replace(/\\/g, '/').replace(/^\/+/, '')
         }
 
         // Sub articles
-        var $sub = $li.children(SELECTOR_LIST).first();
+        var $sub = findList($li);
         article.articles = parseList($sub, $);
 
         articles.push(article);
@@ -38,9 +46,9 @@ function parseList($ul, $) {
 // HTML -> Summary
 function parseSummary(html) {
     var $ = dom.parse(html);
-    var $root = dom.root($);
+    var $root = dom.cleanup(dom.root($), $);
 
-    var $lists = $root.children(SELECTOR_LIST);
+    var $lists = findList($root);
     var parts = [];
 
     $lists.each(function() {
