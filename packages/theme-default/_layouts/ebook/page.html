@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="page">
+    {% block page %}
+        <h1 class="book-chapter book-chapter-{{ page.level.split('.').length }}">{{ page.title }}</h1>
+        <div class="section">
+            {{ page.content|safe }}
+        </div>
+    {% endblock %}
+</div>
+{% endblock %}
