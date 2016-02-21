@@ -6,9 +6,7 @@
     "engines": {
         "gitbook": ">=3.0.0"
     },
-    "dependencies": {
-        "i18n": "0.7.0"
-    },
+    "dependencies": {},
     "devDependencies": {
         "less": "2.6.0",
         "less-plugin-clean-css": "1.5.1",
