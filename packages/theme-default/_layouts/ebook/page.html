@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 
+{% block style %}
+    <link rel="stylesheet" href="{{ "ebook.css"|resolveAsset }}">
+    <link rel="stylesheet" href="{{ "pdf.css"|resolveAsset }}">
+    {{ super() }}
+{% endblock %}
+
 {% block body %}
 <div class="page">
     {% block page %}

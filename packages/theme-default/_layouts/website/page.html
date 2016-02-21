@@ -19,6 +19,10 @@
     {% endif %}
 {% endblock %}
 
+{% block style %}
+    <link rel="stylesheet" href="{{ "style.css"|resolveAsset }}">
+    {{ super() }}
+{% endblock %}
 
 {% block javascript %}
     <script src="{{ "app.js"|resolveAsset }}"></script>
