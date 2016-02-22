@@ -35,7 +35,7 @@
     {% endfor %}
     <script>
     require(["gitbook"], function(gitbook) {
-        gitbook.start({{ pluginsConfig|safe }});
+        gitbook.start({{ config.pluginsConfig|dump|safe }});
     });
     </script>
 {% endblock %}
