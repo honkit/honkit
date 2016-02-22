@@ -30,7 +30,7 @@
         {% if resource.url %}
         <script src="{{ resource.url }}"></script>
         {% else %}
-        <script src="{{ resource.path|resolveFile }}"></script>
+        <script src="{{ resource.path|resolveAsset }}"></script>
         {% endif %}
     {% endfor %}
     <script>
