@@ -2,7 +2,10 @@
 
 {% block style %}
     <link rel="stylesheet" href="{{ "ebook.css"|resolveAsset }}">
-    <link rel="stylesheet" href="{{ "pdf.css"|resolveAsset }}">
+
+    {% if options.format %}
+    <link rel="stylesheet" href="{{ (options.format + ".css")|resolveAsset }}">
+    {% endif %}
     {{ super() }}
 {% endblock %}
 
