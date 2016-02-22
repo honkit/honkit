@@ -8,8 +8,7 @@ mkdir -p _assets/website/
 mkdir -p _assets/ebook/
 
 # Compile JS
-#  | uglifyjs -mc
-browserify src/js/main.js > _assets/website/app.js
+browserify src/js/main.js | uglifyjs -mc > _assets/website/app.js
 
 # Compile Website CSS
 lessc -clean-css src/less/website.less _assets/website/style.css
