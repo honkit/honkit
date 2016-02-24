@@ -1,27 +1,15 @@
-{% extends "layout.html" %}
+{% extends "./layout.html" %}
 
 {% block title %}{{ page.title }} · {{ super() }}{% endblock %}
 
 {% block head %}
     {{ super() }}
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ "images/apple-touch-icon-precomposed-152.png"|resolveAsset }}">
-    <link rel="shortcut icon" href="{{ "images/favicon.ico"|resolveAsset }}" type="image/x-icon">
-
     {% if page.next and page.next.path %}
     <link rel="next" href="{{ page.next.path|resolveFile }}" />
     {% endif %}
     {% if page.previous and page.previous.path %}
     <link rel="prev" href="{{ page.previous.path|resolveFile }}" />
     {% endif %}
-{% endblock %}
-
-{% block style %}
-    <link rel="stylesheet" href="{{ "style.css"|resolveAsset }}">
-    {{ super() }}
 {% endblock %}
 
 {% block javascript %}
@@ -58,11 +46,9 @@
 
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
-                            <section class="section-normal">
                             {% block page %}
                             {{ page.content|safe }}
                             {% endblock %}
-                            </section>
                         </div>
                     </div>
                 {% endblock %}
