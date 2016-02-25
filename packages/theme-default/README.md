@@ -1,3 +1,5 @@
 # GitBook Default Theme
 
-👷 This repository is a work in progress, it'll be available with [GitBook v3](https://github.com/GitbookIO/gitbook/pull/1109)
+This is the default theme for GitBook since version `3.0.0`. It can be used as a template for theming books or cam be extend.
+
+![Image](https://raw.github.com/GitbookIO/theme-default/master/preview.png)
