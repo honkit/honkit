@@ -1,12 +1,24 @@
 {% extends "layout.html" %}
 
 {% block style %}
-    <link rel="stylesheet" href="{{ "ebook.css"|resolveAsset }}">
-
-    {% if options.format %}
-    <link rel="stylesheet" href="{{ (options.format + ".css")|resolveAsset }}">
+    {# Include theme css before plugins css #}
+    {% if config.styles.print|fileExists %}
+        {% if options.format %}
+        <link rel="stylesheet" href="{{ (options.format + ".css")|resolveAsset }}">
+        {% else %}
+        <link rel="stylesheet" href="{{ "ebook.css"|resolveAsset }}">
+        {% endif %}
     {% endif %}
+
     {{ super() }}
+
+    {# Custom stylesheets for the book #}
+
+    {% for type, style in config.styles %}
+        {% if style|fileExists and (style == "ebook" or style == "print" or style == options.format) %}
+        <link rel="stylesheet" href="{{ style|resolveFile }}">
+        {% endif %}
+    {% endfor %}
 {% endblock %}
 
 {% block body %}

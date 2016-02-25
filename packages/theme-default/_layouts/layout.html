@@ -17,9 +17,6 @@
                 <link rel="stylesheet" href="{{ resource.path|resolveAsset }}">
                 {% endif %}
             {% endfor %}
-            {% for type, style in styles %}
-                <link rel="stylesheet" href="{{ style|resolveFile }}">
-            {% endfor %}
         {% endblock %}
         {% block head %}{% endblock %}
     </head>
