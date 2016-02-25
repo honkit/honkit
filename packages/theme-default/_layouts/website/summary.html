@@ -1,8 +1,8 @@
 {% macro articles(_articles) %}
     {% for article in _articles %}
-        <li class="chapter {% if article.path == file.path %}active{% endif %}" data-level="{{ article.level }}" {% if article.path %}data-path="{{ article.path|contentURL }}"{% endif %}>
+        <li class="chapter {% if article.path == file.path and not article.anchor %}active{% endif %}" data-level="{{ article.level }}" {% if article.path %}data-path="{{ article.path|resolveFile }}"{% endif %}>
             {% if article.path %}
-                <a href="{{ article.path|resolveFile }}">
+                <a href="{{ article.path|contentURL }}{{ article.anchor }}">
             {% else %}
                 <a target="_blank" href="{{ article.url }}">
             {% endif %}
