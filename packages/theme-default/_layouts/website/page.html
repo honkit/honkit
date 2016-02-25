@@ -2,6 +2,8 @@
 
 {% block title %}{{ page.title }} · {{ super() }}{% endblock %}
 
+{% block description %}{{ page.description }}{% endblock %}
+
 {% block head %}
     {{ super() }}
     {% if page.next and page.next.path %}

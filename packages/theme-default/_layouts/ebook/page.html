@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
 
+{% block title %}{{ page.title }}{% endblock %}
+{% block description %}{{ page.description }}{% endblock %}
+
 {% block style %}
     {# Include theme css before plugins css #}
     {% if not (config.styles.print|fileExists) %}
