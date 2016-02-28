@@ -13,7 +13,7 @@ describe('Glossary parsing', function () {
     });
 
     it('should only get heading + paragraph pairs', function() {
-        assert.equal(LEXED.length, 5);
+        assert.equal(LEXED.length, 4);
     });
 
     it('should output simple name/description objects', function() {
