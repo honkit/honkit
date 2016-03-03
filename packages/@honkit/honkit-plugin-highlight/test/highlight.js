@@ -1,5 +1,6 @@
 var tester = require('gitbook-tester');
 var mocha = require('mocha');
+var pluginDir = require('path').join(__dirname, '..');
 
 describe("Detect breaking changes in highlight.js", function() {
     // Default timeout is 5000ms. That can be too low for complete
@@ -9,11 +10,11 @@ describe("Detect breaking changes in highlight.js", function() {
     it('should highlight Haskell', function(done) {
         tester.builder()
             .withContent('``` haskell\nfibs = 0 : 1 : zipWith (+) fibs (tail fibs)\n```')
-            .withLocalPlugin('../') // with this version of plugin-highlight
+            .withLocalPlugin(pluginDir)
             .create()
             .then(function(result) {
-                var expected = '<h1 id="test-me">test me</h1>\n<p><img src="preview.jpg" alt="preview"></p>';
-                if (result[0].content !== expected) {
+                var expected = '<pre><code class="lang-haskell"><span class="hljs-title">fibs</span> = <span class="hljs-number">0</span> : <span class="hljs-number">1</span> : zipWith (+) fibs (tail fibs)\n</code></pre>';
+                if (result.get('index.html').content !== expected) {
                     throw new Error('Found ' + result[0].content + ' instead of ' + expected);
                 }
             })
