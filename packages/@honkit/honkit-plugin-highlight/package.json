@@ -16,7 +16,7 @@
         "url": "https://github.com/GitbookIO/plugin-highlight/issues"
     },
     "dependencies": {
-        "highlight.js": "8.8.0"
+        "highlight.js": "9.2.0"
     },
     "devDependencies": {
         "less": "2.5.1",
