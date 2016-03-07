@@ -31,6 +31,21 @@
     {% block book_summary %}
     <nav role="navigation">
         <ul class="summary">
+            {% set _divider = false %}
+            {% if config.links.sidebar  %}
+            {% for linkTitle, link in config.links.sidebar  %}
+                {% set _divider = true %}
+                <li>
+                    <a href="{{ link }}" target="_blank" class="custom-link">{{ linkTitle }}</a>
+                </li>
+            {% endfor %}
+            {% endif %}
+
+            {% if _divider %}
+            <li class="divider"></li>
+            {% endif %}
+
+
             {% for part in summary.parts %}
             {{ articles(part.articles) }}
             <li class="divider"></li>
