@@ -1,20 +1,39 @@
 var _ = require('lodash');
 var kramed = require('kramed');
 
-// Convert markdown to HTML
-function convertMdToHTML(src) {
-     var options = _.extend({}, kramed.defaults, {
-        mathjax: false,
-        renderer: new kramed.Renderer({
-            langPrefix: 'lang-',
-            smartypants: false,
-            headerPrefix: '',
-            headerAutoId: false,
-            xhtml: false
-        })
+// Get renderer for kramed
+function getRenderer() {
+    return new kramed.Renderer({
+        langPrefix: 'lang-',
+        smartypants: false,
+        headerPrefix: '',
+        headerAutoId: false,
+        xhtml: false
+    });
+}
+
+// Get options for markdown parsing
+function getOption() {
+    return _.extend({}, kramed.defaults, {
+        mathjax: false
+    });
+}
+
+// Convert Markdown to HTML
+function convertMdToHTMLBlock(src) {
+    var options = _.extend(getOption(), {
+        renderer: getRenderer()
     });
 
     return kramed(src, options);
 }
 
-module.exports = convertMdToHTML;
+// Convert Markdown to HTML (inline)
+function convertMdToHTMLInline(src) {
+    return kramed.inlineLexer(src, getOption(), getRenderer());
+}
+
+module.exports = {
+    block: convertMdToHTMLBlock,
+    inline: convertMdToHTMLInline
+};
