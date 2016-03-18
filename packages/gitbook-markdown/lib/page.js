@@ -5,6 +5,7 @@ var annotate = require('kramed/lib/annotate/');
 var RAW_START = '{% raw %}';
 var RAW_END = '{% endraw %}';
 
+// Escape a code block using raw blocks
 function escape(str) {
     return RAW_START + str + RAW_END;
 }
@@ -19,7 +20,7 @@ function preparePage(src) {
     var lexed = annotate.blocks(src);
     var levelRaw = 0;
 
-    var escapeCodeElement = function(el) {
+    function escapeCodeElement(el) {
         if (el.type == 'code' && levelRaw == 0) {
             el.raw = escape(el.raw);
         } else if (el.type == 'tplexpr') {
@@ -31,10 +32,9 @@ function preparePage(src) {
             }
         }
         return el;
-    };
+    }
 
-    var escaped = lexed
-    .map(function(el) {
+    var escaped = _.map(lexed, function(el) {
         // Only escape paragraphs and headings
         if(el.type == 'paragraph' || el.type == 'heading') {
             var line = annotate.inline(el.raw);
