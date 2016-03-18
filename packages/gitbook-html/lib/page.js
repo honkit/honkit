@@ -1,7 +1,7 @@
 var Q = require('q');
 var _ = require('lodash');
 
-// HTML -> HTML
+// HTML -> Page
 function parsePage(html) {
     return {
         content: html

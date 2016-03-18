@@ -9,7 +9,7 @@ var htmlParser = {
     page: require('./page')
 };
 
-// Compose a function with a transform function for the first args
+// Compose a function with a transform function for the first argument only
 function compose(toHTML, fn) {
     return function() {
         var args = _.toArray(arguments);
@@ -19,14 +19,22 @@ function compose(toHTML, fn) {
     }
 }
 
-// Create a GitBook parser
+// Create a GitBook parser from an HTML converter
 function createParser(toHTML, toText) {
+    if (_.isFunction(toHTML)) {
+        toHTML = {
+            inline: toHTML,
+            block: toHTML
+        };
+    }
+
     var parser = {
-        summary: compose(toHTML, htmlParser.summary),
-        glossary: compose(toHTML, htmlParser.glossary),
-        langs: compose(toHTML, htmlParser.langs),
-        readme: compose(toHTML, htmlParser.readme),
-        page: compose(toHTML, htmlParser.page)
+        summary: compose(toHTML.block, htmlParser.summary),
+        glossary: compose(toHTML.block, htmlParser.glossary),
+        langs: compose(toHTML.block, htmlParser.langs),
+        readme: compose(toHTML.block, htmlParser.readme),
+        page: compose(toHTML.block, htmlParser.page),
+        inline: compose(toHTML.inline, htmlParser.page)
     };
 
     var _toText = new ToText(toText);
