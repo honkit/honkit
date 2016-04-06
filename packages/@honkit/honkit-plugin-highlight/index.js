@@ -29,7 +29,10 @@ function highlight(lang, code) {
         return hljs.highlight(lang, code).value;
     } catch(e) { }
 
-    return code;
+    return {
+        body: code,
+        html: false
+    };
 }
 
 
