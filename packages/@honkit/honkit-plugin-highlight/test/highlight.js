@@ -21,4 +21,19 @@ describe("Detect breaking changes in highlight.js", function() {
             .then(done)
             .done();
     });
+
+    it('should return a safe code block for unrecognized languages', function (done) {
+        tester.builder()
+            .withContent('```foo\nif (foo <= bar) { console.log(\'Too bad, foo...\'); }\n```')
+            .withLocalPlugin(pluginDir)
+            .create()
+            .then(function(result) {
+                var expected = '<pre><code class="lang-foo">if (foo &lt;= bar) { console.log(&apos;Too bad, foo...&apos;); }\n</code></pre>';
+                if (result.get('index.html').content !== expected) {
+                    throw new Error('Found ' + result[0].content + ' instead of ' + expected);
+                }
+            })
+            .then(done)
+            .done();
+    });
 });
