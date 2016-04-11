@@ -19,19 +19,29 @@ module.exports = {
 
     // Read a value from localstorage
     get: function(key, def) {
+        var value;
         key = baseKey+':'+key;
-        if (localStorage === undefined || localStorage[key] === undefined) return def;
+        // We need a try block here because window.localStorage is
+        // inaccessible when browser cookies are disabled.
         try {
-            var v = JSON.parse(localStorage[key]);
-            return v == null ? def : v;;
+            value = localStorage[key];
+        } catch(e) {}
+        
+        if (value === undefined) return def;
+        
+        try {
+            var parsed = JSON.parse(value);
+            return parsed == null ? def : parsed;
         } catch(err) {
-            return localStorage[key] || def;
+            return value || def;
         }
     },
 
     // Remove a key from localstorage
     remove: function(key) {
         key = baseKey+':'+key;
-        localStorage.removeItem(key);
+        try {
+            localStorage.removeItem(key);
+        } catch(e) {}
     }
 };
