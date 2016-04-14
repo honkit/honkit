@@ -27,14 +27,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="book"
-    data-level="{{ page.level }}"
-    data-chapter-title="{{ page.title }}"
-    data-filepath="{{ file.path }}"
-    data-basepath="{{ './'|resolveFile }}"
-    data-revision="{{ gitbook.time }}"
-    data-innerlanguage="{{ innerlanguage }}">
-
+<div class="book">
     <div class="book-summary">
         {% block search_input %}{% endblock %}
         {% block book_summary %}
@@ -53,7 +46,6 @@
                 {% if _divider %}
                 <li class="divider"></li>
                 {% endif %}
-
 
                 {% for part in summary.parts %}
                 {{ articles(part.articles, file) }}
@@ -106,26 +98,10 @@
     </div>
 
     <script>
-    (function() {
-        function notifyChange() {
-            if (!gitbook) return false;
-
-            gitbook.page.hasChanged({
-                page:          {{ page|dump|safe }},
-                config:        {{ config|dump|safe }},
-                file:          {{ file|dump|safe }},
-                gitbook:       {{ gitbook|dump|safe }},
-                basePath:      '{{ './'|resolveFile }}',
-                innerLanguage: '{{ innerlanguage }}'
-            });
-            return true;
-        }
-
-        var interval = setInterval(function() {
-            var success = notifyChange();
-            if (success) clearInterval(interval);
-        }, 500);
-    })();
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({{ template.getJSContext()|dump|safe }});
+        });
     </script>
 </div>
 {% endblock %}

@@ -4,7 +4,7 @@ var events  = require('./events');
 var storage = require('./storage');
 var page = require('./page');
 
-console.log('GitBook is starting...');
+var onLoad = window.gitbook || [];
 
 // Export APIs for plugins
 var gitbook = {
@@ -15,7 +15,13 @@ var gitbook = {
     state:    page.getState(),
 
     // Read/Write the localstorage
-    storage: storage
+    storage: storage,
+
+    // Push a function to be called once gitbook is ready
+    push: function(fn) {
+        if (onLoad) onLoad.push(fn);
+        else fn();
+    }
 };
 
 
@@ -41,4 +47,12 @@ window.require = function(mods, fn) {
     fn.apply(null, mods);
 };
 
-console.log('GitBook is started');
+$(document).ready(function() {
+    // Call pile of function once GitBook is ready
+    $.each(onLoad, function(i, fn) {
+        fn();
+    });
+    onLoad = null;
+});
+
+

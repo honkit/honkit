@@ -40,7 +40,7 @@ function setState(newState) {
     state.gitbook       = newState.gitbook;
     state.config        = newState.config;
     state.basePath      = newState.basePath;
-    state.innerLanguage = newState.innerLanguage;
+    state.book          = newState.book;
 
     // Deprecated
     state.$book        = $('.book');
@@ -48,6 +48,7 @@ function setState(newState) {
     state.level        = state.page.level;
     state.filepath     = state.file.path;
     state.chapterTitle = state.page.title;
+    state.innerLanguage = state.book.language;
 
     // Absolute url to the root of the book (inner book)
     state.root = url.resolve(
