@@ -15,7 +15,8 @@
 {% endblock %}
 
 {% block javascript %}
-    <script src="{{ "app.js"|resolveAsset }}"></script>
+    <script src="{{ "gitbook.js"|resolveAsset }}"></script>
+    <script src="{{ "theme.js"|resolveAsset }}"></script>
     {% for resource in plugins.resources.js %}
         {% if resource.url %}
         <script src="{{ resource.url }}"></script>
@@ -23,11 +24,6 @@
         <script src="{{ resource.path|resolveAsset }}"></script>
         {% endif %}
     {% endfor %}
-    <script>
-    require(["gitbook"], function(gitbook) {
-        gitbook.start({{ config.pluginsConfig|dump|safe }});
-    });
-    </script>
 {% endblock %}
 
 {% block body %}
@@ -38,7 +34,41 @@
     data-basepath="{{ './'|resolveFile }}"
     data-revision="{{ gitbook.time }}"
     data-innerlanguage="{{ innerlanguage }}">
-    {% include "website/summary.html" %}
+
+    <div class="book-summary">
+        {% block search_input %}{% endblock %}
+        {% block book_summary %}
+        <nav role="navigation">
+            <ul class="summary">
+                {% set _divider = false %}
+                {% if config.links.sidebar  %}
+                {% for linkTitle, link in config.links.sidebar  %}
+                    {% set _divider = true %}
+                    <li>
+                        <a href="{{ link }}" target="_blank" class="custom-link">{{ linkTitle }}</a>
+                    </li>
+                {% endfor %}
+                {% endif %}
+
+                {% if _divider %}
+                <li class="divider"></li>
+                {% endif %}
+
+
+                {% for part in summary.parts %}
+                {{ articles(part.articles, file) }}
+                <li class="divider"></li>
+                {% endfor %}
+
+                <li>
+                    <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                        {{ "GITBOOK_LINK"|t }}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        {% endblock %}
+    </div>
 
     <div class="book-body">
         {% block book_body %}
@@ -48,11 +78,13 @@
 
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
-                            <section class="normal markdown-section">
-                            {% block page %}
-                            {{ page.content|safe }}
+                            {% block search_results %}
+                                <section class="normal markdown-section">
+                                {% block page %}
+                                {{ page.content|safe }}
+                                {% endblock %}
+                                </section>
                             {% endblock %}
-                            </section>
                         </div>
                     </div>
                 {% endblock %}
@@ -72,5 +104,57 @@
             {% endblock %}
         {% endblock %}
     </div>
+
+    <script>
+    (function() {
+        function notifyChange() {
+            if (!gitbook) return false;
+
+            gitbook.page.hasChanged({
+                page:          {{ page|dump|safe }},
+                config:        {{ config|dump|safe }},
+                file:          {{ file|dump|safe }},
+                gitbook:       {{ gitbook|dump|safe }},
+                basePath:      '{{ './'|resolveFile }}',
+                innerLanguage: '{{ innerlanguage }}'
+            });
+            return true;
+        }
+
+        var interval = setInterval(function() {
+            var success = notifyChange();
+            if (success) clearInterval(interval);
+        }, 500);
+    })();
+    </script>
 </div>
 {% endblock %}
+
+{% macro articles(_articles, file) %}
+    {% for article in _articles %}
+        <li class="chapter {% if article.path == file.path and not article.anchor %}active{% endif %}" data-level="{{ article.level }}" {% if article.path %}data-path="{{ article.path|resolveFile }}"{% endif %}>
+            {% if article.path %}
+                <a href="{{ article.path|resolveFile }}{{ article.anchor }}">
+            {% elif article.url %}
+                <a target="_blank" href="{{ article.url }}">
+            {% else %}
+                <span>
+            {% endif %}
+                    {% if article.level != "0" %}
+                        <b>{{ article.level }}.</b>
+                    {% endif %}
+                    {{ article.title }}
+            {% if article.path  or article.url %}
+                </a>
+            {% else %}
+                </span>
+            {% endif %}
+
+            {% if article.articles.length > 0 %}
+            <ul class="articles">
+                {{ articles(article.articles, file) }}
+            </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}

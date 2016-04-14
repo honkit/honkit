@@ -1,7 +1,7 @@
 var Mousetrap = require('mousetrap');
 
 var navigation = require('./navigation');
-var sidebar = require('./sidebar');
+var sidebar    = require('./sidebar');
 
 // Bind a keyboard shortcuts
 function bindShortcut(keys, fn) {

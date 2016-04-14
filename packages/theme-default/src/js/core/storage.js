@@ -14,7 +14,7 @@ module.exports = {
 
         try {
             localStorage[key] = JSON.stringify(value);
-        } catch(e) {}
+        } catch(e) {}   // eslint-disable-line no-empty
     },
 
     // Read a value from localstorage
@@ -25,10 +25,10 @@ module.exports = {
         // inaccessible when browser cookies are disabled.
         try {
             value = localStorage[key];
-        } catch(e) {}
-        
+        } catch(e) {}   // eslint-disable-line no-empty
+
         if (value === undefined) return def;
-        
+
         try {
             var parsed = JSON.parse(value);
             return parsed == null ? def : parsed;
@@ -42,6 +42,6 @@ module.exports = {
         key = baseKey+':'+key;
         try {
             localStorage.removeItem(key);
-        } catch(e) {}
+        } catch(e) {}   // eslint-disable-line no-empty
     }
 };

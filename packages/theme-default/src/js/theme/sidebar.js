@@ -1,32 +1,30 @@
 var $ = require('jquery');
-var _ = require('lodash');
 
-var storage = require('./storage');
 var platform = require('./platform');
-var state = require('./state');
 
+var gitbook = window.gitbook;
 
 // Toggle sidebar with or withour animation
 function toggleSidebar(_state, animation) {
-    if (state != null && isOpen() == _state) return;
+    if (gitbook.state != null && isOpen() == _state) return;
     if (animation == null) animation = true;
 
-    state.$book.toggleClass('without-animation', !animation);
-    state.$book.toggleClass('with-summary', _state);
+    gitbook.state.$book.toggleClass('without-animation', !animation);
+    gitbook.state.$book.toggleClass('with-summary', _state);
 
-    storage.set('sidebar', isOpen());
+    gitbook.storage.set('sidebar', isOpen());
 }
 
 // Return true if sidebar is open
 function isOpen() {
-    return state.$book.hasClass('with-summary');
+    return gitbook.state.$book.hasClass('with-summary');
 }
 
 // Prepare sidebar: state and toggle button
 function init() {
     // Init last state if not mobile
     if (!platform.isMobile()) {
-        toggleSidebar(storage.get('sidebar', true), false);
+        toggleSidebar(gitbook.storage.get('sidebar', true), false);
     }
 
     // Close sidebar after clicking a link on mobile
@@ -41,7 +39,7 @@ function filterSummary(paths) {
 
     $summary.find('li').each(function() {
         var path = $(this).data('path');
-        var st = paths == null || _.contains(paths, path);
+        var st = paths == null || paths.indexOf(path) !== -1;
 
         $(this).toggle(st);
         if (st) $(this).parents('li').show();

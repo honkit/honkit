@@ -1,10 +1,8 @@
 var $ = require('jquery');
 var url = require('url');
 
-var events = require('./events');
-var state = require('./state');
 var loading = require('./loading');
-
+var gitbook = window.gitbook;
 
 var usePushState = (typeof history.pushState !== 'undefined');
 
@@ -59,7 +57,7 @@ function handleNavigation(relativeUrl, push) {
         $('.book-summary .summary').scrollTop(scrollPosition);
 
         // Update state
-        state.update($('html'));
+        gitbook.state.$book = $('.book');
         preparePage();
     })
     .fail(function (e) {
@@ -75,11 +73,7 @@ function updateNavigationPosition() {
     $('.navigation-next').css('margin-right', (bodyInnerWidth - pageWrapperWidth) + 'px');
 }
 
-function notifyPageChange() {
-    events.trigger('page.change');
-}
-
-function preparePage(notify) {
+function preparePage() {
     var $bookBody = $('.book-body');
     var $bookInner = $bookBody.find('.body-inner');
     var $pageWrapper = $bookInner.find('.page-wrapper');
@@ -93,9 +87,6 @@ function preparePage(notify) {
     // Reset scroll
     $bookInner.scrollTop(0);
     $bookBody.scrollTop(0);
-
-    // Notify
-    if (notify !== false) notifyPageChange();
 }
 
 function isLeftClickEvent(e) {
@@ -150,6 +141,8 @@ function init() {
     $(document).on('click', '.navigation-prev', handlePagination);
     $(document).on('click', '.navigation-next', handlePagination);
     $(document).on('click', '.summary [data-path] a', handlePagination);
+    // Handle for search
+    $(document).on('click', '.search-results-item a', handlePagination);
 
     $(window).resize(updateNavigationPosition);
 
@@ -160,6 +153,5 @@ function init() {
 module.exports = {
     init: init,
     goNext: goNext,
-    goPrev: goPrev,
-    notify: notifyPageChange
+    goPrev: goPrev
 };

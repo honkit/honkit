@@ -1,7 +1,6 @@
 var $ = require('jquery');
-var _ = require('lodash');
 
-var events = require('./events');
+var gitbook = window.gitbook;
 
 // List of created buttons
 var buttons = [];
@@ -31,28 +30,28 @@ function createDropdownMenu(dropdown) {
         'html': '<div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div>'
     });
 
-    if (_.isString(dropdown)) {
+    if (typeof dropdown == 'string') {
         $menu.append(dropdown);
     } else {
-        var groups = _.map(dropdown, function(group) {
-            if (_.isArray(group)) return group;
+        var groups = dropdown.map(function(group) {
+            if ($.isArray(group)) return group;
             else return [group];
         });
 
         // Create buttons groups
-        _.each(groups, function(group) {
+        groups.forEach(function(group) {
             var $group = $('<div>', {
                 'class': 'buttons'
             });
             var sizeClass = 'size-'+group.length;
 
             // Append buttons
-            _.each(group, function(btn) {
-                btn = _.defaults(btn || {}, {
+            group.forEach(function(btn) {
+                btn = $.extend({
                     text: '',
                     className: '',
                     onClick: defaultOnClick
-                });
+                }, btn || {});
 
                 var $btn = $('<button>', {
                     'class': 'button '+sizeClass+' '+btn.className,
@@ -75,7 +74,7 @@ function createDropdownMenu(dropdown) {
 
 // Create a new button in the toolbar
 function createButton(opts) {
-    opts = _.defaults(opts || {}, {
+    opts = $.extend({
         // Aria label for the button
         label: '',
 
@@ -99,7 +98,7 @@ function createButton(opts) {
 
         // Position in the toolbar
         index: null
-    });
+    }, opts || {});
 
     buttons.push(opts);
     updateButton(opts);
@@ -158,7 +157,7 @@ function updateButton(opts) {
 
     $result.addClass('js-toolbar-action');
 
-    if (_.isNumber(opts.index) && opts.index >= 0) {
+    if ($.isNumeric(opts.index) && opts.index >= 0) {
         insertAt($toolbar, '.btn, .dropdown, h1', opts.index, $result);
     } else {
         $result.insertBefore($title);
@@ -168,11 +167,11 @@ function updateButton(opts) {
 // Update all buttons
 function updateAllButtons() {
     $('.js-toolbar-action').remove();
-    _.each(buttons, updateButton);
+    buttons.forEach(updateButton);
 }
 
 // When page changed, reset buttons
-events.bind('page.change', function() {
+gitbook.events.on('page.change', function() {
     updateAllButtons();
 });
 

@@ -1,0 +1,14 @@
+#book-search-results {
+    opacity: 1;
+    .search-results {
+        .has-results {
+            .gitbook-markdown(@md-color: @content-color, @md-line-height: @content-line-height);
+        }
+    }
+}
+
+body.search-loading {
+    #book-search-results {
+        opacity: 0.3;
+    }
+}
