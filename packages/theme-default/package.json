@@ -68,6 +68,11 @@
             "default": "styles/print.css"
           }
         }
+      },
+      "showLevel": {
+        "type": "bool",
+        "title": "Show level indicator in TOC",
+        "default": false
       }
     }
   }

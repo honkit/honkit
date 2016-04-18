@@ -53,7 +53,7 @@
                     {% elif not loop.first %}
                     <li class="divider"></li>
                     {% endif %}
-                    {{ articles(part.articles, file) }}
+                    {{ articles(part.articles, file, config) }}
                 {% endfor %}
 
                 <li class="divider"></li>
@@ -112,7 +112,7 @@
 </div>
 {% endblock %}
 
-{% macro articles(_articles, file) %}
+{% macro articles(_articles, file, config) %}
     {% for article in _articles %}
         <li class="chapter {% if article.path == file.path and not article.anchor %}active{% endif %}" data-level="{{ article.level }}" {% if article.path %}data-path="{{ article.path|resolveFile }}"{% endif %}>
             {% if article.path %}
@@ -122,7 +122,7 @@
             {% else %}
                 <span>
             {% endif %}
-                    {% if article.level != "0" %}
+                    {% if article.level != "0" and config.pluginsConfig['theme-default'].showLevel %}
                         <b>{{ article.level }}.</b>
                     {% endif %}
                     {{ article.title }}
@@ -134,7 +134,7 @@
 
             {% if article.articles.length > 0 %}
             <ul class="articles">
-                {{ articles(article.articles, file) }}
+                {{ articles(article.articles, file, config) }}
             </ul>
             {% endif %}
         </li>
