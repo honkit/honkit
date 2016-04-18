@@ -48,9 +48,15 @@
                 {% endif %}
 
                 {% for part in summary.parts %}
-                {{ articles(part.articles, file) }}
-                <li class="divider"></li>
+                    {% if part.title %}
+                    <li class="header">{{ part.title }}</li>
+                    {% elif not loop.first %}
+                    <li class="divider"></li>
+                    {% endif %}
+                    {{ articles(part.articles, file) }}
                 {% endfor %}
+
+                <li class="divider"></li>
 
                 <li>
                     <a href="https://www.gitbook.com" target="blank" class="gitbook-link">

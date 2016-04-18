@@ -33,6 +33,13 @@
             li {
                 list-style: none;
 
+                &.header {
+                    padding: @sidebar-link-padding-v @sidebar-link-padding-h;
+                    padding-top: 20px;
+                    text-transform: uppercase;
+                    color: @sidebar-header-color;
+                }
+
                 &.divider {
                     height: 1px;
                     margin: 7px 0;
@@ -62,7 +69,7 @@
 
                 a, span {
                     display: block;
-                    padding: 10px 15px;
+                    padding: @sidebar-link-padding-v @sidebar-link-padding-h;
                     border-bottom: none;
                     color: @sidebar-link-color;
                     background: @sidebar-link-background;
@@ -72,7 +79,11 @@
                     position: relative;
                 }
 
-                &.active > a, a:hover {
+                a:hover {
+                    text-decoration: underline;
+                }
+
+                &.active > a {
                     color: @sidebar-link-hover-color;
                     background: @sidebar-link-hover-background;
                     text-decoration: none;
