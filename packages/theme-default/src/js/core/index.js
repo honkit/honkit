@@ -4,6 +4,7 @@ var events  = require('./events');
 var storage = require('./storage');
 var page = require('./page');
 
+var isPageReady = false;
 var onLoad = window.gitbook || [];
 
 // Export APIs for plugins
@@ -19,7 +20,7 @@ var gitbook = {
 
     // Push a function to be called once gitbook is ready
     push: function(fn) {
-        if (onLoad) onLoad.push(fn);
+        if (!isPageReady) onLoad.push(fn);
         else fn();
     }
 };
@@ -48,11 +49,12 @@ window.require = function(mods, fn) {
 };
 
 $(document).ready(function() {
+    isPageReady = true;
+
     // Call pile of function once GitBook is ready
     $.each(onLoad, function(i, fn) {
         fn();
     });
-    onLoad = null;
 });
 
 

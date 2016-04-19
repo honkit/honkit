@@ -25,8 +25,8 @@ function scrollToHash(hash) {
 /*
     Handle a change of url withotu refresh the whole page
 */
+var prevUri = location.href;
 function handleNavigation(relativeUrl, push) {
-    var prevUri = location.href;
     var prevUriParsed = url.parse(prevUri);
 
     var uri = url.resolve(window.location.pathname, relativeUrl);
@@ -50,6 +50,8 @@ function handleNavigation(relativeUrl, push) {
         if (push) history.pushState({ path: uri }, null, uri);
         return scrollToHash(hash);
     }
+
+    prevUri = uri;
 
     return loading.show($.get(uri)
     .done(function (html) {
@@ -183,6 +185,7 @@ function init() {
         if (event.state === null) {
             return;
         }
+
         return handleNavigation(event.state.path, false);
     };
 
