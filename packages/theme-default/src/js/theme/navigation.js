@@ -2,22 +2,35 @@ var $ = require('jquery');
 var url = require('url');
 
 var loading = require('./loading');
+var platform = require('./platform');
+
 var gitbook = window.gitbook;
 
 var usePushState = (typeof history.pushState !== 'undefined');
 
 /*
+    Get current scroller element
+*/
+function getScroller() {
+    if (platform.isMobile()) {
+        return $('.book-body');
+    } else {
+        return $('.body-inner');
+    }
+}
+
+/*
     Scroll to a specific hash tag in the content
 */
 function scrollToHash(hash) {
-    var $inner = $('.body-inner');
+    var $scroller = getScroller();
     var dest = 0;
 
     if (hash) {
-        dest = $inner.find(hash).position().top;
+        dest = $scroller.find(hash).position().top;
     }
 
-    $inner.animate({
+    $scroller.animate({
         scrollTop: dest
     }, 800, 'swing');
 }
