@@ -6,13 +6,49 @@ var gitbook = window.gitbook;
 
 var usePushState = (typeof history.pushState !== 'undefined');
 
-function handleNavigation(relativeUrl, push) {
-    var uri = url.resolve(window.location.pathname, relativeUrl);
+/*
+    Scroll to a specific hash tag in the content
+*/
+function scrollToHash(hash) {
+    var $inner = $('.body-inner');
+    var dest = 0;
 
-    if (!usePushState) {
+    if (hash) {
+        dest = $inner.find(hash).position().top;
+    }
+
+    $inner.animate({
+        scrollTop: dest
+    }, 800, 'swing');
+}
+
+/*
+    Handle a change of url withotu refresh the whole page
+*/
+function handleNavigation(relativeUrl, push) {
+    var prevUri = location.href;
+    var prevUriParsed = url.parse(prevUri);
+
+    var uri = url.resolve(window.location.pathname, relativeUrl);
+    var uriParsed = url.parse(uri);
+    var hash = uriParsed.hash;
+
+    // Is it the same url (just hash changed?)
+    var pathHasChanged = (uriParsed.pathname !== prevUriParsed.pathname);
+
+    // Is it an absolute url
+    var isAbsolute = Boolean(uriParsed.hostname);
+
+    if (!usePushState || isAbsolute) {
         // Refresh the page to the new URL if pushState not supported
         location.href = relativeUrl;
         return;
+    }
+
+    // Don't fetch same page
+    if (!pathHasChanged) {
+        if (push) history.pushState({ path: uri }, null, uri);
+        return scrollToHash(hash);
     }
 
     return loading.show($.get(uri)
@@ -50,15 +86,21 @@ function handleNavigation(relativeUrl, push) {
         // Merge body
         var bodyClass = $('.book').attr('class');
         var scrollPosition = $('.book-summary .summary').scrollTop();
+
         $pageBody.toggleClass('with-summary', $('.book').hasClass('with-summary'));
 
         $('.book').replaceWith($pageBody);
         $('.book').attr('class', bodyClass);
         $('.book-summary .summary').scrollTop(scrollPosition);
 
+        // Scroll to hashtag position
+        if (hash) {
+            scrollToHash(hash);
+        }
+
         // Update state
         gitbook.state.$book = $('.book');
-        preparePage();
+        preparePage(!hash);
     })
     .fail(function (e) {
         location.href = relativeUrl;
@@ -73,7 +115,7 @@ function updateNavigationPosition() {
     $('.navigation-next').css('margin-right', (bodyInnerWidth - pageWrapperWidth) + 'px');
 }
 
-function preparePage() {
+function preparePage(resetScroll) {
     var $bookBody = $('.book-body');
     var $bookInner = $bookBody.find('.body-inner');
     var $pageWrapper = $bookInner.find('.page-wrapper');
@@ -85,7 +127,7 @@ function preparePage() {
     $pageWrapper.focus();
 
     // Reset scroll
-    $bookInner.scrollTop(0);
+    if (resetScroll !== false) $bookInner.scrollTop(0);
     $bookBody.scrollTop(0);
 }
 
@@ -97,15 +139,21 @@ function isModifiedEvent(e) {
     return !!(e.metaKey || e.altKey || e.ctrlKey || e.shiftKey);
 }
 
-function handlePagination(e) {
-    if (isModifiedEvent(e) || !isLeftClickEvent(e)) {
+/*
+    Handle click on a link
+*/
+function handleLinkClick(e) {
+    var $this = $(this);
+    var target = $this.attr('target');
+
+    if (isModifiedEvent(e) || !isLeftClickEvent(e) || target) {
         return;
     }
 
     e.stopPropagation();
     e.preventDefault();
 
-    var url = $(this).attr('href');
+    var url = $this.attr('href');
     if (url) handleNavigation(url, true);
 }
 
@@ -138,16 +186,15 @@ function init() {
         return handleNavigation(event.state.path, false);
     };
 
-    $(document).on('click', '.navigation-prev', handlePagination);
-    $(document).on('click', '.navigation-next', handlePagination);
-    $(document).on('click', '.summary [data-path] a', handlePagination);
-    // Handle for search
-    $(document).on('click', '.search-results-item a', handlePagination);
+    $(document).on('click', '.navigation-prev', handleLinkClick);
+    $(document).on('click', '.navigation-next', handleLinkClick);
+    $(document).on('click', '.summary [data-path] a', handleLinkClick);
+    $(document).on('click', '.page-inner a', handleLinkClick);
 
     $(window).resize(updateNavigationPosition);
 
     // Prepare current page
-    preparePage(false);
+    preparePage();
 }
 
 module.exports = {
