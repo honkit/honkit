@@ -1,50 +1,53 @@
-.book .book-body  {
-    .navigation {
-        position: absolute;
-        top: @header-height;
-        bottom: 0px;
-        margin: 0;
-        max-width: 150px;
-        min-width: 90px;
+/*
+    Right/Left buttons to change page
+*/
 
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-direction: column;
+.navigation {
+    position: absolute;
+    top: @header-height;
+    bottom: 0px;
+    margin: 0;
+    max-width: 150px;
+    min-width: 90px;
 
-        font-size: 40px;
-        color: @navigation-color;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
 
-        text-align: center;
+    font-size: 40px;
+    color: @navigation-color;
 
-        .transition(all 350ms ease);
+    text-align: center;
 
-        &:hover {
-            text-decoration: none;
-            color: @navigation-hover-color;
-        }
+    .transition(all 350ms ease);
 
-        &.navigation-next {
-            right: 0px;
-        }
-        &.navigation-prev {
-            left: 0px;
-        }
+    &:hover {
+        text-decoration: none;
+        color: @navigation-hover-color;
     }
 
-    @media (max-width: @mobileMaxWidth) {
-        .navigation {
-            position: static;
-            top: auto;
-            max-width: 50%;
-            width: 50%;
-            display: inline-block;
-            float: left;
+    &.navigation-next {
+        right: 0px;
+    }
+    &.navigation-prev {
+        left: 0px;
+    }
+}
 
-            &.navigation-unique {
-                max-width: 100%;
-                width: 100%;
-            }
+@media (max-width: @mobileMaxWidth) {
+    .navigation {
+        position: static;
+        top: auto;
+        max-width: 50%;
+        width: 50%;
+        display: inline-block;
+        float: left;
+
+        &.navigation-unique {
+            max-width: 100%;
+            width: 100%;
         }
     }
 }
+

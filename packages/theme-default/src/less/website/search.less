@@ -1,9 +1,13 @@
-.book-search {
+/*
+    Search input and results, works in sync with the "search" plugin
+*/
+
+#book-search-input {
     padding: 6px;
     background: transparent;
 
     position: absolute;
-    top: -50px;
+    top: 0px;
     left: 0px;
     right: 0px;
     transition: top 0.5s ease;
@@ -22,88 +26,31 @@
     }
 }
 
-body.with-search {
-    .book-summary {
-        .book-search {
-            top: 0px;
-        }
-
-        ul.summary {
-            top: 50px;
-        }
-    }
-}
-
-#book-search-results {
-    .search-results-title {
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: 200;
-        margin-bottom: 35px;
-        opacity: 0.6;
-    }
-
-    .search-results {
-        display: none;
-
-        ul.search-results-list {
-            list-style-type: none;
-            padding-left: 0;
-
-            li {
-                margin-bottom: @search-padding-default;
-                padding-bottom: @search-padding-default/3;
-
-                a {
-
-                }
-
-                /* Highlight results */
-                p em {
-                    background-color: @search-highlight-color;
-                    font-style: normal;
-                }
-            }
-        }
-
-        .no-results {
-            display: none;
-        }
-    }
-
-    &.open {
-        .search-results {
-            display: block;
-        }
-
-        .search-noresults {
-            display: none;
-        }
-    }
-
-    &.no-results {
-        .search-results {
-            .has-results {
-                display: none;
-            }
-
-            .no-results {
-                display: block;
-            }
-        }
-    }
-}
-
 #book-search-results {
     opacity: 1;
+
     .search-results {
+        .search-results-title {
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 200;
+            margin-bottom: 35px;
+            opacity: 0.6;
+        }
+
         .has-results {
-            .gitbook-markdown(@md-color: @content-color, @md-line-height: @content-line-height);
+            .search-results-item {
+                .gitbook-markdown(@md-color: @content-color, @md-line-height: @content-line-height);
+            }
 
             .search-results-item h3 {
                 margin-top: 0px;
                 margin-bottom: 0px;
             }
+        }
+
+        .no-results {
+            padding: 40px 0px;
         }
     }
 }
@@ -113,3 +60,11 @@ body.search-loading {
         opacity: 0.3;
     }
 }
+
+// When search is enabled, we hide the navigation left/right
+body.with-search {
+    .navigation {
+        display: none;
+    }
+}
+
