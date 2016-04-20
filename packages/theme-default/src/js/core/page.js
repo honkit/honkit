@@ -48,7 +48,7 @@ function setState(newState) {
     state.level        = state.page.level;
     state.filepath     = state.file.path;
     state.chapterTitle = state.page.title;
-    state.innerLanguage = state.book.language;
+    state.innerLanguage = state.book.language || '';
 
     // Absolute url to the root of the book (inner book)
     state.root = url.resolve(
