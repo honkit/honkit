@@ -29,11 +29,13 @@
 {% block body %}
 <div class="book">
     <div class="book-summary">
-        {% block search_input %}{% endblock %}
-        {% block book_summary %}
-            <nav role="navigation">
-            {% include "website/summary.html" %}
-            </nav>
+        {% block book_sidebar %}
+            {% block search_input %}{% endblock %}
+            {% block book_summary %}
+                <nav role="navigation">
+                {% include "website/summary.html" %}
+                </nav>
+            {% endblock %}
         {% endblock %}
     </div>
 

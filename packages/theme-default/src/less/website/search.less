@@ -5,14 +5,14 @@
 #book-search-input {
     padding: 6px;
     background: transparent;
-
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
     transition: top 0.5s ease;
     background: #fff;
     border-bottom: 1px solid @header-border;
+    border-top: 1px solid @header-border;
+    margin-bottom: 10px;
+
+    // Move top to hide top border
+    margin-top: -1px;
 
     input, input:focus, input:hover {
         width: 100%;
