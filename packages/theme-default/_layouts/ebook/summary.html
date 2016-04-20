@@ -1,12 +1,12 @@
 {% extends "./page.html" %}
 
-{% block title %}{{ "SUMMARY"|t }} | {{ title }}{% endblock %}
+{% block title %}{{ "SUMMARY"|t }}{% endblock %}
 
 {% macro articles(_articles) %}
     {% for article in _articles %}
         <li>
             <span class="inner">
-                {% if article.path or 1 %}
+                {% if article.path or article.url %}
                     {% if article.path %}
                         <a href="{{ article.path|contentURL }}{{ article.anchor }}">{{ article.title }}</a>
                     {% else %}
