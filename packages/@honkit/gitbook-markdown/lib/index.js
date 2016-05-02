@@ -1,8 +1,10 @@
-var htmlParser = require('gitbook-html');
+var HTMLParser = require('gitbook-html');
 
 var toHTML = require('./tohtml');
-var toMarkdown = require('./tomarkdown');
+var toMarkdown = require('./toMarkdown');
 var page = require('./page');
 
-module.exports = htmlParser.createParser(toHTML, toMarkdown);
+module.exports = HTMLParser.createParser(toHTML, toMarkdown);
+
+// Add the custom page escaping
 module.exports.page.prepare = page.prepare;

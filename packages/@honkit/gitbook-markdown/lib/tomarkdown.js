@@ -4,6 +4,10 @@ function ns(s, n) {
     return Array(n + 1).join(s);
 }
 
+/*
+    This module provides markup rules for gitbook-html
+    These rules are being used to generate SUMMARY/GLOSSARY/LANGS
+*/
 module.exports = {
     onTitleStart: function(level) {
         return ns('#', level) + ' ';
@@ -39,5 +43,9 @@ module.exports = {
     onListItemEnd: function() {
         return '';
     },
+
+    onHR: function() {
+        return '-----';
+    }
 };
 

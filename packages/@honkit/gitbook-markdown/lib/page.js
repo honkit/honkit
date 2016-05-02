@@ -5,17 +5,33 @@ var annotate = require('kramed/lib/annotate/');
 var RAW_START = '{% raw %}';
 var RAW_END = '{% endraw %}';
 
-// Escape a code block using raw blocks
+/**
+    Escape a code block's content using raw blocks
+
+    @param {String}
+    @return {String}
+*/
 function escape(str) {
     return RAW_START + str + RAW_END;
 }
 
-// Combines annotated nodes
+/**
+    Combines annotated nodes
+
+    @param {Array}
+    @return {String}
+*/
 function combine(nodes) {
     return _.pluck(nodes, 'raw').join('');
 }
 
-// Add templating "raw" to code blocks
+/**
+    Add templating "raw" to code blocks to
+    avoid nunjucks processing their content.
+
+    @param {String} src
+    @return {String}
+*/
 function preparePage(src) {
     var lexed = annotate.blocks(src);
     var levelRaw = 0;
