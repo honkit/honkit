@@ -1,6 +1,6 @@
 {
     "name": "gitbook-html",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "homepage": "https://www.gitbook.com",
     "description": "Parse HTML content for gitbook",
     "main": "lib/index.js",
