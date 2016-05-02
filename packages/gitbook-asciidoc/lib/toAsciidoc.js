@@ -39,5 +39,9 @@ module.exports = {
     onListItemEnd: function() {
         return '';
     },
+
+    onHR: function() {
+        return "'''";
+    }
 };
 
