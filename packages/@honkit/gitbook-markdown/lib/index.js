@@ -1,6 +1,6 @@
 var HTMLParser = require('gitbook-html');
 
-var toHTML = require('./tohtml');
+var toHTML = require('./toHTML');
 var toMarkdown = require('./toMarkdown');
 var page = require('./page');
 
