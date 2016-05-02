@@ -10,3 +10,7 @@
 * [Chapter 4](chapter-4/README.md)
     * Unfinished article
 * Unfinished Chapter
+
+----
+
+* Chapter 4
