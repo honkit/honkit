@@ -95,9 +95,9 @@ ToText.prototype._summaryArticle = function(article, level) {
 
     content += this.onListItemStart(level);
 
-    if (article.path) content += this.onLinkStart(article.path)
+    if (article.ref) content += this.onLinkStart(article.ref)
     content += this.onText(article.title)
-    if (article.path) content += this.onLinkEnd(article.path);
+    if (article.ref) content += this.onLinkEnd(article.ref);
     content += this.onBL();
 
     if (article.articles && article.articles.length > 0) {

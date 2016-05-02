@@ -30,7 +30,7 @@ function parseList($ul, $) {
         var $a = $li.find(SELECTOR_LINK);
         if ($a.length > 0) {
             article.title = $a.first().text();
-            article.path = $a.attr('href').replace(/\\/g, '/').replace(/^\/+/, '')
+            article.ref = $a.attr('href').replace(/\\/g, '/').replace(/^\/+/, '')
         }
 
         // Sub articles
