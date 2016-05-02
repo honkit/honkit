@@ -151,7 +151,7 @@ ToText.prototype.summary = function(summary) {
         content += this._summaryPart(part);
 
         if (next && !next.title) {
-            content += this.onHR();
+            content += this.onBL() + this.onHR() + this.onBL();
         } else {
             content += this.onSection();
         }
