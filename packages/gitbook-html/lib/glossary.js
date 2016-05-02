@@ -1,7 +1,12 @@
 var _ = require('lodash');
 var dom = require('./dom');
 
-// HTML -> Glossary
+/**
+    Parse an HTML content into a list of glossary entry
+
+    @param {String} html
+    @return {Array}
+*/
 function parseGlossary(html) {
     var $ = dom.parse(html);
 

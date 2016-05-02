@@ -1,5 +1,11 @@
 var _ = require('lodash');
 
+/*
+    This class is extended by gitbook-markdown and gitbook-asciidoc
+    to generate back markdown/asciidoc from GitBook metadata.
+*/
+
+
 function ToText(markup) {
     _.extend(this, markup || {});
     _.bindAll(this);
@@ -12,6 +18,10 @@ ToText.prototype.onBL = function() {
 
 ToText.prototype.onText = function(text) {
     return text;
+};
+
+ToText.prototype.onHR = function() {
+    return '<hr />';
 };
 
 // ---- TITLES
@@ -126,7 +136,6 @@ ToText.prototype._summaryPart = function(part) {
     if (part.title) content += this.onTitleStart(2) + this.onText(part.title) + this.onTitleEnd(2);
 
     content += this._summaryArticles(part.articles);
-    content += this.onSection();
 
     return content;
 };
@@ -136,8 +145,17 @@ ToText.prototype.summary = function(summary) {
     content += this.onTitleStart(1) + this.onText('Summary') + this.onTitleEnd(1);
     content += this.onSection();
 
-    _.each(summary.parts, function(part) {
+    _.each(summary.parts, function(part, i) {
+        var next = summary.parts[i + 1];
+
         content += this._summaryPart(part);
+
+        if (next && !next.title) {
+            content += this.onHR();
+        } else {
+            content += this.onSection();
+        }
+
     }, this);
 
     return content;

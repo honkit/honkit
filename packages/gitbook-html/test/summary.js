@@ -40,11 +40,11 @@ describe('Summary parsing', function () {
     });
 
     it('should detect paths and titles', function() {
-        assert(PART.articles[0].path);
-        assert(PART.articles[1].path);
-        assert(PART.articles[2].path);
-        assert(PART.articles[3].path);
-        assert.equal(PART.articles[4].path, null);
+        assert(PART.articles[0].ref);
+        assert(PART.articles[1].ref);
+        assert(PART.articles[2].ref);
+        assert(PART.articles[3].ref);
+        assert.equal(PART.articles[4].ref, null);
 
         assert(PART.articles[0].title);
         assert(PART.articles[1].title);
@@ -54,9 +54,9 @@ describe('Summary parsing', function () {
     });
 
     it('should normalize paths from .md', function() {
-        assert.equal(PART.articles[0].path,'chapter-1/README.md');
-        assert.equal(PART.articles[1].path,'chapter-2/README.md');
-        assert.equal(PART.articles[2].path,'chapter-3/README.md');
+        assert.equal(PART.articles[0].ref,'chapter-1/README.md');
+        assert.equal(PART.articles[1].ref,'chapter-2/README.md');
+        assert.equal(PART.articles[2].ref,'chapter-3/README.md');
     });
 
     it('should correctly convert it to text', function() {

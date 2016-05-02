@@ -3,10 +3,14 @@ var dom = require('./dom');
 
 var SELECTOR_LIST = 'ol, ul';
 var SELECTOR_LINK = '> a, p > a';
-
 var BL = '\n';
 
-// Find a list
+/**
+    Find a list
+
+    @param {cheerio.Node}
+    @return {cheerio.Node}
+*/
 function findList($parent) {
     var $container = $parent.children('.olist');
     if ($container.length > 0) $parent = $container.first();
@@ -14,7 +18,13 @@ function findList($parent) {
     return $parent.children('ul, ol');
 }
 
-// Parse a ul list and return list of chapters recursvely
+/**
+    Parse a ul list and return list of chapters recursvely
+
+    @param {cheerio.Node}
+    @param {cheerio.DOM}
+    @return {Array}
+*/
 function parseList($ul, $) {
     var articles = [];
 
@@ -44,7 +54,12 @@ function parseList($ul, $) {
     return articles;
 }
 
-// HTML -> Summary
+/**
+    Parse an HTML content into a tree of articles/parts
+
+    @param {String} html
+    @return {Object}
+*/
 function parseSummary(html) {
     var $ = dom.parse(html);
     var $root = dom.cleanup(dom.root($), $);
