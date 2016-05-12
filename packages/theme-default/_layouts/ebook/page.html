@@ -5,7 +5,7 @@
 
 {% block style %}
     {### Include theme css before plugins css ###}
-    {% if not (config.styles.print|fileExists) %}
+    {% if not fileExists(config.styles.print) %}
         {% if options.format %}
         <link rel="stylesheet" href="{{ (options.format + ".css")|resolveAsset }}">
         {% else %}
@@ -18,7 +18,7 @@
     {### Custom stylesheets for the book ###}
 
     {% for type, style in config.styles %}
-        {% if (style|fileExists) and (type == "ebook" or type == "print" or type == options.format) %}
+        {% if fileExists(style) and (type == "ebook" or type == "print" or type == options.format) %}
         <link rel="stylesheet" href="{{ style|resolveFile }}">
         {% endif %}
     {% endfor %}

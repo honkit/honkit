@@ -19,7 +19,7 @@
     {### Custom stylesheets for the book ###}
 
     {% for type, style in config.styles %}
-        {% if style|fileExists and type == "website" %}
+        {% if fileExists(style) and type == "website" %}
         <link rel="stylesheet" href="{{ style|resolveFile }}">
         {% endif %}
     {% endfor %}
