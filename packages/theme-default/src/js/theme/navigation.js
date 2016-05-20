@@ -77,9 +77,10 @@ function handleNavigation(relativeUrl, push) {
         var $pageHead = $page.find('[data-element=head]');
         var $pageBody = $page.find('.book');
 
+        // We only use history.pushState for pages generated with GitBook
         if ($pageBody.length === 0) {
             return $.Deferred(function (deferred) {
-                var err = new Error('Invalid gitbook page, redirecting...');;
+                var err = new Error('Invalid gitbook page, redirecting...');
                 deferred.reject(err);
             }).promise();
         }
