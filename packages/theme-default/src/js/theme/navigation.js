@@ -67,10 +67,7 @@ function handleNavigation(relativeUrl, push) {
     prevUri = uri;
 
     return loading.show($.get(uri)
-    .done(function (html) {
-        // Push url to history
-        if (push) history.pushState({ path: uri }, null, uri);
-
+    .then(function (html) {
         // Replace html content
         html = html.replace( /<(\/?)(html|head|body)([^>]*)>/ig, function(a,b,c,d){
             return '<' + b + 'div' + ( b ? '' : ' data-element="' + c + '"' ) + d + '>';
@@ -79,6 +76,20 @@ function handleNavigation(relativeUrl, push) {
         var $page = $(html);
         var $pageHead = $page.find('[data-element=head]');
         var $pageBody = $page.find('.book');
+
+        if ($pageBody.length === 0) {
+            return $.Deferred(function (deferred) {
+                var err = new Error('Invalid gitbook page, redirecting...');;
+                deferred.reject(err);
+            }).promise();
+        }
+
+        // Push url to history
+        if (push) {
+            history.pushState({
+                path: uri
+            }, null, uri);
+        }
 
         // Merge heads
         // !! Warning !!: we only update necessary portions to avoid strange behavior (page flickering etc ...)
