@@ -3,7 +3,13 @@ var $ = require('jquery');
 var gitbook = window.gitbook;
 
 // List of created buttons
-var buttons = [];
+var buttons = [],
+// Generated Id for buttons
+    BTN_ID = 0;
+
+function generateId() {
+    return 'btn-'+(BTN_ID++);
+}
 
 // Insert a jquery element at a specific position
 function insertAt(parent, selector, index, element) {
@@ -97,11 +103,16 @@ function createButton(opts) {
         dropdown: null,
 
         // Position in the toolbar
-        index: null
+        index: null,
+
+        // Button id for removal
+        id: generateId()
     }, opts || {});
 
     buttons.push(opts);
     updateButton(opts);
+
+    return opts.id;
 }
 
 // Update a button
@@ -170,11 +181,31 @@ function updateAllButtons() {
     buttons.forEach(updateButton);
 }
 
+// Remove a button provided its id
+function removeButton(id) {
+    buttons = $.grep(buttons, function(button) {
+        return button.id != id;
+    });
+
+    updateAllButtons();
+}
+
+// Remove multiple buttons from an array of ids
+function removeButtons(ids) {
+    buttons = $.grep(buttons, function(button) {
+        return ids.indexOf(button.id) == -1;
+    });
+
+    updateAllButtons();
+}
+
 // When page changed, reset buttons
 gitbook.events.on('page.change', function() {
     updateAllButtons();
 });
 
 module.exports = {
-    createButton: createButton
+    createButton: createButton,
+    removeButton: removeButton,
+    removeButtons: removeButtons
 };
