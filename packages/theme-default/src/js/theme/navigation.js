@@ -83,9 +83,9 @@ function handleNavigation(relativeUrl, push) {
                     return '<' + b + 'div' + ( b ? '' : ' data-element="' + c + '"' ) + d + '>';
                 });
 
-                var $page = $(html);
-                var $pageHead = $page.find('[data-element=head]');
-                var $pageBody = $page.find('.book');
+                var $page = $(html),
+                    $pageBody = $page.find('.book'),
+                    $pageHead;
 
                 // We only use history.pushState for pages generated with GitBook
                 if ($pageBody.length === 0) {
@@ -99,6 +99,11 @@ function handleNavigation(relativeUrl, push) {
                         path: responseURL
                     }, null, responseURL);
                 }
+
+                // Force reparsing HTML to prevent wrong URLs in Safari
+                $page = $(html);
+                $pageHead = $page.find('[data-element=head]');
+                $pageBody = $page.find('.book');
 
                 // Merge heads
                 // !! Warning !!: we only update necessary portions to avoid strange behavior (page flickering etc ...)
@@ -147,8 +152,8 @@ function handleNavigation(relativeUrl, push) {
     return loading.show(
         promise
         .fail(function (e) {
-            console.log(e);
-            //location.href = relativeUrl;
+            console.log(e); // eslint-disable-line no-console
+            // location.href = relativeUrl;
         })
     );
 }
