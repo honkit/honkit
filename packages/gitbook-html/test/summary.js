@@ -8,9 +8,11 @@ describe('Summary parsing', function () {
     var LEXED, PART;
 
     before(function() {
-        var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/SUMMARY.html'), 'utf8');
+        var CONTENT = fs.readFileSync(
+            path.join(__dirname, './fixtures/SUMMARY.html'), 'utf8');
         LEXED = summary(CONTENT);
         PART = LEXED.parts[0];
+
     });
 
     describe('Parts', function() {
@@ -22,6 +24,15 @@ describe('Summary parsing', function () {
             assert.equal(LEXED.parts[0].title, '');
             assert.equal(LEXED.parts[1].title, 'Part 2');
             assert.equal(LEXED.parts[2].title, '');
+        });
+
+        it('should detect empty parts', function() {
+            var CONTENT_EMPTY = fs.readFileSync(
+                path.join(__dirname, './fixtures/SUMMARY-EMPTY.html'), 'utf8');
+            var LEXED_EMPTY = summary(CONTENT_EMPTY);
+
+            assert.equal(LEXED_EMPTY.parts.length, 4);
+            assert.equal(LEXED_EMPTY.parts[2].title, 'Empty part');
         });
     });
 
