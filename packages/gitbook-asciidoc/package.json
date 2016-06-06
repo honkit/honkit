@@ -5,9 +5,9 @@
     "description": "Parse AsciiDoc content for gitbook",
     "main": "lib/index.js",
     "dependencies": {
-        "lodash": "^3.2.0",
+        "lodash": "^3.2.0 || ^4.13.1",
         "asciidoctor.js": "1.5.5-1",
-        "gitbook-html": "1.1.0"
+        "gitbook-html": "1.3.1"
     },
     "devDependencies": {
         "mocha": "2.3.2"
