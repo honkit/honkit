@@ -134,7 +134,6 @@ function parseSummary(html) {
     var parts = findParts($root, $);
 
     // Parse each list
-    debugger;
     var parsedParts = [];
     var part;
     for (var i = 0; i < parts.length; ++i) {
