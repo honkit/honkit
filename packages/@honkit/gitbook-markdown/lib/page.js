@@ -22,7 +22,7 @@ function escape(str) {
     @return {String}
 */
 function combine(nodes) {
-    return _.pluck(nodes, 'raw').join('');
+    return _.map(nodes, 'raw').join('');
 }
 
 /**
