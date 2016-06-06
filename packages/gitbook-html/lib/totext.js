@@ -7,8 +7,12 @@ var _ = require('lodash');
 
 
 function ToText(markup) {
+    if (!(this instanceof ToText)) {
+        return new ToText(markup);
+    }
+
     _.extend(this, markup || {});
-    _.bindAll(this);
+    _.bindAll(this, _.functionsIn(this));
 };
 
 // Break line
@@ -83,17 +87,19 @@ ToText.prototype.langs = function(languages) {
 // ------ GLOSSARY
 
 ToText.prototype.glossary = function(glossary) {
+    var that = this;
     var content = '';
-    content += this.onTitleStart(1) + this.onText('Glossary') + this.onTitleEnd(1);
-    content += this.onSection();
+
+    content += that.onTitleStart(1) + that.onText('Glossary') + that.onTitleEnd(1);
+    content += that.onSection();
 
     _.each(glossary, function(entry) {
-        content += this.onTitleStart(2) + this.onText(entry.name) + this.onTitleEnd(2);
-        content += this.onParagraphStart();
-        content += this.onText(entry.description);
-        content += this.onParagraphEnd();
-        content += this.onSection();
-    }, this);
+        content += that.onTitleStart(2) + that.onText(entry.name) + that.onTitleEnd(2);
+        content += that.onParagraphStart();
+        content += that.onText(entry.description);
+        content += that.onParagraphEnd();
+        content += that.onSection();
+    });
 
     return content;
 };
@@ -119,14 +125,16 @@ ToText.prototype._summaryArticle = function(article, level) {
     return content;
 };
 ToText.prototype._summaryArticles = function(articles, level) {
+    var that = this;
     var content = '';
+
     level = level || 0;
 
-    content += this.onListStart(level);
+    content += that.onListStart(level);
     _.each(articles, function(article) {
-        content += this._summaryArticle(article, level);
-    }, this);
-    content += this.onListEnd(level);
+        content += that._summaryArticle(article, level);
+    });
+    content += that.onListEnd(level);
 
     return content;
 };
@@ -141,22 +149,24 @@ ToText.prototype._summaryPart = function(part) {
 };
 
 ToText.prototype.summary = function(summary) {
+    var that = this;
     var content = '';
-    content += this.onTitleStart(1) + this.onText('Summary') + this.onTitleEnd(1);
-    content += this.onSection();
+
+    content += that.onTitleStart(1) + that.onText('Summary') + that.onTitleEnd(1);
+    content += that.onSection();
 
     _.each(summary.parts, function(part, i) {
         var next = summary.parts[i + 1];
 
-        content += this._summaryPart(part);
+        content += that._summaryPart(part);
 
         if (next && !next.title) {
-            content += this.onBL() + this.onHR() + this.onBL();
+            content += that.onBL() + that.onHR() + that.onBL();
         } else {
-            content += this.onSection();
+            content += that.onSection();
         }
 
-    }, this);
+    });
 
     return content;
 };
