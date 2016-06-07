@@ -5,10 +5,10 @@
     "description": "Parse markdown content for gitbook",
     "main": "lib/index.js",
     "dependencies": {
-        "lodash": "^3.2.0 || ^4.13.1",
+        "lodash": "^4.13.1",
         "kramed": "0.5.6",
         "kramed-text-renderer": "0.2.1",
-        "gitbook-html": "1.3.1"
+        "gitbook-html": "1.3.2"
     },
     "devDependencies": {
         "mocha": "^2.3.3"
