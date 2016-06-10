@@ -6,6 +6,7 @@ var summary = require('../').summary;
 
 describe('Summary parsing', function () {
     var LEXED, PART;
+    var LEXED_EMPTY;
 
     before(function() {
         var CONTENT = fs.readFileSync(
@@ -13,6 +14,9 @@ describe('Summary parsing', function () {
         LEXED = summary(CONTENT);
         PART = LEXED.parts[0];
 
+        var CONTENT_EMPTY = fs.readFileSync(
+            path.join(__dirname, './fixtures/SUMMARY-EMPTY.html'), 'utf8');
+        LEXED_EMPTY = summary(CONTENT_EMPTY);
     });
 
     describe('Parts', function() {
@@ -27,12 +31,22 @@ describe('Summary parsing', function () {
         });
 
         it('should detect empty parts', function() {
-            var CONTENT_EMPTY = fs.readFileSync(
-                path.join(__dirname, './fixtures/SUMMARY-EMPTY.html'), 'utf8');
-            var LEXED_EMPTY = summary(CONTENT_EMPTY);
-
-            assert.equal(LEXED_EMPTY.parts.length, 4);
-            assert.equal(LEXED_EMPTY.parts[2].title, 'Empty part');
+            var partTitles = LEXED_EMPTY.parts.map(function (part) {
+                return part.title;
+            });
+            var expectedTitles = [
+                'First empty part',
+                'Part 1',
+                '',
+                'Empty part',
+                'Part 2',
+                'Penultimate empty part',
+                'Last empty part'
+            ];
+            assert.equal(LEXED_EMPTY.parts.length, 7);
+            expectedTitles.forEach(function (title, index) {
+                assert.equal(partTitles[index], title);
+            });
         });
     });
 

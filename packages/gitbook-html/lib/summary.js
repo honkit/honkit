@@ -97,6 +97,11 @@ function findParts($parent, $) {
         }
     });
 
+    // Last part might be empty
+    if (previousPart !== null) {
+        parts.push(previousPart);
+    }
+
     return parts;
 }
 
