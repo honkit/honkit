@@ -7,7 +7,7 @@
     "dependencies": {
         "lodash": "^4.13.1",
         "asciidoctor.js": "1.5.5-1",
-        "gitbook-html": "1.3.2"
+        "gitbook-html": "1.3.3"
     },
     "devDependencies": {
         "mocha": "2.3.2"
