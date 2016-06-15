@@ -26,6 +26,11 @@ function scrollToHash(hash) {
     var $scroller = getScroller(),
         dest = 0;
 
+    // Don't try to scroll if element doesn't exist
+    if (!pageHasElement(hash)) {
+        return;
+    }
+
     if (hash) {
         dest = getElementTopPosition(hash);
     }
@@ -41,6 +46,16 @@ function scrollToHash(hash) {
 
     // Directly set chapter as active
     setChapterActive(null, hash);
+}
+
+/*
+    Return wether the element exists on the page
+ */
+function pageHasElement(id) {
+    var $scroller  = getScroller(),
+        $el        = $scroller.find(id);
+
+    return !!$el.length;
 }
 
 /*
