@@ -1,73 +1,56 @@
 var _ = require('lodash');
-var kramed = require('kramed');
-var annotate = require('kramed/lib/annotate/');
+var MarkupIt = require('markup-it');
+var gitbookSyntax = require('markup-it/syntaxes/gitbook');
 
 var RAW_START = '{% raw %}';
-var RAW_END = '{% endraw %}';
+var RAW_END   = '{% endraw %}';
+var gitbook  = new MarkupIt(gitbookSyntax);
 
 /**
-    Escape a code block's content using raw blocks
-
-    @param {String}
-    @return {String}
-*/
+ * Escape a code block's content using raw blocks
+ *
+ * @param {String}
+ * @return {String}
+ */
 function escape(str) {
     return RAW_START + str + RAW_END;
 }
 
-/**
-    Combines annotated nodes
-
-    @param {Array}
-    @return {String}
-*/
-function combine(nodes) {
-    return _.map(nodes, 'raw').join('');
-}
 
 /**
-    Add templating "raw" to code blocks to
-    avoid nunjucks processing their content.
-
-    @param {String} src
-    @return {String}
-*/
+ * Add templating "raw" to code blocks to
+ * avoid nunjucks processing their content.
+ *
+ * @param {String} src
+ * @return {String}
+ */
 function preparePage(src) {
-    var lexed = annotate.blocks(src);
     var levelRaw = 0;
 
-    function escapeCodeElement(el) {
-        if (el.type == 'code' && levelRaw == 0) {
-            el.raw = escape(el.raw);
-        } else if (el.type == 'tplexpr') {
-            var expr = el.matches[0];
-            if(expr === 'raw') {
+    return gitbook.annotate(src, function(token) {
+        var tokenType = token.getType();
+
+        if (tokenType === MarkupIt.BLOCKS.TEMPLATE && tokenType === MarkupIt.STYLES.TEMPLATE) {
+            var expr = token.getData().get('type');
+            if (expr === 'raw') {
                 levelRaw = levelRaw + 1;
-            } else if(expr === 'endraw') {
+            } else if (expr == 'endraw') {
                 levelRaw = 0;
             }
+
+            return true;
         }
-        return el;
-    }
 
-    var escaped = _.map(lexed, function(el) {
-        // Only escape paragraphs and headings
-        if(el.type == 'paragraph' || el.type == 'heading') {
-            var line = annotate.inline(el.raw);
+        if (token.isBlock() && )
 
-            // Escape inline code blocks
-            line = line.map(escapeCodeElement);
 
-            // Change raw source code
-            el.raw = combine(line);
 
-            return el;
-        } else {
-            return escapeCodeElement(el);
+        if (tokenType !== MarkupIt.BLOCKS.CODE && tokenType !== MarkupIt.STYLES.CODE && levelRaw == 0) {
+            return;
         }
+
+        return escape(token.getRaw());
     });
-
-    return combine(escaped);
 }
 
 module.exports = {

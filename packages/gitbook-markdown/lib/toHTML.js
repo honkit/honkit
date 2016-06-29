@@ -1,54 +1,34 @@
-var _ = require('lodash');
-var kramed = require('kramed');
+var MarkupIt = require('markup-it');
+var markdownSyntax = require('markup-it/syntaxes/markdown');
+var htmlSyntax = require('markup-it/syntaxes/html');
+
+var markdown = new MarkupIt(markdownSyntax);
+var html     = new MarkupIt(htmlSyntax);
 
 /**
-    Get renderer for kramed with correct configuration
-
-    @return {kramed.Renderer}
-*/
-function getRenderer() {
-    return new kramed.Renderer({
-        langPrefix: 'lang-',
-        smartypants: false,
-        headerPrefix: '',
-        headerAutoId: false,
-        xhtml: false
-    });
-}
-
-/**
-    Get options for markdown parsing
-
-    @return {Object}
-*/
-function getOption() {
-    return _.extend({}, kramed.defaults, {
-        mathjax: false
-    });
-}
-
-/**
-    Convert Markdown block to HTML
-
-    @param {String} src (markdown)
-    @return {String} (html)
-*/
+ * Convert Markdown block to HTML
+ *
+ * @param {String} src (markdown)
+ * @return {String} (html)
+ */
 function convertMdToHTMLBlock(src) {
-    var options = _.extend(getOption(), {
-        renderer: getRenderer()
-    });
+    var content  = markdown.toContent(src);
+    var textHtml = html.toText(content);
 
-    return kramed(src, options);
+    return textHtml;
 }
 
 /**
-    Convert Markdown inline to HTML
-
-    @param {String} src (markdown)
-    @return {String} (html)
-*/
+ * Convert Markdown inline to HTML
+ *
+ * @param {String} src (markdown)
+ * @return {String} (html)
+ */
 function convertMdToHTMLInline(src) {
-    return kramed.inlineLexer(src, getOption(), getRenderer());
+    var content  = markdown.toInlineContent(src);
+    var textHtml = html.toInlineText(content);
+
+    return textHtml;
 }
 
 module.exports = {

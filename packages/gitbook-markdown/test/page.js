@@ -18,8 +18,8 @@ describe('Page parsing', function() {
     });
 
     it('should not add id to headings', function() {
-        assert.equal(page('# Hello').content, '<h1>Hello</h1>\n');
-         assert.equal(page('# Hello {#test}').content, '<h1 id="test">Hello </h1>\n');
+        assert.equal(page('# Hello').content, '<h1>Hello</h1>');
+        assert.equal(page('# Hello {#test}').content, '<h1 id="test">Hello</h1>');
     });
 
     it('should escape codeblocks in preparation (1)', function() {

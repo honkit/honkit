@@ -5,9 +5,9 @@ function ns(s, n) {
 }
 
 /*
-    This module provides markup rules for gitbook-html
-    These rules are being used to generate SUMMARY/GLOSSARY/LANGS
-*/
+ * This module provides markup rules for gitbook-html
+ * These rules are being used to generate SUMMARY/GLOSSARY/LANGS
+ */
 module.exports = {
     onTitleStart: function(level) {
         return ns('#', level) + ' ';
