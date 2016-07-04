@@ -1,3 +1,4 @@
+var escape = require('markdown-escape');
 
 // Return N time a string
 function ns(s, n) {
@@ -9,6 +10,10 @@ function ns(s, n) {
  * These rules are being used to generate SUMMARY/GLOSSARY/LANGS
  */
 module.exports = {
+    onText: function(text) {
+        return escape(text);
+    },
+
     onTitleStart: function(level) {
         return ns('#', level) + ' ';
     },
