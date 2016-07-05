@@ -8,7 +8,7 @@
     "gitbook-html": "1.3.3",
     "lodash": "^4.13.1",
     "markdown-escape": "^1.0.1",
-    "markup-it": "^2.1.0 >=2.1.0"
+    "markup-it": "^2.2.0 >=2.2.0"
   },
   "devDependencies": {
     "mocha": "^2.5.3"
