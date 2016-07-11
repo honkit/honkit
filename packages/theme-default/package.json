@@ -71,7 +71,7 @@
         }
       },
       "showLevel": {
-        "type": "bool",
+        "type": "boolean",
         "title": "Show level indicator in TOC",
         "default": false
       }
