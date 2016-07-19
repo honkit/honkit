@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="{{ config.language }}" {% if page.dir == "rtl" %}dir="rtl"{% endif %}>
     <head>
-        <title>{% block title %}{{ config.title|d("GitBook", true) }}{% endblock %}</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>{% block title %}{{ config.title|d("GitBook", true) }}{% endblock %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="generator" content="GitBook {{ gitbook.version }}">
         {% if config.author %}<meta name="author" content="{{ config.author }}">{% endif %}
