@@ -98,10 +98,17 @@ function setChapterActive($chapter, hash) {
 
     // If hash is provided, set as active chapter
     if (!!hash) {
-        $chapter = $chapters.filter(function() {
-            var titleId = getChapterHash($(this));
-            return titleId == hash;
-        }).first();
+        // Multiple chapters for this file
+        if ($chapters.length > 1) {
+            $chapter = $chapters.filter(function() {
+                var titleId = getChapterHash($(this));
+                return titleId == hash;
+            }).first();
+        }
+        // Only one chapter, no need to search
+        else {
+            $chapter = $chapters.first();
+        }
     }
 
     // Don't update current chapter
@@ -324,9 +331,13 @@ function preparePage(resetScroll) {
     // Focus on content
     $pageWrapper.focus();
 
+    // Get scroller
+    var $scroller = getScroller();
+
     // Reset scroll
-    if (resetScroll !== false) $bookInner.scrollTop(0);
-    $bookBody.scrollTop(0);
+    if (resetScroll !== false) {
+        $scroller.scrollTop(0);
+    }
 
     // Get current page summary chapters
     $chapters = $('.book-summary .summary .chapter')
@@ -347,9 +358,12 @@ function preparePage(resetScroll) {
     });
 
     // Bind scrolling if summary contains more than one link to this page
-    var $scroller = getScroller();
     if ($chapters.length > 1) {
         $scroller.scroll(handleScrolling);
+    }
+    // Else, set only chapter in summary as active
+    else {
+        $activeChapter = $chapters.first();
     }
 }
 
@@ -417,7 +431,7 @@ function init() {
     $(window).resize(updateNavigationPosition);
 
     // Prepare current page
-    preparePage();
+    preparePage(false);
 }
 
 module.exports = {

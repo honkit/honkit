@@ -8,17 +8,17 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "browserify": "13.0.0",
-    "eslint": "2.7.0",
-    "font-awesome": "4.5.0",
+    "browserify": "13.1.0",
+    "eslint": "3.6.1",
+    "font-awesome": "4.6.3",
     "preboot": "git+https://github.com/mdo/preboot.git#4aab4edd85f076d50609cbe28e4fe66cc0771701",
     "gitbook-logos": "git+https://github.com/GitbookIO/logos.git#2.0.2",
     "gitbook-markdown-css": "1.0.1",
-    "jquery": "2.1.4",
-    "less": "2.6.0",
+    "jquery": "3.1.1",
+    "less": "2.7.1",
     "less-plugin-clean-css": "1.5.1",
-    "mousetrap": "1.5.3",
-    "uglify-js": "2.6.1"
+    "mousetrap": "1.6.0",
+    "uglify-js": "2.7.3"
   },
   "scripts": {
     "prepublish": "./src/build.sh"
