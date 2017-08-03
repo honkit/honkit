@@ -59,6 +59,21 @@ function pageHasElement(id) {
 }
 
 /*
+    Utility functions
+*/
+
+// Checks if a jQuery element is empty
+function isEmpty(element) {
+    return element.length === 0;
+}
+
+// Any returns true if the predicate is true on any of the elements in the list
+function any(arr, predicate) {
+    return arr.length > 0 && arr.filter(predicate).length > 0;
+
+}
+
+/*
     Return the top position of an element
  */
 function getElementTopPosition(id) {
@@ -69,9 +84,24 @@ function getElementTopPosition(id) {
         $parent    = $el.offsetParent(),
         dest       = 0;
 
+    // Exit early if we can't find any of those elements
+    if (any([$scroller, $container, $el, $parent], isEmpty)) {
+        return 0;
+    }
+
     dest = $el.position().top;
 
-    while (!$parent.is($container)) {
+    // Note: this could be a while loop, but to avoid any chances of infinite loops
+    // we'll limit the max iterations to 10
+    var MAX_ITERATIONS = 10;
+    for (var i = 0; i < MAX_ITERATIONS; i++) {
+        // Stop when we find the element's ancestor just below $container
+        // or if we hit the top of the dom (parent's parent is itself)
+        if ($parent.is($container) || $parent.is($parent.offsetParent())) {
+            break;
+        }
+
+        // Go up the DOM tree, to the next parent
         $el = $parent;
         dest += $el.position().top;
         $parent = $el.offsetParent();
