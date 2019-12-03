@@ -18,7 +18,7 @@ var TemplateEngine = Immutable.Record({
     context:    Object(),
 
     // Nunjucks loader
-    loader:     nunjucks.FileSystemLoader('views')
+    loader:     new nunjucks.FileSystemLoader('views')
 }, 'TemplateEngine');
 
 TemplateEngine.prototype.getBlocks = function() {
