@@ -23,7 +23,6 @@ module.exports = Immutable.List([
     'highlight',
     'search',
     'lunr',
-    'sharing',
     'fontsettings',
     'theme-default'
 ]).map(createFromDependency);
