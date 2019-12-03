@@ -12,7 +12,7 @@ describe('installPlugins', function() {
     this.timeout(30000);
 
     before(function() {
-        var fs = NodeFS(path.resolve(__dirname, '../../../'));
+        var fs = NodeFS(path.resolve(__dirname, '../../../../../'));
         var baseBook = Book.createForFS(fs);
 
         return Parse.parseConfig(baseBook)
