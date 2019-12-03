@@ -1,4 +1,4 @@
-var npm = require('npm');
+var npm = require('global-npm');
 var semver = require('semver');
 var Immutable = require('immutable');
 
