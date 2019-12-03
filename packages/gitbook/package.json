@@ -52,7 +52,6 @@
     "read-installed": "^4.0.3",
     "request": "2.72.0",
     "resolve": "1.1.7",
-    "rmdir": "1.2.0",
     "semver": "5.1.0",
     "send": "0.13.2",
     "spawn-cmd": "0.0.2",
