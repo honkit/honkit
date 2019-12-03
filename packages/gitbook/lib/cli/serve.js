@@ -76,7 +76,7 @@ function generateBook(args, kwargs) {
         }
 
         if (hasOpen) {
-            open('http://localhost:'+port, browser);
+            open('http://localhost:'+port, {app: browser});
         }
     })
     .then(function() {
