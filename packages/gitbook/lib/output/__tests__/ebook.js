@@ -7,10 +7,10 @@ describe('EbookGenerator', function() {
         return generateMock(EbookGenerator, {
             'README.md': 'Hello World'
         })
-        .then(function(folder) {
-            expect(folder).toHaveFile('SUMMARY.html');
-            expect(folder).toHaveFile('index.html');
-        });
+            .then(function(folder) {
+                expect(folder).toHaveFile('SUMMARY.html');
+                expect(folder).toHaveFile('index.html');
+            });
     });
 });
 

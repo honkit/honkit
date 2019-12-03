@@ -16,24 +16,24 @@ describe('fetchRemoteImages', function() {
         var $ = cheerio.load('<img src="' + URL + '" />');
 
         return fetchRemoteImages(dir.name, 'index.html', $)
-        .then(function() {
-            var $img = $('img');
-            var src = $img.attr('src');
+            .then(function() {
+                var $img = $('img');
+                var src = $img.attr('src');
 
-            expect(dir.name).toHaveFile(src);
-        });
+                expect(dir.name).toHaveFile(src);
+            });
     });
 
     it('should download image file and replace with relative path', function() {
         var $ = cheerio.load('<img src="' + URL + '" />');
 
         return fetchRemoteImages(dir.name, 'test/index.html', $)
-        .then(function() {
-            var $img = $('img');
-            var src = $img.attr('src');
+            .then(function() {
+                var $img = $('img');
+                var src = $img.attr('src');
 
-            expect(dir.name).toHaveFile(path.join('test', src));
-        });
+                expect(dir.name).toHaveFile(path.join('test', src));
+            });
     });
 });
 

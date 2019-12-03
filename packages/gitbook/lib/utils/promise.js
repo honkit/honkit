@@ -18,9 +18,9 @@ function reduce(arr, iter, base) {
 
     return arr.reduce(function(prev, elem, key) {
         return prev
-        .then(function(val) {
-            return iter(val, elem, key);
-        });
+            .then(function(val) {
+                return iter(val, elem, key);
+            });
     }, Q(base));
 }
 
@@ -47,10 +47,10 @@ function forEach(arr, iter) {
 function serie(arr, iter, base) {
     return reduce(arr, function(before, item, key) {
         return Q(iter(item, key))
-        .then(function(r) {
-            before.push(r);
-            return before;
-        });
+            .then(function(r) {
+                before.push(r);
+                return before;
+            });
     }, []);
 }
 
@@ -83,10 +83,10 @@ function some(arr, iter) {
 function mapAsList(arr, iter) {
     return reduce(arr, function(prev, entry, i) {
         return Q(iter(entry, i))
-        .then(function(out) {
-            prev.push(out);
-            return prev;
-        });
+            .then(function(out) {
+                prev.push(out);
+                return prev;
+            });
     }, []);
 }
 
@@ -106,18 +106,18 @@ function map(arr, iter) {
 
         return mapAsList(arr, function(value, key) {
             return Q(iter(value, key))
-            .then(function(result) {
-                return [key, result];
-            });
+                .then(function(result) {
+                    return [key, result];
+                });
         })
-        .then(function(result) {
-            return Immutable[type](result);
-        });
+            .then(function(result) {
+                return Immutable[type](result);
+            });
     } else {
         return mapAsList(arr, iter)
-        .then(function(result) {
-            return Immutable.List(result);
-        });
+            .then(function(result) {
+                return Immutable.List(result);
+            });
     }
 }
 
@@ -133,9 +133,9 @@ function wrap(func) {
         var args = Array.prototype.slice.call(arguments, 0);
 
         return Q()
-        .then(function() {
-            return func.apply(null, args);
-        });
+            .then(function() {
+                return func.apply(null, args);
+            });
     };
 }
 

@@ -23,9 +23,9 @@ module.exports = Immutable.Map({
         name: 'markdown',
         process: function(blk) {
             return this.book.renderInline('markdown', blk.body)
-            .then(function(out) {
-                return { body: out };
-            });
+                .then(function(out) {
+                    return { body: out };
+                });
         }
     }),
 
@@ -33,9 +33,9 @@ module.exports = Immutable.Map({
         name: 'asciidoc',
         process: function(blk) {
             return this.book.renderInline('asciidoc', blk.body)
-            .then(function(out) {
-                return { body: out };
-            });
+                .then(function(out) {
+                    return { body: out };
+                });
         }
     }),
 
@@ -43,9 +43,9 @@ module.exports = Immutable.Map({
         name: 'markup',
         process: function(blk) {
             return this.book.renderInline(this.ctx.file.type, blk.body)
-            .then(function(out) {
-                return { body: out };
-            });
+                .then(function(out) {
+                    return { body: out };
+                });
         }
     })
 });

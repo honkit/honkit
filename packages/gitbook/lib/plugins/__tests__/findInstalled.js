@@ -14,12 +14,12 @@ describe('findInstalled', function() {
             .cacheResult();
 
         return findInstalled(path.resolve(__dirname, '../../../'))
-        .then(function(plugins) {
-            expect(plugins.size >= gitbookPlugins.size).toBeTruthy();
+            .then(function(plugins) {
+                expect(plugins.size >= gitbookPlugins.size).toBeTruthy();
 
-            expect(plugins.has('fontsettings')).toBe(true);
-            expect(plugins.has('search')).toBe(true);
-        });
+                expect(plugins.has('fontsettings')).toBe(true);
+                expect(plugins.has('search')).toBe(true);
+            });
     });
 
 });

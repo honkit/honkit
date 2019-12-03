@@ -16,11 +16,11 @@ function preparePages(output) {
     }
 
     return Parse.parsePagesList(book)
-    .then(function(pages) {
-        logger.info.ln('found', pages.size, 'pages');
+        .then(function(pages) {
+            logger.info.ln('found', pages.size, 'pages');
 
-        return output.set('pages', pages);
-    });
+            return output.set('pages', pages);
+        });
 }
 
 module.exports = preparePages;

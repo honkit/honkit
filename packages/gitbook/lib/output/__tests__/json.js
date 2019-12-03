@@ -7,9 +7,9 @@ describe('JSONGenerator', function() {
         return generateMock(JSONGenerator, {
             'README.md': 'Hello World'
         })
-        .then(function(folder) {
-            expect(folder).toHaveFile('README.json');
-        });
+            .then(function(folder) {
+                expect(folder).toHaveFile('README.json');
+            });
     });
 
     it('should generate a json file for each articles', function() {
@@ -20,10 +20,10 @@ describe('JSONGenerator', function() {
                 'page.md': 'Hello 2'
             }
         })
-        .then(function(folder) {
-            expect(folder).toHaveFile('README.json');
-            expect(folder).toHaveFile('test/page.json');
-        });
+            .then(function(folder) {
+                expect(folder).toHaveFile('README.json');
+                expect(folder).toHaveFile('test/page.json');
+            });
     });
 
     it('should generate a multilingual book', function() {
@@ -36,11 +36,11 @@ describe('JSONGenerator', function() {
                 'README.md': 'Bonjour'
             }
         })
-        .then(function(folder) {
-            expect(folder).toHaveFile('en/README.json');
-            expect(folder).toHaveFile('fr/README.json');
-            expect(folder).toHaveFile('README.json');
-        });
+            .then(function(folder) {
+                expect(folder).toHaveFile('en/README.json');
+                expect(folder).toHaveFile('fr/README.json');
+                expect(folder).toHaveFile('README.json');
+            });
     });
 });
 

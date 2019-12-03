@@ -17,16 +17,16 @@ describe('svgToPng', function() {
         var fileName = 'index.html';
 
         return svgToImg(dir.name, fileName, $)
-        .then(function() {
-            return svgToPng(dir.name, fileName, $);
-        })
-        .then(function() {
-            var $img = $('img');
-            var src = $img.attr('src');
+            .then(function() {
+                return svgToPng(dir.name, fileName, $);
+            })
+            .then(function() {
+                var $img = $('img');
+                var src = $img.attr('src');
 
-            expect(dir.name).toHaveFile(src);
-            expect(path.extname(src)).toBe('.png');
-        });
+                expect(dir.name).toHaveFile(src);
+                expect(path.extname(src)).toBe('.png');
+            });
     });
 });
 

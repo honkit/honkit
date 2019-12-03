@@ -24,15 +24,15 @@ function createMockOutput(generator, files, options) {
     options = generator.Options(options);
 
     return parseBook(book)
-    .then(function(resultBook) {
-        return new Output({
-            book:      resultBook,
-            options:   options,
-            state:     state,
-            generator: generator.name
-        });
-    })
-    .then(preparePlugins);
+        .then(function(resultBook) {
+            return new Output({
+                book:      resultBook,
+                options:   options,
+                state:     state,
+                generator: generator.name
+            });
+        })
+        .then(preparePlugins);
 }
 
 module.exports = createMockOutput;

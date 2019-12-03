@@ -32,12 +32,12 @@ function fetchRemoteImages(rootFolder, currentFile, $) {
         return fs.assertFile(filePath, function() {
             return fs.download(src, filePath);
         })
-        .then(function() {
+            .then(function() {
             // Convert to relative
-            src = LocationUtils.relative(currentDirectory, fileName);
+                src = LocationUtils.relative(currentDirectory, fileName);
 
-            $img.replaceWith('<img src="' + src + '" />');
-        });
+                $img.replaceWith('<img src="' + src + '" />');
+            });
     });
 }
 

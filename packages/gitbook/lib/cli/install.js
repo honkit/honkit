@@ -14,8 +14,8 @@ module.exports = {
         var book = getBook(args, kwargs);
 
         return Parse.parseConfig(book)
-        .then(function(resultBook) {
-            return Plugins.installPlugins(resultBook);
-        });
+            .then(function(resultBook) {
+                return Plugins.installPlugins(resultBook);
+            });
     }
 };

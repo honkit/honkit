@@ -27,9 +27,9 @@ function onFinish(output) {
     return Templating.renderFile(engine, prefix + '/languages.html', context)
 
     // Write it to the disk
-    .then(function(tplOut) {
-        return writeFile(output, filePath, tplOut.getContent());
-    });
+        .then(function(tplOut) {
+            return writeFile(output, filePath, tplOut.getContent());
+        });
 }
 
 module.exports = onFinish;

@@ -16,9 +16,9 @@ function onPage(output, page) {
     ])
 
     // Write page using website generator
-    .then(function(resultPage) {
-        return WebsiteGenerator.onPage(output, resultPage);
-    });
+        .then(function(resultPage) {
+            return WebsiteGenerator.onPage(output, resultPage);
+        });
 }
 
 module.exports = onPage;

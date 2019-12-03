@@ -12,8 +12,8 @@ describe('findForBook', function() {
 
     it('should list default plugins', function() {
         return findForBook(book)
-        .then(function(plugins) {
-            expect(plugins.has('fontsettings')).toBeTruthy();
-        });
+            .then(function(plugins) {
+                expect(plugins.has('fontsettings')).toBeTruthy();
+            });
     });
 });

@@ -22,20 +22,20 @@ describe('resolveLinks', function() {
             var $ = cheerio.load(TEST);
 
             return resolveLinks('hello.md', resolveFileBasic, $)
-            .then(function() {
-                var link = $('a');
-                expect(link.attr('href')).toBe('fakeDir/test/cool.md');
-            });
+                .then(function() {
+                    var link = $('a');
+                    expect(link.attr('href')).toBe('fakeDir/test/cool.md');
+                });
         });
 
         it('should resolve path starting by "/" in child directory', function() {
             var $ = cheerio.load(TEST);
 
             return resolveLinks('afolder/hello.md', resolveFileBasic, $)
-            .then(function() {
-                var link = $('a');
-                expect(link.attr('href')).toBe('../fakeDir/test/cool.md');
-            });
+                .then(function() {
+                    var link = $('a');
+                    expect(link.attr('href')).toBe('../fakeDir/test/cool.md');
+                });
         });
     });
 
@@ -45,10 +45,10 @@ describe('resolveLinks', function() {
             var $ = cheerio.load(TEST);
 
             return resolveLinks('hello.md', resolveFileCustom, $)
-            .then(function() {
-                var link = $('a');
-                expect(link.attr('href')).toBe('test/cool.html#an-anchor');
-            });
+                .then(function() {
+                    var link = $('a');
+                    expect(link.attr('href')).toBe('test/cool.html#an-anchor');
+                });
         });
 
         it('should ignore pure anchor links', function() {
@@ -56,10 +56,10 @@ describe('resolveLinks', function() {
             var $ = cheerio.load(TEST);
 
             return resolveLinks('hello.md', resolveFileCustom, $)
-            .then(function() {
-                var link = $('a');
-                expect(link.attr('href')).toBe('#an-anchor');
-            });
+                .then(function() {
+                    var link = $('a');
+                    expect(link.attr('href')).toBe('#an-anchor');
+                });
         });
     });
 
@@ -70,20 +70,20 @@ describe('resolveLinks', function() {
             var $ = cheerio.load(TEST);
 
             return resolveLinks('hello.md', resolveFileCustom, $)
-            .then(function() {
-                var link = $('a').first();
-                expect(link.attr('href')).toBe('test/cool.html');
-            });
+                .then(function() {
+                    var link = $('a').first();
+                    expect(link.attr('href')).toBe('test/cool.html');
+                });
         });
 
         it('should resolve path correctly for absolute path (2)', function() {
             var $ = cheerio.load(TEST);
 
             return resolveLinks('afodler/hello.md', resolveFileCustom, $)
-            .then(function() {
-                var link = $('a').first();
-                expect(link.attr('href')).toBe('../test/cool.html');
-            });
+                .then(function() {
+                    var link = $('a').first();
+                    expect(link.attr('href')).toBe('../test/cool.html');
+                });
         });
     });
 
@@ -94,10 +94,10 @@ describe('resolveLinks', function() {
             var $ = cheerio.load(TEST);
 
             return resolveLinks('hello.md', resolveFileBasic, $)
-            .then(function() {
-                var link = $('a');
-                expect(link.attr('target')).toBe('_blank');
-            });
+                .then(function() {
+                    var link = $('a');
+                    expect(link.attr('target')).toBe('_blank');
+                });
         });
     });
 

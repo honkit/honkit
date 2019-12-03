@@ -33,13 +33,13 @@ function inlinePng(rootFolder, currentFile, $) {
         return fs.assertFile(filePath, function() {
             return imagesUtil.convertInlinePNG(src, filePath);
         })
-        .then(function() {
+            .then(function() {
             // Convert filename to a relative filename
-            fileName = LocationUtils.relative(currentDirectory, fileName);
+                fileName = LocationUtils.relative(currentDirectory, fileName);
 
-            // Replace src
-            $img.attr('src', fileName);
-        });
+                // Replace src
+                $img.attr('src', fileName);
+            });
     });
 }
 

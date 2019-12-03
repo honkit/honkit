@@ -17,27 +17,27 @@ function onPage(output, page) {
     var readme = output.getBook().getReadme().getFile();
 
     return Modifiers.modifyHTML(page, getModifiers(output, page))
-    .then(function(resultPage) {
+        .then(function(resultPage) {
         // Generate the JSON
-        var json = JSONUtils.encodeBookWithPage(output.getBook(), resultPage);
+            var json = JSONUtils.encodeBookWithPage(output.getBook(), resultPage);
 
-        // Delete some private properties
-        delete json.config;
+            // Delete some private properties
+            delete json.config;
 
-        // Specify JSON output version
-        json.version = JSON_VERSION;
+            // Specify JSON output version
+            json.version = JSON_VERSION;
 
-        // File path in the output folder
-        var filePath = file.getPath() == readme.getPath()? 'README.json' : file.getPath();
-        filePath = PathUtils.setExtension(filePath, '.json');
+            // File path in the output folder
+            var filePath = file.getPath() == readme.getPath()? 'README.json' : file.getPath();
+            filePath = PathUtils.setExtension(filePath, '.json');
 
-        // Write it to the disk
-        return writeFile(
-            output,
-            filePath,
-            JSON.stringify(json, null, 4)
-        );
-    });
+            // Write it to the disk
+            return writeFile(
+                output,
+                filePath,
+                JSON.stringify(json, null, 4)
+            );
+        });
 }
 
 module.exports = onPage;

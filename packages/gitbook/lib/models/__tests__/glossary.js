@@ -30,9 +30,9 @@ describe('Glossary', function() {
     describe('toText', function() {
         it('return as markdown', function() {
             return glossary.toText('.md')
-            .then(function(text) {
-                expect(text).toContain('# Glossary');
-            });
+                .then(function(text) {
+                    expect(text).toContain('# Glossary');
+                });
         });
     });
 });

@@ -60,20 +60,20 @@ module.exports = {
         var logger = book.getLogger();
 
         return Parse.parseBook(book)
-        .then(function(resultBook) {
-            var rootFolder = book.getRoot();
-            var contentFolder = book.getContentRoot();
+            .then(function(resultBook) {
+                var rootFolder = book.getRoot();
+                var contentFolder = book.getContentRoot();
 
-            logger.info.ln('Book located in:', rootFolder);
-            if (contentFolder != rootFolder) {
-                logger.info.ln('Content located in:', contentFolder);
-            }
+                logger.info.ln('Book located in:', rootFolder);
+                if (contentFolder != rootFolder) {
+                    logger.info.ln('Content located in:', contentFolder);
+                }
 
-            if (resultBook.isMultilingual()) {
-                printMultingualBook(resultBook);
-            } else {
-                printBook(resultBook);
-            }
-        });
+                if (resultBook.isMultilingual()) {
+                    printMultingualBook(resultBook);
+                } else {
+                    printBook(resultBook);
+                }
+            });
     }
 };

@@ -7,10 +7,10 @@ describe('validatePlugin', function() {
         var plugin = Plugin.createFromString('test');
 
         return validatePlugin(plugin)
-        .then(function() {
-            throw new Error('Should not be validate');
-        }, function(err) {
-            return Promise();
-        });
+            .then(function() {
+                throw new Error('Should not be validate');
+            }, function(err) {
+                return Promise();
+            });
     });
 });

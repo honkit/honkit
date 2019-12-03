@@ -29,13 +29,13 @@ function getPDFTemplate(output, type) {
     return Templating.renderFile(engine, 'ebook/' + filePath, context)
 
     // Inline css and assets
-    .then(function(tplOut) {
-        return Promise.nfcall(juice.juiceResources, tplOut.getContent(), {
-            webResources: {
-                relativeTo: outputRoot
-            }
+        .then(function(tplOut) {
+            return Promise.nfcall(juice.juiceResources, tplOut.getContent(), {
+                webResources: {
+                    relativeTo: outputRoot
+                }
+            });
         });
-    });
 }
 
 module.exports = getPDFTemplate;

@@ -171,17 +171,17 @@ TemplateBlock.prototype.toNunjucksExt = function(mainContext, blocksOutput) {
             mainBlock.blocks = blocks;
 
             Promise()
-            .then(function() {
-                var ctx = extend({
-                    ctx: context
-                }, mainContext || {});
+                .then(function() {
+                    var ctx = extend({
+                        ctx: context
+                    }, mainContext || {});
 
-                return that.applyBlock(mainBlock, ctx);
-            })
-            .then(function(result) {
-                return that.blockResultToHtml(result, blocksOutput);
-            })
-            .nodeify(callback);
+                    return that.applyBlock(mainBlock, ctx);
+                })
+                .then(function(result) {
+                    return that.blockResultToHtml(result, blocksOutput);
+                })
+                .nodeify(callback);
         };
     }
 

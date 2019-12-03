@@ -179,11 +179,11 @@ function encodeGlobal(output) {
             */
             hasFile: function(fileName, content) {
                 return Promise()
-                .then(function() {
-                    var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+                    .then(function() {
+                        var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
 
-                    return fs.exists(filePath);
-                });
+                        return fs.exists(filePath);
+                    });
             },
 
             /**
@@ -196,14 +196,14 @@ function encodeGlobal(output) {
             */
             writeFile: function(fileName, content) {
                 return Promise()
-                .then(function() {
-                    var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
-
-                    return fs.ensureFile(filePath)
                     .then(function() {
-                        return fs.writeFile(filePath, content);
+                        var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+
+                        return fs.ensureFile(filePath)
+                            .then(function() {
+                                return fs.writeFile(filePath, content);
+                            });
                     });
-                });
             },
 
             /**
@@ -217,14 +217,14 @@ function encodeGlobal(output) {
             */
             copyFile: function(inputFile, outputFile, content) {
                 return Promise()
-                .then(function() {
-                    var outputFilePath = PathUtils.resolveInRoot(outputFolder, outputFile);
-
-                    return fs.ensureFile(outputFilePath)
                     .then(function() {
-                        return fs.copy(inputFile, outputFilePath);
+                        var outputFilePath = PathUtils.resolveInRoot(outputFolder, outputFile);
+
+                        return fs.ensureFile(outputFilePath)
+                            .then(function() {
+                                return fs.copy(inputFile, outputFilePath);
+                            });
                     });
-                });
             }
         },
 

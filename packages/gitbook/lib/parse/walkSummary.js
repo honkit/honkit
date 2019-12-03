@@ -10,9 +10,9 @@ var Promise = require('../utils/promise');
 function walkArticles(articles, fn) {
     return Promise.forEach(articles, function(article) {
         return Promise(fn(article))
-        .then(function() {
-            return walkArticles(article.getArticles(), fn);
-        });
+            .then(function() {
+                return walkArticles(article.getArticles(), fn);
+            });
     });
 }
 

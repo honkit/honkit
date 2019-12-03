@@ -27,9 +27,9 @@ Git.prototype.allocateDir = function() {
     if (this.tmpDir) return Promise();
 
     return fs.tmpDir()
-    .then(function(dir) {
-        that.tmpDir = dir;
-    });
+        .then(function(dir) {
+            that.tmpDir = dir;
+        });
 };
 
 // Clone a git repository if non existant
@@ -39,27 +39,27 @@ Git.prototype.clone = function(host, ref) {
     return this.allocateDir()
 
     // Return or clone the git repo
-    .then(function() {
-        // Unique ID for repo/ref combinaison
-        var repoId = that.repoID(host, ref);
-
-        // Absolute path to the folder
-        var repoPath = path.join(that.tmpDir, repoId);
-
-        if (that.cloned[repoId]) return repoPath;
-
-        // Clone repo
-        return command.exec('git clone '+host+' '+repoPath)
-
-        // Checkout reference if specified
         .then(function() {
-            that.cloned[repoId] = true;
+        // Unique ID for repo/ref combinaison
+            var repoId = that.repoID(host, ref);
 
-            if (!ref) return;
-            return command.exec('git checkout '+ref, { cwd: repoPath });
-        })
-        .thenResolve(repoPath);
-    });
+            // Absolute path to the folder
+            var repoPath = path.join(that.tmpDir, repoId);
+
+            if (that.cloned[repoId]) return repoPath;
+
+            // Clone repo
+            return command.exec('git clone '+host+' '+repoPath)
+
+            // Checkout reference if specified
+                .then(function() {
+                    that.cloned[repoId] = true;
+
+                    if (!ref) return;
+                    return command.exec('git checkout '+ref, { cwd: repoPath });
+                })
+                .thenResolve(repoPath);
+        });
 };
 
 // Get file from a git repo
@@ -74,9 +74,9 @@ Git.prototype.resolve = function(giturl) {
 
     // Clone or get from cache
     return this.clone(giturl.host, giturl.ref)
-    .then(function(repo) {
-        return path.resolve(repo, giturl.filepath);
-    });
+        .then(function(repo) {
+            return path.resolve(repo, giturl.filepath);
+        });
 };
 
 // Return root of git repo from a filepath

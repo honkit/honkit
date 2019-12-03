@@ -16,10 +16,10 @@ function modifyHTML(page, operations) {
     return Promise.forEach(operations, function(op) {
         return op($);
     })
-    .then(function() {
-        var resultHTML = $.html();
-        return page.set('content', resultHTML);
-    });
+        .then(function() {
+            var resultHTML = $.html();
+            return page.set('content', resultHTML);
+        });
 }
 
 module.exports = modifyHTML;

@@ -18,23 +18,17 @@ var generateBook = require('../generateBook');
 function generateMock(Generator, files) {
     var fs = createMockFS(files);
     var book = Book.createForFS(fs);
-    var dir;
-
-    try {
-        dir = tmp.dirSync();
-    } catch(err) {
-        throw err;
-    }
+    var dir = tmp.dirSync();
 
     book = book.setLogLevel('disabled');
 
     return parseBook(book)
-    .then(function(resultBook) {
-        return generateBook(Generator, resultBook, {
-            root: dir.name
-        });
-    })
-    .thenResolve(dir.name);
+        .then(function(resultBook) {
+            return generateBook(Generator, resultBook, {
+                root: dir.name
+            });
+        })
+        .thenResolve(dir.name);
 }
 
 module.exports = generateMock;

@@ -16,7 +16,7 @@ function applyShortcut(content, shortcut) {
 
     var regex = new RegExp(
         escapeStringRegexp(start) + '([\\s\\S]*?[^\\$])' + escapeStringRegexp(end),
-       'g'
+        'g'
     );
     return content.replace(regex, function(all, match) {
         return '{% ' + tagStart + ' %}' + match + '{% ' + tagEnd + ' %}';

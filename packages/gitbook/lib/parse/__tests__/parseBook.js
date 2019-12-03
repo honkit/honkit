@@ -17,14 +17,14 @@ describe('parseBook', function() {
         var book = Book.createForFS(fs);
 
         return parseBook(book)
-        .then(function(resultBook) {
-            var languages = resultBook.getLanguages();
-            var books = resultBook.getBooks();
+            .then(function(resultBook) {
+                var languages = resultBook.getLanguages();
+                var books = resultBook.getBooks();
 
-            expect(resultBook.isMultilingual()).toBe(true);
-            expect(languages.getList().size).toBe(2);
-            expect(books.size).toBe(2);
-        });
+                expect(resultBook.isMultilingual()).toBe(true);
+                expect(languages.getList().size).toBe(2);
+                expect(books.size).toBe(2);
+            });
     });
 
     it('should extend configuration for multilingual book', function() {
@@ -42,24 +42,24 @@ describe('parseBook', function() {
         var book = Book.createForFS(fs);
 
         return parseBook(book)
-        .then(function(resultBook) {
-            var books = resultBook.getBooks();
+            .then(function(resultBook) {
+                var books = resultBook.getBooks();
 
-            expect(resultBook.isMultilingual()).toBe(true);
-            expect(books.size).toBe(2);
+                expect(resultBook.isMultilingual()).toBe(true);
+                expect(books.size).toBe(2);
 
-            var en = books.get('en');
-            var fr = books.get('fr');
+                var en = books.get('en');
+                var fr = books.get('fr');
 
-            var enConfig = en.getConfig();
-            var frConfig = fr.getConfig();
+                var enConfig = en.getConfig();
+                var frConfig = fr.getConfig();
 
-            expect(enConfig.getValue('title')).toBe('Test EN');
-            expect(enConfig.getValue('author')).toBe('GitBook');
+                expect(enConfig.getValue('title')).toBe('Test EN');
+                expect(enConfig.getValue('author')).toBe('GitBook');
 
-            expect(frConfig.getValue('title')).toBe('Test');
-            expect(frConfig.getValue('author')).toBe('GitBook');
-        });
+                expect(frConfig.getValue('title')).toBe('Test');
+                expect(frConfig.getValue('author')).toBe('GitBook');
+            });
     });
 
     it('should parse book in a directory', function() {
@@ -76,15 +76,15 @@ describe('parseBook', function() {
         var book = Book.createForFS(fs);
 
         return parseBook(book)
-        .then(function(resultBook) {
-            var readme = resultBook.getReadme();
-            var summary = resultBook.getSummary();
-            var articles = summary.getArticlesAsList();
+            .then(function(resultBook) {
+                var readme = resultBook.getReadme();
+                var summary = resultBook.getSummary();
+                var articles = summary.getArticlesAsList();
 
-            expect(summary.getFile().exists()).toBe(true);
-            expect(readme.getFile().exists()).toBe(true);
-            expect(articles.size).toBe(2);
-        });
+                expect(summary.getFile().exists()).toBe(true);
+                expect(readme.getFile().exists()).toBe(true);
+                expect(articles.size).toBe(2);
+            });
     });
 
 });

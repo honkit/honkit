@@ -16,13 +16,13 @@ function onAsset(output, asset) {
     var outputPath = path.resolve(outputFolder, asset);
 
     return fs.ensureFile(outputPath)
-    .then(function() {
-        return bookFS.readAsStream(asset)
-        .then(function(stream) {
-            return fs.writeStream(outputPath, stream);
-        });
-    })
-    .thenResolve(output);
+        .then(function() {
+            return bookFS.readAsStream(asset)
+                .then(function(stream) {
+                    return fs.writeStream(outputPath, stream);
+                });
+        })
+        .thenResolve(output);
 }
 
 module.exports = onAsset;

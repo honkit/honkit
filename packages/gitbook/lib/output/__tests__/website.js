@@ -8,9 +8,9 @@ describe('WebsiteGenerator', function() {
         return generateMock(WebsiteGenerator, {
             'README.md': 'Hello World'
         })
-        .then(function(folder) {
-            expect(folder).toHaveFile('index.html');
-        });
+            .then(function(folder) {
+                expect(folder).toHaveFile('index.html');
+            });
     });
 
     describe('Glossary', function() {
@@ -25,9 +25,9 @@ describe('WebsiteGenerator', function() {
                 },
                 'GLOSSARY.md': '# Glossary\n\n## Hello\n\nHello World'
             })
-            .then(function(_folder) {
-                folder = _folder;
-            });
+                .then(function(_folder) {
+                    folder = _folder;
+                });
         });
 
         it('should generate a GLOSSARY.html', function() {
@@ -50,13 +50,13 @@ describe('WebsiteGenerator', function() {
                 'book.json': '{ "structure": { "glossary": "custom.md" } }',
                 'custom.md': '# Glossary\n\n## Hello\n\nHello World'
             })
-            .then(function(folder) {
-                expect(folder).toHaveFile('custom.html');
-                expect(folder).toNotHaveFile('GLOSSARY.html');
+                .then(function(folder) {
+                    expect(folder).toHaveFile('custom.html');
+                    expect(folder).toNotHaveFile('GLOSSARY.html');
 
-                var html = fs.readFileSync(folder + '/index.html', 'utf8');
-                expect(html).toHaveDOMElement('.page-inner a[href="custom.html#hello"]');
-            });
+                    var html = fs.readFileSync(folder + '/index.html', 'utf8');
+                    expect(html).toHaveDOMElement('.page-inner a[href="custom.html#hello"]');
+                });
         });
     });
 
@@ -69,20 +69,20 @@ describe('WebsiteGenerator', function() {
                 'AnotherAssetFile.md': '# Even md'
             }
         })
-        .then(function(folder) {
-            expect(folder).toHaveFile('index.html');
-            expect(folder).toHaveFile('myJsFile.js');
-            expect(folder).toHaveFile('folder/AnotherAssetFile.md');
-        });
+            .then(function(folder) {
+                expect(folder).toHaveFile('index.html');
+                expect(folder).toHaveFile('myJsFile.js');
+                expect(folder).toHaveFile('folder/AnotherAssetFile.md');
+            });
     });
 
     it('should generate an index.html for AsciiDoc', function() {
         return generateMock(WebsiteGenerator, {
             'README.adoc': 'Hello World'
         })
-        .then(function(folder) {
-            expect(folder).toHaveFile('index.html');
-        });
+            .then(function(folder) {
+                expect(folder).toHaveFile('index.html');
+            });
     });
 
     it('should generate an HTML file for each articles', function() {
@@ -93,10 +93,10 @@ describe('WebsiteGenerator', function() {
                 'page.md': 'Hello 2'
             }
         })
-        .then(function(folder) {
-            expect(folder).toHaveFile('index.html');
-            expect(folder).toHaveFile('test/page.html');
-        });
+            .then(function(folder) {
+                expect(folder).toHaveFile('index.html');
+                expect(folder).toHaveFile('test/page.html');
+            });
     });
 
     it('should not generate file if entry file doesn\'t exist', function() {
@@ -107,11 +107,11 @@ describe('WebsiteGenerator', function() {
                 'page.md': 'Hello 2'
             }
         })
-        .then(function(folder) {
-            expect(folder).toHaveFile('index.html');
-            expect(folder).toNotHaveFile('page.html');
-            expect(folder).toHaveFile('test/page.html');
-        });
+            .then(function(folder) {
+                expect(folder).toHaveFile('index.html');
+                expect(folder).toNotHaveFile('page.html');
+                expect(folder).toHaveFile('test/page.html');
+            });
     });
 
     it('should generate a multilingual book', function() {
@@ -124,21 +124,21 @@ describe('WebsiteGenerator', function() {
                 'README.md': 'Bonjour'
             }
         })
-        .then(function(folder) {
+            .then(function(folder) {
             // It should generate languages
-            expect(folder).toHaveFile('en/index.html');
-            expect(folder).toHaveFile('fr/index.html');
+                expect(folder).toHaveFile('en/index.html');
+                expect(folder).toHaveFile('fr/index.html');
 
-            // Should not copy languages as assets
-            expect(folder).toNotHaveFile('en/README.md');
-            expect(folder).toNotHaveFile('fr/README.md');
+                // Should not copy languages as assets
+                expect(folder).toNotHaveFile('en/README.md');
+                expect(folder).toNotHaveFile('fr/README.md');
 
-            // Should copy assets only once
-            expect(folder).toHaveFile('gitbook/style.css');
-            expect(folder).toNotHaveFile('en/gitbook/style.css');
+                // Should copy assets only once
+                expect(folder).toHaveFile('gitbook/style.css');
+                expect(folder).toNotHaveFile('en/gitbook/style.css');
 
-            expect(folder).toHaveFile('index.html');
-        });
+                expect(folder).toHaveFile('index.html');
+            });
     });
 });
 

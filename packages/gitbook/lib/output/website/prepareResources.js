@@ -23,32 +23,32 @@ function prepareResources(output) {
         var pluginResources = plugin.getResources(type);
 
         return Promise()
-        .then(function() {
+            .then(function() {
             // Apply resources if is a function
-            if (is.fn(pluginResources)) {
-                return Promise()
-                .then(pluginResources.bind(context));
-            }
-            else {
-                return pluginResources;
-            }
-        })
-        .then(function(resources) {
-            result = result.set(plugin.getName(), Immutable.Map(resources));
-        });
+                if (is.fn(pluginResources)) {
+                    return Promise()
+                        .then(pluginResources.bind(context));
+                }
+                else {
+                    return pluginResources;
+                }
+            })
+            .then(function(resources) {
+                result = result.set(plugin.getName(), Immutable.Map(resources));
+            });
     })
-    .then(function() {
+        .then(function() {
         // Set output resources
-        state = state.merge({
-            resources: result
-        });
+            state = state.merge({
+                resources: result
+            });
 
-        output = output.merge({
-            state: state
-        });
+            output = output.merge({
+                state: state
+            });
 
-        return output;
-    });
+            return output;
+        });
 }
 
 module.exports = prepareResources;

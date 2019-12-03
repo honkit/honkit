@@ -42,7 +42,7 @@ function installPlugins(book) {
     return Promise.forEach(plugins, function(plugin) {
         return installPlugin(book, plugin);
     })
-    .thenResolve(plugins.size);
+        .thenResolve(plugins.size);
 }
 
 module.exports = installPlugins;

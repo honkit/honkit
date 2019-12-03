@@ -23,13 +23,13 @@ function findParsableFile(book, filename) {
         var filepath = basename + ext;
 
         return fs.findFile(basedir, filepath)
-        .then(function(found) {
-            if (!found || book.isContentFileIgnored(found)) {
-                return undefined;
-            }
+            .then(function(found) {
+                if (!found || book.isContentFileIgnored(found)) {
+                    return undefined;
+                }
 
-            return fs.statFile(found);
-        });
+                return fs.statFile(found);
+            });
     });
 }
 

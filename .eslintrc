@@ -8,15 +8,19 @@
             "vars": "all",
             "args": "none"
         } ],
-        "spaced-comment": [ 2, "always" ]
+        "spaced-comment": [ 2, "always" ],
+        "no-useless-escape": "off"
     },
     "env": {
         "node": true,
-        "browser": true,
-        "mocha": true
+        "mocha": true,
+        "es6": true
     },
     "globals": {
         "expect": true
     },
-    "extends": "eslint:recommended"
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
 }

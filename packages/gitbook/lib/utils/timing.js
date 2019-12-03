@@ -23,21 +23,21 @@ function measure(type, p) {
     var start = Date.now();
 
     return p
-    .fin(function() {
-        var end = Date.now();
-        var duration = (end - start);
+        .fin(function() {
+            var end = Date.now();
+            var duration = (end - start);
 
-        timers[type].count ++;
-        timers[type].total += duration;
+            timers[type].count ++;
+            timers[type].total += duration;
 
-        if (is.undefined(timers[type].min)) {
-            timers[type].min = duration;
-        } else {
-            timers[type].min = Math.min(timers[type].min, duration);
-        }
+            if (is.undefined(timers[type].min)) {
+                timers[type].min = duration;
+            } else {
+                timers[type].min = Math.min(timers[type].min, duration);
+            }
 
-        timers[type].max = Math.max(timers[type].max, duration);
-    });
+            timers[type].max = Math.max(timers[type].max, duration);
+        });
 }
 
 /**

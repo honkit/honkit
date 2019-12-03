@@ -22,13 +22,13 @@ module.exports = {
         var Generator = Output.getGenerator(kwargs.format);
 
         return Parse.parseBook(book)
-        .then(function(resultBook) {
-            return Output.generate(Generator, resultBook, {
-                root: outputFolder
+            .then(function(resultBook) {
+                return Output.generate(Generator, resultBook, {
+                    root: outputFolder
+                });
+            })
+            .fin(function() {
+                if (kwargs.timing) timing.dump(book.getLogger());
             });
-        })
-        .fin(function() {
-            if (kwargs.timing) timing.dump(book.getLogger());
-        });
     }
 };

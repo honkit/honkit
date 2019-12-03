@@ -22,13 +22,13 @@ describe('TemplateBlock', function() {
 
             // Check result of applying block
             return Promise()
-            .then(function() {
-                return templateBlock.applyBlock();
-            })
-            .then(function(result) {
-                expect(result.name).toBe('sayhello');
-                expect(result.body).toBe('<p>Hello, World!</p>');
-            });
+                .then(function() {
+                    return templateBlock.applyBlock();
+                })
+                .then(function(result) {
+                    expect(result.name).toBe('sayhello');
+                    expect(result.body).toBe('<p>Hello, World!</p>');
+                });
         });
     });
 
@@ -84,17 +84,17 @@ describe('TemplateBlock', function() {
             // Render a template using the block
             var src = '{% sayhello %}{% endsayhello %}';
             return Promise.nfcall(env.renderString.bind(env), src)
-            .then(function(res) {
-                blocks = Immutable.fromJS(blocks);
-                expect(blocks.size).toBe(1);
+                .then(function(res) {
+                    blocks = Immutable.fromJS(blocks);
+                    expect(blocks.size).toBe(1);
 
-                var blockId = blocks.keySeq().get(0);
-                var block = blocks.get(blockId);
+                    var blockId = blocks.keySeq().get(0);
+                    var block = blocks.get(blockId);
 
-                expect(res).toBe('{{-%' + blockId + '%-}}');
-                expect(block.get('body')).toBe('Hello');
-                expect(block.get('name')).toBe('sayhello');
-            });
+                    expect(res).toBe('{{-%' + blockId + '%-}}');
+                    expect(block.get('body')).toBe('Hello');
+                    expect(block.get('name')).toBe('sayhello');
+                });
         });
 
         it('must create a valid nunjucks extension', function() {
@@ -115,9 +115,9 @@ describe('TemplateBlock', function() {
             // Render a template using the block
             var src = '{% sayhello %}{% endsayhello %}';
             return Promise.nfcall(env.renderString.bind(env), src)
-            .then(function(res) {
-                expect(res).toBe('<p>Hello, World!</p>');
-            });
+                .then(function(res) {
+                    expect(res).toBe('<p>Hello, World!</p>');
+                });
         });
 
         it('must apply block arguments correctly', function() {
@@ -138,20 +138,20 @@ describe('TemplateBlock', function() {
             // Render a template using the block
             var src = '{% sayhello name="Samy", tag="p" %}{% endsayhello %}';
             return Promise.nfcall(env.renderString.bind(env), src)
-            .then(function(res) {
-                expect(res).toBe('<p>Hello, Samy!</p>');
-            });
+                .then(function(res) {
+                    expect(res).toBe('<p>Hello, Samy!</p>');
+                });
         });
 
         it('must accept an async function', function() {
             var templateBlock = TemplateBlock.create('sayhello', function(block) {
                 return Promise()
-                .then(function() {
-                    return {
-                        body: 'Hello ' + block.body,
-                        parse: true
-                    };
-                });
+                    .then(function() {
+                        return {
+                            body: 'Hello ' + block.body,
+                            parse: true
+                        };
+                    });
             });
 
             // Create a fresh Nunjucks environment
@@ -164,9 +164,9 @@ describe('TemplateBlock', function() {
             // Render a template using the block
             var src = '{% sayhello %}Samy{% endsayhello %}';
             return Promise.nfcall(env.renderString.bind(env), src)
-            .then(function(res) {
-                expect(res).toBe('Hello Samy');
-            });
+                .then(function(res) {
+                    expect(res).toBe('Hello Samy');
+                });
         });
 
         it('must handle nested blocks', function() {
@@ -197,9 +197,9 @@ describe('TemplateBlock', function() {
             // Render a template using the block
             var src = '{% yoda %}{% start %}this sentence should be{% end %}inverted{% endyoda %}';
             return Promise.nfcall(env.renderString.bind(env), src)
-            .then(function(res) {
-                expect(res).toBe('<p class="yoda">inverted this sentence should be</p>');
-            });
+                .then(function(res) {
+                    expect(res).toBe('<p class="yoda">inverted this sentence should be</p>');
+                });
         });
     });
 });

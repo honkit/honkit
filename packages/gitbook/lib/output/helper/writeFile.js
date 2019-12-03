@@ -14,10 +14,10 @@ function writeFile(output, filePath, content) {
     filePath = path.join(rootFolder, filePath);
 
     return fs.ensureFile(filePath)
-    .then(function() {
-        return fs.writeFile(filePath, content);
-    })
-    .thenResolve(output);
+        .then(function() {
+            return fs.writeFile(filePath, content);
+        })
+        .thenResolve(output);
 }
 
 module.exports = writeFile;

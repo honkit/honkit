@@ -84,9 +84,9 @@ describe('Summary', function() {
     describe('toText', function() {
         it('return as markdown', function() {
             return summary.toText('.md')
-            .then(function(text) {
-                expect(text).toContain('# Summary');
-            });
+                .then(function(text) {
+                    expect(text).toContain('# Summary');
+                });
         });
     });
 });

@@ -16,15 +16,15 @@ describe('installPlugins', function() {
         var baseBook = Book.createForFS(fs);
 
         return Parse.parseConfig(baseBook)
-        .then(function(_book) {
-            book = _book;
-        });
+            .then(function(_book) {
+                book = _book;
+            });
     });
 
     it('must install all plugins from NPM', function() {
         return installPlugins(book)
-        .then(function(n) {
-            expect(n).toBe(2);
-        });
+            .then(function(n) {
+                expect(n).toBe(2);
+            });
     });
 });

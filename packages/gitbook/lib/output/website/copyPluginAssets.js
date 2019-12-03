@@ -29,11 +29,11 @@ function copyPluginAssets(output) {
 
     return Promise.forEach(plugins, function(plugin) {
         return copyAssets(output, plugin)
-        .then(function() {
-            return copyResources(output, plugin);
-        });
+            .then(function() {
+                return copyResources(output, plugin);
+            });
     })
-    .thenResolve(output);
+        .thenResolve(output);
 }
 
 /**

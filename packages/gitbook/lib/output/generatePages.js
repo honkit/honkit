@@ -23,13 +23,13 @@ function generatePages(generator, output) {
         logger.debug.ln('generate page "' + file.getPath() + '"');
 
         return generatePage(out, page)
-        .then(function(resultPage) {
-            return generator.onPage(out, resultPage);
-        })
-        .fail(function(err) {
-            logger.error.ln('error while generating page "' + file.getPath() + '":');
-            throw err;
-        });
+            .then(function(resultPage) {
+                return generator.onPage(out, resultPage);
+            })
+            .fail(function(err) {
+                logger.error.ln('error while generating page "' + file.getPath() + '":');
+                throw err;
+            });
     }, output);
 }
 

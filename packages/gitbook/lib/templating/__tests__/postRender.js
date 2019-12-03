@@ -24,28 +24,28 @@ describe('postRender', function() {
 
     it('should correctly replace block', function() {
         return renderTemplate(engine, 'README.md', 'Hello {% lower %}Samy{% endlower %}')
-        .then(function(output) {
-            expect(output.getContent()).toMatch(/Hello \{\{\-([\S]+)\-\}\}/);
-            expect(output.getBlocks().size).toBe(1);
+            .then(function(output) {
+                expect(output.getContent()).toMatch(/Hello \{\{\-([\S]+)\-\}\}/);
+                expect(output.getBlocks().size).toBe(1);
 
-            return postRender(engine, output);
-        })
-        .then(function(result) {
-            expect(result).toBe('Hello samy');
-        });
+                return postRender(engine, output);
+            })
+            .then(function(result) {
+                expect(result).toBe('Hello samy');
+            });
     });
 
     it('should correctly replace blocks', function() {
         return renderTemplate(engine, 'README.md', 'Hello {% lower %}Samy{% endlower %}{% prefix %}Pesse{% endprefix %}')
-        .then(function(output) {
-            expect(output.getContent()).toMatch(/Hello \{\{\-([\S]+)\-\}\}\{\{\-([\S]+)\-\}\}/);
-            expect(output.getBlocks().size).toBe(2);
-            return postRender(engine, output);
-        })
-        .then(function(result) {
-            expect(result).toBe('Hello samy_Pesse_');
-            expect(testPost).toBe(true);
-        });
+            .then(function(output) {
+                expect(output.getContent()).toMatch(/Hello \{\{\-([\S]+)\-\}\}\{\{\-([\S]+)\-\}\}/);
+                expect(output.getBlocks().size).toBe(2);
+                return postRender(engine, output);
+            })
+            .then(function(result) {
+                expect(result).toBe('Hello samy_Pesse_');
+                expect(testPost).toBe(true);
+            });
     });
 
 });

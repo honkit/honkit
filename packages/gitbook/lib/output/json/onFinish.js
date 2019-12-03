@@ -26,22 +26,22 @@ function onFinish(output) {
     return fs.readFile(path.resolve(outputRoot, mainLanguage.getID(), 'README.json'), 'utf8')
 
     // Extend the JSON
-    .then(function(content) {
-        var json = JSON.parse(content);
+        .then(function(content) {
+            var json = JSON.parse(content);
 
-        json.languages = JSONUtils.encodeLanguages(languages);
+            json.languages = JSONUtils.encodeLanguages(languages);
 
-        return json;
-    })
+            return json;
+        })
 
-    .then(function(json) {
-        return fs.writeFile(
-            path.resolve(outputRoot, 'README.json'),
-            JSON.stringify(json, null, 4)
-        );
-    })
+        .then(function(json) {
+            return fs.writeFile(
+                path.resolve(outputRoot, 'README.json'),
+                JSON.stringify(json, null, 4)
+            );
+        })
 
-    .thenResolve(output);
+        .thenResolve(output);
 }
 
 module.exports = onFinish;

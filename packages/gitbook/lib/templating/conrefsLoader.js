@@ -31,33 +31,33 @@ var ConrefsLoader = nunjucks.Loader.extend({
         var that = this;
 
         this.git.resolve(sourceURL)
-        .then(function(filepath) {
+            .then(function(filepath) {
             // Is local file
-            if (!filepath) {
-                filepath = path.resolve(sourceURL);
-            } else {
-                if (that.logger) that.logger.debug.ln('resolve from git', sourceURL, 'to', filepath);
-            }
-
-            // Read file from absolute path
-            return fs.readFile(filepath)
-            .then(function(source) {
-                source = source.toString('utf8');
-
-                if (that.transformFn) {
-                    return that.transformFn(filepath, source);
+                if (!filepath) {
+                    filepath = path.resolve(sourceURL);
+                } else {
+                    if (that.logger) that.logger.debug.ln('resolve from git', sourceURL, 'to', filepath);
                 }
 
-                return source;
+                // Read file from absolute path
+                return fs.readFile(filepath)
+                    .then(function(source) {
+                        source = source.toString('utf8');
+
+                        if (that.transformFn) {
+                            return that.transformFn(filepath, source);
+                        }
+
+                        return source;
+                    })
+                    .then(function(source) {
+                        return {
+                            src: source,
+                            path: filepath
+                        };
+                    });
             })
-            .then(function(source) {
-                return {
-                    src: source,
-                    path: filepath
-                };
-            });
-        })
-        .nodeify(callback);
+            .nodeify(callback);
     },
 
     resolve: function(from, to) {

@@ -59,58 +59,58 @@ Server.prototype.start = function(dir, port) {
 
     if (that.isRunning()) pre = this.stop();
     return pre
-    .then(function() {
-        var d = Promise.defer();
+        .then(function() {
+            var d = Promise.defer();
 
-        that.running = http.createServer(function(req, res){
+            that.running = http.createServer(function(req, res){
             // Render error
-            function error(err) {
-                res.statusCode = err.status || 500;
-                res.end(err.message);
-            }
+                function error(err) {
+                    res.statusCode = err.status || 500;
+                    res.end(err.message);
+                }
 
-            // Redirect to directory's index.html
-            function redirect() {
-                var resultURL = urlTransform(req.url, function(parsed) {
-                    parsed.pathname += '/';
-                    return parsed;
-                });
+                // Redirect to directory's index.html
+                function redirect() {
+                    var resultURL = urlTransform(req.url, function(parsed) {
+                        parsed.pathname += '/';
+                        return parsed;
+                    });
 
-                res.statusCode = 301;
-                res.setHeader('Location', resultURL);
-                res.end('Redirecting to ' + resultURL);
-            }
+                    res.statusCode = 301;
+                    res.setHeader('Location', resultURL);
+                    res.end('Redirecting to ' + resultURL);
+                }
 
-            res.setHeader('X-Current-Location', req.url);
+                res.setHeader('X-Current-Location', req.url);
 
-            // Send file
-            send(req, url.parse(req.url).pathname, {
-                root: dir
-            })
-            .on('error', error)
-            .on('directory', redirect)
-            .pipe(res);
-        });
-
-        that.running.on('connection', function (socket) {
-            that.sockets.push(socket);
-            socket.setTimeout(4000);
-            socket.on('close', function () {
-                that.sockets.splice(that.sockets.indexOf(socket), 1);
+                // Send file
+                send(req, url.parse(req.url).pathname, {
+                    root: dir
+                })
+                    .on('error', error)
+                    .on('directory', redirect)
+                    .pipe(res);
             });
+
+            that.running.on('connection', function (socket) {
+                that.sockets.push(socket);
+                socket.setTimeout(4000);
+                socket.on('close', function () {
+                    that.sockets.splice(that.sockets.indexOf(socket), 1);
+                });
+            });
+
+            that.running.listen(port, function(err) {
+                if (err) return d.reject(err);
+
+                that.port = port;
+                that.dir = dir;
+                that.emit('state', true);
+                d.resolve();
+            });
+
+            return d.promise;
         });
-
-        that.running.listen(port, function(err) {
-            if (err) return d.reject(err);
-
-            that.port = port;
-            that.dir = dir;
-            that.emit('state', true);
-            d.resolve();
-        });
-
-        return d.promise;
-    });
 };
 
 /**

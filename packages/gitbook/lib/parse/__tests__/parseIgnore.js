@@ -19,22 +19,22 @@ describe('parseIgnore', function() {
 
     it('should load rules from .ignore', function() {
         return getBook()
-        .then(function(book) {
-            expect(book.isFileIgnored('test-1.js')).toBeTruthy();
-        });
+            .then(function(book) {
+                expect(book.isFileIgnored('test-1.js')).toBeTruthy();
+            });
     });
 
     it('should load rules from .gitignore', function() {
         return getBook()
-        .then(function(book) {
-            expect(book.isFileIgnored('test-2.js')).toBeTruthy();
-        });
+            .then(function(book) {
+                expect(book.isFileIgnored('test-2.js')).toBeTruthy();
+            });
     });
 
     it('should load rules from .bookignore', function() {
         return getBook()
-        .then(function(book) {
-            expect(book.isFileIgnored('test-3.js')).toBeFalsy();
-        });
+            .then(function(book) {
+                expect(book.isFileIgnored('test-3.js')).toBeFalsy();
+            });
     });
 });

@@ -17,13 +17,13 @@ describe('listAssets', function() {
         var book = Book.createForFS(fs);
 
         return parseGlossary(book)
-        .then(function(resultBook) {
-            return listAssets(resultBook, Immutable.Map());
-        })
-        .then(function(assets) {
-            expect(assets.size).toBe(2);
-            expect(assets.includes('assetFile.js'));
-            expect(assets.includes('assets/file.js'));
-        });
+            .then(function(resultBook) {
+                return listAssets(resultBook, Immutable.Map());
+            })
+            .then(function(assets) {
+                expect(assets.size).toBe(2);
+                expect(assets.includes('assetFile.js'));
+                expect(assets.includes('assets/file.js'));
+            });
     });
 });

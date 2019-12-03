@@ -36,16 +36,16 @@ function parseIgnore(book) {
 
     return Promise.serie(IGNORE_FILES, function(filename) {
         return fs.readAsString(filename)
-        .then(function(content) {
-            ignore = ignore.add(content.toString().split(/\r?\n/));
-        }, function(err) {
-            return Promise();
-        });
+            .then(function(content) {
+                ignore = ignore.add(content.toString().split(/\r?\n/));
+            }, function(err) {
+                return Promise();
+            });
     })
 
-    .then(function() {
-        return book.setIgnore(ignore);
-    });
+        .then(function() {
+            return book.setIgnore(ignore);
+        });
 }
 
 module.exports = parseIgnore;

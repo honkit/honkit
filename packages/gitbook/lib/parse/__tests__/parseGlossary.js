@@ -11,14 +11,14 @@ describe('parseGlossary', function() {
         var book = Book.createForFS(fs);
 
         return parseGlossary(book)
-        .then(function(resultBook) {
-            var glossary = resultBook.getGlossary();
-            var file = glossary.getFile();
-            var entries = glossary.getEntries();
+            .then(function(resultBook) {
+                var glossary = resultBook.getGlossary();
+                var file = glossary.getFile();
+                var entries = glossary.getEntries();
 
-            expect(file.exists()).toBeTruthy();
-            expect(entries.size).toBe(1);
-        });
+                expect(file.exists()).toBeTruthy();
+                expect(entries.size).toBe(1);
+            });
     });
 
     it('should not fail if doesn\'t exist', function() {
@@ -26,11 +26,11 @@ describe('parseGlossary', function() {
         var book = Book.createForFS(fs);
 
         return parseGlossary(book)
-        .then(function(resultBook) {
-            var glossary = resultBook.getGlossary();
-            var file = glossary.getFile();
+            .then(function(resultBook) {
+                var glossary = resultBook.getGlossary();
+                var file = glossary.getFile();
 
-            expect(file.exists()).toBeFalsy();
-        });
+                expect(file.exists()).toBeFalsy();
+            });
     });
 });

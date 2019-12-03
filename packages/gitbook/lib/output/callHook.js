@@ -38,22 +38,22 @@ function callHook(name, getArgument, handleResult, output) {
         Promise(getArgument(output))
 
         // Call the hooks in serie
-        .then(function(arg) {
-            return Promise.reduce(plugins, function(prev, plugin) {
-                var hook = plugin.getHook(name);
-                if (!hook) {
-                    return prev;
-                }
+            .then(function(arg) {
+                return Promise.reduce(plugins, function(prev, plugin) {
+                    var hook = plugin.getHook(name);
+                    if (!hook) {
+                        return prev;
+                    }
 
-                return hook.call(context, prev);
-            }, arg);
-        })
+                    return hook.call(context, prev);
+                }, arg);
+            })
 
         // Handle final result
-        .then(function(result) {
-            output = Api.decodeGlobal(output, context);
-            return handleResult(output, result);
-        })
+            .then(function(result) {
+                output = Api.decodeGlobal(output, context);
+                return handleResult(output, result);
+            })
     );
 }
 

@@ -11,12 +11,12 @@ describe('parseSummary', function() {
         var book = Book.createForFS(fs);
 
         return parseSummary(book)
-        .then(function(resultBook) {
-            var summary = resultBook.getSummary();
-            var file = summary.getFile();
+            .then(function(resultBook) {
+                var summary = resultBook.getSummary();
+                var file = summary.getFile();
 
-            expect(file.exists()).toBeTruthy();
-        });
+                expect(file.exists()).toBeTruthy();
+            });
     });
 
     it('should not fail if doesn\'t exist', function() {
@@ -24,11 +24,11 @@ describe('parseSummary', function() {
         var book = Book.createForFS(fs);
 
         return parseSummary(book)
-        .then(function(resultBook) {
-            var summary = resultBook.getSummary();
-            var file = summary.getFile();
+            .then(function(resultBook) {
+                var summary = resultBook.getSummary();
+                var file = summary.getFile();
 
-            expect(file.exists()).toBeFalsy();
-        });
+                expect(file.exists()).toBeFalsy();
+            });
     });
 });

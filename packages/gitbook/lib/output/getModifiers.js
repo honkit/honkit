@@ -59,13 +59,13 @@ function getModifiers(output, page) {
                     language: lang
                 }
             }, context))
-            .then(function(result) {
-                if (result.html === false) {
-                    return { text: result.body };
-                } else {
-                    return { html: result.body };
-                }
-            });
+                .then(function(result) {
+                    if (result.html === false) {
+                        return { text: result.body };
+                    } else {
+                        return { html: result.body };
+                    }
+                });
         })
     ];
 }

@@ -45,13 +45,13 @@ function highlightCode(highlight, $) {
         var source = $code.text();
 
         return Promise(highlight(lang, source))
-        .then(function(r) {
-            if (is.string(r.html)) {
-                $code.html(r.html);
-            } else {
-                $code.text(r.text);
-            }
-        });
+            .then(function(r) {
+                if (is.string(r.html)) {
+                    $code.html(r.html);
+                } else {
+                    $code.text(r.text);
+                }
+            });
     });
 }
 

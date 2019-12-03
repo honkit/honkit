@@ -12,9 +12,9 @@ function parsePage(book, page) {
     var file = page.getFile();
 
     return fs.readAsString(file.getPath())
-    .then(function(content) {
-        return parsePageFromString(page, content);
-    });
+        .then(function(content) {
+            return parsePageFromString(page, content);
+        });
 }
 
 

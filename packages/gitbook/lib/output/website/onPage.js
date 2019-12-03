@@ -38,39 +38,39 @@ function onPage(output, page) {
     var basePath = LocationUtils.normalize(path.relative(outputDirName, './'));
 
     return Modifiers.modifyHTML(page, getModifiers(output, page))
-    .then(function(resultPage) {
+        .then(function(resultPage) {
         // Generate the context
-        var context = JSONUtils.encodeOutputWithPage(output, resultPage);
-        context.plugins = {
-            resources: Plugins.listResources(plugins, resources).toJS()
-        };
+            var context = JSONUtils.encodeOutputWithPage(output, resultPage);
+            context.plugins = {
+                resources: Plugins.listResources(plugins, resources).toJS()
+            };
 
-        context.template = {
-            getJSContext: function() {
-                return {
-                    page: omit(context.page, 'content'),
-                    config: context.config,
-                    file: context.file,
-                    gitbook: context.gitbook,
-                    basePath: basePath,
-                    book: {
-                        language: book.getLanguage()
-                    }
-                };
-            }
-        };
+            context.template = {
+                getJSContext: function() {
+                    return {
+                        page: omit(context.page, 'content'),
+                        config: context.config,
+                        file: context.file,
+                        gitbook: context.gitbook,
+                        basePath: basePath,
+                        book: {
+                            language: book.getLanguage()
+                        }
+                    };
+                }
+            };
 
-        // We should probabbly move it to "template" or a "site" namespace
-        context.basePath = basePath;
+            // We should probabbly move it to "template" or a "site" namespace
+            context.basePath = basePath;
 
-        // Render the theme
-        return Templating.renderFile(engine, prefix + '/page.html', context)
+            // Render the theme
+            return Templating.renderFile(engine, prefix + '/page.html', context)
 
-        // Write it to the disk
-        .then(function(tplOut) {
-            return writeFile(output, filePath, tplOut.getContent());
+            // Write it to the disk
+                .then(function(tplOut) {
+                    return writeFile(output, filePath, tplOut.getContent());
+                });
         });
-    });
 }
 
 module.exports = onPage;

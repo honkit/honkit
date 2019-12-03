@@ -29,9 +29,9 @@ function writeSummary(output) {
     return Templating.renderFile(engine, prefix + '/summary.html', context)
 
     // Write it to the disk
-    .then(function(tplOut) {
-        return writeFile(output, filePath, tplOut.getContent());
-    });
+        .then(function(tplOut) {
+            return writeFile(output, filePath, tplOut.getContent());
+        });
 }
 
 /**
@@ -51,30 +51,30 @@ function runEbookConvert(output) {
     }
 
     return getConvertOptions(output)
-    .then(function(options) {
-        var cmd = [
-            'ebook-convert',
-            path.resolve(outputFolder, SUMMARY_FILE),
-            path.resolve(outputFolder, 'index.' + format),
-            command.optionsToShellArgs(options)
-        ].join(' ');
+        .then(function(options) {
+            var cmd = [
+                'ebook-convert',
+                path.resolve(outputFolder, SUMMARY_FILE),
+                path.resolve(outputFolder, 'index.' + format),
+                command.optionsToShellArgs(options)
+            ].join(' ');
 
-        return command.exec(cmd)
-        .progress(function(data) {
-            logger.debug(data);
-        })
-        .fail(function(err) {
-            if (err.code == 127) {
-                throw error.RequireInstallError({
-                    cmd: 'ebook-convert',
-                    install: 'Install it from Calibre: https://calibre-ebook.com'
+            return command.exec(cmd)
+                .progress(function(data) {
+                    logger.debug(data);
+                })
+                .fail(function(err) {
+                    if (err.code == 127) {
+                        throw error.RequireInstallError({
+                            cmd: 'ebook-convert',
+                            install: 'Install it from Calibre: https://calibre-ebook.com'
+                        });
+                    }
+
+                    throw error.EbookError(err);
                 });
-            }
-
-            throw error.EbookError(err);
-        });
-    })
-    .thenResolve(output);
+        })
+        .thenResolve(output);
 }
 
 /**
@@ -85,7 +85,7 @@ function runEbookConvert(output) {
 */
 function onFinish(output) {
     return writeSummary(output)
-    .then(runEbookConvert);
+        .then(runEbookConvert);
 }
 
 module.exports = onFinish;

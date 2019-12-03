@@ -13,16 +13,16 @@ function parseReadme(book) {
     var logger = book.getLogger();
 
     return parseStructureFile(book, 'readme')
-    .spread(function(file, result) {
-        if (!file) {
-            throw new error.FileNotFoundError({ filename: 'README' });
-        }
+        .spread(function(file, result) {
+            if (!file) {
+                throw new error.FileNotFoundError({ filename: 'README' });
+            }
 
-        logger.debug.ln('readme found at', file.getPath());
+            logger.debug.ln('readme found at', file.getPath());
 
-        var readme = Readme.create(file, result);
-        return book.set('readme', readme);
-    });
+            var readme = Readme.create(file, result);
+            return book.set('readme', readme);
+        });
 }
 
 module.exports = parseReadme;

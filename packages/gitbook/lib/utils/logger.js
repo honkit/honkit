@@ -158,13 +158,13 @@ Logger.prototype.promise = function(level, p) {
     var that = this;
 
     return p.
-    then(function(st) {
-        that.ok(level);
-        return st;
-    }, function(err) {
-        that.fail(level);
-        throw err;
-    });
+        then(function(st) {
+            that.ok(level);
+            return st;
+        }, function(err) {
+            that.fail(level);
+            throw err;
+        });
 };
 
 Logger.LEVELS = LEVELS;

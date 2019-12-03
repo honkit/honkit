@@ -48,9 +48,9 @@ describe('Git', function() {
         it('should clone an HTTPS url', function() {
             var git = new Git(path.join(os.tmpdir(), 'test-git-'+Date.now()));
             return git.resolve('git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md')
-            .then(function(filename) {
-                expect(path.extname(filename)).toBe('.md');
-            });
+                .then(function(filename) {
+                    expect(path.extname(filename)).toBe('.md');
+                });
         });
     });
 

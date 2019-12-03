@@ -1,4 +1,4 @@
-docs/**/*
-_book/**/*
-node_modules/**/*
-test/**/*
+docs/**
+_book/**
+**/node_modules/**
+**/test/**

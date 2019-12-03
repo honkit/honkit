@@ -46,10 +46,10 @@ function svgToImg(baseFolder, currentFile, $) {
         })
 
         // Return as image
-        .then(function() {
-            var src = LocationUtils.relative(currentDirectory, fileName);
-            $svg.replaceWith('<img src="' + src + '" />');
-        });
+            .then(function() {
+                var src = LocationUtils.relative(currentDirectory, fileName);
+                $svg.replaceWith('<img src="' + src + '" />');
+            });
     });
 }
 

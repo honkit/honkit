@@ -64,28 +64,28 @@ function findInstalled(folder) {
 
     // List all folders in node_modules
     return fs.readdir(node_modules)
-    .fail(function() {
-        return Promise([]);
-    })
-    .then(function(modules) {
-        return Promise.serie(modules, function(module) {
+        .fail(function() {
+            return Promise([]);
+        })
+        .then(function(modules) {
+            return Promise.serie(modules, function(module) {
             // Not a gitbook-plugin
-            if (!validateId(module)) {
-                return Promise();
-            }
+                if (!validateId(module)) {
+                    return Promise();
+                }
 
-            // Read gitbook-plugin package details
-            var module_folder = path.join(node_modules, module);
-            return Promise.nfcall(readInstalled, module_folder, options)
-            .then(function(data) {
-                onPackage(data);
+                // Read gitbook-plugin package details
+                var module_folder = path.join(node_modules, module);
+                return Promise.nfcall(readInstalled, module_folder, options)
+                    .then(function(data) {
+                        onPackage(data);
+                    });
             });
-        });
-    })
-    .then(function() {
+        })
+        .then(function() {
         // Return installed plugins
-        return results;
-    });
+            return results;
+        });
 }
 
 module.exports = findInstalled;

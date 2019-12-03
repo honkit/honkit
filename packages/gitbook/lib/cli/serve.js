@@ -43,56 +43,56 @@ function generateBook(args, kwargs) {
     if (server.isRunning()) console.log('Stopping server');
 
     return server.stop()
-    .then(function() {
-        return Parse.parseBook(book)
-        .then(function(resultBook) {
-            if (hasLiveReloading) {
-                // Enable livereload plugin
-                var config = resultBook.getConfig();
-                config = ConfigModifier.addPlugin(config, 'livereload');
-                resultBook = resultBook.set('config', config);
+        .then(function() {
+            return Parse.parseBook(book)
+                .then(function(resultBook) {
+                    if (hasLiveReloading) {
+                        // Enable livereload plugin
+                        var config = resultBook.getConfig();
+                        config = ConfigModifier.addPlugin(config, 'livereload');
+                        resultBook = resultBook.set('config', config);
+                    }
+
+                    return Output.generate(Generator, resultBook, {
+                        root: outputFolder
+                    });
+                });
+        })
+        .then(function() {
+            console.log();
+            console.log('Starting server ...');
+            return server.start(outputFolder, port);
+        })
+        .then(function() {
+            console.log('Serving book on http://localhost:'+port);
+
+            if (lrPath && hasLiveReloading) {
+            // trigger livereload
+                lrServer.changed({
+                    body: {
+                        files: [lrPath]
+                    }
+                });
             }
 
-            return Output.generate(Generator, resultBook, {
-                root: outputFolder
-            });
+            if (hasOpen) {
+                open('http://localhost:'+port, {app: browser});
+            }
+        })
+        .then(function() {
+            if (!hasWatch) {
+                return waitForCtrlC();
+            }
+
+            return watch(book.getRoot())
+                .then(function(filepath) {
+                    // set livereload path
+                    lrPath = filepath;
+                    console.log('Restart after change in file', filepath);
+                    console.log('');
+                    return generateBook(args, kwargs);
+                });
         });
-    })
-    .then(function() {
-        console.log();
-        console.log('Starting server ...');
-        return server.start(outputFolder, port);
-    })
-    .then(function() {
-        console.log('Serving book on http://localhost:'+port);
-
-        if (lrPath && hasLiveReloading) {
-            // trigger livereload
-            lrServer.changed({
-                body: {
-                    files: [lrPath]
-                }
-            });
-        }
-
-        if (hasOpen) {
-            open('http://localhost:'+port, {app: browser});
-        }
-    })
-    .then(function() {
-        if (!hasWatch) {
-            return waitForCtrlC();
-        }
-
-        return watch(book.getRoot())
-        .then(function(filepath) {
-            // set livereload path
-            lrPath = filepath;
-            console.log('Restart after change in file', filepath);
-            console.log('');
-            return generateBook(args, kwargs);
-        });
-    });
 }
 
 module.exports = {
@@ -138,22 +138,22 @@ module.exports = {
         var hasLiveReloading = kwargs['live'];
 
         return Promise()
-        .then(function() {
-            if (!hasWatch || !hasLiveReloading) {
-                return;
-            }
-
-            lrServer = tinylr({});
-            return Promise.nfcall(lrServer.listen.bind(lrServer), kwargs.lrport)
             .then(function() {
-                console.log('Live reload server started on port:', kwargs.lrport);
-                console.log('Press CTRL+C to quit ...');
-                console.log('');
+                if (!hasWatch || !hasLiveReloading) {
+                    return;
+                }
 
+                lrServer = tinylr({});
+                return Promise.nfcall(lrServer.listen.bind(lrServer), kwargs.lrport)
+                    .then(function() {
+                        console.log('Live reload server started on port:', kwargs.lrport);
+                        console.log('Press CTRL+C to quit ...');
+                        console.log('');
+
+                    });
+            })
+            .then(function() {
+                return generateBook(args, kwargs);
             });
-        })
-        .then(function() {
-            return generateBook(args, kwargs);
-        });
     }
 };

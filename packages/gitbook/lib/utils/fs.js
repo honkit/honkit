@@ -105,11 +105,11 @@ function rmDir(base) {
 */
 function assertFile(filePath, generator) {
     return fileExists(filePath)
-    .then(function(exists) {
-        if (exists) return;
+        .then(function(exists) {
+            if (exists) return;
 
-        return generator();
-    });
+            return generator();
+        });
 }
 
 /**
@@ -136,12 +136,12 @@ function pickFile(rootFolder, fileName) {
 */
 function ensureFolder(rootFolder) {
     return rmDir(rootFolder)
-    .fail(function() {
-        return Promise();
-    })
-    .then(function() {
-        return Promise.nfcall(mkdirp, rootFolder);
-    });
+        .fail(function() {
+            return Promise();
+        })
+        .then(function() {
+            return Promise.nfcall(mkdirp, rootFolder);
+        });
 }
 
 module.exports = {

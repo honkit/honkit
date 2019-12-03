@@ -12,14 +12,14 @@ describe('parseReadme', function() {
         var book = Book.createForFS(fs);
 
         return parseReadme(book)
-        .then(function(resultBook) {
-            var readme = resultBook.getReadme();
-            var file = readme.getFile();
+            .then(function(resultBook) {
+                var readme = resultBook.getReadme();
+                var file = readme.getFile();
 
-            expect(file.exists()).toBeTruthy();
-            expect(readme.getTitle()).toBe('Hello');
-            expect(readme.getDescription()).toBe('And here is the description.');
-        });
+                expect(file.exists()).toBeTruthy();
+                expect(readme.getTitle()).toBe('Hello');
+                expect(readme.getDescription()).toBe('And here is the description.');
+            });
     });
 
     it('should fail if doesn\'t exist', function() {
@@ -27,10 +27,10 @@ describe('parseReadme', function() {
         var book = Book.createForFS(fs);
 
         return parseReadme(book)
-        .then(function(resultBook) {
-            throw new Error('It should have fail');
-        }, function() {
-            return Promise();
-        });
+            .then(function(resultBook) {
+                throw new Error('It should have fail');
+            }, function() {
+                return Promise();
+            });
     });
 });

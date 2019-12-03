@@ -35,9 +35,9 @@ function renderTemplate(engine, filePath, content, context) {
                 path: filePath
             }
         )
-        .then(function(content) {
-            return TemplateOutput.create(content, blocks);
-        })
+            .then(function(content) {
+                return TemplateOutput.create(content, blocks);
+            })
     );
 }
 

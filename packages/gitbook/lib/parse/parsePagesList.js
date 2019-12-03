@@ -17,21 +17,21 @@ function parseFilePage(book, filePath) {
     var fs = book.getContentFS();
 
     return fs.statFile(filePath)
-    .then(
-        function(file) {
-            var page = Page.createForFile(file);
-            return parsePage(book, page);
-        },
-        function(err) {
+        .then(
+            function(file) {
+                var page = Page.createForFile(file);
+                return parsePage(book, page);
+            },
+            function(err) {
             // file doesn't exist
-            return null;
-        }
-    )
-    .fail(function(err) {
-        var logger = book.getLogger();
-        logger.error.ln('error while parsing page "' + filePath + '":');
-        throw err;
-    });
+                return null;
+            }
+        )
+        .fail(function(err) {
+            var logger = book.getLogger();
+            logger.error.ln('error while parsing page "' + filePath + '":');
+            throw err;
+        });
 }
 
 
@@ -58,39 +58,39 @@ function parsePagesList(book) {
             if (book.isContentFileIgnored(filepath)) return;
 
             return parseFilePage(book, filepath)
-            .then(function(page) {
+                .then(function(page) {
                 // file doesn't exist
-                if (!page) {
-                    return;
-                }
+                    if (!page) {
+                        return;
+                    }
 
-                map = map.set(filepath, page);
-            });
+                    map = map.set(filepath, page);
+                });
         })
     )
 
     // Parse glossary
-    .then(function() {
-        var file = glossary.getFile();
+        .then(function() {
+            var file = glossary.getFile();
 
-        if (!file.exists()) {
-            return;
-        }
-
-        return parseFilePage(book, file.getPath())
-        .then(function(page) {
-            // file doesn't exist
-            if (!page) {
+            if (!file.exists()) {
                 return;
             }
 
-            map = map.set(file.getPath(), page);
-        });
-    })
+            return parseFilePage(book, file.getPath())
+                .then(function(page) {
+                    // file doesn't exist
+                    if (!page) {
+                        return;
+                    }
 
-    .then(function() {
-        return map;
-    });
+                    map = map.set(file.getPath(), page);
+                });
+        })
+
+        .then(function() {
+            return map;
+        });
 }
 
 

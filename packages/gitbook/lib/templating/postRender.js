@@ -47,7 +47,7 @@ function postRender(engine, output) {
 
         return post();
     })
-    .thenResolve(result);
+        .thenResolve(result);
 }
 
 module.exports = postRender;

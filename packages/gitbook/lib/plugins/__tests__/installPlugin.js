@@ -17,9 +17,9 @@ describe('installPlugin', function() {
         var baseBook = Book.createForFS(fs);
 
         return Parse.parseConfig(baseBook)
-        .then(function(_book) {
-            book = _book;
-        });
+            .then(function(_book) {
+                book = _book;
+            });
     });
 
     it('must install a plugin from NPM', function() {
