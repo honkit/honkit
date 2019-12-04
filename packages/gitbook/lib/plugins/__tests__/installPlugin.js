@@ -24,6 +24,6 @@ describe('installPlugin', function() {
 
     it('must install a plugin from NPM', function() {
         var dep = PluginDependency.createFromString('ga');
-        return installPlugin(book, dep);
+        return installPlugin(book, dep, { 'dry-run': true, 'audit': false, 'prefer-offline': true });
     });
 });

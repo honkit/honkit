@@ -6,22 +6,17 @@ var Promise = require('../utils/promise');
 var Plugin = require('../models/plugin');
 var gitbook = require('../gitbook');
 
-var npmIsReady;
-
 /**
     Initialize and prepare NPM
 
     @return {Promise}
 */
-function initNPM() {
-    if (npmIsReady) return npmIsReady;
-
-    npmIsReady = Promise.nfcall(npm.load, {
+function initNPM(options) {
+    return Promise.nfcall(npm.load, {
         silent: true,
-        loglevel: 'silent'
+        loglevel: 'silent',
+        ...options
     });
-
-    return npmIsReady;
 }
 
 /**
@@ -30,7 +25,7 @@ function initNPM() {
     @param {PluginDependency} plugin
     @return {Promise<String>}
 */
-function resolveVersion(plugin) {
+function resolveVersion(plugin, options) {
     var npmId = Plugin.nameToNpmID(plugin.getName());
     var requiredVersion = plugin.getVersion();
 
@@ -38,7 +33,7 @@ function resolveVersion(plugin) {
         return Promise.resolve(requiredVersion);
     }
 
-    return initNPM()
+    return initNPM(options)
         .then(function() {
             return Promise.nfcall(npm.commands.view, [npmId + '@' + requiredVersion, 'engines'], true);
         })

@@ -10,7 +10,7 @@ var resolveVersion = require('./resolveVersion');
     @param {PluginDependency}
     @return {Promise}
 */
-function installPlugin(book, plugin) {
+function installPlugin(book, plugin, options) {
     var logger = book.getLogger();
 
     var installFolder = book.getRoot();
@@ -21,7 +21,7 @@ function installPlugin(book, plugin) {
     logger.info.ln('installing plugin "' + name + '"');
 
     // Find a version to install
-    return resolveVersion(plugin)
+    return resolveVersion(plugin, options)
         .then(function(version) {
             if (!version) {
                 throw new Error('Found no satisfactory version for plugin "' + name + '" with requirement "' + requirement + '"');
@@ -35,7 +35,8 @@ function installPlugin(book, plugin) {
                 'npmLoad': {
                     'loglevel': 'silent',
                     'loaded': true,
-                    'prefix': installFolder
+                    'prefix': installFolder,
+                    ...options
                 }
             });
         })

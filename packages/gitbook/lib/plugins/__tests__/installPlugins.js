@@ -22,7 +22,7 @@ describe('installPlugins', function() {
     });
 
     it('must install all plugins from NPM', function() {
-        return installPlugins(book)
+        return installPlugins(book, { 'dry-run': true, 'audit': false, 'prefer-offline': true })
             .then(function(n) {
                 expect(n).toBe(2);
             });

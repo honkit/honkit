@@ -10,7 +10,7 @@ var installPlugin = require('./installPlugin');
     @param {Book}
     @return {Promise<Number>}
 */
-function installPlugins(book) {
+function installPlugins(book, options) {
     var logger = book.getLogger();
     var config = book.getConfig();
     var plugins = config.getPluginDependencies();
@@ -40,7 +40,7 @@ function installPlugins(book) {
     logger.info.ln('installing', plugins.size, 'plugins using npm@' + npmi.NPM_VERSION);
 
     return Promise.forEach(plugins, function(plugin) {
-        return installPlugin(book, plugin);
+        return installPlugin(book, plugin, options);
     })
         .thenResolve(plugins.size);
 }
