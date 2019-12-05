@@ -1,8 +1,8 @@
-var svgToImg = require('./svgToImg');
-var svgToPng = require('./svgToPng');
-var inlinePng = require('./inlinePng');
 var resolveImages = require('./resolveImages');
 var fetchRemoteImages = require('./fetchRemoteImages');
+var svgToImg = require('./svgToImg');
+var inlineSvg = require('./inlineSvg');
+var inlinePng = require('./inlinePng');
 
 var Promise = require('../../utils/promise');
 
@@ -21,7 +21,7 @@ function inlineAssets(rootFolder, currentFile) {
             .then(fetchRemoteImages.bind(null, rootFolder, currentFile, $))
 
             .then(svgToImg.bind(null, rootFolder, currentFile, $))
-            .then(svgToPng.bind(null, rootFolder, currentFile, $))
+            .then(inlineSvg.bind(null, rootFolder, currentFile, $))
             .then(inlinePng.bind(null, rootFolder, currentFile, $));
     };
 }

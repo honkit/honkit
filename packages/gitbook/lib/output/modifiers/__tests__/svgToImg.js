@@ -20,6 +20,13 @@ describe('svgToImg', function() {
                 expect(dir.name).toHaveFile(src);
             });
     });
+
+    it('should not write icon svg as a file', function() {
+        var $ = cheerio.load('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" version="1.1" fill="currentColor"><rect width="200" height="100" stroke-width="6"/></svg>');
+
+        return svgToImg(dir.name, 'index.html', $)
+            .then(function() {
+                expect($.contains('img')).toBe(false);
+            });
+    });
 });
-
-

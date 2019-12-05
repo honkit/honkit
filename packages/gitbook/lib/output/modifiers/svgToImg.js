@@ -32,6 +32,10 @@ function svgToImg(baseFolder, currentFile, $) {
     var currentDirectory = path.dirname(currentFile);
 
     return editHTMLElement($, 'svg', function($svg) {
+        if ($svg.attr('fill')) {
+            return;
+        }
+
         var content = '<?xml version="1.0" encoding="UTF-8"?>' +
             renderDOM($, $svg);
 
