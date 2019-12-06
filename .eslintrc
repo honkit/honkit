@@ -13,7 +13,7 @@
     },
     "env": {
         "node": true,
-        "mocha": true,
+        "jest": true,
         "es6": true
     },
     "globals": {
@@ -22,5 +22,5 @@
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 2018
-    },
+    }
 }

@@ -1,11 +1,14 @@
 var tmp = require('tmp');
 var initBook = require('../init');
 
-describe('initBook', function() {
+describe('initBook', () => {
+    var dir;
 
-    it('should create a README and SUMMARY for empty book', function() {
-        var dir = tmp.dirSync();
+    beforeEach(() => {
+        dir = tmp.dirSync();
+    });
 
+    test('should create a README and SUMMARY for empty book', () => {
         return initBook(dir.name)
             .then(function() {
                 expect(dir.name).toHaveFile('README.md');

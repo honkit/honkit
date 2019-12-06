@@ -3,11 +3,11 @@ var os = require('os');
 
 var Git = require('../git');
 
-describe('Git', function() {
+describe('Git', () => {
 
-    describe('URL parsing', function() {
+    describe('URL parsing', () => {
 
-        it('should correctly validate git urls', function() {
+        test('should correctly validate git urls', () => {
             // HTTPS
             expect(Git.isUrl('git+https://github.com/Hello/world.git')).toBeTruthy();
 
@@ -19,7 +19,7 @@ describe('Git', function() {
             expect(Git.isUrl('README.md')).toBeFalsy();
         });
 
-        it('should parse HTTPS urls', function() {
+        test('should parse HTTPS urls', () => {
             var parts = Git.parseUrl('git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md');
 
             expect(parts.host).toBe('https://gist.github.com/69ea4542e4c8967d2fa7.git');
@@ -27,7 +27,7 @@ describe('Git', function() {
             expect(parts.filepath).toBe('test.md');
         });
 
-        it('should parse HTTPS urls with a reference', function() {
+        test('should parse HTTPS urls with a reference', () => {
             var parts = Git.parseUrl('git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md#1.0.0');
 
             expect(parts.host).toBe('https://gist.github.com/69ea4542e4c8967d2fa7.git');
@@ -35,7 +35,7 @@ describe('Git', function() {
             expect(parts.filepath).toBe('test.md');
         });
 
-        it('should parse SSH urls', function() {
+        test('should parse SSH urls', () => {
             var parts = Git.parseUrl('git+git@github.com:GitbookIO/gitbook.git/directory/README.md#e1594cde2c32e4ff48f6c4eff3d3d461743d74e1');
 
             expect(parts.host).toBe('git@github.com:GitbookIO/gitbook.git');
@@ -44,8 +44,8 @@ describe('Git', function() {
         });
     });
 
-    describe('Cloning and resolving', function() {
-        it('should clone an HTTPS url', function() {
+    describe('Cloning and resolving', () => {
+        test('should clone an HTTPS url', () => {
             var git = new Git(path.join(os.tmpdir(), 'test-git-'+Date.now()));
             return git.resolve('git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md')
                 .then(function(filename) {

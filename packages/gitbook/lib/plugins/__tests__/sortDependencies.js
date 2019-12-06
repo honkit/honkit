@@ -2,8 +2,8 @@ var PluginDependency = require('../../models/pluginDependency');
 var sortDependencies = require('../sortDependencies');
 var toNames = require('../toNames');
 
-describe('sortDependencies', function() {
-    it('must load themes after plugins', function() {
+describe('sortDependencies', () => {
+    test('must load themes after plugins', () => {
         var allPlugins = PluginDependency.listFromArray([
             'hello',
             'theme-test',
@@ -20,7 +20,7 @@ describe('sortDependencies', function() {
         ]);
     });
 
-    it('must keep order of themes', function() {
+    test('must keep order of themes', () => {
         var allPlugins = PluginDependency.listFromArray([
             'theme-test',
             'theme-test1',

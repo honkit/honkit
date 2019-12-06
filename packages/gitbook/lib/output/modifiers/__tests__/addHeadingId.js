@@ -1,8 +1,8 @@
 var cheerio = require('cheerio');
 var addHeadingId = require('../addHeadingId');
 
-describe('addHeadingId', function() {
-    it('should add an ID if none', function() {
+describe('addHeadingId', () => {
+    test('should add an ID if none', () => {
         var $ = cheerio.load('<h1>Hello World</h1><h2>Cool !!</h2>');
 
         return addHeadingId($)
@@ -12,7 +12,7 @@ describe('addHeadingId', function() {
             });
     });
 
-    it('should not change existing IDs', function() {
+    test('should not change existing IDs', () => {
         var $ = cheerio.load('<h1 id="awesome">Hello World</h1>');
 
         return addHeadingId($)

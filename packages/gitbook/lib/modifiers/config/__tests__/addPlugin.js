@@ -1,12 +1,12 @@
 var addPlugin = require('../addPlugin');
 var Config = require('../../../models/config');
 
-describe('addPlugin', function() {
+describe('addPlugin', () => {
     var config = Config.createWithValues({
         plugins: ['hello', 'world', '-disabled']
     });
 
-    it('should have correct state of dependencies', function() {
+    test('should have correct state of dependencies', () => {
         var disabledDep = config.getPluginDependency('disabled');
 
         expect(disabledDep).toBeDefined();
@@ -14,7 +14,7 @@ describe('addPlugin', function() {
         expect(disabledDep.isEnabled()).toBeFalsy();
     });
 
-    it('should add the plugin to the list', function() {
+    test('should add the plugin to the list', () => {
         var newConfig = addPlugin(config, 'test');
 
         var testDep = newConfig.getPluginDependency('test');

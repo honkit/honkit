@@ -1,22 +1,22 @@
-describe('Plugin', function() {
+describe('Plugin', () => {
     var Plugin = require('../plugin');
 
-    describe('createFromString', function() {
-        it('must parse name', function() {
+    describe('createFromString', () => {
+        test('must parse name', () => {
             var plugin = Plugin.createFromString('hello');
             expect(plugin.getName()).toBe('hello');
             expect(plugin.getVersion()).toBe('*');
         });
 
-        it('must parse version', function() {
+        test('must parse version', () => {
             var plugin = Plugin.createFromString('hello@1.0.0');
             expect(plugin.getName()).toBe('hello');
             expect(plugin.getVersion()).toBe('1.0.0');
         });
     });
 
-    describe('isLoaded', function() {
-        it('must return false for empty plugin', function() {
+    describe('isLoaded', () => {
+        test('must return false for empty plugin', () => {
             var plugin = Plugin.createFromString('hello');
             expect(plugin.isLoaded()).toBe(false);
         });

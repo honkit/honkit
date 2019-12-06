@@ -3,13 +3,13 @@ var cheerio = require('cheerio');
 var GlossaryEntry = require('../../../models/glossaryEntry');
 var annotateText = require('../annotateText');
 
-describe('annotateText', function() {
+describe('annotateText', () => {
     var entries = Immutable.List([
         GlossaryEntry({ name: 'Word' }),
         GlossaryEntry({ name: 'Multiple Words' })
     ]);
 
-    it('should annotate text', function() {
+    test('should annotate text', () => {
         var $ = cheerio.load('<p>This is a word, and multiple words</p>');
 
         annotateText(entries, 'GLOSSARY.md', $);
@@ -28,19 +28,17 @@ describe('annotateText', function() {
         expect(words.hasClass('glossary-term')).toBeTruthy();
     });
 
-    it('should not annotate scripts', function() {
+    test('should not annotate scripts', () => {
         var $ = cheerio.load('<script>This is a word, and multiple words</script>');
 
         annotateText(entries, 'GLOSSARY.md', $);
         expect($('a').length).toBe(0);
     });
 
-    it('should not annotate when has class "no-glossary"', function() {
+    test('should not annotate when has class "no-glossary"', () => {
         var $ = cheerio.load('<p class="no-glossary">This is a word, and multiple words</p>');
 
         annotateText(entries, 'GLOSSARY.md', $);
         expect($('a').length).toBe(0);
     });
 });
-
-

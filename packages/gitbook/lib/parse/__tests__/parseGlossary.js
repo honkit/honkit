@@ -1,10 +1,10 @@
 var Book = require('../../models/book');
 var createMockFS = require('../../fs/mock');
 
-describe('parseGlossary', function() {
+describe('parseGlossary', () => {
     var parseGlossary = require('../parseGlossary');
 
-    it('should parse glossary if exists', function() {
+    test('should parse glossary if exists', () => {
         var fs = createMockFS({
             'GLOSSARY.md': '# Glossary\n\n## Hello\nDescription for hello'
         });
@@ -21,7 +21,7 @@ describe('parseGlossary', function() {
             });
     });
 
-    it('should not fail if doesn\'t exist', function() {
+    test('should not fail if doesn\'t exist', () => {
         var fs = createMockFS({});
         var book = Book.createForFS(fs);
 

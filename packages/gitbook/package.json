@@ -60,7 +60,7 @@
     "urijs": "1.18.0"
   },
   "scripts": {
-    "test": "../../node_modules/.bin/mocha ./testing/setup.js \"./lib/**/*/__tests__/*.js\" --bail --reporter=list --timeout=10000"
+    "test": "../../node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",

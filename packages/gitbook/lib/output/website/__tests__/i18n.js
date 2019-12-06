@@ -1,11 +1,11 @@
-var createMockOutput = require('../../__tests__/createMock');
+var createMockOutput = require('../../testing/createMock');
 var prepareI18n = require('../prepareI18n');
 var createTemplateEngine = require('../createTemplateEngine');
 
 var WebsiteGenerator = require('../');
 
-describe('i18n', function() {
-    it('should correctly use english as default language', function() {
+describe('i18n', () => {
+    test('should correctly use english as default language', () => {
         return createMockOutput(WebsiteGenerator, {
             'README.md': 'Hello World'
         })
@@ -20,7 +20,7 @@ describe('i18n', function() {
             });
     });
 
-    it('should correctly use language from book.json', function() {
+    test('should correctly use language from book.json', () => {
         return createMockOutput(WebsiteGenerator, {
             'README.md': 'Hello World',
             'book.json': JSON.stringify({ language: 'fr' })

@@ -1,10 +1,10 @@
 var Book = require('../../models/book');
 var createMockFS = require('../../fs/mock');
 
-describe('parseBook', function() {
+describe('parseBook', () => {
     var parseBook = require('../parseBook');
 
-    it('should parse multilingual book', function() {
+    test('should parse multilingual book', () => {
         var fs = createMockFS({
             'LANGS.md': '# Languages\n\n* [en](en)\n* [fr](fr)',
             'en': {
@@ -27,7 +27,7 @@ describe('parseBook', function() {
             });
     });
 
-    it('should extend configuration for multilingual book', function() {
+    test('should extend configuration for multilingual book', () => {
         var fs = createMockFS({
             'LANGS.md': '# Languages\n\n* [en](en)\n* [fr](fr)',
             'book.json': '{ "title": "Test", "author": "GitBook" }',
@@ -62,7 +62,7 @@ describe('parseBook', function() {
             });
     });
 
-    it('should parse book in a directory', function() {
+    test('should parse book in a directory', () => {
         var fs = createMockFS({
             'book.json': JSON.stringify({
                 root: './test'

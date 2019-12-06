@@ -2,9 +2,8 @@
   "private": true,
   "devDependencies": {
     "eslint": "^6.7.2",
-    "expect": "^1.20.1",
-    "lerna": "^3.19.0",
-    "mocha": "^6.2.2"
+    "jest": "^24.9.0",
+    "lerna": "^3.19.0"
   },
   "scripts": {
     "lint": "eslint ."

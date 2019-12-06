@@ -1,10 +1,10 @@
 var path = require('path');
 var Immutable = require('immutable');
 
-describe('findInstalled', function() {
+describe('findInstalled', () => {
     var findInstalled = require('../findInstalled');
 
-    it('must list default plugins for gitbook directory', function() {
+    test('must list default plugins for gitbook directory', () => {
         // Read gitbook-plugins from package.json
         var pkg = require(path.resolve(__dirname, '../../../package.json'));
         var gitbookPlugins = Immutable.Seq(pkg.dependencies)

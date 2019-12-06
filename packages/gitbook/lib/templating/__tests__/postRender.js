@@ -4,7 +4,7 @@ var TemplateBlock = require('../../models/templateBlock');
 var renderTemplate = require('../render');
 var postRender = require('../postRender');
 
-describe('postRender', function() {
+describe('postRender', () => {
     var testPost;
     var engine = TemplateEngine.create({
         blocks: [
@@ -22,7 +22,7 @@ describe('postRender', function() {
         ]
     });
 
-    it('should correctly replace block', function() {
+    test('should correctly replace block', () => {
         return renderTemplate(engine, 'README.md', 'Hello {% lower %}Samy{% endlower %}')
             .then(function(output) {
                 expect(output.getContent()).toMatch(/Hello \{\{\-([\S]+)\-\}\}/);
@@ -35,7 +35,7 @@ describe('postRender', function() {
             });
     });
 
-    it('should correctly replace blocks', function() {
+    test('should correctly replace blocks', () => {
         return renderTemplate(engine, 'README.md', 'Hello {% lower %}Samy{% endlower %}{% prefix %}Pesse{% endprefix %}')
             .then(function(output) {
                 expect(output.getContent()).toMatch(/Hello \{\{\-([\S]+)\-\}\}\{\{\-([\S]+)\-\}\}/);

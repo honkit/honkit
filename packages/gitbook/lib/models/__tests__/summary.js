@@ -1,5 +1,5 @@
 
-describe('Summary', function() {
+describe('Summary', () => {
     var File = require('../file');
     var Summary = require('../summary');
 
@@ -28,22 +28,22 @@ describe('Summary', function() {
         }
     ]);
 
-    describe('createFromEntries', function() {
-        it('must add all parts', function() {
+    describe('createFromEntries', () => {
+        test('must add all parts', () => {
             var parts = summary.getParts();
             expect(parts.size).toBe(2);
         });
     });
 
-    describe('getByLevel', function() {
-        it('can return a Part', function() {
+    describe('getByLevel', () => {
+        test('can return a Part', () => {
             var part = summary.getByLevel('1');
 
             expect(part).toBeDefined();
             expect(part.getArticles().size).toBe(4);
         });
 
-        it('can return a Part (2)', function() {
+        test('can return a Part (2)', () => {
             var part = summary.getByLevel('2');
 
             expect(part).toBeDefined();
@@ -51,7 +51,7 @@ describe('Summary', function() {
             expect(part.getArticles().size).toBe(0);
         });
 
-        it('can return an Article', function() {
+        test('can return an Article', () => {
             var article = summary.getByLevel('1.1');
 
             expect(article).toBeDefined();
@@ -59,30 +59,30 @@ describe('Summary', function() {
         });
     });
 
-    describe('getByPath', function() {
-        it('return correct article', function() {
+    describe('getByPath', () => {
+        test('return correct article', () => {
             var article = summary.getByPath('README.md');
 
             expect(article).toBeDefined();
             expect(article.getTitle()).toBe('My First Article');
         });
 
-        it('return correct article', function() {
+        test('return correct article', () => {
             var article = summary.getByPath('article.md');
 
             expect(article).toBeDefined();
             expect(article.getTitle()).toBe('My Second Article');
         });
 
-        it('return undefined if not found', function() {
+        test('return undefined if not found', () => {
             var article = summary.getByPath('NOT_EXISTING.md');
 
             expect(article).toBeFalsy();
         });
     });
 
-    describe('toText', function() {
-        it('return as markdown', function() {
+    describe('toText', () => {
+        test('return as markdown', () => {
             return summary.toText('.md')
                 .then(function(text) {
                     expect(text).toContain('# Summary');

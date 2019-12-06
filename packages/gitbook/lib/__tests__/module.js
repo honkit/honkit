@@ -1,6 +1,6 @@
 
-describe('GitBook', function() {
-    it('should correctly export', function() {
+describe('GitBook', () => {
+    test('should correctly export', () => {
         require('../');
     });
 });

@@ -1,7 +1,7 @@
 var Summary = require('../../../models/summary');
 var File = require('../../../models/file');
 
-describe('removeArticle', function() {
+describe('removeArticle', () => {
     var removeArticle = require('../removeArticle');
     var summary = Summary.createFromParts(File(), [
         {
@@ -41,7 +41,7 @@ describe('removeArticle', function() {
         }
     ]);
 
-    it('should remove an article at a given level', function() {
+    test('should remove an article at a given level', () => {
         var newSummary = removeArticle(summary, '2.1.1');
 
         var removed = newSummary.getByLevel('2.1.1');

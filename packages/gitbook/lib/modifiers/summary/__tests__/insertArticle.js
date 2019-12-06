@@ -2,7 +2,7 @@ var Summary = require('../../../models/summary');
 var SummaryArticle = require('../../../models/summaryArticle');
 var File = require('../../../models/file');
 
-describe('insertArticle', function() {
+describe('insertArticle', () => {
     var insertArticle = require('../insertArticle');
     var summary = Summary.createFromParts(File(), [
         {
@@ -42,7 +42,7 @@ describe('insertArticle', function() {
         }
     ]);
 
-    it('should insert an article at a given level', function() {
+    test('should insert an article at a given level', () => {
         var article = SummaryArticle.create({
             title: 'Inserted'
         }, 'fake.level');
@@ -59,7 +59,7 @@ describe('insertArticle', function() {
         expect(nextOne.getLevel()).toBe('2.1.2');
     });
 
-    it('should insert an article in last position', function() {
+    test('should insert an article in last position', () => {
         var article = SummaryArticle.create({
             title: 'Inserted'
         }, 'fake.level');

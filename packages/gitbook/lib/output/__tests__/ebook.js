@@ -1,9 +1,9 @@
-var generateMock = require('./generateMock');
+var generateMock = require('../testing/generateMock');
 var EbookGenerator = require('../ebook');
 
-describe('EbookGenerator', function() {
+describe('EbookGenerator', () => {
 
-    it('should generate a SUMMARY.html', function() {
+    test('should generate a SUMMARY.html', () => {
         return generateMock(EbookGenerator, {
             'README.md': 'Hello World'
         })

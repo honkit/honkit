@@ -1,7 +1,7 @@
 var LocationUtils = require('../location');
 
-describe('LocationUtils', function() {
-    it('should correctly test external location', function() {
+describe('LocationUtils', () => {
+    test('should correctly test external location', () => {
         expect(LocationUtils.isExternal('http://google.fr')).toBe(true);
         expect(LocationUtils.isExternal('https://google.fr')).toBe(true);
         expect(LocationUtils.isExternal('test.md')).toBe(false);
@@ -10,7 +10,7 @@ describe('LocationUtils', function() {
         expect(LocationUtils.isExternal('data:image/png')).toBe(false);
     });
 
-    it('should correctly test data:uri location', function() {
+    test('should correctly test data:uri location', () => {
         expect(LocationUtils.isDataURI('data:image/png')).toBe(true);
         expect(LocationUtils.isDataURI('http://google.fr')).toBe(false);
         expect(LocationUtils.isDataURI('https://google.fr')).toBe(false);
@@ -18,81 +18,84 @@ describe('LocationUtils', function() {
         expect(LocationUtils.isDataURI('data.md')).toBe(false);
     });
 
-    it('should correctly detect anchor location', function() {
+    test('should correctly detect anchor location', () => {
         expect(LocationUtils.isAnchor('#test')).toBe(true);
         expect(LocationUtils.isAnchor(' #test')).toBe(true);
         expect(LocationUtils.isAnchor('https://google.fr#test')).toBe(false);
         expect(LocationUtils.isAnchor('test.md#test')).toBe(false);
     });
 
-    describe('.relative', function() {
-        it('should resolve to a relative path (same folder)', function() {
+    describe('.relative', () => {
+        test('should resolve to a relative path (same folder)', () => {
             expect(LocationUtils.relative('links/', 'links/test.md')).toBe('test.md');
         });
 
-        it('should resolve to a relative path (parent folder)', function() {
+        test('should resolve to a relative path (parent folder)', () => {
             expect(LocationUtils.relative('links/', 'test.md')).toBe('../test.md');
         });
 
-        it('should resolve to a relative path (child folder)', function() {
+        test('should resolve to a relative path (child folder)', () => {
             expect(LocationUtils.relative('links/', 'links/hello/test.md')).toBe('hello/test.md');
         });
     });
 
-    describe('.flatten', function() {
-        it('should remove leading slash', function() {
+    describe('.flatten', () => {
+        test('should remove leading slash', () => {
             expect(LocationUtils.flatten('/test.md')).toBe('test.md');
             expect(LocationUtils.flatten('/hello/cool.md')).toBe('hello/cool.md');
         });
 
-        it('should remove leading slashes', function() {
+        test('should remove leading slashes', () => {
             expect(LocationUtils.flatten('///test.md')).toBe('test.md');
         });
 
-        it('should not break paths', function() {
+        test('should not break paths', () => {
             expect(LocationUtils.flatten('hello/cool.md')).toBe('hello/cool.md');
         });
     });
 
-    describe('.toAbsolute', function() {
-        it('should correctly transform as absolute', function() {
+    describe('.toAbsolute', () => {
+        test('should correctly transform as absolute', () => {
             expect(LocationUtils.toAbsolute('http://google.fr')).toBe('http://google.fr');
             expect(LocationUtils.toAbsolute('test.md', './', './')).toBe('test.md');
             expect(LocationUtils.toAbsolute('folder/test.md', './', './')).toBe('folder/test.md');
         });
 
-        it('should correctly handle windows path', function() {
+        test('should correctly handle windows path', () => {
             expect(LocationUtils.toAbsolute('folder\\test.md', './', './')).toBe('folder/test.md');
         });
 
-        it('should correctly handle absolute path', function() {
+        test('should correctly handle absolute path', () => {
             expect(LocationUtils.toAbsolute('/test.md', './', './')).toBe('test.md');
             expect(LocationUtils.toAbsolute('/test.md', 'test', 'test')).toBe('../test.md');
             expect(LocationUtils.toAbsolute('/sub/test.md', 'test', 'test')).toBe('../sub/test.md');
             expect(LocationUtils.toAbsolute('/test.png', 'folder', '')).toBe('test.png');
         });
 
-        it('should correctly handle absolute path (windows)', function() {
+        test('should correctly handle absolute path (windows)', () => {
             expect(LocationUtils.toAbsolute('\\test.png', 'folder', '')).toBe('test.png');
         });
 
-        it('should resolve path starting by "/" in root directory', function() {
+        test('should resolve path starting by "/" in root directory', () => {
             expect(
                 LocationUtils.toAbsolute('/test/hello.md', './', './')
             ).toBe('test/hello.md');
         });
 
-        it('should resolve path starting by "/" in child directory', function() {
+        test('should resolve path starting by "/" in child directory', () => {
             expect(
                 LocationUtils.toAbsolute('/test/hello.md', './hello', './')
             ).toBe('test/hello.md');
         });
 
-        it('should resolve path starting by "/" in child directory, with same output directory', function() {
-            expect(
-                LocationUtils.toAbsolute('/test/hello.md', './hello', './hello')
-            ).toBe('../test/hello.md');
-        });
+        test(
+            'should resolve path starting by "/" in child directory, with same output directory',
+            () => {
+                expect(
+                    LocationUtils.toAbsolute('/test/hello.md', './hello', './hello')
+                ).toBe('../test/hello.md');
+            }
+        );
     });
 
 });

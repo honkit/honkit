@@ -6,12 +6,12 @@ var installPlugins = require('../installPlugins');
 
 var Parse = require('../../parse');
 
-describe('installPlugins', function() {
+describe('installPlugins', () => {
     var book;
 
-    this.timeout(30000);
+    jest.setTimeout(30000);
 
-    before(function() {
+    beforeAll(() => {
         var fs = NodeFS(path.resolve(__dirname, '../../../../../'));
         var baseBook = Book.createForFS(fs);
 
@@ -21,7 +21,7 @@ describe('installPlugins', function() {
             });
     });
 
-    it('must install all plugins from NPM', function() {
+    test('must install all plugins from NPM', () => {
         return installPlugins(book, { 'dry-run': true, 'audit': false, 'prefer-offline': true })
             .then(function(n) {
                 expect(n).toBe(2);

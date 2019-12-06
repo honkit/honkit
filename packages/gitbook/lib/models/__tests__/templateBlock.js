@@ -2,11 +2,11 @@ var nunjucks = require('nunjucks');
 var Immutable = require('immutable');
 var Promise = require('../../utils/promise');
 
-describe('TemplateBlock', function() {
+describe('TemplateBlock', () => {
     var TemplateBlock = require('../templateBlock');
 
-    describe('create', function() {
-        it('must initialize a simple TemplateBlock from a function', function() {
+    describe('create', () => {
+        test('must initialize a simple TemplateBlock from a function', () => {
             var templateBlock = TemplateBlock.create('sayhello', function(block) {
                 return {
                     body: '<p>Hello, World!</p>',
@@ -32,8 +32,8 @@ describe('TemplateBlock', function() {
         });
     });
 
-    describe('getShortcuts', function() {
-        it('must return undefined if no shortcuts', function() {
+    describe('getShortcuts', () => {
+        test('must return undefined if no shortcuts', () => {
             var templateBlock = TemplateBlock.create('sayhello', function(block) {
                 return {
                     body: '<p>Hello, World!</p>',
@@ -41,10 +41,10 @@ describe('TemplateBlock', function() {
                 };
             });
 
-            expect(templateBlock.getShortcuts()).toNotExist();
+            expect(templateBlock.getShortcuts()).toBeFalsy();
         });
 
-        it('must return complete shortcut', function() {
+        test('must return complete shortcut', () => {
             var templateBlock = TemplateBlock.create('sayhello', {
                 process: function(block) {
                     return '<p>Hello, World!</p>';
@@ -66,8 +66,8 @@ describe('TemplateBlock', function() {
         });
     });
 
-    describe('toNunjucksExt()', function() {
-        it('should replace by block anchor', function() {
+    describe('toNunjucksExt()', () => {
+        test('should replace by block anchor', () => {
             var templateBlock = TemplateBlock.create('sayhello', function(block) {
                 return 'Hello';
             });
@@ -97,7 +97,7 @@ describe('TemplateBlock', function() {
                 });
         });
 
-        it('must create a valid nunjucks extension', function() {
+        test('must create a valid nunjucks extension', () => {
             var templateBlock = TemplateBlock.create('sayhello', function(block) {
                 return {
                     body: '<p>Hello, World!</p>',
@@ -120,7 +120,7 @@ describe('TemplateBlock', function() {
                 });
         });
 
-        it('must apply block arguments correctly', function() {
+        test('must apply block arguments correctly', () => {
             var templateBlock = TemplateBlock.create('sayhello', function(block) {
                 return {
                     body: '<'+block.kwargs.tag+'>Hello, '+block.kwargs.name+'!</'+block.kwargs.tag+'>',
@@ -143,7 +143,7 @@ describe('TemplateBlock', function() {
                 });
         });
 
-        it('must accept an async function', function() {
+        test('must accept an async function', () => {
             var templateBlock = TemplateBlock.create('sayhello', function(block) {
                 return Promise()
                     .then(function() {
@@ -169,7 +169,7 @@ describe('TemplateBlock', function() {
                 });
         });
 
-        it('must handle nested blocks', function() {
+        test('must handle nested blocks', () => {
             var templateBlock = new TemplateBlock({
                 name: 'yoda',
                 blocks: Immutable.List(['start', 'end']),

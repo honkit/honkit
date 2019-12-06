@@ -1,14 +1,14 @@
 var SummaryArticle = require('../summaryArticle');
 var File = require('../file');
 
-describe('SummaryArticle', function() {
-    describe('createChildLevel', function() {
-        it('must create the right level', function() {
+describe('SummaryArticle', () => {
+    describe('createChildLevel', () => {
+        test('must create the right level', () => {
             var article = SummaryArticle.create({}, '1.1');
             expect(article.createChildLevel()).toBe('1.1.1');
         });
 
-        it('must create the right level when has articles', function() {
+        test('must create the right level when has articles', () => {
             var article = SummaryArticle.create({
                 articles: [
                     {
@@ -20,8 +20,8 @@ describe('SummaryArticle', function() {
         });
     });
 
-    describe('isFile', function() {
-        it('must return true when exactly the file', function() {
+    describe('isFile', () => {
+        test('must return true when exactly the file', () => {
             var article = SummaryArticle.create({
                 ref: 'hello.md'
             }, '1.1');
@@ -30,7 +30,7 @@ describe('SummaryArticle', function() {
             expect(article.isFile(file)).toBe(true);
         });
 
-        it('must return true when path is not normalized', function() {
+        test('must return true when path is not normalized', () => {
             var article = SummaryArticle.create({
                 ref: '/hello.md'
             }, '1.1');
@@ -39,7 +39,7 @@ describe('SummaryArticle', function() {
             expect(article.isFile(file)).toBe(true);
         });
 
-        it('must return false when has anchor', function() {
+        test('must return false when has anchor', () => {
             var article = SummaryArticle.create({
                 ref: 'hello.md#world'
             }, '1.1');

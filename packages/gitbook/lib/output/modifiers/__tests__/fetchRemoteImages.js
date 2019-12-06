@@ -4,15 +4,15 @@ var path = require('path');
 
 var URL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png';
 
-describe('fetchRemoteImages', function() {
+describe('fetchRemoteImages', () => {
     var dir;
     var fetchRemoteImages = require('../fetchRemoteImages');
 
-    beforeEach(function() {
+    beforeEach(() => {
         dir = tmp.dirSync();
     });
 
-    it('should download image file', function() {
+    test('should download image file', () => {
         var $ = cheerio.load('<img src="' + URL + '" />');
 
         return fetchRemoteImages(dir.name, 'index.html', $)
@@ -24,7 +24,7 @@ describe('fetchRemoteImages', function() {
             });
     });
 
-    it('should download image file and replace with relative path', function() {
+    test('should download image file and replace with relative path', () => {
         var $ = cheerio.load('<img src="' + URL + '" />');
 
         return fetchRemoteImages(dir.name, 'test/index.html', $)
@@ -36,5 +36,3 @@ describe('fetchRemoteImages', function() {
             });
     });
 });
-
-

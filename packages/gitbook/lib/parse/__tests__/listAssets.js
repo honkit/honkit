@@ -5,8 +5,8 @@ var createMockFS = require('../../fs/mock');
 var listAssets = require('../listAssets');
 var parseGlossary = require('../parseGlossary');
 
-describe('listAssets', function() {
-    it('should not list glossary as asset', function() {
+describe('listAssets', () => {
+    test('should not list glossary as asset', () => {
         var fs = createMockFS({
             'GLOSSARY.md': '# Glossary\n\n## Hello\nDescription for hello',
             'assetFile.js': '',

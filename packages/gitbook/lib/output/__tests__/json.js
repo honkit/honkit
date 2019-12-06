@@ -1,9 +1,9 @@
-var generateMock = require('./generateMock');
+var generateMock = require('../testing/generateMock');
 var JSONGenerator = require('../json');
 
-describe('JSONGenerator', function() {
+describe('JSONGenerator', () => {
 
-    it('should generate a README.json', function() {
+    test('should generate a README.json', () => {
         return generateMock(JSONGenerator, {
             'README.md': 'Hello World'
         })
@@ -12,7 +12,7 @@ describe('JSONGenerator', function() {
             });
     });
 
-    it('should generate a json file for each articles', function() {
+    test('should generate a json file for each articles', () => {
         return generateMock(JSONGenerator, {
             'README.md': 'Hello World',
             'SUMMARY.md': '# Summary\n\n* [Page](test/page.md)',
@@ -26,7 +26,7 @@ describe('JSONGenerator', function() {
             });
     });
 
-    it('should generate a multilingual book', function() {
+    test('should generate a multilingual book', () => {
         return generateMock(JSONGenerator, {
             'LANGS.md': '# Languages\n\n* [en](en)\n* [fr](fr)',
             'en': {

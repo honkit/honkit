@@ -3,17 +3,17 @@ var tmp = require('tmp');
 var path = require('path');
 var fs = require('fs');
 
-describe('inlineSvg', function() {
+describe('inlineSvg', () => {
     var dir;
     var svgPath;
     var inlineSvg = require('../inlineSvg');
 
-    beforeEach(function() {
+    beforeEach(() => {
         dir = tmp.dirSync();
         svgPath = path.join(dir.name, 'test.svg');
     });
 
-    it('should inline svg icons', function() {
+    test('should inline svg icons', () => {
         const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" version="1.1"><rect width="200" height="100" stroke-width="6"/></svg>';
         var $ = cheerio.load('<img src="test.svg"/>');
         return fs.promises.writeFile(svgPath, svg)
@@ -25,7 +25,7 @@ describe('inlineSvg', function() {
             });
     });
 
-    it('should not inline svgs with style tags', function() {
+    test('should not inline svgs with style tags', () => {
         const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" version="1.1" style="background-color:red"><rect width="200" height="100" stroke="black" stroke-width="6" fill="green"/></svg>';
         var $ = cheerio.load('<img src="test.svg"/>');
         return fs.promises.writeFile(svgPath, svg)

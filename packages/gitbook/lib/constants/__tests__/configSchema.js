@@ -1,7 +1,7 @@
 var jsonschema = require('jsonschema');
 var schema = require('../configSchema');
 
-describe('configSchema', function() {
+describe('configSchema', () => {
 
     function validate(cfg) {
         var v = new jsonschema.Validator();
@@ -10,9 +10,9 @@ describe('configSchema', function() {
         });
     }
 
-    describe('structure', function() {
+    describe('structure', () => {
 
-        it('should accept dot in filename', function() {
+        test('should accept dot in filename', () => {
             var result = validate({
                 structure: {
                     readme: 'book-intro.adoc'
@@ -22,7 +22,7 @@ describe('configSchema', function() {
             expect(result.errors.length).toBe(0);
         });
 
-        it('should accept uppercase in filename', function() {
+        test('should accept uppercase in filename', () => {
             var result = validate({
                 structure: {
                     readme: 'BOOK.adoc'
@@ -32,7 +32,7 @@ describe('configSchema', function() {
             expect(result.errors.length).toBe(0);
         });
 
-        it('should not accept filepath', function() {
+        test('should not accept filepath', () => {
             var result = validate({
                 structure: {
                     readme: 'folder/myFile.md'

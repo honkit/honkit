@@ -2,10 +2,10 @@ var Promise = require('../../utils/promise');
 var Book = require('../../models/book');
 var createMockFS = require('../../fs/mock');
 
-describe('parseReadme', function() {
+describe('parseReadme', () => {
     var parseReadme = require('../parseReadme');
 
-    it('should parse summary if exists', function() {
+    test('should parse summary if exists', () => {
         var fs = createMockFS({
             'README.md': '# Hello\n\nAnd here is the description.'
         });
@@ -22,7 +22,7 @@ describe('parseReadme', function() {
             });
     });
 
-    it('should fail if doesn\'t exist', function() {
+    test('should fail if doesn\'t exist', () => {
         var fs = createMockFS({});
         var book = Book.createForFS(fs);
 

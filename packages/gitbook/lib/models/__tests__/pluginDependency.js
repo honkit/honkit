@@ -1,50 +1,50 @@
 var Immutable = require('immutable');
 var PluginDependency = require('../pluginDependency');
 
-describe('PluginDependency', function() {
-    describe('createFromString', function() {
-        it('must parse name', function() {
+describe('PluginDependency', () => {
+    describe('createFromString', () => {
+        test('must parse name', () => {
             var plugin = PluginDependency.createFromString('hello');
             expect(plugin.getName()).toBe('hello');
             expect(plugin.getVersion()).toBe('*');
         });
 
-        it('must parse state', function() {
+        test('must parse state', () => {
             var plugin = PluginDependency.createFromString('-hello');
             expect(plugin.getName()).toBe('hello');
             expect(plugin.isEnabled()).toBe(false);
         });
 
-        describe('Version', function() {
-            it('must parse version', function() {
+        describe('Version', () => {
+            test('must parse version', () => {
                 var plugin = PluginDependency.createFromString('hello@1.0.0');
                 expect(plugin.getName()).toBe('hello');
                 expect(plugin.getVersion()).toBe('1.0.0');
             });
 
-            it('must parse semver', function() {
+            test('must parse semver', () => {
                 var plugin = PluginDependency.createFromString('hello@>=4.0.0');
                 expect(plugin.getName()).toBe('hello');
                 expect(plugin.getVersion()).toBe('>=4.0.0');
             });
         });
 
-        describe('GIT Version', function() {
-            it('must handle HTTPS urls', function() {
+        describe('GIT Version', () => {
+            test('must handle HTTPS urls', () => {
                 var plugin = PluginDependency.createFromString('hello@git+https://github.com/GitbookIO/plugin-ga.git');
                 expect(plugin.getName()).toBe('hello');
                 expect(plugin.getVersion()).toBe('git+https://github.com/GitbookIO/plugin-ga.git');
             });
 
-            it('must handle SSH urls', function() {
+            test('must handle SSH urls', () => {
                 var plugin = PluginDependency.createFromString('hello@git+ssh://samy@github.com/GitbookIO/plugin-ga.git');
                 expect(plugin.getName()).toBe('hello');
                 expect(plugin.getVersion()).toBe('git+ssh://samy@github.com/GitbookIO/plugin-ga.git');
             });
         });
 
-        describe('listToArray', function() {
-            it('must create an array from a list of plugin dependencies', function() {
+        describe('listToArray', () => {
+            test('must create an array from a list of plugin dependencies', () => {
                 var list = PluginDependency.listToArray(Immutable.List([
                     PluginDependency.createFromString('hello@1.0.0'),
                     PluginDependency.createFromString('noversion'),
@@ -59,8 +59,8 @@ describe('PluginDependency', function() {
             });
         });
 
-        describe('listFromArray', function() {
-            it('must create an array from a list of plugin dependencies', function() {
+        describe('listFromArray', () => {
+            test('must create an array from a list of plugin dependencies', () => {
                 var arr = Immutable.fromJS([
                     'hello@1.0.0',
                     {

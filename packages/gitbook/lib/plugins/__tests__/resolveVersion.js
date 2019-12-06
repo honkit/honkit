@@ -1,8 +1,8 @@
 var PluginDependency = require('../../models/pluginDependency');
 var resolveVersion = require('../resolveVersion');
 
-describe('resolveVersion', function() {
-    it('must skip resolving and return non-semver versions', function() {
+describe('resolveVersion', () => {
+    test('must skip resolving and return non-semver versions', () => {
         var plugin = PluginDependency.createFromString('ga@git+ssh://samy@github.com/GitbookIO/plugin-ga.git');
 
         return resolveVersion(plugin)
@@ -11,7 +11,7 @@ describe('resolveVersion', function() {
             });
     });
 
-    it('must resolve a normal plugin dependency', function() {
+    test('must resolve a normal plugin dependency', () => {
         var plugin = PluginDependency.createFromString('ga@>0.9.0 < 1.0.1');
 
         return resolveVersion(plugin)

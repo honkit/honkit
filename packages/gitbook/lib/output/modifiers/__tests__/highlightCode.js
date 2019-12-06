@@ -2,7 +2,7 @@ var cheerio = require('cheerio');
 var Promise = require('../../../utils/promise');
 var highlightCode = require('../highlightCode');
 
-describe('highlightCode', function() {
+describe('highlightCode', () => {
     function doHighlight(lang, code) {
         return {
             text: '' + (lang || '') + '$' + code
@@ -16,7 +16,7 @@ describe('highlightCode', function() {
             });
     }
 
-    it('should call it for normal code element', function() {
+    test('should call it for normal code element', () => {
         var $ = cheerio.load('<p>This is a <code>test</code></p>');
 
         return highlightCode(doHighlight, $)
@@ -26,7 +26,7 @@ describe('highlightCode', function() {
             });
     });
 
-    it('should call it for markdown code block', function() {
+    test('should call it for markdown code block', () => {
         var $ = cheerio.load('<pre><code class="lang-js">test</code></pre>');
 
         return highlightCode(doHighlight, $)
@@ -36,7 +36,7 @@ describe('highlightCode', function() {
             });
     });
 
-    it('should call it for asciidoc code block', function() {
+    test('should call it for asciidoc code block', () => {
         var $ = cheerio.load('<pre><code class="language-python">test</code></pre>');
 
         return highlightCode(doHighlight, $)
@@ -46,7 +46,7 @@ describe('highlightCode', function() {
             });
     });
 
-    it('should accept async highlighter', function() {
+    test('should accept async highlighter', () => {
         var $ = cheerio.load('<pre><code class="language-python">test</code></pre>');
 
         return highlightCode(doHighlightAsync, $)
