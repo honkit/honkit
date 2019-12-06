@@ -6,7 +6,9 @@
     "lerna": "^3.19.0"
   },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "bootstrap": "lerna bootstrap --ci",
+    "test": "lerna run test"
   },
   "repository": {
     "type": "git",
