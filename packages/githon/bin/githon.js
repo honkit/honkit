@@ -5,7 +5,7 @@ const program = require("commander");
 const assert = require("assert");
 
 Githon.commands.forEach((spec) => {
-    var subcommand = program.command(spec.name).description(spec.description);
+    let subcommand = program.command(spec.name).description(spec.description);
 
     const options = spec.options || [];
     options.forEach((spec) => {

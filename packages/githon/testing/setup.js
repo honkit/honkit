@@ -1,6 +1,6 @@
-var path = require("path");
-var fs = require("fs");
-var cheerio = require("cheerio");
+const path = require("path");
+const fs = require("fs");
+const cheerio = require("cheerio");
 
 expect.extend({
     /**
@@ -24,8 +24,8 @@ expect.extend({
      * @param {String} selector
      */
     toHaveDOMElement(html, selector) {
-        var $ = cheerio.load(html);
-        var $el = $(selector);
+        const $ = cheerio.load(html);
+        const $el = $(selector);
         const pass = $el.length > 0;
         const message = pass
             ? () => `expected HTML not to contain an element at ${selector}`
