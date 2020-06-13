@@ -7,7 +7,7 @@ var Plugins = require("../plugins");
 var deprecate = require("./deprecate");
 var fileToURL = require("../output/helper/fileToURL");
 var defaultBlocks = require("../constants/defaultBlocks");
-var gitbook = require("../gitbook");
+var githon = require("../githon");
 var parsers = require("../parsers");
 
 var encodeConfig = require("./encodeConfig");
@@ -222,7 +222,7 @@ function encodeGlobal(output) {
         },
 
         gitbook: {
-            version: gitbook.version,
+            version: githon.version,
         },
     };
 

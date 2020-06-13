@@ -3,7 +3,7 @@ var FILENAME_REGEX = "^[a-zA-Z-._d,s]+$";
 module.exports = {
     $schema: "http://json-schema.org/schema#",
     id: "https://gitbook.com/schemas/book.json",
-    title: "GitBook Configuration",
+    title: "Githon Configuration",
     type: "object",
     properties: {
         root: {

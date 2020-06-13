@@ -4,7 +4,7 @@ var Immutable = require("immutable");
 
 var Promise = require("../utils/promise");
 var Plugin = require("../models/plugin");
-var gitbook = require("../gitbook");
+var githon = require("../githon");
 
 /**
     Initialize and prepare NPM
@@ -48,7 +48,7 @@ function resolveVersion(plugin, options) {
                     };
                 })
                 .filter(function (v) {
-                    return v.gitbook && gitbook.satisfies(v.gitbook);
+                    return v.gitbook && githon.satisfies(v.gitbook);
                 })
                 .sort(function (v1, v2) {
                     return semver.lt(v1.version, v2.version) ? 1 : -1;

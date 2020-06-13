@@ -1,10 +1,10 @@
 #! /usr/bin/env node
 
-const Gitbook = require("../lib");
+const Githon = require("../lib");
 const program = require("commander");
 const assert = require("assert");
 
-Gitbook.commands.forEach((spec) => {
+Githon.commands.forEach((spec) => {
     var subcommand = program.command(spec.name).description(spec.description);
 
     const options = spec.options || [];

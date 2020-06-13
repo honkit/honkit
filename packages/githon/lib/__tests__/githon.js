@@ -1,7 +1,7 @@
-var gitbook = require("../gitbook");
+var githon = require("../githon");
 
 describe("satisfies", () => {
     test("should return true for *", () => {
-        expect(gitbook.satisfies("*")).toBe(true);
+        expect(githon.satisfies("*")).toBe(true);
     });
 });

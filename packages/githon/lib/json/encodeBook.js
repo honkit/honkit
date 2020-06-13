@@ -1,6 +1,6 @@
 var extend = require("extend");
 
-var gitbook = require("../gitbook");
+var githon = require("../githon");
 var encodeSummary = require("./encodeSummary");
 var encodeGlossary = require("./encodeGlossary");
 var encodeReadme = require("./encodeReadme");
@@ -27,8 +27,8 @@ function encodeBookToJson(book) {
         languages: book.isMultilingual() ? encodeLanguages(book.getLanguages()) : undefined,
 
         gitbook: {
-            version: gitbook.version,
-            time: gitbook.START_TIME,
+            version: githon.version,
+            time: githon.START_TIME,
         },
         book: extend(
             {

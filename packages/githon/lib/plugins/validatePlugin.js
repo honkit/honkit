@@ -1,4 +1,4 @@
-var gitbook = require("../gitbook");
+var githon = require("../githon");
 
 var Promise = require("../utils/promise");
 
@@ -25,8 +25,8 @@ function validatePlugin(plugin) {
     }
 
     var engine = packageInfos.get("engines").get("gitbook");
-    if (!gitbook.satisfies(engine)) {
-        return Promise.reject(new Error("GitBook doesn't satisfy the requirements of this plugin: " + engine));
+    if (!githon.satisfies(engine)) {
+        return Promise.reject(new Error("Githon doesn't satisfy the requirements of this plugin: " + engine));
     }
 
     return Promise(plugin);
