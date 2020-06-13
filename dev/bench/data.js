@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592062962129,
+  "lastUpdate": 1592063091112,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "Secretlint benchmark": [
@@ -62,6 +62,37 @@ window.BENCHMARK_DATA = {
             "range": "±2.43%",
             "unit": "ops/sec",
             "extra": "7 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "1f03fb8b0afde7b7fbb81856c111a8f33724b33c",
+          "message": "fix build",
+          "timestamp": "2020-06-14T00:41:56+09:00",
+          "tree_id": "c3e6b8d8f3a96c303bfe12f364ec9500831cfca8",
+          "url": "https://github.com/azu/githon/commit/1f03fb8b0afde7b7fbb81856c111a8f33724b33c"
+        },
+        "date": 1592063090657,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.08,
+            "range": "±5.24%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
           }
         ]
       }
