@@ -32,8 +32,8 @@ describe("annotateText", () => {
         expect($("a").length).toBe(0);
     });
 
-    test('should not annotate when has class "no-glossary"', () => {
-        const $ = cheerio.load('<p class="no-glossary">This is a word, and multiple words</p>');
+    test("should not annotate when has class \"no-glossary\"", () => {
+        const $ = cheerio.load("<p class=\"no-glossary\">This is a word, and multiple words</p>");
 
         annotateText(entries, "GLOSSARY.md", $);
         expect($("a").length).toBe(0);

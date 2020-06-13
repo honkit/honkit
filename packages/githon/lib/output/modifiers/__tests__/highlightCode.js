@@ -25,7 +25,7 @@ describe("highlightCode", () => {
     });
 
     test("should call it for markdown code block", () => {
-        const $ = cheerio.load('<pre><code class="lang-js">test</code></pre>');
+        const $ = cheerio.load("<pre><code class=\"lang-js\">test</code></pre>");
 
         return highlightCode(doHighlight, $).then(() => {
             const $code = $("code");
@@ -34,7 +34,7 @@ describe("highlightCode", () => {
     });
 
     test("should call it for asciidoc code block", () => {
-        const $ = cheerio.load('<pre><code class="language-python">test</code></pre>');
+        const $ = cheerio.load("<pre><code class=\"language-python\">test</code></pre>");
 
         return highlightCode(doHighlight, $).then(() => {
             const $code = $("code");
@@ -43,7 +43,7 @@ describe("highlightCode", () => {
     });
 
     test("should accept async highlighter", () => {
-        const $ = cheerio.load('<pre><code class="language-python">test</code></pre>');
+        const $ = cheerio.load("<pre><code class=\"language-python\">test</code></pre>");
 
         return highlightCode(doHighlightAsync, $).then(() => {
             const $code = $("code");

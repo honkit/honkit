@@ -237,7 +237,7 @@ function encodeGlobal(output) {
         result,
         "generator",
         output.getGenerator(),
-        '"this.generator" property is deprecated, use "this.output.name" instead'
+        "\"this.generator\" property is deprecated, use \"this.output.name\" instead"
     );
 
     deprecate.field(
@@ -248,7 +248,7 @@ function encodeGlobal(output) {
         () => {
             return encodeNavigation(output);
         },
-        '"navigation" property is deprecated'
+        "\"navigation\" property is deprecated"
     );
 
     deprecate.field(
@@ -257,7 +257,7 @@ function encodeGlobal(output) {
         result,
         "book",
         result,
-        '"book" property is deprecated, use "this" directly instead'
+        "\"book\" property is deprecated, use \"this\" directly instead"
     );
 
     deprecate.field(
@@ -266,7 +266,7 @@ function encodeGlobal(output) {
         result,
         "options",
         result.config.values,
-        '"options" property is deprecated, use config.get(key) instead'
+        "\"options\" property is deprecated, use config.get(key) instead"
     );
 
     return result;

@@ -136,13 +136,13 @@ function createTemplateEngine(output, currentFile) {
                 book,
                 "fileExists",
                 fileExists,
-                'Filter "fileExists" is deprecated, use "fileExists(filename)" '
+                "Filter \"fileExists\" is deprecated, use \"fileExists(filename)\" "
             ),
             getArticleByPath: deprecate.method(
                 book,
                 "getArticleByPath",
                 fileExists,
-                'Filter "getArticleByPath" is deprecated, use "getArticleByPath(filename)" '
+                "Filter \"getArticleByPath\" is deprecated, use \"getArticleByPath(filename)\" "
             ),
 
             contentURL: function (filePath) {
