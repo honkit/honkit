@@ -4,7 +4,7 @@ const suite = new Benchmark.Suite();
 const githonBin = require.resolve(".bin/githon");
 suite
     .add("run githon build", () => {
-        execFileSync(githonBin, ["buil"], {
+        execFileSync(githonBin, ["build"], {
             cwd: __dirname,
         });
     })
