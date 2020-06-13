@@ -21,10 +21,8 @@ jobs:
           node_version: ${{ matrix.node_version }}
       - name: Install
         run: yarn install
-      - name: Build
-        run: yarn run build
       - name: Run Benchmark
-        run: cd examples/benchmark && node index.js | tee output.txt
+        run: cd examples/benchmark && node benchmark.js | tee output.txt
       - name: Store benchmark result
         uses: rhysd/github-action-benchmark@v1
         with:
