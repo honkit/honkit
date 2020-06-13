@@ -24,6 +24,10 @@ You can find a [list of real-world examples](docs/examples.md) in the documentat
 * [Plugins](http://toolchain.gitbook.com/plugins/)
 * [Beautiful default theme](https://github.com/GitbookIO/theme-default)
 
+## Benchmarks
+
+- https://azu.github.io/githon/dev/bench/
+
 ## Licensing
 
 Githon is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.
