@@ -28,7 +28,7 @@ function generateMock(Generator, files) {
                 root: dir.name,
             });
         })
-        .then(() => dir.name);
+        .thenResolve(dir.name);
 }
 
 module.exports = generateMock;
