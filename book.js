@@ -1,4 +1,4 @@
-var pkg = require("./package.json");
+const pkg = require("./package.json");
 
 module.exports = {
     // Documentation for GitBook is stored under "docs"
