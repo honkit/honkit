@@ -2,3 +2,4 @@ docs/**
 _book/**
 **/node_modules/**
 **/test/**
+examples/**
