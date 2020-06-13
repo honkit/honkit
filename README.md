@@ -28,7 +28,6 @@ You can find a [list of real-world examples](docs/examples.md) in the documentat
 
 `githon build` benchmark:
 
-
 - <https://azu.github.io/githon/dev/bench/>
 
 ## Licensing
