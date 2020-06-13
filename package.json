@@ -20,7 +20,7 @@
     "scripts": {
         "bootstrap": "lerna bootstrap --ci",
         "lint": "eslint .",
-        "test": "lerna run test",
+        "test": "cd packages/githon && yarn test",
         "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\""
     },
     "devDependencies": {
