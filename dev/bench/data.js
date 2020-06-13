@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592066082279,
+  "lastUpdate": 1592067920988,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "Githon benchmark": [
@@ -184,6 +184,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.07,
             "range": "±1.01%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "b3e61f5bcbdb1585375016cf65e99702b522be27",
+          "message": "perf: use Promise.all on building",
+          "timestamp": "2020-06-14T02:01:43+09:00",
+          "tree_id": "d996def37a0e781f5aa2413f7b73908d7bb28af8",
+          "url": "https://github.com/azu/githon/commit/b3e61f5bcbdb1585375016cf65e99702b522be27"
+        },
+        "date": 1592067920559,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.06,
+            "range": "±1.59%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
