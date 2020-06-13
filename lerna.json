@@ -1,4 +1,9 @@
 {
-  "lerna": "2.0.0-beta.26",
-  "version": "0.0.0"
+    "npmClient": "yarn",
+    "useWorkspaces": true,
+    "packages": [
+        "packages/*"
+    ],
+    "includeMergedTags": true,
+    "version": "0.0.0"
 }

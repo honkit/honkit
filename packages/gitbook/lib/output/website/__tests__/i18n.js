@@ -1,38 +1,38 @@
-var createMockOutput = require('../../testing/createMock');
-var prepareI18n = require('../prepareI18n');
-var createTemplateEngine = require('../createTemplateEngine');
+var createMockOutput = require("../../testing/createMock");
+var prepareI18n = require("../prepareI18n");
+var createTemplateEngine = require("../createTemplateEngine");
 
-var WebsiteGenerator = require('../');
+var WebsiteGenerator = require("../");
 
-describe('i18n', () => {
-    test('should correctly use english as default language', () => {
+describe("i18n", () => {
+    test("should correctly use english as default language", () => {
         return createMockOutput(WebsiteGenerator, {
-            'README.md': 'Hello World'
+            "README.md": "Hello World",
         })
-            .then(function(output) {
+            .then(function (output) {
                 return prepareI18n(output);
             })
-            .then(function(output) {
-                var engine = createTemplateEngine(output, 'README.md');
-                var t = engine.getFilters().get('t');
+            .then(function (output) {
+                var engine = createTemplateEngine(output, "README.md");
+                var t = engine.getFilters().get("t");
 
-                expect(t('SUMMARY_INTRODUCTION')).toEqual('Introduction');
+                expect(t("SUMMARY_INTRODUCTION")).toEqual("Introduction");
             });
     });
 
-    test('should correctly use language from book.json', () => {
+    test("should correctly use language from book.json", () => {
         return createMockOutput(WebsiteGenerator, {
-            'README.md': 'Hello World',
-            'book.json': JSON.stringify({ language: 'fr' })
+            "README.md": "Hello World",
+            "book.json": JSON.stringify({ language: "fr" }),
         })
-            .then(function(output) {
+            .then(function (output) {
                 return prepareI18n(output);
             })
-            .then(function(output) {
-                var engine = createTemplateEngine(output, 'README.md');
-                var t = engine.getFilters().get('t');
+            .then(function (output) {
+                var engine = createTemplateEngine(output, "README.md");
+                var t = engine.getFilters().get("t");
 
-                expect(t('GITBOOK_LINK')).toEqual('Publié avec GitBook');
+                expect(t("GITBOOK_LINK")).toEqual("Publié avec GitBook");
             });
     });
 });

@@ -1,6 +1,6 @@
-var Promise = require('../utils/promise');
-var error = require('../utils/error');
-var lookupStructureFile = require('./lookupStructureFile');
+var Promise = require("../utils/promise");
+var error = require("../utils/error");
+var lookupStructureFile = require("./lookupStructureFile");
 
 /**
     Parse a ParsableFile using a specific method
@@ -17,33 +17,30 @@ function parseFile(fs, file, type) {
     if (!parser) {
         return Promise.reject(
             error.FileNotParsableError({
-                filename: filepath
+                filename: filepath,
             })
         );
     }
 
-    return fs.readAsString(filepath)
-        .then(function(content) {
-            if (type === 'readme') {
+    return fs
+        .readAsString(filepath)
+        .then(function (content) {
+            if (type === "readme") {
                 return parser.parseReadme(content);
-            } else if (type === 'glossary') {
+            } else if (type === "glossary") {
                 return parser.parseGlossary(content);
-            } else if (type === 'summary') {
+            } else if (type === "summary") {
                 return parser.parseSummary(content);
-            } else if (type === 'langs') {
+            } else if (type === "langs") {
                 return parser.parseLanguages(content);
             } else {
                 throw new Error('Parsing invalid type "' + type + '"');
             }
         })
-        .then(function(result) {
-            return [
-                file,
-                result
-            ];
+        .then(function (result) {
+            return [file, result];
         });
 }
-
 
 /**
     Parse a structure file (ex: SUMMARY.md, GLOSSARY.md).
@@ -56,12 +53,11 @@ function parseFile(fs, file, type) {
 function parseStructureFile(book, type) {
     var fs = book.getContentFS();
 
-    return lookupStructureFile(book, type)
-        .then(function(file) {
-            if (!file) return [undefined, undefined];
+    return lookupStructureFile(book, type).then(function (file) {
+        if (!file) return [undefined, undefined];
 
-            return parseFile(fs, file, type);
-        });
+        return parseFile(fs, file, type);
+    });
 }
 
 module.exports = parseStructureFile;

@@ -1,22 +1,22 @@
-var path = require('path');
-var Immutable = require('immutable');
+var path = require("path");
+var Immutable = require("immutable");
 
-var parsers = require('../parsers');
+var parsers = require("../parsers");
 
 var File = Immutable.Record({
     // Path of the file, relative to the FS
-    path:       String(),
+    path: String(),
 
     // Time when file data last modified
-    mtime:      Date()
+    mtime: Date(),
 });
 
-File.prototype.getPath = function() {
-    return this.get('path');
+File.prototype.getPath = function () {
+    return this.get("path");
 };
 
-File.prototype.getMTime = function() {
-    return this.get('mtime');
+File.prototype.getMTime = function () {
+    return this.get("mtime");
 };
 
 /**
@@ -24,7 +24,7 @@ File.prototype.getMTime = function() {
 
     @return {Boolean}
 */
-File.prototype.exists = function() {
+File.prototype.exists = function () {
     return Boolean(this.getPath());
 };
 
@@ -33,7 +33,7 @@ File.prototype.exists = function() {
 
     @return {String}
 */
-File.prototype.getType = function() {
+File.prototype.getType = function () {
     var parser = this.getParser();
     if (parser) {
         return parser.getName();
@@ -47,7 +47,7 @@ File.prototype.getType = function() {
 
     @return {String}
 */
-File.prototype.getExtension = function() {
+File.prototype.getExtension = function () {
     return path.extname(this.getPath()).toLowerCase();
 };
 
@@ -56,7 +56,7 @@ File.prototype.getExtension = function() {
 
     @return {Parser}
 */
-File.prototype.getParser = function() {
+File.prototype.getParser = function () {
     return parsers.getByExt(this.getExtension());
 };
 
@@ -70,7 +70,7 @@ File.prototype.getParser = function() {
 File.createFromStat = function createFromStat(filepath, stat) {
     return new File({
         path: filepath,
-        mtime: stat.mtime
+        mtime: stat.mtime,
     });
 };
 
@@ -82,7 +82,7 @@ File.createFromStat = function createFromStat(filepath, stat) {
 */
 File.createWithFilepath = function createWithFilepath(filepath) {
     return new File({
-        path: filepath
+        path: filepath,
     });
 };
 

@@ -1,11 +1,11 @@
-var url = require('url');
-var path = require('path');
+var url = require("url");
+var path = require("path");
 
 // Is the url an external url
 function isExternal(href) {
     try {
         return Boolean(url.parse(href).protocol) && !isDataURI(href);
-    } catch(err) {
+    } catch (err) {
         return false;
     }
 }
@@ -13,8 +13,8 @@ function isExternal(href) {
 // Is the url an iniline data-uri
 function isDataURI(href) {
     try {
-        return Boolean(url.parse(href).protocol) && (url.parse(href).protocol === 'data:');
-    } catch(err) {
+        return Boolean(url.parse(href).protocol) && url.parse(href).protocol === "data:";
+    } catch (err) {
         return false;
     }
 }
@@ -29,14 +29,14 @@ function isAnchor(href) {
     try {
         var parsed = url.parse(href);
         return !!(!parsed.protocol && !parsed.path && parsed.hash);
-    } catch(err) {
+    } catch (err) {
         return false;
     }
 }
 
 // Normalize a path to be a link
 function normalize(s) {
-    return path.normalize(s).replace(/\\/g, '/');
+    return path.normalize(s).replace(/\\/g, "/");
 }
 
 /**
@@ -47,7 +47,7 @@ function normalize(s) {
  */
 function flatten(href) {
     href = normalize(href);
-    if (href[0] == '/') {
+    if (href[0] == "/") {
         href = normalize(href.slice(1));
     }
 
@@ -67,7 +67,7 @@ function toAbsolute(_href, dir, outdir) {
         return _href;
     }
 
-    outdir = outdir == undefined? dir : outdir;
+    outdir = outdir == undefined ? dir : outdir;
 
     _href = normalize(_href);
     dir = normalize(dir);
@@ -75,7 +75,7 @@ function toAbsolute(_href, dir, outdir) {
 
     // Path "_href" inside the base folder
     var hrefInRoot = normalize(path.join(dir, _href));
-    if (_href[0] == '/') {
+    if (_href[0] == "/") {
         hrefInRoot = normalize(_href.slice(1));
     }
 
@@ -97,8 +97,8 @@ function toAbsolute(_href, dir, outdir) {
  * @return {String}
  */
 function relative(dir, file) {
-    var isDirectory = file.slice(-1) === '/';
-    return normalize(path.relative(dir, file)) + (isDirectory? '/': '');
+    var isDirectory = file.slice(-1) === "/";
+    return normalize(path.relative(dir, file)) + (isDirectory ? "/" : "");
 }
 
 /**
@@ -127,13 +127,13 @@ function areIdenticalPaths(p1, p2) {
 
 module.exports = {
     areIdenticalPaths: areIdenticalPaths,
-    isDataURI:         isDataURI,
-    isExternal:        isExternal,
-    isRelative:        isRelative,
-    isAnchor:          isAnchor,
-    normalize:         normalize,
-    toAbsolute:        toAbsolute,
-    relative:          relative,
-    relativeForFile:   relativeForFile,
-    flatten:           flatten
+    isDataURI: isDataURI,
+    isExternal: isExternal,
+    isRelative: isRelative,
+    isAnchor: isAnchor,
+    normalize: normalize,
+    toAbsolute: toAbsolute,
+    relative: relative,
+    relativeForFile: relativeForFile,
+    flatten: flatten,
 };

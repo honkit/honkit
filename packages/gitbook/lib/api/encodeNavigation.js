@@ -1,4 +1,4 @@
-var Immutable = require('immutable');
+var Immutable = require("immutable");
 
 /**
     Encode an article for next/prev
@@ -14,8 +14,8 @@ function encodeArticle(pages, article) {
         path: articlePath,
         title: article.getTitle(),
         level: article.getLevel(),
-        exists: (articlePath && pages.has(articlePath)),
-        external: article.isExternal()
+        exists: articlePath && pages.has(articlePath),
+        external: article.isExternal(),
     };
 }
 
@@ -31,9 +31,8 @@ function encodeNavigation(output) {
     var summary = book.getSummary();
     var articles = summary.getArticlesAsList();
 
-
     var navigation = articles
-        .map(function(article, i) {
+        .map(function (article, i) {
             var ref = article.getRef();
             if (!ref) {
                 return undefined;
@@ -47,14 +46,14 @@ function encodeNavigation(output) {
                 {
                     index: i,
                     title: article.getTitle(),
-                    introduction: (i === 0),
-                    prev: prev? encodeArticle(pages, prev) : undefined,
-                    next: next? encodeArticle(pages, next) : undefined,
-                    level: article.getLevel()
-                }
+                    introduction: i === 0,
+                    prev: prev ? encodeArticle(pages, prev) : undefined,
+                    next: next ? encodeArticle(pages, next) : undefined,
+                    level: article.getLevel(),
+                },
             ];
         })
-        .filter(function(e) {
+        .filter(function (e) {
             return Boolean(e);
         });
 

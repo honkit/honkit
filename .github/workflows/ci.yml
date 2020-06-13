@@ -1,15 +1,22 @@
-name: CI
-on: [push]
+name: test
+on: [push, pull_request]
+env:
+    CI: true
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 13.x
-    - run: |
-        npm ci
-        npm run bootstrap
-    - run: npm test
-    - run: npm run lint
+    test:
+        name: "Test on Node.js ${{ matrix.node_version }}"
+        runs-on: ubuntu-18.04
+        strategy:
+            matrix:
+                node_version: [12, 14]
+        steps:
+            -   name: checkout
+                uses: actions/checkout@v2
+            -   name: setup Node.js ${{ matrix.node_version }}
+                uses: actions/setup-node@v1
+                with:
+                    node_version: ${{ matrix.node_version }}
+            -   name: Install
+                run: yarn install
+            -   name: Test
+                run: yarn test

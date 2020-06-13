@@ -1,9 +1,9 @@
-var path = require('path');
+var path = require("path");
 
-var PathUtils = require('../../utils/path');
-var LocationUtils = require('../../utils/location');
+var PathUtils = require("../../utils/path");
+var LocationUtils = require("../../utils/location");
 
-var OUTPUT_EXTENSION = '.html';
+var OUTPUT_EXTENSION = ".html";
 
 /**
  * Convert a filePath (absolute) to a filename for output
@@ -18,10 +18,10 @@ function fileToOutput(output, filePath) {
     var fileReadme = readme.getFile();
 
     if (
-        path.basename(filePath, path.extname(filePath)) == 'README' ||
+        path.basename(filePath, path.extname(filePath)) == "README" ||
         (fileReadme.exists() && filePath == fileReadme.getPath())
     ) {
-        filePath = path.join(path.dirname(filePath), 'index' + OUTPUT_EXTENSION);
+        filePath = path.join(path.dirname(filePath), "index" + OUTPUT_EXTENSION);
     } else {
         filePath = PathUtils.setExtension(filePath, OUTPUT_EXTENSION);
     }

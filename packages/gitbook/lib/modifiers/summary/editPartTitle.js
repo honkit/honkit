@@ -14,10 +14,10 @@ function editPartTitle(summary, index, newTitle) {
         return summary;
     }
 
-    part = part.set('title', newTitle);
+    part = part.set("title", newTitle);
     parts = parts.set(index, part);
 
-    return summary.set('parts', parts);
+    return summary.set("parts", parts);
 }
 
 module.exports = editPartTitle;

@@ -1,10 +1,6 @@
-var Immutable = require('immutable');
+var Immutable = require("immutable");
 
-var generators = Immutable.List([
-    require('./json'),
-    require('./website'),
-    require('./ebook')
-]);
+var generators = Immutable.List([require("./json"), require("./website"), require("./ebook")]);
 
 /**
     Return a specific generator by its name
@@ -13,12 +9,12 @@ var generators = Immutable.List([
     @return {Generator}
 */
 function getGenerator(name) {
-    return generators.find(function(generator) {
+    return generators.find(function (generator) {
         return generator.name == name;
     });
 }
 
 module.exports = {
-    generate:           require('./generateBook'),
-    getGenerator:       getGenerator
+    generate: require("./generateBook"),
+    getGenerator: getGenerator,
 };

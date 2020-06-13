@@ -1,4 +1,4 @@
-var timing = require('../utils/timing');
+var timing = require("../utils/timing");
 
 /**
     List all assets in a book
@@ -34,10 +34,7 @@ function listAssets(book, pages) {
         );
     }
 
-    return timing.measure(
-        'parse.listAssets',
-        fs.listAllFiles('.', filterFile)
-    );
+    return timing.measure("parse.listAssets", fs.listAllFiles(".", filterFile));
 }
 
 module.exports = listAssets;

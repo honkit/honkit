@@ -1,5 +1,5 @@
-var Q = require('q');
-var Immutable = require('immutable');
+var Q = require("q");
+var Immutable = require("immutable");
 
 // Debugging for long stack traces
 if (process.env.DEBUG || process.env.CI) {
@@ -14,13 +14,12 @@ if (process.env.DEBUG || process.env.CI) {
  * @return {Promise<Mixed>}
  */
 function reduce(arr, iter, base) {
-    arr = Immutable.Iterable.isIterable(arr)? arr : Immutable.List(arr);
+    arr = Immutable.Iterable.isIterable(arr) ? arr : Immutable.List(arr);
 
-    return arr.reduce(function(prev, elem, key) {
-        return prev
-            .then(function(val) {
-                return iter(val, elem, key);
-            });
+    return arr.reduce(function (prev, elem, key) {
+        return prev.then(function (val) {
+            return iter(val, elem, key);
+        });
     }, Q(base));
 }
 
@@ -32,7 +31,7 @@ function reduce(arr, iter, base) {
  * @return {Promise}
  */
 function forEach(arr, iter) {
-    return reduce(arr, function(val, el, key) {
+    return reduce(arr, function (val, el, key) {
         return iter(el, key);
     });
 }
@@ -45,13 +44,16 @@ function forEach(arr, iter) {
  * @return {Promise}
  */
 function serie(arr, iter, base) {
-    return reduce(arr, function(before, item, key) {
-        return Q(iter(item, key))
-            .then(function(r) {
+    return reduce(
+        arr,
+        function (before, item, key) {
+            return Q(iter(item, key)).then(function (r) {
                 before.push(r);
                 return before;
             });
-    }, []);
+        },
+        []
+    );
 }
 
 /**
@@ -64,8 +66,8 @@ function serie(arr, iter, base) {
 function some(arr, iter) {
     arr = Immutable.List(arr);
 
-    return arr.reduce(function(prev, elem, i) {
-        return prev.then(function(val) {
+    return arr.reduce(function (prev, elem, i) {
+        return prev.then(function (val) {
             if (val) return val;
 
             return iter(elem, i);
@@ -81,13 +83,16 @@ function some(arr, iter) {
  * @return {Promise<List>}
  */
 function mapAsList(arr, iter) {
-    return reduce(arr, function(prev, entry, i) {
-        return Q(iter(entry, i))
-            .then(function(out) {
+    return reduce(
+        arr,
+        function (prev, entry, i) {
+            return Q(iter(entry, i)).then(function (out) {
                 prev.push(out);
                 return prev;
             });
-    }, []);
+        },
+        []
+    );
 }
 
 /**
@@ -99,28 +104,24 @@ function mapAsList(arr, iter) {
  */
 function map(arr, iter) {
     if (Immutable.Map.isMap(arr)) {
-        var type = 'Map';
+        var type = "Map";
         if (Immutable.OrderedMap.isOrderedMap(arr)) {
-            type = 'OrderedMap';
+            type = "OrderedMap";
         }
 
-        return mapAsList(arr, function(value, key) {
-            return Q(iter(value, key))
-                .then(function(result) {
-                    return [key, result];
-                });
-        })
-            .then(function(result) {
-                return Immutable[type](result);
+        return mapAsList(arr, function (value, key) {
+            return Q(iter(value, key)).then(function (result) {
+                return [key, result];
             });
+        }).then(function (result) {
+            return Immutable[type](result);
+        });
     } else {
-        return mapAsList(arr, iter)
-            .then(function(result) {
-                return Immutable.List(result);
-            });
+        return mapAsList(arr, iter).then(function (result) {
+            return Immutable.List(result);
+        });
     }
 }
-
 
 /**
  * Wrap a function in a promise
@@ -129,13 +130,12 @@ function map(arr, iter) {
  * @return {Funciton}
  */
 function wrap(func) {
-    return function() {
+    return function () {
         var args = Array.prototype.slice.call(arguments, 0);
 
-        return Q()
-            .then(function() {
-                return func.apply(null, args);
-            });
+        return Q().then(function () {
+            return func.apply(null, args);
+        });
     };
 }
 

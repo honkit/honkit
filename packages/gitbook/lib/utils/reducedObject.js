@@ -1,4 +1,4 @@
-var Immutable = require('immutable');
+var Immutable = require("immutable");
 
 /**
  *  Reduce the difference between a map and its default version
@@ -7,11 +7,11 @@ var Immutable = require('immutable');
  *  @return {Map} The properties of currentVersion that differs from defaultVersion
  */
 function reducedObject(defaultVersion, currentVersion) {
-    if(defaultVersion === undefined) {
+    if (defaultVersion === undefined) {
         return currentVersion;
     }
 
-    return currentVersion.reduce(function(result, value, key) {
+    return currentVersion.reduce(function (result, value, key) {
         var defaultValue = defaultVersion.get(key);
 
         if (Immutable.Map.isMap(value)) {

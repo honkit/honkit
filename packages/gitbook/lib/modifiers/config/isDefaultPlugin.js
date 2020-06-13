@@ -1,5 +1,5 @@
-var DEFAULT_PLUGINS = require('../../constants/defaultPlugins');
-var hasPlugin = require('./hasPlugin');
+var DEFAULT_PLUGINS = require("../../constants/defaultPlugins");
+var hasPlugin = require("./hasPlugin");
 
 /**
  * Test if a plugin is a default one

@@ -1,6 +1,6 @@
-var is = require('is');
-var removeArticle = require('./removeArticle');
-var insertArticle = require('./insertArticle');
+var is = require("is");
+var removeArticle = require("./removeArticle");
+var insertArticle = require("./insertArticle");
 
 /**
     Returns a new summary, with the given article removed from its
@@ -13,8 +13,8 @@ var insertArticle = require('./insertArticle');
 */
 function moveArticle(summary, origin, target) {
     // Coerce to level
-    var originLevel = is.string(origin)? origin : origin.getLevel();
-    var targetLevel = is.string(target)? target : target.getLevel();
+    var originLevel = is.string(origin) ? origin : origin.getLevel();
+    var targetLevel = is.string(target) ? target : target.getLevel();
     var article = summary.getByLevel(originLevel);
 
     // Remove first

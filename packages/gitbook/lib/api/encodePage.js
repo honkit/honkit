@@ -1,6 +1,6 @@
-var JSONUtils = require('../json');
-var deprecate = require('./deprecate');
-var encodeProgress = require('./encodeProgress');
+var JSONUtils = require("../json");
+var deprecate = require("./deprecate");
+var encodeProgress = require("./encodeProgress");
 
 /**
     Encode a page in a context to a JS API
@@ -22,16 +22,30 @@ function encodePage(output, page) {
     result.path = file.getPath();
     result.rawPath = fs.resolve(result.path);
 
-    deprecate.field(output, 'page.progress', result, 'progress', function() {
-        return encodeProgress(output, page);
-    }, '"page.progress" property is deprecated');
+    deprecate.field(
+        output,
+        "page.progress",
+        result,
+        "progress",
+        function () {
+            return encodeProgress(output, page);
+        },
+        '"page.progress" property is deprecated'
+    );
 
-    deprecate.field(output, 'page.sections', result, 'sections', [
-        {
-            content: result.content,
-            type: 'normal'
-        }
-    ], '"sections" property is deprecated, use page.content instead');
+    deprecate.field(
+        output,
+        "page.sections",
+        result,
+        "sections",
+        [
+            {
+                content: result.content,
+                type: "normal",
+            },
+        ],
+        '"sections" property is deprecated, use page.content instead'
+    );
 
     return result;
 }

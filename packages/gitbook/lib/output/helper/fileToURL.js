@@ -1,7 +1,7 @@
-var path = require('path');
-var LocationUtils = require('../../utils/location');
+var path = require("path");
+var LocationUtils = require("../../utils/location");
 
-var fileToOutput = require('./fileToOutput');
+var fileToOutput = require("./fileToOutput");
 
 /**
     Convert a filePath (absolute) to an url (without hostname).
@@ -17,12 +17,12 @@ var fileToOutput = require('./fileToOutput');
 */
 function fileToURL(output, filePath) {
     var options = output.getOptions();
-    var directoryIndex = options.get('directoryIndex');
+    var directoryIndex = options.get("directoryIndex");
 
     filePath = fileToOutput(output, filePath);
 
-    if (directoryIndex && path.basename(filePath) == 'index.html') {
-        filePath = path.dirname(filePath) + '/';
+    if (directoryIndex && path.basename(filePath) == "index.html") {
+        filePath = path.dirname(filePath) + "/";
     }
 
     return LocationUtils.normalize(filePath);

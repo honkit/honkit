@@ -1,4 +1,4 @@
-var indexLevels = require('./indexLevels');
+var indexLevels = require("./indexLevels");
 
 /**
     Remove a part at given index
@@ -9,7 +9,7 @@ var indexLevels = require('./indexLevels');
 */
 function removePart(summary, index) {
     var parts = summary.getParts().remove(index);
-    return indexLevels(summary.set('parts', parts));
+    return indexLevels(summary.set("parts", parts));
 }
 
 module.exports = removePart;

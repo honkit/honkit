@@ -1,4 +1,4 @@
-var encodeSummaryArticle = require('./encodeSummaryArticle');
+var encodeSummaryArticle = require("./encodeSummaryArticle");
 
 /**
     Return a JSON representation of a page

@@ -1,5 +1,5 @@
-var encodeFile = require('./encodeFile');
-var encodeGlossaryEntry = require('./encodeGlossaryEntry');
+var encodeFile = require("./encodeFile");
+var encodeGlossaryEntry = require("./encodeGlossaryEntry");
 
 /**
     Encode a glossary to JSON
@@ -13,8 +13,7 @@ function encodeGlossary(glossary) {
 
     return {
         file: encodeFile(file),
-        entries: entries
-            .map(encodeGlossaryEntry).toJS()
+        entries: entries.map(encodeGlossaryEntry).toJS(),
     };
 }
 

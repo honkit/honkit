@@ -1,4 +1,4 @@
-var deprecate = require('./deprecate');
+var deprecate = require("./deprecate");
 
 /**
     Decode changes from a JS API to a page object.
@@ -18,25 +18,28 @@ function decodePage(output, page, result) {
         return page;
     }
 
-    deprecate.disable('page.sections');
+    deprecate.disable("page.sections");
 
     // GitBook 3
     // Use returned page.content if different from original content
     if (result.content != originalContent) {
-        page = page.set('content', result.content);
+        page = page.set("content", result.content);
     }
 
     // GitBook 2 compatibility
     // Finally, use page.sections
     else if (result.sections) {
-        page = page.set('content',
-            result.sections.map(function(section) {
-                return section.content;
-            }).join('\n')
+        page = page.set(
+            "content",
+            result.sections
+                .map(function (section) {
+                    return section.content;
+                })
+                .join("\n")
         );
     }
 
-    deprecate.enable('page.sections');
+    deprecate.enable("page.sections");
 
     return page;
 }

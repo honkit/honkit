@@ -1,2 +1,1 @@
-
-module.exports = '_layouts';
+module.exports = "_layouts";

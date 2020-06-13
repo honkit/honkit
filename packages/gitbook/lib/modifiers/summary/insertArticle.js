@@ -1,7 +1,7 @@
-var is = require('is');
-var SummaryArticle = require('../../models/summaryArticle');
-var mergeAtLevel = require('./mergeAtLevel');
-var indexArticleLevels = require('./indexArticleLevels');
+var is = require("is");
+var SummaryArticle = require("../../models/summaryArticle");
+var mergeAtLevel = require("./mergeAtLevel");
+var indexArticleLevels = require("./indexArticleLevels");
 
 /**
     Returns a new Summary with the article at the given level, with
@@ -14,7 +14,7 @@ var indexArticleLevels = require('./indexArticleLevels');
 */
 function insertArticle(summary, article, level) {
     article = SummaryArticle(article);
-    level = is.string(level)? level : level.getLevel();
+    level = is.string(level) ? level : level.getLevel();
 
     var parent = summary.getParent(level);
     if (!parent) {
@@ -29,7 +29,7 @@ function insertArticle(summary, article, level) {
     articles = articles.insert(index, article);
 
     // Reindex the level from here
-    parent = parent.set('articles', articles);
+    parent = parent.set("articles", articles);
     parent = indexArticleLevels(parent);
 
     return mergeAtLevel(summary, parent.getLevel(), parent);
@@ -40,7 +40,7 @@ function insertArticle(summary, article, level) {
     @return {Number} The index of this level within its parent's children
  */
 function getLeafIndex(level) {
-    var arr = level.split('.').map(function (char) {
+    var arr = level.split(".").map(function (char) {
         return parseInt(char, 10);
     });
     return arr[arr.length - 1] - 1;

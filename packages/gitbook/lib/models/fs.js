@@ -1,22 +1,22 @@
-var path = require('path');
-var Immutable = require('immutable');
-var stream = require('stream');
+var path = require("path");
+var Immutable = require("immutable");
+var stream = require("stream");
 
-var File = require('./file');
-var Promise = require('../utils/promise');
-var error = require('../utils/error');
-var PathUtil = require('../utils/path');
+var File = require("./file");
+var Promise = require("../utils/promise");
+var error = require("../utils/error");
+var PathUtil = require("../utils/path");
 
 var FS = Immutable.Record({
-    root:           String(),
+    root: String(),
 
-    fsExists:         Function(),
-    fsReadFile:       Function(),
-    fsStatFile:       Function(),
-    fsReadDir:        Function(),
+    fsExists: Function(),
+    fsReadFile: Function(),
+    fsStatFile: Function(),
+    fsReadDir: Function(),
 
-    fsLoadObject:     null,
-    fsReadAsStream:   null
+    fsLoadObject: null,
+    fsReadAsStream: null,
 });
 
 /**
@@ -24,8 +24,8 @@ var FS = Immutable.Record({
 
     @return {String}
 */
-FS.prototype.getRoot = function() {
-    return this.get('root');
+FS.prototype.getRoot = function () {
+    return this.get("root");
 };
 
 /**
@@ -34,7 +34,7 @@ FS.prototype.getRoot = function() {
     @param {String} filename
     @return {Boolean}
 */
-FS.prototype.isInScope = function(filename) {
+FS.prototype.isInScope = function (filename) {
     var rootPath = this.getRoot();
     filename = path.join(rootPath, filename);
 
@@ -47,7 +47,7 @@ FS.prototype.isInScope = function(filename) {
     @param {String}
     @return {String}
 */
-FS.prototype.resolve = function() {
+FS.prototype.resolve = function () {
     var rootPath = this.getRoot();
     var args = Array.prototype.slice.call(arguments);
     var filename = path.join.apply(path, [rootPath].concat(args));
@@ -56,7 +56,7 @@ FS.prototype.resolve = function() {
     if (!this.isInScope(filename)) {
         throw error.FileOutOfScopeError({
             filename: filename,
-            root: this.root
+            root: this.root,
         });
     }
 
@@ -69,16 +69,15 @@ FS.prototype.resolve = function() {
     @param {String} filename
     @return {Promise<Boolean>}
 */
-FS.prototype.exists = function(filename) {
+FS.prototype.exists = function (filename) {
     var that = this;
 
-    return Promise()
-        .then(function() {
-            filename = that.resolve(filename);
-            var exists = that.get('fsExists');
+    return Promise().then(function () {
+        filename = that.resolve(filename);
+        var exists = that.get("fsExists");
 
-            return exists(filename);
-        });
+        return exists(filename);
+    });
 };
 
 /**
@@ -87,16 +86,15 @@ FS.prototype.exists = function(filename) {
     @param {String} filename
     @return {Promise<Buffer>}
 */
-FS.prototype.read = function(filename) {
+FS.prototype.read = function (filename) {
     var that = this;
 
-    return Promise()
-        .then(function() {
-            filename = that.resolve(filename);
-            var read = that.get('fsReadFile');
+    return Promise().then(function () {
+        filename = that.resolve(filename);
+        var read = that.get("fsReadFile");
 
-            return read(filename);
-        });
+        return read(filename);
+    });
 };
 
 /**
@@ -105,13 +103,12 @@ FS.prototype.read = function(filename) {
     @param {String} filename
     @return {Promise<String>}
 */
-FS.prototype.readAsString = function(filename, encoding) {
-    encoding = encoding || 'utf8';
+FS.prototype.readAsString = function (filename, encoding) {
+    encoding = encoding || "utf8";
 
-    return this.read(filename)
-        .then(function(buf) {
-            return buf.toString(encoding);
-        });
+    return this.read(filename).then(function (buf) {
+        return buf.toString(encoding);
+    });
 };
 
 /**
@@ -120,22 +117,21 @@ FS.prototype.readAsString = function(filename, encoding) {
     @param {String} filename
     @return {Promise<Stream>}
 */
-FS.prototype.readAsStream = function(filename) {
+FS.prototype.readAsStream = function (filename) {
     var that = this;
     var filepath = that.resolve(filename);
-    var fsReadAsStream = this.get('fsReadAsStream');
+    var fsReadAsStream = this.get("fsReadAsStream");
 
     if (fsReadAsStream) {
         return Promise(fsReadAsStream(filepath));
     }
 
-    return this.read(filename)
-        .then(function(buf) {
-            var bufferStream = new stream.PassThrough();
-            bufferStream.end(buf);
+    return this.read(filename).then(function (buf) {
+        var bufferStream = new stream.PassThrough();
+        bufferStream.end(buf);
 
-            return bufferStream;
-        });
+        return bufferStream;
+    });
 };
 
 /**
@@ -144,17 +140,17 @@ FS.prototype.readAsStream = function(filename) {
     @param {String} filename
     @return {Promise<File>}
 */
-FS.prototype.statFile = function(filename) {
+FS.prototype.statFile = function (filename) {
     var that = this;
 
     return Promise()
-        .then(function() {
+        .then(function () {
             var filepath = that.resolve(filename);
-            var stat = that.get('fsStatFile');
+            var stat = that.get("fsStatFile");
 
             return stat(filepath);
         })
-        .then(function(stat) {
+        .then(function (stat) {
             return File.createFromStat(filename, stat);
         });
 };
@@ -166,17 +162,17 @@ FS.prototype.statFile = function(filename) {
     @param {String} dirname
     @return {Promise<List<String>>}
 */
-FS.prototype.readDir = function(dirname) {
+FS.prototype.readDir = function (dirname) {
     var that = this;
 
     return Promise()
-        .then(function() {
+        .then(function () {
             var dirpath = that.resolve(dirname);
-            var readDir = that.get('fsReadDir');
+            var readDir = that.get("fsReadDir");
 
             return readDir(dirpath);
         })
-        .then(function(files) {
+        .then(function (files) {
             return Immutable.List(files);
         });
 };
@@ -188,11 +184,10 @@ FS.prototype.readDir = function(dirname) {
     @param {String} dirname
     @return {Promise<List<String>>}
 */
-FS.prototype.listFiles = function(dirname) {
-    return this.readDir(dirname)
-        .then(function(files) {
-            return files.filterNot(pathIsFolder);
-        });
+FS.prototype.listFiles = function (dirname) {
+    return this.readDir(dirname).then(function (files) {
+        return files.filterNot(pathIsFolder);
+    });
 };
 
 /**
@@ -202,13 +197,14 @@ FS.prototype.listFiles = function(dirname) {
     @param {Function(dirName)} filterFn: call it for each file/directory to test if it should stop iterating
     @return {Promise<List<String>>}
 */
-FS.prototype.listAllFiles = function(dirName, filterFn) {
+FS.prototype.listAllFiles = function (dirName, filterFn) {
     var that = this;
-    dirName = dirName || '.';
+    dirName = dirName || ".";
 
-    return this.readDir(dirName)
-        .then(function(files) {
-            return Promise.reduce(files, function(out, file) {
+    return this.readDir(dirName).then(function (files) {
+        return Promise.reduce(
+            files,
+            function (out, file) {
                 var isDirectory = pathIsFolder(file);
                 var newDirName = path.join(dirName, file);
 
@@ -220,12 +216,13 @@ FS.prototype.listAllFiles = function(dirName, filterFn) {
                     return out.push(newDirName);
                 }
 
-                return that.listAllFiles(newDirName, filterFn)
-                    .then(function(inner) {
-                        return out.concat(inner);
-                    });
-            }, Immutable.List());
-        });
+                return that.listAllFiles(newDirName, filterFn).then(function (inner) {
+                    return out.concat(inner);
+                });
+            },
+            Immutable.List()
+        );
+    });
 };
 
 /**
@@ -236,13 +233,12 @@ FS.prototype.listAllFiles = function(dirName, filterFn) {
     @param {String} filename
     @return {Promise<String>}
 */
-FS.prototype.findFile = function(dirname, filename) {
-    return this.listFiles(dirname)
-        .then(function(files) {
-            return files.find(function(file) {
-                return (file.toLowerCase() == filename.toLowerCase());
-            });
+FS.prototype.findFile = function (dirname, filename) {
+    return this.listFiles(dirname).then(function (files) {
+        return files.find(function (file) {
+            return file.toLowerCase() == filename.toLowerCase();
         });
+    });
 };
 
 /**
@@ -252,28 +248,26 @@ FS.prototype.findFile = function(dirname, filename) {
     @param {String} filename
     @return {Promise<Object>}
 */
-FS.prototype.loadAsObject = function(filename) {
+FS.prototype.loadAsObject = function (filename) {
     var that = this;
-    var fsLoadObject = this.get('fsLoadObject');
+    var fsLoadObject = this.get("fsLoadObject");
 
-    return this.exists(filename)
-        .then(function(exists) {
-            if (!exists) {
-                var err = new Error('Module doesn\'t exist');
-                err.code = 'MODULE_NOT_FOUND';
+    return this.exists(filename).then(function (exists) {
+        if (!exists) {
+            var err = new Error("Module doesn't exist");
+            err.code = "MODULE_NOT_FOUND";
 
-                throw err;
-            }
+            throw err;
+        }
 
-            if (fsLoadObject) {
-                return fsLoadObject(that.resolve(filename));
-            } else {
-                return that.readAsString(filename)
-                    .then(function(str) {
-                        return JSON.parse(str);
-                    });
-            }
-        });
+        if (fsLoadObject) {
+            return fsLoadObject(that.resolve(filename));
+        } else {
+            return that.readAsString(filename).then(function (str) {
+                return JSON.parse(str);
+            });
+        }
+    });
 };
 
 /**
@@ -294,14 +288,13 @@ FS.create = function create(def) {
     @return {FS}
 */
 FS.reduceScope = function reduceScope(fs, scope) {
-    return fs.set('root', path.join(fs.getRoot(), scope));
+    return fs.set("root", path.join(fs.getRoot(), scope));
 };
-
 
 // .readdir return files/folder as a list of string, folder ending with '/'
 function pathIsFolder(filename) {
     var lastChar = filename[filename.length - 1];
-    return lastChar == '/' || lastChar == '\\';
+    return lastChar == "/" || lastChar == "\\";
 }
 
 module.exports = FS;

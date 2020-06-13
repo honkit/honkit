@@ -1,10 +1,10 @@
-var path = require('path');
-var is = require('is');
-var Buffer = require('buffer').Buffer;
-var Immutable = require('immutable');
+var path = require("path");
+var is = require("is");
+var Buffer = require("buffer").Buffer;
+var Immutable = require("immutable");
 
-var FS = require('../models/fs');
-var error = require('../utils/error');
+var FS = require("../models/fs");
+var error = require("../utils/error");
 
 /**
     Create a fake filesystem for unit testing GitBook.
@@ -17,18 +17,18 @@ function createMockFS(files) {
 
     function getFile(filePath) {
         var parts = path.normalize(filePath).split(path.sep);
-        return parts.reduce(function(list, part, i) {
+        return parts.reduce(function (list, part, i) {
             if (!list) return null;
 
             var file;
 
-            if (!part || part === '.') file = list;
+            if (!part || part === ".") file = list;
             else file = list.get(part);
 
             if (!file) return null;
 
             if (is.string(file)) {
-                if (i === (parts.length - 1)) return file;
+                if (i === parts.length - 1) return file;
                 else return null;
             }
 
@@ -44,23 +44,23 @@ function createMockFS(files) {
         var file = getFile(filePath);
         if (!is.string(file)) {
             throw error.FileNotFoundError({
-                filename: filePath
+                filename: filePath,
             });
         }
 
-        return new Buffer(file, 'utf8');
+        return new Buffer(file, "utf8");
     }
 
     function fsStatFile(filePath) {
         var file = getFile(filePath);
         if (!file) {
             throw error.FileNotFoundError({
-                filename: filePath
+                filename: filePath,
             });
         }
 
         return {
-            mtime: mtime
+            mtime: mtime,
         };
     }
 
@@ -68,14 +68,14 @@ function createMockFS(files) {
         var dir = getFile(filePath);
         if (!dir || is.string(dir)) {
             throw error.FileNotFoundError({
-                filename: filePath
+                filename: filePath,
             });
         }
 
         return dir
-            .map(function(content, name) {
+            .map(function (content, name) {
                 if (!is.string(content)) {
-                    name = name + '/';
+                    name = name + "/";
                 }
 
                 return name;
@@ -84,11 +84,11 @@ function createMockFS(files) {
     }
 
     return FS.create({
-        root: '',
+        root: "",
         fsExists: fsExists,
         fsReadFile: fsReadFile,
         fsStatFile: fsStatFile,
-        fsReadDir: fsReadDir
+        fsReadDir: fsReadDir,
     });
 }
 

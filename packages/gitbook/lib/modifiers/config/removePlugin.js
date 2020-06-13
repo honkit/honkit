@@ -1,5 +1,5 @@
-var togglePlugin = require('./togglePlugin');
-var isDefaultPlugin = require('./isDefaultPlugin');
+var togglePlugin = require("./togglePlugin");
+var isDefaultPlugin = require("./isDefaultPlugin");
 
 /**
  * Remove a plugin from a book's configuration
@@ -16,7 +16,7 @@ function removePlugin(config, pluginName) {
     }
 
     // Remove the dependency from the list
-    deps = deps.filterNot(function(dep) {
+    deps = deps.filterNot(function (dep) {
         return dep.getName() === pluginName;
     });
     return config.setPluginDependencies(deps);

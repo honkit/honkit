@@ -1,6 +1,6 @@
-var Immutable = require('immutable');
-var fm = require('front-matter');
-var direction = require('direction');
+var Immutable = require("immutable");
+var fm = require("front-matter");
+var direction = require("direction");
 
 /**
  * Parse a page, its content and the YAMl header
@@ -13,11 +13,10 @@ function parsePageFromString(page, content) {
     var parsed = fm(content);
 
     return page.merge({
-        content:    parsed.body,
+        content: parsed.body,
         attributes: Immutable.fromJS(parsed.attributes),
-        dir:        direction(parsed.body)
+        dir: direction(parsed.body),
     });
 }
-
 
 module.exports = parsePageFromString;

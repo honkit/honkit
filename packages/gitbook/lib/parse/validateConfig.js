@@ -1,9 +1,9 @@
-var jsonschema = require('jsonschema');
-var jsonSchemaDefaults = require('json-schema-defaults');
+var jsonschema = require("jsonschema");
+var jsonSchemaDefaults = require("json-schema-defaults");
 
-var schema = require('../constants/configSchema');
-var error = require('../utils/error');
-var mergeDefaults = require('../utils/mergeDefaults');
+var schema = require("../constants/configSchema");
+var error = require("../utils/error");
+var mergeDefaults = require("../utils/mergeDefaults");
 
 /**
     Validate a book.json content
@@ -15,7 +15,7 @@ var mergeDefaults = require('../utils/mergeDefaults');
 function validateConfig(bookJson) {
     var v = new jsonschema.Validator();
     var result = v.validate(bookJson, schema, {
-        propertyName: 'config'
+        propertyName: "config",
     });
 
     // Throw error

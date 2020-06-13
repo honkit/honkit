@@ -1,22 +1,25 @@
-var is = require('is');
-var Immutable = require('immutable');
+var is = require("is");
+var Immutable = require("immutable");
 
-var File = require('./file');
-var PluginDependency = require('./pluginDependency');
-var configDefault = require('../constants/configDefault');
-var reducedObject = require('../utils/reducedObject');
+var File = require("./file");
+var PluginDependency = require("./pluginDependency");
+var configDefault = require("../constants/configDefault");
+var reducedObject = require("../utils/reducedObject");
 
-var Config = Immutable.Record({
-    file:       File(),
-    values:     configDefault
-}, 'Config');
+var Config = Immutable.Record(
+    {
+        file: File(),
+        values: configDefault,
+    },
+    "Config"
+);
 
-Config.prototype.getFile = function() {
-    return this.get('file');
+Config.prototype.getFile = function () {
+    return this.get("file");
 };
 
-Config.prototype.getValues = function() {
-    return this.get('values');
+Config.prototype.getValues = function () {
+    return this.get("values");
 };
 
 /**
@@ -24,7 +27,7 @@ Config.prototype.getValues = function() {
  * Basically it returns the current config minus the default one
  * @return {Map}
  */
-Config.prototype.toReducedVersion = function() {
+Config.prototype.toReducedVersion = function () {
     return reducedObject(configDefault, this.getValues());
 };
 
@@ -32,7 +35,7 @@ Config.prototype.toReducedVersion = function() {
  * Render config as text
  * @return {Promise<String>}
  */
-Config.prototype.toText = function() {
+Config.prototype.toText = function () {
     return JSON.stringify(this.toReducedVersion().toJS(), null, 4);
 };
 
@@ -41,8 +44,8 @@ Config.prototype.toText = function() {
  * @param {File} file
  * @return {Config}
  */
-Config.prototype.setFile = function(file) {
-    return this.set('file', file);
+Config.prototype.setFile = function (file) {
+    return this.set("file", file);
 };
 
 /**
@@ -50,7 +53,7 @@ Config.prototype.setFile = function(file) {
  * @param {String} key
  * @return {Mixed}
  */
-Config.prototype.getValue = function(keyPath, def) {
+Config.prototype.getValue = function (keyPath, def) {
     var values = this.getValues();
     keyPath = Config.keyToKeyPath(keyPath);
 
@@ -67,7 +70,7 @@ Config.prototype.getValue = function(keyPath, def) {
  * @param {Mixed} value
  * @return {Config}
  */
-Config.prototype.setValue = function(keyPath, value) {
+Config.prototype.setValue = function (keyPath, value) {
     keyPath = Config.keyToKeyPath(keyPath);
 
     value = Immutable.fromJS(value);
@@ -75,15 +78,15 @@ Config.prototype.setValue = function(keyPath, value) {
     var values = this.getValues();
     values = values.setIn(keyPath, value);
 
-    return this.set('values', values);
+    return this.set("values", values);
 };
 
 /**
  * Return a list of plugin dependencies
  * @return {List<PluginDependency>}
  */
-Config.prototype.getPluginDependencies = function() {
-    var plugins = this.getValue('plugins');
+Config.prototype.getPluginDependencies = function () {
+    var plugins = this.getValue("plugins");
 
     if (is.string(plugins)) {
         return PluginDependency.listFromString(plugins);
@@ -97,10 +100,10 @@ Config.prototype.getPluginDependencies = function() {
  * @param {String} name
  * @return {PluginDependency}
  */
-Config.prototype.getPluginDependency = function(name) {
+Config.prototype.getPluginDependency = function (name) {
     var plugins = this.getPluginDependencies();
 
-    return plugins.find(function(dep) {
+    return plugins.find(function (dep) {
         return dep.getName() === name;
     });
 };
@@ -110,22 +113,21 @@ Config.prototype.getPluginDependency = function(name) {
  * @param {List<PluginDependency>}
  * @return {Config}
  */
-Config.prototype.setPluginDependencies = function(deps) {
+Config.prototype.setPluginDependencies = function (deps) {
     var plugins = PluginDependency.listToArray(deps);
 
-    return this.setValue('plugins', plugins);
+    return this.setValue("plugins", plugins);
 };
-
 
 /**
  * Update values for an existing configuration
  * @param {Object} values
  * @returns {Config}
  */
-Config.prototype.updateValues = function(values) {
+Config.prototype.updateValues = function (values) {
     values = Immutable.fromJS(values);
 
-    return this.set('values', values);
+    return this.set("values", values);
 };
 
 /**
@@ -134,13 +136,13 @@ Config.prototype.updateValues = function(values) {
  * @param {Object} values
  * @returns {Config}
  */
-Config.prototype.mergeValues = function(values) {
+Config.prototype.mergeValues = function (values) {
     var currentValues = this.getValues();
     values = Immutable.fromJS(values);
 
     currentValues = currentValues.mergeDeep(values);
 
-    return this.set('values', currentValues);
+    return this.set("values", currentValues);
 };
 
 /**
@@ -149,10 +151,10 @@ Config.prototype.mergeValues = function(values) {
  * @param {Object} values
  * @returns {Config}
  */
-Config.create = function(file, values) {
+Config.create = function (file, values) {
     return new Config({
         file: file,
-        values: Immutable.fromJS(values)
+        values: Immutable.fromJS(values),
     });
 };
 
@@ -161,20 +163,19 @@ Config.create = function(file, values) {
  * @param {Object} values
  * @returns {Config}
  */
-Config.createWithValues = function(values) {
+Config.createWithValues = function (values) {
     return new Config({
-        values: Immutable.fromJS(values)
+        values: Immutable.fromJS(values),
     });
 };
-
 
 /**
  * Convert a keyPath to an array of keys
  * @param {String|Array}
  * @return {Array}
  */
-Config.keyToKeyPath = function(keyPath) {
-    if (is.string(keyPath)) keyPath = keyPath.split('.');
+Config.keyToKeyPath = function (keyPath) {
+    if (is.string(keyPath)) keyPath = keyPath.split(".");
     return keyPath;
 };
 

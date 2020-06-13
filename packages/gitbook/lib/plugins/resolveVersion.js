@@ -1,10 +1,10 @@
-var npm = require('global-npm');
-var semver = require('semver');
-var Immutable = require('immutable');
+var npm = require("global-npm");
+var semver = require("semver");
+var Immutable = require("immutable");
 
-var Promise = require('../utils/promise');
-var Plugin = require('../models/plugin');
-var gitbook = require('../gitbook');
+var Promise = require("../utils/promise");
+var Plugin = require("../models/plugin");
+var gitbook = require("../gitbook");
 
 /**
     Initialize and prepare NPM
@@ -14,8 +14,8 @@ var gitbook = require('../gitbook');
 function initNPM(options) {
     return Promise.nfcall(npm.load, {
         silent: true,
-        loglevel: 'silent',
-        ...options
+        loglevel: "silent",
+        ...options,
     });
 }
 
@@ -34,24 +34,24 @@ function resolveVersion(plugin, options) {
     }
 
     return initNPM(options)
-        .then(function() {
-            return Promise.nfcall(npm.commands.view, [npmId + '@' + requiredVersion, 'engines'], true);
+        .then(function () {
+            return Promise.nfcall(npm.commands.view, [npmId + "@" + requiredVersion, "engines"], true);
         })
-        .then(function(versions) {
+        .then(function (versions) {
             versions = Immutable.Map(versions).entrySeq();
 
             var result = versions
-                .map(function(entry) {
+                .map(function (entry) {
                     return {
                         version: entry[0],
-                        gitbook: (entry[1].engines || {}).gitbook
+                        gitbook: (entry[1].engines || {}).gitbook,
                     };
                 })
-                .filter(function(v) {
+                .filter(function (v) {
                     return v.gitbook && gitbook.satisfies(v.gitbook);
                 })
-                .sort(function(v1, v2) {
-                    return semver.lt(v1.version, v2.version)? 1 : -1;
+                .sort(function (v1, v2) {
+                    return semver.lt(v1.version, v2.version) ? 1 : -1;
                 })
                 .get(0);
 

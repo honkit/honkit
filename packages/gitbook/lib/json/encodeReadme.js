@@ -1,4 +1,4 @@
-var encodeFile = require('./encodeFile');
+var encodeFile = require("./encodeFile");
 
 /**
     Encode a readme to JSON
@@ -10,7 +10,7 @@ function encodeReadme(readme) {
     var file = readme.getFile();
 
     return {
-        file: encodeFile(file)
+        file: encodeFile(file),
     };
 }
 

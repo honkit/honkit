@@ -1,84 +1,83 @@
-var is = require('is');
+var is = require("is");
 
-var TypedError = require('error/typed');
-var WrappedError = require('error/wrapped');
-
+var TypedError = require("error/typed");
+var WrappedError = require("error/wrapped");
 
 // Enforce as an Error object, and cleanup message
 function enforce(err) {
     if (is.string(err)) err = new Error(err);
-    err.message = err.message.replace(/^Error: /, '');
+    err.message = err.message.replace(/^Error: /, "");
 
     return err;
 }
 
 // Random error wrappers during parsing/generation
 var ParsingError = WrappedError({
-    message: 'Parsing Error: {origMessage}',
-    type: 'parse'
+    message: "Parsing Error: {origMessage}",
+    type: "parse",
 });
 var OutputError = WrappedError({
-    message: 'Output Error: {origMessage}',
-    type: 'generate'
+    message: "Output Error: {origMessage}",
+    type: "generate",
 });
 
 // A file does not exists
 var FileNotFoundError = TypedError({
-    type: 'file.not-found',
+    type: "file.not-found",
     message: 'No "{filename}" file (or is ignored)',
-    filename: null
+    filename: null,
 });
 
 // A file cannot be parsed
 var FileNotParsableError = TypedError({
-    type: 'file.not-parsable',
+    type: "file.not-parsable",
     message: '"{filename}" file cannot be parsed',
-    filename: null
+    filename: null,
 });
 
 // A file is outside the scope
 var FileOutOfScopeError = TypedError({
-    type: 'file.out-of-scope',
+    type: "file.out-of-scope",
     message: '"{filename}" not in "{root}"',
     filename: null,
     root: null,
-    code: 'EACCESS'
+    code: "EACCESS",
 });
 
 // A file is outside the scope
 var RequireInstallError = TypedError({
-    type: 'install.required',
+    type: "install.required",
     message: '"{cmd}" is not installed.\n{install}',
     cmd: null,
-    code: 'ENOENT',
-    install: ''
+    code: "ENOENT",
+    install: "",
 });
 
 // Error for nunjucks templates
 var TemplateError = WrappedError({
     message: 'Error compiling template "{filename}": {origMessage}',
-    type: 'template',
-    filename: null
+    type: "template",
+    filename: null,
 });
 
 // Error for nunjucks templates
 var PluginError = WrappedError({
     message: 'Error with plugin "{plugin}": {origMessage}',
-    type: 'plugin',
-    plugin: null
+    type: "plugin",
+    plugin: null,
 });
 
 // Error with the book's configuration
 var ConfigurationError = WrappedError({
-    message: 'Error with book\'s configuration: {origMessage}',
-    type: 'configuration'
+    message: "Error with book's configuration: {origMessage}",
+    type: "configuration",
 });
 
 // Error during ebook generation
 var EbookError = WrappedError({
-    message: 'Error during ebook generation: {origMessage}\n{stdout}',
-    type: 'ebook',
-    stdout: ''
+    message: "Error during ebook generation: {origMessage}\n{stdout}",
+    type: "ebook",
+    stdout: "",
 });
 
 module.exports = {
@@ -95,5 +94,5 @@ module.exports = {
     TemplateError: TemplateError,
     PluginError: PluginError,
     ConfigurationError: ConfigurationError,
-    EbookError: EbookError
+    EbookError: EbookError,
 };

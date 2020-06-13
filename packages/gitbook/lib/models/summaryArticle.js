@@ -1,32 +1,35 @@
-var Immutable = require('immutable');
+var Immutable = require("immutable");
 
-var location = require('../utils/location');
+var location = require("../utils/location");
 
 /*
     An article represents an entry in the Summary / table of Contents
 */
 
-var SummaryArticle = Immutable.Record({
-    level:      String(),
-    title:      String(),
-    ref:        String(),
-    articles:   Immutable.List()
-}, 'SummaryArticle');
+var SummaryArticle = Immutable.Record(
+    {
+        level: String(),
+        title: String(),
+        ref: String(),
+        articles: Immutable.List(),
+    },
+    "SummaryArticle"
+);
 
-SummaryArticle.prototype.getLevel = function() {
-    return this.get('level');
+SummaryArticle.prototype.getLevel = function () {
+    return this.get("level");
 };
 
-SummaryArticle.prototype.getTitle = function() {
-    return this.get('title');
+SummaryArticle.prototype.getTitle = function () {
+    return this.get("title");
 };
 
-SummaryArticle.prototype.getRef = function() {
-    return this.get('ref');
+SummaryArticle.prototype.getRef = function () {
+    return this.get("ref");
 };
 
-SummaryArticle.prototype.getArticles = function() {
-    return this.get('articles');
+SummaryArticle.prototype.getArticles = function () {
+    return this.get("articles");
 };
 
 /**
@@ -35,8 +38,8 @@ SummaryArticle.prototype.getArticles = function() {
  *
  * @return {Number}
  */
-SummaryArticle.prototype.getDepth = function() {
-    return (this.getLevel().split('.').length - 1);
+SummaryArticle.prototype.getDepth = function () {
+    return this.getLevel().split(".").length - 1;
 };
 
 /**
@@ -45,7 +48,7 @@ SummaryArticle.prototype.getDepth = function() {
  *
  * @return {String}
  */
-SummaryArticle.prototype.getPath = function() {
+SummaryArticle.prototype.getPath = function () {
     if (this.isExternal()) {
         return undefined;
     }
@@ -55,9 +58,9 @@ SummaryArticle.prototype.getPath = function() {
         return undefined;
     }
 
-    var parts = ref.split('#');
+    var parts = ref.split("#");
 
-    var pathname = (parts.length > 1? parts.slice(0, -1).join('#') : ref);
+    var pathname = parts.length > 1 ? parts.slice(0, -1).join("#") : ref;
 
     // Normalize path to remove ('./', '/...', etc)
     return location.flatten(pathname);
@@ -68,8 +71,8 @@ SummaryArticle.prototype.getPath = function() {
  *
  * @return {String}
  */
-SummaryArticle.prototype.getUrl = function() {
-    return this.isExternal()? this.getRef() : undefined;
+SummaryArticle.prototype.getUrl = function () {
+    return this.isExternal() ? this.getRef() : undefined;
 };
 
 /**
@@ -77,11 +80,11 @@ SummaryArticle.prototype.getUrl = function() {
  *
  * @return {String}
  */
-SummaryArticle.prototype.getAnchor = function() {
+SummaryArticle.prototype.getAnchor = function () {
     var ref = this.getRef();
-    var parts = ref.split('#');
+    var parts = ref.split("#");
 
-    var anchor = (parts.length > 1? '#' + parts[parts.length - 1] : undefined);
+    var anchor = parts.length > 1 ? "#" + parts[parts.length - 1] : undefined;
     return anchor;
 };
 
@@ -90,10 +93,10 @@ SummaryArticle.prototype.getAnchor = function() {
  *
  * @return {String}
  */
-SummaryArticle.prototype.createChildLevel = function() {
-    var level       = this.getLevel();
+SummaryArticle.prototype.createChildLevel = function () {
+    var level = this.getLevel();
     var subArticles = this.getArticles();
-    var childLevel  = level + '.' + (subArticles.size + 1);
+    var childLevel = level + "." + (subArticles.size + 1);
 
     return childLevel;
 };
@@ -103,7 +106,7 @@ SummaryArticle.prototype.createChildLevel = function() {
  *
  * @return {Boolean}
  */
-SummaryArticle.prototype.isPage = function() {
+SummaryArticle.prototype.isPage = function () {
     return !this.isExternal() && this.getRef();
 };
 
@@ -113,11 +116,8 @@ SummaryArticle.prototype.isPage = function() {
  * @param {File} file
  * @return {Boolean}
  */
-SummaryArticle.prototype.isFile = function(file) {
-    return (
-        file.getPath() === this.getPath()
-        && this.getAnchor() === undefined
-    );
+SummaryArticle.prototype.isFile = function (file) {
+    return file.getPath() === this.getPath() && this.getAnchor() === undefined;
 };
 
 /**
@@ -126,8 +126,8 @@ SummaryArticle.prototype.isFile = function(file) {
  * @param {Book|Readme} book
  * @return {Boolean}
  */
-SummaryArticle.prototype.isReadme = function(book) {
-    var readme = book.getFile? book : book.getReadme();
+SummaryArticle.prototype.isReadme = function (book) {
+    var readme = book.getFile ? book : book.getReadme();
     var file = readme.getFile();
 
     return this.isFile(file);
@@ -138,7 +138,7 @@ SummaryArticle.prototype.isReadme = function(book) {
  *
  * @return {Boolean}
  */
-SummaryArticle.prototype.isExternal = function() {
+SummaryArticle.prototype.isExternal = function () {
     return location.isExternal(this.getRef());
 };
 
@@ -148,19 +148,19 @@ SummaryArticle.prototype.isExternal = function() {
  * @param {Object} def
  * @return {SummaryArticle}
  */
-SummaryArticle.create = function(def, level) {
-    var articles = (def.articles || []).map(function(article, i) {
+SummaryArticle.create = function (def, level) {
+    var articles = (def.articles || []).map(function (article, i) {
         if (article instanceof SummaryArticle) {
             return article;
         }
-        return SummaryArticle.create(article, [level, i + 1].join('.'));
+        return SummaryArticle.create(article, [level, i + 1].join("."));
     });
 
     return new SummaryArticle({
         level: level,
         title: def.title,
-        ref: def.ref || def.path || '',
-        articles: Immutable.List(articles)
+        ref: def.ref || def.path || "",
+        articles: Immutable.List(articles),
     });
 };
 
@@ -171,10 +171,10 @@ SummaryArticle.create = function(def, level) {
  * @param {Function(article)} iter
  * @return {Article}
  */
-SummaryArticle.findArticle = function(base, iter) {
+SummaryArticle.findArticle = function (base, iter) {
     var articles = base.getArticles();
 
-    return articles.reduce(function(result, article) {
+    return articles.reduce(function (result, article) {
         if (result) return result;
 
         if (iter(article)) {
@@ -184,6 +184,5 @@ SummaryArticle.findArticle = function(base, iter) {
         return SummaryArticle.findArticle(article, iter);
     }, null);
 };
-
 
 module.exports = SummaryArticle;

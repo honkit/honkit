@@ -1,4 +1,4 @@
-var Promise = require('../../utils/promise');
+var Promise = require("../../utils/promise");
 
 /**
     Edit all elements matching a selector
@@ -6,7 +6,7 @@ var Promise = require('../../utils/promise');
 function editHTMLElement($, selector, fn) {
     var $elements = $(selector);
 
-    return Promise.forEach($elements, function(el) {
+    return Promise.forEach($elements, function (el) {
         var $el = $(el);
         return fn($el);
     });

@@ -1,5 +1,5 @@
-var Parse = require('../parse');
-var Promise = require('../utils/promise');
+var Parse = require("../parse");
+var Promise = require("../utils/promise");
 
 /**
     List and prepare all pages
@@ -15,12 +15,11 @@ function preparePages(output) {
         return Promise(output);
     }
 
-    return Parse.parsePagesList(book)
-        .then(function(pages) {
-            logger.info.ln('found', pages.size, 'pages');
+    return Parse.parsePagesList(book).then(function (pages) {
+        logger.info.ln("found", pages.size, "pages");
 
-            return output.set('pages', pages);
-        });
+        return output.set("pages", pages);
+    });
 }
 
 module.exports = preparePages;

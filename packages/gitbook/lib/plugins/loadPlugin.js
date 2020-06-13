@@ -1,17 +1,17 @@
-var path = require('path');
-var resolve = require('resolve');
-var Immutable = require('immutable');
+var path = require("path");
+var resolve = require("resolve");
+var Immutable = require("immutable");
 
-var Promise = require('../utils/promise');
-var error = require('../utils/error');
-var timing = require('../utils/timing');
+var Promise = require("../utils/promise");
+var error = require("../utils/error");
+var timing = require("../utils/timing");
 
-var validatePlugin = require('./validatePlugin');
+var validatePlugin = require("./validatePlugin");
 
 // Return true if an error is a "module not found"
 // Wait on https://github.com/substack/node-resolve/pull/81 to be merged
 function isModuleNotFound(err) {
-    return err.code == 'MODULE_NOT_FOUND' || err.message.indexOf('Cannot find module') >= 0;
+    return err.code == "MODULE_NOT_FOUND" || err.message.indexOf("Cannot find module") >= 0;
 }
 
 /**
@@ -30,14 +30,14 @@ function loadPlugin(book, plugin) {
 
     // Try loading plugins from different location
     var p = Promise()
-        .then(function() {
+        .then(function () {
             var packageContent;
             var packageMain;
             var content;
 
             // Locate plugin and load package.json
             try {
-                var res = resolve.sync('./package.json', { basedir: pkgPath });
+                var res = resolve.sync("./package.json", { basedir: pkgPath });
 
                 pkgPath = path.dirname(res);
                 packageContent = require(res);
@@ -52,8 +52,8 @@ function loadPlugin(book, plugin) {
 
             // Locate the main package
             try {
-                var indexJs = path.normalize(packageContent.main || 'index.js');
-                packageMain = resolve.sync('./' + indexJs, { basedir: pkgPath });
+                var indexJs = path.normalize(packageContent.main || "index.js");
+                packageMain = resolve.sync("./" + indexJs, { basedir: pkgPath });
             } catch (err) {
                 if (!isModuleNotFound(err)) throw err;
                 packageMain = undefined;
@@ -63,27 +63,26 @@ function loadPlugin(book, plugin) {
             if (packageMain) {
                 try {
                     content = require(packageMain);
-                } catch(err) {
+                } catch (err) {
                     throw new error.PluginError(err, {
-                        plugin: name
+                        plugin: name,
                     });
                 }
             }
 
             // Update plugin
             return plugin.merge({
-                'package': Immutable.fromJS(packageContent),
-                'content': Immutable.fromJS(content || {})
+                package: Immutable.fromJS(packageContent),
+                content: Immutable.fromJS(content || {}),
             });
         })
 
         .then(validatePlugin);
 
-    p = timing.measure('plugin.load', p);
+    p = timing.measure("plugin.load", p);
 
     logger.info('loading plugin "' + name + '"... ');
     return logger.info.promise(p);
 }
-
 
 module.exports = loadPlugin;

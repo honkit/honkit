@@ -1,6 +1,6 @@
-var LocationUtils = require('../../utils/location');
+var LocationUtils = require("../../utils/location");
 
-var fileToURL = require('./fileToURL');
+var fileToURL = require("./fileToURL");
 
 /**
  * Resolve an absolute path (extracted from a link)
@@ -11,7 +11,7 @@ var fileToURL = require('./fileToURL');
  */
 function resolveFileToURL(output, filePath) {
     // Convert /test.png -> test.png
-    filePath = LocationUtils.toAbsolute(filePath, '', '');
+    filePath = LocationUtils.toAbsolute(filePath, "", "");
 
     var page = output.getPage(filePath);
 

@@ -1,6 +1,6 @@
-var PluginDependency = require('../../models/pluginDependency');
-var hasPlugin = require('./hasPlugin');
-var isDefaultPlugin = require('./isDefaultPlugin');
+var PluginDependency = require("../../models/pluginDependency");
+var hasPlugin = require("./hasPlugin");
+var isDefaultPlugin = require("./isDefaultPlugin");
 
 /**
  * Enable/disable a plugin dependency
@@ -17,7 +17,7 @@ function togglePlugin(config, pluginName, state) {
         deps = deps.push(PluginDependency.create(pluginName));
     }
 
-    deps = deps.map(function(dep) {
+    deps = deps.map(function (dep) {
         if (dep.getName() === pluginName) {
             return dep.toggle(state);
         }

@@ -1,6 +1,6 @@
-var encodeBook = require('./encodeBook');
-var encodePage = require('./encodePage');
-var encodeFile = require('./encodeFile');
+var encodeBook = require("./encodeBook");
+var encodePage = require("./encodePage");
+var encodeFile = require("./encodeFile");
 
 /**
  * Return a JSON representation of a book with a specific file

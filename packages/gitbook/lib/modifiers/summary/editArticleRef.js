@@ -1,4 +1,4 @@
-var mergeAtLevel = require('./mergeAtLevel');
+var mergeAtLevel = require("./mergeAtLevel");
 
 /**
     Edit the ref of an article
@@ -10,7 +10,7 @@ var mergeAtLevel = require('./mergeAtLevel');
 */
 function editArticleRef(summary, level, newRef) {
     return mergeAtLevel(summary, level, {
-        ref: newRef
+        ref: newRef,
     });
 }
 

@@ -1,23 +1,26 @@
 #! /usr/bin/env node
 
-const Gitbook = require('../lib');
-const program = require('commander');
-const assert = require('assert');
+const Gitbook = require("../lib");
+const program = require("commander");
+const assert = require("assert");
 
-Gitbook.commands.forEach(spec => {
-    var subcommand = program
-        .command(spec.name)
-        .description(spec.description);
+Gitbook.commands.forEach((spec) => {
+    var subcommand = program.command(spec.name).description(spec.description);
 
     const options = spec.options || [];
-    options.forEach(spec => {
+    options.forEach((spec) => {
         if (spec.values) {
             const template = `--${spec.name} <${spec.name}>`;
-            const description = `${spec.description} (${spec.values.map(JSON.stringify).join(', ')})`;
-            subcommand = subcommand.option(template, description, (value, _dummyPrevious) => {
-                assert(spec.values.includes(value), `Invalid value ${value} for ${spec.name}`);
-                return value;
-            }, spec.defaults);
+            const description = `${spec.description} (${spec.values.map(JSON.stringify).join(", ")})`;
+            subcommand = subcommand.option(
+                template,
+                description,
+                (value, _dummyPrevious) => {
+                    assert(spec.values.includes(value), `Invalid value ${value} for ${spec.name}`);
+                    return value;
+                },
+                spec.defaults
+            );
         } else {
             subcommand = subcommand.option(`--${spec.name}`, spec.description, spec.defaults);
         }
@@ -26,13 +29,11 @@ Gitbook.commands.forEach(spec => {
     subcommand = subcommand.action((...joinedArgs) => {
         const args = joinedArgs.slice(0, -1);
         const kwargs = joinedArgs.slice(-1)[0];
-        spec
-            .exec(args, kwargs)
-            .catch(err => {
-                console.log(err.message);
-                if (program.debug || process.env.DEBUG) console.log(err.stack || '');
-                process.exit(1);
-            });
+        spec.exec(args, kwargs).catch((err) => {
+            console.log(err.message);
+            if (program.debug || process.env.DEBUG) console.log(err.stack || "");
+            process.exit(1);
+        });
     });
 });
 

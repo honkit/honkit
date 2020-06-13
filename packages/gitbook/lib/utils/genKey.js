@@ -7,7 +7,7 @@ var lastKey = 0;
 function generateKey() {
     lastKey += 1;
     var str = lastKey.toString(16);
-    return '00000'.slice(str.length) + str;
+    return "00000".slice(str.length) + str;
 }
 
 module.exports = generateKey;

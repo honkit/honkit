@@ -1,4 +1,4 @@
-var encodeFile = require('./encodeFile');
+var encodeFile = require("./encodeFile");
 
 /**
     Encode a languages listing to JSON
@@ -14,12 +14,13 @@ function encodeLanguages(languages) {
         file: encodeFile(file),
         list: list
             .valueSeq()
-            .map(function(lang) {
+            .map(function (lang) {
                 return {
                     id: lang.getID(),
-                    title: lang.getTitle()
+                    title: lang.getTitle(),
                 };
-            }).toJS()
+            })
+            .toJS(),
     };
 }
 

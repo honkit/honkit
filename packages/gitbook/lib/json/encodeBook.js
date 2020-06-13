@@ -1,10 +1,10 @@
-var extend = require('extend');
+var extend = require("extend");
 
-var gitbook = require('../gitbook');
-var encodeSummary = require('./encodeSummary');
-var encodeGlossary = require('./encodeGlossary');
-var encodeReadme = require('./encodeReadme');
-var encodeLanguages = require('./encodeLanguages');
+var gitbook = require("../gitbook");
+var encodeSummary = require("./encodeSummary");
+var encodeGlossary = require("./encodeGlossary");
+var encodeReadme = require("./encodeReadme");
+var encodeLanguages = require("./encodeLanguages");
 
 /**
     Encode a book to JSON
@@ -16,7 +16,7 @@ function encodeBookToJson(book) {
     var config = book.getConfig();
     var language = book.getLanguage();
 
-    var variables = config.getValue('variables', {});
+    var variables = config.getValue("variables", {});
 
     return {
         summary: encodeSummary(book.getSummary()),
@@ -24,15 +24,18 @@ function encodeBookToJson(book) {
         readme: encodeReadme(book.getReadme()),
         config: book.getConfig().getValues().toJS(),
 
-        languages: book.isMultilingual()? encodeLanguages(book.getLanguages()) : undefined,
+        languages: book.isMultilingual() ? encodeLanguages(book.getLanguages()) : undefined,
 
         gitbook: {
             version: gitbook.version,
-            time: gitbook.START_TIME
+            time: gitbook.START_TIME,
         },
-        book: extend({
-            language: language? language : undefined
-        }, variables.toJS())
+        book: extend(
+            {
+                language: language ? language : undefined,
+            },
+            variables.toJS()
+        ),
     };
 }
 

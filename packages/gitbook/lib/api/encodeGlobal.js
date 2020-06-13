@@ -1,19 +1,19 @@
-var path = require('path');
-var Promise = require('../utils/promise');
-var PathUtils = require('../utils/path');
-var fs = require('../utils/fs');
+var path = require("path");
+var Promise = require("../utils/promise");
+var PathUtils = require("../utils/path");
+var fs = require("../utils/fs");
 
-var Plugins = require('../plugins');
-var deprecate = require('./deprecate');
-var fileToURL = require('../output/helper/fileToURL');
-var defaultBlocks = require('../constants/defaultBlocks');
-var gitbook = require('../gitbook');
-var parsers = require('../parsers');
+var Plugins = require("../plugins");
+var deprecate = require("./deprecate");
+var fileToURL = require("../output/helper/fileToURL");
+var defaultBlocks = require("../constants/defaultBlocks");
+var gitbook = require("../gitbook");
+var parsers = require("../parsers");
 
-var encodeConfig = require('./encodeConfig');
-var encodeSummary = require('./encodeSummary');
-var encodeNavigation = require('./encodeNavigation');
-var encodePage = require('./encodePage');
+var encodeConfig = require("./encodeConfig");
+var encodeSummary = require("./encodeSummary");
+var encodeNavigation = require("./encodeNavigation");
+var encodePage = require("./encodePage");
 
 /**
     Encode a global context into a JS object
@@ -40,7 +40,7 @@ function encodeGlobal(output) {
 
             @return {Boolean}
         */
-        isMultilingual: function() {
+        isMultilingual: function () {
             return book.isMultilingual();
         },
 
@@ -49,7 +49,7 @@ function encodeGlobal(output) {
 
             @return {Boolean}
         */
-        isLanguageBook: function() {
+        isLanguageBook: function () {
             return book.isLanguageBook();
         },
 
@@ -59,7 +59,7 @@ function encodeGlobal(output) {
             @param {String} fileName
             @return {Promise<Buffer>}
         */
-        readFile: function(fileName) {
+        readFile: function (fileName) {
             return bookFS.read(fileName);
         },
 
@@ -69,7 +69,7 @@ function encodeGlobal(output) {
             @param {String} fileName
             @return {Promise<String>}
         */
-        readFileAsString: function(fileName) {
+        readFileAsString: function (fileName) {
             return bookFS.readAsString(fileName);
         },
 
@@ -79,7 +79,7 @@ function encodeGlobal(output) {
             @param {String} fileName
             @return {String}
         */
-        resolve: function(fileName) {
+        resolve: function (fileName) {
             return path.resolve(book.getContentRoot(), fileName);
         },
 
@@ -89,7 +89,7 @@ function encodeGlobal(output) {
             @param {String} filePath
             @return {String}
         */
-        getPageByPath: function(filePath) {
+        getPageByPath: function (filePath) {
             var page = output.getPage(filePath);
             if (!page) return undefined;
 
@@ -103,11 +103,10 @@ function encodeGlobal(output) {
             @param {String} text
             @return {Promise<String>}
         */
-        renderBlock: function(type, text) {
+        renderBlock: function (type, text) {
             var parser = parsers.get(type);
 
-            return parser.parsePage(text)
-                .get('content');
+            return parser.parsePage(text).get("content");
         },
 
         /**
@@ -117,11 +116,10 @@ function encodeGlobal(output) {
             @param {String} text
             @return {Promise<String>}
         */
-        renderInline: function(type, text) {
+        renderInline: function (type, text) {
             var parser = parsers.get(type);
 
-            return parser.parseInline(text)
-                .get('content');
+            return parser.parseInline(text).get("content");
         },
 
         template: {
@@ -132,10 +130,10 @@ function encodeGlobal(output) {
                 @param {Object} blockData
                 @return {Promise|Object}
             */
-            applyBlock: function(name, blockData) {
+            applyBlock: function (name, blockData) {
                 var block = blocks.get(name) || defaultBlocks.get(name);
                 return Promise(block.applyBlock(blockData, result));
-            }
+            },
         },
 
         output: {
@@ -149,7 +147,7 @@ function encodeGlobal(output) {
                 Return absolute path to the root folder of output
                 @return {String}
             */
-            root: function() {
+            root: function () {
                 return outputFolder;
             },
 
@@ -159,7 +157,7 @@ function encodeGlobal(output) {
                 @param {String} fileName
                 @return {String}
             */
-            resolve: function(fileName) {
+            resolve: function (fileName) {
                 return path.resolve(outputFolder, fileName);
             },
 
@@ -167,7 +165,7 @@ function encodeGlobal(output) {
                 Convert a filepath into an url
                 @return {String}
             */
-            toURL: function(filePath) {
+            toURL: function (filePath) {
                 return fileToURL(output, filePath);
             },
 
@@ -177,13 +175,12 @@ function encodeGlobal(output) {
                 @param {String} fileName
                 @return {Promise}
             */
-            hasFile: function(fileName, content) {
-                return Promise()
-                    .then(function() {
-                        var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+            hasFile: function (fileName, content) {
+                return Promise().then(function () {
+                    var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
 
-                        return fs.exists(filePath);
-                    });
+                    return fs.exists(filePath);
+                });
             },
 
             /**
@@ -194,16 +191,14 @@ function encodeGlobal(output) {
                 @param {Buffer} content
                 @return {Promise}
             */
-            writeFile: function(fileName, content) {
-                return Promise()
-                    .then(function() {
-                        var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+            writeFile: function (fileName, content) {
+                return Promise().then(function () {
+                    var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
 
-                        return fs.ensureFile(filePath)
-                            .then(function() {
-                                return fs.writeFile(filePath, content);
-                            });
+                    return fs.ensureFile(filePath).then(function () {
+                        return fs.writeFile(filePath, content);
                     });
+                });
             },
 
             /**
@@ -215,41 +210,64 @@ function encodeGlobal(output) {
                 @param {Buffer} content
                 @return {Promise}
             */
-            copyFile: function(inputFile, outputFile, content) {
-                return Promise()
-                    .then(function() {
-                        var outputFilePath = PathUtils.resolveInRoot(outputFolder, outputFile);
+            copyFile: function (inputFile, outputFile, content) {
+                return Promise().then(function () {
+                    var outputFilePath = PathUtils.resolveInRoot(outputFolder, outputFile);
 
-                        return fs.ensureFile(outputFilePath)
-                            .then(function() {
-                                return fs.copy(inputFile, outputFilePath);
-                            });
+                    return fs.ensureFile(outputFilePath).then(function () {
+                        return fs.copy(inputFile, outputFilePath);
                     });
-            }
+                });
+            },
         },
 
         gitbook: {
-            version: gitbook.version
-        }
+            version: gitbook.version,
+        },
     };
 
     // Deprecated properties
 
-    deprecate.renamedMethod(output, 'this.isSubBook', result, 'isSubBook', 'isLanguageBook');
-    deprecate.renamedMethod(output, 'this.contentLink', result, 'contentLink', 'output.toURL');
+    deprecate.renamedMethod(output, "this.isSubBook", result, "isSubBook", "isLanguageBook");
+    deprecate.renamedMethod(output, "this.contentLink", result, "contentLink", "output.toURL");
 
-    deprecate.field(output, 'this.generator', result, 'generator',
-        output.getGenerator(), '"this.generator" property is deprecated, use "this.output.name" instead');
+    deprecate.field(
+        output,
+        "this.generator",
+        result,
+        "generator",
+        output.getGenerator(),
+        '"this.generator" property is deprecated, use "this.output.name" instead'
+    );
 
-    deprecate.field(output, 'this.navigation', result, 'navigation', function() {
-        return encodeNavigation(output);
-    }, '"navigation" property is deprecated');
+    deprecate.field(
+        output,
+        "this.navigation",
+        result,
+        "navigation",
+        function () {
+            return encodeNavigation(output);
+        },
+        '"navigation" property is deprecated'
+    );
 
-    deprecate.field(output, 'this.book', result, 'book',
-        result, '"book" property is deprecated, use "this" directly instead');
+    deprecate.field(
+        output,
+        "this.book",
+        result,
+        "book",
+        result,
+        '"book" property is deprecated, use "this" directly instead'
+    );
 
-    deprecate.field(output, 'this.options', result, 'options',
-        result.config.values, '"options" property is deprecated, use config.get(key) instead');
+    deprecate.field(
+        output,
+        "this.options",
+        result,
+        "options",
+        result.config.values,
+        '"options" property is deprecated, use config.get(key) instead'
+    );
 
     return result;
 }

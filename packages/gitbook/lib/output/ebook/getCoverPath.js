@@ -1,5 +1,5 @@
-var path = require('path');
-var fs = require('../../utils/fs');
+var path = require("path");
+var fs = require("../../utils/fs");
 
 /**
     Resolve path to cover file to use
@@ -11,7 +11,7 @@ function getCoverPath(output) {
     var outputRoot = output.getRoot();
     var book = output.getBook();
     var config = book.getConfig();
-    var coverName = config.getValue('cover', 'cover.jpg');
+    var coverName = config.getValue("cover", "cover.jpg");
 
     // Resolve to absolute
     var cover = fs.pickFile(outputRoot, coverName);
@@ -21,7 +21,7 @@ function getCoverPath(output) {
 
     // Multilingual? try parent folder
     if (book.isLanguageBook()) {
-        cover = fs.pickFile(path.join(outputRoot, '..'), coverName);
+        cover = fs.pickFile(path.join(outputRoot, ".."), coverName);
     }
 
     return cover;

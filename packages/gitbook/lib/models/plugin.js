@@ -1,66 +1,69 @@
-var Immutable = require('immutable');
+var Immutable = require("immutable");
 
-var TemplateBlock = require('./templateBlock');
-var PluginDependency = require('./pluginDependency');
-var THEME_PREFIX = require('../constants/themePrefix');
+var TemplateBlock = require("./templateBlock");
+var PluginDependency = require("./pluginDependency");
+var THEME_PREFIX = require("../constants/themePrefix");
 
-var DEFAULT_VERSION = '*';
+var DEFAULT_VERSION = "*";
 
-var Plugin = Immutable.Record({
-    name:       String(),
+var Plugin = Immutable.Record(
+    {
+        name: String(),
 
-    // Requirement version (ex: ">1.0.0")
-    version:    String(DEFAULT_VERSION),
+        // Requirement version (ex: ">1.0.0")
+        version: String(DEFAULT_VERSION),
 
-    // Path to load this plugin
-    path:       String(),
+        // Path to load this plugin
+        path: String(),
 
-    // Depth of this plugin in the dependency tree
-    depth:      Number(0),
+        // Depth of this plugin in the dependency tree
+        depth: Number(0),
 
-    // Parent depending on this plugin
-    parent:     String(),
+        // Parent depending on this plugin
+        parent: String(),
 
-    // Content of the "package.json"
-    package:    Immutable.Map(),
+        // Content of the "package.json"
+        package: Immutable.Map(),
 
-    // Content of the package itself
-    content:    Immutable.Map()
-}, 'Plugin');
+        // Content of the package itself
+        content: Immutable.Map(),
+    },
+    "Plugin"
+);
 
-Plugin.prototype.getName = function() {
-    return this.get('name');
+Plugin.prototype.getName = function () {
+    return this.get("name");
 };
 
-Plugin.prototype.getPath = function() {
-    return this.get('path');
+Plugin.prototype.getPath = function () {
+    return this.get("path");
 };
 
-Plugin.prototype.getVersion = function() {
-    return this.get('version');
+Plugin.prototype.getVersion = function () {
+    return this.get("version");
 };
 
-Plugin.prototype.getPackage = function() {
-    return this.get('package');
+Plugin.prototype.getPackage = function () {
+    return this.get("package");
 };
 
-Plugin.prototype.getContent = function() {
-    return this.get('content');
+Plugin.prototype.getContent = function () {
+    return this.get("content");
 };
 
-Plugin.prototype.getDepth = function() {
-    return this.get('depth');
+Plugin.prototype.getDepth = function () {
+    return this.get("depth");
 };
 
-Plugin.prototype.getParent = function() {
-    return this.get('parent');
+Plugin.prototype.getParent = function () {
+    return this.get("parent");
 };
 
 /**
  * Return the ID on NPM for this plugin
  * @return {String}
  */
-Plugin.prototype.getNpmID = function() {
+Plugin.prototype.getNpmID = function () {
     return PluginDependency.nameToNpmID(this.getName());
 };
 
@@ -68,7 +71,7 @@ Plugin.prototype.getNpmID = function() {
  * Check if a plugin is loaded
  * @return {Boolean}
  */
-Plugin.prototype.isLoaded = function() {
+Plugin.prototype.isLoaded = function () {
     return Boolean(this.getPackage().size > 0);
 };
 
@@ -76,17 +79,17 @@ Plugin.prototype.isLoaded = function() {
  * Check if a plugin is a theme given its name
  * @return {Boolean}
  */
-Plugin.prototype.isTheme = function() {
+Plugin.prototype.isTheme = function () {
     var name = this.getName();
-    return (name && name.indexOf(THEME_PREFIX) === 0);
+    return name && name.indexOf(THEME_PREFIX) === 0;
 };
 
 /**
  * Return map of hooks
  * @return {Map<String:Function>}
  */
-Plugin.prototype.getHooks = function() {
-    return this.getContent().get('hooks') || Immutable.Map();
+Plugin.prototype.getHooks = function () {
+    return this.getContent().get("hooks") || Immutable.Map();
 };
 
 /**
@@ -94,37 +97,34 @@ Plugin.prototype.getHooks = function() {
  * @param {String} type
  * @return {Map<String:Mixed>}
  */
-Plugin.prototype.getResources = function(type) {
-    if (type != 'website' && type != 'ebook') {
-        throw new Error('Invalid assets type ' + type);
+Plugin.prototype.getResources = function (type) {
+    if (type != "website" && type != "ebook") {
+        throw new Error("Invalid assets type " + type);
     }
 
     var content = this.getContent();
-    return (content.get(type)
-        || (type == 'website'? content.get('book') : null)
-        || Immutable.Map());
+    return content.get(type) || (type == "website" ? content.get("book") : null) || Immutable.Map();
 };
 
 /**
  * Return map of filters
  * @return {Map<String:Function>}
  */
-Plugin.prototype.getFilters = function() {
-    return this.getContent().get('filters');
+Plugin.prototype.getFilters = function () {
+    return this.getContent().get("filters");
 };
 
 /**
  * Return map of blocks
  * @return {Map<String:TemplateBlock>}
  */
-Plugin.prototype.getBlocks = function() {
-    var blocks = this.getContent().get('blocks');
+Plugin.prototype.getBlocks = function () {
+    var blocks = this.getContent().get("blocks");
     blocks = blocks || Immutable.Map();
 
-    return blocks
-        .map(function(block, blockName) {
-            return TemplateBlock.create(blockName, block);
-        });
+    return blocks.map(function (block, blockName) {
+        return TemplateBlock.create(blockName, block);
+    });
 };
 
 /**
@@ -132,7 +132,7 @@ Plugin.prototype.getBlocks = function() {
  * @param {String} name
  * @return {Function|undefined}
  */
-Plugin.prototype.getHook = function(name) {
+Plugin.prototype.getHook = function (name) {
     return this.getHooks().get(name);
 };
 
@@ -141,14 +141,14 @@ Plugin.prototype.getHook = function(name) {
  * @param {String}
  * @return {Plugin}
  */
-Plugin.createFromString = function(s) {
-    var parts = s.split('@');
+Plugin.createFromString = function (s) {
+    var parts = s.split("@");
     var name = parts[0];
-    var version = parts.slice(1).join('@');
+    var version = parts.slice(1).join("@");
 
     return new Plugin({
         name: name,
-        version: version || DEFAULT_VERSION
+        version: version || DEFAULT_VERSION,
     });
 };
 
@@ -157,10 +157,10 @@ Plugin.createFromString = function(s) {
  * @param {PluginDependency}
  * @return {Plugin}
  */
-Plugin.createFromDep = function(dep) {
+Plugin.createFromDep = function (dep) {
     return new Plugin({
         name: dep.getName(),
-        version: dep.getVersion()
+        version: dep.getVersion(),
     });
 };
 

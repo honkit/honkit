@@ -1,7 +1,7 @@
-var Promise = require('../utils/promise');
-var timing = require('../utils/timing');
-var TemplateOutput = require('../models/templateOutput');
-var replaceShortcuts = require('./replaceShortcuts');
+var Promise = require("../utils/promise");
+var timing = require("../utils/timing");
+var TemplateOutput = require("../models/templateOutput");
+var replaceShortcuts = require("./replaceShortcuts");
 
 /**
  * Render a template
@@ -25,19 +25,13 @@ function renderTemplate(engine, filePath, content, context) {
     content = replaceShortcuts(engine.getBlocks(), filePath, content);
 
     return timing.measure(
-        'template.render',
+        "template.render",
 
-        Promise.nfcall(
-            env.renderString.bind(env),
-            content,
-            context,
-            {
-                path: filePath
-            }
-        )
-            .then(function(content) {
-                return TemplateOutput.create(content, blocks);
-            })
+        Promise.nfcall(env.renderString.bind(env), content, context, {
+            path: filePath,
+        }).then(function (content) {
+            return TemplateOutput.create(content, blocks);
+        })
     );
 }
 

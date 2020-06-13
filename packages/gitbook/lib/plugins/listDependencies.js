@@ -1,5 +1,5 @@
-var DEFAULT_PLUGINS = require('../constants/defaultPlugins');
-var sortDependencies = require('./sortDependencies');
+var DEFAULT_PLUGINS = require("../constants/defaultPlugins");
+var sortDependencies = require("./sortDependencies");
 
 /**
  * List all dependencies for a book, including default plugins.
@@ -11,10 +11,10 @@ var sortDependencies = require('./sortDependencies');
 function listDependencies(deps) {
     // Extract list of plugins to disable (starting with -)
     var toRemove = deps
-        .filter(function(plugin) {
+        .filter(function (plugin) {
             return !plugin.isEnabled();
         })
-        .map(function(plugin) {
+        .map(function (plugin) {
             return plugin.getName();
         });
 
@@ -22,7 +22,7 @@ function listDependencies(deps) {
     deps = deps.concat(DEFAULT_PLUGINS);
 
     // Remove plugins
-    deps = deps.filterNot(function(plugin) {
+    deps = deps.filterNot(function (plugin) {
         return toRemove.includes(plugin.getName());
     });
 

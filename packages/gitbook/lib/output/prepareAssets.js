@@ -1,4 +1,4 @@
-var Parse = require('../parse');
+var Parse = require("../parse");
 
 /**
     List all assets in the book
@@ -11,12 +11,11 @@ function prepareAssets(output) {
     var pages = output.getPages();
     var logger = output.getLogger();
 
-    return Parse.listAssets(book, pages)
-        .then(function(assets) {
-            logger.info.ln('found', assets.size, 'asset files');
+    return Parse.listAssets(book, pages).then(function (assets) {
+        logger.info.ln("found", assets.size, "asset files");
 
-            return output.set('assets', assets);
-        });
+        return output.set("assets", assets);
+    });
 }
 
 module.exports = prepareAssets;

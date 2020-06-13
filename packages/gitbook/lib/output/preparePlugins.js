@@ -1,5 +1,5 @@
-var Plugins = require('../plugins');
-var Promise = require('../utils/promise');
+var Plugins = require("../plugins");
+var Promise = require("../utils/promise");
 
 /**
  * Load and setup plugins
@@ -10,27 +10,27 @@ var Promise = require('../utils/promise');
 function preparePlugins(output) {
     var book = output.getBook();
 
-    return Promise()
+    return (
+        Promise()
+            // Only load plugins for main book
+            .then(function () {
+                if (book.isLanguageBook()) {
+                    return output.getPlugins();
+                } else {
+                    return Plugins.loadForBook(book);
+                }
+            })
 
-    // Only load plugins for main book
-        .then(function() {
-            if (book.isLanguageBook()) {
-                return output.getPlugins();
-            } else {
-                return Plugins.loadForBook(book);
-            }
-        })
-
-    // Update book's configuration using the plugins
-        .then(function(plugins) {
-            return Plugins.validateConfig(book, plugins)
-                .then(function(newBook) {
+            // Update book's configuration using the plugins
+            .then(function (plugins) {
+                return Plugins.validateConfig(book, plugins).then(function (newBook) {
                     return output.merge({
                         book: newBook,
-                        plugins: plugins
+                        plugins: plugins,
                     });
                 });
-        });
+            })
+    );
 }
 
 module.exports = preparePlugins;

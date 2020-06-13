@@ -1,23 +1,47 @@
 {
+  "name": "githon",
   "private": true,
-  "devDependencies": {
-    "eslint": "^6.7.2",
-    "jest": "^24.9.0",
-    "lerna": "^3.19.0"
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "bootstrap": "lerna bootstrap --ci",
-    "test": "lerna run test"
+  "homepage": "https://github.com/GitbookIO/gitbook#readme",
+  "bugs": {
+    "url": "https://github.com/GitbookIO/gitbook/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GitbookIO/gitbook.git"
   },
-  "author": "GitBook Inc. <contact@gitbook.com>",
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/GitbookIO/gitbook/issues"
+  "author": "GitBook Inc. <contact@gitbook.com>",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap --ci",
+    "lint": "eslint .",
+    "test": "lerna run test",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\""
   },
-  "homepage": "https://github.com/GitbookIO/gitbook#readme"
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "husky": "^4.2.5",
+    "jest": "^24.9.0",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.2.10",
+    "prettier": "^2.0.5"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "printWidth": 120,
+    "tabWidth": 4
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }

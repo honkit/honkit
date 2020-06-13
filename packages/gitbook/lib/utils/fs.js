@@ -1,34 +1,34 @@
-var fs = require('graceful-fs');
-var mkdirp = require('mkdirp');
-var destroy = require('destroy');
-var tmp = require('tmp');
-var request = require('request');
-var path = require('path');
-var cp = require('cp');
-var cpr = require('cpr');
+var fs = require("graceful-fs");
+var mkdirp = require("mkdirp");
+var destroy = require("destroy");
+var tmp = require("tmp");
+var request = require("request");
+var path = require("path");
+var cp = require("cp");
+var cpr = require("cpr");
 
-var Promise = require('./promise');
+var Promise = require("./promise");
 
 // Write a stream to a file
 function writeStream(filename, st) {
     var d = Promise.defer();
 
     var wstream = fs.createWriteStream(filename);
-    var cleanup = function() {
+    var cleanup = function () {
         destroy(wstream);
         wstream.removeAllListeners();
     };
 
-    wstream.on('finish', function () {
+    wstream.on("finish", function () {
         cleanup();
         d.resolve();
     });
-    wstream.on('error', function (err) {
+    wstream.on("error", function (err) {
         cleanup();
         d.reject(err);
     });
 
-    st.on('error', function(err) {
+    st.on("error", function (err) {
         cleanup();
         d.reject(err);
     });
@@ -42,7 +42,7 @@ function writeStream(filename, st) {
 function fileExists(filename) {
     var d = Promise.defer();
 
-    fs.exists(filename, function(exists) {
+    fs.exists(filename, function (exists) {
         d.resolve(exists);
     });
 
@@ -51,14 +51,12 @@ function fileExists(filename) {
 
 // Generate temporary file
 function genTmpFile(opts) {
-    return Promise.nfcall(tmp.file, opts)
-        .get(0);
+    return Promise.nfcall(tmp.file, opts).get(0);
 }
 
 // Generate temporary dir
 function genTmpDir(opts) {
-    return Promise.nfcall(tmp.dir, opts)
-        .get(0);
+    return Promise.nfcall(tmp.dir, opts).get(0);
 }
 
 // Download an image
@@ -72,11 +70,11 @@ function uniqueFilename(base, filename) {
     filename = path.resolve(base, filename);
     filename = path.join(path.dirname(filename), path.basename(filename, ext));
 
-    var _filename = filename+ext;
+    var _filename = filename + ext;
 
     var i = 0;
     while (fs.existsSync(filename)) {
-        _filename = filename + '_' + i + ext;
+        _filename = filename + "_" + i + ext;
         i = i + 1;
     }
 
@@ -92,7 +90,7 @@ function ensureFile(filename) {
 // Remove a folder
 function rmDir(base) {
     return Promise.nfcall(fs.rmdir, base, {
-        recursive: true
+        recursive: true,
     });
 }
 
@@ -104,12 +102,11 @@ function rmDir(base) {
     @return {Promise}
 */
 function assertFile(filePath, generator) {
-    return fileExists(filePath)
-        .then(function(exists) {
-            if (exists) return;
+    return fileExists(filePath).then(function (exists) {
+        if (exists) return;
 
-            return generator();
-        });
+        return generator();
+    });
 }
 
 /**
@@ -136,10 +133,10 @@ function pickFile(rootFolder, fileName) {
 */
 function ensureFolder(rootFolder) {
     return rmDir(rootFolder)
-        .fail(function() {
+        .fail(function () {
             return Promise();
         })
-        .then(function() {
+        .then(function () {
             return Promise.nfcall(mkdirp, rootFolder);
         });
 }
@@ -165,5 +162,5 @@ module.exports = {
     uniqueFilename: uniqueFilename,
     ensureFile: ensureFile,
     ensureFolder: ensureFolder,
-    rmDir: rmDir
+    rmDir: rmDir,
 };

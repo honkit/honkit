@@ -1,4 +1,3 @@
-
 /**
     List search paths for templates / i18n, etc
 
@@ -11,13 +10,12 @@ function listSearchPaths(output) {
 
     var searchPaths = plugins
         .valueSeq()
-        .map(function(plugin) {
+        .map(function (plugin) {
             return plugin.getPath();
         })
         .toList();
 
     return searchPaths.unshift(book.getContentRoot());
 }
-
 
 module.exports = listSearchPaths;

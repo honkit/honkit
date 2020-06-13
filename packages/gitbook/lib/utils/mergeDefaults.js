@@ -1,4 +1,4 @@
-var Immutable = require('immutable');
+var Immutable = require("immutable");
 
 /**
  * Merge

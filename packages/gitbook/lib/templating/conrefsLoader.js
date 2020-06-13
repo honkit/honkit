@@ -1,11 +1,10 @@
-var path = require('path');
-var nunjucks = require('nunjucks');
+var path = require("path");
+var nunjucks = require("nunjucks");
 
-var fs = require('../utils/fs');
-var Git = require('../utils/git');
-var LocationUtils = require('../utils/location');
-var PathUtils = require('../utils/path');
-
+var fs = require("../utils/fs");
+var Git = require("../utils/git");
+var LocationUtils = require("../utils/location");
+var PathUtils = require("../utils/path");
 
 /**
  * Template loader resolving both:
@@ -20,29 +19,31 @@ var PathUtils = require('../utils/path');
 var ConrefsLoader = nunjucks.Loader.extend({
     async: true,
 
-    init: function(rootFolder, transformFn, logger) {
+    init: function (rootFolder, transformFn, logger) {
         this.rootFolder = rootFolder;
         this.transformFn = transformFn;
         this.logger = logger;
         this.git = new Git();
     },
 
-    getSource: function(sourceURL, callback) {
+    getSource: function (sourceURL, callback) {
         var that = this;
 
-        this.git.resolve(sourceURL)
-            .then(function(filepath) {
-            // Is local file
+        this.git
+            .resolve(sourceURL)
+            .then(function (filepath) {
+                // Is local file
                 if (!filepath) {
                     filepath = path.resolve(sourceURL);
                 } else {
-                    if (that.logger) that.logger.debug.ln('resolve from git', sourceURL, 'to', filepath);
+                    if (that.logger) that.logger.debug.ln("resolve from git", sourceURL, "to", filepath);
                 }
 
                 // Read file from absolute path
-                return fs.readFile(filepath)
-                    .then(function(source) {
-                        source = source.toString('utf8');
+                return fs
+                    .readFile(filepath)
+                    .then(function (source) {
+                        source = source.toString("utf8");
 
                         if (that.transformFn) {
                             return that.transformFn(filepath, source);
@@ -50,25 +51,24 @@ var ConrefsLoader = nunjucks.Loader.extend({
 
                         return source;
                     })
-                    .then(function(source) {
+                    .then(function (source) {
                         return {
                             src: source,
-                            path: filepath
+                            path: filepath,
                         };
                     });
             })
             .nodeify(callback);
     },
 
-    resolve: function(from, to) {
+    resolve: function (from, to) {
         // If origin is in the book, we enforce result file to be in the book
         if (PathUtils.isInRoot(this.rootFolder, from)) {
-
             // Path of current template in the rootFolder (not absolute to fs)
             var fromRelative = path.relative(this.rootFolder, from);
 
             // Resolve "to" to a filepath relative to rootFolder
-            var href = LocationUtils.toAbsolute(to, path.dirname(fromRelative), '');
+            var href = LocationUtils.toAbsolute(to, path.dirname(fromRelative), "");
 
             // Return absolute path
             return PathUtils.resolveInRoot(this.rootFolder, href);
@@ -85,9 +85,9 @@ var ConrefsLoader = nunjucks.Loader.extend({
     },
 
     // Handle all files as relative, so that nunjucks pass responsability to 'resolve'
-    isRelative: function(filename) {
+    isRelative: function (filename) {
         return LocationUtils.isRelative(filename);
-    }
+    },
 });
 
 module.exports = ConrefsLoader;

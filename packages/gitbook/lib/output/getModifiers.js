@@ -1,12 +1,12 @@
-var Modifiers = require('./modifiers');
-var resolveFileToURL = require('./helper/resolveFileToURL');
-var Api = require('../api');
-var Plugins = require('../plugins');
-var Promise = require('../utils/promise');
-var defaultBlocks = require('../constants/defaultBlocks');
-var fileToOutput = require('./helper/fileToOutput');
+var Modifiers = require("./modifiers");
+var resolveFileToURL = require("./helper/resolveFileToURL");
+var Api = require("../api");
+var Plugins = require("../plugins");
+var Promise = require("../utils/promise");
+var defaultBlocks = require("../constants/defaultBlocks");
+var fileToOutput = require("./helper/fileToOutput");
 
-var CODEBLOCK = 'code';
+var CODEBLOCK = "code";
 
 /**
  * Return default modifier to prepare a page for
@@ -46,27 +46,28 @@ function getModifiers(output, page) {
         Modifiers.resolveImages.bind(null, currentFilePath),
 
         // Resolve links (.md -> .html)
-        Modifiers.resolveLinks.bind(null,
-            currentFilePath,
-            resolveFileToURL.bind(null, output)
-        ),
+        Modifiers.resolveLinks.bind(null, currentFilePath, resolveFileToURL.bind(null, output)),
 
         // Highlight code blocks using "code" block
-        Modifiers.highlightCode.bind(null, function(lang, source) {
-            return Promise(code.applyBlock({
-                body: source,
-                kwargs: {
-                    language: lang
+        Modifiers.highlightCode.bind(null, function (lang, source) {
+            return Promise(
+                code.applyBlock(
+                    {
+                        body: source,
+                        kwargs: {
+                            language: lang,
+                        },
+                    },
+                    context
+                )
+            ).then(function (result) {
+                if (result.html === false) {
+                    return { text: result.body };
+                } else {
+                    return { html: result.body };
                 }
-            }, context))
-                .then(function(result) {
-                    if (result.html === false) {
-                        return { text: result.body };
-                    } else {
-                        return { html: result.body };
-                    }
-                });
-        })
+            });
+        }),
     ];
 }
 

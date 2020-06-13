@@ -1,4 +1,4 @@
-var listDependencies = require('./listDependencies');
+var listDependencies = require("./listDependencies");
 
 /**
  * List all plugin requirements for a book.

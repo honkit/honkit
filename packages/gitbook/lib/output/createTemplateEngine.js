@@ -1,11 +1,11 @@
-var Templating = require('../templating');
-var TemplateEngine = require('../models/templateEngine');
+var Templating = require("../templating");
+var TemplateEngine = require("../models/templateEngine");
 
-var Api = require('../api');
-var Plugins = require('../plugins');
+var Api = require("../api");
+var Plugins = require("../plugins");
 
-var defaultBlocks = require('../constants/defaultBlocks');
-var defaultFilters = require('../constants/defaultFilters');
+var defaultBlocks = require("../constants/defaultBlocks");
+var defaultFilters = require("../constants/defaultFilters");
 
 /**
     Create template engine for an output.
@@ -35,10 +35,10 @@ function createTemplateEngine(output) {
     var context = Api.encodeGlobal(output);
 
     return new TemplateEngine({
-        filters:    filters,
-        blocks:     blocks,
-        loader:     loader,
-        context:    context
+        filters: filters,
+        blocks: blocks,
+        loader: loader,
+        context: context,
     });
 }
 

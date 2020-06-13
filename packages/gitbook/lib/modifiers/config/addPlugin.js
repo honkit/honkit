@@ -1,6 +1,6 @@
-var PluginDependency = require('../../models/pluginDependency');
-var togglePlugin = require('./togglePlugin');
-var isDefaultPlugin = require('./isDefaultPlugin');
+var PluginDependency = require("../../models/pluginDependency");
+var togglePlugin = require("./togglePlugin");
+var isDefaultPlugin = require("./isDefaultPlugin");
 
 /**
  * Add a plugin to a book's configuration

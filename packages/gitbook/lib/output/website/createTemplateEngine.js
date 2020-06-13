@@ -1,21 +1,21 @@
-var path = require('path');
-var nunjucks = require('nunjucks');
-var DoExtension = require('nunjucks-do')(nunjucks);
+var path = require("path");
+var nunjucks = require("nunjucks");
+var DoExtension = require("nunjucks-do")(nunjucks);
 
-var Api = require('../../api');
-var deprecate = require('../../api/deprecate');
-var JSONUtils = require('../../json');
-var LocationUtils = require('../../utils/location');
-var fs = require('../../utils/fs');
-var PathUtils = require('../../utils/path');
-var TemplateEngine = require('../../models/templateEngine');
-var templatesFolder = require('../../constants/templatesFolder');
-var defaultFilters = require('../../constants/defaultFilters');
-var Templating = require('../../templating');
-var listSearchPaths = require('./listSearchPaths');
+var Api = require("../../api");
+var deprecate = require("../../api/deprecate");
+var JSONUtils = require("../../json");
+var LocationUtils = require("../../utils/location");
+var fs = require("../../utils/fs");
+var PathUtils = require("../../utils/path");
+var TemplateEngine = require("../../models/templateEngine");
+var templatesFolder = require("../../constants/templatesFolder");
+var defaultFilters = require("../../constants/defaultFilters");
+var Templating = require("../../templating");
+var listSearchPaths = require("./listSearchPaths");
 
-var fileToURL = require('../helper/fileToURL');
-var resolveFileToURL = require('../helper/resolveFileToURL');
+var fileToURL = require("../helper/fileToURL");
+var resolveFileToURL = require("../helper/resolveFileToURL");
 
 /**
  * Directory for a theme with the templates
@@ -47,11 +47,10 @@ function createTemplateEngine(output, currentFile) {
     var loader = new Templating.ThemesLoader(tplSearchPaths);
 
     // Get languages
-    var language = config.getValue('language');
+    var language = config.getValue("language");
 
     // Create API context
     var context = Api.encodeGlobal(output);
-
 
     /**
      * Check if a file exists
@@ -99,7 +98,7 @@ function createTemplateEngine(output, currentFile) {
         globals: {
             getArticleByPath: getArticleByPath,
             getPageByPath: getPageByPath,
-            fileExists: fileExists
+            fileExists: fileExists,
         },
 
         filters: defaultFilters.merge({
@@ -115,36 +114,45 @@ function createTemplateEngine(output, currentFile) {
              * relative path.
              * it also resolve pages
              */
-            resolveFile: function(filePath) {
+            resolveFile: function (filePath) {
                 filePath = resolveFileToURL(output, filePath);
                 return LocationUtils.relativeForFile(currentFile, filePath);
             },
 
-            resolveAsset: function(filePath) {
-                filePath = LocationUtils.toAbsolute(filePath, '', '');
-                filePath = path.join('gitbook', filePath);
+            resolveAsset: function (filePath) {
+                filePath = LocationUtils.toAbsolute(filePath, "", "");
+                filePath = path.join("gitbook", filePath);
                 filePath = LocationUtils.relativeForFile(currentFile, filePath);
 
                 // Use assets from parent if language book
                 if (book.isLanguageBook()) {
-                    filePath = path.join('../', filePath);
+                    filePath = path.join("../", filePath);
                 }
 
                 return LocationUtils.normalize(filePath);
             },
 
+            fileExists: deprecate.method(
+                book,
+                "fileExists",
+                fileExists,
+                'Filter "fileExists" is deprecated, use "fileExists(filename)" '
+            ),
+            getArticleByPath: deprecate.method(
+                book,
+                "getArticleByPath",
+                fileExists,
+                'Filter "getArticleByPath" is deprecated, use "getArticleByPath(filename)" '
+            ),
 
-            fileExists: deprecate.method(book, 'fileExists', fileExists, 'Filter "fileExists" is deprecated, use "fileExists(filename)" '),
-            getArticleByPath: deprecate.method(book, 'getArticleByPath', fileExists, 'Filter "getArticleByPath" is deprecated, use "getArticleByPath(filename)" '),
-
-            contentURL: function(filePath) {
+            contentURL: function (filePath) {
                 return fileToURL(output, filePath);
-            }
+            },
         }),
 
         extensions: {
-            'DoExtension': new DoExtension()
-        }
+            DoExtension: new DoExtension(),
+        },
     });
 }
 

@@ -1,5 +1,5 @@
-var SummaryPart = require('../../models/summaryPart');
-var indexLevels = require('./indexLevels');
+var SummaryPart = require("../../models/summaryPart");
+var indexLevels = require("./indexLevels");
 
 /**
     Returns a new Summary with a part inserted at given index
@@ -13,7 +13,7 @@ function insertPart(summary, part, index) {
     part = SummaryPart(part);
 
     var parts = summary.getParts().insert(index, part);
-    return indexLevels(summary.set('parts', parts));
+    return indexLevels(summary.set("parts", parts));
 }
 
 module.exports = insertPart;

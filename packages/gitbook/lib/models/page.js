@@ -1,42 +1,42 @@
-var Immutable = require('immutable');
-var yaml = require('js-yaml');
+var Immutable = require("immutable");
+var yaml = require("js-yaml");
 
-var File = require('./file');
+var File = require("./file");
 
 var Page = Immutable.Record({
-    file:           File(),
+    file: File(),
 
     // Attributes extracted from the YAML header
-    attributes:     Immutable.Map(),
+    attributes: Immutable.Map(),
 
     // Content of the page
-    content:        String(),
+    content: String(),
 
     // Direction of the text
-    dir:            String('ltr')
+    dir: String("ltr"),
 });
 
-Page.prototype.getFile = function() {
-    return this.get('file');
+Page.prototype.getFile = function () {
+    return this.get("file");
 };
 
-Page.prototype.getAttributes = function() {
-    return this.get('attributes');
+Page.prototype.getAttributes = function () {
+    return this.get("attributes");
 };
 
-Page.prototype.getContent = function() {
-    return this.get('content');
+Page.prototype.getContent = function () {
+    return this.get("content");
 };
 
-Page.prototype.getDir = function() {
-    return this.get('dir');
+Page.prototype.getDir = function () {
+    return this.get("dir");
 };
 
 /**
  * Return page as text
  * @return {String}
-*/
-Page.prototype.toText = function() {
+ */
+Page.prototype.toText = function () {
     var attrs = this.getAttributes();
     var content = this.getContent();
 
@@ -44,15 +44,15 @@ Page.prototype.toText = function() {
         return content;
     }
 
-    var frontMatter = '---\n' + yaml.safeDump(attrs.toJS(), { skipInvalid: true }) + '---\n\n';
-    return (frontMatter + content);
+    var frontMatter = "---\n" + yaml.safeDump(attrs.toJS(), { skipInvalid: true }) + "---\n\n";
+    return frontMatter + content;
 };
 
 /**
  * Return path of the page
  * @return {String}
-*/
-Page.prototype.getPath = function() {
+ */
+Page.prototype.getPath = function () {
     return this.getFile().getPath();
 };
 
@@ -60,10 +60,10 @@ Page.prototype.getPath = function() {
  * Create a page for a file
  * @param {File} file
  * @return {Page}
-*/
-Page.createForFile = function(file) {
+ */
+Page.createForFile = function (file) {
     return new Page({
-        file: file
+        file: file,
     });
 };
 

@@ -1,8 +1,8 @@
-var path = require('path');
-var url = require('url');
+var path = require("path");
+var url = require("url");
 
-var LocationUtils = require('../../utils/location');
-var editHTMLElement = require('./editHTMLElement');
+var LocationUtils = require("../../utils/location");
+var editHTMLElement = require("./editHTMLElement");
 
 /**
     Resolve all HTML links:
@@ -15,8 +15,8 @@ var editHTMLElement = require('./editHTMLElement');
 function resolveLinks(currentFile, resolveFile, $) {
     var currentDirectory = path.dirname(currentFile);
 
-    return editHTMLElement($, 'a', function($a) {
-        var href = $a.attr('href');
+    return editHTMLElement($, "a", function ($a) {
+        var href = $a.attr("href");
 
         // Don't change a tag without href
         if (!href) {
@@ -24,17 +24,17 @@ function resolveLinks(currentFile, resolveFile, $) {
         }
 
         if (LocationUtils.isExternal(href)) {
-            $a.attr('target', '_blank');
+            $a.attr("target", "_blank");
             return;
         }
 
         // Split anchor
         var parsed = url.parse(href);
-        href = parsed.pathname || '';
+        href = parsed.pathname || "";
 
         if (href) {
             // Calcul absolute path for this
-            href = LocationUtils.toAbsolute(href, currentDirectory, '.');
+            href = LocationUtils.toAbsolute(href, currentDirectory, ".");
 
             // Resolve file
             href = resolveFile(href);
@@ -44,9 +44,9 @@ function resolveLinks(currentFile, resolveFile, $) {
         }
 
         // Add back anchor
-        href = href + (parsed.hash || '');
+        href = href + (parsed.hash || "");
 
-        $a.attr('href', href);
+        $a.attr("href", href);
     });
 }
 

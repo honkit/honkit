@@ -1,6 +1,6 @@
-var path = require('path');
-var Book = require('../models/book');
-var createNodeFS = require('../fs/node');
+var path = require("path");
+var Book = require("../models/book");
+var createNodeFS = require("../fs/node");
 
 /**
     Return a book instance to work on from

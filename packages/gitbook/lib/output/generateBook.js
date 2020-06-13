@@ -1,16 +1,16 @@
-var path = require('path');
-var Immutable = require('immutable');
+var path = require("path");
+var Immutable = require("immutable");
 
-var Output = require('../models/output');
-var Promise = require('../utils/promise');
-var fs = require('../utils/fs');
+var Output = require("../models/output");
+var Promise = require("../utils/promise");
+var fs = require("../utils/fs");
 
-var callHook = require('./callHook');
-var preparePlugins = require('./preparePlugins');
-var preparePages = require('./preparePages');
-var prepareAssets = require('./prepareAssets');
-var generateAssets = require('./generateAssets');
-var generatePages = require('./generatePages');
+var callHook = require("./callHook");
+var preparePlugins = require("./preparePlugins");
+var preparePages = require("./preparePages");
+var prepareAssets = require("./prepareAssets");
+var generateAssets = require("./generateAssets");
+var generatePages = require("./generatePages");
 
 /**
  * Process an output to generate the book
@@ -26,39 +26,41 @@ function processOutput(generator, startOutput) {
         .then(prepareAssets)
 
         .then(
-            callHook.bind(null,
-                'config',
-                function(output) {
+            callHook.bind(
+                null,
+                "config",
+                function (output) {
                     var book = output.getBook();
                     var config = book.getConfig();
                     var values = config.getValues();
 
                     return values.toJS();
                 },
-                function(output, result) {
+                function (output, result) {
                     var book = output.getBook();
                     var config = book.getConfig();
 
                     config = config.updateValues(result);
-                    book = book.set('config', config);
-                    return output.set('book', book);
+                    book = book.set("config", config);
+                    return output.set("book", book);
                 }
             )
         )
 
         .then(
-            callHook.bind(null,
-                'init',
-                function(output) {
+            callHook.bind(
+                null,
+                "init",
+                function (output) {
                     return {};
                 },
-                function(output) {
+                function (output) {
                     return output;
                 }
             )
         )
 
-        .then(function(output) {
+        .then(function (output) {
             if (!generator.onInit) {
                 return output;
             }
@@ -69,7 +71,7 @@ function processOutput(generator, startOutput) {
         .then(generateAssets.bind(null, generator))
         .then(generatePages.bind(null, generator))
 
-        .tap(function(output) {
+        .tap(function (output) {
             var book = output.getBook();
 
             if (!book.isMultilingual()) {
@@ -83,35 +85,37 @@ function processOutput(generator, startOutput) {
             var state = output.getState();
             var options = output.getOptions();
 
-            return Promise.forEach(books, function(langBook) {
-            // Inherits plugins list, options and state
-                var langOptions = options.set('root', path.join(outputRoot, langBook.getLanguage()));
+            return Promise.forEach(books, function (langBook) {
+                // Inherits plugins list, options and state
+                var langOptions = options.set("root", path.join(outputRoot, langBook.getLanguage()));
                 var langOutput = new Output({
-                    book:       langBook,
-                    options:    langOptions,
-                    state:      state,
-                    generator:  generator.name,
-                    plugins:    plugins
+                    book: langBook,
+                    options: langOptions,
+                    state: state,
+                    generator: generator.name,
+                    plugins: plugins,
                 });
 
-                logger.info.ln('');
+                logger.info.ln("");
                 logger.info.ln('generating language "' + langBook.getLanguage() + '"');
                 return processOutput(generator, langOutput);
             });
         })
 
-        .then(callHook.bind(null,
-            'finish:before',
-            function(output) {
-                return {};
-            },
-            function(output) {
-                return output;
-            }
-        )
+        .then(
+            callHook.bind(
+                null,
+                "finish:before",
+                function (output) {
+                    return {};
+                },
+                function (output) {
+                    return output;
+                }
+            )
         )
 
-        .then(function(output) {
+        .then(function (output) {
             if (!generator.onFinish) {
                 return output;
             }
@@ -119,15 +123,17 @@ function processOutput(generator, startOutput) {
             return generator.onFinish(output);
         })
 
-        .then(callHook.bind(null,
-            'finish',
-            function(output) {
-                return {};
-            },
-            function(output) {
-                return output;
-            }
-        )
+        .then(
+            callHook.bind(
+                null,
+                "finish",
+                function (output) {
+                    return {};
+                },
+                function (output) {
+                    return output;
+                }
+            )
         );
 }
 
@@ -154,40 +160,40 @@ function processOutput(generator, startOutput) {
  */
 function generateBook(generator, book, options) {
     options = generator.Options(options);
-    var state = generator.State? generator.State({}) : Immutable.Map();
+    var state = generator.State ? generator.State({}) : Immutable.Map();
     var start = Date.now();
 
-    return Promise(
-        new Output({
-            book: book,
-            options: options,
-            state: state,
-            generator: generator.name
-        })
-    )
+    return (
+        Promise(
+            new Output({
+                book: book,
+                options: options,
+                state: state,
+                generator: generator.name,
+            })
+        )
+            // Cleanup output folder
+            .then(function (output) {
+                var logger = output.getLogger();
+                var rootFolder = output.getRoot();
 
-    // Cleanup output folder
-        .then(function(output) {
-            var logger = output.getLogger();
-            var rootFolder = output.getRoot();
+                logger.debug.ln('cleanup folder "' + rootFolder + '"');
+                return fs.ensureFolder(rootFolder).thenResolve(output);
+            })
 
-            logger.debug.ln('cleanup folder "' + rootFolder + '"');
-            return fs.ensureFolder(rootFolder)
-                .thenResolve(output);
-        })
+            .then(processOutput.bind(null, generator))
 
-        .then(processOutput.bind(null, generator))
+            // Log duration and end message
+            .then(function (output) {
+                var logger = output.getLogger();
+                var end = Date.now();
+                var duration = (end - start) / 1000;
 
-    // Log duration and end message
-        .then(function(output) {
-            var logger = output.getLogger();
-            var end = Date.now();
-            var duration = (end - start)/1000;
+                logger.info.ok("generation finished with success in " + duration.toFixed(1) + "s !");
 
-            logger.info.ok('generation finished with success in ' + duration.toFixed(1) + 's !');
-
-            return output;
-        });
+                return output;
+            })
+    );
 }
 
 module.exports = generateBook;

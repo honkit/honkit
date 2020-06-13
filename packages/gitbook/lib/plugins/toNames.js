@@ -1,4 +1,3 @@
-
 /**
  * Return list of plugin names. This method is nly used in unit tests.
  *
@@ -7,7 +6,7 @@
  */
 function toNames(plugins) {
     return plugins
-        .map(function(plugin) {
+        .map(function (plugin) {
             return plugin.getName();
         })
         .toArray();

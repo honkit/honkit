@@ -1,78 +1,78 @@
-var path = require('path');
-var Immutable = require('immutable');
+var path = require("path");
+var Immutable = require("immutable");
 
-var Logger = require('../utils/logger');
+var Logger = require("../utils/logger");
 
-var FS = require('./fs');
-var Config = require('./config');
-var Readme = require('./readme');
-var Summary = require('./summary');
-var Glossary = require('./glossary');
-var Languages = require('./languages');
-var Ignore = require('./ignore');
+var FS = require("./fs");
+var Config = require("./config");
+var Readme = require("./readme");
+var Summary = require("./summary");
+var Glossary = require("./glossary");
+var Languages = require("./languages");
+var Ignore = require("./ignore");
 
 var Book = Immutable.Record({
     // Logger for outptu message
-    logger:         Logger(),
+    logger: Logger(),
 
     // Filesystem binded to the book scope to read files/directories
-    fs:             FS(),
+    fs: FS(),
 
     // Ignore files parser
-    ignore:         Ignore(),
+    ignore: Ignore(),
 
     // Structure files
-    config:         Config(),
-    readme:         Readme(),
-    summary:        Summary(),
-    glossary:       Glossary(),
-    languages:      Languages(),
+    config: Config(),
+    readme: Readme(),
+    summary: Summary(),
+    glossary: Glossary(),
+    languages: Languages(),
 
     // ID of the language for language books
-    language:       String(),
+    language: String(),
 
     // List of children, if multilingual (String -> Book)
-    books:          Immutable.OrderedMap()
+    books: Immutable.OrderedMap(),
 });
 
-Book.prototype.getLogger = function() {
-    return this.get('logger');
+Book.prototype.getLogger = function () {
+    return this.get("logger");
 };
 
-Book.prototype.getFS = function() {
-    return this.get('fs');
+Book.prototype.getFS = function () {
+    return this.get("fs");
 };
 
-Book.prototype.getIgnore = function() {
-    return this.get('ignore');
+Book.prototype.getIgnore = function () {
+    return this.get("ignore");
 };
 
-Book.prototype.getConfig = function() {
-    return this.get('config');
+Book.prototype.getConfig = function () {
+    return this.get("config");
 };
 
-Book.prototype.getReadme = function() {
-    return this.get('readme');
+Book.prototype.getReadme = function () {
+    return this.get("readme");
 };
 
-Book.prototype.getSummary = function() {
-    return this.get('summary');
+Book.prototype.getSummary = function () {
+    return this.get("summary");
 };
 
-Book.prototype.getGlossary = function() {
-    return this.get('glossary');
+Book.prototype.getGlossary = function () {
+    return this.get("glossary");
 };
 
-Book.prototype.getLanguages = function() {
-    return this.get('languages');
+Book.prototype.getLanguages = function () {
+    return this.get("languages");
 };
 
-Book.prototype.getBooks = function() {
-    return this.get('books');
+Book.prototype.getBooks = function () {
+    return this.get("books");
 };
 
-Book.prototype.getLanguage = function() {
-    return this.get('language');
+Book.prototype.getLanguage = function () {
+    return this.get("language");
 };
 
 /**
@@ -80,10 +80,10 @@ Book.prototype.getLanguage = function() {
 
     @return {FS}
 */
-Book.prototype.getContentFS = function() {
+Book.prototype.getContentFS = function () {
     var fs = this.getFS();
     var config = this.getConfig();
-    var rootFolder = config.getValue('root');
+    var rootFolder = config.getValue("root");
 
     if (rootFolder) {
         return FS.reduceScope(fs, rootFolder);
@@ -97,7 +97,7 @@ Book.prototype.getContentFS = function() {
 
     @return {String}
 */
-Book.prototype.getRoot = function() {
+Book.prototype.getRoot = function () {
     var fs = this.getFS();
     return fs.getRoot();
 };
@@ -107,7 +107,7 @@ Book.prototype.getRoot = function() {
 
     @return {String}
 */
-Book.prototype.getContentRoot = function() {
+Book.prototype.getContentRoot = function () {
     var fs = this.getContentFS();
     return fs.getRoot();
 };
@@ -118,7 +118,7 @@ Book.prototype.getContentRoot = function() {
     @param {String} ref
     @return {Page|undefined}
 */
-Book.prototype.isFileIgnored = function(filename) {
+Book.prototype.isFileIgnored = function (filename) {
     var ignore = this.getIgnore();
     var language = this.getLanguage();
 
@@ -136,9 +136,9 @@ Book.prototype.isFileIgnored = function(filename) {
     @param {String} ref
     @return {Page|undefined}
 */
-Book.prototype.isContentFileIgnored = function(filename) {
+Book.prototype.isContentFileIgnored = function (filename) {
     var config = this.getConfig();
-    var rootFolder = config.getValue('root');
+    var rootFolder = config.getValue("root");
 
     if (rootFolder) {
         filename = path.join(rootFolder, filename);
@@ -153,7 +153,7 @@ Book.prototype.isContentFileIgnored = function(filename) {
     @param {String} ref
     @return {Page|undefined}
 */
-Book.prototype.getPage = function(ref) {
+Book.prototype.getPage = function (ref) {
     return this.getPages().get(ref);
 };
 
@@ -162,8 +162,8 @@ Book.prototype.getPage = function(ref) {
 
     @return {Boolean}
 */
-Book.prototype.isMultilingual = function() {
-    return (this.getLanguages().getCount() > 0);
+Book.prototype.isMultilingual = function () {
+    return this.getLanguages().getCount() > 0;
 };
 
 /**
@@ -171,7 +171,7 @@ Book.prototype.isMultilingual = function() {
 
     @return {Boolean}
 */
-Book.prototype.isLanguageBook = function() {
+Book.prototype.isLanguageBook = function () {
     return Boolean(this.getLanguage());
 };
 
@@ -181,7 +181,7 @@ Book.prototype.isLanguageBook = function() {
     @param {String} language
     @return {Book}
 */
-Book.prototype.getLanguageBook = function(language) {
+Book.prototype.getLanguageBook = function (language) {
     var books = this.getBooks();
     return books.get(language);
 };
@@ -193,11 +193,11 @@ Book.prototype.getLanguageBook = function(language) {
     @param {Book} book
     @return {Book}
 */
-Book.prototype.addLanguageBook = function(language, book) {
+Book.prototype.addLanguageBook = function (language, book) {
     var books = this.getBooks();
     books = books.set(language, book);
 
-    return this.set('books', books);
+    return this.set("books", books);
 };
 
 /**
@@ -206,8 +206,8 @@ Book.prototype.addLanguageBook = function(language, book) {
     @param {Summary}
     @return {Book}
 */
-Book.prototype.setSummary = function(summary) {
-    return this.set('summary', summary);
+Book.prototype.setSummary = function (summary) {
+    return this.set("summary", summary);
 };
 
 /**
@@ -216,8 +216,8 @@ Book.prototype.setSummary = function(summary) {
     @param {Readme}
     @return {Book}
 */
-Book.prototype.setReadme = function(readme) {
-    return this.set('readme', readme);
+Book.prototype.setReadme = function (readme) {
+    return this.set("readme", readme);
 };
 
 /**
@@ -226,8 +226,8 @@ Book.prototype.setReadme = function(readme) {
     @param {Config}
     @return {Book}
 */
-Book.prototype.setConfig = function(config) {
-    return this.set('config', config);
+Book.prototype.setConfig = function (config) {
+    return this.set("config", config);
 };
 
 /**
@@ -236,8 +236,8 @@ Book.prototype.setConfig = function(config) {
     @param {Ignore}
     @return {Book}
 */
-Book.prototype.setIgnore = function(ignore) {
-    return this.set('ignore', ignore);
+Book.prototype.setIgnore = function (ignore) {
+    return this.set("ignore", ignore);
 };
 
 /**
@@ -246,7 +246,7 @@ Book.prototype.setIgnore = function(ignore) {
     @param {String} level
     @return {Book}
 */
-Book.prototype.setLogLevel = function(level) {
+Book.prototype.setLogLevel = function (level) {
     this.getLogger().setLevel(level);
     return this;
 };
@@ -259,7 +259,7 @@ Book.prototype.setLogLevel = function(level) {
 */
 Book.createForFS = function createForFS(fs) {
     return new Book({
-        fs: fs
+        fs: fs,
     });
 };
 
@@ -267,13 +267,9 @@ Book.createForFS = function createForFS(fs) {
     Infers the default extension for files
     @return {String}
 */
-Book.prototype.getDefaultExt = function() {
+Book.prototype.getDefaultExt = function () {
     // Inferring sources
-    var clues = [
-        this.getReadme(),
-        this.getSummary(),
-        this.getGlossary()
-    ];
+    var clues = [this.getReadme(), this.getSummary(), this.getGlossary()];
 
     // List their extensions
     var exts = clues.map(function (clue) {
@@ -285,10 +281,12 @@ Book.prototype.getDefaultExt = function() {
         }
     });
     // Adds the general default extension
-    exts.push('.md');
+    exts.push(".md");
 
     // Choose the first non null
-    return exts.find(function (e) { return e !== null; });
+    return exts.find(function (e) {
+        return e !== null;
+    });
 };
 
 /**
@@ -297,8 +295,8 @@ Book.prototype.getDefaultExt = function() {
         this book's content root
     @return {String}
 */
-Book.prototype.getDefaultReadmePath = function(absolute) {
-    var defaultPath = 'README'+this.getDefaultExt();
+Book.prototype.getDefaultReadmePath = function (absolute) {
+    var defaultPath = "README" + this.getDefaultExt();
     if (absolute) {
         return path.join(this.getContentRoot(), defaultPath);
     } else {
@@ -312,8 +310,8 @@ Book.prototype.getDefaultReadmePath = function(absolute) {
         this book's content root
     @return {String}
 */
-Book.prototype.getDefaultSummaryPath = function(absolute) {
-    var defaultPath = 'SUMMARY'+this.getDefaultExt();
+Book.prototype.getDefaultSummaryPath = function (absolute) {
+    var defaultPath = "SUMMARY" + this.getDefaultExt();
     if (absolute) {
         return path.join(this.getContentRoot(), defaultPath);
     } else {
@@ -327,8 +325,8 @@ Book.prototype.getDefaultSummaryPath = function(absolute) {
         this book's content root
     @return {String}
 */
-Book.prototype.getDefaultGlossaryPath = function(absolute) {
-    var defaultPath = 'GLOSSARY'+this.getDefaultExt();
+Book.prototype.getDefaultGlossaryPath = function (absolute) {
+    var defaultPath = "GLOSSARY" + this.getDefaultExt();
     if (absolute) {
         return path.join(this.getContentRoot(), defaultPath);
     } else {
@@ -348,7 +346,7 @@ Book.createFromParent = function createFromParent(parent, language) {
     var config = parent.getConfig();
 
     // Set language in configuration
-    config = config.setValue('language', language);
+    config = config.setValue("language", language);
 
     return new Book({
         // Inherits config. logegr and list of ignored files
@@ -357,7 +355,7 @@ Book.createFromParent = function createFromParent(parent, language) {
         ignore: ignore,
 
         language: language,
-        fs: FS.reduceScope(parent.getContentFS(), language)
+        fs: FS.reduceScope(parent.getContentFS(), language),
     });
 };
 

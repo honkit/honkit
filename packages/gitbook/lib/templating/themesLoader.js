@@ -1,15 +1,13 @@
-var Immutable = require('immutable');
-var nunjucks = require('nunjucks');
-var fs = require('fs');
-var path = require('path');
+var Immutable = require("immutable");
+var nunjucks = require("nunjucks");
+var fs = require("fs");
+var path = require("path");
 
-var PathUtils = require('../utils/path');
-
+var PathUtils = require("../utils/path");
 
 var ThemesLoader = nunjucks.Loader.extend({
-    init: function(searchPaths) {
-        this.searchPaths = Immutable.List(searchPaths)
-            .map(path.normalize);
+    init: function (searchPaths) {
+        this.searchPaths = Immutable.List(searchPaths).map(path.normalize);
     },
 
     /**
@@ -17,26 +15,29 @@ var ThemesLoader = nunjucks.Loader.extend({
      * @param {String}
      * @return {Object}
      */
-    getSource: function(fullpath) {
+    getSource: function (fullpath) {
         if (!fullpath) return null;
 
         fullpath = this.resolve(null, fullpath);
         var templateName = this.getTemplateName(fullpath);
 
-        if(!fullpath) {
+        if (!fullpath) {
             return null;
         }
 
-        var src = fs.readFileSync(fullpath, 'utf-8');
+        var src = fs.readFileSync(fullpath, "utf-8");
 
-        src = '{% do %}var template = template || {}; template.stack = template.stack || []; template.stack.push(template.self); template.self = ' + JSON.stringify(templateName) + '{% enddo %}\n' +
+        src =
+            "{% do %}var template = template || {}; template.stack = template.stack || []; template.stack.push(template.self); template.self = " +
+            JSON.stringify(templateName) +
+            "{% enddo %}\n" +
             src +
-            '\n{% do %}template.self = template.stack.pop();{% enddo %}';
+            "\n{% do %}template.self = template.stack.pop();{% enddo %}";
 
         return {
             src: src,
             path: fullpath,
-            noCache: true
+            noCache: true,
         };
     },
 
@@ -44,7 +45,7 @@ var ThemesLoader = nunjucks.Loader.extend({
      * Nunjucks calls "isRelative" to determine when to call "resolve".
      * We handle absolute paths ourselves in ".resolve" so we always return true
      */
-    isRelative: function() {
+    isRelative: function () {
         return true;
     },
 
@@ -53,13 +54,13 @@ var ThemesLoader = nunjucks.Loader.extend({
      * @param {String} filepath
      * @return {String} searchPath
      */
-    getSearchPath: function(filepath) {
+    getSearchPath: function (filepath) {
         return this.searchPaths
-            .sortBy(function(s) {
+            .sortBy(function (s) {
                 return -s.length;
             })
-            .find(function(basePath) {
-                return (filepath && filepath.indexOf(basePath) === 0);
+            .find(function (basePath) {
+                return filepath && filepath.indexOf(basePath) === 0;
             });
     },
 
@@ -68,9 +69,9 @@ var ThemesLoader = nunjucks.Loader.extend({
      * @param {String} filepath
      * @return {String} name
      */
-    getTemplateName: function(filepath) {
+    getTemplateName: function (filepath) {
         var originalSearchPath = this.getSearchPath(filepath);
-        return originalSearchPath? path.relative(originalSearchPath, filepath) : null;
+        return originalSearchPath ? path.relative(originalSearchPath, filepath) : null;
     },
 
     /**
@@ -79,7 +80,7 @@ var ThemesLoader = nunjucks.Loader.extend({
      * @param {String} to
      * @return {String|null}
      */
-    resolve: function(from, to) {
+    resolve: function (from, to) {
         var searchPaths = this.searchPaths;
 
         // Relative template like "./test.html"
@@ -99,17 +100,14 @@ var ThemesLoader = nunjucks.Loader.extend({
         }
 
         // Absolute template to resolve in root folder
-        var resultFolder = searchPaths.find(function(basePath) {
+        var resultFolder = searchPaths.find(function (basePath) {
             var p = path.resolve(basePath, to);
 
-            return (
-                p.indexOf(basePath) === 0
-                && fs.existsSync(p)
-            );
+            return p.indexOf(basePath) === 0 && fs.existsSync(p);
         });
         if (!resultFolder) return null;
         return path.resolve(resultFolder, to);
-    }
+    },
 });
 
 module.exports = ThemesLoader;

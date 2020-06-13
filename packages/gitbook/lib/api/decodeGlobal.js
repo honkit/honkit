@@ -1,4 +1,4 @@
-var decodeConfig = require('./decodeConfig');
+var decodeConfig = require("./decodeConfig");
 
 /**
     Decode changes from a JS API to a output object.
@@ -14,9 +14,9 @@ function decodeGlobal(output, result) {
 
     // Update config
     config = decodeConfig(config, result.config);
-    book = book.set('config', config);
+    book = book.set("config", config);
 
-    return output.set('book', book);
+    return output.set("book", book);
 }
 
 module.exports = decodeGlobal;

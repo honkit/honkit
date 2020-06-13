@@ -1,26 +1,25 @@
-var path = require('path');
-var Immutable = require('immutable');
+var path = require("path");
+var Immutable = require("immutable");
 
-var fs = require('../utils/fs');
-var FS = require('../models/fs');
+var fs = require("../utils/fs");
+var FS = require("../models/fs");
 
 function fsReadDir(folder) {
-    return fs.readdir(folder)
-        .then(function(files) {
-            files = Immutable.List(files);
+    return fs.readdir(folder).then(function (files) {
+        files = Immutable.List(files);
 
-            return files
-                .map(function(file) {
-                    if (file == '.' || file == '..') return;
+        return files
+            .map(function (file) {
+                if (file == "." || file == "..") return;
 
-                    var stat = fs.statSync(path.join(folder, file));
-                    if (stat.isDirectory()) file = file + path.sep;
-                    return file;
-                })
-                .filter(function(file) {
-                    return Boolean(file);
-                });
-        });
+                var stat = fs.statSync(path.join(folder, file));
+                if (stat.isDirectory()) file = file + path.sep;
+                return file;
+            })
+            .filter(function (file) {
+                return Boolean(file);
+            });
+    });
 }
 
 function fsLoadObject(filename) {
@@ -36,6 +35,6 @@ module.exports = function createNodeFS(root) {
         fsStatFile: fs.stat,
         fsReadDir: fsReadDir,
         fsLoadObject: fsLoadObject,
-        fsReadAsStream: fs.readStream
+        fsReadAsStream: fs.readStream,
     });
 };

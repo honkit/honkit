@@ -1,4 +1,4 @@
-var encodeSummaryArticle = require('./encodeSummaryArticle');
+var encodeSummaryArticle = require("./encodeSummaryArticle");
 
 /**
     Encode a SummaryPart to JSON
@@ -9,8 +9,7 @@ var encodeSummaryArticle = require('./encodeSummaryArticle');
 function encodeSummaryPart(part) {
     return {
         title: part.getTitle(),
-        articles: part.getArticles()
-            .map(encodeSummaryArticle).toJS()
+        articles: part.getArticles().map(encodeSummaryArticle).toJS(),
     };
 }
 

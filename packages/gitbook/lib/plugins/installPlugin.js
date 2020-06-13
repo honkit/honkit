@@ -1,7 +1,7 @@
-var npmi = require('npmi');
+var npmi = require("npmi");
 
-var Promise = require('../utils/promise');
-var resolveVersion = require('./resolveVersion');
+var Promise = require("../utils/promise");
+var resolveVersion = require("./resolveVersion");
 
 /**
     Install a plugin for a book
@@ -17,30 +17,32 @@ function installPlugin(book, plugin, options) {
     var name = plugin.getName();
     var requirement = plugin.getVersion();
 
-    logger.info.ln('');
+    logger.info.ln("");
     logger.info.ln('installing plugin "' + name + '"');
 
     // Find a version to install
     return resolveVersion(plugin, options)
-        .then(function(version) {
+        .then(function (version) {
             if (!version) {
-                throw new Error('Found no satisfactory version for plugin "' + name + '" with requirement "' + requirement + '"');
+                throw new Error(
+                    'Found no satisfactory version for plugin "' + name + '" with requirement "' + requirement + '"'
+                );
             }
 
-            logger.info.ln('install plugin "' + name +'" (' + requirement + ') from NPM with version', version);
+            logger.info.ln('install plugin "' + name + '" (' + requirement + ") from NPM with version", version);
             return Promise.nfcall(npmi, {
-                'name': plugin.getNpmID(),
-                'version': version,
-                'path': installFolder,
-                'npmLoad': {
-                    'loglevel': 'silent',
-                    'loaded': true,
-                    'prefix': installFolder,
-                    ...options
-                }
+                name: plugin.getNpmID(),
+                version: version,
+                path: installFolder,
+                npmLoad: {
+                    loglevel: "silent",
+                    loaded: true,
+                    prefix: installFolder,
+                    ...options,
+                },
             });
         })
-        .then(function() {
+        .then(function () {
             logger.info.ok('plugin "' + name + '" installed with success');
         });
 }

@@ -1,6 +1,6 @@
-var path = require('path');
-var fs = require('fs');
-var cheerio = require('cheerio');
+var path = require("path");
+var fs = require("fs");
+var cheerio = require("cheerio");
 
 expect.extend({
     /**
@@ -34,5 +34,5 @@ expect.extend({
             pass: pass,
             message: message,
         };
-    }
+    },
 });

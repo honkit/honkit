@@ -1,6 +1,6 @@
-var Promise = require('../utils/promise');
-var error = require('../utils/error');
-var render = require('./render');
+var Promise = require("../utils/promise");
+var error = require("../utils/error");
+var render = require("./render");
 
 /**
  * Render a template
@@ -17,7 +17,7 @@ function renderTemplateFile(engine, filePath, context) {
     var resolvedFilePath = loader.resolve(null, filePath);
 
     return Promise()
-        .then(function() {
+        .then(function () {
             if (!loader.async) {
                 return loader.getSource(resolvedFilePath);
             }
@@ -26,16 +26,15 @@ function renderTemplateFile(engine, filePath, context) {
             loader.getSource(resolvedFilePath, deferred.makeNodeResolver());
             return deferred.promise;
         })
-        .then(function(result) {
+        .then(function (result) {
             if (!result) {
-                throw error.TemplateError(new Error('Not found'), {
-                    filename: filePath
+                throw error.TemplateError(new Error("Not found"), {
+                    filename: filePath,
                 });
             }
 
             return render(engine, result.path, result.src, context);
         });
-
 }
 
 module.exports = renderTemplateFile;

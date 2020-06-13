@@ -1,24 +1,27 @@
-var is = require('is');
-var Immutable = require('immutable');
+var is = require("is");
+var Immutable = require("immutable");
 
-var error = require('../utils/error');
-var LocationUtils = require('../utils/location');
-var File = require('./file');
-var SummaryPart = require('./summaryPart');
-var SummaryArticle = require('./summaryArticle');
-var parsers = require('../parsers');
+var error = require("../utils/error");
+var LocationUtils = require("../utils/location");
+var File = require("./file");
+var SummaryPart = require("./summaryPart");
+var SummaryArticle = require("./summaryArticle");
+var parsers = require("../parsers");
 
-var Summary = Immutable.Record({
-    file:       File(),
-    parts:      Immutable.List()
-}, 'Summary');
+var Summary = Immutable.Record(
+    {
+        file: File(),
+        parts: Immutable.List(),
+    },
+    "Summary"
+);
 
-Summary.prototype.getFile = function() {
-    return this.get('file');
+Summary.prototype.getFile = function () {
+    return this.get("file");
 };
 
-Summary.prototype.getParts = function() {
-    return this.get('parts');
+Summary.prototype.getParts = function () {
+    return this.get("parts");
 };
 
 /**
@@ -27,7 +30,7 @@ Summary.prototype.getParts = function() {
     @param {Number}
     @return {Part}
 */
-Summary.prototype.getPart = function(i) {
+Summary.prototype.getPart = function (i) {
     var parts = this.getParts();
     return parts.get(i);
 };
@@ -40,10 +43,10 @@ Summary.prototype.getPart = function(i) {
     @param {Function} partIter
     @return {Article|Part}
 */
-Summary.prototype.getArticle = function(iter, partIter) {
+Summary.prototype.getArticle = function (iter, partIter) {
     var parts = this.getParts();
 
-    return parts.reduce(function(result, part) {
+    return parts.reduce(function (result, part) {
         if (result) return result;
 
         if (partIter && partIter(part)) return part;
@@ -51,16 +54,15 @@ Summary.prototype.getArticle = function(iter, partIter) {
     }, null);
 };
 
-
 /**
     Return a part/article by its level
 
     @param {String} level
     @return {Article|Part}
 */
-Summary.prototype.getByLevel = function(level) {
+Summary.prototype.getByLevel = function (level) {
     function iterByLevel(article) {
-        return (article.getLevel() === level);
+        return article.getLevel() === level;
     }
 
     return this.getArticle(iterByLevel, iterByLevel);
@@ -72,14 +74,11 @@ Summary.prototype.getByLevel = function(level) {
     @param {String} filePath
     @return {Article}
 */
-Summary.prototype.getByPath = function(filePath) {
-    return this.getArticle(function(article) {
+Summary.prototype.getByPath = function (filePath) {
+    return this.getArticle(function (article) {
         var articlePath = article.getPath();
 
-        return (
-            articlePath &&
-            LocationUtils.areIdenticalPaths(articlePath, filePath)
-        );
+        return articlePath && LocationUtils.areIdenticalPaths(articlePath, filePath);
     });
 };
 
@@ -88,8 +87,8 @@ Summary.prototype.getByPath = function(filePath) {
 
     @return {Article}
 */
-Summary.prototype.getFirstArticle = function() {
-    return this.getArticle(function(article) {
+Summary.prototype.getFirstArticle = function () {
+    return this.getArticle(function (article) {
         return true;
     });
 };
@@ -100,11 +99,11 @@ Summary.prototype.getFirstArticle = function() {
     @param {Article} current
     @return {Article}
 */
-Summary.prototype.getNextArticle = function(current) {
-    var level = is.string(current)? current : current.getLevel();
+Summary.prototype.getNextArticle = function (current) {
+    var level = is.string(current) ? current : current.getLevel();
     var wasPrev = false;
 
-    return this.getArticle(function(article) {
+    return this.getArticle(function (article) {
         if (wasPrev) return true;
 
         wasPrev = article.getLevel() == level;
@@ -118,11 +117,11 @@ Summary.prototype.getNextArticle = function(current) {
     @param {Article} current
     @return {Article}
 */
-Summary.prototype.getPrevArticle = function(current) {
-    var level = is.string(current)? current : current.getLevel();
+Summary.prototype.getPrevArticle = function (current) {
+    var level = is.string(current) ? current : current.getLevel();
     var prev = undefined;
 
-    this.getArticle(function(article) {
+    this.getArticle(function (article) {
         if (article.getLevel() == level) {
             return true;
         }
@@ -142,7 +141,7 @@ Summary.prototype.getPrevArticle = function(current) {
 */
 Summary.prototype.getParent = function (level) {
     // Coerce to level
-    level = is.string(level)? level : level.getLevel();
+    level = is.string(level) ? level : level.getLevel();
 
     // Get parent level
     var parentLevel = getParentLevel(level);
@@ -161,20 +160,20 @@ Summary.prototype.getParent = function (level) {
     @param {String} parseExt Extension of the parser to use
     @return {Promise<String>}
 */
-Summary.prototype.toText = function(parseExt) {
+Summary.prototype.toText = function (parseExt) {
     var file = this.getFile();
     var parts = this.getParts();
 
-    var parser = parseExt? parsers.getByExt(parseExt) : file.getParser();
+    var parser = parseExt ? parsers.getByExt(parseExt) : file.getParser();
 
     if (!parser) {
         throw error.FileNotParsableError({
-            filename: file.getPath()
+            filename: file.getPath(),
         });
     }
 
     return parser.renderSummary({
-        parts: parts.toJS()
+        parts: parts.toJS(),
     });
 };
 
@@ -183,10 +182,10 @@ Summary.prototype.toText = function(parseExt) {
 
     @return {List<Article>}
 */
-Summary.prototype.getArticlesAsList = function() {
+Summary.prototype.getArticlesAsList = function () {
     var accu = [];
 
-    this.getArticle(function(article) {
+    this.getArticle(function (article) {
         accu.push(article);
     });
 
@@ -200,7 +199,7 @@ Summary.prototype.getArticlesAsList = function() {
     @return {Summary}
 */
 Summary.createFromParts = function createFromParts(file, parts) {
-    parts = parts.map(function(part, i) {
+    parts = parts.map(function (part, i) {
         if (part instanceof SummaryPart) {
             return part;
         }
@@ -210,7 +209,7 @@ Summary.createFromParts = function createFromParts(file, parts) {
 
     return new Summary({
         file: file,
-        parts: new Immutable.List(parts)
+        parts: new Immutable.List(parts),
     });
 };
 
@@ -221,8 +220,8 @@ Summary.createFromParts = function createFromParts(file, parts) {
     @return {String}
 */
 function getParentLevel(level) {
-    var parts = level.split('.');
-    return parts.slice(0, -1).join('.');
+    var parts = level.split(".");
+    return parts.slice(0, -1).join(".");
 }
 
 module.exports = Summary;

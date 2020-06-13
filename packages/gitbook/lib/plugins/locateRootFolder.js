@@ -1,7 +1,7 @@
-var path = require('path');
-var resolve = require('resolve');
+var path = require("path");
+var resolve = require("resolve");
 
-var DEFAULT_PLUGINS = require('../constants/defaultPlugins');
+var DEFAULT_PLUGINS = require("../constants/defaultPlugins");
 
 /**
  * Resolve the root folder containing for node_modules
@@ -11,10 +11,10 @@ var DEFAULT_PLUGINS = require('../constants/defaultPlugins');
  */
 function locateRootFolder() {
     var firstDefaultPlugin = DEFAULT_PLUGINS.first();
-    var pluginPath = resolve.sync(firstDefaultPlugin.getNpmID() + '/package.json', {
-        basedir: __dirname
+    var pluginPath = resolve.sync(firstDefaultPlugin.getNpmID() + "/package.json", {
+        basedir: __dirname,
     });
-    var nodeModules = path.resolve(pluginPath, '../../..');
+    var nodeModules = path.resolve(pluginPath, "../../..");
 
     return nodeModules;
 }

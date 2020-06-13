@@ -1,5 +1,5 @@
-var path = require('path');
-var error = require('./error');
+var path = require("path");
+var error = require("./error");
 
 // Normalize a filename
 function normalizePath(filename) {
@@ -11,14 +11,14 @@ function isInRoot(root, filename) {
     root = path.normalize(root);
     filename = path.normalize(filename);
 
-    if (root === '.') {
+    if (root === ".") {
         return true;
     }
     if (root[root.length - 1] != path.sep) {
         root = root + path.sep;
     }
 
-    return (filename.substr(0, root.length) === root);
+    return filename.substr(0, root.length) === root;
 }
 
 // Resolve paths in a specific folder
@@ -27,20 +27,19 @@ function resolveInRoot(root) {
     var input, result;
     var args = Array.prototype.slice.call(arguments, 1);
 
-    input = args
-        .reduce(function(current, p) {
-            // Handle path relative to book root ("/README.md")
-            if (p[0] == '/' || p[0] == '\\') return p.slice(1);
+    input = args.reduce(function (current, p) {
+        // Handle path relative to book root ("/README.md")
+        if (p[0] == "/" || p[0] == "\\") return p.slice(1);
 
-            return current? path.join(current, p) : path.normalize(p);
-        }, '');
+        return current ? path.join(current, p) : path.normalize(p);
+    }, "");
 
     result = path.resolve(root, input);
 
     if (!isInRoot(root, result)) {
         throw new error.FileOutOfScopeError({
             filename: result,
-            root: root
+            root: root,
         });
     }
 
@@ -49,10 +48,7 @@ function resolveInRoot(root) {
 
 // Chnage extension of a file
 function setExtension(filename, ext) {
-    return path.join(
-        path.dirname(filename),
-        path.basename(filename, path.extname(filename)) + ext
-    );
+    return path.join(path.dirname(filename), path.basename(filename, path.extname(filename)) + ext);
 }
 
 /*
@@ -62,7 +58,7 @@ function setExtension(filename, ext) {
     @return {Boolean}
 */
 function isPureRelative(filename) {
-    return (filename.indexOf('./') === 0 || filename.indexOf('../') === 0);
+    return filename.indexOf("./") === 0 || filename.indexOf("../") === 0;
 }
 
 module.exports = {
@@ -70,5 +66,5 @@ module.exports = {
     resolveInRoot: resolveInRoot,
     normalize: normalizePath,
     setExtension: setExtension,
-    isPureRelative: isPureRelative
+    isPureRelative: isPureRelative,
 };

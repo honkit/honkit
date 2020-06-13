@@ -1,5 +1,5 @@
-var is = require('is');
-var objectPath = require('object-path');
+var is = require("is");
+var objectPath = require("object-path");
 
 var logged = {};
 var disabled = {};
@@ -30,7 +30,7 @@ function logNotice(book, key, message) {
     @return {Function}
 */
 function deprecateMethod(book, key, fn, msg) {
-    return function() {
+    return function () {
         logNotice(book, key, msg);
 
         return fn.apply(this, arguments);
@@ -50,20 +50,20 @@ function deprecateMethod(book, key, fn, msg) {
 function deprecateField(book, key, instance, property, value, msg) {
     var store = undefined;
 
-    var prepare = function() {
+    var prepare = function () {
         if (!is.undefined(store)) return;
 
         if (is.fn(value)) store = value();
         else store = value;
     };
 
-    var getter = function(){
+    var getter = function () {
         prepare();
 
         logNotice(book, key, msg);
         return store;
     };
-    var setter = function(v) {
+    var setter = function (v) {
         prepare();
 
         logNotice(book, key, msg);
@@ -75,7 +75,7 @@ function deprecateField(book, key, instance, property, value, msg) {
         get: getter,
         set: setter,
         enumerable: true,
-        configurable: true
+        configurable: true,
     });
 }
 
@@ -107,7 +107,7 @@ function disableDeprecation(key) {
     @param {String} newName
 */
 function deprecateRenamedMethod(book, key, instance, oldName, newName, msg) {
-    msg = msg || ('"' + oldName + '" is deprecated, use "' + newName + '()" instead');
+    msg = msg || '"' + oldName + '" is deprecated, use "' + newName + '()" instead';
     var fn = objectPath.get(instance, newName);
 
     instance[oldName] = deprecateMethod(book, key, fn, msg);
@@ -118,5 +118,5 @@ module.exports = {
     renamedMethod: deprecateRenamedMethod,
     field: deprecateField,
     enable: enableDeprecation,
-    disable: disableDeprecation
+    disable: disableDeprecation,
 };

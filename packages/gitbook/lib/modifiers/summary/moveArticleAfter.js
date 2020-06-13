@@ -1,6 +1,6 @@
-var is = require('is');
-var removeArticle = require('./removeArticle');
-var insertArticle = require('./insertArticle');
+var is = require("is");
+var removeArticle = require("./removeArticle");
+var insertArticle = require("./insertArticle");
 
 /**
     Returns a new summary, with the an article moved after another
@@ -14,8 +14,8 @@ var insertArticle = require('./insertArticle');
 */
 function moveArticleAfter(summary, origin, afterTarget) {
     // Coerce to level
-    var originLevel = is.string(origin)? origin : origin.getLevel();
-    var afterTargetLevel = is.string(afterTarget)? afterTarget : afterTarget.getLevel();
+    var originLevel = is.string(origin) ? origin : origin.getLevel();
+    var afterTargetLevel = is.string(afterTarget) ? afterTarget : afterTarget.getLevel();
     var article = summary.getByLevel(originLevel);
 
     var targetLevel = increment(afterTargetLevel);
@@ -38,7 +38,7 @@ function moveArticleAfter(summary, origin, afterTarget) {
     @return {Array<Number>}
  */
 function levelToArray(l) {
-    return l.split('.').map(function (char) {
+    return l.split(".").map(function (char) {
         return parseInt(char, 10);
     });
 }
@@ -48,7 +48,7 @@ function levelToArray(l) {
     @return {String}
  */
 function arrayToLevel(a) {
-    return a.join('.');
+    return a.join(".");
 }
 
 function increment(level) {

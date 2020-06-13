@@ -1,4 +1,3 @@
-
 /**
     Edit a list of articles
 
@@ -8,7 +7,7 @@
     @return {List<Article>}
 */
 function editArticleInList(articles, level, newArticle) {
-    return articles.map(function(article) {
+    return articles.map(function (article) {
         var articleLevel = article.getLevel();
 
         if (articleLevel === level) {
@@ -17,14 +16,13 @@ function editArticleInList(articles, level, newArticle) {
         } else if (level.indexOf(articleLevel) === 0) {
             // it is a parent
             var articles = editArticleInList(article.getArticles(), level, newArticle);
-            return article.set('articles', articles);
+            return article.set("articles", articles);
         } else {
             // This is not the article you are looking for
             return article;
         }
     });
 }
-
 
 /**
     Edit an article in a part
@@ -38,9 +36,8 @@ function editArticleInPart(part, level, newArticle) {
     var articles = part.getArticles();
     articles = editArticleInList(articles, level, newArticle);
 
-    return part.set('articles', articles);
+    return part.set("articles", articles);
 }
-
 
 /**
     Edit an article, or a part, in a summary. Does a shallow merge.
@@ -51,8 +48,8 @@ function editArticleInPart(part, level, newArticle) {
     @return {Summary}
 */
 function mergeAtLevel(summary, level, newValue) {
-    var levelParts = level.split('.');
-    var partIndex = Number(levelParts[0]) -1;
+    var levelParts = level.split(".");
+    var partIndex = Number(levelParts[0]) - 1;
 
     var parts = summary.getParts();
     var part = parts.get(partIndex);
@@ -68,8 +65,7 @@ function mergeAtLevel(summary, level, newValue) {
     }
 
     parts = parts.set(partIndex, part);
-    return summary.set('parts', parts);
+    return summary.set("parts", parts);
 }
-
 
 module.exports = mergeAtLevel;

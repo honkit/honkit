@@ -1,19 +1,19 @@
-var Immutable = require('immutable');
+var Immutable = require("immutable");
 
-var File = require('./file');
-var Language = require('./language');
+var File = require("./file");
+var Language = require("./language");
 
 var Languages = Immutable.Record({
-    file:       File(),
-    list:       Immutable.OrderedMap()
+    file: File(),
+    list: Immutable.OrderedMap(),
 });
 
-Languages.prototype.getFile = function() {
-    return this.get('file');
+Languages.prototype.getFile = function () {
+    return this.get("file");
 };
 
-Languages.prototype.getList = function() {
-    return this.get('list');
+Languages.prototype.getList = function () {
+    return this.get("list");
 };
 
 /**
@@ -21,7 +21,7 @@ Languages.prototype.getList = function() {
 
     @return {Language}
 */
-Languages.prototype.getDefaultLanguage = function() {
+Languages.prototype.getDefaultLanguage = function () {
     return this.getList().first();
 };
 
@@ -31,7 +31,7 @@ Languages.prototype.getDefaultLanguage = function() {
     @param {String} lang
     @return {Language}
 */
-Languages.prototype.getLanguage = function(lang) {
+Languages.prototype.getLanguage = function (lang) {
     return this.getList().get(lang);
 };
 
@@ -40,7 +40,7 @@ Languages.prototype.getLanguage = function(lang) {
 
     @return {Number}
 */
-Languages.prototype.getCount = function() {
+Languages.prototype.getCount = function () {
     return this.getList().size;
 };
 
@@ -51,20 +51,20 @@ Languages.prototype.getCount = function() {
     @param {Array}
     @return {Language}
 */
-Languages.createFromList = function(file, langs) {
+Languages.createFromList = function (file, langs) {
     var list = Immutable.OrderedMap();
 
-    langs.forEach(function(lang) {
+    langs.forEach(function (lang) {
         lang = Language({
             title: lang.title,
-            path: lang.ref
+            path: lang.ref,
         });
         list = list.set(lang.getID(), lang);
     });
 
     return Languages({
         file: file,
-        list: list
+        list: list,
     });
 };
 

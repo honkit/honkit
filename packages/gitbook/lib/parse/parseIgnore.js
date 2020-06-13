@@ -1,21 +1,21 @@
-var Promise = require('../utils/promise');
-var IGNORE_FILES = require('../constants/ignoreFiles');
+var Promise = require("../utils/promise");
+var IGNORE_FILES = require("../constants/ignoreFiles");
 
 var DEFAULT_IGNORES = [
     // Skip Git stuff
-    '.git/',
+    ".git/",
 
     // Skip OS X meta data
-    '.DS_Store',
+    ".DS_Store",
 
     // Skip stuff installed by plugins
-    'node_modules',
+    "node_modules",
 
     // Skip book outputs
-    '_book',
+    "_book",
 
     // Ignore files in the templates folder
-    '_layouts'
+    "_layouts",
 ];
 
 /**
@@ -26,7 +26,7 @@ var DEFAULT_IGNORES = [
 */
 function parseIgnore(book) {
     if (book.isLanguageBook()) {
-        return Promise.reject(new Error('Ignore files could be parsed for language books'));
+        return Promise.reject(new Error("Ignore files could be parsed for language books"));
     }
 
     var fs = book.getFS();
@@ -34,18 +34,18 @@ function parseIgnore(book) {
 
     ignore = ignore.add(DEFAULT_IGNORES);
 
-    return Promise.serie(IGNORE_FILES, function(filename) {
-        return fs.readAsString(filename)
-            .then(function(content) {
+    return Promise.serie(IGNORE_FILES, function (filename) {
+        return fs.readAsString(filename).then(
+            function (content) {
                 ignore = ignore.add(content.toString().split(/\r?\n/));
-            }, function(err) {
+            },
+            function (err) {
                 return Promise();
-            });
-    })
-
-        .then(function() {
-            return book.setIgnore(ignore);
-        });
+            }
+        );
+    }).then(function () {
+        return book.setIgnore(ignore);
+    });
 }
 
 module.exports = parseIgnore;

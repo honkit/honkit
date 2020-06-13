@@ -1,2 +1,1 @@
-
-module.exports = '_assets';
+module.exports = "_assets";

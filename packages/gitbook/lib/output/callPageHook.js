@@ -1,5 +1,5 @@
-var Api = require('../api');
-var callHook = require('./callHook');
+var Api = require("../api");
+var callHook = require("./callHook");
 
 /**
     Call a hook for a specific page
@@ -13,11 +13,11 @@ function callPageHook(name, output, page) {
     return callHook(
         name,
 
-        function(out) {
+        function (out) {
             return Api.encodePage(out, page);
         },
 
-        function(out, result) {
+        function (out, result) {
             return Api.decodePage(out, page, result);
         },
 

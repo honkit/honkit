@@ -1,4 +1,4 @@
-var Immutable = require('immutable');
+var Immutable = require("immutable");
 
 /**
     List blocks from a list of plugins
@@ -7,12 +7,10 @@ var Immutable = require('immutable');
     @return {Map<String:TemplateBlock>}
 */
 function listBlocks(plugins) {
-    return plugins
-        .reverse()
-        .reduce(function(result, plugin) {
-            var blocks = plugin.getBlocks();
-            return result.merge(blocks);
-        }, Immutable.Map());
+    return plugins.reverse().reduce(function (result, plugin) {
+        var blocks = plugin.getBlocks();
+        return result.merge(blocks);
+    }, Immutable.Map());
 }
 
 module.exports = listBlocks;
