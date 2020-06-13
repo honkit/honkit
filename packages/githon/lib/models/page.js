@@ -40,12 +40,12 @@ Page.prototype.toText = function () {
     const attrs = this.getAttributes();
     const content = this.getContent();
 
-    if (attrs.size === 0) {
+    if (attrs.size === 0 && content) {
         return content;
     }
 
     const frontMatter = `---\n${yaml.safeDump(attrs.toJS(), { skipInvalid: true })}---\n\n`;
-    return frontMatter + content;
+    return frontMatter + (content || "");
 };
 
 /**
