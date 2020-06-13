@@ -1,30 +1,45 @@
 {
-    "rules": {
-        "indent": [ 2, 4 ],
-        "quotes": [ 2, "double" ],
-        "linebreak-style": [ 2, "unix" ],
-        "semi": [ 2, "always" ],
-        "no-unused-vars": [ 2, {
-            "vars": "all",
-            "args": "none"
-        } ],
-        "spaced-comment": [ 2, "always" ],
-        "no-useless-escape": "off",
-        "no-var": "error",
-        "prefer-const": "error",
-        "prefer-arrow-callback": "error",
-        "prefer-template": "error"
-    },
-    "env": {
-        "node": true,
-        "jest": true,
-        "es6": true
-    },
-    "globals": {
-        "expect": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "ecmaVersion": 2018
-    }
+  "rules": {
+    "indent": [
+      2,
+      4
+    ],
+    "quotes": "off",
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "no-unused-vars": [
+      2,
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
+    "spaced-comment": [
+      2,
+      "always"
+    ],
+    "no-useless-escape": "off",
+    "no-var": "error",
+    "prefer-const": "error",
+    "prefer-arrow-callback": "error",
+    "prefer-template": "error"
+  },
+  "env": {
+    "node": true,
+    "jest": true,
+    "es6": true
+  },
+  "globals": {
+    "expect": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2018
+  }
 }
