@@ -1,9 +1,6 @@
 {
     "npmClient": "yarn",
     "useWorkspaces": true,
-    "packages": [
-        "packages/*"
-    ],
     "includeMergedTags": true,
     "version": "0.0.0"
 }

@@ -6,7 +6,6 @@ const assert = require("assert");
 
 Githon.commands.forEach((spec) => {
     let subcommand = program.command(spec.name).description(spec.description);
-
     const options = spec.options || [];
     options.forEach((spec) => {
         if (spec.values) {
@@ -22,13 +21,18 @@ Githon.commands.forEach((spec) => {
                 spec.defaults
             );
         } else {
-            subcommand = subcommand.option(`--${spec.name}`, spec.description, spec.defaults);
+            subcommand = subcommand.option(
+                spec.defaults ? `--${spec.name} <type>` : `--${spec.name}`,
+                spec.description,
+                spec.defaults
+            );
         }
     });
 
     subcommand = subcommand.action((...joinedArgs) => {
         const args = joinedArgs.slice(0, -1);
         const kwargs = joinedArgs.slice(-1)[0];
+        console.log(kwargs);
         spec.exec(args, kwargs).catch((err) => {
             console.log(err.message);
             if (program.debug || process.env.DEBUG) console.log(err.stack || "");

@@ -13,7 +13,6 @@ module.exports = {
     exec: function (args, kwargs) {
         const book = getBook(args, kwargs);
         const outputFolder = getOutputFolder(args);
-
         const Generator = Output.getGenerator(kwargs.format);
 
         return Parse.parseBook(book)

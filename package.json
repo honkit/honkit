@@ -15,7 +15,8 @@
     "GitBook Inc. <contact@gitbook.com>"
   ],
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --ci",
