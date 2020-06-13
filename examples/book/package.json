@@ -1,0 +1,17 @@
+{
+    "name": "book",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "githon build",
+        "dev": "githon serve",
+        "help": "githon --help"
+    },
+    "devDependencies": {
+        "githon": "^3.0.0"
+    },
+    "keywords": [],
+    "author": "azu",
+    "license": "MIT"
+}
