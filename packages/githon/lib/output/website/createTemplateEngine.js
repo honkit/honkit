@@ -1,6 +1,7 @@
 const path = require("path");
 const nunjucks = require("nunjucks");
 const DoExtension = require("nunjucks-do")(nunjucks);
+const memoizeOne = require("memoize-one");
 
 const Api = require("../../api");
 const deprecate = require("../../api/deprecate");
@@ -96,8 +97,8 @@ function createTemplateEngine(output, currentFile) {
         context: context,
 
         globals: {
-            getArticleByPath: getArticleByPath,
-            getPageByPath: getPageByPath,
+            getArticleByPath: memoizeOne(getArticleByPath),
+            getPageByPath: memoizeOne(getPageByPath),
             fileExists: fileExists,
         },
 
@@ -136,13 +137,13 @@ function createTemplateEngine(output, currentFile) {
                 book,
                 "fileExists",
                 fileExists,
-                "Filter \"fileExists\" is deprecated, use \"fileExists(filename)\" "
+                'Filter "fileExists" is deprecated, use "fileExists(filename)" '
             ),
             getArticleByPath: deprecate.method(
                 book,
                 "getArticleByPath",
                 fileExists,
-                "Filter \"getArticleByPath\" is deprecated, use \"getArticleByPath(filename)\" "
+                'Filter "getArticleByPath" is deprecated, use "getArticleByPath(filename)" '
             ),
 
             contentURL: function (filePath) {
