@@ -1,0 +1,95 @@
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="./landing/css/style.css"/>
+<style>
+    .btn.btn-amazon {
+        color: #fff;
+        background-color: #ec971f;
+        border-color: #eea236;
+        margin: 12px 0;
+    }
+
+    .btn.btn-tatsujin {
+        color: #fff;
+        background-color: #540000;
+        border-color: #280000;
+        margin: 12px 0;
+    }
+</style>
+
+<!-- Main container -->
+<div class="page-container">
+    <div class="row main" id="js-main">
+        <div class="col-sm-8">
+            <h2 class="mg-lg Landing-title">JavaScript Primer</h2>
+            <h3 class="mg-sm">
+                <span class="fa fa-book"></span>迷わないための入門書
+            </h3>
+            <p class="mg-lg">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
+                <a class="github-button" href="https://github.com/asciidwango/js-primer/subscription" data-size="large"
+                   data-show-count="true" aria-label="Watch asciidwango/js-primer on GitHub">Watch</a>
+                <a class="github-button" href="https://github.com/asciidwango/js-primer" data-size="large"
+                   data-show-count="true" aria-label="Star asciidwango/js-primer on GitHub">Star</a>
+            </p>
+            <p class="mg-lg">
+                Twitterのハッシュタグ: <a href="https://twitter.com/search?q=%23jsprimer&src=typed_query&f=live">#jsprimer</a>
+            </p>
+            <p class="mg-lg">
+                これからJavaScriptを学びたい人が、ECMAScript 2015以降をベースにして一からJavaScriptを学べる書籍です。<br/>
+                プログラミングをやったことがあるが、今のJavaScriptがよくわからないという人が、
+                今のJavaScriptアプリケーションを読み書きできるように書かれています。
+            </p>
+            <p class="mg-lg">
+                初めてのプログラミング言語としてJavaScriptを学ぶ人は、まずは「<a href="https://jsprimer.net/intro/">はじめに</a>」から読んでみてください。<br/>
+            </p>
+            <h3 class="mg-sm">
+                <span class="fa fa-book"></span>書籍版
+            </h3>
+            <p class="mg-lg">
+                このウェブサイトはアスキードワンゴから書籍として出版されています。
+                書籍版の内容はウェブサイト版と同一ですが、本として読めるように最適化されています。
+                書籍版は次のサイトから購入できます。
+            </p>
+            <ul>
+                <li><a href="https://www.amazon.co.jp/dp/4048930737/">Amazon</a></li>
+                <li><a href="https://tatsu-zine.com/books/javascript-primer">達人出版会（電子書籍）</a></li>
+            </ul>
+            <p class="mg-lg">
+                詳細については「<a href="https://jsprimer.net/intro/#diff-with-print-version">ウェブ版と書籍版の違い</a>」を参照してください。
+            </p>
+            <form action="https://github.us13.list-manage.com/subscribe/post?u=fc41e11a2b9dc6f05350e0de0&amp;id=7ab1594ae8"
+                  method="post" id="js_mail_form" novalidate class="mail-form" target="_blank">
+                <h3 class="mg-sm">
+                    <span class="fa fa-star"></span>更新情報を購読
+                </h3>
+                <p class="mg-lg">
+                    このウェブサイトの内容は予告なしに変更される可能性があります。<br/>
+                    この書籍の更新情報を受け取りたい方は、次のフォームからメールアドレスを登録することで通知を受け取れます。<br/>
+                    この書籍の内容が大きく更新される際など重要な変更に関する情報を受け取れます。
+                </p>
+                <div class="form-group"><label for="email">メールアドレス</label><input id="email" class="form-control"
+                                                                                 name="EMAIL" type="email" required/>
+                </div>
+                <button class="bloc-button btn btn-d btn-lg btn-block" type="submit">登録</button>
+            </form>
+        </div>
+        <div class="col-sm-4 hidden-xs">
+            <img src="./landing/img/cover-optimized.jpg" alt="Cover Image" class="img-responsive"/>
+            <a href="https://www.amazon.co.jp/dp/4048930737/" class="btn btn-primary btn-lg btn-amazon" role="button">Amazon</a>
+            <a href="https://tatsu-zine.com/books/javascript-primer" class="btn btn-primary btn-lg btn-tatsujin" role="button">達人出版会</a>
+        </div>
+    </div>
+</div>
+
+<!-- Script -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script async defer>!function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? "http" : "https";
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + "://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, "script", "twitter-wjs");</script>
+<!-- Main End -->

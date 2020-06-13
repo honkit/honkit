@@ -1,0 +1,24 @@
+{
+  "name": "plain-ajax",
+  "version": "1.0.0",
+  "description": "Ajax Example",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "static src",
+    "start:entrypoint": "static entrypoint/src",
+    "start:xhr": "static xhr/src",
+    "start:display": "static display/src",
+    "start:promise": "static promise/src",
+    "firefox": "osascript firefox-launch.applescript",
+    "ss": "osascript screenshot.applescript"
+  },
+  "keywords": [],
+  "author": "laco",
+  "license": "MIT",
+  "devDependencies": {
+    "node-static": "^0.7.7"
+  }
+}
