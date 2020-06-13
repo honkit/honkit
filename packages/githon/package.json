@@ -67,11 +67,12 @@
     "url": "https://github.com/GitbookIO/gitbook.git"
   },
   "bin": {
-    "gitbook": "./bin/githon.js"
+    "githon": "./bin/githon.js"
   },
   "keywords": [
     "git",
     "book",
+    "githon",
     "gitbook"
   ],
   "author": "GitBook Inc. <contact@gitbook.com>",
