@@ -32,7 +32,6 @@ Githon.commands.forEach((spec) => {
     subcommand = subcommand.action((...joinedArgs) => {
         const args = joinedArgs.slice(0, -1);
         const kwargs = joinedArgs.slice(-1)[0];
-        console.log(kwargs);
         spec.exec(args, kwargs).catch((err) => {
             console.log(err.message);
             if (program.debug || process.env.DEBUG) console.log(err.stack || "");
