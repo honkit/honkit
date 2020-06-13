@@ -72,7 +72,7 @@ function initBook(rootFolder) {
 
                             return fs.ensureFile(filePath).then(() => {
                                 logger.info.ln(`create ${path.basename(filePath)}`);
-                                return fs.writeFile(filePath, summary.toText(extension));
+                                return fs.writeFile(filePath, summary.toText(extension) || "");
                             });
                         })
 
