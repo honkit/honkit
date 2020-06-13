@@ -1,5 +1,5 @@
-var path = require("path");
-var locateRootFolder = require("../locateRootFolder");
+const path = require("path");
+const locateRootFolder = require("../locateRootFolder");
 
 describe("locateRootFolder", () => {
     test.skip("should correctly resolve the node_modules for gitbook", () => {

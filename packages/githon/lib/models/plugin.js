@@ -1,12 +1,12 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var TemplateBlock = require("./templateBlock");
-var PluginDependency = require("./pluginDependency");
-var THEME_PREFIX = require("../constants/themePrefix");
+const TemplateBlock = require("./templateBlock");
+const PluginDependency = require("./pluginDependency");
+const THEME_PREFIX = require("../constants/themePrefix");
 
-var DEFAULT_VERSION = "*";
+const DEFAULT_VERSION = "*";
 
-var Plugin = Immutable.Record(
+const Plugin = Immutable.Record(
     {
         name: String(),
 
@@ -80,7 +80,7 @@ Plugin.prototype.isLoaded = function () {
  * @return {Boolean}
  */
 Plugin.prototype.isTheme = function () {
-    var name = this.getName();
+    const name = this.getName();
     return name && name.indexOf(THEME_PREFIX) === 0;
 };
 
@@ -99,10 +99,10 @@ Plugin.prototype.getHooks = function () {
  */
 Plugin.prototype.getResources = function (type) {
     if (type != "website" && type != "ebook") {
-        throw new Error("Invalid assets type " + type);
+        throw new Error(`Invalid assets type ${type}`);
     }
 
-    var content = this.getContent();
+    const content = this.getContent();
     return content.get(type) || (type == "website" ? content.get("book") : null) || Immutable.Map();
 };
 
@@ -119,10 +119,10 @@ Plugin.prototype.getFilters = function () {
  * @return {Map<String:TemplateBlock>}
  */
 Plugin.prototype.getBlocks = function () {
-    var blocks = this.getContent().get("blocks");
+    let blocks = this.getContent().get("blocks");
     blocks = blocks || Immutable.Map();
 
-    return blocks.map(function (block, blockName) {
+    return blocks.map((block, blockName) => {
         return TemplateBlock.create(blockName, block);
     });
 };
@@ -142,9 +142,9 @@ Plugin.prototype.getHook = function (name) {
  * @return {Plugin}
  */
 Plugin.createFromString = function (s) {
-    var parts = s.split("@");
-    var name = parts[0];
-    var version = parts.slice(1).join("@");
+    const parts = s.split("@");
+    const name = parts[0];
+    const version = parts.slice(1).join("@");
 
     return new Plugin({
         name: name,

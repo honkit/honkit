@@ -1,19 +1,19 @@
-var escape = require("escape-html");
+const escape = require("escape-html");
 
 // Selector to ignore
-var ANNOTATION_IGNORE = ".no-glossary,code,pre,a,script,h1,h2,h3,h4,h5,h6";
+const ANNOTATION_IGNORE = ".no-glossary,code,pre,a,script,h1,h2,h3,h4,h5,h6";
 
 function pregQuote(str) {
-    return (str + "").replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
+    return `${str}`.replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
 }
 
 function replaceText($, el, search, replace, text_only) {
     return $(el).each(function () {
-        var node = this.firstChild,
+        let node = this.firstChild,
             val,
-            new_val,
-            // Elements to be removed at the end.
-            remove = [];
+            new_val;
+        // Elements to be removed at the end.
+        const remove = [];
 
         // Only continue if firstChild exists.
         if (node) {
@@ -61,29 +61,21 @@ function replaceText($, el, search, replace, text_only) {
  * @param {HTMLDom} $
  */
 function annotateText(entries, glossaryFilePath, $) {
-    entries.forEach(function (entry) {
-        var entryId = entry.getID();
-        var name = entry.getName();
-        var description = entry.getDescription();
-        var searchRegex = new RegExp("\\b(" + pregQuote(name.toLowerCase()) + ")\\b", "gi");
+    entries.forEach((entry) => {
+        const entryId = entry.getID();
+        const name = entry.getName();
+        const description = entry.getDescription();
+        const searchRegex = new RegExp(`\\b(${pregQuote(name.toLowerCase())})\\b`, "gi");
 
         $("*").each(function () {
-            var $this = $(this);
+            const $this = $(this);
 
             if ($this.is(ANNOTATION_IGNORE) || $this.parents(ANNOTATION_IGNORE).length > 0) return;
 
-            replaceText($, this, searchRegex, function (match) {
+            replaceText($, this, searchRegex, (match) => {
                 return (
-                    '<a href="/' +
-                    glossaryFilePath +
-                    "#" +
-                    entryId +
-                    '" ' +
-                    'class="glossary-term" title="' +
-                    escape(description) +
-                    '">' +
-                    match +
-                    "</a>"
+                    `<a href="/${glossaryFilePath}#${entryId}" ` +
+                    `class="glossary-term" title="${escape(description)}">${match}</a>`
                 );
             });
         });

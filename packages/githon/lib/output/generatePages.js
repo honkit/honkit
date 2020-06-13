@@ -1,5 +1,5 @@
-var Promise = require("../utils/promise");
-var generatePage = require("./generatePage");
+const Promise = require("../utils/promise");
+const generatePage = require("./generatePage");
 
 /**
     Output all pages using a generator
@@ -9,8 +9,8 @@ var generatePage = require("./generatePage");
     @return {Promise<Output>}
 */
 function generatePages(generator, output) {
-    var pages = output.getPages();
-    var logger = output.getLogger();
+    const pages = output.getPages();
+    const logger = output.getLogger();
 
     // Is generator ignoring assets?
     if (!generator.onPage) {
@@ -19,17 +19,17 @@ function generatePages(generator, output) {
 
     return Promise.reduce(
         pages,
-        function (out, page) {
-            var file = page.getFile();
+        (out, page) => {
+            const file = page.getFile();
 
-            logger.debug.ln('generate page "' + file.getPath() + '"');
+            logger.debug.ln(`generate page "${file.getPath()}"`);
 
             return generatePage(out, page)
-                .then(function (resultPage) {
+                .then((resultPage) => {
                     return generator.onPage(out, resultPage);
                 })
-                .fail(function (err) {
-                    logger.error.ln('error while generating page "' + file.getPath() + '":');
+                .fail((err) => {
+                    logger.error.ln(`error while generating page "${file.getPath()}":`);
                     throw err;
                 });
         },

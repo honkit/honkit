@@ -1,6 +1,6 @@
-var path = require("path");
-var Book = require("../models/book");
-var createNodeFS = require("../fs/node");
+const path = require("path");
+const Book = require("../models/book");
+const createNodeFS = require("../fs/node");
 
 /**
     Return a book instance to work on from
@@ -11,11 +11,11 @@ var createNodeFS = require("../fs/node");
     @return {Book}
 */
 function getBook(args, kwargs) {
-    var input = path.resolve(args[0] || process.cwd());
-    var logLevel = kwargs.log;
+    const input = path.resolve(args[0] || process.cwd());
+    const logLevel = kwargs.log;
 
-    var fs = createNodeFS(input);
-    var book = Book.createForFS(fs);
+    const fs = createNodeFS(input);
+    const book = Book.createForFS(fs);
 
     return book.setLogLevel(logLevel);
 }

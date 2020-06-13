@@ -1,7 +1,7 @@
-var Immutable = require("immutable");
-var Promise = require("../utils/promise");
+const Immutable = require("immutable");
+const Promise = require("../utils/promise");
 
-var Parser = Immutable.Record({
+const Parser = Immutable.Record({
     name: String(),
 
     // List of extensions that can be processed using this parser
@@ -27,22 +27,22 @@ Parser.prototype.getExtensions = function () {
 // PARSE
 
 Parser.prototype.parseReadme = function (content) {
-    var readme = this.get("readme");
+    const readme = this.get("readme");
     return Promise(readme(content));
 };
 
 Parser.prototype.parseSummary = function (content) {
-    var summary = this.get("summary");
+    const summary = this.get("summary");
     return Promise(summary(content));
 };
 
 Parser.prototype.parseGlossary = function (content) {
-    var glossary = this.get("glossary");
+    const glossary = this.get("glossary");
     return Promise(glossary(content));
 };
 
 Parser.prototype.preparePage = function (content) {
-    var page = this.get("page");
+    const page = this.get("page");
     if (!page.prepare) {
         return Promise(content);
     }
@@ -51,39 +51,39 @@ Parser.prototype.preparePage = function (content) {
 };
 
 Parser.prototype.parsePage = function (content) {
-    var page = this.get("page");
+    const page = this.get("page");
     return Promise(page(content));
 };
 
 Parser.prototype.parseInline = function (content) {
-    var inline = this.get("inline");
+    const inline = this.get("inline");
     return Promise(inline(content));
 };
 
 Parser.prototype.parseLanguages = function (content) {
-    var langs = this.get("langs");
+    const langs = this.get("langs");
     return Promise(langs(content));
 };
 
 Parser.prototype.parseInline = function (content) {
-    var inline = this.get("inline");
+    const inline = this.get("inline");
     return Promise(inline(content));
 };
 
 // TO TEXT
 
 Parser.prototype.renderLanguages = function (content) {
-    var langs = this.get("langs");
+    const langs = this.get("langs");
     return Promise(langs.toText(content));
 };
 
 Parser.prototype.renderSummary = function (content) {
-    var summary = this.get("summary");
+    const summary = this.get("summary");
     return Promise(summary.toText(content));
 };
 
 Parser.prototype.renderGlossary = function (content) {
-    var glossary = this.get("glossary");
+    const glossary = this.get("glossary");
     return Promise(glossary.toText(content));
 };
 
@@ -94,7 +94,7 @@ Parser.prototype.renderGlossary = function (content) {
     @return {Boolean}
 */
 Parser.prototype.matchExtension = function (ext) {
-    var exts = this.getExtensions();
+    const exts = this.getExtensions();
     return exts.includes(ext.toLowerCase());
 };
 

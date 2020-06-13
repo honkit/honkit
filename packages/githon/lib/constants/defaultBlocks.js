@@ -1,5 +1,5 @@
-var Immutable = require("immutable");
-var TemplateBlock = require("../models/templateBlock");
+const Immutable = require("immutable");
+const TemplateBlock = require("../models/templateBlock");
 
 module.exports = Immutable.Map({
     html: TemplateBlock({
@@ -22,7 +22,7 @@ module.exports = Immutable.Map({
     markdown: TemplateBlock({
         name: "markdown",
         process: function (blk) {
-            return this.book.renderInline("markdown", blk.body).then(function (out) {
+            return this.book.renderInline("markdown", blk.body).then((out) => {
                 return { body: out };
             });
         },
@@ -31,7 +31,7 @@ module.exports = Immutable.Map({
     asciidoc: TemplateBlock({
         name: "asciidoc",
         process: function (blk) {
-            return this.book.renderInline("asciidoc", blk.body).then(function (out) {
+            return this.book.renderInline("asciidoc", blk.body).then((out) => {
                 return { body: out };
             });
         },
@@ -40,7 +40,7 @@ module.exports = Immutable.Map({
     markup: TemplateBlock({
         name: "markup",
         process: function (blk) {
-            return this.book.renderInline(this.ctx.file.type, blk.body).then(function (out) {
+            return this.book.renderInline(this.ctx.file.type, blk.body).then((out) => {
                 return { body: out };
             });
         },

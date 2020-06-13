@@ -5,12 +5,12 @@
     @return {List<String>}
 */
 function listSearchPaths(output) {
-    var book = output.getBook();
-    var plugins = output.getPlugins();
+    const book = output.getBook();
+    const plugins = output.getPlugins();
 
-    var searchPaths = plugins
+    const searchPaths = plugins
         .valueSeq()
-        .map(function (plugin) {
+        .map((plugin) => {
             return plugin.getPath();
         })
         .toList();

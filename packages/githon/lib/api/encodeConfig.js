@@ -1,15 +1,15 @@
-var objectPath = require("object-path");
-var deprecate = require("./deprecate");
+const objectPath = require("object-path");
+const deprecate = require("./deprecate");
 
 /**
-    Encode a config object into a JS config api
+ Encode a config object into a JS config api
 
-    @param {Output} output
-    @param {Config} config
-    @return {Object}
-*/
+ @param {Output} output
+ @param {Config} config
+ @return {Object}
+ */
 function encodeConfig(output, config) {
-    var result = {
+    const result = {
         values: config.getValues().toJS(),
 
         get: function (key, defaultValue) {

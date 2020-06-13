@@ -1,4 +1,4 @@
-var timing = require("../utils/timing");
+const timing = require("../utils/timing");
 
 /**
     List all assets in a book
@@ -9,19 +9,19 @@ var timing = require("../utils/timing");
     @param
 */
 function listAssets(book, pages) {
-    var fs = book.getContentFS();
+    const fs = book.getContentFS();
 
-    var summary = book.getSummary();
-    var summaryFile = summary.getFile().getPath();
+    const summary = book.getSummary();
+    const summaryFile = summary.getFile().getPath();
 
-    var glossary = book.getGlossary();
-    var glossaryFile = glossary.getFile().getPath();
+    const glossary = book.getGlossary();
+    const glossaryFile = glossary.getFile().getPath();
 
-    var langs = book.getLanguages();
-    var langsFile = langs.getFile().getPath();
+    const langs = book.getLanguages();
+    const langsFile = langs.getFile().getPath();
 
-    var config = book.getConfig();
-    var configFile = config.getFile().getPath();
+    const config = book.getConfig();
+    const configFile = config.getFile().getPath();
 
     function filterFile(file) {
         return !(

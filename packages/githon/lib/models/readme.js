@@ -1,8 +1,8 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var File = require("./file");
+const File = require("./file");
 
-var Readme = Immutable.Record({
+const Readme = Immutable.Record({
     file: File(),
     title: String(),
     description: String(),

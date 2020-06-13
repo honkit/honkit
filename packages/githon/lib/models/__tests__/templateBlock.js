@@ -1,13 +1,13 @@
-var nunjucks = require("nunjucks");
-var Immutable = require("immutable");
-var Promise = require("../../utils/promise");
+const nunjucks = require("nunjucks");
+const Immutable = require("immutable");
+const Promise = require("../../utils/promise");
 
 describe("TemplateBlock", () => {
-    var TemplateBlock = require("../templateBlock");
+    const TemplateBlock = require("../templateBlock");
 
     describe("create", () => {
         test("must initialize a simple TemplateBlock from a function", () => {
-            var templateBlock = TemplateBlock.create("sayhello", function (block) {
+            const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
                     parse: true,
@@ -22,10 +22,10 @@ describe("TemplateBlock", () => {
 
             // Check result of applying block
             return Promise()
-                .then(function () {
+                .then(() => {
                     return templateBlock.applyBlock();
                 })
-                .then(function (result) {
+                .then((result) => {
                     expect(result.name).toBe("sayhello");
                     expect(result.body).toBe("<p>Hello, World!</p>");
                 });
@@ -34,7 +34,7 @@ describe("TemplateBlock", () => {
 
     describe("getShortcuts", () => {
         test("must return undefined if no shortcuts", () => {
-            var templateBlock = TemplateBlock.create("sayhello", function (block) {
+            const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
                     parse: true,
@@ -45,7 +45,7 @@ describe("TemplateBlock", () => {
         });
 
         test("must return complete shortcut", () => {
-            var templateBlock = TemplateBlock.create("sayhello", {
+            const templateBlock = TemplateBlock.create("sayhello", {
                 process: function (block) {
                     return "<p>Hello, World!</p>";
                 },
@@ -56,7 +56,7 @@ describe("TemplateBlock", () => {
                 },
             });
 
-            var shortcut = templateBlock.getShortcuts();
+            const shortcut = templateBlock.getShortcuts();
 
             expect(shortcut).toBeDefined();
             expect(shortcut.getStart()).toEqual("$");
@@ -68,36 +68,36 @@ describe("TemplateBlock", () => {
 
     describe("toNunjucksExt()", () => {
         test("should replace by block anchor", () => {
-            var templateBlock = TemplateBlock.create("sayhello", function (block) {
+            const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return "Hello";
             });
 
-            var blocks = {};
+            let blocks = {};
 
             // Create a fresh Nunjucks environment
-            var env = new nunjucks.Environment(null, { autoescape: false });
+            const env = new nunjucks.Environment(null, { autoescape: false });
 
             // Add template block to environement
-            var Ext = templateBlock.toNunjucksExt({}, blocks);
+            const Ext = templateBlock.toNunjucksExt({}, blocks);
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block
-            var src = "{% sayhello %}{% endsayhello %}";
-            return Promise.nfcall(env.renderString.bind(env), src).then(function (res) {
+            const src = "{% sayhello %}{% endsayhello %}";
+            return Promise.nfcall(env.renderString.bind(env), src).then((res) => {
                 blocks = Immutable.fromJS(blocks);
                 expect(blocks.size).toBe(1);
 
-                var blockId = blocks.keySeq().get(0);
-                var block = blocks.get(blockId);
+                const blockId = blocks.keySeq().get(0);
+                const block = blocks.get(blockId);
 
-                expect(res).toBe("{{-%" + blockId + "%-}}");
+                expect(res).toBe(`{{-%${blockId}%-}}`);
                 expect(block.get("body")).toBe("Hello");
                 expect(block.get("name")).toBe("sayhello");
             });
         });
 
         test("must create a valid nunjucks extension", () => {
-            var templateBlock = TemplateBlock.create("sayhello", function (block) {
+            const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
                     parse: true,
@@ -105,93 +105,93 @@ describe("TemplateBlock", () => {
             });
 
             // Create a fresh Nunjucks environment
-            var env = new nunjucks.Environment(null, { autoescape: false });
+            const env = new nunjucks.Environment(null, { autoescape: false });
 
             // Add template block to environement
-            var Ext = templateBlock.toNunjucksExt();
+            const Ext = templateBlock.toNunjucksExt();
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block
-            var src = "{% sayhello %}{% endsayhello %}";
-            return Promise.nfcall(env.renderString.bind(env), src).then(function (res) {
+            const src = "{% sayhello %}{% endsayhello %}";
+            return Promise.nfcall(env.renderString.bind(env), src).then((res) => {
                 expect(res).toBe("<p>Hello, World!</p>");
             });
         });
 
         test("must apply block arguments correctly", () => {
-            var templateBlock = TemplateBlock.create("sayhello", function (block) {
+            const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
-                    body: "<" + block.kwargs.tag + ">Hello, " + block.kwargs.name + "!</" + block.kwargs.tag + ">",
+                    body: `<${block.kwargs.tag}>Hello, ${block.kwargs.name}!</${block.kwargs.tag}>`,
                     parse: true,
                 };
             });
 
             // Create a fresh Nunjucks environment
-            var env = new nunjucks.Environment(null, { autoescape: false });
+            const env = new nunjucks.Environment(null, { autoescape: false });
 
             // Add template block to environement
-            var Ext = templateBlock.toNunjucksExt();
+            const Ext = templateBlock.toNunjucksExt();
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block
-            var src = '{% sayhello name="Samy", tag="p" %}{% endsayhello %}';
-            return Promise.nfcall(env.renderString.bind(env), src).then(function (res) {
+            const src = '{% sayhello name="Samy", tag="p" %}{% endsayhello %}';
+            return Promise.nfcall(env.renderString.bind(env), src).then((res) => {
                 expect(res).toBe("<p>Hello, Samy!</p>");
             });
         });
 
         test("must accept an async function", () => {
-            var templateBlock = TemplateBlock.create("sayhello", function (block) {
-                return Promise().then(function () {
+            const templateBlock = TemplateBlock.create("sayhello", (block) => {
+                return Promise().then(() => {
                     return {
-                        body: "Hello " + block.body,
+                        body: `Hello ${block.body}`,
                         parse: true,
                     };
                 });
             });
 
             // Create a fresh Nunjucks environment
-            var env = new nunjucks.Environment(null, { autoescape: false });
+            const env = new nunjucks.Environment(null, { autoescape: false });
 
             // Add template block to environement
-            var Ext = templateBlock.toNunjucksExt();
+            const Ext = templateBlock.toNunjucksExt();
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block
-            var src = "{% sayhello %}Samy{% endsayhello %}";
-            return Promise.nfcall(env.renderString.bind(env), src).then(function (res) {
+            const src = "{% sayhello %}Samy{% endsayhello %}";
+            return Promise.nfcall(env.renderString.bind(env), src).then((res) => {
                 expect(res).toBe("Hello Samy");
             });
         });
 
         test("must handle nested blocks", () => {
-            var templateBlock = new TemplateBlock({
+            const templateBlock = new TemplateBlock({
                 name: "yoda",
                 blocks: Immutable.List(["start", "end"]),
                 process: function (block) {
-                    var nested = {};
+                    const nested = {};
 
-                    block.blocks.forEach(function (blk) {
+                    block.blocks.forEach((blk) => {
                         nested[blk.name] = blk.body.trim();
                     });
 
                     return {
-                        body: '<p class="yoda">' + nested.end + " " + nested.start + "</p>",
+                        body: `<p class="yoda">${nested.end} ${nested.start}</p>`,
                         parse: true,
                     };
                 },
             });
 
             // Create a fresh Nunjucks environment
-            var env = new nunjucks.Environment(null, { autoescape: false });
+            const env = new nunjucks.Environment(null, { autoescape: false });
 
             // Add template block to environement
-            var Ext = templateBlock.toNunjucksExt();
+            const Ext = templateBlock.toNunjucksExt();
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block
-            var src = "{% yoda %}{% start %}this sentence should be{% end %}inverted{% endyoda %}";
-            return Promise.nfcall(env.renderString.bind(env), src).then(function (res) {
+            const src = "{% yoda %}{% start %}this sentence should be{% end %}inverted{% endyoda %}";
+            return Promise.nfcall(env.renderString.bind(env), src).then((res) => {
                 expect(res).toBe('<p class="yoda">inverted this sentence should be</p>');
             });
         });

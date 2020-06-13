@@ -1,10 +1,10 @@
-var path = require("path");
-var is = require("is");
-var Buffer = require("buffer").Buffer;
-var Immutable = require("immutable");
+const path = require("path");
+const is = require("is");
+const Buffer = require("buffer").Buffer;
+const Immutable = require("immutable");
 
-var FS = require("../models/fs");
-var error = require("../utils/error");
+const FS = require("../models/fs");
+const error = require("../utils/error");
 
 /**
     Create a fake filesystem for unit testing GitBook.
@@ -13,14 +13,14 @@ var error = require("../utils/error");
 */
 function createMockFS(files) {
     files = Immutable.fromJS(files);
-    var mtime = new Date();
+    const mtime = new Date();
 
     function getFile(filePath) {
-        var parts = path.normalize(filePath).split(path.sep);
-        return parts.reduce(function (list, part, i) {
+        const parts = path.normalize(filePath).split(path.sep);
+        return parts.reduce((list, part, i) => {
             if (!list) return null;
 
-            var file;
+            let file;
 
             if (!part || part === ".") file = list;
             else file = list.get(part);
@@ -41,7 +41,7 @@ function createMockFS(files) {
     }
 
     function fsReadFile(filePath) {
-        var file = getFile(filePath);
+        const file = getFile(filePath);
         if (!is.string(file)) {
             throw error.FileNotFoundError({
                 filename: filePath,
@@ -52,7 +52,7 @@ function createMockFS(files) {
     }
 
     function fsStatFile(filePath) {
-        var file = getFile(filePath);
+        const file = getFile(filePath);
         if (!file) {
             throw error.FileNotFoundError({
                 filename: filePath,
@@ -65,7 +65,7 @@ function createMockFS(files) {
     }
 
     function fsReadDir(filePath) {
-        var dir = getFile(filePath);
+        const dir = getFile(filePath);
         if (!dir || is.string(dir)) {
             throw error.FileNotFoundError({
                 filename: filePath,
@@ -73,9 +73,9 @@ function createMockFS(files) {
         }
 
         return dir
-            .map(function (content, name) {
+            .map((content, name) => {
                 if (!is.string(content)) {
-                    name = name + "/";
+                    name = `${name}/`;
                 }
 
                 return name;

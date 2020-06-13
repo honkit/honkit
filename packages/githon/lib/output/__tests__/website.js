@@ -1,18 +1,18 @@
-var fs = require("fs");
-var generateMock = require("../testing/generateMock");
-var WebsiteGenerator = require("../website");
+const fs = require("fs");
+const generateMock = require("../testing/generateMock");
+const WebsiteGenerator = require("../website");
 
 describe("WebsiteGenerator", () => {
     test("should generate an index.html", () => {
         return generateMock(WebsiteGenerator, {
             "README.md": "Hello World",
-        }).then(function (folder) {
+        }).then((folder) => {
             expect(folder).toHaveFile("index.html");
         });
     });
 
     describe("Glossary", () => {
-        var folder;
+        let folder;
 
         beforeAll(() => {
             return generateMock(WebsiteGenerator, {
@@ -22,7 +22,7 @@ describe("WebsiteGenerator", () => {
                     "page.md": "Hello World",
                 },
                 "GLOSSARY.md": "# Glossary\n\n## Hello\n\nHello World",
-            }).then(function (_folder) {
+            }).then((_folder) => {
                 folder = _folder;
             });
         });
@@ -32,12 +32,12 @@ describe("WebsiteGenerator", () => {
         });
 
         test("should correctly resolve glossary links in README", () => {
-            var html = fs.readFileSync(folder + "/index.html", "utf8");
+            const html = fs.readFileSync(`${folder}/index.html`, "utf8");
             expect(html).toHaveDOMElement('.page-inner a[href="GLOSSARY.html#hello"]');
         });
 
         test("should correctly resolve glossary links in directory", () => {
-            var html = fs.readFileSync(folder + "/folder/page.html", "utf8");
+            const html = fs.readFileSync(`${folder}/folder/page.html`, "utf8");
             expect(html).toHaveDOMElement('.page-inner a[href="../GLOSSARY.html#hello"]');
         });
 
@@ -46,11 +46,11 @@ describe("WebsiteGenerator", () => {
                 "README.md": "Hello World",
                 "book.json": '{ "structure": { "glossary": "custom.md" } }',
                 "custom.md": "# Glossary\n\n## Hello\n\nHello World",
-            }).then(function (folder) {
+            }).then((folder) => {
                 expect(folder).toHaveFile("custom.html");
                 expect(folder).not.toHaveFile("GLOSSARY.html");
 
-                var html = fs.readFileSync(folder + "/index.html", "utf8");
+                const html = fs.readFileSync(`${folder}/index.html`, "utf8");
                 expect(html).toHaveDOMElement('.page-inner a[href="custom.html#hello"]');
             });
         });
@@ -63,7 +63,7 @@ describe("WebsiteGenerator", () => {
             folder: {
                 "AnotherAssetFile.md": "# Even md",
             },
-        }).then(function (folder) {
+        }).then((folder) => {
             expect(folder).toHaveFile("index.html");
             expect(folder).toHaveFile("myJsFile.js");
             expect(folder).toHaveFile("folder/AnotherAssetFile.md");
@@ -73,7 +73,7 @@ describe("WebsiteGenerator", () => {
     test("should generate an index.html for AsciiDoc", () => {
         return generateMock(WebsiteGenerator, {
             "README.adoc": "Hello World",
-        }).then(function (folder) {
+        }).then((folder) => {
             expect(folder).toHaveFile("index.html");
         });
     });
@@ -85,7 +85,7 @@ describe("WebsiteGenerator", () => {
             test: {
                 "page.md": "Hello 2",
             },
-        }).then(function (folder) {
+        }).then((folder) => {
             expect(folder).toHaveFile("index.html");
             expect(folder).toHaveFile("test/page.html");
         });
@@ -98,7 +98,7 @@ describe("WebsiteGenerator", () => {
             test: {
                 "page.md": "Hello 2",
             },
-        }).then(function (folder) {
+        }).then((folder) => {
             expect(folder).toHaveFile("index.html");
             expect(folder).not.toHaveFile("page.html");
             expect(folder).toHaveFile("test/page.html");
@@ -114,7 +114,7 @@ describe("WebsiteGenerator", () => {
             fr: {
                 "README.md": "Bonjour",
             },
-        }).then(function (folder) {
+        }).then((folder) => {
             // It should generate languages
             expect(folder).toHaveFile("en/index.html");
             expect(folder).toHaveFile("fr/index.html");

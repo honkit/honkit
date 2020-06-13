@@ -1,7 +1,7 @@
-var npmi = require("npmi");
+const npmi = require("npmi");
 
-var Promise = require("../utils/promise");
-var resolveVersion = require("./resolveVersion");
+const Promise = require("../utils/promise");
+const resolveVersion = require("./resolveVersion");
 
 /**
     Install a plugin for a book
@@ -11,25 +11,23 @@ var resolveVersion = require("./resolveVersion");
     @return {Promise}
 */
 function installPlugin(book, plugin, options) {
-    var logger = book.getLogger();
+    const logger = book.getLogger();
 
-    var installFolder = book.getRoot();
-    var name = plugin.getName();
-    var requirement = plugin.getVersion();
+    const installFolder = book.getRoot();
+    const name = plugin.getName();
+    const requirement = plugin.getVersion();
 
     logger.info.ln("");
-    logger.info.ln('installing plugin "' + name + '"');
+    logger.info.ln(`installing plugin "${name}"`);
 
     // Find a version to install
     return resolveVersion(plugin, options)
-        .then(function (version) {
+        .then((version) => {
             if (!version) {
-                throw new Error(
-                    'Found no satisfactory version for plugin "' + name + '" with requirement "' + requirement + '"'
-                );
+                throw new Error(`Found no satisfactory version for plugin "${name}" with requirement "${requirement}"`);
             }
 
-            logger.info.ln('install plugin "' + name + '" (' + requirement + ") from NPM with version", version);
+            logger.info.ln(`install plugin "${name}" (${requirement}) from NPM with version`, version);
             return Promise.nfcall(npmi, {
                 name: plugin.getNpmID(),
                 version: version,
@@ -42,8 +40,8 @@ function installPlugin(book, plugin, options) {
                 },
             });
         })
-        .then(function () {
-            logger.info.ok('plugin "' + name + '" installed with success');
+        .then(() => {
+            logger.info.ok(`plugin "${name}" installed with success`);
         });
 }
 

@@ -1,19 +1,19 @@
-var Book = require("../../models/book");
-var createMockFS = require("../../fs/mock");
+const Book = require("../../models/book");
+const createMockFS = require("../../fs/mock");
 
 describe("parseGlossary", () => {
-    var parseGlossary = require("../parseGlossary");
+    const parseGlossary = require("../parseGlossary");
 
     test("should parse glossary if exists", () => {
-        var fs = createMockFS({
+        const fs = createMockFS({
             "GLOSSARY.md": "# Glossary\n\n## Hello\nDescription for hello",
         });
-        var book = Book.createForFS(fs);
+        const book = Book.createForFS(fs);
 
-        return parseGlossary(book).then(function (resultBook) {
-            var glossary = resultBook.getGlossary();
-            var file = glossary.getFile();
-            var entries = glossary.getEntries();
+        return parseGlossary(book).then((resultBook) => {
+            const glossary = resultBook.getGlossary();
+            const file = glossary.getFile();
+            const entries = glossary.getEntries();
 
             expect(file.exists()).toBeTruthy();
             expect(entries.size).toBe(1);
@@ -21,12 +21,12 @@ describe("parseGlossary", () => {
     });
 
     test("should not fail if doesn't exist", () => {
-        var fs = createMockFS({});
-        var book = Book.createForFS(fs);
+        const fs = createMockFS({});
+        const book = Book.createForFS(fs);
 
-        return parseGlossary(book).then(function (resultBook) {
-            var glossary = resultBook.getGlossary();
-            var file = glossary.getFile();
+        return parseGlossary(book).then((resultBook) => {
+            const glossary = resultBook.getGlossary();
+            const file = glossary.getFile();
 
             expect(file.exists()).toBeFalsy();
         });

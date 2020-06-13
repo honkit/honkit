@@ -1,8 +1,8 @@
-var extend = require("extend");
+const extend = require("extend");
 
-var Promise = require("../../utils/promise");
-var getPDFTemplate = require("./getPDFTemplate");
-var getCoverPath = require("./getCoverPath");
+const Promise = require("../../utils/promise");
+const getPDFTemplate = require("./getPDFTemplate");
+const getCoverPath = require("./getCoverPath");
 
 /**
     Generate options for ebook-convert
@@ -11,15 +11,15 @@ var getCoverPath = require("./getCoverPath");
     @return {Promise<Object>}
 */
 function getConvertOptions(output) {
-    var options = output.getOptions();
-    var format = options.get("format");
+    const options = output.getOptions();
+    const format = options.get("format");
 
-    var book = output.getBook();
-    var config = book.getConfig();
+    const book = output.getBook();
+    const config = book.getConfig();
 
-    return Promise().then(function () {
-        var coverPath = getCoverPath(output);
-        var options = {
+    return Promise().then(() => {
+        const coverPath = getCoverPath(output);
+        let options = {
             "--cover": coverPath,
             "--title": config.getValue("title"),
             "--comments": config.getValue("description"),
@@ -45,28 +45,27 @@ function getConvertOptions(output) {
             return options;
         }
 
-        return Promise.all([getPDFTemplate(output, "header"), getPDFTemplate(output, "footer")]).spread(function (
-            headerTpl,
-            footerTpl
-        ) {
-            var pdfOptions = config.getValue("pdf").toJS();
+        return Promise.all([getPDFTemplate(output, "header"), getPDFTemplate(output, "footer")]).spread(
+            (headerTpl, footerTpl) => {
+                const pdfOptions = config.getValue("pdf").toJS();
 
-            return (options = extend(options, {
-                "--chapter-mark": String(pdfOptions.chapterMark),
-                "--page-breaks-before": String(pdfOptions.pageBreaksBefore),
-                "--margin-left": String(pdfOptions.margin.left),
-                "--margin-right": String(pdfOptions.margin.right),
-                "--margin-top": String(pdfOptions.margin.top),
-                "--margin-bottom": String(pdfOptions.margin.bottom),
-                "--pdf-default-font-size": String(pdfOptions.fontSize),
-                "--pdf-mono-font-size": String(pdfOptions.fontSize),
-                "--paper-size": String(pdfOptions.paperSize),
-                "--pdf-page-numbers": Boolean(pdfOptions.pageNumbers),
-                "--pdf-sans-family": String(pdfOptions.fontFamily),
-                "--pdf-header-template": headerTpl,
-                "--pdf-footer-template": footerTpl,
-            }));
-        });
+                return (options = extend(options, {
+                    "--chapter-mark": String(pdfOptions.chapterMark),
+                    "--page-breaks-before": String(pdfOptions.pageBreaksBefore),
+                    "--margin-left": String(pdfOptions.margin.left),
+                    "--margin-right": String(pdfOptions.margin.right),
+                    "--margin-top": String(pdfOptions.margin.top),
+                    "--margin-bottom": String(pdfOptions.margin.bottom),
+                    "--pdf-default-font-size": String(pdfOptions.fontSize),
+                    "--pdf-mono-font-size": String(pdfOptions.fontSize),
+                    "--paper-size": String(pdfOptions.paperSize),
+                    "--pdf-page-numbers": Boolean(pdfOptions.pageNumbers),
+                    "--pdf-sans-family": String(pdfOptions.fontFamily),
+                    "--pdf-header-template": headerTpl,
+                    "--pdf-footer-template": footerTpl,
+                }));
+            }
+        );
     });
 }
 

@@ -1,9 +1,9 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var Promise = require("../utils/promise");
-var listDepsForBook = require("./listDepsForBook");
-var findForBook = require("./findForBook");
-var loadPlugin = require("./loadPlugin");
+const Promise = require("../utils/promise");
+const listDepsForBook = require("./listDepsForBook");
+const findForBook = require("./findForBook");
+const loadPlugin = require("./loadPlugin");
 
 /**
  * Load all plugins in a book
@@ -12,21 +12,21 @@ var loadPlugin = require("./loadPlugin");
  * @return {Promise<Map<String:Plugin>}
  */
 function loadForBook(book) {
-    var logger = book.getLogger();
+    const logger = book.getLogger();
 
     // List the dependencies
-    var requirements = listDepsForBook(book);
+    const requirements = listDepsForBook(book);
 
     // List all plugins installed in the book
-    return findForBook(book).then(function (installedMap) {
-        var missing = [];
-        var plugins = requirements.reduce(function (result, dep) {
-            var name = dep.getName();
-            var installed = installedMap.get(name);
+    return findForBook(book).then((installedMap) => {
+        const missing = [];
+        let plugins = requirements.reduce((result, dep) => {
+            const name = dep.getName();
+            const installed = installedMap.get(name);
 
             if (installed) {
-                var deps = installedMap
-                    .filter(function (plugin) {
+                const deps = installedMap
+                    .filter((plugin) => {
                         return plugin.getParent() === name;
                     })
                     .toArray();
@@ -41,27 +41,27 @@ function loadForBook(book) {
         }, []);
 
         // Convert plugins list to a map
-        plugins = Immutable.List(plugins).map(function (plugin) {
+        plugins = Immutable.List(plugins).map((plugin) => {
             return [plugin.getName(), plugin];
         });
         plugins = Immutable.OrderedMap(plugins);
 
         // Log state
-        logger.info.ln(installedMap.size + " plugins are installed");
+        logger.info.ln(`${installedMap.size} plugins are installed`);
         if (requirements.size != installedMap.size) {
-            logger.info.ln(requirements.size + " explicitly listed");
+            logger.info.ln(`${requirements.size} explicitly listed`);
         }
 
         // Verify that all plugins are present
         if (missing.length > 0) {
             throw new Error(
-                "Couldn't locate plugins \"" +
-                    missing.join(", ") +
-                    "\", Run 'gitbook install' to install plugins from registry."
+                `Couldn't locate plugins "${missing.join(
+                    ", "
+                )}", Run 'gitbook install' to install plugins from registry.`
             );
         }
 
-        return Promise.map(plugins, function (plugin) {
+        return Promise.map(plugins, (plugin) => {
             return loadPlugin(book, plugin);
         });
     });

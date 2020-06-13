@@ -5,7 +5,7 @@
     @return {Object}
 */
 function encodeSummaryArticle(article, recursive) {
-    var articles = undefined;
+    let articles = undefined;
     if (recursive !== false) {
         articles = article.getArticles().map(encodeSummaryArticle).toJS();
     }

@@ -1,4 +1,4 @@
-var encodeSummaryArticle = require("./encodeSummaryArticle");
+const encodeSummaryArticle = require("./encodeSummaryArticle");
 
 /**
     Encode a SummaryPart to JSON

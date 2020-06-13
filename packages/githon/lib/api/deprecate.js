@@ -1,8 +1,8 @@
-var is = require("is");
-var objectPath = require("object-path");
+const is = require("is");
+const objectPath = require("object-path");
 
-var logged = {};
-var disabled = {};
+const logged = {};
+const disabled = {};
 
 /**
     Log a deprecated notice
@@ -16,7 +16,7 @@ function logNotice(book, key, message) {
 
     logged[key] = true;
 
-    var logger = book.getLogger();
+    const logger = book.getLogger();
     logger.warn.ln(message);
 }
 
@@ -48,22 +48,22 @@ function deprecateMethod(book, key, fn, msg) {
     @return {Function}
 */
 function deprecateField(book, key, instance, property, value, msg) {
-    var store = undefined;
+    let store = undefined;
 
-    var prepare = function () {
+    const prepare = function () {
         if (!is.undefined(store)) return;
 
         if (is.fn(value)) store = value();
         else store = value;
     };
 
-    var getter = function () {
+    const getter = function () {
         prepare();
 
         logNotice(book, key, msg);
         return store;
     };
-    var setter = function (v) {
+    const setter = function (v) {
         prepare();
 
         logNotice(book, key, msg);
@@ -107,8 +107,8 @@ function disableDeprecation(key) {
     @param {String} newName
 */
 function deprecateRenamedMethod(book, key, instance, oldName, newName, msg) {
-    msg = msg || '"' + oldName + '" is deprecated, use "' + newName + '()" instead';
-    var fn = objectPath.get(instance, newName);
+    msg = msg || `"${oldName}" is deprecated, use "${newName}()" instead`;
+    const fn = objectPath.get(instance, newName);
 
     instance[oldName] = deprecateMethod(book, key, fn, msg);
 }

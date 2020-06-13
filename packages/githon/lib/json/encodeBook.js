@@ -1,10 +1,10 @@
-var extend = require("extend");
+const extend = require("extend");
 
-var githon = require("../githon");
-var encodeSummary = require("./encodeSummary");
-var encodeGlossary = require("./encodeGlossary");
-var encodeReadme = require("./encodeReadme");
-var encodeLanguages = require("./encodeLanguages");
+const githon = require("../githon");
+const encodeSummary = require("./encodeSummary");
+const encodeGlossary = require("./encodeGlossary");
+const encodeReadme = require("./encodeReadme");
+const encodeLanguages = require("./encodeLanguages");
 
 /**
     Encode a book to JSON
@@ -13,10 +13,10 @@ var encodeLanguages = require("./encodeLanguages");
     @return {Object}
 */
 function encodeBookToJson(book) {
-    var config = book.getConfig();
-    var language = book.getLanguage();
+    const config = book.getConfig();
+    const language = book.getLanguage();
 
-    var variables = config.getValue("variables", {});
+    const variables = config.getValue("variables", {});
 
     return {
         summary: encodeSummary(book.getSummary()),

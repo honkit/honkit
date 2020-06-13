@@ -1,4 +1,4 @@
-var parsePageFromString = require("./parsePageFromString");
+const parsePageFromString = require("./parsePageFromString");
 
 /**
  * Parse a page, read its content and parse the YAMl header
@@ -8,10 +8,10 @@ var parsePageFromString = require("./parsePageFromString");
  * @return {Promise<Page>}
  */
 function parsePage(book, page) {
-    var fs = book.getContentFS();
-    var file = page.getFile();
+    const fs = book.getContentFS();
+    const file = page.getFile();
 
-    return fs.readAsString(file.getPath()).then(function (content) {
+    return fs.readAsString(file.getPath()).then((content) => {
         return parsePageFromString(page, content);
     });
 }

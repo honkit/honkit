@@ -1,19 +1,19 @@
-var Promise = require("../../utils/promise");
-var Book = require("../../models/book");
-var createMockFS = require("../../fs/mock");
+const Promise = require("../../utils/promise");
+const Book = require("../../models/book");
+const createMockFS = require("../../fs/mock");
 
 describe("parseReadme", () => {
-    var parseReadme = require("../parseReadme");
+    const parseReadme = require("../parseReadme");
 
     test("should parse summary if exists", () => {
-        var fs = createMockFS({
+        const fs = createMockFS({
             "README.md": "# Hello\n\nAnd here is the description.",
         });
-        var book = Book.createForFS(fs);
+        const book = Book.createForFS(fs);
 
-        return parseReadme(book).then(function (resultBook) {
-            var readme = resultBook.getReadme();
-            var file = readme.getFile();
+        return parseReadme(book).then((resultBook) => {
+            const readme = resultBook.getReadme();
+            const file = readme.getFile();
 
             expect(file.exists()).toBeTruthy();
             expect(readme.getTitle()).toBe("Hello");
@@ -22,14 +22,14 @@ describe("parseReadme", () => {
     });
 
     test("should fail if doesn't exist", () => {
-        var fs = createMockFS({});
-        var book = Book.createForFS(fs);
+        const fs = createMockFS({});
+        const book = Book.createForFS(fs);
 
         return parseReadme(book).then(
-            function (resultBook) {
+            (resultBook) => {
                 throw new Error("It should have fail");
             },
-            function () {
+            () => {
                 return Promise();
             }
         );

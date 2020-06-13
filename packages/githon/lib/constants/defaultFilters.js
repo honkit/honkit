@@ -1,5 +1,5 @@
-var Immutable = require("immutable");
-var moment = require("moment");
+const Immutable = require("immutable");
+const moment = require("moment");
 
 module.exports = Immutable.Map({
     // Format a date

@@ -1,11 +1,11 @@
-var crc = require("crc");
-var path = require("path");
+const crc = require("crc");
+const path = require("path");
 
-var imagesUtil = require("../../utils/images");
-var fs = require("../../utils/fs");
-var LocationUtils = require("../../utils/location");
+const imagesUtil = require("../../utils/images");
+const fs = require("../../utils/fs");
+const LocationUtils = require("../../utils/location");
 
-var editHTMLElement = require("./editHTMLElement");
+const editHTMLElement = require("./editHTMLElement");
 
 /**
     Convert all inline PNG images to PNG file
@@ -15,26 +15,26 @@ var editHTMLElement = require("./editHTMLElement");
     @return {Promise}
 */
 function inlinePng(rootFolder, currentFile, $) {
-    var currentDirectory = path.dirname(currentFile);
+    const currentDirectory = path.dirname(currentFile);
 
-    return editHTMLElement($, "img", function ($img) {
-        var src = $img.attr("src");
+    return editHTMLElement($, "img", ($img) => {
+        const src = $img.attr("src");
         if (!LocationUtils.isDataURI(src)) {
             return;
         }
 
         // We avoid generating twice the same PNG
-        var hash = crc.crc32(src).toString(16);
-        var fileName = hash + ".png";
+        const hash = crc.crc32(src).toString(16);
+        let fileName = `${hash}.png`;
 
         // Result file path
-        var filePath = path.join(rootFolder, fileName);
+        const filePath = path.join(rootFolder, fileName);
 
         return fs
-            .assertFile(filePath, function () {
+            .assertFile(filePath, () => {
                 return imagesUtil.convertInlinePNG(src, filePath);
             })
-            .then(function () {
+            .then(() => {
                 // Convert filename to a relative filename
                 fileName = LocationUtils.relative(currentDirectory, fileName);
 

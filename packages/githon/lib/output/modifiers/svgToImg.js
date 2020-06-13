@@ -1,10 +1,10 @@
-var path = require("path");
-var crc = require("crc");
-var domSerializer = require("dom-serializer");
+const path = require("path");
+const crc = require("crc");
+const domSerializer = require("dom-serializer");
 
-var editHTMLElement = require("./editHTMLElement");
-var fs = require("../../utils/fs");
-var LocationUtils = require("../../utils/location");
+const editHTMLElement = require("./editHTMLElement");
+const fs = require("../../utils/fs");
+const LocationUtils = require("../../utils/location");
 
 /**
     Render a cheerio DOM as html
@@ -29,31 +29,31 @@ function renderDOM($, dom, options) {
     @param {HTMLDom} $
 */
 function svgToImg(baseFolder, currentFile, $) {
-    var currentDirectory = path.dirname(currentFile);
+    const currentDirectory = path.dirname(currentFile);
 
-    return editHTMLElement($, "svg", function ($svg) {
+    return editHTMLElement($, "svg", ($svg) => {
         if ($svg.attr("fill")) {
             return;
         }
 
-        var content = '<?xml version="1.0" encoding="UTF-8"?>' + renderDOM($, $svg);
+        const content = `<?xml version="1.0" encoding="UTF-8"?>${renderDOM($, $svg)}`;
 
         // We avoid generating twice the same PNG
-        var hash = crc.crc32(content).toString(16);
-        var fileName = hash + ".svg";
-        var filePath = path.join(baseFolder, fileName);
+        const hash = crc.crc32(content).toString(16);
+        const fileName = `${hash}.svg`;
+        const filePath = path.join(baseFolder, fileName);
 
         // Write the svg to the file
         return (
             fs
-                .assertFile(filePath, function () {
+                .assertFile(filePath, () => {
                     return fs.writeFile(filePath, content, "utf8");
                 })
 
                 // Return as image
-                .then(function () {
-                    var src = LocationUtils.relative(currentDirectory, fileName);
-                    $svg.replaceWith('<img src="' + src + '" />');
+                .then(() => {
+                    const src = LocationUtils.relative(currentDirectory, fileName);
+                    $svg.replaceWith(`<img src="${src}" />`);
                 })
         );
     });

@@ -1,5 +1,5 @@
-var extend = require("extend");
-var WebsiteGenerator = require("../website");
+const extend = require("extend");
+const WebsiteGenerator = require("../website");
 
 module.exports = extend({}, WebsiteGenerator, {
     name: "ebook",

@@ -1,4 +1,4 @@
-var encodeSummaryArticle = require("../json/encodeSummaryArticle");
+const encodeSummaryArticle = require("../json/encodeSummaryArticle");
 
 /**
     Encode summary to provide an API to plugin
@@ -8,15 +8,15 @@ var encodeSummaryArticle = require("../json/encodeSummaryArticle");
     @return {Object}
 */
 function encodeSummary(output, summary) {
-    var result = {
+    const result = {
         /**
             Iterate over the summary, it stops when the "iter" returns false
 
             @param {Function} iter
         */
         walk: function (iter) {
-            summary.getArticle(function (article) {
-                var jsonArticle = encodeSummaryArticle(article, false);
+            summary.getArticle((article) => {
+                const jsonArticle = encodeSummaryArticle(article, false);
 
                 return iter(jsonArticle);
             });
@@ -29,7 +29,7 @@ function encodeSummary(output, summary) {
             @return {Object}
         */
         getArticleByLevel: function (level) {
-            var article = summary.getByLevel(level);
+            const article = summary.getByLevel(level);
             return article ? encodeSummaryArticle(article) : undefined;
         },
 
@@ -40,7 +40,7 @@ function encodeSummary(output, summary) {
             @return {Object}
         */
         getArticleByPath: function (level) {
-            var article = summary.getByPath(level);
+            const article = summary.getByPath(level);
             return article ? encodeSummaryArticle(article) : undefined;
         },
     };

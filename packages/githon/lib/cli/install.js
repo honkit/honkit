@@ -1,17 +1,17 @@
-var options = require("./options");
-var getBook = require("./getBook");
+const options = require("./options");
+const getBook = require("./getBook");
 
-var Parse = require("../parse");
-var Plugins = require("../plugins");
+const Parse = require("../parse");
+const Plugins = require("../plugins");
 
 module.exports = {
     name: "install [book]",
     description: "install all plugins dependencies",
     options: [options.log],
     exec: function (args, kwargs) {
-        var book = getBook(args, kwargs);
+        const book = getBook(args, kwargs);
 
-        return Parse.parseConfig(book).then(function (resultBook) {
+        return Parse.parseConfig(book).then((resultBook) => {
             return Plugins.installPlugins(resultBook);
         });
     },

@@ -1,11 +1,11 @@
-var generateMock = require("../testing/generateMock");
-var JSONGenerator = require("../json");
+const generateMock = require("../testing/generateMock");
+const JSONGenerator = require("../json");
 
 describe("JSONGenerator", () => {
     test("should generate a README.json", () => {
         return generateMock(JSONGenerator, {
             "README.md": "Hello World",
-        }).then(function (folder) {
+        }).then((folder) => {
             expect(folder).toHaveFile("README.json");
         });
     });
@@ -17,7 +17,7 @@ describe("JSONGenerator", () => {
             test: {
                 "page.md": "Hello 2",
             },
-        }).then(function (folder) {
+        }).then((folder) => {
             expect(folder).toHaveFile("README.json");
             expect(folder).toHaveFile("test/page.json");
         });
@@ -32,7 +32,7 @@ describe("JSONGenerator", () => {
             fr: {
                 "README.md": "Bonjour",
             },
-        }).then(function (folder) {
+        }).then((folder) => {
             expect(folder).toHaveFile("en/README.json");
             expect(folder).toHaveFile("fr/README.json");
             expect(folder).toHaveFile("README.json");

@@ -1,10 +1,10 @@
-var Immutable = require("immutable");
-var jsonschema = require("jsonschema");
-var jsonSchemaDefaults = require("json-schema-defaults");
+const Immutable = require("immutable");
+const jsonschema = require("jsonschema");
+const jsonSchemaDefaults = require("json-schema-defaults");
 
-var Promise = require("../utils/promise");
-var error = require("../utils/error");
-var mergeDefaults = require("../utils/mergeDefaults");
+const Promise = require("../utils/promise");
+const error = require("../utils/error");
+const mergeDefaults = require("../utils/mergeDefaults");
 
 /**
     Validate one plugin for a book and update book's confiration
@@ -14,23 +14,23 @@ var mergeDefaults = require("../utils/mergeDefaults");
     @return {Book}
 */
 function validatePluginConfig(book, plugin) {
-    var config = book.getConfig();
-    var packageInfos = plugin.getPackage();
+    let config = book.getConfig();
+    const packageInfos = plugin.getPackage();
 
-    var configKey = ["pluginsConfig", plugin.getName()].join(".");
+    const configKey = ["pluginsConfig", plugin.getName()].join(".");
 
-    var pluginConfig = config.getValue(configKey, {}).toJS();
+    let pluginConfig = config.getValue(configKey, {}).toJS();
 
-    var schema = (packageInfos.get("gitbook") || Immutable.Map()).toJS();
+    const schema = (packageInfos.get("gitbook") || Immutable.Map()).toJS();
     if (!schema) return book;
 
     // Normalize schema
-    schema.id = "/" + configKey;
+    schema.id = `/${configKey}`;
     schema.type = "object";
 
     // Validate and throw if invalid
-    var v = new jsonschema.Validator();
-    var result = v.validate(pluginConfig, schema, {
+    const v = new jsonschema.Validator();
+    const result = v.validate(pluginConfig, schema, {
         propertyName: configKey,
     });
 
@@ -40,7 +40,7 @@ function validatePluginConfig(book, plugin) {
     }
 
     // Insert default values
-    var defaults = jsonSchemaDefaults(schema);
+    const defaults = jsonSchemaDefaults(schema);
     pluginConfig = mergeDefaults(pluginConfig, defaults);
 
     // Update configuration
@@ -61,7 +61,7 @@ function validatePluginConfig(book, plugin) {
 function validateConfig(book, plugins) {
     return Promise.reduce(
         plugins,
-        function (newBook, plugin) {
+        (newBook, plugin) => {
             return validatePluginConfig(newBook, plugin);
         },
         book

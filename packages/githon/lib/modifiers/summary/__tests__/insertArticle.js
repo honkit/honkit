@@ -1,10 +1,10 @@
-var Summary = require("../../../models/summary");
-var SummaryArticle = require("../../../models/summaryArticle");
-var File = require("../../../models/file");
+const Summary = require("../../../models/summary");
+const SummaryArticle = require("../../../models/summaryArticle");
+const File = require("../../../models/file");
 
 describe("insertArticle", () => {
-    var insertArticle = require("../insertArticle");
-    var summary = Summary.createFromParts(File(), [
+    const insertArticle = require("../insertArticle");
+    const summary = Summary.createFromParts(File(), [
         {
             articles: [
                 {
@@ -43,17 +43,17 @@ describe("insertArticle", () => {
     ]);
 
     test("should insert an article at a given level", () => {
-        var article = SummaryArticle.create(
+        const article = SummaryArticle.create(
             {
                 title: "Inserted",
             },
             "fake.level"
         );
 
-        var newSummary = insertArticle(summary, article, "2.1.1");
+        const newSummary = insertArticle(summary, article, "2.1.1");
 
-        var inserted = newSummary.getByLevel("2.1.1");
-        var nextOne = newSummary.getByLevel("2.1.2");
+        const inserted = newSummary.getByLevel("2.1.1");
+        const nextOne = newSummary.getByLevel("2.1.2");
 
         expect(inserted.getTitle()).toBe("Inserted");
         expect(inserted.getLevel()).toBe("2.1.1");
@@ -63,17 +63,17 @@ describe("insertArticle", () => {
     });
 
     test("should insert an article in last position", () => {
-        var article = SummaryArticle.create(
+        const article = SummaryArticle.create(
             {
                 title: "Inserted",
             },
             "fake.level"
         );
 
-        var newSummary = insertArticle(summary, article, "2.2");
+        const newSummary = insertArticle(summary, article, "2.2");
 
-        var inserted = newSummary.getByLevel("2.2");
-        var previousOne = newSummary.getByLevel("2.1");
+        const inserted = newSummary.getByLevel("2.2");
+        const previousOne = newSummary.getByLevel("2.1");
 
         expect(inserted.getTitle()).toBe("Inserted");
         expect(inserted.getLevel()).toBe("2.2");

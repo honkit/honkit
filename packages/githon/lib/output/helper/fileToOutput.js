@@ -1,9 +1,9 @@
-var path = require("path");
+const path = require("path");
 
-var PathUtils = require("../../utils/path");
-var LocationUtils = require("../../utils/location");
+const PathUtils = require("../../utils/path");
+const LocationUtils = require("../../utils/location");
 
-var OUTPUT_EXTENSION = ".html";
+const OUTPUT_EXTENSION = ".html";
 
 /**
  * Convert a filePath (absolute) to a filename for output
@@ -13,15 +13,15 @@ var OUTPUT_EXTENSION = ".html";
  * @return {String}
  */
 function fileToOutput(output, filePath) {
-    var book = output.getBook();
-    var readme = book.getReadme();
-    var fileReadme = readme.getFile();
+    const book = output.getBook();
+    const readme = book.getReadme();
+    const fileReadme = readme.getFile();
 
     if (
         path.basename(filePath, path.extname(filePath)) == "README" ||
         (fileReadme.exists() && filePath == fileReadme.getPath())
     ) {
-        filePath = path.join(path.dirname(filePath), "index" + OUTPUT_EXTENSION);
+        filePath = path.join(path.dirname(filePath), `index${OUTPUT_EXTENSION}`);
     } else {
         filePath = PathUtils.setExtension(filePath, OUTPUT_EXTENSION);
     }

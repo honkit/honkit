@@ -1,11 +1,11 @@
-var Summary = require("../../../models/summary");
-var SummaryPart = require("../../../models/summaryPart");
+const Summary = require("../../../models/summary");
+const SummaryPart = require("../../../models/summaryPart");
 
-var File = require("../../../models/file");
+const File = require("../../../models/file");
 
 describe("insertPart", () => {
-    var insertPart = require("../insertPart");
-    var summary = Summary.createFromParts(File(), [
+    const insertPart = require("../insertPart");
+    const summary = Summary.createFromParts(File(), [
         {
             articles: [
                 {
@@ -31,35 +31,35 @@ describe("insertPart", () => {
     ]);
 
     test("should insert an part at a given level", () => {
-        var part = SummaryPart.create(
+        const part = SummaryPart.create(
             {
                 title: "Inserted",
             },
             "meaningless.level"
         );
 
-        var newSummary = insertPart(summary, part, 1);
+        const newSummary = insertPart(summary, part, 1);
 
-        var inserted = newSummary.getPart(1);
+        const inserted = newSummary.getPart(1);
         expect(inserted.getTitle()).toBe("Inserted");
         expect(newSummary.getParts().count()).toBe(3);
 
-        var otherArticle = newSummary.getByLevel("3.1");
+        const otherArticle = newSummary.getByLevel("3.1");
         expect(otherArticle.getTitle()).toBe("2.1");
         expect(otherArticle.getLevel()).toBe("3.1");
     });
 
     test("should insert an part in last position", () => {
-        var part = SummaryPart.create(
+        const part = SummaryPart.create(
             {
                 title: "Inserted",
             },
             "meaningless.level"
         );
 
-        var newSummary = insertPart(summary, part, 2);
+        const newSummary = insertPart(summary, part, 2);
 
-        var inserted = newSummary.getPart(2);
+        const inserted = newSummary.getPart(2);
         expect(inserted.getTitle()).toBe("Inserted");
         expect(newSummary.getParts().count()).toBe(3);
     });

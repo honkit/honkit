@@ -1,4 +1,4 @@
-var listDependencies = require("./listDependencies");
+const listDependencies = require("./listDependencies");
 
 /**
  * List all plugin requirements for a book.
@@ -9,8 +9,8 @@ var listDependencies = require("./listDependencies");
  * @return {List<PluginDependency>}
  */
 function listDepsForBook(book) {
-    var config = book.getConfig();
-    var plugins = config.getPluginDependencies();
+    const config = book.getConfig();
+    const plugins = config.getPluginDependencies();
 
     return listDependencies(plugins);
 }

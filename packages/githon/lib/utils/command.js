@@ -1,7 +1,7 @@
-var is = require("is");
-var childProcess = require("child_process");
-var spawn = require("spawn-cmd").spawn;
-var Promise = require("./promise");
+const is = require("is");
+const childProcess = require("child_process");
+const spawn = require("spawn-cmd").spawn;
+const Promise = require("./promise");
 
 /**
     Execute a command
@@ -11,9 +11,9 @@ var Promise = require("./promise");
     @return {Promise}
 */
 function exec(command, options) {
-    var d = Promise.defer();
+    const d = Promise.defer();
 
-    var child = childProcess.exec(command, options, function (err, stdout, stderr) {
+    const child = childProcess.exec(command, options, (err, stdout, stderr) => {
         if (!err) {
             return d.resolve();
         }
@@ -22,11 +22,11 @@ function exec(command, options) {
         d.reject(err);
     });
 
-    child.stdout.on("data", function (data) {
+    child.stdout.on("data", (data) => {
         d.notify(data);
     });
 
-    child.stderr.on("data", function (data) {
+    child.stderr.on("data", (data) => {
         d.notify(data);
     });
 
@@ -42,26 +42,26 @@ function exec(command, options) {
     @return {Promise}
 */
 function spawnCmd(command, args, options) {
-    var d = Promise.defer();
-    var child = spawn(command, args, options);
+    const d = Promise.defer();
+    const child = spawn(command, args, options);
 
-    child.on("error", function (error) {
+    child.on("error", (error) => {
         return d.reject(error);
     });
 
-    child.stdout.on("data", function (data) {
+    child.stdout.on("data", (data) => {
         d.notify(data);
     });
 
-    child.stderr.on("data", function (data) {
+    child.stderr.on("data", (data) => {
         d.notify(data);
     });
 
-    child.on("close", function (code) {
+    child.on("close", (code) => {
         if (code === 0) {
             d.resolve();
         } else {
-            d.reject(new Error('Error with command "' + command + '"'));
+            d.reject(new Error(`Error with command "${command}"`));
         }
     });
 
@@ -82,7 +82,7 @@ function escapeShellArg(value) {
     value = String(value);
     value = value.replace(/"/g, '\\"');
 
-    return '"' + value + '"';
+    return `"${value}"`;
 }
 
 /**
@@ -92,10 +92,10 @@ function escapeShellArg(value) {
     @return {String}
 */
 function optionsToShellArgs(options) {
-    var result = [];
+    const result = [];
 
-    for (var key in options) {
-        var value = options[key];
+    for (const key in options) {
+        const value = options[key];
 
         if (value === null || value === undefined || value === false) {
             continue;
@@ -104,7 +104,7 @@ function optionsToShellArgs(options) {
         if (is.bool(value)) {
             result.push(key);
         } else {
-            result.push(key + "=" + escapeShellArg(value));
+            result.push(`${key}=${escapeShellArg(value)}`);
         }
     }
 

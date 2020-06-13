@@ -1,4 +1,4 @@
-var FILENAME_REGEX = "^[a-zA-Z-._d,s]+$";
+const FILENAME_REGEX = "^[a-zA-Z-._d,s]+$";
 
 module.exports = {
     $schema: "http://json-schema.org/schema#",

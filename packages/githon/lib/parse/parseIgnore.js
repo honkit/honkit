@@ -1,7 +1,7 @@
-var Promise = require("../utils/promise");
-var IGNORE_FILES = require("../constants/ignoreFiles");
+const Promise = require("../utils/promise");
+const IGNORE_FILES = require("../constants/ignoreFiles");
 
-var DEFAULT_IGNORES = [
+const DEFAULT_IGNORES = [
     // Skip Git stuff
     ".git/",
 
@@ -29,21 +29,21 @@ function parseIgnore(book) {
         return Promise.reject(new Error("Ignore files could be parsed for language books"));
     }
 
-    var fs = book.getFS();
-    var ignore = book.getIgnore();
+    const fs = book.getFS();
+    let ignore = book.getIgnore();
 
     ignore = ignore.add(DEFAULT_IGNORES);
 
-    return Promise.serie(IGNORE_FILES, function (filename) {
+    return Promise.serie(IGNORE_FILES, (filename) => {
         return fs.readAsString(filename).then(
-            function (content) {
+            (content) => {
                 ignore = ignore.add(content.toString().split(/\r?\n/));
             },
-            function (err) {
+            (err) => {
                 return Promise();
             }
         );
-    }).then(function () {
+    }).then(() => {
         return book.setIgnore(ignore);
     });
 }

@@ -1,6 +1,6 @@
-var PluginDependency = require("../../models/pluginDependency");
-var togglePlugin = require("./togglePlugin");
-var isDefaultPlugin = require("./isDefaultPlugin");
+const PluginDependency = require("../../models/pluginDependency");
+const togglePlugin = require("./togglePlugin");
+const isDefaultPlugin = require("./isDefaultPlugin");
 
 /**
  * Add a plugin to a book's configuration
@@ -15,8 +15,8 @@ function addPlugin(config, pluginName, version) {
         return togglePlugin(config, pluginName, true);
     }
 
-    var deps = config.getPluginDependencies();
-    var dep = PluginDependency.create(pluginName, version);
+    let deps = config.getPluginDependencies();
+    const dep = PluginDependency.create(pluginName, version);
 
     deps = deps.push(dep);
     return config.setPluginDependencies(deps);

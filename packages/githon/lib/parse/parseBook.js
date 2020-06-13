@@ -1,13 +1,13 @@
-var Promise = require("../utils/promise");
-var timing = require("../utils/timing");
-var Book = require("../models/book");
+const Promise = require("../utils/promise");
+const timing = require("../utils/timing");
+const Book = require("../models/book");
 
-var parseIgnore = require("./parseIgnore");
-var parseConfig = require("./parseConfig");
-var parseGlossary = require("./parseGlossary");
-var parseSummary = require("./parseSummary");
-var parseReadme = require("./parseReadme");
-var parseLanguages = require("./parseLanguages");
+const parseIgnore = require("./parseIgnore");
+const parseConfig = require("./parseConfig");
+const parseGlossary = require("./parseGlossary");
+const parseSummary = require("./parseSummary");
+const parseReadme = require("./parseReadme");
+const parseLanguages = require("./parseLanguages");
 
 /**
     Parse content of a book
@@ -26,22 +26,22 @@ function parseBookContent(book) {
     @return {Promise<Book>}
 */
 function parseMultilingualBook(book) {
-    var languages = book.getLanguages();
-    var langList = languages.getList();
+    const languages = book.getLanguages();
+    const langList = languages.getList();
 
     return Promise.reduce(
         langList,
-        function (currentBook, lang) {
-            var langID = lang.getID();
-            var child = Book.createFromParent(currentBook, langID);
-            var ignore = currentBook.getIgnore();
+        (currentBook, lang) => {
+            const langID = lang.getID();
+            const child = Book.createFromParent(currentBook, langID);
+            let ignore = currentBook.getIgnore();
 
             return Promise(child)
                 .then(parseConfig)
                 .then(parseBookContent)
-                .then(function (result) {
+                .then((result) => {
                     // Ignore content of this book when generating parent book
-                    ignore = ignore.add(langID + "/**");
+                    ignore = ignore.add(`${langID}/**`);
                     currentBook = currentBook.set("ignore", ignore);
 
                     return currentBook.addLanguageBook(langID, result);
@@ -64,7 +64,7 @@ function parseBook(book) {
             .then(parseIgnore)
             .then(parseConfig)
             .then(parseLanguages)
-            .then(function (resultBook) {
+            .then((resultBook) => {
                 if (resultBook.isMultilingual()) {
                     return parseMultilingualBook(resultBook);
                 } else {

@@ -1,10 +1,10 @@
-var path = require("path");
+const path = require("path");
 
-var fs = require("../../utils/fs");
-var LocationUtils = require("../../utils/location");
+const fs = require("../../utils/fs");
+const LocationUtils = require("../../utils/location");
 
-var editHTMLElement = require("./editHTMLElement");
-var cheerio = require("cheerio");
+const editHTMLElement = require("./editHTMLElement");
+const cheerio = require("cheerio");
 
 /**
     Inline SVG images as needed
@@ -14,20 +14,20 @@ var cheerio = require("cheerio");
     @return {Promise}
 */
 function inlineSvg(rootFolder, currentFile, $) {
-    var currentDirectory = path.dirname(currentFile);
+    const currentDirectory = path.dirname(currentFile);
 
-    return editHTMLElement($, "img", function ($img) {
-        var src = $img.attr("src");
+    return editHTMLElement($, "img", ($img) => {
+        let src = $img.attr("src");
         if (path.extname(src) !== ".svg") {
             return;
         }
 
         // Calcul absolute path for this
         src = LocationUtils.toAbsolute(src, currentDirectory, ".");
-        var inputPath = path.join(rootFolder, src);
+        const inputPath = path.join(rootFolder, src);
 
-        return fs.readFile(inputPath).then(function (svgContext) {
-            var $ = cheerio.load(svgContext, { xmlMode: true });
+        return fs.readFile(inputPath).then((svgContext) => {
+            const $ = cheerio.load(svgContext, { xmlMode: true });
             const $svg = $("svg");
             if ($svg.attr("style")) {
                 return;

@@ -1,8 +1,8 @@
-var path = require("path");
+const path = require("path");
 
-var Promise = require("../../utils/promise");
-var fs = require("../../utils/fs");
-var JSONUtils = require("../../json");
+const Promise = require("../../utils/promise");
+const fs = require("../../utils/fs");
+const JSONUtils = require("../../json");
 
 /**
     Finish the generation
@@ -11,16 +11,16 @@ var JSONUtils = require("../../json");
     @return {Output}
 */
 function onFinish(output) {
-    var book = output.getBook();
-    var outputRoot = output.getRoot();
+    const book = output.getBook();
+    const outputRoot = output.getRoot();
 
     if (!book.isMultilingual()) {
         return Promise(output);
     }
 
     // Get main language
-    var languages = book.getLanguages();
-    var mainLanguage = languages.getDefaultLanguage();
+    const languages = book.getLanguages();
+    const mainLanguage = languages.getDefaultLanguage();
 
     // Read the main JSON
     return (
@@ -28,15 +28,15 @@ function onFinish(output) {
             .readFile(path.resolve(outputRoot, mainLanguage.getID(), "README.json"), "utf8")
 
             // Extend the JSON
-            .then(function (content) {
-                var json = JSON.parse(content);
+            .then((content) => {
+                const json = JSON.parse(content);
 
                 json.languages = JSONUtils.encodeLanguages(languages);
 
                 return json;
             })
 
-            .then(function (json) {
+            .then((json) => {
                 return fs.writeFile(path.resolve(outputRoot, "README.json"), JSON.stringify(json, null, 4));
             })
 

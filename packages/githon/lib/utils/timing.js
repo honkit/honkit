@@ -1,8 +1,8 @@
-var Immutable = require("immutable");
-var is = require("is");
+const Immutable = require("immutable");
+const is = require("is");
 
-var timers = {};
-var startDate = Date.now();
+const timers = {};
+const startDate = Date.now();
 
 /**
     Mesure an operation
@@ -20,11 +20,11 @@ function measure(type, p) {
         max: 0,
     };
 
-    var start = Date.now();
+    const start = Date.now();
 
-    return p.fin(function () {
-        var end = Date.now();
-        var duration = end - start;
+    return p.fin(() => {
+        const end = Date.now();
+        const duration = end - start;
 
         timers[type].count++;
         timers[type].total += duration;
@@ -47,10 +47,10 @@ function measure(type, p) {
 */
 function time(ms) {
     if (ms < 1000) {
-        return ms.toFixed(0) + "ms";
+        return `${ms.toFixed(0)}ms`;
     }
 
-    return (ms / 1000).toFixed(2) + "s";
+    return `${(ms / 1000).toFixed(2)}s`;
 }
 
 /**
@@ -59,32 +59,30 @@ function time(ms) {
     @param {Logger} logger
 */
 function dump(logger) {
-    var prefix = "    > ";
-    var measured = 0;
-    var totalDuration = Date.now() - startDate;
+    const prefix = "    > ";
+    let measured = 0;
+    const totalDuration = Date.now() - startDate;
 
     // Enable debug logging
-    var logLevel = logger.getLevel();
+    const logLevel = logger.getLevel();
     logger.setLevel("debug");
 
     Immutable.Map(timers)
         .valueSeq()
-        .sortBy(function (timer) {
+        .sortBy((timer) => {
             measured += timer.total;
             return timer.total;
         })
-        .forEach(function (timer) {
-            var percent = (timer.total * 100) / totalDuration;
+        .forEach((timer) => {
+            const percent = (timer.total * 100) / totalDuration;
 
-            logger.debug.ln(
-                percent.toFixed(1) + '% of time spent in "' + timer.type + '" (' + timer.count + " times) :"
-            );
-            logger.debug.ln(prefix + "Total: " + time(timer.total) + " | Average: " + time(timer.total / timer.count));
-            logger.debug.ln(prefix + "Min: " + time(timer.min) + " | Max: " + time(timer.max));
+            logger.debug.ln(`${percent.toFixed(1)}% of time spent in "${timer.type}" (${timer.count} times) :`);
+            logger.debug.ln(`${prefix}Total: ${time(timer.total)} | Average: ${time(timer.total / timer.count)}`);
+            logger.debug.ln(`${prefix}Min: ${time(timer.min)} | Max: ${time(timer.max)}`);
             logger.debug.ln("---------------------------");
         });
 
-    logger.debug.ln(time(totalDuration - measured) + " spent in non-mesured sections");
+    logger.debug.ln(`${time(totalDuration - measured)} spent in non-mesured sections`);
 
     // Rollback to previous level
     logger.setLevel(logLevel);

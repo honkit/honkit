@@ -1,5 +1,5 @@
-var path = require("path");
-var error = require("./error");
+const path = require("path");
+const error = require("./error");
 
 // Normalize a filename
 function normalizePath(filename) {
@@ -24,18 +24,15 @@ function isInRoot(root, filename) {
 // Resolve paths in a specific folder
 // Throw error if file is outside this folder
 function resolveInRoot(root) {
-    var input, result;
-    var args = Array.prototype.slice.call(arguments, 1);
+    const args = Array.prototype.slice.call(arguments, 1);
 
-    input = args.reduce(function (current, p) {
+    const input = args.reduce((current, p) => {
         // Handle path relative to book root ("/README.md")
         if (p[0] == "/" || p[0] == "\\") return p.slice(1);
 
         return current ? path.join(current, p) : path.normalize(p);
     }, "");
-
-    result = path.resolve(root, input);
-
+    const result = path.resolve(root, input);
     if (!isInRoot(root, result)) {
         throw new error.FileOutOfScopeError({
             filename: result,

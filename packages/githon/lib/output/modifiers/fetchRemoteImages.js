@@ -1,9 +1,9 @@
-var path = require("path");
-var crc = require("crc");
+const path = require("path");
+const crc = require("crc");
 
-var editHTMLElement = require("./editHTMLElement");
-var fs = require("../../utils/fs");
-var LocationUtils = require("../../utils/location");
+const editHTMLElement = require("./editHTMLElement");
+const fs = require("../../utils/fs");
+const LocationUtils = require("../../utils/location");
 
 /**
     Fetch all remote images
@@ -14,30 +14,30 @@ var LocationUtils = require("../../utils/location");
     @return {Promise}
 */
 function fetchRemoteImages(rootFolder, currentFile, $) {
-    var currentDirectory = path.dirname(currentFile);
+    const currentDirectory = path.dirname(currentFile);
 
-    return editHTMLElement($, "img", function ($img) {
-        var src = $img.attr("src");
-        var extension = path.extname(src);
+    return editHTMLElement($, "img", ($img) => {
+        let src = $img.attr("src");
+        const extension = path.extname(src);
 
         if (!LocationUtils.isExternal(src)) {
             return;
         }
 
         // We avoid generating twice the same PNG
-        var hash = crc.crc32(src).toString(16);
-        var fileName = hash + extension;
-        var filePath = path.join(rootFolder, fileName);
+        const hash = crc.crc32(src).toString(16);
+        const fileName = hash + extension;
+        const filePath = path.join(rootFolder, fileName);
 
         return fs
-            .assertFile(filePath, function () {
+            .assertFile(filePath, () => {
                 return fs.download(src, filePath);
             })
-            .then(function () {
+            .then(() => {
                 // Convert to relative
                 src = LocationUtils.relative(currentDirectory, fileName);
 
-                $img.replaceWith('<img src="' + src + '" />');
+                $img.replaceWith(`<img src="${src}" />`);
             });
     });
 }

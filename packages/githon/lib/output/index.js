@@ -1,6 +1,6 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var generators = Immutable.List([require("./json"), require("./website"), require("./ebook")]);
+const generators = Immutable.List([require("./json"), require("./website"), require("./ebook")]);
 
 /**
     Return a specific generator by its name
@@ -9,7 +9,7 @@ var generators = Immutable.List([require("./json"), require("./website"), requir
     @return {Generator}
 */
 function getGenerator(name) {
-    return generators.find(function (generator) {
+    return generators.find((generator) => {
         return generator.name == name;
     });
 }

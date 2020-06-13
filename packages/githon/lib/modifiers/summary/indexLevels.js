@@ -1,4 +1,4 @@
-var indexPartLevels = require("./indexPartLevels");
+const indexPartLevels = require("./indexPartLevels");
 
 /**
     Index all levels in the summary
@@ -7,7 +7,7 @@ var indexPartLevels = require("./indexPartLevels");
     @return {Summary}
 */
 function indexLevels(summary) {
-    var parts = summary.getParts();
+    let parts = summary.getParts();
     parts = parts.map(indexPartLevels);
 
     return summary.set("parts", parts);

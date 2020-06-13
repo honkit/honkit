@@ -1,10 +1,10 @@
-var Immutable = require("immutable");
-var IgnoreMutable = require("ignore");
+const Immutable = require("immutable");
+const IgnoreMutable = require("ignore");
 
 /*
     Immutable version of node-ignore
 */
-var Ignore = Immutable.Record(
+const Ignore = Immutable.Record(
     {
         ignore: new IgnoreMutable(),
     },
@@ -22,7 +22,7 @@ Ignore.prototype.getIgnore = function () {
     @return {Boolean}
 */
 Ignore.prototype.isFileIgnored = function (filename) {
-    var ignore = this.getIgnore();
+    const ignore = this.getIgnore();
     return ignore.filter([filename]).length == 0;
 };
 
@@ -33,8 +33,8 @@ Ignore.prototype.isFileIgnored = function (filename) {
     @return {Ignore}
 */
 Ignore.prototype.add = function (rule) {
-    var ignore = this.getIgnore();
-    var newIgnore = new IgnoreMutable();
+    const ignore = this.getIgnore();
+    const newIgnore = new IgnoreMutable();
 
     newIgnore.add(ignore);
     newIgnore.add(rule);

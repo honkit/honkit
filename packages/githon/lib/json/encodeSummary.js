@@ -1,5 +1,5 @@
-var encodeFile = require("./encodeFile");
-var encodeSummaryPart = require("./encodeSummaryPart");
+const encodeFile = require("./encodeFile");
+const encodeSummaryPart = require("./encodeSummaryPart");
 
 /**
     Encode a summary to JSON
@@ -8,8 +8,8 @@ var encodeSummaryPart = require("./encodeSummaryPart");
     @return {Object}
 */
 function encodeSummary(summary) {
-    var file = summary.getFile();
-    var parts = summary.getParts();
+    const file = summary.getFile();
+    const parts = summary.getParts();
 
     return {
         file: encodeFile(file),

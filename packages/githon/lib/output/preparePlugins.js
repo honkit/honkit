@@ -1,5 +1,5 @@
-var Plugins = require("../plugins");
-var Promise = require("../utils/promise");
+const Plugins = require("../plugins");
+const Promise = require("../utils/promise");
 
 /**
  * Load and setup plugins
@@ -8,12 +8,12 @@ var Promise = require("../utils/promise");
  * @return {Promise<Output>}
  */
 function preparePlugins(output) {
-    var book = output.getBook();
+    const book = output.getBook();
 
     return (
         Promise()
             // Only load plugins for main book
-            .then(function () {
+            .then(() => {
                 if (book.isLanguageBook()) {
                     return output.getPlugins();
                 } else {
@@ -22,8 +22,8 @@ function preparePlugins(output) {
             })
 
             // Update book's configuration using the plugins
-            .then(function (plugins) {
-                return Plugins.validateConfig(book, plugins).then(function (newBook) {
+            .then((plugins) => {
+                return Plugins.validateConfig(book, plugins).then((newBook) => {
                     return output.merge({
                         book: newBook,
                         plugins: plugins,

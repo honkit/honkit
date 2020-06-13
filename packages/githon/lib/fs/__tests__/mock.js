@@ -1,7 +1,7 @@
-var createMockFS = require("../mock");
+const createMockFS = require("../mock");
 
 describe("MockFS", () => {
-    var fs = createMockFS({
+    const fs = createMockFS({
         "README.md": "Hello World",
         "SUMMARY.md": "# Summary",
         folder: {
@@ -15,31 +15,31 @@ describe("MockFS", () => {
 
     describe("exists", () => {
         test("must return true for a file", () => {
-            return fs.exists("README.md").then(function (result) {
+            return fs.exists("README.md").then((result) => {
                 expect(result).toBeTruthy();
             });
         });
 
         test("must return false for a non existing file", () => {
-            return fs.exists("README_NOTEXISTS.md").then(function (result) {
+            return fs.exists("README_NOTEXISTS.md").then((result) => {
                 expect(result).toBeFalsy();
             });
         });
 
         test("must return true for a directory", () => {
-            return fs.exists("folder").then(function (result) {
+            return fs.exists("folder").then((result) => {
                 expect(result).toBeTruthy();
             });
         });
 
         test("must return true for a deep file", () => {
-            return fs.exists("folder/test.md").then(function (result) {
+            return fs.exists("folder/test.md").then((result) => {
                 expect(result).toBeTruthy();
             });
         });
 
         test("must return true for a deep file (2)", () => {
-            return fs.exists("folder/folder2/hello.md").then(function (result) {
+            return fs.exists("folder/folder2/hello.md").then((result) => {
                 expect(result).toBeTruthy();
             });
         });
@@ -47,13 +47,13 @@ describe("MockFS", () => {
 
     describe("readAsString", () => {
         test("must return content for a file", () => {
-            return fs.readAsString("README.md").then(function (result) {
+            return fs.readAsString("README.md").then((result) => {
                 expect(result).toBe("Hello World");
             });
         });
 
         test("must return content for a deep file", () => {
-            return fs.readAsString("folder/test.md").then(function (result) {
+            return fs.readAsString("folder/test.md").then((result) => {
                 expect(result).toBe("Cool");
             });
         });
@@ -61,7 +61,7 @@ describe("MockFS", () => {
 
     describe("readDir", () => {
         test("must return content for a directory", () => {
-            return fs.readDir("./").then(function (files) {
+            return fs.readDir("./").then((files) => {
                 expect(files.size).toBe(3);
                 expect(files.includes("README.md")).toBeTruthy();
                 expect(files.includes("SUMMARY.md")).toBeTruthy();

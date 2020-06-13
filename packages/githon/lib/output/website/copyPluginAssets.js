@@ -1,8 +1,8 @@
-var path = require("path");
+const path = require("path");
 
-var ASSET_FOLDER = require("../../constants/pluginAssetsFolder");
-var Promise = require("../../utils/promise");
-var fs = require("../../utils/fs");
+const ASSET_FOLDER = require("../../constants/pluginAssetsFolder");
+const Promise = require("../../utils/promise");
+const fs = require("../../utils/fs");
 
 /**
     Copy all assets from plugins.
@@ -13,7 +13,7 @@ var fs = require("../../utils/fs");
     @return {Promise}
 */
 function copyPluginAssets(output) {
-    var book = output.getBook();
+    const book = output.getBook();
 
     // Don't copy plugins assets for language book
     // It'll be resolved to the parent folder
@@ -21,15 +21,15 @@ function copyPluginAssets(output) {
         return Promise(output);
     }
 
-    var plugins = output
+    const plugins = output
         .getPlugins()
 
         // We reverse the order of plugins to copy
         // so that first plugins can replace assets from other plugins.
         .reverse();
 
-    return Promise.forEach(plugins, function (plugin) {
-        return copyAssets(output, plugin).then(function () {
+    return Promise.forEach(plugins, (plugin) => {
+        return copyAssets(output, plugin).then(() => {
             return copyResources(output, plugin);
         });
     }).thenResolve(output);
@@ -42,15 +42,15 @@ function copyPluginAssets(output) {
     @return {Promise}
 */
 function copyAssets(output, plugin) {
-    var logger = output.getLogger();
-    var pluginRoot = plugin.getPath();
-    var options = output.getOptions();
+    const logger = output.getLogger();
+    const pluginRoot = plugin.getPath();
+    const options = output.getOptions();
 
-    var outputRoot = options.get("root");
-    var assetOutputFolder = path.join(outputRoot, "gitbook");
-    var prefix = options.get("prefix");
+    const outputRoot = options.get("root");
+    const assetOutputFolder = path.join(outputRoot, "gitbook");
+    const prefix = options.get("prefix");
 
-    var assetFolder = path.join(pluginRoot, ASSET_FOLDER, prefix);
+    const assetFolder = path.join(pluginRoot, ASSET_FOLDER, prefix);
 
     if (!fs.existsSync(assetFolder)) {
         return Promise();
@@ -71,19 +71,19 @@ function copyAssets(output, plugin) {
     @return {Promise}
 */
 function copyResources(output, plugin) {
-    var logger = output.getLogger();
+    const logger = output.getLogger();
 
-    var options = output.getOptions();
-    var outputRoot = options.get("root");
+    const options = output.getOptions();
+    const outputRoot = options.get("root");
 
-    var state = output.getState();
-    var resources = state.getResources();
+    const state = output.getState();
+    const resources = state.getResources();
 
-    var pluginRoot = plugin.getPath();
-    var pluginResources = resources.get(plugin.getName());
+    const pluginRoot = plugin.getPath();
+    const pluginResources = resources.get(plugin.getName());
 
-    var assetsFolder = pluginResources.get("assets");
-    var assetOutputFolder = path.join(outputRoot, "gitbook", plugin.getNpmID());
+    let assetsFolder = pluginResources.get("assets");
+    const assetOutputFolder = path.join(outputRoot, "gitbook", plugin.getNpmID());
 
     if (!assetsFolder) {
         return Promise();
@@ -92,7 +92,7 @@ function copyResources(output, plugin) {
     // Resolve assets folder
     assetsFolder = path.resolve(pluginRoot, assetsFolder);
     if (!fs.existsSync(assetsFolder)) {
-        logger.warn.ln('assets folder for plugin "' + plugin.getName() + "\" doesn't exist");
+        logger.warn.ln(`assets folder for plugin "${plugin.getName()}" doesn't exist`);
         return Promise();
     }
 

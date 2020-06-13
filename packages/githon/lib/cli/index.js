@@ -1,4 +1,4 @@
-var buildEbook = require("./buildEbook");
+const buildEbook = require("./buildEbook");
 
 module.exports = [
     require("./build"),

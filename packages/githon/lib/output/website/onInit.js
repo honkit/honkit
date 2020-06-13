@@ -1,8 +1,8 @@
-var Promise = require("../../utils/promise");
+const Promise = require("../../utils/promise");
 
-var copyPluginAssets = require("./copyPluginAssets");
-var prepareI18n = require("./prepareI18n");
-var prepareResources = require("./prepareResources");
+const copyPluginAssets = require("./copyPluginAssets");
+const prepareI18n = require("./prepareI18n");
+const prepareResources = require("./prepareResources");
 
 /**
     Initialize the generator

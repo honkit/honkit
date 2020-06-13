@@ -1,6 +1,6 @@
-var githon = require("../githon");
+const githon = require("../githon");
 
-var Promise = require("../utils/promise");
+const Promise = require("../utils/promise");
 
 /**
     Validate a plugin
@@ -9,9 +9,9 @@ var Promise = require("../utils/promise");
     @return {Promise<Plugin>}
 */
 function validatePlugin(plugin) {
-    var packageInfos = plugin.getPackage();
+    const packageInfos = plugin.getPackage();
 
-    var isValid =
+    const isValid =
         plugin.isLoaded() &&
         packageInfos &&
         packageInfos.get("name") &&
@@ -19,14 +19,12 @@ function validatePlugin(plugin) {
         packageInfos.get("engines").get("gitbook");
 
     if (!isValid) {
-        return Promise.reject(
-            new Error('Error loading plugin "' + plugin.getName() + '" at "' + plugin.getPath() + '"')
-        );
+        return Promise.reject(new Error(`Error loading plugin "${plugin.getName()}" at "${plugin.getPath()}"`));
     }
 
-    var engine = packageInfos.get("engines").get("gitbook");
+    const engine = packageInfos.get("engines").get("gitbook");
     if (!githon.satisfies(engine)) {
-        return Promise.reject(new Error("Githon doesn't satisfy the requirements of this plugin: " + engine));
+        return Promise.reject(new Error(`Githon doesn't satisfy the requirements of this plugin: ${engine}`));
     }
 
     return Promise(plugin);

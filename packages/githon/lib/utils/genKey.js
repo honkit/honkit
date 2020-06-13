@@ -1,4 +1,4 @@
-var lastKey = 0;
+let lastKey = 0;
 
 /*
     Generate a random key
@@ -6,7 +6,7 @@ var lastKey = 0;
 */
 function generateKey() {
     lastKey += 1;
-    var str = lastKey.toString(16);
+    const str = lastKey.toString(16);
     return "00000".slice(str.length) + str;
 }
 

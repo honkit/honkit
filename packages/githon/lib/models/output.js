@@ -1,9 +1,9 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var Book = require("./book");
-var LocationUtils = require("../utils/location");
+const Book = require("./book");
+const LocationUtils = require("../utils/location");
 
-var Output = Immutable.Record({
+const Output = Immutable.Record({
     book: Book(),
 
     // Name of the generator being used
@@ -62,7 +62,7 @@ Output.prototype.getState = function () {
 Output.prototype.getPage = function (filePath) {
     filePath = LocationUtils.normalize(filePath);
 
-    var pages = this.getPages();
+    const pages = this.getPages();
     return pages.get(filePath);
 };
 

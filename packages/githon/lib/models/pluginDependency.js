@@ -1,15 +1,15 @@
-var is = require("is");
-var semver = require("semver");
-var Immutable = require("immutable");
+const is = require("is");
+const semver = require("semver");
+const Immutable = require("immutable");
 
-var PREFIX = require("../constants/pluginPrefix");
-var DEFAULT_VERSION = "*";
+const PREFIX = require("../constants/pluginPrefix");
+const DEFAULT_VERSION = "*";
 
 /*
  * PluginDependency represents the informations about a plugin
  * stored in config.plugins
  */
-var PluginDependency = Immutable.Record(
+const PluginDependency = Immutable.Record(
     {
         name: String(),
 
@@ -86,10 +86,10 @@ PluginDependency.create = function (name, version, enabled) {
  * @return {Plugin|undefined}
  */
 PluginDependency.createFromString = function (s) {
-    var parts = s.split("@");
-    var name = parts[0];
-    var version = parts.slice(1).join("@");
-    var enabled = true;
+    const parts = s.split("@");
+    let name = parts[0];
+    const version = parts.slice(1).join("@");
+    let enabled = true;
 
     if (name[0] === "-") {
         enabled = false;
@@ -109,7 +109,7 @@ PluginDependency.createFromString = function (s) {
  * @return {List<PluginDependency>}
  */
 PluginDependency.listFromString = function (s) {
-    var parts = s.split(",");
+    const parts = s.split(",");
     return PluginDependency.listFromArray(parts);
 };
 
@@ -120,7 +120,7 @@ PluginDependency.listFromString = function (s) {
  */
 PluginDependency.listFromArray = function (arr) {
     return Immutable.List(arr)
-        .map(function (entry) {
+        .map((entry) => {
             if (is.string(entry)) {
                 return PluginDependency.createFromString(entry);
             } else {
@@ -130,7 +130,7 @@ PluginDependency.listFromArray = function (arr) {
                 });
             }
         })
-        .filter(function (dep) {
+        .filter((dep) => {
             return Boolean(dep.getName());
         });
 };
@@ -142,8 +142,8 @@ PluginDependency.listFromArray = function (arr) {
  */
 PluginDependency.listToArray = function (list) {
     return list
-        .map(function (dep) {
-            var result = "";
+        .map((dep) => {
+            let result = "";
 
             if (!dep.isEnabled()) {
                 result += "-";
@@ -151,7 +151,7 @@ PluginDependency.listToArray = function (list) {
 
             result += dep.getName();
             if (dep.getVersion() !== DEFAULT_VERSION) {
-                result += "@" + dep.getVersion();
+                result += `@${dep.getVersion()}`;
             }
 
             return result;

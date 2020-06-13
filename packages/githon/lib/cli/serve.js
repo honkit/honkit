@@ -1,26 +1,26 @@
 /* eslint-disable no-console */
 
-var tinylr = require("tiny-lr");
-var open = require("open");
+const tinylr = require("tiny-lr");
+const open = require("open");
 
-var Parse = require("../parse");
-var Output = require("../output");
-var ConfigModifier = require("../modifiers").Config;
+const Parse = require("../parse");
+const Output = require("../output");
+const ConfigModifier = require("../modifiers").Config;
 
-var Promise = require("../utils/promise");
+const Promise = require("../utils/promise");
 
-var options = require("./options");
-var getBook = require("./getBook");
-var getOutputFolder = require("./getOutputFolder");
-var Server = require("./server");
-var watch = require("./watch");
+const options = require("./options");
+const getBook = require("./getBook");
+const getOutputFolder = require("./getOutputFolder");
+const Server = require("./server");
+const watch = require("./watch");
 
-var server, lrServer, lrPath;
+let server, lrServer, lrPath;
 
 function waitForCtrlC() {
-    var d = Promise.defer();
+    const d = Promise.defer();
 
-    process.on("SIGINT", function () {
+    process.on("SIGINT", () => {
         d.resolve();
     });
 
@@ -28,26 +28,26 @@ function waitForCtrlC() {
 }
 
 function generateBook(args, kwargs) {
-    var port = kwargs.port;
-    var outputFolder = getOutputFolder(args);
-    var book = getBook(args, kwargs);
-    var Generator = Output.getGenerator(kwargs.format);
-    var browser = kwargs["browser"];
+    const port = kwargs.port;
+    const outputFolder = getOutputFolder(args);
+    const book = getBook(args, kwargs);
+    const Generator = Output.getGenerator(kwargs.format);
+    const browser = kwargs["browser"];
 
-    var hasWatch = kwargs["watch"];
-    var hasLiveReloading = kwargs["live"];
-    var hasOpen = kwargs["open"];
+    const hasWatch = kwargs["watch"];
+    const hasLiveReloading = kwargs["live"];
+    const hasOpen = kwargs["open"];
 
     // Stop server if running
     if (server.isRunning()) console.log("Stopping server");
 
     return server
         .stop()
-        .then(function () {
-            return Parse.parseBook(book).then(function (resultBook) {
+        .then(() => {
+            return Parse.parseBook(book).then((resultBook) => {
                 if (hasLiveReloading) {
                     // Enable livereload plugin
-                    var config = resultBook.getConfig();
+                    let config = resultBook.getConfig();
                     config = ConfigModifier.addPlugin(config, "livereload");
                     resultBook = resultBook.set("config", config);
                 }
@@ -57,13 +57,13 @@ function generateBook(args, kwargs) {
                 });
             });
         })
-        .then(function () {
+        .then(() => {
             console.log();
             console.log("Starting server ...");
             return server.start(outputFolder, port);
         })
-        .then(function () {
-            console.log("Serving book on http://localhost:" + port);
+        .then(() => {
+            console.log(`Serving book on http://localhost:${port}`);
 
             if (lrPath && hasLiveReloading) {
                 // trigger livereload
@@ -75,15 +75,15 @@ function generateBook(args, kwargs) {
             }
 
             if (hasOpen) {
-                open("http://localhost:" + port, { app: browser });
+                open(`http://localhost:${port}`, { app: browser });
             }
         })
-        .then(function () {
+        .then(() => {
             if (!hasWatch) {
                 return waitForCtrlC();
             }
 
-            return watch(book.getRoot()).then(function (filepath) {
+            return watch(book.getRoot()).then((filepath) => {
                 // set livereload path
                 lrPath = filepath;
                 console.log("Restart after change in file", filepath);
@@ -132,23 +132,23 @@ module.exports = {
     ],
     exec: function (args, kwargs) {
         server = new Server();
-        var hasWatch = kwargs["watch"];
-        var hasLiveReloading = kwargs["live"];
+        const hasWatch = kwargs["watch"];
+        const hasLiveReloading = kwargs["live"];
 
         return Promise()
-            .then(function () {
+            .then(() => {
                 if (!hasWatch || !hasLiveReloading) {
                     return;
                 }
 
                 lrServer = tinylr({});
-                return Promise.nfcall(lrServer.listen.bind(lrServer), kwargs.lrport).then(function () {
+                return Promise.nfcall(lrServer.listen.bind(lrServer), kwargs.lrport).then(() => {
                     console.log("Live reload server started on port:", kwargs.lrport);
                     console.log("Press CTRL+C to quit ...");
                     console.log("");
                 });
             })
-            .then(function () {
+            .then(() => {
                 return generateBook(args, kwargs);
             });
     },

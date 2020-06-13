@@ -1,15 +1,15 @@
-var path = require("path");
+const path = require("path");
 
-var Book = require("../../models/book");
-var createNodeFS = require("../../fs/node");
-var findForBook = require("../findForBook");
+const Book = require("../../models/book");
+const createNodeFS = require("../../fs/node");
+const findForBook = require("../findForBook");
 
 describe("findForBook", () => {
-    var fs = createNodeFS(path.resolve(__dirname, "../../.."));
-    var book = Book.createForFS(fs);
+    const fs = createNodeFS(path.resolve(__dirname, "../../.."));
+    const book = Book.createForFS(fs);
 
     test("should list default plugins", () => {
-        return findForBook(book).then(function (plugins) {
+        return findForBook(book).then((plugins) => {
             expect(plugins.has("fontsettings")).toBeTruthy();
         });
     });

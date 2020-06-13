@@ -1,7 +1,7 @@
-var path = require("path");
+const path = require("path");
 
-var LocationUtils = require("../../utils/location");
-var editHTMLElement = require("./editHTMLElement");
+const LocationUtils = require("../../utils/location");
+const editHTMLElement = require("./editHTMLElement");
 
 /**
     Resolve all HTML images:
@@ -11,10 +11,10 @@ var editHTMLElement = require("./editHTMLElement");
     @param {HTMLDom} $
 */
 function resolveImages(currentFile, $) {
-    var currentDirectory = path.dirname(currentFile);
+    const currentDirectory = path.dirname(currentFile);
 
-    return editHTMLElement($, "img", function ($img) {
-        var src = $img.attr("src");
+    return editHTMLElement($, "img", ($img) => {
+        let src = $img.attr("src");
 
         if (LocationUtils.isExternal(src) || LocationUtils.isDataURI(src)) {
             return;

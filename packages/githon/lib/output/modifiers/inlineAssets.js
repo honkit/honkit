@@ -1,10 +1,10 @@
-var resolveImages = require("./resolveImages");
-var fetchRemoteImages = require("./fetchRemoteImages");
-var svgToImg = require("./svgToImg");
-var inlineSvg = require("./inlineSvg");
-var inlinePng = require("./inlinePng");
+const resolveImages = require("./resolveImages");
+const fetchRemoteImages = require("./fetchRemoteImages");
+const svgToImg = require("./svgToImg");
+const inlineSvg = require("./inlineSvg");
+const inlinePng = require("./inlinePng");
 
-var Promise = require("../../utils/promise");
+const Promise = require("../../utils/promise");
 
 /**
     Inline all assets in a page

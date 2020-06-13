@@ -1,10 +1,10 @@
-var JSONUtils = require("../../json");
-var PathUtils = require("../../utils/path");
-var Modifiers = require("../modifiers");
-var writeFile = require("../helper/writeFile");
-var getModifiers = require("../getModifiers");
+const JSONUtils = require("../../json");
+const PathUtils = require("../../utils/path");
+const Modifiers = require("../modifiers");
+const writeFile = require("../helper/writeFile");
+const getModifiers = require("../getModifiers");
 
-var JSON_VERSION = "3";
+const JSON_VERSION = "3";
 
 /**
  * Write a page as a json file
@@ -13,12 +13,12 @@ var JSON_VERSION = "3";
  * @param {Page} page
  */
 function onPage(output, page) {
-    var file = page.getFile();
-    var readme = output.getBook().getReadme().getFile();
+    const file = page.getFile();
+    const readme = output.getBook().getReadme().getFile();
 
-    return Modifiers.modifyHTML(page, getModifiers(output, page)).then(function (resultPage) {
+    return Modifiers.modifyHTML(page, getModifiers(output, page)).then((resultPage) => {
         // Generate the JSON
-        var json = JSONUtils.encodeBookWithPage(output.getBook(), resultPage);
+        const json = JSONUtils.encodeBookWithPage(output.getBook(), resultPage);
 
         // Delete some private properties
         delete json.config;
@@ -27,7 +27,7 @@ function onPage(output, page) {
         json.version = JSON_VERSION;
 
         // File path in the output folder
-        var filePath = file.getPath() == readme.getPath() ? "README.json" : file.getPath();
+        let filePath = file.getPath() == readme.getPath() ? "README.json" : file.getPath();
         filePath = PathUtils.setExtension(filePath, ".json");
 
         // Write it to the disk

@@ -1,11 +1,11 @@
-var Immutable = require("immutable");
-var nunjucks = require("nunjucks");
-var fs = require("fs");
-var path = require("path");
+const Immutable = require("immutable");
+const nunjucks = require("nunjucks");
+const fs = require("fs");
+const path = require("path");
 
-var PathUtils = require("../utils/path");
+const PathUtils = require("../utils/path");
 
-var ThemesLoader = nunjucks.Loader.extend({
+const ThemesLoader = nunjucks.Loader.extend({
     init: function (searchPaths) {
         this.searchPaths = Immutable.List(searchPaths).map(path.normalize);
     },
@@ -19,20 +19,17 @@ var ThemesLoader = nunjucks.Loader.extend({
         if (!fullpath) return null;
 
         fullpath = this.resolve(null, fullpath);
-        var templateName = this.getTemplateName(fullpath);
+        const templateName = this.getTemplateName(fullpath);
 
         if (!fullpath) {
             return null;
         }
 
-        var src = fs.readFileSync(fullpath, "utf-8");
+        let src = fs.readFileSync(fullpath, "utf-8");
 
-        src =
-            "{% do %}var template = template || {}; template.stack = template.stack || []; template.stack.push(template.self); template.self = " +
-            JSON.stringify(templateName) +
-            "{% enddo %}\n" +
-            src +
-            "\n{% do %}template.self = template.stack.pop();{% enddo %}";
+        src = `{% do %}var template = template || {}; template.stack = template.stack || []; template.stack.push(template.self); template.self = ${JSON.stringify(
+            templateName
+        )}{% enddo %}\n${src}\n{% do %}template.self = template.stack.pop();{% enddo %}`;
 
         return {
             src: src,
@@ -56,10 +53,10 @@ var ThemesLoader = nunjucks.Loader.extend({
      */
     getSearchPath: function (filepath) {
         return this.searchPaths
-            .sortBy(function (s) {
+            .sortBy((s) => {
                 return -s.length;
             })
-            .find(function (basePath) {
+            .find((basePath) => {
                 return filepath && filepath.indexOf(basePath) === 0;
             });
     },
@@ -70,7 +67,7 @@ var ThemesLoader = nunjucks.Loader.extend({
      * @return {String} name
      */
     getTemplateName: function (filepath) {
-        var originalSearchPath = this.getSearchPath(filepath);
+        const originalSearchPath = this.getSearchPath(filepath);
         return originalSearchPath ? path.relative(originalSearchPath, filepath) : null;
     },
 
@@ -81,7 +78,7 @@ var ThemesLoader = nunjucks.Loader.extend({
      * @return {String|null}
      */
     resolve: function (from, to) {
-        var searchPaths = this.searchPaths;
+        let searchPaths = this.searchPaths;
 
         // Relative template like "./test.html"
         if (PathUtils.isPureRelative(to) && from) {
@@ -89,19 +86,19 @@ var ThemesLoader = nunjucks.Loader.extend({
         }
 
         // Determine in which search folder we currently are
-        var originalSearchPath = this.getSearchPath(from);
-        var originalFilename = this.getTemplateName(from);
+        const originalSearchPath = this.getSearchPath(from);
+        const originalFilename = this.getTemplateName(from);
 
         // If we are including same file from a different search path
         // Slice the search paths to avoid including from previous ones
         if (originalFilename == to) {
-            var currentIndex = searchPaths.indexOf(originalSearchPath);
+            const currentIndex = searchPaths.indexOf(originalSearchPath);
             searchPaths = searchPaths.slice(currentIndex + 1);
         }
 
         // Absolute template to resolve in root folder
-        var resultFolder = searchPaths.find(function (basePath) {
-            var p = path.resolve(basePath, to);
+        const resultFolder = searchPaths.find((basePath) => {
+            const p = path.resolve(basePath, to);
 
             return p.indexOf(basePath) === 0 && fs.existsSync(p);
         });

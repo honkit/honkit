@@ -1,10 +1,10 @@
-var events = require("events");
-var http = require("http");
-var send = require("send");
-var util = require("util");
-var url = require("url");
+const events = require("events");
+const http = require("http");
+const send = require("send");
+const util = require("util");
+const url = require("url");
 
-var Promise = require("../utils/promise");
+const Promise = require("../utils/promise");
 
 function Server() {
     this.running = null;
@@ -12,28 +12,29 @@ function Server() {
     this.port = 0;
     this.sockets = [];
 }
+
 util.inherits(Server, events.EventEmitter);
 
 /**
-    Return true if the server is running
+ Return true if the server is running
 
-    @return {Boolean}
-*/
+ @return {Boolean}
+ */
 Server.prototype.isRunning = function () {
     return !!this.running;
 };
 
 /**
-    Stop the server
+ Stop the server
 
-    @return {Promise}
-*/
+ @return {Promise}
+ */
 Server.prototype.stop = function () {
-    var that = this;
+    const that = this;
     if (!this.isRunning()) return Promise();
 
-    var d = Promise.defer();
-    this.running.close(function (err) {
+    const d = Promise.defer();
+    this.running.close((err) => {
         that.running = null;
         that.emit("state", false);
 
@@ -41,7 +42,7 @@ Server.prototype.stop = function () {
         else d.resolve();
     });
 
-    for (var i = 0; i < this.sockets.length; i++) {
+    for (let i = 0; i < this.sockets.length; i++) {
         this.sockets[i].destroy();
     }
 
@@ -49,20 +50,20 @@ Server.prototype.stop = function () {
 };
 
 /**
-    Start the server
+ Start the server
 
-    @return {Promise}
-*/
+ @return {Promise}
+ */
 Server.prototype.start = function (dir, port) {
-    var that = this,
-        pre = Promise();
+    const that = this;
+    let pre = Promise();
     port = port || 8004;
 
     if (that.isRunning()) pre = this.stop();
-    return pre.then(function () {
-        var d = Promise.defer();
+    return pre.then(() => {
+        const d = Promise.defer();
 
-        that.running = http.createServer(function (req, res) {
+        that.running = http.createServer((req, res) => {
             // Render error
             function error(err) {
                 res.statusCode = err.status || 500;
@@ -71,14 +72,14 @@ Server.prototype.start = function (dir, port) {
 
             // Redirect to directory's index.html
             function redirect() {
-                var resultURL = urlTransform(req.url, function (parsed) {
+                const resultURL = urlTransform(req.url, (parsed) => {
                     parsed.pathname += "/";
                     return parsed;
                 });
 
                 res.statusCode = 301;
                 res.setHeader("Location", resultURL);
-                res.end("Redirecting to " + resultURL);
+                res.end(`Redirecting to ${resultURL}`);
             }
 
             res.setHeader("X-Current-Location", req.url);
@@ -92,15 +93,15 @@ Server.prototype.start = function (dir, port) {
                 .pipe(res);
         });
 
-        that.running.on("connection", function (socket) {
+        that.running.on("connection", (socket) => {
             that.sockets.push(socket);
             socket.setTimeout(4000);
-            socket.on("close", function () {
+            socket.on("close", () => {
                 that.sockets.splice(that.sockets.indexOf(socket), 1);
             });
         });
 
-        that.running.listen(port, function (err) {
+        that.running.listen(port, (err) => {
             if (err) return d.reject(err);
 
             that.port = port;
@@ -114,13 +115,13 @@ Server.prototype.start = function (dir, port) {
 };
 
 /**
-    urlTransform is a helper function that allows a function to transform
-    a url string in it's parsed form and returns the new url as a string
+ urlTransform is a helper function that allows a function to transform
+ a url string in it's parsed form and returns the new url as a string
 
-    @param {String} uri
-    @param {Function} fn
-    @return {String}
-*/
+ @param {String} uri
+ @param {Function} fn
+ @return {String}
+ */
 function urlTransform(uri, fn) {
     return url.format(fn(url.parse(uri)));
 }

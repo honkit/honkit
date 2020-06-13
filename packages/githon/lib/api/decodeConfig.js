@@ -6,7 +6,7 @@
     @return {Config}
 */
 function decodeGlobal(config, result) {
-    var values = result.values;
+    const values = result.values;
 
     delete values.generator;
     delete values.output;

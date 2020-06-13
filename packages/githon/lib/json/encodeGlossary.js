@@ -1,5 +1,5 @@
-var encodeFile = require("./encodeFile");
-var encodeGlossaryEntry = require("./encodeGlossaryEntry");
+const encodeFile = require("./encodeFile");
+const encodeGlossaryEntry = require("./encodeGlossaryEntry");
 
 /**
     Encode a glossary to JSON
@@ -8,8 +8,8 @@ var encodeGlossaryEntry = require("./encodeGlossaryEntry");
     @return {Object}
 */
 function encodeGlossary(glossary) {
-    var file = glossary.getFile();
-    var entries = glossary.getEntries();
+    const file = glossary.getFile();
+    const entries = glossary.getEntries();
 
     return {
         file: encodeFile(file),

@@ -1,12 +1,12 @@
-var path = require("path");
-var resolve = require("resolve");
-var Immutable = require("immutable");
+const path = require("path");
+const resolve = require("resolve");
+const Immutable = require("immutable");
 
-var Promise = require("../utils/promise");
-var error = require("../utils/error");
-var timing = require("../utils/timing");
+const Promise = require("../utils/promise");
+const error = require("../utils/error");
+const timing = require("../utils/timing");
 
-var validatePlugin = require("./validatePlugin");
+const validatePlugin = require("./validatePlugin");
 
 // Return true if an error is a "module not found"
 // Wait on https://github.com/substack/node-resolve/pull/81 to be merged
@@ -23,21 +23,21 @@ function isModuleNotFound(err) {
     @return {Promise<Plugin>}
 */
 function loadPlugin(book, plugin) {
-    var logger = book.getLogger();
+    const logger = book.getLogger();
 
-    var name = plugin.getName();
-    var pkgPath = plugin.getPath();
+    const name = plugin.getName();
+    let pkgPath = plugin.getPath();
 
     // Try loading plugins from different location
-    var p = Promise()
-        .then(function () {
-            var packageContent;
-            var packageMain;
-            var content;
+    let p = Promise()
+        .then(() => {
+            let packageContent;
+            let packageMain;
+            let content;
 
             // Locate plugin and load package.json
             try {
-                var res = resolve.sync("./package.json", { basedir: pkgPath });
+                const res = resolve.sync("./package.json", { basedir: pkgPath });
 
                 pkgPath = path.dirname(res);
                 packageContent = require(res);
@@ -52,8 +52,8 @@ function loadPlugin(book, plugin) {
 
             // Locate the main package
             try {
-                var indexJs = path.normalize(packageContent.main || "index.js");
-                packageMain = resolve.sync("./" + indexJs, { basedir: pkgPath });
+                const indexJs = path.normalize(packageContent.main || "index.js");
+                packageMain = resolve.sync(`./${indexJs}`, { basedir: pkgPath });
             } catch (err) {
                 if (!isModuleNotFound(err)) throw err;
                 packageMain = undefined;
@@ -81,7 +81,7 @@ function loadPlugin(book, plugin) {
 
     p = timing.measure("plugin.load", p);
 
-    logger.info('loading plugin "' + name + '"... ');
+    logger.info(`loading plugin "${name}"... `);
     return logger.info.promise(p);
 }
 

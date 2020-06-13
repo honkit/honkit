@@ -1,4 +1,4 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
 /**
     Encode an article for next/prev
@@ -8,7 +8,7 @@ var Immutable = require("immutable");
     @return {Object}
 */
 function encodeArticle(pages, article) {
-    var articlePath = article.getPath();
+    const articlePath = article.getPath();
 
     return {
         path: articlePath,
@@ -26,20 +26,20 @@ function encodeArticle(pages, article) {
     @return {Object}
 */
 function encodeNavigation(output) {
-    var book = output.getBook();
-    var pages = output.getPages();
-    var summary = book.getSummary();
-    var articles = summary.getArticlesAsList();
+    const book = output.getBook();
+    const pages = output.getPages();
+    const summary = book.getSummary();
+    const articles = summary.getArticlesAsList();
 
-    var navigation = articles
-        .map(function (article, i) {
-            var ref = article.getRef();
+    const navigation = articles
+        .map((article, i) => {
+            const ref = article.getRef();
             if (!ref) {
                 return undefined;
             }
 
-            var prev = articles.get(i - 1);
-            var next = articles.get(i + 1);
+            const prev = articles.get(i - 1);
+            const next = articles.get(i + 1);
 
             return [
                 ref,
@@ -53,7 +53,7 @@ function encodeNavigation(output) {
                 },
             ];
         })
-        .filter(function (e) {
+        .filter((e) => {
             return Boolean(e);
         });
 

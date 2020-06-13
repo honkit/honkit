@@ -1,5 +1,5 @@
-var url = require("url");
-var path = require("path");
+const url = require("url");
+const path = require("path");
 
 // Is the url an external url
 function isExternal(href) {
@@ -27,7 +27,7 @@ function isRelative(href) {
 // Return true if the link is an achor
 function isAnchor(href) {
     try {
-        var parsed = url.parse(href);
+        const parsed = url.parse(href);
         return !!(!parsed.protocol && !parsed.path && parsed.hash);
     } catch (err) {
         return false;
@@ -74,7 +74,7 @@ function toAbsolute(_href, dir, outdir) {
     outdir = normalize(outdir);
 
     // Path "_href" inside the base folder
-    var hrefInRoot = normalize(path.join(dir, _href));
+    let hrefInRoot = normalize(path.join(dir, _href));
     if (_href[0] == "/") {
         hrefInRoot = normalize(_href.slice(1));
     }
@@ -97,7 +97,7 @@ function toAbsolute(_href, dir, outdir) {
  * @return {String}
  */
 function relative(dir, file) {
-    var isDirectory = file.slice(-1) === "/";
+    const isDirectory = file.slice(-1) === "/";
     return normalize(path.relative(dir, file)) + (isDirectory ? "/" : "");
 }
 

@@ -5,7 +5,7 @@
     @return {Object}
 */
 function encodeFileToJson(file) {
-    var filePath = file.getPath();
+    const filePath = file.getPath();
     if (!filePath) {
         return undefined;
     }

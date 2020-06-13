@@ -1,21 +1,21 @@
-var path = require("path");
-var nunjucks = require("nunjucks");
-var DoExtension = require("nunjucks-do")(nunjucks);
+const path = require("path");
+const nunjucks = require("nunjucks");
+const DoExtension = require("nunjucks-do")(nunjucks);
 
-var Api = require("../../api");
-var deprecate = require("../../api/deprecate");
-var JSONUtils = require("../../json");
-var LocationUtils = require("../../utils/location");
-var fs = require("../../utils/fs");
-var PathUtils = require("../../utils/path");
-var TemplateEngine = require("../../models/templateEngine");
-var templatesFolder = require("../../constants/templatesFolder");
-var defaultFilters = require("../../constants/defaultFilters");
-var Templating = require("../../templating");
-var listSearchPaths = require("./listSearchPaths");
+const Api = require("../../api");
+const deprecate = require("../../api/deprecate");
+const JSONUtils = require("../../json");
+const LocationUtils = require("../../utils/location");
+const fs = require("../../utils/fs");
+const PathUtils = require("../../utils/path");
+const TemplateEngine = require("../../models/templateEngine");
+const templatesFolder = require("../../constants/templatesFolder");
+const defaultFilters = require("../../constants/defaultFilters");
+const Templating = require("../../templating");
+const listSearchPaths = require("./listSearchPaths");
 
-var fileToURL = require("../helper/fileToURL");
-var resolveFileToURL = require("../helper/resolveFileToURL");
+const fileToURL = require("../helper/fileToURL");
+const resolveFileToURL = require("../helper/resolveFileToURL");
 
 /**
  * Directory for a theme with the templates
@@ -32,25 +32,25 @@ function templateFolder(dir) {
  * @return {TemplateEngine}
  */
 function createTemplateEngine(output, currentFile) {
-    var book = output.getBook();
-    var state = output.getState();
-    var i18n = state.getI18n();
-    var config = book.getConfig();
-    var summary = book.getSummary();
-    var outputFolder = output.getRoot();
+    const book = output.getBook();
+    const state = output.getState();
+    const i18n = state.getI18n();
+    const config = book.getConfig();
+    const summary = book.getSummary();
+    const outputFolder = output.getRoot();
 
     // Search paths for templates
-    var searchPaths = listSearchPaths(output);
-    var tplSearchPaths = searchPaths.map(templateFolder);
+    const searchPaths = listSearchPaths(output);
+    const tplSearchPaths = searchPaths.map(templateFolder);
 
     // Create loader
-    var loader = new Templating.ThemesLoader(tplSearchPaths);
+    const loader = new Templating.ThemesLoader(tplSearchPaths);
 
     // Get languages
-    var language = config.getValue("language");
+    const language = config.getValue("language");
 
     // Create API context
-    var context = Api.encodeGlobal(output);
+    const context = Api.encodeGlobal(output);
 
     /**
      * Check if a file exists
@@ -62,7 +62,7 @@ function createTemplateEngine(output, currentFile) {
             return false;
         }
 
-        var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+        const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
         return fs.existsSync(filePath);
     }
 
@@ -72,7 +72,7 @@ function createTemplateEngine(output, currentFile) {
      * @return {Object|undefined}
      */
     function getArticleByPath(filePath) {
-        var article = summary.getByPath(filePath);
+        const article = summary.getByPath(filePath);
         if (!article) return undefined;
 
         return JSONUtils.encodeSummaryArticle(article);
@@ -84,7 +84,7 @@ function createTemplateEngine(output, currentFile) {
      * @return {Object|undefined}
      */
     function getPageByPath(filePath) {
-        var page = output.getPage(filePath);
+        const page = output.getPage(filePath);
         if (!page) return undefined;
 
         return JSONUtils.encodePage(page, summary);

@@ -1,9 +1,9 @@
-var path = require("path");
-var Immutable = require("immutable");
+const path = require("path");
+const Immutable = require("immutable");
 
-var parsers = require("../parsers");
+const parsers = require("../parsers");
 
-var File = Immutable.Record({
+const File = Immutable.Record({
     // Path of the file, relative to the FS
     path: String(),
 
@@ -34,7 +34,7 @@ File.prototype.exists = function () {
     @return {String}
 */
 File.prototype.getType = function () {
-    var parser = this.getParser();
+    const parser = this.getParser();
     if (parser) {
         return parser.getName();
     } else {

@@ -1,6 +1,6 @@
-var Promise = require("../utils/promise");
-var timing = require("../utils/timing");
-var Api = require("../api");
+const Promise = require("../utils/promise");
+const timing = require("../utils/timing");
+const Api = require("../api");
 
 function defaultGetArgument() {
     return undefined;
@@ -23,25 +23,25 @@ function callHook(name, getArgument, handleResult, output) {
     getArgument = getArgument || defaultGetArgument;
     handleResult = handleResult || defaultHandleResult;
 
-    var logger = output.getLogger();
-    var plugins = output.getPlugins();
+    const logger = output.getLogger();
+    const plugins = output.getPlugins();
 
-    logger.debug.ln('calling hook "' + name + '"');
+    logger.debug.ln(`calling hook "${name}"`);
 
     // Create the JS context for plugins
-    var context = Api.encodeGlobal(output);
+    const context = Api.encodeGlobal(output);
 
     return timing.measure(
-        "call.hook." + name,
+        `call.hook.${name}`,
 
         // Get the arguments
         Promise(getArgument(output))
             // Call the hooks in serie
-            .then(function (arg) {
+            .then((arg) => {
                 return Promise.reduce(
                     plugins,
-                    function (prev, plugin) {
-                        var hook = plugin.getHook(name);
+                    (prev, plugin) => {
+                        const hook = plugin.getHook(name);
                         if (!hook) {
                             return prev;
                         }
@@ -53,7 +53,7 @@ function callHook(name, getArgument, handleResult, output) {
             })
 
             // Handle final result
-            .then(function (result) {
+            .then((result) => {
                 output = Api.decodeGlobal(output, context);
                 return handleResult(output, result);
             })

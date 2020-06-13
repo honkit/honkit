@@ -1,7 +1,7 @@
-var Immutable = require("immutable");
-var PluginDependency = require("../models/pluginDependency");
+const Immutable = require("immutable");
+const PluginDependency = require("../models/pluginDependency");
 
-var pkg = require("../../package.json");
+const pkg = require("../../package.json");
 
 /**
  * Create a PluginDependency from a dependency of gitbook
@@ -9,8 +9,8 @@ var pkg = require("../../package.json");
  * @return {PluginDependency}
  */
 function createFromDependency(pluginName) {
-    var npmID = PluginDependency.nameToNpmID(pluginName);
-    var version = pkg.dependencies[npmID];
+    const npmID = PluginDependency.nameToNpmID(pluginName);
+    const version = pkg.dependencies[npmID];
 
     return PluginDependency.create(pluginName, version);
 }

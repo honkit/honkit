@@ -1,4 +1,4 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
 /**
  * Merge
@@ -7,8 +7,8 @@ var Immutable = require("immutable");
  * @return {Object}
  */
 function mergeDefaults(obj, src) {
-    var objValue = Immutable.fromJS(obj);
-    var srcValue = Immutable.fromJS(src);
+    const objValue = Immutable.fromJS(obj);
+    const srcValue = Immutable.fromJS(src);
 
     return srcValue.mergeDeep(objValue).toJS();
 }

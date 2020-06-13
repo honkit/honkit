@@ -1,10 +1,10 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var TemplateBlock = require("../../models/templateBlock");
-var replaceShortcuts = require("../replaceShortcuts");
+const TemplateBlock = require("../../models/templateBlock");
+const replaceShortcuts = require("../replaceShortcuts");
 
 describe("replaceShortcuts", () => {
-    var blocks = Immutable.List([
+    const blocks = Immutable.List([
         TemplateBlock.create("math", {
             shortcuts: {
                 start: "$$",
@@ -15,12 +15,12 @@ describe("replaceShortcuts", () => {
     ]);
 
     test("should correctly replace inline matches by block", () => {
-        var content = replaceShortcuts(blocks, "test.md", "Hello $$a = b$$");
+        const content = replaceShortcuts(blocks, "test.md", "Hello $$a = b$$");
         expect(content).toBe("Hello {% math %}a = b{% endmath %}");
     });
 
     test("should correctly replace block matches", () => {
-        var content = replaceShortcuts(blocks, "test.md", "Hello\n$$\na = b\n$$\n");
+        const content = replaceShortcuts(blocks, "test.md", "Hello\n$$\na = b\n$$\n");
         expect(content).toBe("Hello\n{% math %}\na = b\n{% endmath %}\n");
     });
 });

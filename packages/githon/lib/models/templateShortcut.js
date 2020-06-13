@@ -1,11 +1,11 @@
-var Immutable = require("immutable");
-var is = require("is");
+const Immutable = require("immutable");
+const is = require("is");
 
 /*
     A TemplateShortcut is defined in plugin's template blocks
     to replace content with a templating block using delimiters.
 */
-var TemplateShortcut = Immutable.Record(
+const TemplateShortcut = Immutable.Record(
     {
         // List of parser names accepting this shortcut
         parsers: Immutable.Map(),
@@ -50,7 +50,7 @@ TemplateShortcut.prototype.acceptParser = function (parser) {
         parser = parser.getName();
     }
 
-    var parserNames = this.get("parsers");
+    const parserNames = this.get("parsers");
     return parserNames.includes(parser);
 };
 

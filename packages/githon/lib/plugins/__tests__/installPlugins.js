@@ -1,27 +1,27 @@
-var path = require("path");
+const path = require("path");
 
-var Book = require("../../models/book");
-var NodeFS = require("../../fs/node");
-var installPlugins = require("../installPlugins");
+const Book = require("../../models/book");
+const NodeFS = require("../../fs/node");
+const installPlugins = require("../installPlugins");
 
-var Parse = require("../../parse");
+const Parse = require("../../parse");
 
 describe.skip("installPlugins", () => {
-    var book;
+    let book;
 
     jest.setTimeout(30000);
 
     beforeAll(() => {
-        var fs = NodeFS(path.resolve(__dirname, "../../../../../"));
-        var baseBook = Book.createForFS(fs);
+        const fs = NodeFS(path.resolve(__dirname, "../../../../../"));
+        const baseBook = Book.createForFS(fs);
 
-        return Parse.parseConfig(baseBook).then(function (_book) {
+        return Parse.parseConfig(baseBook).then((_book) => {
             book = _book;
         });
     });
 
     test("must install all plugins from NPM", () => {
-        return installPlugins(book, { "dry-run": true, audit: false, "prefer-offline": true }).then(function (n) {
+        return installPlugins(book, { "dry-run": true, audit: false, "prefer-offline": true }).then((n) => {
             expect(n).toBe(2);
         });
     });

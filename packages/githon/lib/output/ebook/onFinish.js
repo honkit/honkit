@@ -1,15 +1,15 @@
-var path = require("path");
+const path = require("path");
 
-var WebsiteGenerator = require("../website");
-var JSONUtils = require("../../json");
-var Templating = require("../../templating");
-var Promise = require("../../utils/promise");
-var error = require("../../utils/error");
-var command = require("../../utils/command");
-var writeFile = require("../helper/writeFile");
+const WebsiteGenerator = require("../website");
+const JSONUtils = require("../../json");
+const Templating = require("../../templating");
+const Promise = require("../../utils/promise");
+const error = require("../../utils/error");
+const command = require("../../utils/command");
+const writeFile = require("../helper/writeFile");
 
-var getConvertOptions = require("./getConvertOptions");
-var SUMMARY_FILE = "SUMMARY.html";
+const getConvertOptions = require("./getConvertOptions");
+const SUMMARY_FILE = "SUMMARY.html";
 
 /**
     Write the SUMMARY.html
@@ -18,19 +18,19 @@ var SUMMARY_FILE = "SUMMARY.html";
     @return {Output}
 */
 function writeSummary(output) {
-    var options = output.getOptions();
-    var prefix = options.get("prefix");
+    const options = output.getOptions();
+    const prefix = options.get("prefix");
 
-    var filePath = SUMMARY_FILE;
-    var engine = WebsiteGenerator.createTemplateEngine(output, filePath);
-    var context = JSONUtils.encodeOutput(output);
+    const filePath = SUMMARY_FILE;
+    const engine = WebsiteGenerator.createTemplateEngine(output, filePath);
+    const context = JSONUtils.encodeOutput(output);
 
     // Render the theme
     return (
-        Templating.renderFile(engine, prefix + "/summary.html", context)
+        Templating.renderFile(engine, `${prefix}/summary.html`, context)
 
             // Write it to the disk
-            .then(function (tplOut) {
+            .then((tplOut) => {
                 return writeFile(output, filePath, tplOut.getContent());
             })
     );
@@ -43,30 +43,30 @@ function writeSummary(output) {
     @return {Output}
 */
 function runEbookConvert(output) {
-    var logger = output.getLogger();
-    var options = output.getOptions();
-    var format = options.get("format");
-    var outputFolder = output.getRoot();
+    const logger = output.getLogger();
+    const options = output.getOptions();
+    const format = options.get("format");
+    const outputFolder = output.getRoot();
 
     if (!format) {
         return Promise(output);
     }
 
     return getConvertOptions(output)
-        .then(function (options) {
-            var cmd = [
+        .then((options) => {
+            const cmd = [
                 "ebook-convert",
                 path.resolve(outputFolder, SUMMARY_FILE),
-                path.resolve(outputFolder, "index." + format),
+                path.resolve(outputFolder, `index.${format}`),
                 command.optionsToShellArgs(options),
             ].join(" ");
 
             return command
                 .exec(cmd)
-                .progress(function (data) {
+                .progress((data) => {
                     logger.debug(data);
                 })
-                .fail(function (err) {
+                .fail((err) => {
                     if (err.code == 127) {
                         throw error.RequireInstallError({
                             cmd: "ebook-convert",

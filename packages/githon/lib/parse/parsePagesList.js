@@ -1,9 +1,9 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var timing = require("../utils/timing");
-var Page = require("../models/page");
-var walkSummary = require("./walkSummary");
-var parsePage = require("./parsePage");
+const timing = require("../utils/timing");
+const Page = require("../models/page");
+const walkSummary = require("./walkSummary");
+const parsePage = require("./parsePage");
 
 /**
     Parse a page from a path
@@ -13,23 +13,23 @@ var parsePage = require("./parsePage");
     @return {Page?}
 */
 function parseFilePage(book, filePath) {
-    var fs = book.getContentFS();
+    const fs = book.getContentFS();
 
     return fs
         .statFile(filePath)
         .then(
-            function (file) {
-                var page = Page.createForFile(file);
+            (file) => {
+                const page = Page.createForFile(file);
                 return parsePage(book, page);
             },
-            function (err) {
+            (err) => {
                 // file doesn't exist
                 return null;
             }
         )
-        .fail(function (err) {
-            var logger = book.getLogger();
-            logger.error.ln('error while parsing page "' + filePath + '":');
+        .fail((err) => {
+            const logger = book.getLogger();
+            logger.error.ln(`error while parsing page "${filePath}":`);
             throw err;
         });
 }
@@ -41,24 +41,24 @@ function parseFilePage(book, filePath) {
     @return {Promise<OrderedMap<Page>>}
 */
 function parsePagesList(book) {
-    var summary = book.getSummary();
-    var glossary = book.getGlossary();
-    var map = Immutable.OrderedMap();
+    const summary = book.getSummary();
+    const glossary = book.getGlossary();
+    let map = Immutable.OrderedMap();
 
     // Parse pages from summary
     return (
         timing
             .measure(
                 "parse.listPages",
-                walkSummary(summary, function (article) {
+                walkSummary(summary, (article) => {
                     if (!article.isPage()) return;
 
-                    var filepath = article.getPath();
+                    const filepath = article.getPath();
 
                     // Is the page ignored?
                     if (book.isContentFileIgnored(filepath)) return;
 
-                    return parseFilePage(book, filepath).then(function (page) {
+                    return parseFilePage(book, filepath).then((page) => {
                         // file doesn't exist
                         if (!page) {
                             return;
@@ -70,14 +70,14 @@ function parsePagesList(book) {
             )
 
             // Parse glossary
-            .then(function () {
-                var file = glossary.getFile();
+            .then(() => {
+                const file = glossary.getFile();
 
                 if (!file.exists()) {
                     return;
                 }
 
-                return parseFilePage(book, file.getPath()).then(function (page) {
+                return parseFilePage(book, file.getPath()).then((page) => {
                     // file doesn't exist
                     if (!page) {
                         return;
@@ -87,7 +87,7 @@ function parsePagesList(book) {
                 });
             })
 
-            .then(function () {
+            .then(() => {
                 return map;
             })
     );

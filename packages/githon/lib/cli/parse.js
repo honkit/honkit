@@ -1,22 +1,22 @@
-var options = require("./options");
-var getBook = require("./getBook");
+const options = require("./options");
+const getBook = require("./getBook");
 
-var Parse = require("../parse");
+const Parse = require("../parse");
 
 function printBook(book) {
-    var logger = book.getLogger();
+    const logger = book.getLogger();
 
-    var config = book.getConfig();
-    var configFile = config.getFile();
+    const config = book.getConfig();
+    const configFile = config.getFile();
 
-    var summary = book.getSummary();
-    var summaryFile = summary.getFile();
+    const summary = book.getSummary();
+    const summaryFile = summary.getFile();
 
-    var readme = book.getReadme();
-    var readmeFile = readme.getFile();
+    const readme = book.getReadme();
+    const readmeFile = readme.getFile();
 
-    var glossary = book.getGlossary();
-    var glossaryFile = glossary.getFile();
+    const glossary = book.getGlossary();
+    const glossaryFile = glossary.getFile();
 
     if (configFile.exists()) {
         logger.info.ln("Configuration file is", configFile.getPath());
@@ -36,13 +36,13 @@ function printBook(book) {
 }
 
 function printMultingualBook(book) {
-    var logger = book.getLogger();
-    var languages = book.getLanguages();
-    var books = book.getBooks();
+    const logger = book.getLogger();
+    const languages = book.getLanguages();
+    const books = book.getBooks();
 
-    logger.info.ln(languages.size + " languages");
+    logger.info.ln(`${languages.size} languages`);
 
-    languages.forEach(function (lang) {
+    languages.forEach((lang) => {
         logger.info.ln("Language:", lang.getTitle());
         printBook(books.get(lang.getID()));
         logger.info.ln("");
@@ -54,12 +54,12 @@ module.exports = {
     description: "parse and print debug information about a book",
     options: [options.log],
     exec: function (args, kwargs) {
-        var book = getBook(args, kwargs);
-        var logger = book.getLogger();
+        const book = getBook(args, kwargs);
+        const logger = book.getLogger();
 
-        return Parse.parseBook(book).then(function (resultBook) {
-            var rootFolder = book.getRoot();
-            var contentFolder = book.getContentRoot();
+        return Parse.parseBook(book).then((resultBook) => {
+            const rootFolder = book.getRoot();
+            const contentFolder = book.getContentRoot();
 
             logger.info.ln("Book located in:", rootFolder);
             if (contentFolder != rootFolder) {

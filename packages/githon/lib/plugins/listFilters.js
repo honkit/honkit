@@ -1,4 +1,4 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
 /**
     List filters from a list of plugins
@@ -7,7 +7,7 @@ var Immutable = require("immutable");
     @return {Map<String:Function>}
 */
 function listFilters(plugins) {
-    return plugins.reverse().reduce(function (result, plugin) {
+    return plugins.reverse().reduce((result, plugin) => {
         return result.merge(plugin.getFilters());
     }, Immutable.Map());
 }

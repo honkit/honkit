@@ -1,7 +1,7 @@
-var is = require("is");
+const is = require("is");
 
-var TypedError = require("error/typed");
-var WrappedError = require("error/wrapped");
+const TypedError = require("error/typed");
+const WrappedError = require("error/wrapped");
 
 // Enforce as an Error object, and cleanup message
 function enforce(err) {
@@ -12,31 +12,31 @@ function enforce(err) {
 }
 
 // Random error wrappers during parsing/generation
-var ParsingError = WrappedError({
+const ParsingError = WrappedError({
     message: "Parsing Error: {origMessage}",
     type: "parse",
 });
-var OutputError = WrappedError({
+const OutputError = WrappedError({
     message: "Output Error: {origMessage}",
     type: "generate",
 });
 
 // A file does not exists
-var FileNotFoundError = TypedError({
+const FileNotFoundError = TypedError({
     type: "file.not-found",
     message: 'No "{filename}" file (or is ignored)',
     filename: null,
 });
 
 // A file cannot be parsed
-var FileNotParsableError = TypedError({
+const FileNotParsableError = TypedError({
     type: "file.not-parsable",
     message: '"{filename}" file cannot be parsed',
     filename: null,
 });
 
 // A file is outside the scope
-var FileOutOfScopeError = TypedError({
+const FileOutOfScopeError = TypedError({
     type: "file.out-of-scope",
     message: '"{filename}" not in "{root}"',
     filename: null,
@@ -45,7 +45,7 @@ var FileOutOfScopeError = TypedError({
 });
 
 // A file is outside the scope
-var RequireInstallError = TypedError({
+const RequireInstallError = TypedError({
     type: "install.required",
     message: '"{cmd}" is not installed.\n{install}',
     cmd: null,
@@ -54,27 +54,27 @@ var RequireInstallError = TypedError({
 });
 
 // Error for nunjucks templates
-var TemplateError = WrappedError({
+const TemplateError = WrappedError({
     message: 'Error compiling template "{filename}": {origMessage}',
     type: "template",
     filename: null,
 });
 
 // Error for nunjucks templates
-var PluginError = WrappedError({
+const PluginError = WrappedError({
     message: 'Error with plugin "{plugin}": {origMessage}',
     type: "plugin",
     plugin: null,
 });
 
 // Error with the book's configuration
-var ConfigurationError = WrappedError({
+const ConfigurationError = WrappedError({
     message: "Error with book's configuration: {origMessage}",
     type: "configuration",
 });
 
 // Error during ebook generation
-var EbookError = WrappedError({
+const EbookError = WrappedError({
     message: "Error during ebook generation: {origMessage}\n{stdout}",
     type: "ebook",
     stdout: "",

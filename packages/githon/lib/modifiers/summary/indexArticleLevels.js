@@ -7,10 +7,10 @@
 */
 function indexArticleLevels(article, baseLevel) {
     baseLevel = baseLevel || article.getLevel();
-    var articles = article.getArticles();
+    let articles = article.getArticles();
 
-    articles = articles.map(function (inner, i) {
-        return indexArticleLevels(inner, baseLevel + "." + (i + 1));
+    articles = articles.map((inner, i) => {
+        return indexArticleLevels(inner, `${baseLevel}.${i + 1}`);
     });
 
     return article.merge({

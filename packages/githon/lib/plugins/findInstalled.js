@@ -1,11 +1,11 @@
-var readInstalled = require("read-installed");
-var Immutable = require("immutable");
-var path = require("path");
+const readInstalled = require("read-installed");
+const Immutable = require("immutable");
+const path = require("path");
 
-var Promise = require("../utils/promise");
-var fs = require("../utils/fs");
-var Plugin = require("../models/plugin");
-var PREFIX = require("../constants/pluginPrefix");
+const Promise = require("../utils/promise");
+const fs = require("../utils/fs");
+const Plugin = require("../models/plugin");
+const PREFIX = require("../constants/pluginPrefix");
 
 /**
  * Validate if a package name is a GitBook plugin
@@ -23,23 +23,23 @@ function validateId(name) {
  * @return {OrderedMap<String:Plugin>}
  */
 function findInstalled(folder) {
-    var options = {
+    const options = {
         dev: false,
         log: function () {},
         depth: 4,
     };
-    var results = Immutable.OrderedMap();
+    let results = Immutable.OrderedMap();
 
     function onPackage(pkg, parent) {
         if (!pkg.name) return;
 
-        var name = pkg.name;
-        var version = pkg.version;
-        var pkgPath = pkg.realPath;
-        var depth = pkg.depth;
-        var dependencies = pkg.dependencies;
+        const name = pkg.name;
+        const version = pkg.version;
+        const pkgPath = pkg.realPath;
+        const depth = pkg.depth;
+        const dependencies = pkg.dependencies;
 
-        var pluginName = name.slice(PREFIX.length);
+        const pluginName = name.slice(PREFIX.length);
 
         if (!validateId(name)) {
             if (parent) return;
@@ -56,35 +56,35 @@ function findInstalled(folder) {
             );
         }
 
-        Immutable.Map(dependencies).forEach(function (dep) {
+        Immutable.Map(dependencies).forEach((dep) => {
             onPackage(dep, pluginName);
         });
     }
 
     // Search for gitbook-plugins in node_modules folder
-    var node_modules = path.join(folder, "node_modules");
+    const node_modules = path.join(folder, "node_modules");
 
     // List all folders in node_modules
     return fs
         .readdir(node_modules)
-        .fail(function () {
+        .fail(() => {
             return Promise([]);
         })
-        .then(function (modules) {
-            return Promise.serie(modules, function (module) {
+        .then((modules) => {
+            return Promise.serie(modules, (module) => {
                 // Not a gitbook-plugin
                 if (!validateId(module)) {
                     return Promise();
                 }
 
                 // Read gitbook-plugin package details
-                var module_folder = path.join(node_modules, module);
-                return Promise.nfcall(readInstalled, module_folder, options).then(function (data) {
+                const module_folder = path.join(node_modules, module);
+                return Promise.nfcall(readInstalled, module_folder, options).then((data) => {
                     onPackage(data);
                 });
             });
         })
-        .then(function () {
+        .then(() => {
             // Return installed plugins
             return results;
         });

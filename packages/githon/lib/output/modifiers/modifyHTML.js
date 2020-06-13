@@ -1,5 +1,5 @@
-var cheerio = require("cheerio");
-var Promise = require("../../utils/promise");
+const cheerio = require("cheerio");
+const Promise = require("../../utils/promise");
 
 /**
     Apply a list of operations to a page and
@@ -10,13 +10,13 @@ var Promise = require("../../utils/promise");
     @return {Promise<Page>}
 */
 function modifyHTML(page, operations) {
-    var html = page.getContent();
-    var $ = cheerio.load(html);
+    const html = page.getContent();
+    const $ = cheerio.load(html);
 
-    return Promise.forEach(operations, function (op) {
+    return Promise.forEach(operations, (op) => {
         return op($);
-    }).then(function () {
-        var resultHTML = $.html();
+    }).then(() => {
+        const resultHTML = $.html();
         return page.set("content", resultHTML);
     });
 }

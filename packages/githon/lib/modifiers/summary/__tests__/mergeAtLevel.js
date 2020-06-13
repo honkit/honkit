@@ -1,10 +1,10 @@
-var Immutable = require("immutable");
-var Summary = require("../../../models/summary");
-var File = require("../../../models/file");
+const Immutable = require("immutable");
+const Summary = require("../../../models/summary");
+const File = require("../../../models/file");
 
 describe("mergeAtLevel", () => {
-    var mergeAtLevel = require("../mergeAtLevel");
-    var summary = Summary.createFromParts(File(), [
+    const mergeAtLevel = require("../mergeAtLevel");
+    const summary = Summary.createFromParts(File(), [
         {
             articles: [
                 {
@@ -24,9 +24,9 @@ describe("mergeAtLevel", () => {
     ]);
 
     test("should edit a part", () => {
-        var beforeChildren = summary.getByLevel("1").getArticles();
-        var newSummary = mergeAtLevel(summary, "1", { title: "Part O" });
-        var edited = newSummary.getByLevel("1");
+        const beforeChildren = summary.getByLevel("1").getArticles();
+        const newSummary = mergeAtLevel(summary, "1", { title: "Part O" });
+        const edited = newSummary.getByLevel("1");
 
         expect(edited.getTitle()).toBe("Part O");
         // Same children
@@ -34,9 +34,9 @@ describe("mergeAtLevel", () => {
     });
 
     test("should edit a part", () => {
-        var beforePath = summary.getByLevel("1.2").getPath();
-        var newSummary = mergeAtLevel(summary, "1.2", { title: "Renamed article" });
-        var edited = newSummary.getByLevel("1.2");
+        const beforePath = summary.getByLevel("1.2").getPath();
+        const newSummary = mergeAtLevel(summary, "1.2", { title: "Renamed article" });
+        const edited = newSummary.getByLevel("1.2");
 
         expect(edited.getTitle()).toBe("Renamed article");
         // Same children

@@ -1,4 +1,4 @@
-var githon = require("../githon");
+const githon = require("../githon");
 
 describe("satisfies", () => {
     test("should return true for *", () => {

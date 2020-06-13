@@ -5,11 +5,11 @@
  * @return {Object}
  */
 function getPluginConfig(config, pluginName) {
-    var pluginsConfig = config.getValues().get("pluginsConfig");
+    const pluginsConfig = config.getValues().get("pluginsConfig");
     if (pluginsConfig === undefined) {
         return {};
     }
-    var pluginConf = pluginsConfig.get(pluginName);
+    const pluginConf = pluginsConfig.get(pluginName);
     if (pluginConf === undefined) {
         return {};
     } else {

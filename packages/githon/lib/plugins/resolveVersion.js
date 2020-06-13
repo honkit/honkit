@@ -1,10 +1,10 @@
-var npm = require("global-npm");
-var semver = require("semver");
-var Immutable = require("immutable");
+const npm = require("global-npm");
+const semver = require("semver");
+const Immutable = require("immutable");
 
-var Promise = require("../utils/promise");
-var Plugin = require("../models/plugin");
-var githon = require("../githon");
+const Promise = require("../utils/promise");
+const Plugin = require("../models/plugin");
+const githon = require("../githon");
 
 /**
     Initialize and prepare NPM
@@ -26,31 +26,31 @@ function initNPM(options) {
     @return {Promise<String>}
 */
 function resolveVersion(plugin, options) {
-    var npmId = Plugin.nameToNpmID(plugin.getName());
-    var requiredVersion = plugin.getVersion();
+    const npmId = Plugin.nameToNpmID(plugin.getName());
+    const requiredVersion = plugin.getVersion();
 
     if (plugin.isGitDependency()) {
         return Promise.resolve(requiredVersion);
     }
 
     return initNPM(options)
-        .then(function () {
-            return Promise.nfcall(npm.commands.view, [npmId + "@" + requiredVersion, "engines"], true);
+        .then(() => {
+            return Promise.nfcall(npm.commands.view, [`${npmId}@${requiredVersion}`, "engines"], true);
         })
-        .then(function (versions) {
+        .then((versions) => {
             versions = Immutable.Map(versions).entrySeq();
 
-            var result = versions
-                .map(function (entry) {
+            const result = versions
+                .map((entry) => {
                     return {
                         version: entry[0],
                         gitbook: (entry[1].engines || {}).gitbook,
                     };
                 })
-                .filter(function (v) {
+                .filter((v) => {
                     return v.gitbook && githon.satisfies(v.gitbook);
                 })
-                .sort(function (v1, v2) {
+                .sort((v1, v2) => {
                     return semver.lt(v1.version, v2.version) ? 1 : -1;
                 })
                 .get(0);

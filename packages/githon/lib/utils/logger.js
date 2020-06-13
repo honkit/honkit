@@ -1,9 +1,9 @@
-var is = require("is");
-var util = require("util");
-var color = require("bash-color");
-var Immutable = require("immutable");
+const is = require("is");
+const util = require("util");
+const color = require("bash-color");
+const Immutable = require("immutable");
 
-var LEVELS = Immutable.Map({
+const LEVELS = Immutable.Map({
     DEBUG: 0,
     INFO: 1,
     WARN: 2,
@@ -11,7 +11,7 @@ var LEVELS = Immutable.Map({
     DISABLED: 10,
 });
 
-var COLORS = Immutable.Map({
+const COLORS = Immutable.Map({
     DEBUG: color.purple,
     INFO: color.cyan,
     WARN: color.yellow,
@@ -94,7 +94,7 @@ Logger.prototype.format = function () {
     @param {String}
 */
 Logger.prototype.writeLn = function (msg) {
-    return this.write((msg || "") + "\n");
+    return this.write(`${msg || ""}\n`);
 };
 
 /**
@@ -105,14 +105,14 @@ Logger.prototype.writeLn = function (msg) {
 Logger.prototype.log = function (level) {
     if (level < this.logLevel) return;
 
-    var levelKey = LEVELS.findKey(function (v) {
+    const levelKey = LEVELS.findKey((v) => {
         return v === level;
     });
-    var args = Array.prototype.slice.apply(arguments, [1]);
-    var msg = this.format.apply(this, args);
+    const args = Array.prototype.slice.apply(arguments, [1]);
+    let msg = this.format.apply(this, args);
 
     if (this.lastChar == "\n") {
-        msg = COLORS.get(levelKey)(levelKey.toLowerCase() + ":") + " " + msg;
+        msg = `${COLORS.get(levelKey)(`${levelKey.toLowerCase()}:`)} ${msg}`;
     }
 
     return this.write(msg);
@@ -124,7 +124,7 @@ Logger.prototype.log = function (level) {
 Logger.prototype.logLn = function () {
     if (this.lastChar != "\n") this.write("\n");
 
-    var args = Array.prototype.slice.apply(arguments);
+    const args = Array.prototype.slice.apply(arguments);
     args.push("\n");
     return this.log.apply(this, args);
 };
@@ -133,8 +133,8 @@ Logger.prototype.logLn = function () {
     Log a confirmation [OK]
 */
 Logger.prototype.ok = function (level) {
-    var args = Array.prototype.slice.apply(arguments, [1]);
-    var msg = this.format.apply(this, args);
+    const args = Array.prototype.slice.apply(arguments, [1]);
+    const msg = this.format.apply(this, args);
     if (arguments.length > 1) {
         this.logLn(level, color.green(">> ") + msg.trim().replace(/\n/g, color.green("\n>> ")));
     } else {
@@ -146,7 +146,7 @@ Logger.prototype.ok = function (level) {
     Log a "FAIL"
 */
 Logger.prototype.fail = function (level) {
-    return this.log(level, color.red("ERROR") + "\n");
+    return this.log(level, `${color.red("ERROR")}\n`);
 };
 
 /**
@@ -157,14 +157,14 @@ Logger.prototype.fail = function (level) {
     @return {Promise}
 */
 Logger.prototype.promise = function (level, p) {
-    var that = this;
+    const that = this;
 
     return p.then(
-        function (st) {
+        (st) => {
             that.ok(level);
             return st;
         },
-        function (err) {
+        (err) => {
             that.fail(level);
             throw err;
         }

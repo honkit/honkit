@@ -1,9 +1,9 @@
-var tmp = require("tmp");
+const tmp = require("tmp");
 
-var Book = require("../../models/book");
-var createMockFS = require("../../fs/mock");
-var parseBook = require("../../parse/parseBook");
-var generateBook = require("../generateBook");
+const Book = require("../../models/book");
+const createMockFS = require("../../fs/mock");
+const parseBook = require("../../parse/parseBook");
+const generateBook = require("../generateBook");
 
 /**
  * Generate a book using a generator
@@ -16,14 +16,14 @@ var generateBook = require("../generateBook");
  * @return {Promise<String>}
  */
 function generateMock(Generator, files) {
-    var fs = createMockFS(files);
-    var book = Book.createForFS(fs);
-    var dir = tmp.dirSync();
+    const fs = createMockFS(files);
+    let book = Book.createForFS(fs);
+    const dir = tmp.dirSync();
 
     book = book.setLogLevel("disabled");
 
     return parseBook(book)
-        .then(function (resultBook) {
+        .then((resultBook) => {
             return generateBook(Generator, resultBook, {
                 root: dir.name,
             });

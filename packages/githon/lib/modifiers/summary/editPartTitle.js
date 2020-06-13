@@ -7,9 +7,9 @@
     @return {Summary}
 */
 function editPartTitle(summary, index, newTitle) {
-    var parts = summary.getParts();
+    let parts = summary.getParts();
 
-    var part = parts.get(index);
+    let part = parts.get(index);
     if (!part) {
         return summary;
     }

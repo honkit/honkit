@@ -1,11 +1,11 @@
-var Immutable = require("immutable");
-var slug = require("github-slugid");
+const Immutable = require("immutable");
+const slug = require("github-slugid");
 
 /*
     A definition represents an entry in the glossary
 */
 
-var GlossaryEntry = Immutable.Record({
+const GlossaryEntry = Immutable.Record({
     name: String(),
     description: String(),
 });

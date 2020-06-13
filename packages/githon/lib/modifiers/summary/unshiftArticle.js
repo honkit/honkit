@@ -1,7 +1,7 @@
-var SummaryArticle = require("../../models/summaryArticle");
-var SummaryPart = require("../../models/summaryPart");
+const SummaryArticle = require("../../models/summaryArticle");
+const SummaryPart = require("../../models/summaryPart");
 
-var indexLevels = require("./indexLevels");
+const indexLevels = require("./indexLevels");
 
 /**
     Insert an article at the beginning of summary
@@ -13,10 +13,10 @@ var indexLevels = require("./indexLevels");
 function unshiftArticle(summary, article) {
     article = SummaryArticle(article);
 
-    var parts = summary.getParts();
-    var part = parts.get(0) || SummaryPart();
+    let parts = summary.getParts();
+    let part = parts.get(0) || SummaryPart();
 
-    var articles = part.getArticles();
+    let articles = part.getArticles();
     articles = articles.unshift(article);
     part = part.set("articles", articles);
 

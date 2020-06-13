@@ -1,9 +1,9 @@
-var GlossaryEntry = require("../glossaryEntry");
+const GlossaryEntry = require("../glossaryEntry");
 
 describe("GlossaryEntry", () => {
     describe("getID", () => {
         test("must return a normalized ID", () => {
-            var entry = new GlossaryEntry({
+            const entry = new GlossaryEntry({
                 name: "Hello World",
             });
 

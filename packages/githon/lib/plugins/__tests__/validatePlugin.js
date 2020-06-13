@@ -1,16 +1,16 @@
-var Promise = require("../../utils/promise");
-var Plugin = require("../../models/plugin");
-var validatePlugin = require("../validatePlugin");
+const Promise = require("../../utils/promise");
+const Plugin = require("../../models/plugin");
+const validatePlugin = require("../validatePlugin");
 
 describe("validatePlugin", () => {
     test("must not validate a not loaded plugin", () => {
-        var plugin = Plugin.createFromString("test");
+        const plugin = Plugin.createFromString("test");
 
         return validatePlugin(plugin).then(
-            function () {
+            () => {
                 throw new Error("Should not be validate");
             },
-            function (err) {
+            (err) => {
                 return Promise();
             }
         );

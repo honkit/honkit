@@ -1,14 +1,14 @@
-var is = require("is");
-var Immutable = require("immutable");
+const is = require("is");
+const Immutable = require("immutable");
 
-var error = require("../utils/error");
-var LocationUtils = require("../utils/location");
-var File = require("./file");
-var SummaryPart = require("./summaryPart");
-var SummaryArticle = require("./summaryArticle");
-var parsers = require("../parsers");
+const error = require("../utils/error");
+const LocationUtils = require("../utils/location");
+const File = require("./file");
+const SummaryPart = require("./summaryPart");
+const SummaryArticle = require("./summaryArticle");
+const parsers = require("../parsers");
 
-var Summary = Immutable.Record(
+const Summary = Immutable.Record(
     {
         file: File(),
         parts: Immutable.List(),
@@ -31,7 +31,7 @@ Summary.prototype.getParts = function () {
     @return {Part}
 */
 Summary.prototype.getPart = function (i) {
-    var parts = this.getParts();
+    const parts = this.getParts();
     return parts.get(i);
 };
 
@@ -44,9 +44,9 @@ Summary.prototype.getPart = function (i) {
     @return {Article|Part}
 */
 Summary.prototype.getArticle = function (iter, partIter) {
-    var parts = this.getParts();
+    const parts = this.getParts();
 
-    return parts.reduce(function (result, part) {
+    return parts.reduce((result, part) => {
         if (result) return result;
 
         if (partIter && partIter(part)) return part;
@@ -75,8 +75,8 @@ Summary.prototype.getByLevel = function (level) {
     @return {Article}
 */
 Summary.prototype.getByPath = function (filePath) {
-    return this.getArticle(function (article) {
-        var articlePath = article.getPath();
+    return this.getArticle((article) => {
+        const articlePath = article.getPath();
 
         return articlePath && LocationUtils.areIdenticalPaths(articlePath, filePath);
     });
@@ -88,7 +88,7 @@ Summary.prototype.getByPath = function (filePath) {
     @return {Article}
 */
 Summary.prototype.getFirstArticle = function () {
-    return this.getArticle(function (article) {
+    return this.getArticle((article) => {
         return true;
     });
 };
@@ -100,10 +100,10 @@ Summary.prototype.getFirstArticle = function () {
     @return {Article}
 */
 Summary.prototype.getNextArticle = function (current) {
-    var level = is.string(current) ? current : current.getLevel();
-    var wasPrev = false;
+    const level = is.string(current) ? current : current.getLevel();
+    let wasPrev = false;
 
-    return this.getArticle(function (article) {
+    return this.getArticle((article) => {
         if (wasPrev) return true;
 
         wasPrev = article.getLevel() == level;
@@ -118,10 +118,10 @@ Summary.prototype.getNextArticle = function (current) {
     @return {Article}
 */
 Summary.prototype.getPrevArticle = function (current) {
-    var level = is.string(current) ? current : current.getLevel();
-    var prev = undefined;
+    const level = is.string(current) ? current : current.getLevel();
+    let prev = undefined;
 
-    this.getArticle(function (article) {
+    this.getArticle((article) => {
         if (article.getLevel() == level) {
             return true;
         }
@@ -144,13 +144,13 @@ Summary.prototype.getParent = function (level) {
     level = is.string(level) ? level : level.getLevel();
 
     // Get parent level
-    var parentLevel = getParentLevel(level);
+    const parentLevel = getParentLevel(level);
     if (!parentLevel) {
         return null;
     }
 
     // Get parent of the position
-    var parentArticle = this.getByLevel(parentLevel);
+    const parentArticle = this.getByLevel(parentLevel);
     return parentArticle || null;
 };
 
@@ -161,10 +161,10 @@ Summary.prototype.getParent = function (level) {
     @return {Promise<String>}
 */
 Summary.prototype.toText = function (parseExt) {
-    var file = this.getFile();
-    var parts = this.getParts();
+    const file = this.getFile();
+    const parts = this.getParts();
 
-    var parser = parseExt ? parsers.getByExt(parseExt) : file.getParser();
+    const parser = parseExt ? parsers.getByExt(parseExt) : file.getParser();
 
     if (!parser) {
         throw error.FileNotParsableError({
@@ -183,9 +183,9 @@ Summary.prototype.toText = function (parseExt) {
     @return {List<Article>}
 */
 Summary.prototype.getArticlesAsList = function () {
-    var accu = [];
+    const accu = [];
 
-    this.getArticle(function (article) {
+    this.getArticle((article) => {
         accu.push(article);
     });
 
@@ -199,7 +199,7 @@ Summary.prototype.getArticlesAsList = function () {
     @return {Summary}
 */
 Summary.createFromParts = function createFromParts(file, parts) {
-    parts = parts.map(function (part, i) {
+    parts = parts.map((part, i) => {
         if (part instanceof SummaryPart) {
             return part;
         }
@@ -220,7 +220,7 @@ Summary.createFromParts = function createFromParts(file, parts) {
     @return {String}
 */
 function getParentLevel(level) {
-    var parts = level.split(".");
+    const parts = level.split(".");
     return parts.slice(0, -1).join(".");
 }
 

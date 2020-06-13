@@ -1,8 +1,8 @@
-var path = require("path");
-var chokidar = require("chokidar");
+const path = require("path");
+const chokidar = require("chokidar");
 
-var Promise = require("../utils/promise");
-var parsers = require("../parsers");
+const Promise = require("../utils/promise");
+const parsers = require("../parsers");
 
 /**
     Watch a folder and resolve promise once a file is modified
@@ -11,28 +11,28 @@ var parsers = require("../parsers");
     @return {Promise}
 */
 function watch(dir) {
-    var d = Promise.defer();
+    const d = Promise.defer();
     dir = path.resolve(dir);
 
-    var toWatch = ["book.json", "book.js", "_layouts/**"];
+    const toWatch = ["book.json", "book.js", "_layouts/**"];
 
     // Watch all parsable files
-    parsers.extensions.forEach(function (ext) {
-        toWatch.push("**/*" + ext);
+    parsers.extensions.forEach((ext) => {
+        toWatch.push(`**/*${ext}`);
     });
 
-    var watcher = chokidar.watch(toWatch, {
+    const watcher = chokidar.watch(toWatch, {
         cwd: dir,
         ignored: "_book/**",
         ignoreInitial: true,
     });
 
-    watcher.once("all", function (e, filepath) {
+    watcher.once("all", (e, filepath) => {
         watcher.close();
 
         d.resolve(filepath);
     });
-    watcher.once("error", function (err) {
+    watcher.once("error", (err) => {
         watcher.close();
 
         d.reject(err);

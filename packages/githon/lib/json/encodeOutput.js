@@ -1,4 +1,4 @@
-var encodeBook = require("./encodeBook");
+const encodeBook = require("./encodeBook");
 
 /**
  * Encode an output to JSON
@@ -7,11 +7,11 @@ var encodeBook = require("./encodeBook");
  * @return {Object}
  */
 function encodeOutputToJson(output) {
-    var book = output.getBook();
-    var generator = output.getGenerator();
-    var options = output.getOptions();
+    const book = output.getBook();
+    const generator = output.getGenerator();
+    const options = output.getOptions();
 
-    var result = encodeBook(book);
+    const result = encodeBook(book);
 
     result.output = {
         name: generator,

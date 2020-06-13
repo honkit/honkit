@@ -1,9 +1,9 @@
-var Book = require("../../models/book");
-var createMockFS = require("../../fs/mock");
+const Book = require("../../models/book");
+const createMockFS = require("../../fs/mock");
 
 describe("parseIgnore", () => {
-    var parseIgnore = require("../parseIgnore");
-    var fs = createMockFS({
+    const parseIgnore = require("../parseIgnore");
+    const fs = createMockFS({
         ".ignore": "test-1.js",
         ".gitignore": "test-2.js\ntest-3.js",
         ".bookignore": "!test-3.js",
@@ -13,24 +13,24 @@ describe("parseIgnore", () => {
     });
 
     function getBook() {
-        var book = Book.createForFS(fs);
+        const book = Book.createForFS(fs);
         return parseIgnore(book);
     }
 
     test("should load rules from .ignore", () => {
-        return getBook().then(function (book) {
+        return getBook().then((book) => {
             expect(book.isFileIgnored("test-1.js")).toBeTruthy();
         });
     });
 
     test("should load rules from .gitignore", () => {
-        return getBook().then(function (book) {
+        return getBook().then((book) => {
             expect(book.isFileIgnored("test-2.js")).toBeTruthy();
         });
     });
 
     test("should load rules from .bookignore", () => {
-        return getBook().then(function (book) {
+        return getBook().then((book) => {
             expect(book.isFileIgnored("test-3.js")).toBeFalsy();
         });
     });

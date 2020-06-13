@@ -1,15 +1,15 @@
-var path = require("path");
-var Immutable = require("immutable");
+const path = require("path");
+const Immutable = require("immutable");
 
-var markdownParser = require("gitbook-markdown");
-var asciidocParser = require("gitbook-asciidoc");
+const markdownParser = require("gitbook-markdown");
+const asciidocParser = require("gitbook-asciidoc");
 
-var EXTENSIONS_MARKDOWN = require("./constants/extsMarkdown");
-var EXTENSIONS_ASCIIDOC = require("./constants/extsAsciidoc");
-var Parser = require("./models/parser");
+const EXTENSIONS_MARKDOWN = require("./constants/extsMarkdown");
+const EXTENSIONS_ASCIIDOC = require("./constants/extsAsciidoc");
+const Parser = require("./models/parser");
 
 // This list is ordered by priority of parsers to use
-var parsers = Immutable.List([
+const parsers = Immutable.List([
     Parser.create("markdown", EXTENSIONS_MARKDOWN, markdownParser),
     Parser.create("asciidoc", EXTENSIONS_ASCIIDOC, asciidocParser),
 ]);
@@ -21,7 +21,7 @@ var parsers = Immutable.List([
  * @return {Parser|undefined}
  */
 function getParser(name) {
-    return parsers.find(function (parser) {
+    return parsers.find((parser) => {
         return parser.getName() === name;
     });
 }
@@ -33,7 +33,7 @@ function getParser(name) {
  * @return {Parser|undefined}
  */
 function getParserByExt(ext) {
-    return parsers.find(function (parser) {
+    return parsers.find((parser) => {
         return parser.matchExtension(ext);
     });
 }
@@ -49,8 +49,8 @@ function getParserForFile(filename) {
 }
 
 // List all parsable extensions
-var extensions = parsers
-    .map(function (parser) {
+const extensions = parsers
+    .map((parser) => {
         return parser.getExtensions();
     })
     .flatten();

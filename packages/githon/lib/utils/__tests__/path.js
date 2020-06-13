@@ -1,7 +1,7 @@
-var path = require("path");
+const path = require("path");
 
 describe("Paths", () => {
-    var PathUtils = require("..//path");
+    const PathUtils = require("..//path");
 
     describe("setExtension", () => {
         test("should correctly change extension of filename", () => {

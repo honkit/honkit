@@ -1,6 +1,6 @@
-var encodeBook = require("./encodeBook");
-var encodePage = require("./encodePage");
-var encodeFile = require("./encodeFile");
+const encodeBook = require("./encodeBook");
+const encodePage = require("./encodePage");
+const encodeFile = require("./encodeFile");
 
 /**
  * Return a JSON representation of a book with a specific file
@@ -10,9 +10,9 @@ var encodeFile = require("./encodeFile");
  * @return {Object}
  */
 function encodeBookWithPage(book, page) {
-    var file = page.getFile();
+    const file = page.getFile();
 
-    var result = encodeBook(book);
+    const result = encodeBook(book);
     result.page = encodePage(page, book.getSummary());
     result.file = encodeFile(file);
 

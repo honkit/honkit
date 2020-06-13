@@ -1,8 +1,8 @@
-var Promise = require("../../utils/promise");
-var JSONUtils = require("../../json");
-var Templating = require("../../templating");
-var writeFile = require("../helper/writeFile");
-var createTemplateEngine = require("./createTemplateEngine");
+const Promise = require("../../utils/promise");
+const JSONUtils = require("../../json");
+const Templating = require("../../templating");
+const writeFile = require("../helper/writeFile");
+const createTemplateEngine = require("./createTemplateEngine");
 
 /**
     Finish the generation, write the languages index
@@ -11,24 +11,24 @@ var createTemplateEngine = require("./createTemplateEngine");
     @return {Output}
 */
 function onFinish(output) {
-    var book = output.getBook();
-    var options = output.getOptions();
-    var prefix = options.get("prefix");
+    const book = output.getBook();
+    const options = output.getOptions();
+    const prefix = options.get("prefix");
 
     if (!book.isMultilingual()) {
         return Promise(output);
     }
 
-    var filePath = "index.html";
-    var engine = createTemplateEngine(output, filePath);
-    var context = JSONUtils.encodeOutput(output);
+    const filePath = "index.html";
+    const engine = createTemplateEngine(output, filePath);
+    const context = JSONUtils.encodeOutput(output);
 
     // Render the theme
     return (
-        Templating.renderFile(engine, prefix + "/languages.html", context)
+        Templating.renderFile(engine, `${prefix}/languages.html`, context)
 
             // Write it to the disk
-            .then(function (tplOut) {
+            .then((tplOut) => {
                 return writeFile(output, filePath, tplOut.getContent());
             })
     );

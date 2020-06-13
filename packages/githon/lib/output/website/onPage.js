@@ -1,15 +1,15 @@
-var path = require("path");
-var omit = require("omit-keys");
+const path = require("path");
+const omit = require("omit-keys");
 
-var Templating = require("../../templating");
-var Plugins = require("../../plugins");
-var JSONUtils = require("../../json");
-var LocationUtils = require("../../utils/location");
-var Modifiers = require("../modifiers");
-var writeFile = require("../helper/writeFile");
-var getModifiers = require("../getModifiers");
-var createTemplateEngine = require("./createTemplateEngine");
-var fileToOutput = require("../helper/fileToOutput");
+const Templating = require("../../templating");
+const Plugins = require("../../plugins");
+const JSONUtils = require("../../json");
+const LocationUtils = require("../../utils/location");
+const Modifiers = require("../modifiers");
+const writeFile = require("../helper/writeFile");
+const getModifiers = require("../getModifiers");
+const createTemplateEngine = require("./createTemplateEngine");
+const fileToOutput = require("../helper/fileToOutput");
 
 /**
  * Write a page as a json file
@@ -18,28 +18,28 @@ var fileToOutput = require("../helper/fileToOutput");
  * @param {Page} page
  */
 function onPage(output, page) {
-    var options = output.getOptions();
-    var prefix = options.get("prefix");
+    const options = output.getOptions();
+    const prefix = options.get("prefix");
 
-    var file = page.getFile();
+    const file = page.getFile();
 
-    var book = output.getBook();
-    var plugins = output.getPlugins();
-    var state = output.getState();
-    var resources = state.getResources();
+    const book = output.getBook();
+    const plugins = output.getPlugins();
+    const state = output.getState();
+    const resources = state.getResources();
 
-    var engine = createTemplateEngine(output, page.getPath());
+    const engine = createTemplateEngine(output, page.getPath());
 
     // Output file path
-    var filePath = fileToOutput(output, file.getPath());
+    const filePath = fileToOutput(output, file.getPath());
 
     // Calcul relative path to the root
-    var outputDirName = path.dirname(filePath);
-    var basePath = LocationUtils.normalize(path.relative(outputDirName, "./"));
+    const outputDirName = path.dirname(filePath);
+    const basePath = LocationUtils.normalize(path.relative(outputDirName, "./"));
 
-    return Modifiers.modifyHTML(page, getModifiers(output, page)).then(function (resultPage) {
+    return Modifiers.modifyHTML(page, getModifiers(output, page)).then((resultPage) => {
         // Generate the context
-        var context = JSONUtils.encodeOutputWithPage(output, resultPage);
+        const context = JSONUtils.encodeOutputWithPage(output, resultPage);
         context.plugins = {
             resources: Plugins.listResources(plugins, resources).toJS(),
         };
@@ -64,10 +64,10 @@ function onPage(output, page) {
 
         // Render the theme
         return (
-            Templating.renderFile(engine, prefix + "/page.html", context)
+            Templating.renderFile(engine, `${prefix}/page.html`, context)
 
                 // Write it to the disk
-                .then(function (tplOut) {
+                .then((tplOut) => {
                     return writeFile(output, filePath, tplOut.getContent());
                 })
         );

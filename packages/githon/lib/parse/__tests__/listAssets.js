@@ -1,26 +1,26 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var Book = require("../../models/book");
-var createMockFS = require("../../fs/mock");
-var listAssets = require("../listAssets");
-var parseGlossary = require("../parseGlossary");
+const Book = require("../../models/book");
+const createMockFS = require("../../fs/mock");
+const listAssets = require("../listAssets");
+const parseGlossary = require("../parseGlossary");
 
 describe("listAssets", () => {
     test("should not list glossary as asset", () => {
-        var fs = createMockFS({
+        const fs = createMockFS({
             "GLOSSARY.md": "# Glossary\n\n## Hello\nDescription for hello",
             "assetFile.js": "",
             assets: {
                 "file.js": "",
             },
         });
-        var book = Book.createForFS(fs);
+        const book = Book.createForFS(fs);
 
         return parseGlossary(book)
-            .then(function (resultBook) {
+            .then((resultBook) => {
                 return listAssets(resultBook, Immutable.Map());
             })
-            .then(function (assets) {
+            .then((assets) => {
                 expect(assets.size).toBe(2);
                 expect(assets.includes("assetFile.js"));
                 expect(assets.includes("assets/file.js"));

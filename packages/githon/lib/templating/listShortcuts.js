@@ -1,5 +1,5 @@
-var Immutable = require("immutable");
-var parsers = require("../parsers");
+const Immutable = require("immutable");
+const parsers = require("../parsers");
 
 /**
  * Return a list of all shortcuts that can apply
@@ -10,17 +10,17 @@ var parsers = require("../parsers");
  * @return {List<TemplateShortcut>}
  */
 function listShortcuts(blocks, filePath) {
-    var parser = parsers.getForFile(filePath);
+    const parser = parsers.getForFile(filePath);
 
     if (!parser) {
         return Immutable.List();
     }
 
     return blocks
-        .map(function (block) {
+        .map((block) => {
             return block.getShortcuts();
         })
-        .filter(function (shortcuts) {
+        .filter((shortcuts) => {
             return shortcuts && shortcuts.acceptParser(parser.getName());
         });
 }

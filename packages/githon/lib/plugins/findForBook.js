@@ -1,9 +1,9 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var Promise = require("../utils/promise");
-var timing = require("../utils/timing");
-var findInstalled = require("./findInstalled");
-var locateRootFolder = require("./locateRootFolder");
+const Promise = require("../utils/promise");
+const timing = require("../utils/timing");
+const findInstalled = require("./findInstalled");
+const locateRootFolder = require("./locateRootFolder");
 
 /**
  * List all plugins installed in a book
@@ -18,8 +18,8 @@ function findForBook(book) {
         Promise.all([findInstalled(locateRootFolder()), findInstalled(book.getRoot())])
 
             // Merge all plugins
-            .then(function (results) {
-                return Immutable.List(results).reduce(function (out, result) {
+            .then((results) => {
+                return Immutable.List(results).reduce((out, result) => {
                     return out.merge(result);
                 }, Immutable.OrderedMap());
             })

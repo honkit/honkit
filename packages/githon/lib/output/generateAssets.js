@@ -1,4 +1,4 @@
-var Promise = require("../utils/promise");
+const Promise = require("../utils/promise");
 
 /**
     Output all assets using a generator
@@ -8,8 +8,8 @@ var Promise = require("../utils/promise");
     @return {Promise<Output>}
 */
 function generateAssets(generator, output) {
-    var assets = output.getAssets();
-    var logger = output.getLogger();
+    const assets = output.getAssets();
+    const logger = output.getLogger();
 
     // Is generator ignoring assets?
     if (!generator.onAsset) {
@@ -18,8 +18,8 @@ function generateAssets(generator, output) {
 
     return Promise.reduce(
         assets,
-        function (out, assetFile) {
-            logger.debug.ln('copy asset "' + assetFile + '"');
+        (out, assetFile) => {
+            logger.debug.ln(`copy asset "${assetFile}"`);
 
             return generator.onAsset(out, assetFile);
         },

@@ -1,19 +1,19 @@
-var path = require("path");
-var Promise = require("../utils/promise");
-var PathUtils = require("../utils/path");
-var fs = require("../utils/fs");
+const path = require("path");
+const Promise = require("../utils/promise");
+const PathUtils = require("../utils/path");
+const fs = require("../utils/fs");
 
-var Plugins = require("../plugins");
-var deprecate = require("./deprecate");
-var fileToURL = require("../output/helper/fileToURL");
-var defaultBlocks = require("../constants/defaultBlocks");
-var githon = require("../githon");
-var parsers = require("../parsers");
+const Plugins = require("../plugins");
+const deprecate = require("./deprecate");
+const fileToURL = require("../output/helper/fileToURL");
+const defaultBlocks = require("../constants/defaultBlocks");
+const githon = require("../githon");
+const parsers = require("../parsers");
 
-var encodeConfig = require("./encodeConfig");
-var encodeSummary = require("./encodeSummary");
-var encodeNavigation = require("./encodeNavigation");
-var encodePage = require("./encodePage");
+const encodeConfig = require("./encodeConfig");
+const encodeSummary = require("./encodeSummary");
+const encodeNavigation = require("./encodeNavigation");
+const encodePage = require("./encodePage");
 
 /**
     Encode a global context into a JS object
@@ -23,14 +23,14 @@ var encodePage = require("./encodePage");
     @return {Object}
 */
 function encodeGlobal(output) {
-    var book = output.getBook();
-    var bookFS = book.getContentFS();
-    var logger = output.getLogger();
-    var outputFolder = output.getRoot();
-    var plugins = output.getPlugins();
-    var blocks = Plugins.listBlocks(plugins);
+    const book = output.getBook();
+    const bookFS = book.getContentFS();
+    const logger = output.getLogger();
+    const outputFolder = output.getRoot();
+    const plugins = output.getPlugins();
+    const blocks = Plugins.listBlocks(plugins);
 
-    var result = {
+    const result = {
         log: logger,
         config: encodeConfig(output, book.getConfig()),
         summary: encodeSummary(output, book.getSummary()),
@@ -90,7 +90,7 @@ function encodeGlobal(output) {
             @return {String}
         */
         getPageByPath: function (filePath) {
-            var page = output.getPage(filePath);
+            const page = output.getPage(filePath);
             if (!page) return undefined;
 
             return encodePage(output, page);
@@ -104,7 +104,7 @@ function encodeGlobal(output) {
             @return {Promise<String>}
         */
         renderBlock: function (type, text) {
-            var parser = parsers.get(type);
+            const parser = parsers.get(type);
 
             return parser.parsePage(text).get("content");
         },
@@ -117,7 +117,7 @@ function encodeGlobal(output) {
             @return {Promise<String>}
         */
         renderInline: function (type, text) {
-            var parser = parsers.get(type);
+            const parser = parsers.get(type);
 
             return parser.parseInline(text).get("content");
         },
@@ -131,7 +131,7 @@ function encodeGlobal(output) {
                 @return {Promise|Object}
             */
             applyBlock: function (name, blockData) {
-                var block = blocks.get(name) || defaultBlocks.get(name);
+                const block = blocks.get(name) || defaultBlocks.get(name);
                 return Promise(block.applyBlock(blockData, result));
             },
         },
@@ -176,8 +176,8 @@ function encodeGlobal(output) {
                 @return {Promise}
             */
             hasFile: function (fileName, content) {
-                return Promise().then(function () {
-                    var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+                return Promise().then(() => {
+                    const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
 
                     return fs.exists(filePath);
                 });
@@ -192,10 +192,10 @@ function encodeGlobal(output) {
                 @return {Promise}
             */
             writeFile: function (fileName, content) {
-                return Promise().then(function () {
-                    var filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+                return Promise().then(() => {
+                    const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
 
-                    return fs.ensureFile(filePath).then(function () {
+                    return fs.ensureFile(filePath).then(() => {
                         return fs.writeFile(filePath, content);
                     });
                 });
@@ -211,10 +211,10 @@ function encodeGlobal(output) {
                 @return {Promise}
             */
             copyFile: function (inputFile, outputFile, content) {
-                return Promise().then(function () {
-                    var outputFilePath = PathUtils.resolveInRoot(outputFolder, outputFile);
+                return Promise().then(() => {
+                    const outputFilePath = PathUtils.resolveInRoot(outputFolder, outputFile);
 
-                    return fs.ensureFile(outputFilePath).then(function () {
+                    return fs.ensureFile(outputFilePath).then(() => {
                         return fs.copy(inputFile, outputFilePath);
                     });
                 });
@@ -245,7 +245,7 @@ function encodeGlobal(output) {
         "this.navigation",
         result,
         "navigation",
-        function () {
+        () => {
             return encodeNavigation(output);
         },
         '"navigation" property is deprecated'

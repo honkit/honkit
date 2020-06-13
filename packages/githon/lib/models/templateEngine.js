@@ -1,7 +1,7 @@
-var nunjucks = require("nunjucks");
-var Immutable = require("immutable");
+const nunjucks = require("nunjucks");
+const Immutable = require("immutable");
 
-var TemplateEngine = Immutable.Record(
+const TemplateEngine = Immutable.Record(
     {
         // Map of {TemplateBlock}
         blocks: Immutable.Map(),
@@ -59,8 +59,8 @@ TemplateEngine.prototype.getExtensions = function () {
     @return {TemplateBlock}
 */
 TemplateEngine.prototype.getBlock = function (name) {
-    var blocks = this.getBlocks();
-    return blocks.find(function (block) {
+    const blocks = this.getBlocks();
+    return blocks.find((block) => {
         return block.getName() === name;
     });
 };
@@ -71,14 +71,14 @@ TemplateEngine.prototype.getBlock = function (name) {
     @return {Nunjucks.Environment}
 */
 TemplateEngine.prototype.toNunjucks = function (blocksOutput) {
-    var loader = this.getLoader();
-    var blocks = this.getBlocks();
-    var filters = this.getFilters();
-    var globals = this.getGlobals();
-    var extensions = this.getExtensions();
-    var context = this.getContext();
+    const loader = this.getLoader();
+    const blocks = this.getBlocks();
+    const filters = this.getFilters();
+    const globals = this.getGlobals();
+    const extensions = this.getExtensions();
+    const context = this.getContext();
 
-    var env = new nunjucks.Environment(loader, {
+    const env = new nunjucks.Environment(loader, {
         // Escaping is done after by the asciidoc/markdown parser
         autoescape: false,
 
@@ -94,25 +94,25 @@ TemplateEngine.prototype.toNunjucks = function (blocksOutput) {
     });
 
     // Add filters
-    filters.forEach(function (filterFn, filterName) {
+    filters.forEach((filterFn, filterName) => {
         env.addFilter(filterName, filterFn.bind(context));
     });
 
     // Add blocks
-    blocks.forEach(function (block) {
-        var extName = block.getExtensionName();
-        var Ext = block.toNunjucksExt(context, blocksOutput);
+    blocks.forEach((block) => {
+        const extName = block.getExtensionName();
+        const Ext = block.toNunjucksExt(context, blocksOutput);
 
         env.addExtension(extName, new Ext());
     });
 
     // Add globals
-    globals.forEach(function (globalValue, globalName) {
+    globals.forEach((globalValue, globalName) => {
         env.addGlobal(globalName, globalValue);
     });
 
     // Add other extensions
-    extensions.forEach(function (ext, extName) {
+    extensions.forEach((ext, extName) => {
         env.addExtension(extName, ext);
     });
 

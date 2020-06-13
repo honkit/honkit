@@ -1,7 +1,7 @@
-var path = require("path");
-var os = require("os");
+const path = require("path");
+const os = require("os");
 
-var Git = require("../git");
+const Git = require("../git");
 
 describe("Git", () => {
     describe("URL parsing", () => {
@@ -22,7 +22,7 @@ describe("Git", () => {
         });
 
         test("should parse HTTPS urls", () => {
-            var parts = Git.parseUrl("git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md");
+            const parts = Git.parseUrl("git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md");
 
             expect(parts.host).toBe("https://gist.github.com/69ea4542e4c8967d2fa7.git");
             expect(parts.ref).toBe(null);
@@ -30,7 +30,7 @@ describe("Git", () => {
         });
 
         test("should parse HTTPS urls with a reference", () => {
-            var parts = Git.parseUrl("git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md#1.0.0");
+            const parts = Git.parseUrl("git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md#1.0.0");
 
             expect(parts.host).toBe("https://gist.github.com/69ea4542e4c8967d2fa7.git");
             expect(parts.ref).toBe("1.0.0");
@@ -38,7 +38,7 @@ describe("Git", () => {
         });
 
         test("should parse SSH urls", () => {
-            var parts = Git.parseUrl(
+            const parts = Git.parseUrl(
                 "git+git@github.com:GitbookIO/gitbook.git/directory/README.md#e1594cde2c32e4ff48f6c4eff3d3d461743d74e1"
             );
 
@@ -50,12 +50,10 @@ describe("Git", () => {
 
     describe("Cloning and resolving", () => {
         test("should clone an HTTPS url", () => {
-            var git = new Git(path.join(os.tmpdir(), "test-git-" + Date.now()));
-            return git
-                .resolve("git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md")
-                .then(function (filename) {
-                    expect(path.extname(filename)).toBe(".md");
-                });
+            const git = new Git(path.join(os.tmpdir(), `test-git-${Date.now()}`));
+            return git.resolve("git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md").then((filename) => {
+                expect(path.extname(filename)).toBe(".md");
+            });
         });
     });
 });

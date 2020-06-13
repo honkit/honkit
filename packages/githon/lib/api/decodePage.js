@@ -1,4 +1,4 @@
-var deprecate = require("./deprecate");
+const deprecate = require("./deprecate");
 
 /**
     Decode changes from a JS API to a page object.
@@ -10,7 +10,7 @@ var deprecate = require("./deprecate");
     @return {Page}
 */
 function decodePage(output, page, result) {
-    var originalContent = page.getContent();
+    const originalContent = page.getContent();
 
     // No returned value
     // Existing content will be used
@@ -32,7 +32,7 @@ function decodePage(output, page, result) {
         page = page.set(
             "content",
             result.sections
-                .map(function (section) {
+                .map((section) => {
                     return section.content;
                 })
                 .join("\n")

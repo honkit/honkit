@@ -1,14 +1,14 @@
-var is = require("is");
-var path = require("path");
-var crc = require("crc");
-var URI = require("urijs");
+const is = require("is");
+const path = require("path");
+const crc = require("crc");
+const URI = require("urijs");
 
-var pathUtil = require("./path");
-var Promise = require("./promise");
-var command = require("./command");
-var fs = require("./fs");
+const pathUtil = require("./path");
+const Promise = require("./promise");
+const command = require("./command");
+const fs = require("./fs");
 
-var GIT_PREFIX = "git+";
+const GIT_PREFIX = "git+";
 
 function Git() {
     this.tmpDir;
@@ -17,48 +17,48 @@ function Git() {
 
 // Return an unique ID for a combinaison host/ref
 Git.prototype.repoID = function (host, ref) {
-    return crc.crc32(host + "#" + (ref || "")).toString(16);
+    return crc.crc32(`${host}#${ref || ""}`).toString(16);
 };
 
 // Allocate a temporary folder for cloning repos in it
 Git.prototype.allocateDir = function () {
-    var that = this;
+    const that = this;
 
     if (this.tmpDir) return Promise();
 
-    return fs.tmpDir().then(function (dir) {
+    return fs.tmpDir().then((dir) => {
         that.tmpDir = dir;
     });
 };
 
 // Clone a git repository if non existant
 Git.prototype.clone = function (host, ref) {
-    var that = this;
+    const that = this;
 
     return (
         this.allocateDir()
 
             // Return or clone the git repo
-            .then(function () {
+            .then(() => {
                 // Unique ID for repo/ref combinaison
-                var repoId = that.repoID(host, ref);
+                const repoId = that.repoID(host, ref);
 
                 // Absolute path to the folder
-                var repoPath = path.join(that.tmpDir, repoId);
+                const repoPath = path.join(that.tmpDir, repoId);
 
                 if (that.cloned[repoId]) return repoPath;
 
                 // Clone repo
                 return (
                     command
-                        .exec("git clone " + host + " " + repoPath)
+                        .exec(`git clone ${host} ${repoPath}`)
 
                         // Checkout reference if specified
-                        .then(function () {
+                        .then(() => {
                             that.cloned[repoId] = true;
 
                             if (!ref) return;
-                            return command.exec("git checkout " + ref, { cwd: repoPath });
+                            return command.exec(`git checkout ${ref}`, { cwd: repoPath });
                         })
                         .thenResolve(repoPath)
                 );
@@ -77,21 +77,19 @@ Git.prototype.resolve = function (giturl) {
     if (!giturl) return Promise(null);
 
     // Clone or get from cache
-    return this.clone(giturl.host, giturl.ref).then(function (repo) {
+    return this.clone(giturl.host, giturl.ref).then((repo) => {
         return path.resolve(repo, giturl.filepath);
     });
 };
 
 // Return root of git repo from a filepath
 Git.prototype.resolveRoot = function (filepath) {
-    var relativeToGit, repoId;
-
     // No git repo cloned, or file is not in a git repository
     if (!this.tmpDir || !pathUtil.isInRoot(this.tmpDir, filepath)) return null;
 
     // Extract first directory (is the repo id)
-    relativeToGit = path.relative(this.tmpDir, filepath);
-    repoId = relativeToGit.split(path.sep)[0];
+    const relativeToGit = path.relative(this.tmpDir, filepath);
+    const repoId = relativeToGit.split(path.sep)[0];
     if (!repoId) {
         return;
     }
@@ -107,24 +105,22 @@ Git.isUrl = function (giturl) {
 
 // Parse and extract infos
 Git.parseUrl = function (giturl) {
-    var ref, uri, fileParts, filepath;
-
     if (!Git.isUrl(giturl)) return null;
     giturl = giturl.slice(GIT_PREFIX.length);
 
-    uri = new URI(giturl);
-    ref = uri.fragment() || null;
+    const uri = new URI(giturl);
+    const ref = uri.fragment() || null;
     uri.fragment(null);
 
     // Extract file inside the repo (after the .git)
-    fileParts = uri.path().split(".git");
-    filepath = fileParts.length > 1 ? fileParts.slice(1).join(".git") : "";
+    const fileParts = uri.path().split(".git");
+    let filepath = fileParts.length > 1 ? fileParts.slice(1).join(".git") : "";
     if (filepath[0] == "/") {
         filepath = filepath.slice(1);
     }
 
     // Recreate pathname without the real filename
-    uri.path(fileParts[0] + ".git");
+    uri.path(`${fileParts[0]}.git`);
 
     return {
         host: uri.toString(),

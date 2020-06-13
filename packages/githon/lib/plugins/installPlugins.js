@@ -1,8 +1,8 @@
-var npmi = require("npmi");
+const npmi = require("npmi");
 
-var DEFAULT_PLUGINS = require("../constants/defaultPlugins");
-var Promise = require("../utils/promise");
-var installPlugin = require("./installPlugin");
+const DEFAULT_PLUGINS = require("../constants/defaultPlugins");
+const Promise = require("../utils/promise");
+const installPlugin = require("./installPlugin");
 
 /**
     Install plugin requirements for a book
@@ -11,14 +11,14 @@ var installPlugin = require("./installPlugin");
     @return {Promise<Number>}
 */
 function installPlugins(book, options) {
-    var logger = book.getLogger();
-    var config = book.getConfig();
-    var plugins = config.getPluginDependencies();
+    const logger = book.getLogger();
+    const config = book.getConfig();
+    let plugins = config.getPluginDependencies();
 
     // Remove default plugins
     // (only if version is same as installed)
-    plugins = plugins.filterNot(function (plugin) {
-        var dependency = DEFAULT_PLUGINS.find(function (dep) {
+    plugins = plugins.filterNot((plugin) => {
+        const dependency = DEFAULT_PLUGINS.find((dep) => {
             return dep.getName() === plugin.getName();
         });
 
@@ -35,9 +35,9 @@ function installPlugins(book, options) {
         return Promise();
     }
 
-    logger.info.ln("installing", plugins.size, "plugins using npm@" + npmi.NPM_VERSION);
+    logger.info.ln("installing", plugins.size, `plugins using npm@${npmi.NPM_VERSION}`);
 
-    return Promise.forEach(plugins, function (plugin) {
+    return Promise.forEach(plugins, (plugin) => {
         return installPlugin(book, plugin, options);
     }).thenResolve(plugins.size);
 }

@@ -1,6 +1,6 @@
-var Promise = require("../utils/promise");
-var error = require("../utils/error");
-var lookupStructureFile = require("./lookupStructureFile");
+const Promise = require("../utils/promise");
+const error = require("../utils/error");
+const lookupStructureFile = require("./lookupStructureFile");
 
 /**
     Parse a ParsableFile using a specific method
@@ -11,8 +11,8 @@ var lookupStructureFile = require("./lookupStructureFile");
     @return {Promise<Array<String, List|Map>>}
 */
 function parseFile(fs, file, type) {
-    var filepath = file.getPath();
-    var parser = file.getParser();
+    const filepath = file.getPath();
+    const parser = file.getParser();
 
     if (!parser) {
         return Promise.reject(
@@ -24,7 +24,7 @@ function parseFile(fs, file, type) {
 
     return fs
         .readAsString(filepath)
-        .then(function (content) {
+        .then((content) => {
             if (type === "readme") {
                 return parser.parseReadme(content);
             } else if (type === "glossary") {
@@ -34,10 +34,10 @@ function parseFile(fs, file, type) {
             } else if (type === "langs") {
                 return parser.parseLanguages(content);
             } else {
-                throw new Error('Parsing invalid type "' + type + '"');
+                throw new Error(`Parsing invalid type "${type}"`);
             }
         })
-        .then(function (result) {
+        .then((result) => {
             return [file, result];
         });
 }
@@ -51,9 +51,9 @@ function parseFile(fs, file, type) {
     @return {Promise<List|Map>}
 */
 function parseStructureFile(book, type) {
-    var fs = book.getContentFS();
+    const fs = book.getContentFS();
 
-    return lookupStructureFile(book, type).then(function (file) {
+    return lookupStructureFile(book, type).then((file) => {
         if (!file) return [undefined, undefined];
 
         return parseFile(fs, file, type);

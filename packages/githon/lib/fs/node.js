@@ -1,22 +1,22 @@
-var path = require("path");
-var Immutable = require("immutable");
+const path = require("path");
+const Immutable = require("immutable");
 
-var fs = require("../utils/fs");
-var FS = require("../models/fs");
+const fs = require("../utils/fs");
+const FS = require("../models/fs");
 
 function fsReadDir(folder) {
-    return fs.readdir(folder).then(function (files) {
+    return fs.readdir(folder).then((files) => {
         files = Immutable.List(files);
 
         return files
-            .map(function (file) {
+            .map((file) => {
                 if (file == "." || file == "..") return;
 
-                var stat = fs.statSync(path.join(folder, file));
+                const stat = fs.statSync(path.join(folder, file));
                 if (stat.isDirectory()) file = file + path.sep;
                 return file;
             })
-            .filter(function (file) {
+            .filter((file) => {
                 return Boolean(file);
             });
     });

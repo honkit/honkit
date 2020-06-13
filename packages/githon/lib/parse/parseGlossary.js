@@ -1,5 +1,5 @@
-var parseStructureFile = require("./parseStructureFile");
-var Glossary = require("../models/glossary");
+const parseStructureFile = require("./parseStructureFile");
+const Glossary = require("../models/glossary");
 
 /**
     Parse glossary
@@ -8,16 +8,16 @@ var Glossary = require("../models/glossary");
     @return {Promise<Book>}
 */
 function parseGlossary(book) {
-    var logger = book.getLogger();
+    const logger = book.getLogger();
 
-    return parseStructureFile(book, "glossary").spread(function (file, entries) {
+    return parseStructureFile(book, "glossary").spread((file, entries) => {
         if (!file) {
             return book;
         }
 
         logger.debug.ln("glossary index file found at", file.getPath());
 
-        var glossary = Glossary.createFromEntries(file, entries);
+        const glossary = Glossary.createFromEntries(file, entries);
         return book.set("glossary", glossary);
     });
 }

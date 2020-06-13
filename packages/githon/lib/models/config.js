@@ -1,12 +1,12 @@
-var is = require("is");
-var Immutable = require("immutable");
+const is = require("is");
+const Immutable = require("immutable");
 
-var File = require("./file");
-var PluginDependency = require("./pluginDependency");
-var configDefault = require("../constants/configDefault");
-var reducedObject = require("../utils/reducedObject");
+const File = require("./file");
+const PluginDependency = require("./pluginDependency");
+const configDefault = require("../constants/configDefault");
+const reducedObject = require("../utils/reducedObject");
 
-var Config = Immutable.Record(
+const Config = Immutable.Record(
     {
         file: File(),
         values: configDefault,
@@ -54,7 +54,7 @@ Config.prototype.setFile = function (file) {
  * @return {Mixed}
  */
 Config.prototype.getValue = function (keyPath, def) {
-    var values = this.getValues();
+    const values = this.getValues();
     keyPath = Config.keyToKeyPath(keyPath);
 
     if (!values.hasIn(keyPath)) {
@@ -75,7 +75,7 @@ Config.prototype.setValue = function (keyPath, value) {
 
     value = Immutable.fromJS(value);
 
-    var values = this.getValues();
+    let values = this.getValues();
     values = values.setIn(keyPath, value);
 
     return this.set("values", values);
@@ -86,7 +86,7 @@ Config.prototype.setValue = function (keyPath, value) {
  * @return {List<PluginDependency>}
  */
 Config.prototype.getPluginDependencies = function () {
-    var plugins = this.getValue("plugins");
+    const plugins = this.getValue("plugins");
 
     if (is.string(plugins)) {
         return PluginDependency.listFromString(plugins);
@@ -101,9 +101,9 @@ Config.prototype.getPluginDependencies = function () {
  * @return {PluginDependency}
  */
 Config.prototype.getPluginDependency = function (name) {
-    var plugins = this.getPluginDependencies();
+    const plugins = this.getPluginDependencies();
 
-    return plugins.find(function (dep) {
+    return plugins.find((dep) => {
         return dep.getName() === name;
     });
 };
@@ -114,7 +114,7 @@ Config.prototype.getPluginDependency = function (name) {
  * @return {Config}
  */
 Config.prototype.setPluginDependencies = function (deps) {
-    var plugins = PluginDependency.listToArray(deps);
+    const plugins = PluginDependency.listToArray(deps);
 
     return this.setValue("plugins", plugins);
 };
@@ -137,7 +137,7 @@ Config.prototype.updateValues = function (values) {
  * @returns {Config}
  */
 Config.prototype.mergeValues = function (values) {
-    var currentValues = this.getValues();
+    let currentValues = this.getValues();
     values = Immutable.fromJS(values);
 
     currentValues = currentValues.mergeDeep(values);

@@ -1,6 +1,6 @@
-var parseStructureFile = require("./parseStructureFile");
-var Summary = require("../models/summary");
-var SummaryModifier = require("../modifiers").Summary;
+const parseStructureFile = require("./parseStructureFile");
+const Summary = require("../models/summary");
+const SummaryModifier = require("../modifiers").Summary;
 
 /**
     Parse summary in a book, the summary can only be parsed
@@ -10,12 +10,12 @@ var SummaryModifier = require("../modifiers").Summary;
     @return {Promise<Book>}
 */
 function parseSummary(book) {
-    var readme = book.getReadme();
-    var logger = book.getLogger();
-    var readmeFile = readme.getFile();
+    const readme = book.getReadme();
+    const logger = book.getLogger();
+    const readmeFile = readme.getFile();
 
-    return parseStructureFile(book, "summary").spread(function (file, result) {
-        var summary;
+    return parseStructureFile(book, "summary").spread((file, result) => {
+        let summary;
 
         if (!file) {
             logger.warn.ln("no summary file in this book");
@@ -26,7 +26,7 @@ function parseSummary(book) {
         }
 
         // Insert readme as first entry if not in SUMMARY.md
-        var readmeArticle = summary.getByPath(readmeFile.getPath());
+        const readmeArticle = summary.getByPath(readmeFile.getPath());
 
         if (readmeFile.exists() && !readmeArticle) {
             summary = SummaryModifier.unshiftArticle(summary, {

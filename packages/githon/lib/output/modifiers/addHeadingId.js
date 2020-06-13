@@ -1,5 +1,5 @@
-var slug = require("github-slugid");
-var editHTMLElement = require("./editHTMLElement");
+const slug = require("github-slugid");
+const editHTMLElement = require("./editHTMLElement");
 
 /**
     Add ID to an heading

@@ -1,10 +1,10 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var Output = require("../../models/output");
-var Book = require("../../models/book");
-var parseBook = require("../../parse/parseBook");
-var createMockFS = require("../../fs/mock");
-var preparePlugins = require("../preparePlugins");
+const Output = require("../../models/output");
+const Book = require("../../models/book");
+const parseBook = require("../../parse/parseBook");
+const createMockFS = require("../../fs/mock");
+const preparePlugins = require("../preparePlugins");
 
 /**
  * Create an output using a generator
@@ -16,15 +16,15 @@ var preparePlugins = require("../preparePlugins");
  * @return {Promise<Output>}
  */
 function createMockOutput(generator, files, options) {
-    var fs = createMockFS(files);
-    var book = Book.createForFS(fs);
-    var state = generator.State ? generator.State({}) : Immutable.Map();
+    const fs = createMockFS(files);
+    let book = Book.createForFS(fs);
+    const state = generator.State ? generator.State({}) : Immutable.Map();
 
     book = book.setLogLevel("disabled");
     options = generator.Options(options);
 
     return parseBook(book)
-        .then(function (resultBook) {
+        .then((resultBook) => {
             return new Output({
                 book: resultBook,
                 options: options,

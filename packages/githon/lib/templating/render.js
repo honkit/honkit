@@ -1,7 +1,7 @@
-var Promise = require("../utils/promise");
-var timing = require("../utils/timing");
-var TemplateOutput = require("../models/templateOutput");
-var replaceShortcuts = require("./replaceShortcuts");
+const Promise = require("../utils/promise");
+const timing = require("../utils/timing");
+const TemplateOutput = require("../models/templateOutput");
+const replaceShortcuts = require("./replaceShortcuts");
 
 /**
  * Render a template
@@ -16,10 +16,10 @@ function renderTemplate(engine, filePath, content, context) {
     context = context || {};
 
     // Mutable objects to contains all blocks requiring post-processing
-    var blocks = {};
+    const blocks = {};
 
     // Create nunjucks environment
-    var env = engine.toNunjucks(blocks);
+    const env = engine.toNunjucks(blocks);
 
     // Replace shortcuts from plugin's blocks
     content = replaceShortcuts(engine.getBlocks(), filePath, content);
@@ -29,7 +29,7 @@ function renderTemplate(engine, filePath, content, context) {
 
         Promise.nfcall(env.renderString.bind(env), content, context, {
             path: filePath,
-        }).then(function (content) {
+        }).then((content) => {
             return TemplateOutput.create(content, blocks);
         })
     );

@@ -1,4 +1,4 @@
-var LocationUtils = require("../location");
+const LocationUtils = require("../location");
 
 describe("LocationUtils", () => {
     test("should correctly test external location", () => {

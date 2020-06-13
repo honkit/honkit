@@ -1,4 +1,4 @@
-var Modifiers = require("./modifiers");
+const Modifiers = require("./modifiers");
 
 module.exports = {
     Parse: require("./parse"),

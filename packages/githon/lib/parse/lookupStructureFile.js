@@ -1,4 +1,4 @@
-var findParsableFile = require("./findParsableFile");
+const findParsableFile = require("./findParsableFile");
 
 /**
     Lookup a structure file (ex: SUMMARY.md, GLOSSARY.md) in a book. Uses
@@ -10,9 +10,9 @@ var findParsableFile = require("./findParsableFile");
     to the book content root.
 */
 function lookupStructureFile(book, type) {
-    var config = book.getConfig();
+    const config = book.getConfig();
 
-    var fileToSearch = config.getValue(["structure", type]);
+    const fileToSearch = config.getValue(["structure", type]);
 
     return findParsableFile(book, fileToSearch);
 }

@@ -1,6 +1,6 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var Options = Immutable.Record({
+const Options = Immutable.Record({
     // Root folder for the output
     root: String(),
 });

@@ -1,5 +1,5 @@
-var Parse = require("../parse");
-var Promise = require("../utils/promise");
+const Parse = require("../parse");
+const Promise = require("../utils/promise");
 
 /**
     List and prepare all pages
@@ -8,14 +8,14 @@ var Promise = require("../utils/promise");
     @return {Promise<Output>}
 */
 function preparePages(output) {
-    var book = output.getBook();
-    var logger = book.getLogger();
+    const book = output.getBook();
+    const logger = book.getLogger();
 
     if (book.isMultilingual()) {
         return Promise(output);
     }
 
-    return Parse.parsePagesList(book).then(function (pages) {
+    return Parse.parsePagesList(book).then((pages) => {
         logger.info.ln("found", pages.size, "pages");
 
         return output.set("pages", pages);

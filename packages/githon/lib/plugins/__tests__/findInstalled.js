@@ -1,19 +1,19 @@
-var path = require("path");
-var Immutable = require("immutable");
+const path = require("path");
+const Immutable = require("immutable");
 
 describe("findInstalled", () => {
-    var findInstalled = require("../findInstalled");
+    const findInstalled = require("../findInstalled");
 
     test.skip("must list default plugins for gitbook directory", () => {
         // Read gitbook-plugins from package.json
-        var pkg = require(path.resolve(__dirname, "../../../package.json"));
-        var gitbookPlugins = Immutable.Seq(pkg.dependencies)
-            .filter(function (v, k) {
+        const pkg = require(path.resolve(__dirname, "../../../package.json"));
+        const gitbookPlugins = Immutable.Seq(pkg.dependencies)
+            .filter((v, k) => {
                 return k.indexOf("gitbook-plugin") === 0;
             })
             .cacheResult();
 
-        return findInstalled(path.resolve(__dirname, "../../../")).then(function (plugins) {
+        return findInstalled(path.resolve(__dirname, "../../../")).then((plugins) => {
             expect(plugins.size >= gitbookPlugins.size).toBeTruthy();
 
             expect(plugins.has("fontsettings")).toBe(true);

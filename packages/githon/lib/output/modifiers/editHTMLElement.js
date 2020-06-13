@@ -1,13 +1,13 @@
-var Promise = require("../../utils/promise");
+const Promise = require("../../utils/promise");
 
 /**
     Edit all elements matching a selector
 */
 function editHTMLElement($, selector, fn) {
-    var $elements = $(selector);
+    const $elements = $(selector);
 
-    return Promise.forEach($elements, function (el) {
-        var $el = $(el);
+    return Promise.forEach($elements, (el) => {
+        const $el = $(el);
         return fn($el);
     });
 }

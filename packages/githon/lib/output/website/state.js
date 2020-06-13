@@ -1,7 +1,7 @@
-var I18n = require("i18n-t");
-var Immutable = require("immutable");
+const I18n = require("i18n-t");
+const Immutable = require("immutable");
 
-var GeneratorState = Immutable.Record({
+const GeneratorState = Immutable.Record({
     i18n: I18n(),
 
     // List of plugins' resources

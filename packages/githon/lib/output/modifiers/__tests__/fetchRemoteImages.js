@@ -1,35 +1,35 @@
-var cheerio = require("cheerio");
-var tmp = require("tmp");
-var path = require("path");
+const cheerio = require("cheerio");
+const tmp = require("tmp");
+const path = require("path");
 
-var URL =
+const URL =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png";
 
 describe.skip("fetchRemoteImages", () => {
-    var dir;
-    var fetchRemoteImages = require("../fetchRemoteImages");
+    let dir;
+    const fetchRemoteImages = require("../fetchRemoteImages");
 
     beforeEach(() => {
         dir = tmp.dirSync();
     });
 
     test("should download image file", () => {
-        var $ = cheerio.load('<img src="' + URL + '" />');
+        const $ = cheerio.load(`<img src="${URL}" />`);
 
-        return fetchRemoteImages(dir.name, "index.html", $).then(function () {
-            var $img = $("img");
-            var src = $img.attr("src");
+        return fetchRemoteImages(dir.name, "index.html", $).then(() => {
+            const $img = $("img");
+            const src = $img.attr("src");
 
             expect(dir.name).toHaveFile(src);
         });
     });
 
     test("should download image file and replace with relative path", () => {
-        var $ = cheerio.load('<img src="' + URL + '" />');
+        const $ = cheerio.load(`<img src="${URL}" />`);
 
-        return fetchRemoteImages(dir.name, "test/index.html", $).then(function () {
-            var $img = $("img");
-            var src = $img.attr("src");
+        return fetchRemoteImages(dir.name, "test/index.html", $).then(() => {
+            const $img = $("img");
+            const src = $img.attr("src");
 
             expect(dir.name).toHaveFile(path.join("test", src));
         });

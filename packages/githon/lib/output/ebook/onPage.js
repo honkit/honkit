@@ -1,5 +1,5 @@
-var WebsiteGenerator = require("../website");
-var Modifiers = require("../modifiers");
+const WebsiteGenerator = require("../website");
+const Modifiers = require("../modifiers");
 
 /**
     Write a page for ebook output
@@ -8,14 +8,14 @@ var Modifiers = require("../modifiers");
     @param {Output}
 */
 function onPage(output, page) {
-    var options = output.getOptions();
+    const options = output.getOptions();
 
     // Inline assets
     return (
         Modifiers.modifyHTML(page, [Modifiers.inlineAssets(options.get("root"), page.getFile().getPath())])
 
             // Write page using website generator
-            .then(function (resultPage) {
+            .then((resultPage) => {
                 return WebsiteGenerator.onPage(output, resultPage);
             })
     );

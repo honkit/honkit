@@ -1,7 +1,7 @@
-var path = require("path");
-var Immutable = require("immutable");
+const path = require("path");
+const Immutable = require("immutable");
 
-var Language = Immutable.Record({
+const Language = Immutable.Record({
     title: String(),
     path: String(),
 });

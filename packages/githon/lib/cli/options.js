@@ -1,24 +1,24 @@
-var Logger = require("../utils/logger");
+const Logger = require("../utils/logger");
 
-var logOptions = {
+const logOptions = {
     name: "log",
     description: "Minimum log level to display",
     values: Logger.LEVELS.keySeq()
-        .map(function (s) {
+        .map((s) => {
             return s.toLowerCase();
         })
         .toJS(),
     defaults: "info",
 };
 
-var formatOption = {
+const formatOption = {
     name: "format",
     description: "Format to build to",
     values: ["website", "json", "ebook"],
     defaults: "website",
 };
 
-var timingOption = {
+const timingOption = {
     name: "timing",
     description: "Print timing debug information",
     defaults: false,

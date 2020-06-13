@@ -1,9 +1,9 @@
-var Immutable = require("immutable");
+const Immutable = require("immutable");
 
-var File = require("./file");
-var Language = require("./language");
+const File = require("./file");
+const Language = require("./language");
 
-var Languages = Immutable.Record({
+const Languages = Immutable.Record({
     file: File(),
     list: Immutable.OrderedMap(),
 });
@@ -52,9 +52,9 @@ Languages.prototype.getCount = function () {
     @return {Language}
 */
 Languages.createFromList = function (file, langs) {
-    var list = Immutable.OrderedMap();
+    let list = Immutable.OrderedMap();
 
-    langs.forEach(function (lang) {
+    langs.forEach((lang) => {
         lang = Language({
             title: lang.title,
             path: lang.ref,
