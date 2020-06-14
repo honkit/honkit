@@ -23,7 +23,12 @@
     "bootstrap": "lerna bootstrap --ci",
     "lint": "eslint .",
     "test": "lerna run test",
-    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\""
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "versionup": "lerna version --conventional-commits",
+    "versionup:patch": "lerna version patch --conventional-commits",
+    "versionup:minor": "lerna version minor --conventional-commits",
+    "versionup:major": "lerna version major --conventional-commits",
+    "release": "lerna publish from-package"
   },
   "devDependencies": {
     "eslint": "^6.7.2",
