@@ -20,6 +20,7 @@
         "escape-html": "^1.0.3",
         "escape-string-regexp": "1.0.5",
         "extend": "^3.0.0",
+        "flat-cache": "^2.0.1",
         "front-matter": "^2.1.0",
         "gitbook-asciidoc": "^1.2.2",
         "gitbook-markdown": "^2.0.1",

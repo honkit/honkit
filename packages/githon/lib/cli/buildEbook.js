@@ -8,6 +8,7 @@ const Output = require("../output");
 
 const options = require("./options");
 const getBook = require("./getBook");
+const { clearCache } = require("../output/page-cache");
 
 module.exports = function (format) {
     return {
@@ -26,7 +27,9 @@ module.exports = function (format) {
             const book = getBook(args, kwargs);
             const logger = book.getLogger();
             const Generator = Output.getGenerator("ebook");
-
+            if (kwargs.reload) {
+                clearCache();
+            }
             return (
                 Parse.parseBook(book)
                     .then((resultBook) => {

@@ -14,6 +14,7 @@ const getBook = require("./getBook");
 const getOutputFolder = require("./getOutputFolder");
 const Server = require("./server");
 const watch = require("./watch");
+const { clearCache } = require("../output/page-cache");
 
 let server, lrServer, lrPath;
 
@@ -40,6 +41,9 @@ function generateBook(args, kwargs) {
 
     // Stop server if running
     if (server.isRunning()) console.log("Stopping server");
+    if (kwargs.reload) {
+        clearCache();
+    }
 
     return server
         .stop()

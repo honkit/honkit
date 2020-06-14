@@ -1,7 +1,8 @@
 const Immutable = require("immutable");
-const yaml = require("js-yaml");
 
+const yaml = require("js-yaml");
 const File = require("./file");
+const { hashString } = require("./hash.js");
 
 const Page = Immutable.Record({
     file: File(),
@@ -65,6 +66,24 @@ Page.createForFile = function (file) {
     return new Page({
         file: file,
     });
+};
+
+Page.fromJSON = function (json) {
+    return new Page({
+        file: new File(json.file),
+        // Attributes extracted from the YAML header
+        attributes: Immutable.Map(json.atributes),
+        // Content of the page
+        content: json.content,
+        // Direction of the text
+        dir: json.dir,
+    });
+};
+Page.toJSON = function (page) {
+    return page.toJS();
+};
+Page.prototype.hash = function () {
+    return hashString(JSON.stringify(this.toJS()));
 };
 
 module.exports = Page;

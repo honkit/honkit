@@ -1,5 +1,7 @@
 const Promise = require("../utils/promise");
 const generatePage = require("./generatePage");
+const { getCache } = require("./page-cache");
+const Page = require("../models/page");
 
 /**
  Output all pages using a generator
@@ -9,6 +11,7 @@ const generatePage = require("./generatePage");
  @return {Promise<Output>}
  */
 function generatePages(generator, output) {
+    const cache = getCache();
     const pages = output.getPages();
     const logger = output.getLogger();
 
@@ -20,7 +23,16 @@ function generatePages(generator, output) {
     const pageList = pages.map((page) => {
         const file = page.getFile();
         logger.debug.ln(`generate page "${file.getPath()}"`);
-        return generatePage(output, page)
+        // if has compiled pages, use it instead of compiling page
+        const pageHash = page.hash();
+        const cachedPage = cache.getKey(pageHash);
+        const pagePromise = cachedPage
+            ? Promise(Page.fromJSON(cachedPage))
+            : generatePage(output, page).then((resultPage) => {
+                  cache.setKey(pageHash, Page.toJSON(resultPage));
+                  return resultPage;
+              });
+        return pagePromise
             .then((resultPage) => {
                 return generator.onPage(output, resultPage);
             })
@@ -30,6 +42,8 @@ function generatePages(generator, output) {
             });
     });
     return Promise.all(pageList.toArray()).then(() => {
+        // update caches
+        cache.save();
         return output;
     });
 }

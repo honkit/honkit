@@ -5,6 +5,7 @@ const timing = require("../utils/timing");
 const options = require("./options");
 const getBook = require("./getBook");
 const getOutputFolder = require("./getOutputFolder");
+const { clearCache } = require("../output/page-cache");
 
 module.exports = {
     name: "build [book] [output]",
@@ -15,6 +16,9 @@ module.exports = {
         const outputFolder = getOutputFolder(args);
         const Generator = Output.getGenerator(kwargs.format);
 
+        if (kwargs.reload) {
+            clearCache();
+        }
         return Parse.parseBook(book)
             .then((resultBook) => {
                 return Output.generate(Generator, resultBook, {
