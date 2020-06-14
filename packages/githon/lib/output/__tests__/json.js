@@ -1,7 +1,6 @@
 const generateMock = require("../testing/generateMock");
 const JSONGenerator = require("../json");
-// FIXME: parallel?
-describe.skip("JSONGenerator", () => {
+describe("JSONGenerator", () => {
     test("should generate a README.json", () => {
         return generateMock(JSONGenerator, {
             "README.md": "Hello World",

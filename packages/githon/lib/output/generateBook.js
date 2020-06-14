@@ -99,7 +99,7 @@ function processOutput(generator, startOutput) {
                 logger.info.ln(`generating language "${langBook.getLanguage()}"`);
                 return processOutput(generator, langOutput);
             });
-            return Promise.all(bookPromises).thenResolve(output);
+            return Promise.all(bookPromises.toArray()).thenResolve(output);
         })
 
         .then(

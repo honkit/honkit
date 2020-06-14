@@ -29,7 +29,7 @@ function generatePages(generator, output) {
                 throw err;
             });
     });
-    return Promise.all(promises).then(() => {
+    return Promise.all(promises.toArray()).then(() => {
         return output;
     });
 }
