@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592127573628,
+  "lastUpdate": 1592127890425,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "Githon benchmark": [
@@ -711,6 +711,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.1,
             "range": "±0.86%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "cdbbc262c8cbca5b641783c5d2775fc0a54fded6",
+          "message": "style: prettier",
+          "timestamp": "2020-06-14T18:42:18+09:00",
+          "tree_id": "ed0d7314f2d6e148aca7088d45154abde0e1f9aa",
+          "url": "https://github.com/azu/githon/commit/cdbbc262c8cbca5b641783c5d2775fc0a54fded6"
+        },
+        "date": 1592127889939,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.11,
+            "range": "±0.80%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
