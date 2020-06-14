@@ -1,4 +1,4 @@
-const fs = require("graceful-fs");
+const fs = require("fs");
 const mkdirp = require("mkdirp");
 const destroy = require("destroy");
 const tmp = require("tmp");
@@ -43,8 +43,12 @@ function writeStream(filename, st) {
 function fileExists(filename) {
     const d = Promise.defer();
 
-    fs.exists(filename, (exists) => {
-        d.resolve(exists);
+    fs.stat(filename, (error) => {
+        if (error) {
+            d.resolve(false);
+        } else {
+            d.resolve(true);
+        }
     });
 
     return d.promise;
@@ -96,12 +100,12 @@ function rmDir(base) {
 }
 
 /**
-    Assert a file, if it doesn't exist, call "generator"
+ Assert a file, if it doesn't exist, call "generator"
 
-    @param {String} filePath
-    @param {Function} generator
-    @return {Promise}
-*/
+ @param {String} filePath
+ @param {Function} generator
+ @return {Promise}
+ */
 function assertFile(filePath, generator) {
     return fileExists(filePath).then((exists) => {
         if (exists) return;
@@ -111,12 +115,12 @@ function assertFile(filePath, generator) {
 }
 
 /**
-    Pick a file, returns the absolute path if exists, undefined otherwise
+ Pick a file, returns the absolute path if exists, undefined otherwise
 
-    @param {String} rootFolder
-    @param {String} fileName
-    @return {String}
-*/
+ @param {String} rootFolder
+ @param {String} fileName
+ @return {String}
+ */
 function pickFile(rootFolder, fileName) {
     const result = path.join(rootFolder, fileName);
     if (fs.existsSync(result)) {
@@ -127,11 +131,11 @@ function pickFile(rootFolder, fileName) {
 }
 
 /**
-    Ensure that a directory exists and is empty
+ Ensure that a directory exists and is empty
 
-    @param {String} folder
-    @return {Promise}
-*/
+ @param {String} folder
+ @return {Promise}
+ */
 function ensureFolder(rootFolder) {
     return rmDir(rootFolder)
         .fail(() => {
