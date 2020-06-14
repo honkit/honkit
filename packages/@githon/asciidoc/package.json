@@ -1,6 +1,6 @@
 {
   "name": "@githon/asciidoc",
-  "version": "1.2.2",
+  "version": "3.3.0",
   "description": "Parse AsciiDoc content for gitbook",
   "homepage": "https://github.com/azu/githon",
   "bugs": {
@@ -30,7 +30,7 @@
     "test": "mocha test/"
   },
   "dependencies": {
-    "@githon/html": "^1.3.3",
+    "@githon/html": "^3.3.0",
     "asciidoctor.js": "1.5.5-4",
     "lodash": "^4.13.1"
   },
