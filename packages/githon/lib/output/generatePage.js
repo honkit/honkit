@@ -50,7 +50,12 @@ function generatePage(output, page) {
                     .then((content) => {
                         // console.log("page:preparePage", Date.now() - start);
                         const absoluteFilePath = path.join(book.getContentRoot(), filePath);
-                        return Templating.render(engine, absoluteFilePath, content, context);
+                        try {
+                            return Templating.render(engine, absoluteFilePath, content, context);
+                        } catch (error) {
+                            console.error("Template Rendering Error");
+                            console.log("Template content", content);
+                        }
                     })
 
                     .then((output) => {
