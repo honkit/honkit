@@ -28,7 +28,7 @@ You can find a [list of real-world examples](docs/examples.md) in the documentat
 
 - Node.js 14+ supports
 - Improve `build`/`serve` performance
-    - `githon buil`: use file cache by default
+    - `githon build`: use file cache by default
     - `githon serve`: 28.2s → 0.9s in [examples/benchmark](examples/benchmark)
     - Also, support `--reload` flag for force refresh
 - Remove `install` command
