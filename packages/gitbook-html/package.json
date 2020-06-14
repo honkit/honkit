@@ -1,37 +1,40 @@
 {
-    "name": "gitbook-html",
-    "version": "1.3.3",
-    "homepage": "https://www.gitbook.com",
-    "description": "Parse HTML content for gitbook",
-    "main": "lib/index.js",
-    "dependencies": {
-        "q": "^1.1.2",
-        "lodash": "^4.13.1",
-        "cheerio": "^0.20.0 && >=0.20.0"
+  "name": "@githon/html",
+  "version": "1.3.3",
+  "homepage": "https://github.com/azu/githon",
+  "description": "Parse HTML content for gitbook",
+  "main": "lib/index.js",
+  "dependencies": {
+    "q": "^1.1.2",
+    "lodash": "^4.13.1",
+    "cheerio": "^0.20.0 && >=0.20.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1"
+  },
+  "scripts": {
+    "test": "export TESTING=true; mocha --reporter spec --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GitbookIO/gitbook-html.git"
+  },
+  "author": "FriendCode Inc. <contact@gitbook.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/GitbookIO/gitbook-html/issues"
+  },
+  "contributors": [
+    {
+      "name": "Aaron O'Mullan",
+      "email": "aaron@gitbook.com"
     },
-    "devDependencies": {
-        "mocha": "^2.3.2"
-    },
-    "scripts": {
-        "test": "export TESTING=true; mocha --reporter spec --bail"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/GitbookIO/gitbook-html.git"
-    },
-    "author": "FriendCode Inc. <contact@gitbook.com>",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/GitbookIO/gitbook-html/issues"
-    },
-    "contributors": [
-        {
-            "name": "Aaron O'Mullan",
-            "email": "aaron@gitbook.com"
-        },
-        {
-            "name": "Samy Pessé",
-            "email": "samy@gitbook.com"
-        }
-    ]
+    {
+      "name": "Samy Pessé",
+      "email": "samy@gitbook.com"
+    }
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,5 +1,4 @@
-var _ = require('lodash');
-var dom = require('./dom');
+const dom = require("./dom");
 
 /**
     Parse an HTML content into a list of glossary entry
@@ -8,16 +7,16 @@ var dom = require('./dom');
     @return {Array}
 */
 function parseGlossary(html) {
-    var $ = dom.parse(html);
+    const $ = dom.parse(html);
 
-    var entries = [];
+    const entries = [];
 
-    $('h2').each(function() {
-        var $heading = $(this);
-        var $next = $heading.next()
-        var $p =  $next.is('p')? $next.first() : $next.find('p').first();
+    $("h2").each(function () {
+        const $heading = $(this);
+        const $next = $heading.next();
+        const $p = $next.is("p") ? $next.first() : $next.find("p").first();
 
-        var entry = {};
+        const entry = {};
 
         entry.name = $heading.text();
         entry.description = $p.text();

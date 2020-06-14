@@ -1,6 +1,3 @@
-var Q = require('q');
-var _ = require('lodash');
-
 /**
     Parse content of a page
 
@@ -9,7 +6,7 @@ var _ = require('lodash');
 */
 function parsePage(html) {
     return {
-        content: html
+        content: html,
     };
 }
 

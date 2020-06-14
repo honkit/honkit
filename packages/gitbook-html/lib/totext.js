@@ -1,10 +1,9 @@
-var _ = require('lodash');
+const _ = require("lodash");
 
 /*
     This class is extended by gitbook-markdown and gitbook-asciidoc
     to generate back markdown/asciidoc from GitBook metadata.
 */
-
 
 function ToText(markup) {
     if (!(this instanceof ToText)) {
@@ -13,70 +12,69 @@ function ToText(markup) {
 
     _.extend(this, markup || {});
     _.bindAll(this, _.functionsIn(this));
-};
+}
 
 // Break line
-ToText.prototype.onBL = function() {
-    return '\n';
+ToText.prototype.onBL = function () {
+    return "\n";
 };
 
-ToText.prototype.onText = function(text) {
+ToText.prototype.onText = function (text) {
     return text;
 };
 
-ToText.prototype.onHR = function() {
-    return '<hr />';
+ToText.prototype.onHR = function () {
+    return "<hr />";
 };
 
 // ---- TITLES
 
-ToText.prototype.onTitleStart = function(level) {
-    return '<h'+level+'>';
+ToText.prototype.onTitleStart = function (level) {
+    return `<h${level}>`;
 };
-ToText.prototype.onTitleEnd = function(level) {
-    return '</h'+level+'>';
+ToText.prototype.onTitleEnd = function (level) {
+    return `</h${level}>`;
 };
 
 // ---- PARAGRAPHS / SECTIONS
-ToText.prototype.onParagraphStart = function() {
-    return '<p>';
+ToText.prototype.onParagraphStart = function () {
+    return "<p>";
 };
-ToText.prototype.onParagraphEnd = function() {
-    return '</p>';
+ToText.prototype.onParagraphEnd = function () {
+    return "</p>";
 };
 
-
-ToText.prototype.onSection = function() {
+ToText.prototype.onSection = function () {
     return this.onBL();
 };
 
 // ---- LINKS
-ToText.prototype.onLinkStart = function(href) {
-    return '<a href="' + href + '">';
+ToText.prototype.onLinkStart = function (href) {
+    return `<a href="${href}">`;
 };
-ToText.prototype.onLinkEnd = function(href) {
-    return '</a>';
+ToText.prototype.onLinkEnd = function (href) {
+    return "</a>";
 };
 
 // ---- LISTS
-ToText.prototype.onListItemStart = function(level) {
-    return this._spaces((level + 1) * 4) + '<li>';
+ToText.prototype.onListItemStart = function (level) {
+    return `${this._spaces((level + 1) * 4)}<li>`;
 };
-ToText.prototype.onListItemEnd = function(level) {
-    return this._spaces((level + 1) * 4) + '</li>' + this.onBL();
+ToText.prototype.onListItemEnd = function (level) {
+    return `${this._spaces((level + 1) * 4)}</li>${this.onBL()}`;
 };
-ToText.prototype.onListStart = function(level) {
-    return this._spaces(level * 4) + '<ul>' + this.onBL();
+ToText.prototype.onListStart = function (level) {
+    return `${this._spaces(level * 4)}<ul>${this.onBL()}`;
 };
-ToText.prototype.onListEnd = function(level) {
-    return this._spaces(level * 4) + '</ul>' + this.onBL();
+ToText.prototype.onListEnd = function (level) {
+    return `${this._spaces(level * 4)}</ul>${this.onBL()}`;
 };
 
 // ------ LANGS
 
-ToText.prototype.langs = function(languages) {
-    var content = '';
-    content += this.onTitleStart(1) + this.onText('Languages') + this.onTitleEnd(1);
+ToText.prototype.langs = function (languages) {
+    let content = "";
+    content += this.onTitleStart(1) + this.onText("Languages") + this.onTitleEnd(1);
     content += this.onSection();
 
     content += this._summaryArticles(languages);
@@ -86,14 +84,14 @@ ToText.prototype.langs = function(languages) {
 
 // ------ GLOSSARY
 
-ToText.prototype.glossary = function(glossary) {
-    var that = this;
-    var content = '';
+ToText.prototype.glossary = function (glossary) {
+    const that = this;
+    let content = "";
 
-    content += that.onTitleStart(1) + that.onText('Glossary') + that.onTitleEnd(1);
+    content += that.onTitleStart(1) + that.onText("Glossary") + that.onTitleEnd(1);
     content += that.onSection();
 
-    _.each(glossary, function(entry) {
+    _.each(glossary, (entry) => {
         content += that.onTitleStart(2) + that.onText(entry.name) + that.onTitleEnd(2);
         content += that.onParagraphStart();
         content += that.onText(entry.description);
@@ -106,13 +104,13 @@ ToText.prototype.glossary = function(glossary) {
 
 // ------ SUMMARY
 
-ToText.prototype._summaryArticle = function(article, level) {
-    var content = '';
+ToText.prototype._summaryArticle = function (article, level) {
+    let content = "";
 
     content += this.onListItemStart(level);
 
-    if (article.ref) content += this.onLinkStart(article.ref)
-    content += this.onText(article.title)
+    if (article.ref) content += this.onLinkStart(article.ref);
+    content += this.onText(article.title);
     if (article.ref) content += this.onLinkEnd(article.ref);
     content += this.onBL();
 
@@ -124,22 +122,22 @@ ToText.prototype._summaryArticle = function(article, level) {
 
     return content;
 };
-ToText.prototype._summaryArticles = function(articles, level) {
-    var that = this;
-    var content = '';
+ToText.prototype._summaryArticles = function (articles, level) {
+    const that = this;
+    let content = "";
 
     level = level || 0;
 
     content += that.onListStart(level);
-    _.each(articles, function(article) {
+    _.each(articles, (article) => {
         content += that._summaryArticle(article, level);
     });
     content += that.onListEnd(level);
 
     return content;
 };
-ToText.prototype._summaryPart = function(part) {
-    var content = '';
+ToText.prototype._summaryPart = function (part) {
+    let content = "";
 
     if (part.title) content += this.onTitleStart(2) + this.onText(part.title) + this.onTitleEnd(2);
 
@@ -148,15 +146,15 @@ ToText.prototype._summaryPart = function(part) {
     return content;
 };
 
-ToText.prototype.summary = function(summary) {
-    var that = this;
-    var content = '';
+ToText.prototype.summary = function (summary) {
+    const that = this;
+    let content = "";
 
-    content += that.onTitleStart(1) + that.onText('Summary') + that.onTitleEnd(1);
+    content += that.onTitleStart(1) + that.onText("Summary") + that.onTitleEnd(1);
     content += that.onSection();
 
-    _.each(summary.parts, function(part, i) {
-        var next = summary.parts[i + 1];
+    _.each(summary.parts, (part, i) => {
+        const next = summary.parts[i + 1];
 
         content += that._summaryPart(part);
 
@@ -165,7 +163,6 @@ ToText.prototype.summary = function(summary) {
         } else {
             content += that.onSection();
         }
-
     });
 
     return content;
@@ -173,9 +170,8 @@ ToText.prototype.summary = function(summary) {
 
 // ---- Utilities
 
-ToText.prototype._spaces =  function(n, s) {
-    return Array(n + 1).join(s || ' ');
-}
+ToText.prototype._spaces = function (n, s) {
+    return Array(n + 1).join(s || " ");
+};
 
 module.exports = ToText;
-

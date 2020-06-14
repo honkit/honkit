@@ -1,11 +1,8 @@
-var _ = require('lodash');
-var dom = require('./dom');
+const dom = require("./dom");
 
-var SELECTOR_LIST = 'ol, ul';
-var SELECTOR_LINK = '> a, p > a';
-var SELECTOR_PART = 'h2, h3, h4';
-
-var BL = '\n';
+const SELECTOR_LIST = "ol, ul";
+const SELECTOR_LINK = "> a, p > a";
+const SELECTOR_PART = "h2, h3, h4";
 
 /**
     Find a list
@@ -14,7 +11,7 @@ var BL = '\n';
     @return {cheerio.Node}
 */
 function findList($parent) {
-    var $container = $parent.children('.olist');
+    const $container = $parent.children(".olist");
     if ($container.length > 0) $parent = $container.first();
 
     return $parent.children(SELECTOR_LIST);
@@ -28,25 +25,25 @@ function findList($parent) {
     @return {Array}
 */
 function parseList($ul, $) {
-    var articles = [];
+    const articles = [];
 
-    $ul.children('li').each(function() {
-        var article = {};
-        var $li = $(this);
+    $ul.children("li").each(function () {
+        const article = {};
+        const $li = $(this);
 
         // Get text for the entry
-        var $p = $li.children('p');
-        article.title = ($p.text() ||  dom.textNode($li.get(0))).trim();
+        const $p = $li.children("p");
+        article.title = ($p.text() || dom.textNode($li.get(0))).trim();
 
         // Parse link
-        var $a = $li.find(SELECTOR_LINK);
+        const $a = $li.find(SELECTOR_LINK);
         if ($a.length > 0) {
             article.title = $a.first().text();
-            article.ref = $a.attr('href').replace(/\\/g, '/').replace(/^\/+/, '');
+            article.ref = $a.attr("href").replace(/\\/g, "/").replace(/^\/+/, "");
         }
 
         // Sub articles
-        var $sub = findList($li);
+        const $sub = findList($li);
         article.articles = parseList($sub, $);
 
         if (!article.title) return;
@@ -66,13 +63,13 @@ function parseList($ul, $) {
 function findParts($parent, $) {
     // Find parts and lists
     // TODO asciidoc compatibility
-    var partsAndLists = $parent.children(SELECTOR_LIST + ', ' + SELECTOR_PART);
+    const partsAndLists = $parent.children(`${SELECTOR_LIST}, ${SELECTOR_PART}`);
 
     // Group each part with the list after
-    var parts = [];
-    var previousPart = null;
+    const parts = [];
+    let previousPart = null;
 
-    partsAndLists.each(function (i, el) {
+    partsAndLists.each((i, el) => {
         if (isPartNode(el)) {
             if (previousPart !== null) {
                 // The previous part was empty
@@ -80,16 +77,16 @@ function findParts($parent, $) {
             }
             previousPart = {
                 title: getPartTitle(el, $),
-                list: null
+                list: null,
             };
-
-        } else { // It is a list
+        } else {
+            // It is a list
             if (previousPart !== null) {
                 previousPart.list = el;
             } else {
                 previousPart = {
-                    title: '',
-                    list: el
+                    title: "",
+                    list: el,
                 };
             }
             parts.push(previousPart);
@@ -133,24 +130,24 @@ function getPartTitle(el, $) {
     @return {Object}
 */
 function parseSummary(html) {
-    var $ = dom.parse(html);
-    var $root = dom.cleanup(dom.root($), $);
+    const $ = dom.parse(html);
+    const $root = dom.cleanup(dom.root($), $);
 
-    var parts = findParts($root, $);
+    const parts = findParts($root, $);
 
     // Parse each list
-    var parsedParts = [];
-    var part;
-    for (var i = 0; i < parts.length; ++i) {
+    const parsedParts = [];
+    let part;
+    for (let i = 0; i < parts.length; ++i) {
         part = parts[i];
         parsedParts.push({
             title: part.title,
-            articles: parseList($(part.list), $)
+            articles: parseList($(part.list), $),
         });
     }
 
     return {
-        parts: parsedParts
+        parts: parsedParts,
     };
 }
 
