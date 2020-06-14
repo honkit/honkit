@@ -51,7 +51,7 @@ export class TodoListModel extends EventEmitter {
 
     /**
      * 指定した`id`のTodoItemの`completed`を更新する
-
+     * @param {{ id:number, completed: boolean }}
      */
     updateTodo({ id, completed }) {
         const todoItem = this.items.find(todo => todo.id === id);
@@ -68,7 +68,7 @@ export class TodoListModel extends EventEmitter {
     // ===============================
     /**
      * 指定したidのTodoItemを削除する
-
+     * @param {{ id: number }}
      */
     deleteTodo({ id }) {
         // `id`に一致しないTodoItemだけを残すことで、`id`に一致するTodoItemを削除する

@@ -11,7 +11,7 @@
         "chokidar": "^3.3.0",
         "commander": "^5.1.0",
         "cp": "0.2.0",
-        "cpr": "1.1.1",
+        "cpr": "3.0.1",
         "crc": "3.4.0",
         "destroy": "1.0.4",
         "direction": "0.1.5",
@@ -60,7 +60,7 @@
         "urijs": "1.18.0"
     },
     "scripts": {
-        "test": "../../node_modules/.bin/jest"
+        "test": "jest"
     },
     "repository": {
         "type": "git",

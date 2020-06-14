@@ -1,22 +1,26 @@
 name: test
 on: [push, pull_request]
 env:
-    CI: true
+  CI: true
 jobs:
-    test:
-        name: "Test on Node.js ${{ matrix.node-version }}"
-        runs-on: ubuntu-18.04
-        strategy:
-            matrix:
-                node-version: [12, 14]
-        steps:
-            -   name: checkout
-                uses: actions/checkout@v2
-            -   name: setup Node.js ${{ matrix.node-version }}
-                uses: actions/setup-node@v1
-                with:
-                    node-version: ${{ matrix.node-version }}
-            -   name: Install
-                run: yarn install
-            -   name: Test
-                run: yarn run lint && yarn test
+  test:
+    name: "Test on Node:${{ matrix.node-version }} OS: ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node-version: [12, 14]
+        os: [macos-latest, windows-latest, ubuntu-18.04]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        run: yarn install
+      - name: Test
+        run: yarn run lint && yarn test
+      - name: Run E2E
+        run: yarn run build
+        working-directory: examples/benchmark
