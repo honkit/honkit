@@ -26,7 +26,7 @@ You can find a [list of real-world examples](docs/examples.md) in the documentat
 
 ## Differences with GitBook
 
-GitHon is a fork of GitBook.
+GitHon is a fork of [GitBook (Legacy)](https://legacy.gitbook.com/).
 
 - Node.js 14+ supports
 - Improve `build`/`serve` performance
