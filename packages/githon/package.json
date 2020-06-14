@@ -2,7 +2,7 @@
     "name": "githon",
     "version": "3.2.3",
     "homepage": "https://github.com/azu/githon",
-    "description": "Library and cmd utility to generate GitBooks",
+    "description": "Githon is building beautiful books using GitHub/Git and Markdown.",
     "main": "lib/index.js",
     "browser": "./lib/browser.js",
     "dependencies": {
@@ -43,7 +43,6 @@
         "memoize-one": "^5.1.1",
         "mkdirp": "1.0.4",
         "moment": "^2.24.0",
-        "npmi": "^4.0.0",
         "nunjucks": "^3.2.0",
         "nunjucks-do": "1.0.0",
         "object-path": "^0.9.2",
