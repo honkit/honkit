@@ -55,6 +55,7 @@ function generatePage(output, page) {
                         } catch (error) {
                             console.error("Template Rendering Error");
                             console.log("Template content", content);
+                            throw error;
                         }
                     })
 
