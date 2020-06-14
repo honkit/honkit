@@ -9,7 +9,7 @@
         "bash-color": "0.0.4",
         "cheerio": "0.20.0",
         "chokidar": "^3.3.0",
-        "commander": "^4.0.1",
+        "commander": "^5.1.0",
         "cp": "0.2.0",
         "cpr": "1.1.1",
         "crc": "3.4.0",
