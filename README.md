@@ -26,6 +26,8 @@ You can find a [list of real-world examples](docs/examples.md) in the documentat
 
 ## Differences with GitBook
 
+GitHon is a fork of GitBook.
+
 - Node.js 14+ supports
 - Improve `build`/`serve` performance
     - `githon build`: use file cache by default
