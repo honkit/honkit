@@ -1,19 +1,19 @@
-# Setup and Installation of GitBook
+# Setup and Installation of GitHon
 
-Getting GitBook installed and ready-to-go should only take a few minutes.
+Getting GitHon installed and ready-to-go should only take a few minutes.
 
 ### Local Installation
 
 ##### Requirements
 
-Installing GitBook is easy and straightforward. Your system just needs to meet these two requirements:
+Installing GitHon is easy and straightforward. Your system just needs to meet these two requirements:
 
 * NodeJS (v4.0.0 and above is recommended)
 * Windows, Linux, Unix, or Mac OS X
 
 ##### Install with NPM
 
-The best way to install GitBook is via **NPM** or **Yarn** At the terminal prompt, simply run the following command to install GitBook:
+The best way to install GitHon is via **NPM** or **Yarn** At the terminal prompt, simply run the following command to install GitHon:
 
 ```
 $ npm install githon --save-dev
@@ -23,7 +23,7 @@ $ yarn install githon --save
 
 ##### Create a book
 
-GitBook can setup a boilerplate book:
+GitHon can setup a boilerplate book:
 
 ```
 $ githon init

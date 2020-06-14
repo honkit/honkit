@@ -2,7 +2,7 @@
 
 ### Summary
 
-GitBook uses a `SUMMARY.md` file to define the structure of chapters and subchapters of the book. The `SUMMARY.md` file is used to generate the book's table of contents.
+GitHon uses a `SUMMARY.md` file to define the structure of chapters and subchapters of the book. The `SUMMARY.md` file is used to generate the book's table of contents.
 
 The format of `SUMMARY.md` is just a list of links. The link's title is used as the chapter's title, and the link's target is a path to that chapter's file.
 
@@ -15,7 +15,7 @@ Adding a nested list to a parent chapter will create subchapters.
 
 * [Part I](part1/README.md)
     * [Writing is nice](part1/writing.md)
-    * [GitBook is nice](part1/githon.md)
+    * [GitHon is nice](part1/githon.md)
 * [Part II](part2/README.md)
     * [We love feedback](part2/feedback_please.md)
     * [Better tools for authors](part2/better_tools.md)
@@ -34,7 +34,7 @@ Chapters in the Table of Contents can be pointing to specific part of a file usi
 
 * [Part I](part1/README.md)
     * [Writing is nice](part1/README.md#writing)
-    * [GitBook is nice](part1/README.md#githon)
+    * [GitHon is nice](part1/README.md#githon)
 * [Part II](part2/README.md)
     * [We love feedback](part2/README.md#feedback)
     * [Better tools for authors](part2/README.md#tools)
@@ -51,7 +51,7 @@ The Table of Contents can be divided into parts separated by headings or horizon
 ### Part I
 
 * [Writing is nice](part1/writing.md)
-* [GitBook is nice](part1/githon.md)
+* [GitHon is nice](part1/githon.md)
 
 ### Part II
 
@@ -69,7 +69,7 @@ Parts are just groups of chapters and do not have dedicated pages, but according
 
 #### Markdown syntax
 
-Most of the files for GitBook use the Markdown syntax by default. GitBook infers your pages's structure from it. The syntax used is similar to the [GitHub Flavored Markdown syntax](https://guides.github.com/features/mastering-markdown/). One can also opt for the [AsciiDoc syntax](asciidoc.md).
+Most of the files for GitHon use the Markdown syntax by default. GitHon infers your pages's structure from it. The syntax used is similar to the [GitHub Flavored Markdown syntax](https://guides.github.com/features/mastering-markdown/). One can also opt for the [AsciiDoc syntax](asciidoc.md).
 
 ##### Example of a chapter file
 

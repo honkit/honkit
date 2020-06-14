@@ -1,6 +1,6 @@
 # Configuration
 
-GitBook allows you to customize your book using a flexible configuration. These options are specified in a `book.json` file. For authors unfamiliar with the JSON syntax, you can validate the syntax using tools such as [JSONlint](http://jsonlint.com).
+GitHon allows you to customize your book using a flexible configuration. These options are specified in a `book.json` file. For authors unfamiliar with the JSON syntax, you can validate the syntax using tools such as [JSONlint](http://jsonlint.com).
 
 ### General Settings
 
@@ -14,13 +14,13 @@ GitBook allows you to customize your book using a flexible configuration. These 
 | `isbn` | ISBN of the book |
 | `language` | [ISO code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of the book's language, default value is `en` |
 | `direction` | Text's direction. Can be `rtl` or `ltr`, the default value depends on the value of `language` |
-| `githon` | Version of GitBook that should be used. Uses the [SemVer](http://semver.org) specification and accepts conditions like `">= 3.0.0"` |
+| `githon` | Version of GitHon that should be used. Uses the [SemVer](http://semver.org) specification and accepts conditions like `">= 3.0.0"` |
 
 ### Plugins
 
 Plugins and their configurations are specified in the `book.json`. See [the plugins section](plugins/README.md) for more details.
 
-Since version 3.0.0, GitBook can use themes. See [the theming section](themes/README.md) for more details.
+Since version 3.0.0, GitHon can use themes. See [the theming section](themes/README.md) for more details.
 
 | Variable | Description |
 | -------- | ----------- |
