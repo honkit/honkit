@@ -70,11 +70,15 @@ function initBook(rootFolder) {
                         .then(() => {
                             const filePath = path.join(rootFolder, summaryFilename);
 
-                            return fs.ensureFile(filePath).then(() => {
-                                logger.info.ln(`create ${path.basename(filePath)}`);
-                                const content = summary.toText(extension);
-                                return fs.writeFile(filePath, content);
-                            });
+                            return fs
+                                .ensureFile(filePath)
+                                .then(() => {
+                                    logger.info.ln(`create ${path.basename(filePath)}`);
+                                    return summary.toText(extension);
+                                })
+                                .then((content) => {
+                                    return fs.writeFile(filePath, content);
+                                });
                         })
 
                         // Log end

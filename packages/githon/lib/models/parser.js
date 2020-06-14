@@ -78,12 +78,8 @@ Parser.prototype.renderLanguages = function (content) {
 };
 
 Parser.prototype.renderSummary = function (content) {
-    return Promise(this.renderSummarySync());
-};
-
-Parser.prototype.renderSummarySync = function (content) {
     const summary = this.get("summary");
-    return summary.toText(content);
+    return Promise(summary.toText(content));
 };
 
 Parser.prototype.renderGlossary = function (content) {
