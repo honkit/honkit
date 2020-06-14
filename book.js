@@ -1,23 +1,12 @@
-const pkg = require("./package.json");
+const pkg = require("./lerna.json");
 
 module.exports = {
-    // Documentation for GitBook is stored under "docs"
     root: "./docs",
-    title: "GitBook Toolchain Documentation",
+    title: "Githon Documentation",
 
     // Enforce use of GitBook v3
     gitbook: "3.1.1",
-
-    // Use the "official" theme
-    plugins: ["theme-official@2.1.1", "-fontsettings", "sitemap"],
-
     variables: {
         version: pkg.version,
-    },
-
-    pluginsConfig: {
-        sitemap: {
-            hostname: "https://toolchain.gitbook.com",
-        },
     },
 };
