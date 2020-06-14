@@ -8,7 +8,7 @@ describe('Readme parsing', () => {
     let LEXED;
 
     before(() => {
-        const CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/README.md'), 'utf8');
+        const CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/README.html'), 'utf8');
         LEXED = readme(CONTENT);
     });
 

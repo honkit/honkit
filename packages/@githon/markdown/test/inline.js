@@ -1,11 +1,11 @@
-var fs = require('fs');
-var path = require('path');
-var assert = require('assert');
+const fs = require('fs');
+const path = require('path');
+const assert = require('assert');
 
-var inline = require('../').inline;
+const inline = require('../').inline;
 
-describe('Inline', function () {
-    it('should render inline markdown', function() {
+describe('Inline', () => {
+    it('should render inline markdown', () => {
         assert.equal(inline('Hello **World**').content, 'Hello <strong>World</strong>');
     });
 });

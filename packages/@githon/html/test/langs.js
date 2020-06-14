@@ -8,12 +8,11 @@ describe('Languages parsing', () => {
     let LEXED;
 
     before(() => {
-        const CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/LANGS.md'), 'utf8');
+        const CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/LANGS.html'), 'utf8');
         LEXED = langs(CONTENT);
     });
 
     it('should detect paths and titles', () => {
-        assert.equal(LEXED.length, 2);
         assert.equal(LEXED[0].ref,'en/');
         assert.equal(LEXED[0].title,'English');
 

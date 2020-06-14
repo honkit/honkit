@@ -1,27 +1,27 @@
-var fs = require('fs');
-var path = require('path');
-var assert = require('assert');
+const fs = require('fs');
+const path = require('path');
+const assert = require('assert');
 
-var page = require('../').page;
+const page = require('../').page;
 
-describe('Page parsing', function() {
-    var LEXED;
+describe('Page parsing', () => {
+    let LEXED;
 
-    before(function() {
-        var CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/PAGE.md'), 'utf8');
+    before(() => {
+        const CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/PAGE.md'), 'utf8');
         LEXED = page(CONTENT);
     });
 
-    it('should gen content', function() {
+    it('should gen content', () => {
         assert(LEXED.content);
     });
 
-    it('should not add id to headings', function() {
+    it('should not add id to headings', () => {
         assert.equal(page('# Hello').content, '<h1>Hello</h1>');
         assert.equal(page('# Hello {#test}').content, '<h1 id="test">Hello</h1>');
     });
 
-    it('should escape codeblocks in preparation (1)', function() {
+    it('should escape codeblocks in preparation (1)', () => {
         assert.equal(page.prepare("Hello `world`"), 'Hello {% raw %}`world`{% endraw %}\n\n');
         assert.equal(page.prepare("Hello `world test`"), 'Hello {% raw %}`world test`{% endraw %}\n\n');
         assert.equal(page.prepare("Hello ```world test```"), 'Hello {% raw %}`world test`{% endraw %}\n\n');
@@ -29,7 +29,7 @@ describe('Page parsing', function() {
         assert.equal(page.prepare("Hello\n```\ntest\n\tworld\n\ttest\n```"), 'Hello\n\n{% raw %}```\ntest\n    world\n    test\n```\n\n{% endraw %}');
     });
 
-    it('should escape codeblocks in preparation (2)', function() {
+    it('should escape codeblocks in preparation (2)', () => {
         assert.strictEqual(
             page.prepare("Hello\n\n\n\tworld\n\thello\n\n\ntest"),
             'Hello\n\n{% raw %}```\nworld\nhello\n```\n\n{% endraw %}test\n\n'
@@ -40,14 +40,14 @@ describe('Page parsing', function() {
         );
     });
 
-    it('should escape codeblocks with nunjucks tags', function() {
+    it('should escape codeblocks with nunjucks tags', () => {
         assert.equal(
             page.prepare('Hello {{ "Bonjour" }} ```test```'),
             'Hello {{ "Bonjour" }} {% raw %}`test`{% endraw %}\n\n'
         );
     });
 
-    it('should escape codeblocks with nunjucks tags in {% raw %} tags', function() {
+    it('should escape codeblocks with nunjucks tags in {% raw %} tags', () => {
         assert.equal(
             page.prepare('{% raw %}Hello {{ "Bonjour" }} ```test```{% endraw %}'),
             '{% raw %}Hello {{ "Bonjour" }} `test`{% endraw %}\n\n'
@@ -67,7 +67,7 @@ describe('Page parsing', function() {
         );
     });
 
-    it('should not process math', function() {
+    it('should not process math', () => {
         assert.equal(page.prepare("Hello $world$"), 'Hello $world$\n\n');
         assert.equal(page.prepare("Hello $$world$$"), 'Hello $$world$$\n\n');
     });

@@ -8,12 +8,12 @@ describe('Glossary parsing', () => {
     let LEXED;
 
     before(() => {
-        const CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/GLOSSARY.md'), 'utf8');
+        const CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/GLOSSARY.html'), 'utf8');
         LEXED = glossary(CONTENT);
     });
 
     it('should only get heading + paragraph pairs', () => {
-        assert.equal(LEXED.length, 4);
+        assert.equal(LEXED.length, 5);
     });
 
     it('should output simple name/description objects', () => {
