@@ -4,7 +4,7 @@ Githon is building beautiful books using GitHub/Git and Markdown.
 
 ## Getting started
 
-- [ ] TODO
+- Documentation: <https://githon.netlify.app/>
 
 ## Usage examples
 
