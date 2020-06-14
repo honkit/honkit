@@ -9,13 +9,13 @@ const Book = require("./models/book");
 const Parse = require("./parse");
 
 /**
-    Initialize folder structure for a book
-    Read SUMMARY to created the right chapter
+ Initialize folder structure for a book
+ Read SUMMARY to created the right chapter
 
-    @param {Book}
-    @param {String}
-    @return {Promise}
-*/
+ @param {Book}
+ @param {String}
+ @return {Promise}
+ */
 function initBook(rootFolder) {
     const extension = ".md";
 
@@ -61,7 +61,15 @@ function initBook(rootFolder) {
                         return fs.assertFile(filePath, () => {
                             return fs.ensureFile(filePath).then(() => {
                                 logger.info.ln("create", article.getPath());
-                                return fs.writeFile(filePath, `# ${article.getTitle()}\n\n`);
+                                const d = Promise.defer();
+                                fs.writeFile(filePath, `# ${article.getTitle()}\n\n`, (error) => {
+                                    if (error) {
+                                        d.reject(error);
+                                    } else {
+                                        d.resolve();
+                                    }
+                                });
+                                return d.promise;
                             });
                         });
                     })
@@ -69,10 +77,17 @@ function initBook(rootFolder) {
                         // Write summary
                         .then(() => {
                             const filePath = path.join(rootFolder, summaryFilename);
-
                             return fs.ensureFile(filePath).then(() => {
                                 logger.info.ln(`create ${path.basename(filePath)}`);
-                                return fs.writeFile(filePath, summary.toText(extension) || "");
+                                const d = Promise.defer();
+                                fs.writeFile(filePath, summary.toText(extension), (error) => {
+                                    if (error) {
+                                        d.reject(error);
+                                    } else {
+                                        d.resolve();
+                                    }
+                                });
+                                return d.promise;
                             });
                         })
 
