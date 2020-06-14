@@ -84,7 +84,7 @@ function processOutput(generator, startOutput) {
             const plugins = output.getPlugins();
             const state = output.getState();
             const options = output.getOptions();
-            const bookPromises = books.map((langBook) => {
+            const bookList = books.map((langBook) => {
                 // Inherits plugins list, options and state
                 const langOptions = options.set("root", path.join(outputRoot, langBook.getLanguage()));
                 const langOutput = new Output({
@@ -99,7 +99,7 @@ function processOutput(generator, startOutput) {
                 logger.info.ln(`generating language "${langBook.getLanguage()}"`);
                 return processOutput(generator, langOutput);
             });
-            return Promise.all(bookPromises.toArray()).thenResolve(output);
+            return Promise.all(bookList.toArray()).thenResolve(output);
         })
 
         .then(

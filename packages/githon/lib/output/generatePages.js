@@ -17,7 +17,7 @@ function generatePages(generator, output) {
         return Promise(output);
     }
 
-    const promises = pages.map((page) => {
+    const pageList = pages.map((page) => {
         const file = page.getFile();
         logger.debug.ln(`generate page "${file.getPath()}"`);
         return generatePage(output, page)
@@ -29,7 +29,7 @@ function generatePages(generator, output) {
                 throw err;
             });
     });
-    return Promise.all(promises.toArray()).then(() => {
+    return Promise.all(pageList.toArray()).then(() => {
         return output;
     });
 }
