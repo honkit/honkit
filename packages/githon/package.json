@@ -93,5 +93,8 @@
         "tiny-lr": "^1.1.1",
         "tmp": "0.0.28",
         "urijs": "1.18.0"
+    },
+    "devDependencies": {
+        "jest": "^26.0.1"
     }
 }

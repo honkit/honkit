@@ -21,13 +21,12 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --ci",
     "lint": "eslint .",
-    "test": "cd packages/githon && npm test",
+    "test": "lerna run test",
     "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\""
   },
   "devDependencies": {
     "eslint": "^6.7.2",
     "husky": "^4.2.5",
-    "jest": "^24.9.0",
     "lerna": "^3.22.1",
     "lint-staged": "^10.2.10",
     "prettier": "^2.0.5"

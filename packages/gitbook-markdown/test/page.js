@@ -30,13 +30,13 @@ describe('Page parsing', function() {
     });
 
     it('should escape codeblocks in preparation (2)', function() {
-        assert.equal(
+        assert.strictEqual(
             page.prepare("Hello\n\n\n\tworld\n\thello\n\n\ntest"),
-            'Hello\n\n{% raw %}```\nworld\nhello```\n\n{% endraw %}test\n\n'
+            'Hello\n\n{% raw %}```\nworld\nhello\n```\n\n{% endraw %}test\n\n'
         );
-        assert.equal(
+        assert.strictEqual(
             page.prepare("Hello\n\n\n\tworld\n\thello\n\n\n"),
-            'Hello\n\n{% raw %}```\nworld\nhello```\n\n{% endraw %}'
+            'Hello\n\n{% raw %}```\nworld\nhello\n```\n\n{% endraw %}'
         );
     });
 

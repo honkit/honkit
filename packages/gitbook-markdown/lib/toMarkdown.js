@@ -1,4 +1,4 @@
-var escape = require('markdown-escape');
+const escape = require("markdown-escape");
 
 // Return N time a string
 function ns(s, n) {
@@ -10,47 +10,46 @@ function ns(s, n) {
  * These rules are being used to generate SUMMARY/GLOSSARY/LANGS
  */
 module.exports = {
-    onText: function(text) {
+    onText: function (text) {
         return escape(text);
     },
 
-    onTitleStart: function(level) {
-        return ns('#', level) + ' ';
+    onTitleStart: function (level) {
+        return `${ns("#", level)} `;
     },
-    onTitleEnd: function(level) {
+    onTitleEnd: function (level) {
         return this.onBL();
     },
 
-    onParagraphStart: function() {
+    onParagraphStart: function () {
         return this.onSection();
     },
-    onParagraphEnd: function() {
+    onParagraphEnd: function () {
         return this.onSection();
     },
 
-    onLinkStart: function() {
-        return '[';
+    onLinkStart: function () {
+        return "[";
     },
-    onLinkEnd: function(href) {
-        return '](' + href +')';
-    },
-
-    onListStart: function(level) {
-        return '';
-    },
-    onListEnd: function() {
-        return '';
+    onLinkEnd: function (href) {
+        return `](${href})`;
     },
 
-    onListItemStart: function(level) {
-        return ns(' ', level * 4) + '* ';
+    onListStart: function (level) {
+        return "";
     },
-    onListItemEnd: function() {
-        return '';
+    onListEnd: function () {
+        return "";
     },
 
-    onHR: function() {
-        return '-----';
-    }
+    onListItemStart: function (level) {
+        return `${ns(" ", level * 4)}* `;
+    },
+    onListItemEnd: function () {
+        return "";
+    },
+
+    onHR: function () {
+        return "-----";
+    },
 };
-
