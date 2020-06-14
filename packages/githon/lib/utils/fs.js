@@ -153,8 +153,8 @@ module.exports = {
     existsSync: fs.existsSync,
     mkdirp: mkdirp,
     readFile: Promise.nfbind(fs.readFile),
-    writeFile: (filePath, content, encoding) => {
-        return writeFile(filePath, content, encoding).then((ret) => Promise(ret));
+    writeFile: (filePath, content) => {
+        return writeFile(filePath, content).then((ret) => Promise(ret));
     },
     assertFile: assertFile,
     pickFile: pickFile,

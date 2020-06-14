@@ -24,6 +24,11 @@ You can find a [list of real-world examples](docs/examples.md) in the documentat
 * [Plugins](http://toolchain.gitbook.com/plugins/)
 * [Beautiful default theme](https://github.com/GitbookIO/theme-default)
 
+## Differences with GitBook
+
+- Node.js 14+ supports
+- Improve `build`/`serve` performance
+
 ## Benchmarks
 
 `githon build` benchmark:
