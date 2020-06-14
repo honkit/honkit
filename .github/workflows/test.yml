@@ -4,11 +4,12 @@ env:
     CI: true
 jobs:
     test:
-        name: "Test on Node.js ${{ matrix.node-version }}"
-        runs-on: ubuntu-18.04
+        name: "Test on Node:${{ matrix.node-version }} OS: ${{ matrix.os }}"
+        runs-on: ${{ matrix.os }}
         strategy:
             matrix:
                 node-version: [12, 14]
+                os: [macOS-lastest, windows-latest, ubuntu-latest]
         steps:
             -   name: checkout
                 uses: actions/checkout@v2
