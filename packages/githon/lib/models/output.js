@@ -3,8 +3,6 @@ const path = require("path");
 const Immutable = require("immutable");
 const parsePageFromString = require("../parse/parsePageFromString");
 const Book = require("./book");
-const Page = require("./page");
-const File = require("./file");
 const LocationUtils = require("../utils/location");
 
 const Output = Immutable.Record({

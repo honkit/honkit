@@ -1,5 +1,4 @@
 const Immutable = require("immutable");
-const fs = require("fs");
 const yaml = require("js-yaml");
 const File = require("./file");
 const { hashString } = require("./hash.js");
