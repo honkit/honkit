@@ -8,6 +8,7 @@ const cp = require("cp");
 const cpr = require("cpr");
 
 const Promise = require("./promise");
+const util = require("util");
 
 // Write a stream to a file
 function writeStream(filename, st) {
@@ -141,12 +142,16 @@ function ensureFolder(rootFolder) {
         });
 }
 
+const writeFile = util.promisify(fs.writeFile);
+
 module.exports = {
     exists: fileExists,
     existsSync: fs.existsSync,
     mkdirp: mkdirp,
     readFile: Promise.nfbind(fs.readFile),
-    writeFile: Promise.nfbind(fs.writeFile),
+    writeFile: (filePath, content, encoding) => {
+        return writeFile(filePath, content, encoding).then((ret) => Promise(ret));
+    },
     assertFile: assertFile,
     pickFile: pickFile,
     stat: Promise.nfbind(fs.stat),
