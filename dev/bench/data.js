@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592148834250,
+  "lastUpdate": 1592150851559,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "Githon benchmark": [
@@ -1238,6 +1238,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.11,
             "range": "±1.27%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "06de665a910f73d3bcda1b503af61ac9a957bf90",
+          "message": "Create CODE_OF_CONDUCT.md",
+          "timestamp": "2020-06-15T01:05:06+09:00",
+          "tree_id": "e194de2218209b77f180883208dc914b37767640",
+          "url": "https://github.com/azu/githon/commit/06de665a910f73d3bcda1b503af61ac9a957bf90"
+        },
+        "date": 1592150851078,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.11,
+            "range": "±4.84%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
