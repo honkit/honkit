@@ -1,10 +1,10 @@
 # Context and APIs
 
-GitBooks provides different APIs and contexts to plugins. These APIs can vary according to the GitBook version being used, your plugin should specify the `engines.gitbook` field in `package.json` accordingly.
+GitBooks provides different APIs and contexts to plugins. These APIs can vary according to the GitBook version being used, your plugin should specify the `engines.githon` field in `package.json` accordingly.
 
 #### Book instance
 
-The `Book` class is the central point of GitBook, it centralize all access read methods. This class is defined in [book.js](https://github.com/GitbookIO/gitbook/blob/master/lib/book.js).
+The `Book` class is the central point of GitBook, it centralize all access read methods. This class is defined in [book.js](https://github.com/azu/githon/blob/master/lib/book.js).
 
 ```js
 // Read configuration from book.json

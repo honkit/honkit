@@ -4,13 +4,13 @@ GitBook can generates a website, but can also output content as ebook (ePub, Mob
 
 ```
 # Generate a PDF file
-$ gitbook pdf ./ ./mybook.pdf
+$ githon pdf ./ ./mybook.pdf
 
 # Generate an ePub file
-$ gitbook epub ./ ./mybook.epub
+$ githon epub ./ ./mybook.epub
 
 # Generate a Mobi file
-$ gitbook mobi ./ ./mybook.mobi
+$ githon mobi ./ ./mybook.mobi
 ```
 
 ### Installing ebook-convert
@@ -29,7 +29,7 @@ You can replace `/usr/bin` with any directory that is in your $PATH.
 
 ### Cover
 
-Covers are used for all the ebook formats. You can either provide one yourself, or generate one using the [autocover plugin](https://plugins.gitbook.com/plugin/autocover).
+Covers are used for all the ebook formats. You can either provide one yourself, or generate one using the [autocover plugin](https://plugins.githon.com/plugin/autocover).
 
 To provide a cover, place a **`cover.jpg`** file at the root directory of your book. Adding a **`cover_small.jpg`** will specify a smaller version of the cover. The cover should be a **JPEG** file.
 

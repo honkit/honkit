@@ -15,7 +15,7 @@ Adding a nested list to a parent chapter will create subchapters.
 
 * [Part I](part1/README.md)
     * [Writing is nice](part1/writing.md)
-    * [GitBook is nice](part1/gitbook.md)
+    * [GitBook is nice](part1/githon.md)
 * [Part II](part2/README.md)
     * [We love feedback](part2/feedback_please.md)
     * [Better tools for authors](part2/better_tools.md)
@@ -34,7 +34,7 @@ Chapters in the Table of Contents can be pointing to specific part of a file usi
 
 * [Part I](part1/README.md)
     * [Writing is nice](part1/README.md#writing)
-    * [GitBook is nice](part1/README.md#gitbook)
+    * [GitBook is nice](part1/README.md#githon)
 * [Part II](part2/README.md)
     * [We love feedback](part2/README.md#feedback)
     * [Better tools for authors](part2/README.md#tools)
@@ -51,7 +51,7 @@ The Table of Contents can be divided into parts separated by headings or horizon
 ### Part I
 
 * [Writing is nice](part1/writing.md)
-* [GitBook is nice](part1/gitbook.md)
+* [GitBook is nice](part1/githon.md)
 
 ### Part II
 

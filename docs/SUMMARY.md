@@ -45,6 +45,6 @@
 
 * [FAQ](faq.md)
 * [Examples](examples.md)
-* [Release notes](https://github.com/GitbookIO/gitbook/blob/master/CHANGES.md)
+* [Release notes](https://github.com/azu/githon/blob/master/CHANGELOG.md)
 
 

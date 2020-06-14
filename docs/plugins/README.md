@@ -6,6 +6,7 @@ Plugins are the best way to extend GitBook functionalities (ebook and website). 
 
 Plugins can be easily searched on [plugins.gitbook.com](https://plugins.gitbook.com).
 
+Search on npm with keywords: `gitbook-plugin` or `githon-plugin`
 
 ### How to install a plugin?
 
@@ -18,10 +19,6 @@ Once you find a plugin that you want to install, you need to add it to your `boo
 ```
 
 You can also specify a specific version using: `"myPlugin@0.3.1"`. By default GitBook will resolve the latest version of the plugin compatbile with the current GitBook version.
-
-### legacy.gitbook.com
-
-Plugins are automatically installed on [legacy.gitbook.com](https://legacy.gitbook.com). Locally, run `gitbook install` to install and prepare all plugins for your books.
 
 ### Configuring plugins
 

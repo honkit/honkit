@@ -174,7 +174,7 @@ For example, to syntax highlight Ruby code:
 
 Text phrases can be marked up as code by surrounding them with backticks:
 
-    Use `gitbook` to convert the `text` in markdown
+    Use `githon` to convert the `text` in markdown
     syntax to HTML.
 
 ### Footnotes
