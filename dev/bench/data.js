@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592069057073,
+  "lastUpdate": 1592101502884,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "Githon benchmark": [
@@ -277,6 +277,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.07,
             "range": "±1.67%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "f5b8d8e749550dc7789b4f47ccc45cafc91ea031",
+          "message": "refactor(deps): update mkdirp",
+          "timestamp": "2020-06-14T11:21:55+09:00",
+          "tree_id": "20dbab7df31bfcb7eaffec78d548fc2fe5708a03",
+          "url": "https://github.com/azu/githon/commit/f5b8d8e749550dc7789b4f47ccc45cafc91ea031"
+        },
+        "date": 1592101502442,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.08,
+            "range": "±1.72%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
