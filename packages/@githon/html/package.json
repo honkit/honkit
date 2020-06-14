@@ -13,7 +13,7 @@
     "mocha": "^8.0.1"
   },
   "scripts": {
-    "test": "export TESTING=true; mocha --reporter spec --bail"
+    "test": "mocha test/"
   },
   "repository": {
     "type": "git",
