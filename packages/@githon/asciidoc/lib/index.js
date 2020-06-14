@@ -1,4 +1,4 @@
-const HTMLParser = require("gitbook-html");
+const HTMLParser = require("@githon/html");
 const toHTML = require("./toHTML");
 const toAsciidoc = require("./toAsciidoc");
 

@@ -1801,14 +1801,6 @@ asciidoctor.js@1.5.3-preview.1:
     opal-npm-wrapper "^0.1.1"
     xmlhttprequest "~1.6.0"
 
-asciidoctor.js@1.5.5-1:
-  version "1.5.5-1"
-  resolved "https://registry.yarnpkg.com/asciidoctor.js/-/asciidoctor.js-1.5.5-1.tgz#bdb5322a91a1f005a3ea7fc2f9e11e18ab152f46"
-  integrity sha1-vbUyKpGh8AWj6n/C+eEeGKsVL0Y=
-  dependencies:
-    opal-npm-wrapper "^0.9.0-beta2"
-    xmlhttprequest "~1.7.0"
-
 asciidoctor.js@1.5.5-4:
   version "1.5.5-4"
   resolved "https://registry.yarnpkg.com/asciidoctor.js/-/asciidoctor.js-1.5.5-4.tgz#6f2b8389ea6e5ec7f25e78436c69773d1eb0f98b"
@@ -4052,24 +4044,6 @@ gitbook-asciidoc@0.2.4:
     lodash "^3.2.0"
     q "^1.1.2"
 
-gitbook-asciidoc@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/gitbook-asciidoc/-/gitbook-asciidoc-1.2.2.tgz#dfae3f7c7e228fdcd75b62d859794c05825a2800"
-  integrity sha1-364/fH4ij9zXW2LYWXlMBYJaKAA=
-  dependencies:
-    asciidoctor.js "1.5.5-1"
-    gitbook-html "1.3.3"
-    lodash "^4.13.1"
-
-gitbook-html@1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/gitbook-html/-/gitbook-html-1.3.3.tgz#055055940c2ca7cd1d6ea70a34196bf2b85c7fef"
-  integrity sha1-BVBVlAwsp80dbqcKNBlr8rhcf+8=
-  dependencies:
-    cheerio "^0.20.0 && >=0.20.0"
-    lodash "^4.13.1"
-    q "^1.1.2"
-
 gitbook-markdown@0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/gitbook-markdown/-/gitbook-markdown-0.5.3.tgz#a5750ef1e499e53ee5b62c5d44fc4bd6fba41bc7"
@@ -4078,16 +4052,6 @@ gitbook-markdown@0.5.3:
     kramed "0.5.5"
     kramed-text-renderer "0.2.1"
     lodash "^3.2.0"
-
-gitbook-markdown@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/gitbook-markdown/-/gitbook-markdown-2.0.1.tgz#cef9af19438ce48a8620c4fa09b6f126478d4e89"
-  integrity sha1-zvmvGUOM5IqGIMT6CbbxJkeNTok=
-  dependencies:
-    gitbook-html "1.3.3"
-    lodash "^4.13.1"
-    markdown-escape "^1.0.1"
-    markup-it "^2.2.0 >=2.2.0"
 
 gitbook-parsers@^0.8.9:
   version "0.8.9"
@@ -6851,11 +6815,6 @@ opal-npm-wrapper@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/opal-npm-wrapper/-/opal-npm-wrapper-0.1.1.tgz#9c94d20be4e4ba2df2a92da6bbde6f3213ac2095"
   integrity sha1-nJTSC+Tkui3yqS2mu95vMhOsIJU=
-
-opal-npm-wrapper@^0.9.0-beta2:
-  version "0.9.2"
-  resolved "https://registry.yarnpkg.com/opal-npm-wrapper/-/opal-npm-wrapper-0.9.2.tgz#99d178579b571384c97627d6184708fbb0887498"
-  integrity sha1-mdF4V5tXE4TJdifWGEcI+7CIdJg=
 
 opal-runtime@0.10.2:
   version "0.10.2"

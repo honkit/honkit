@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GitbookIO/gitbook-html.git"
+    "url": "https://github.com/azu/githon.git"
   },
   "author": "FriendCode Inc. <contact@gitbook.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/GitbookIO/gitbook-html/issues"
+    "url": "https://github.com/azu/githon/issues"
   },
   "contributors": [
     {
