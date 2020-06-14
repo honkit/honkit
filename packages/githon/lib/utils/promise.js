@@ -10,7 +10,8 @@ if (process.env.DEBUG || process.env.CI) {
  * Reduce an array to a promise
  *
  * @param {Array|List} arr
- * @param {Function(value, element, index)}
+ * @param {Function(value, element, index)} iter
+ * @param {Array|List} base
  * @return {Promise<Mixed>}
  */
 function reduce(arr, iter, base) {

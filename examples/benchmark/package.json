@@ -23,7 +23,8 @@
         "gitbook-plugin-js-console": "^2.0.4",
         "gitbook-plugin-page-toc-button": "^0.1.1",
         "gitbook-summary-to-path": "^1.1.0",
-        "githon": "^3.0.0"
+        "githon": "^3.0.0",
+        "jest": "^26.0.1"
     },
     "dependencies": {}
 }

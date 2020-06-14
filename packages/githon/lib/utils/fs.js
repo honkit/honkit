@@ -84,7 +84,7 @@ function uniqueFilename(base, filename) {
 // Create all required folder to create a file
 function ensureFile(filename) {
     const base = path.dirname(filename);
-    return Promise.nfcall(mkdirp, base);
+    return Promise(mkdirp(base));
 }
 
 // Remove a folder
@@ -137,14 +137,14 @@ function ensureFolder(rootFolder) {
             return Promise();
         })
         .then(() => {
-            return Promise.nfcall(mkdirp, rootFolder);
+            return Promise(mkdirp(rootFolder));
         });
 }
 
 module.exports = {
     exists: fileExists,
     existsSync: fs.existsSync,
-    mkdirp: Promise.nfbind(mkdirp),
+    mkdirp: mkdirp,
     readFile: Promise.nfbind(fs.readFile),
     writeFile: Promise.nfbind(fs.writeFile),
     assertFile: assertFile,
