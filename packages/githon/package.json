@@ -60,7 +60,7 @@
         "urijs": "1.18.0"
     },
     "scripts": {
-        "test": "../../node_modules/.bin/jest"
+        "test": "jest"
     },
     "repository": {
         "type": "git",
