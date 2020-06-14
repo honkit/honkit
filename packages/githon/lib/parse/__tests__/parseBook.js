@@ -29,10 +29,10 @@ describe("parseBook", () => {
     test("should extend configuration for multilingual book", () => {
         const fs = createMockFS({
             "LANGS.md": "# Languages\n\n* [en](en)\n* [fr](fr)",
-            "book.json": "{ \"title\": \"Test\", \"author\": \"GitBook\" }",
+            "book.json": '{ "title": "Test", "author": "GitBook" }',
             en: {
                 "README.md": "Hello",
-                "book.json": "{ \"title\": \"Test EN\" }",
+                "book.json": '{ "title": "Test EN" }',
             },
             fr: {
                 "README.md": "Bonjour",

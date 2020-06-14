@@ -5,7 +5,7 @@ describe("parsePageFromString", () => {
     const page = new Page();
 
     test("should parse YAML frontmatter", () => {
-        const CONTENT = "---\nhello: true\nworld: \"cool\"\n---\n# Hello World\n";
+        const CONTENT = '---\nhello: true\nworld: "cool"\n---\n# Hello World\n';
         const newPage = parsePageFromString(page, CONTENT);
 
         expect(newPage.getDir()).toBe("ltr");

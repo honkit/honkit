@@ -7,16 +7,16 @@ describe("addHeadingId", () => {
 
         return addHeadingId($).then(() => {
             const html = $.html();
-            expect(html).toBe("<h1 id=\"hello-world\">Hello World</h1><h2 id=\"cool-\">Cool !!</h2>");
+            expect(html).toBe('<h1 id="hello-world">Hello World</h1><h2 id="cool-">Cool !!</h2>');
         });
     });
 
     test("should not change existing IDs", () => {
-        const $ = cheerio.load("<h1 id=\"awesome\">Hello World</h1>");
+        const $ = cheerio.load('<h1 id="awesome">Hello World</h1>');
 
         return addHeadingId($).then(() => {
             const html = $.html();
-            expect(html).toBe("<h1 id=\"awesome\">Hello World</h1>");
+            expect(html).toBe('<h1 id="awesome">Hello World</h1>');
         });
     });
 });

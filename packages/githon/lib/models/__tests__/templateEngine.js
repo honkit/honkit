@@ -11,7 +11,7 @@ describe("TemplateBlock", () => {
                 },
             });
             const env = engine.toNunjucks();
-            const res = env.renderString("{{ \"Luke\"|hello }}");
+            const res = env.renderString('{{ "Luke"|hello }}');
 
             expect(res).toBe("Hello Luke!");
         });
@@ -25,7 +25,7 @@ describe("TemplateBlock", () => {
                 },
             });
             const env = engine.toNunjucks();
-            const res = env.renderString("{{ hello(\"Luke\") }}");
+            const res = env.renderString('{{ hello("Luke") }}');
 
             expect(res).toBe("Hello Luke!");
         });
@@ -42,7 +42,7 @@ describe("TemplateBlock", () => {
                 },
             });
             const env = engine.toNunjucks();
-            const res = env.renderString("{{ \"Luke\"|hello }}");
+            const res = env.renderString('{{ "Luke"|hello }}');
 
             expect(res).toBe("Hello Luke Skywalker!");
         });

@@ -134,7 +134,7 @@ describe("TemplateBlock", () => {
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block
-            const src = "{% sayhello name=\"Samy\", tag=\"p\" %}{% endsayhello %}";
+            const src = '{% sayhello name="Samy", tag="p" %}{% endsayhello %}';
             return Promise.nfcall(env.renderString.bind(env), src).then((res) => {
                 expect(res).toBe("<p>Hello, Samy!</p>");
             });
@@ -192,7 +192,7 @@ describe("TemplateBlock", () => {
             // Render a template using the block
             const src = "{% yoda %}{% start %}this sentence should be{% end %}inverted{% endyoda %}";
             return Promise.nfcall(env.renderString.bind(env), src).then((res) => {
-                expect(res).toBe("<p class=\"yoda\">inverted this sentence should be</p>");
+                expect(res).toBe('<p class="yoda">inverted this sentence should be</p>');
             });
         });
     });

@@ -24,21 +24,21 @@ const OutputError = WrappedError({
 // A file does not exists
 const FileNotFoundError = TypedError({
     type: "file.not-found",
-    message: "No \"{filename}\" file (or is ignored)",
+    message: 'No "{filename}" file (or is ignored)',
     filename: null,
 });
 
 // A file cannot be parsed
 const FileNotParsableError = TypedError({
     type: "file.not-parsable",
-    message: "\"{filename}\" file cannot be parsed",
+    message: '"{filename}" file cannot be parsed',
     filename: null,
 });
 
 // A file is outside the scope
 const FileOutOfScopeError = TypedError({
     type: "file.out-of-scope",
-    message: "\"{filename}\" not in \"{root}\"",
+    message: '"{filename}" not in "{root}"',
     filename: null,
     root: null,
     code: "EACCESS",
@@ -47,7 +47,7 @@ const FileOutOfScopeError = TypedError({
 // A file is outside the scope
 const RequireInstallError = TypedError({
     type: "install.required",
-    message: "\"{cmd}\" is not installed.\n{install}",
+    message: '"{cmd}" is not installed.\n{install}',
     cmd: null,
     code: "ENOENT",
     install: "",
@@ -55,14 +55,14 @@ const RequireInstallError = TypedError({
 
 // Error for nunjucks templates
 const TemplateError = WrappedError({
-    message: "Error compiling template \"{filename}\": {origMessage}",
+    message: 'Error compiling template "{filename}": {origMessage}',
     type: "template",
     filename: null,
 });
 
 // Error for nunjucks templates
 const PluginError = WrappedError({
-    message: "Error with plugin \"{plugin}\": {origMessage}",
+    message: 'Error with plugin "{plugin}": {origMessage}',
     type: "plugin",
     plugin: null,
 });

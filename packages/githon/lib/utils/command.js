@@ -80,7 +80,7 @@ function escapeShellArg(value) {
     }
 
     value = String(value);
-    value = value.replace(/"/g, "\\\"");
+    value = value.replace(/"/g, '\\"');
 
     return `"${value}"`;
 }

@@ -76,15 +76,15 @@ describe("LocationUtils", () => {
             expect(LocationUtils.toAbsolute("\\test.png", "folder", "")).toBe("test.png");
         });
 
-        test("should resolve path starting by \"/\" in root directory", () => {
+        test('should resolve path starting by "/" in root directory', () => {
             expect(LocationUtils.toAbsolute("/test/hello.md", "./", "./")).toBe("test/hello.md");
         });
 
-        test("should resolve path starting by \"/\" in child directory", () => {
+        test('should resolve path starting by "/" in child directory', () => {
             expect(LocationUtils.toAbsolute("/test/hello.md", "./hello", "./")).toBe("test/hello.md");
         });
 
-        test("should resolve path starting by \"/\" in child directory, with same output directory", () => {
+        test('should resolve path starting by "/" in child directory, with same output directory', () => {
             expect(LocationUtils.toAbsolute("/test/hello.md", "./hello", "./hello")).toBe("../test/hello.md");
         });
     });

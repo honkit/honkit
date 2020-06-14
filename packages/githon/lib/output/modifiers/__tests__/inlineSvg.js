@@ -15,8 +15,8 @@ describe("inlineSvg", () => {
 
     test("should inline svg icons", () => {
         const svg =
-            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"100\" version=\"1.1\"><rect width=\"200\" height=\"100\" stroke-width=\"6\"/></svg>";
-        const $ = cheerio.load("<img src=\"test.svg\"/>");
+            '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" version="1.1"><rect width="200" height="100" stroke-width="6"/></svg>';
+        const $ = cheerio.load('<img src="test.svg"/>');
         return fs.promises
             .writeFile(svgPath, svg)
             .then(() => {
@@ -29,8 +29,8 @@ describe("inlineSvg", () => {
 
     test("should not inline svgs with style tags", () => {
         const svg =
-            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"100\" version=\"1.1\" style=\"background-color:red\"><rect width=\"200\" height=\"100\" stroke=\"black\" stroke-width=\"6\" fill=\"green\"/></svg>";
-        const $ = cheerio.load("<img src=\"test.svg\"/>");
+            '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" version="1.1" style="background-color:red"><rect width="200" height="100" stroke="black" stroke-width="6" fill="green"/></svg>';
+        const $ = cheerio.load('<img src="test.svg"/>');
         return fs.promises
             .writeFile(svgPath, svg)
             .then(() => {

@@ -33,25 +33,25 @@ describe("WebsiteGenerator", () => {
 
         test("should correctly resolve glossary links in README", () => {
             const html = fs.readFileSync(`${folder}/index.html`, "utf8");
-            expect(html).toHaveDOMElement(".page-inner a[href=\"GLOSSARY.html#hello\"]");
+            expect(html).toHaveDOMElement('.page-inner a[href="GLOSSARY.html#hello"]');
         });
 
         test("should correctly resolve glossary links in directory", () => {
             const html = fs.readFileSync(`${folder}/folder/page.html`, "utf8");
-            expect(html).toHaveDOMElement(".page-inner a[href=\"../GLOSSARY.html#hello\"]");
+            expect(html).toHaveDOMElement('.page-inner a[href="../GLOSSARY.html#hello"]');
         });
 
         test("should accept a custom glossary file", () => {
             return generateMock(WebsiteGenerator, {
                 "README.md": "Hello World",
-                "book.json": "{ \"structure\": { \"glossary\": \"custom.md\" } }",
+                "book.json": '{ "structure": { "glossary": "custom.md" } }',
                 "custom.md": "# Glossary\n\n## Hello\n\nHello World",
             }).then((folder) => {
                 expect(folder).toHaveFile("custom.html");
                 expect(folder).not.toHaveFile("GLOSSARY.html");
 
                 const html = fs.readFileSync(`${folder}/index.html`, "utf8");
-                expect(html).toHaveDOMElement(".page-inner a[href=\"custom.html#hello\"]");
+                expect(html).toHaveDOMElement('.page-inner a[href="custom.html#hello"]');
             });
         });
     });
@@ -59,7 +59,7 @@ describe("WebsiteGenerator", () => {
     test.skip("should copy asset files", () => {
         return generateMock(WebsiteGenerator, {
             "README.md": "Hello World",
-            "myJsFile.js": "var a = \"test\";",
+            "myJsFile.js": 'var a = "test";',
             folder: {
                 "AnotherAssetFile.md": "# Even md",
             },

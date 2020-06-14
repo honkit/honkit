@@ -30,7 +30,7 @@ function encodePage(output, page) {
         () => {
             return encodeProgress(output, page);
         },
-        "\"page.progress\" property is deprecated"
+        '"page.progress" property is deprecated'
     );
 
     deprecate.field(
@@ -44,7 +44,7 @@ function encodePage(output, page) {
                 type: "normal",
             },
         ],
-        "\"sections\" property is deprecated, use page.content instead"
+        '"sections" property is deprecated, use page.content instead'
     );
 
     return result;

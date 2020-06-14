@@ -137,7 +137,7 @@ module.exports = {
                     type: "string",
                     default: "/",
                     title:
-                        "An XPath expression. Page breaks are inserted before the specified elements. To disable use the expression: \"/\"",
+                        'An XPath expression. Page breaks are inserted before the specified elements. To disable use the expression: "/"',
                 },
                 margin: {
                     type: "object",
