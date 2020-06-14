@@ -1,18 +1,9 @@
 {
   "rules": {
-    "indent": [
-      2,
-      4
-    ],
+    "indent": "off",
     "quotes": "off",
-    "linebreak-style": [
-      2,
-      "unix"
-    ],
-    "semi": [
-      2,
-      "always"
-    ],
+    "linebreak-style": "off",
+    "semi": "off",
     "no-unused-vars": [
       2,
       {
