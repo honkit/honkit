@@ -29,7 +29,7 @@ export class App {
 
     /**
      * Todoの状態を更新時に呼ばれるリスナー関数
-
+     * @param {{ id:number, completed: boolean }}
      */
     handleUpdate({ id, completed }) {
         this.todoListModel.updateTodo({ id, completed });
@@ -37,7 +37,7 @@ export class App {
 
     /**
      * Todoを削除時に呼ばれるリスナー関数
-
+     * @param {{ id: number }}
      */
     handleDelete({ id }) {
         this.todoListModel.deleteTodo({ id });
