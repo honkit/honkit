@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592128959156,
+  "lastUpdate": 1592134945395,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "Githon benchmark": [
@@ -897,6 +897,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.11,
             "range": "±3.75%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1294e15a5ac8920f69bac8c13cdada07703032b2",
+          "message": "CI(test): add windows and macOS (#8)\n\n* CI(test): add windows and macOS\r\n\r\n* CI(test): add windows and macOS\r\n\r\n* CI(test): add windows and macOS\r\n\r\n* fix: fix scripts\r\n\r\n* move files\r\n\r\n* move files\r\n\r\n* chore(deps): update copyDir\r\n\r\n* test(CI): add E2E\r\n\r\n* ci: add windows fail case",
+          "timestamp": "2020-06-14T20:40:11+09:00",
+          "tree_id": "4bf413b42b30f4021cd317973f39f6281bba2931",
+          "url": "https://github.com/azu/githon/commit/1294e15a5ac8920f69bac8c13cdada07703032b2"
+        },
+        "date": 1592134944980,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.12,
+            "range": "±0.76%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
