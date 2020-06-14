@@ -2,6 +2,9 @@
     "name": "book",
     "version": "1.0.0",
     "description": "",
+    "keywords": [],
+    "license": "MIT",
+    "author": "azu",
     "main": "index.js",
     "scripts": {
         "build": "githon build",
@@ -10,8 +13,5 @@
     },
     "devDependencies": {
         "githon": "^3.0.0"
-    },
-    "keywords": [],
-    "author": "azu",
-    "license": "MIT"
+    }
 }

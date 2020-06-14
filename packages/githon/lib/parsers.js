@@ -1,8 +1,8 @@
 const path = require("path");
 const Immutable = require("immutable");
 
-const markdownParser = require("gitbook-markdown");
-const asciidocParser = require("gitbook-asciidoc");
+const markdownParser = require("@githon/markdown");
+const asciidocParser = require("@githon/asciidoc");
 
 const EXTENSIONS_MARKDOWN = require("./constants/extsMarkdown");
 const EXTENSIONS_ASCIIDOC = require("./constants/extsAsciidoc");
