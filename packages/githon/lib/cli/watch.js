@@ -1,17 +1,16 @@
 const path = require("path");
 const chokidar = require("chokidar");
 
-const Promise = require("../utils/promise");
 const parsers = require("../parsers");
 
 /**
-    Watch a folder and resolve promise once a file is modified
+ Watch a folder and resolve promise once a file is modified
 
-    @param {String} dir
-    @return {Promise}
-*/
-function watch(dir) {
-    const d = Promise.defer();
+ @param {String} dir
+ @param callback
+ @return {Promise}
+ */
+function watch(dir, callback) {
     dir = path.resolve(dir);
 
     const toWatch = ["book.json", "book.js", "_layouts/**"];
@@ -27,18 +26,12 @@ function watch(dir) {
         ignoreInitial: true,
     });
 
-    watcher.once("all", (e, filepath) => {
-        watcher.close();
-
-        d.resolve(filepath);
+    watcher.on("all", (e, filepath) => {
+        callback(null, path.resolve(dir, filepath));
     });
-    watcher.once("error", (err) => {
-        watcher.close();
-
-        d.reject(err);
+    watcher.on("error", (err) => {
+        callback(err);
     });
-
-    return d.promise;
 }
 
 module.exports = watch;

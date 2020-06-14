@@ -3,7 +3,7 @@ const tmp = require("tmp");
 const Book = require("../../models/book");
 const createMockFS = require("../../fs/mock");
 const parseBook = require("../../parse/parseBook");
-const generateBook = require("../generateBook");
+const generateBook = require("../generateBook").generateBook;
 
 /**
  * Generate a book using a generator

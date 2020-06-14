@@ -76,10 +76,10 @@ Book.prototype.getLanguage = function () {
 };
 
 /**
-    Return FS instance to access the content
+ Return FS instance to access the content
 
-    @return {FS}
-*/
+ @return {FS}
+ */
 Book.prototype.getContentFS = function () {
     const fs = this.getFS();
     const config = this.getConfig();
@@ -93,31 +93,31 @@ Book.prototype.getContentFS = function () {
 };
 
 /**
-    Return root of the book
+ Return root of the book
 
-    @return {String}
-*/
+ @return {String}
+ */
 Book.prototype.getRoot = function () {
     const fs = this.getFS();
     return fs.getRoot();
 };
 
 /**
-    Return root for content of the book
+ Return root for content of the book
 
-    @return {String}
-*/
+ @return {String}
+ */
 Book.prototype.getContentRoot = function () {
     const fs = this.getContentFS();
     return fs.getRoot();
 };
 
 /**
-    Check if a file is ignore (should not being parsed, etc)
+ Check if a file is ignore (should not being parsed, etc)
 
-    @param {String} ref
-    @return {Page|undefined}
-*/
+ @param {String} ref
+ @return {Page|undefined}
+ */
 Book.prototype.isFileIgnored = function (filename) {
     const ignore = this.getIgnore();
     const language = this.getLanguage();
@@ -131,11 +131,11 @@ Book.prototype.isFileIgnored = function (filename) {
 };
 
 /**
-    Check if a content file is ignore (should not being parsed, etc)
+ Check if a content file is ignore (should not being parsed, etc)
 
-    @param {String} ref
-    @return {Page|undefined}
-*/
+ @param {String} ref
+ @return {Page|undefined}
+ */
 Book.prototype.isContentFileIgnored = function (filename) {
     const config = this.getConfig();
     const rootFolder = config.getValue("root");
@@ -148,51 +148,51 @@ Book.prototype.isContentFileIgnored = function (filename) {
 };
 
 /**
-    Return a page from a book by its path
+ Return a page from a book by its path
 
-    @param {String} ref
-    @return {Page|undefined}
-*/
+ @param {String} ref
+ @return {Page|undefined}
+ */
 Book.prototype.getPage = function (ref) {
     return this.getPages().get(ref);
 };
 
 /**
-    Is this book the parent of language's books
+ Is this book the parent of language's books
 
-    @return {Boolean}
-*/
+ @return {Boolean}
+ */
 Book.prototype.isMultilingual = function () {
     return this.getLanguages().getCount() > 0;
 };
 
 /**
-    Return true if book is associated to a language
+ Return true if book is associated to a language
 
-    @return {Boolean}
-*/
+ @return {Boolean}
+ */
 Book.prototype.isLanguageBook = function () {
     return Boolean(this.getLanguage());
 };
 
 /**
-    Return a languages book
+ Return a languages book
 
-    @param {String} language
-    @return {Book}
-*/
+ @param {String} language
+ @return {Book}
+ */
 Book.prototype.getLanguageBook = function (language) {
     const books = this.getBooks();
     return books.get(language);
 };
 
 /**
-    Add a new language book
+ Add a new language book
 
-    @param {String} language
-    @param {Book} book
-    @return {Book}
-*/
+ @param {String} language
+ @param {Book} book
+ @return {Book}
+ */
 Book.prototype.addLanguageBook = function (language, book) {
     let books = this.getBooks();
     books = books.set(language, book);
@@ -201,62 +201,62 @@ Book.prototype.addLanguageBook = function (language, book) {
 };
 
 /**
-    Set the summary for this book
+ Set the summary for this book
 
-    @param {Summary}
-    @return {Book}
-*/
+ @param {Summary}
+ @return {Book}
+ */
 Book.prototype.setSummary = function (summary) {
     return this.set("summary", summary);
 };
 
 /**
-    Set the readme for this book
+ Set the readme for this book
 
-    @param {Readme}
-    @return {Book}
-*/
+ @param {Readme}
+ @return {Book}
+ */
 Book.prototype.setReadme = function (readme) {
     return this.set("readme", readme);
 };
 
 /**
-    Set the configuration for this book
+ Set the configuration for this book
 
-    @param {Config}
-    @return {Book}
-*/
+ @param {Config}
+ @return {Book}
+ */
 Book.prototype.setConfig = function (config) {
     return this.set("config", config);
 };
 
 /**
-    Set the ignore instance for this book
+ Set the ignore instance for this book
 
-    @param {Ignore}
-    @return {Book}
-*/
+ @param {Ignore}
+ @return {Book}
+ */
 Book.prototype.setIgnore = function (ignore) {
     return this.set("ignore", ignore);
 };
 
 /**
-    Change log level
+ Change log level
 
-    @param {String} level
-    @return {Book}
-*/
+ @param {String} level
+ @return {Book}
+ */
 Book.prototype.setLogLevel = function (level) {
     this.getLogger().setLevel(level);
     return this;
 };
 
 /**
-    Create a book using a filesystem
+ Create a book using a filesystem
 
-    @param {FS} fs
-    @return {Book}
-*/
+ @param {FS} fs
+ @return {Book}
+ */
 Book.createForFS = function createForFS(fs) {
     return new Book({
         fs: fs,
@@ -264,9 +264,9 @@ Book.createForFS = function createForFS(fs) {
 };
 
 /**
-    Infers the default extension for files
-    @return {String}
-*/
+ Infers the default extension for files
+ @return {String}
+ */
 Book.prototype.getDefaultExt = function () {
     // Inferring sources
     const clues = [this.getReadme(), this.getSummary(), this.getGlossary()];
@@ -290,11 +290,11 @@ Book.prototype.getDefaultExt = function () {
 };
 
 /**
-    Infer the default path for a Readme.
-    @param {Boolean} [absolute=false] False for a path relative to
-        this book's content root
-    @return {String}
-*/
+ Infer the default path for a Readme.
+ @param {Boolean} [absolute=false] False for a path relative to
+ this book's content root
+ @return {String}
+ */
 Book.prototype.getDefaultReadmePath = function (absolute) {
     const defaultPath = `README${this.getDefaultExt()}`;
     if (absolute) {
@@ -305,11 +305,11 @@ Book.prototype.getDefaultReadmePath = function (absolute) {
 };
 
 /**
-    Infer the default path for a Summary.
-    @param {Boolean} [absolute=false] False for a path relative to
-        this book's content root
-    @return {String}
-*/
+ Infer the default path for a Summary.
+ @param {Boolean} [absolute=false] False for a path relative to
+ this book's content root
+ @return {String}
+ */
 Book.prototype.getDefaultSummaryPath = function (absolute) {
     const defaultPath = `SUMMARY${this.getDefaultExt()}`;
     if (absolute) {
@@ -320,11 +320,11 @@ Book.prototype.getDefaultSummaryPath = function (absolute) {
 };
 
 /**
-    Infer the default path for a Glossary.
-    @param {Boolean} [absolute=false] False for a path relative to
-        this book's content root
-    @return {String}
-*/
+ Infer the default path for a Glossary.
+ @param {Boolean} [absolute=false] False for a path relative to
+ this book's content root
+ @return {String}
+ */
 Book.prototype.getDefaultGlossaryPath = function (absolute) {
     const defaultPath = `GLOSSARY${this.getDefaultExt()}`;
     if (absolute) {
@@ -335,12 +335,12 @@ Book.prototype.getDefaultGlossaryPath = function (absolute) {
 };
 
 /**
-    Create a language book from a parent
+ Create a language book from a parent
 
-    @param {Book} parent
-    @param {String} language
-    @return {Book}
-*/
+ @param {Book} parent
+ @param {String} language
+ @return {Book}
+ */
 Book.createFromParent = function createFromParent(parent, language) {
     const ignore = parent.getIgnore();
     let config = parent.getConfig();

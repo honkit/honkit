@@ -1,5 +1,5 @@
 const Immutable = require("immutable");
-
+const fs = require("fs");
 const yaml = require("js-yaml");
 const File = require("./file");
 const { hashString } = require("./hash.js");
@@ -65,6 +65,19 @@ Page.prototype.getPath = function () {
 Page.createForFile = function (file) {
     return new Page({
         file: file,
+    });
+};
+
+/**
+ * Load a page for a file
+ * @param {File} file
+ * @param {string} content
+ * @return {Page}
+ */
+Page.loadFile = function (file, content) {
+    return new Page({
+        file: file,
+        content: content,
     });
 };
 

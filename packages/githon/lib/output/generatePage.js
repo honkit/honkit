@@ -37,20 +37,24 @@ function generatePage(output, page) {
             }
 
             // Call hook "page:before"
+            // const start = Date.now();
             return (
                 callPageHook("page:before", output, resultPage)
                     // Escape code blocks with raw tags
                     .then((currentPage) => {
+                        // console.log("page:before", Date.now() - start);
                         return parser.preparePage(currentPage.getContent());
                     })
 
                     // Render templating syntax
                     .then((content) => {
+                        // console.log("page:preparePage", Date.now() - start);
                         const absoluteFilePath = path.join(book.getContentRoot(), filePath);
                         return Templating.render(engine, absoluteFilePath, content, context);
                     })
 
                     .then((output) => {
+                        // console.log("page:render", Date.now() - start);
                         const content = output.getContent();
 
                         return parser.parsePage(content).then((result) => {
@@ -60,11 +64,13 @@ function generatePage(output, page) {
 
                     // Post processing for templating syntax
                     .then((output) => {
+                        // console.log("page:parsePage", Date.now() - start);
                         return Templating.postRender(engine, output);
                     })
 
                     // Return new page
                     .then((content) => {
+                        // console.log("page:postRender", Date.now() - start);
                         return resultPage.set("content", content);
                     })
 

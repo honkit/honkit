@@ -19,8 +19,8 @@ const generatePages = require("./generatePages");
  * @param {Output} output
  * @return {Promise<Output>}
  */
-function processOutput(generator, startOutput) {
-    return Promise(startOutput)
+function processOutput(generator, output) {
+    return Promise(output)
         .then(preparePlugins)
         .then(preparePages)
         .then(prepareAssets)
@@ -68,8 +68,8 @@ function processOutput(generator, startOutput) {
             return generator.onInit(output);
         })
 
-        .then(generateAssets.bind(null, generator))
-        .then(generatePages.bind(null, generator))
+        .then((output) => generateAssets(generator, output))
+        .then((output) => generatePages(generator, output))
 
         .tap((output) => {
             const book = output.getBook();
@@ -196,4 +196,26 @@ function generateBook(generator, book, options) {
     );
 }
 
-module.exports = generateBook;
+/**
+ * Incremental build for pages
+ * output should be prepared plugins
+ * @param generator
+ * @param output
+ * @returns {Promise<Promise<Output>>}
+ */
+function incrementalBuild(generator, output) {
+    const start = Date.now();
+    return generateAssets(generator, output)
+        .then((output) => generatePages(generator, output))
+        .then((output) => {
+            const logger = output.getLogger();
+            const end = Date.now();
+            const duration = (end - start) / 1000;
+            logger.info.ok(`generation finished with success in ${duration.toFixed(1)}s !`);
+
+            return output;
+        });
+}
+
+module.exports.generateBook = generateBook;
+module.exports.incrementalBuild = incrementalBuild;

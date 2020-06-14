@@ -2,6 +2,7 @@
 
 const tinylr = require("tiny-lr");
 const open = require("open");
+const Immutable = require("immutable");
 
 const Parse = require("../parse");
 const Output = require("../output");
@@ -28,56 +29,33 @@ function waitForCtrlC() {
     return d.promise;
 }
 
-function generateBook(args, kwargs) {
-    const port = kwargs.port;
+function startServer(args, kwargs) {
     const outputFolder = getOutputFolder(args);
-    const book = getBook(args, kwargs);
-    const Generator = Output.getGenerator(kwargs.format);
+    const port = kwargs.port;
     const browser = kwargs["browser"];
-
+    const book = getBook(args, kwargs);
     const hasWatch = kwargs["watch"];
-    const hasLiveReloading = kwargs["live"];
     const hasOpen = kwargs["open"];
-
-    // Stop server if running
-    if (server.isRunning()) console.log("Stopping server");
-    if (kwargs.reload) {
-        clearCache();
-    }
-
-    return server
-        .stop()
-        .then(() => {
-            return Parse.parseBook(book).then((resultBook) => {
-                if (hasLiveReloading) {
-                    // Enable livereload plugin
-                    let config = resultBook.getConfig();
-                    config = ConfigModifier.addPlugin(config, "livereload");
-                    resultBook = resultBook.set("config", config);
-                }
-
-                return Output.generate(Generator, resultBook, {
-                    root: outputFolder,
-                });
-            });
-        })
-        .then(() => {
-            console.log();
-            console.log("Starting server ...");
-            return server.start(outputFolder, port);
-        })
+    const hasLiveReloading = kwargs["live"];
+    const reload = kwargs["reload"];
+    const Generator = Output.getGenerator(kwargs.format);
+    console.log("Starting server ...");
+    let lastOutput = null;
+    return Promise.all([
+        server.start(outputFolder, port),
+        generateBook({
+            book,
+            outputFolder,
+            hasLiveReloading,
+            Generator,
+            reload,
+        }).then((output) => {
+            lastOutput = output;
+            return output;
+        }),
+    ])
         .then(() => {
             console.log(`Serving book on http://localhost:${port}`);
-
-            if (lrPath && hasLiveReloading) {
-                // trigger livereload
-                lrServer.changed({
-                    body: {
-                        files: [lrPath],
-                    },
-                });
-            }
-
             if (hasOpen) {
                 open(`http://localhost:${port}`, { app: browser });
             }
@@ -86,15 +64,71 @@ function generateBook(args, kwargs) {
             if (!hasWatch) {
                 return waitForCtrlC();
             }
-
-            return watch(book.getRoot()).then((filepath) => {
+            // update book immutably. does not use book again
+            return watch(book.getRoot(), (error, filepath) => {
+                if (error) {
+                    console.error(error);
+                    return;
+                }
                 // set livereload path
                 lrPath = filepath;
-                console.log("Restart after change in file", filepath);
-                console.log("");
-                return generateBook(args, kwargs);
+                // TODO: use parse extension
+                // Incremental update for pages
+                if (lastOutput && filepath.endsWith(".md")) {
+                    console.log("Reload after change in file", filepath);
+                    const changedOutput = lastOutput.reloadPage(lastOutput.book.getContentRoot(), filepath).merge({
+                        incrementalChangeFileSet: Immutable.Set([filepath]),
+                    });
+                    return incrementalBuild({
+                        output: changedOutput,
+                        Generator,
+                    }).then(() => {
+                        if (lrPath && hasLiveReloading) {
+                            // trigger livereload
+                            lrServer.changed({
+                                body: {
+                                    files: [lrPath],
+                                },
+                            });
+                        }
+                    });
+                }
+                console.log("Rebuild after change in file", filepath);
+                return generateBook({
+                    book,
+                    outputFolder,
+                    hasLiveReloading,
+                    Generator,
+                    reload,
+                }).then((output) => {
+                    lastOutput = output;
+                });
             });
         });
+}
+
+function generateBook({ book, outputFolder, hasLiveReloading, Generator, reload }) {
+    // Stop server if running
+    if (reload) {
+        clearCache();
+    }
+
+    return Parse.parseBook(book).then((resultBook) => {
+        if (hasLiveReloading) {
+            // Enable livereload plugin
+            let config = resultBook.getConfig();
+            config = ConfigModifier.addPlugin(config, "livereload");
+            resultBook = resultBook.set("config", config);
+        }
+
+        return Output.generate(Generator, resultBook, {
+            root: outputFolder,
+        });
+    });
+}
+
+function incrementalBuild({ output, Generator }) {
+    return Output.incrementalBuild(Generator, output);
 }
 
 module.exports = {
@@ -153,7 +187,7 @@ module.exports = {
                 });
             })
             .then(() => {
-                return generateBook(args, kwargs);
+                return startServer(args, kwargs);
             });
     },
 };
