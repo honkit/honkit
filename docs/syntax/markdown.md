@@ -1,8 +1,8 @@
 # Markdown
 
-Most of the examples from this documentation are in Markdown. Markdown is default parser for GitBook, but one can also opt for the [AsciiDoc syntax](asciidoc.md).
+Most of the examples from this documentation are in Markdown. Markdown is default parser for GitHon, but one can also opt for the [AsciiDoc syntax](asciidoc.md).
 
-Here’s an overview of Markdown syntax that you can use with GitBook (same as GitHub with some additions).
+Here’s an overview of Markdown syntax that you can use with GitHon (same as GitHub with some additions).
 
 ### Headings
 
@@ -14,7 +14,7 @@ To create a heading, add one to six `#` symbols before your heading text. The nu
 ###### This is an <h6> tag
 ```
 
-GitBook supports a nice way for explicitly setting the header ID. If you follow the header text with an opening curly bracket (separated from the text with a least one space), a hash, the ID and a closing curly bracket, the ID is set on the header. If you use the trailing hash feature of atx style headers, the header ID has to go after the trailing hashes. For example:
+GitHon supports a nice way for explicitly setting the header ID. If you follow the header text with an opening curly bracket (separated from the text with a least one space), a hash, the ID and a closing curly bracket, the ID is set on the header. If you use the trailing hash feature of atx style headers, the header ID has to go after the trailing hashes. For example:
 
 ```markdown
 Hello {#id}
@@ -174,12 +174,12 @@ For example, to syntax highlight Ruby code:
 
 Text phrases can be marked up as code by surrounding them with backticks:
 
-    Use `gitbook` to convert the `text` in markdown
+    Use `githon` to convert the `text` in markdown
     syntax to HTML.
 
 ### Footnotes
 
-GitBook supports a simple syntax for such footnotes. Footnotes are relative to each pages.
+GitHon supports a simple syntax for such footnotes. Footnotes are relative to each pages.
 
 ```markdown
 Text prior to footnote reference.[^2]
@@ -189,7 +189,7 @@ Text prior to footnote reference.[^2]
 
 ### HTML
 
-GitBook supports use of raw HTML in your text, Markdown syntax in HTML is not processed:
+GitHon supports use of raw HTML in your text, Markdown syntax in HTML is not processed:
 
 ```
 <div>
@@ -216,7 +216,7 @@ Asterisks
 
 ### Ignoring Markdown formatting
 
-You can tell GitBook to ignore (or escape) Markdown formatting by using `\` before the Markdown character.
+You can tell GitHon to ignore (or escape) Markdown formatting by using `\` before the Markdown character.
 
 ```
 Let's rename \*our-new-project\* to \*our-old-project\*.

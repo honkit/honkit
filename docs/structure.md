@@ -1,8 +1,8 @@
 # Directory Structure
 
-GitBook uses a simple directory structure. All Markdown/Asciidoc files listed in the [SUMMARY](pages.md) will be transformed as HTML. Multi-Lingual books have a slightly [different structure](languages.md).
+GitHon uses a simple directory structure. All Markdown/Asciidoc files listed in the [SUMMARY](pages.md) will be transformed as HTML. Multi-Lingual books have a slightly [different structure](languages.md).
 
-A basic GitBook usually looks something like this:
+A basic GitHon usually looks something like this:
 
 ```
 .
@@ -32,7 +32,7 @@ A static file is a file that is not listed in the `SUMMARY.md`. All static files
 
 ### Ignoring files & folders {#ignore}
 
-GitBook will read the `.gitignore`, `.bookignore` and `.ignore` files to get a list of files and folders to skip.
+GitHon will read the `.gitignore`, `.bookignore` and `.ignore` files to get a list of files and folders to skip.
 The format inside those files, follows the same convention as `.gitignore`:
 
 ```
@@ -47,7 +47,7 @@ bin/*
 
 ### Project integration with subdirectory {#subdirectory}
 
-For software projects, you can use a subdirectory (like `docs/`) to store the book for the project's documentation. You can configure the [`root` option](config.md) to indicate the folder where GitBook can find the book's files:
+For software projects, you can use a subdirectory (like `docs/`) to store the book for the project's documentation. You can configure the [`root` option](config.md) to indicate the folder where GitHon can find the book's files:
 
 ```
 .

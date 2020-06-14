@@ -1,6 +1,6 @@
 # Builtin Templating Helpers
 
-GitBook provides a serie of builtin filters and blocks to help you write templates.
+GitHon provides a serie of builtin filters and blocks to help you write templates.
 
 ### Filters
 

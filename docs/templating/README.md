@@ -1,6 +1,6 @@
 # Templating
 
-GitBook uses the [Nunjucks templating language](https://mozilla.github.io/nunjucks/) to process pages and theme's templates.
+GitHon uses the [Nunjucks templating language](https://mozilla.github.io/nunjucks/) to process pages and theme's templates.
 
 The Nunjucks syntax is very similar to **Jinja2** or **Liquid**. Its syntax uses surrounding braces `{ }` to mark content that needs to be processed.
 
@@ -21,7 +21,7 @@ This looks up username from the context and displays it. Variable names can have
 
 If a value is undefined, nothing is displayed. The following all output nothing if foo is undefined: `{{ foo }}`, `{{ foo.bar }}`, `{{ foo.bar.baz }}`.
 
-GitBook provides a set of [predefined  variables](variables.md) from the context.
+GitHon provides a set of [predefined  variables](variables.md) from the context.
 
 ### Filters
 
@@ -66,9 +66,9 @@ You can specify alternate conditions with `elif` and `else`:
 `for` iterates over arrays and dictionaries.
 
 ```twig
-# Chapters about GitBook
+# Chapters about GitHon
 
-{% for article in glossary.terms['gitbook'].articles %}
+{% for article in glossary.terms['githon'].articles %}
 * [{{ article.title }}]({{ article.path }})
 {% endfor %}
 ```
@@ -90,7 +90,7 @@ Inclusion and inheritance is detailled in the [Content References](conrefs.md) s
 
 ### Escaping
 
-If you want GitBook to ignore any of the special templating tags, you can use raw and anything inside of it will be output as plain text.
+If you want GitHon to ignore any of the special templating tags, you can use raw and anything inside of it will be output as plain text.
 
 ``` twig
 {% raw %}

@@ -28,7 +28,9 @@
     "versionup:patch": "lerna version patch --conventional-commits",
     "versionup:minor": "lerna version minor --conventional-commits",
     "versionup:major": "lerna version major --conventional-commits",
-    "release": "lerna publish from-package"
+    "release": "lerna publish from-package",
+    "githon:build": "githon build",
+    "githon:serve": "githon serve"
   },
   "devDependencies": {
     "eslint": "^6.7.2",

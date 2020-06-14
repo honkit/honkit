@@ -33,3 +33,6 @@ _book
 book.pdf
 book.epub
 book.mobi
+
+# Local Netlify folder
+.netlify

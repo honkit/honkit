@@ -50,3 +50,9 @@ Githon is fork of [Githon](https://github.com/GitbookIO/gitbook).
 Githon is licensed under the Apache License, Version 2.0.
 
 Also, it includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
+
+## Sponsors
+  
+<a href="https://www.netlify.com">
+<img src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg" alt="Deploys by Netlify" />
+</a>
