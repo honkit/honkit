@@ -40,7 +40,7 @@ Page.prototype.toText = function () {
     const attrs = this.getAttributes();
     const content = this.getContent();
 
-    if (attrs.size === 0 && content) {
+    if (attrs.size === 0) {
         return content;
     }
 

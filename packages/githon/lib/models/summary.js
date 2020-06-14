@@ -172,7 +172,7 @@ Summary.prototype.toText = function (parseExt) {
         });
     }
 
-    return parser.renderSummary({
+    return parser.renderSummarySync({
         parts: parts.toJS(),
     });
 };
