@@ -14,14 +14,14 @@ You can find a [list of real-world examples](docs/examples.md) in the documentat
 
 ## Features
 
-* Write using [Markdown](http://toolchain.gitbook.com/syntax/markdown.html) or [AsciiDoc](http://toolchain.gitbook.com/syntax/asciidoc.html)
-* Output as a website or [ebook (pdf, epub, mobi)](http://toolchain.gitbook.com/ebook.html)
-* [Multi-Languages](http://toolchain.gitbook.com/languages.html)
-* [Lexicon / Glossary](http://toolchain.gitbook.com/lexicon.html)
-* [Cover](http://toolchain.gitbook.com/ebook.html)
-* [Variables and Templating](http://toolchain.gitbook.com/templating/)
-* [Content References](http://toolchain.gitbook.com/templating/conrefs.html)
-* [Plugins](http://toolchain.gitbook.com/plugins/)
+* Write using [Markdown](https://githon.netlify.app/syntax/markdown.html) or [AsciiDoc](https://githon.netlify.app/syntax/asciidoc.html)
+* Output as a website or [ebook (pdf, epub, mobi)](https://githon.netlify.app/ebook.html)
+* [Multi-Languages](https://githon.netlify.app/languages.html)
+* [Lexicon / Glossary](https://githon.netlify.app/lexicon.html)
+* [Cover](https://githon.netlify.app/ebook.html)
+* [Variables and Templating](https://githon.netlify.app/templating/)
+* [Content References](https://githon.netlify.app/templating/conrefs.html)
+* [Plugins](https://githon.netlify.app/plugins/)
 * [Beautiful default theme](https://github.com/GitbookIO/theme-default)
 
 ## Differences with GitBook
