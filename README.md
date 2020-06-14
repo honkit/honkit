@@ -1,6 +1,6 @@
-# Githon
+# GitHon
 
-Githon is building beautiful books using GitHub/Git and Markdown.
+GitHon is building beautiful books using GitHub/Git and Markdown.
 
 ## Getting started
 
@@ -8,7 +8,7 @@ Githon is building beautiful books using GitHub/Git and Markdown.
 
 ## Usage examples
 
-Githon can be used to create book, public documentation, enterprise manual, thesis, research papers, etc.
+GitHon can be used to create book, public documentation, enterprise manual, thesis, research papers, etc.
 
 You can find a [list of real-world examples](docs/examples.md) in the documentation.
 
@@ -44,10 +44,10 @@ You can find a [list of real-world examples](docs/examples.md) in the documentat
 
 ## Licensing
 
-Githon is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.
+GitHon is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.
 
-Githon is fork of [Githon](https://github.com/GitbookIO/gitbook).
-Githon is licensed under the Apache License, Version 2.0.
+GitHon is fork of [GitHon](https://github.com/GitbookIO/gitbook).
+GitHon is licensed under the Apache License, Version 2.0.
 
 Also, it includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
 
