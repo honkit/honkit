@@ -4,5 +4,5 @@ module.exports.getCache = () => {
     return cache;
 };
 module.exports.clearCache = () => {
-    return cache.clearAll();
+    return flatCache.clearAll();
 };

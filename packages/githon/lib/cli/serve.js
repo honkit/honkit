@@ -167,6 +167,7 @@ module.exports = {
         },
         options.log,
         options.format,
+        options.reaload,
     ],
     exec: function (args, kwargs) {
         server = new Server();

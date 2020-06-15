@@ -10,7 +10,7 @@ const { clearCache } = require("../output/page-cache");
 module.exports = {
     name: "build [book] [output]",
     description: "build a book",
-    options: [options.log, options.format, options.timing],
+    options: [options.log, options.format, options.timing, options.reaload],
     exec: function (args, kwargs) {
         const book = getBook(args, kwargs);
         const outputFolder = getOutputFolder(args);

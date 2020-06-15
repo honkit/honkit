@@ -24,8 +24,15 @@ const timingOption = {
     defaults: false,
 };
 
+const reloadOption = {
+    name: "reload",
+    description: "Prune cache. Remove file cache",
+    defaults: false,
+};
+
 module.exports = {
     log: logOptions,
     format: formatOption,
     timing: timingOption,
+    reaload: reloadOption,
 };

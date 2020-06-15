@@ -32,7 +32,7 @@
   "dependencies": {
     "@githon/html": "^3.3.0",
     "markdown-escape": "^1.0.1",
-    "markup-it": "^2.2.0 >=2.2.0"
+    "markup-it": "~2.2.0"
   },
   "devDependencies": {
     "mocha": "^8.0.1"

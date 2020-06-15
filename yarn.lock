@@ -6122,10 +6122,10 @@ markdown-to-ast@^4.0.0:
     structured-source "^3.0.2"
     traverse "^0.6.6"
 
-"markup-it@^2.2.0 >=2.2.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/markup-it/-/markup-it-2.5.0.tgz#239bb2f445b4c8664af8527168ee3c00bc0d451c"
-  integrity sha1-I5uy9EW0yGZK+FJxaO48ALwNRRw=
+markup-it@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/markup-it/-/markup-it-2.2.0.tgz#80f18d010d18d74f6bdf0bd678bf43727a25ea67"
+  integrity sha1-gPGNAQ0Y109r3wvWeL9Dcnol6mc=
   dependencies:
     escape-string-regexp "^1.0.5"
     html-entities "^1.2.0"
