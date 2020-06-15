@@ -1,6 +1,6 @@
 {
   "name": "@githon/markdown",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "Parse markdown content for githon",
   "homepage": "https://github.com/azu/githon",
   "bugs": {
