@@ -2,9 +2,9 @@
 
 GitHon is building beautiful books using GitHub/Git and Markdown.
 
-## Getting started
+## Documentation
 
-- Documentation: <https://githon.netlify.app/>
+- <https://githon.netlify.app/>
 
 ## Quick Start
 
@@ -42,6 +42,8 @@ $ npx githon build
 ```
 
 You can start to write your book! 
+
+For more details, see [GitHon's documentation](https://githon.netlify.app/).
 
 ## Usage examples
 
