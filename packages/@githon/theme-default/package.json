@@ -44,12 +44,16 @@
     "type": "git",
     "url": "https://github.com/GitbookIO/theme-default.git"
   },
-  "author": "FriendCode Inc. <contact@gitbook.com>",
+  "author": "azu <azuciao@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/GitbookIO/theme-default/issues"
   },
   "contributors": [
+    {
+      "name": "FriendCode Inc.",
+      "email": "contact@gitbook.com"
+    },
     {
       "name": "Samy Pessé",
       "email": "samy@gitbook.com"

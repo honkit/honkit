@@ -1,5 +1,16 @@
-# GitBook Default Theme
+# GitHon Default Theme
 
-This is the default theme for GitBook since version `3.0.0`. It can be used as a template for theming books or can be extended.
+This is the default theme for GitHon. 
 
-![Image](https://raw.github.com/GitbookIO/theme-default/master/preview.png)
+It can be used as a template for theming books or can be extended.
+
+![Image](./preview.png)
+
+## License
+
+Apache License
+
+Also, This theme includes GitBook default theme codes.
+These are also Apache License.
+
+- https://github.com/GitbookIO/theme-default
