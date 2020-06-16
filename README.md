@@ -109,7 +109,7 @@ After that, GitHon just work!
 
 GitHon is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.
 
-GitHon is fork of [GitHon](https://github.com/GitbookIO/gitbook).
+GitHon is fork of [GitBook](https://github.com/GitbookIO/gitbook)(legacy).
 GitHon is licensed under the Apache License, Version 2.0.
 
 Also, it includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
