@@ -8,7 +8,7 @@ Getting GitHon installed and ready-to-go should only take a few minutes.
 
 Installing GitHon is easy and straightforward. Your system just needs to meet these two requirements:
 
-* NodeJS (v4.0.0 and above is recommended)
+* NodeJS (v10.0.0 and above is recommended)
 * Windows, Linux, Unix, or Mac OS X
 
 ##### Install with NPM

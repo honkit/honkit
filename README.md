@@ -6,6 +6,43 @@ GitHon is building beautiful books using GitHub/Git and Markdown.
 
 - Documentation: <https://githon.netlify.app/>
 
+## Quick Start
+
+### Installation
+
+- Requirement: Node.js
+
+The best way to install GitHon is via **NPM** or **Yarn**.
+
+```
+$ npm init --yes
+$ npm install githon --save-dev
+```
+
+### Create a book
+
+GitHon can set up a boilerplate book:
+
+```
+$ npx githon init
+```
+
+If you wish to create the book into a new directory, you can do so by running `githon init ./directory`
+
+Preview and serve your book using:
+
+```
+$ npx githon serve
+```
+
+Or build the static website using:
+
+```
+$ npx githon build
+```
+
+You can start to write your book! 
+
 ## Usage examples
 
 GitHon can be used to create book, public documentation, enterprise manual, thesis, research papers, etc.
