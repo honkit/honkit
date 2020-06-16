@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592181489916,
+  "lastUpdate": 1592318982223,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "Githon benchmark": [
@@ -1300,6 +1300,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.14,
             "range": "±2.96%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "d0ba2b4bff0a96b7d5c9e7dfac9fd5a8e759409f",
+          "message": "perf(githon): refactor plugin loading (#19)\n\n* perf(githon): refactor plugin loading\r\n\r\nJust use try-resolve instead of recursive search...\r\n\r\n* chore(githon): remove findForBook.js\r\n\r\n* chore(githon): remove log\r\n\r\n* fix(githon): validatePlugin\r\n\r\n* fix(githon): / is os specific\r\n\r\n* chore(githon): remove log",
+          "timestamp": "2020-06-16T23:47:23+09:00",
+          "tree_id": "91ca8ec555fa60e1d624be993d928b5f49a909fc",
+          "url": "https://github.com/azu/githon/commit/d0ba2b4bff0a96b7d5c9e7dfac9fd5a8e759409f"
+        },
+        "date": 1592318981748,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.11,
+            "range": "±1.32%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
