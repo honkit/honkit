@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.2](https://github.com/GitbookIO/gitbook/compare/v3.3.1...v3.3.2) (2020-06-16)
+
+
+### Bug Fixes
+
+* **githon:** / is os specific ([2e28891](https://github.com/GitbookIO/gitbook/commit/2e288917eff1eecaa6f8034361e3ef1fa5f55293))
+* **githon:** support @githon/githon-plugin-theme-default as special ([2adca8d](https://github.com/GitbookIO/gitbook/commit/2adca8daa70f1731846672160646ca5a74794bc0))
+* **githon:** validatePlugin ([8a03bcb](https://github.com/GitbookIO/gitbook/commit/8a03bcb4e96c3b754e8460e46997447e413bcad6))
+* **netlify:** build before build ([b2debc7](https://github.com/GitbookIO/gitbook/commit/b2debc7de3bf09def83d27f487ce621d72229616))
+
+
+### Performance Improvements
+
+* **githon:** refactor plugin loading ([3e0d841](https://github.com/GitbookIO/gitbook/commit/3e0d84133cc8770a2664ddc4f5647fab707a36e0))
+
+
+
+
+
 ## [3.3.1](https://github.com/GitbookIO/gitbook/compare/v3.3.0...v3.3.1) (2020-06-15)
 
 

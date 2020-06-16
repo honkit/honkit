@@ -2,7 +2,7 @@
   "name": "@githon/githon-plugin-theme-default",
   "description": "Default theme for GitBook",
   "main": "./index.js",
-  "version": "1.0.7",
+  "version": "3.3.2",
   "engines": {
     "gitbook": ">=3.0.0"
   },
@@ -11,21 +11,20 @@
     "_i18n",
     "_layouts"
   ],
-  "dependencies": {},
   "devDependencies": {
     "browserify": "13.1.0",
+    "cpy-cli": "^3.1.1",
     "eslint": "3.6.1",
     "font-awesome": "4.6.3",
     "gitbook-markdown-css": "1.0.1",
     "jquery": "3.1.1",
     "less": "2.7.1",
     "less-plugin-clean-css": "1.5.1",
-    "mousetrap": "1.6.0",
-    "uglify-js": "2.7.3",
-    "npm-run-all": "^4.1.5",
-    "cpy-cli": "^3.1.1",
     "mkdirp": "^1.0.4",
-    "rimraf": "^3.0.2"
+    "mousetrap": "1.6.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "uglify-js": "2.7.3"
   },
   "scripts": {
     "prebuild": "npm run clean",
