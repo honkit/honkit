@@ -3,7 +3,6 @@
 const path = require("path");
 const util = require("./package-name-util");
 const tryResolve = require("try-resolve");
-const debug = console.info;
 
 /**
  * This class aim to resolve githon's package name and get the module path.
@@ -42,7 +41,6 @@ class GitHonPluginResolver {
             tryResolve(path.join(baseDir, gitbookFullPackageName, "/package.json")) ||
             tryResolve(path.join(baseDir, packageName, "/package.json"));
         if (!pkgPath) {
-            debug(`Not found plugin: ${packageName}`);
             throw new ReferenceError(`Failed to load githon's plugin module: "${packageName}" is not found.
 
 cwd: ${process.cwd()}
