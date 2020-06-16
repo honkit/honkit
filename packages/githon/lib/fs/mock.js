@@ -48,7 +48,7 @@ function createMockFS(files) {
             });
         }
 
-        return new Buffer(file, "utf8");
+        return Buffer.from(file, "utf8");
     }
 
     function fsStatFile(filePath) {
