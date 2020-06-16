@@ -45,12 +45,6 @@ You can start to write your book!
 
 For more details, see [GitHon's documentation](https://githon.netlify.app/).
 
-## Usage examples
-
-GitHon can be used to create book, public documentation, enterprise manual, thesis, research papers, etc.
-
-You can find a [list of real-world examples](docs/examples.md) in the documentation.
-
 ## Features
 
 * Write using [Markdown](https://githon.netlify.app/syntax/markdown.html) or [AsciiDoc](https://githon.netlify.app/syntax/asciidoc.html)
