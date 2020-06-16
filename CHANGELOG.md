@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.3](https://github.com/GitbookIO/gitbook/compare/v3.3.2...v3.3.3) (2020-06-16)
+
+
+### Bug Fixes
+
+* **theme-default:** add prepublish ([8449f8b](https://github.com/GitbookIO/gitbook/commit/8449f8b3e23255bd8f3a66a27fb0312273d4e030))
+* **theme-default:** add publishConfig ([c5dfcb2](https://github.com/GitbookIO/gitbook/commit/c5dfcb2f9b3ccc590774989bde695de8fca4fee2))
+* **theme-default:** add publishConfig ([8a6acec](https://github.com/GitbookIO/gitbook/commit/8a6acec6b7a7b14748cfee7765fa5453e6f42cd0))
+
+
+
+
+
 ## [3.3.2](https://github.com/GitbookIO/gitbook/compare/v3.3.1...v3.3.2) (2020-06-16)
 
 

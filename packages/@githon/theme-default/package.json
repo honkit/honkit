@@ -2,7 +2,7 @@
   "name": "@githon/githon-plugin-theme-default",
   "description": "Default theme for GitBook",
   "main": "./index.js",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "engines": {
     "gitbook": ">=3.0.0"
   },
