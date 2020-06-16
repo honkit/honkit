@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592318982223,
+  "lastUpdate": 1592319467246,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "Githon benchmark": [
@@ -1331,6 +1331,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.11,
             "range": "±1.32%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "1d2f0de7046c8bb697047a66af2680c766f5de12",
+          "message": "chore(githon): remove locateRootFolder.js\n\nfix https://github.com/azu/githon/issues/17",
+          "timestamp": "2020-06-16T23:55:01+09:00",
+          "tree_id": "e673da38efc8511226aef7b87445d90e4c8d6ef0",
+          "url": "https://github.com/azu/githon/commit/1d2f0de7046c8bb697047a66af2680c766f5de12"
+        },
+        "date": 1592319466706,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.11,
+            "range": "±1.85%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
