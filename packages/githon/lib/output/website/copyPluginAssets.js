@@ -60,7 +60,7 @@ function copyAssets(output, plugin) {
     return fs.copyDir(assetFolder, assetOutputFolder, {
         deleteFirst: false,
         overwrite: true,
-        confirm: true,
+        confirm: false,
     });
 }
 
@@ -101,7 +101,7 @@ function copyResources(output, plugin) {
     return fs.copyDir(assetsFolder, assetOutputFolder, {
         deleteFirst: false,
         overwrite: true,
-        confirm: true,
+        confirm: false,
     });
 }
 
