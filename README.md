@@ -77,6 +77,28 @@ GitHon is a fork of [GitBook (Legacy)](https://legacy.gitbook.com/).
 - Remove `global-npm` dependency
     - You can use it with another npm package manager like `yarn`
 
+## Migration from GitBook
+
+Replace `gitbook-cli` with `githon`.
+
+```
+npm uninstall gitbook-cli
+npm install githon --save-dev
+```
+
+Replace `gitbook` command with `githon`.
+
+```diff
+  "scripts": {
+-    "build": "gitbook build",
++    "build": "githon build",
+-    "serve": "gitbook serve"
++    "serve": "githon serve"
+  },
+```
+
+After that, GitHon just work!
+
 ## Benchmarks
 
 `githon build` benchmark:
