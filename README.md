@@ -76,6 +76,8 @@ GitHon is a fork of [GitBook (Legacy)](https://legacy.gitbook.com/).
 - Update dependencies
     - Upgrade to nunjucks@2 etc...
     - It will reduce bug
+- Monorepo codebase
+    - Easy to maintain
 
 ## Migration from GitBook
 
