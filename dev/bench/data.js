@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592319467246,
+  "lastUpdate": 1592323451069,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "Githon benchmark": [
@@ -1362,6 +1362,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.11,
             "range": "±1.85%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f961a4a0be2cee979b3f2856f6aa9e07bf19b0cd",
+          "message": "Merge pull request #22 from azu/theme\n\ngithon-plugin-theme-default",
+          "timestamp": "2020-06-17T01:01:23+09:00",
+          "tree_id": "50642ce50f25de7180dec513a59e9528dff3c7c4",
+          "url": "https://github.com/azu/githon/commit/f961a4a0be2cee979b3f2856f6aa9e07bf19b0cd"
+        },
+        "date": 1592323450418,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.11,
+            "range": "±3.40%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
