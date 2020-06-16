@@ -27,6 +27,7 @@
     "uglify-js": "2.7.3"
   },
   "scripts": {
+    "prepublish": "npm run build",
     "prebuild": "npm run clean",
     "build": "npm-run-all build:js build:css cp",
     "clean": "rimraf _assets && mkdirp _assets/ebook/ _assets/website/ _assets/website/fonts _assets/website/images",
