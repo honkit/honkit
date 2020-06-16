@@ -5,7 +5,7 @@ const Promise = require("../utils/promise");
 /**
     Validate a plugin
 
-    @param {Plugin}
+    @param {Plugin} plugin
     @return {Promise<Plugin>}
 */
 function validatePlugin(plugin) {

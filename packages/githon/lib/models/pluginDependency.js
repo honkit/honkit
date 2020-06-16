@@ -16,6 +16,9 @@ const PluginDependency = Immutable.Record(
         // Requirement version (ex: ">1.0.0")
         version: String(DEFAULT_VERSION),
 
+        // path to package
+        path: String(),
+
         // Is this plugin enabled or disabled?
         enabled: Boolean(true),
     },
@@ -28,6 +31,10 @@ PluginDependency.prototype.getName = function () {
 
 PluginDependency.prototype.getVersion = function () {
     return this.get("version");
+};
+
+PluginDependency.prototype.getPath = function () {
+    return this.get("path");
 };
 
 PluginDependency.prototype.isEnabled = function () {
