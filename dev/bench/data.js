@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592348976973,
+  "lastUpdate": 1592349140102,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "GitHon benchmark": [
@@ -1858,6 +1858,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.12,
             "range": "±3.72%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "1d4fe848a80c2bbe052ea5e847cb07529d5087e5",
+          "message": "fix(githon): use Buffer.from instead of Buffer constructor\n\nfix #26",
+          "timestamp": "2020-06-17T08:09:19+09:00",
+          "tree_id": "85973cf0acac91434a2e2a8af792b2de0b639097",
+          "url": "https://github.com/azu/githon/commit/1d4fe848a80c2bbe052ea5e847cb07529d5087e5"
+        },
+        "date": 1592349139643,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.1,
+            "range": "±2.03%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
