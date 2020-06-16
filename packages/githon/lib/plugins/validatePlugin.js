@@ -9,7 +9,6 @@ const Promise = require("../utils/promise");
     @return {Promise<Plugin>}
 */
 function validatePlugin(plugin) {
-    console.log("plugin", plugin);
     const packageInfos = plugin.getPackage();
 
     const isValid =
