@@ -7,6 +7,7 @@ const error = require("../utils/error");
 const timing = require("../utils/timing");
 
 const validatePlugin = require("./validatePlugin");
+const Plugin = require("../models/plugin");
 
 // Return true if an error is a "module not found"
 // Wait on https://github.com/substack/node-resolve/pull/81 to be merged
@@ -15,13 +16,13 @@ function isModuleNotFound(err) {
 }
 
 /**
-    Load a plugin in a book
+ Load a plugin in a book
 
-    @param {Book} book
-    @param {Plugin} plugin
-    @param {String} pkgPath (optional)
-    @return {Promise<Plugin>}
-*/
+ @param {Book} book
+ @param {PluginDependency[]} plugin
+ @param {String} pkgPath (optional)
+ @return {Promise<Plugin>}
+ */
 function loadPlugin(book, plugin) {
     const logger = book.getLogger();
 
@@ -71,18 +72,21 @@ function loadPlugin(book, plugin) {
             }
 
             // Update plugin
-            return plugin.merge({
+            return new Plugin({
+                name: name,
+                version: packageContent.version || "*",
+                path: pkgPath,
                 package: Immutable.fromJS(packageContent),
                 content: Immutable.fromJS(content || {}),
             });
         })
-
-        .then(validatePlugin);
-
+        .then(validatePlugin)
+        .then((plugin) => {
+            logger.info(`plugin "${plugin.get("name")} is loaded\n`);
+            return plugin;
+        });
     p = timing.measure("plugin.load", p);
-
-    logger.info(`loading plugin "${name}"... `);
-    return logger.info.promise(p);
+    return p;
 }
 
-module.exports = loadPlugin;
+module.exports.loadPlugin = loadPlugin;

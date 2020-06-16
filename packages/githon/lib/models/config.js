@@ -87,7 +87,6 @@ Config.prototype.setValue = function (keyPath, value) {
  */
 Config.prototype.getPluginDependencies = function () {
     const plugins = this.getValue("plugins");
-
     if (is.string(plugins)) {
         return PluginDependency.listFromString(plugins);
     } else {
