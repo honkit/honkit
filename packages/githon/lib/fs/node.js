@@ -10,9 +10,12 @@ function fsReadDir(folder) {
 
         return files
             .map((file) => {
-                if (file == "." || file == "..") return;
+                if (file === "." || file === "..") return;
 
                 const stat = fs.statSync(path.join(folder, file));
+                if (stat.isSymbolicLink()) {
+                    return;
+                }
                 if (stat.isDirectory()) file = file + path.sep;
                 return file;
             })
