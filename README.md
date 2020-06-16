@@ -59,7 +59,7 @@ For more details, see [GitHon's documentation](https://githon.netlify.app/).
 
 ## Differences with GitBook
 
-GitHon is a fork of [GitBook (Legacy)](https://legacy.gitbook.com/).
+GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
 
 - Node.js 14+ supports
 - Improve `build`/`serve` performance
@@ -111,7 +111,7 @@ After that, GitHon just work!
 
 GitHon is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.
 
-GitHon is a fork of [GitBook](https://github.com/GitbookIO/gitbook)(legacy).
+GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
 GitBook is licensed under the Apache License, Version 2.0.
 
 Also, it includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
