@@ -102,5 +102,8 @@
         "default": false
       }
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
