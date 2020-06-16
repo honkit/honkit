@@ -66,10 +66,16 @@ GitHon is a fork of [GitBook (Legacy)](https://legacy.gitbook.com/).
     - `githon build`: use file cache by default
     - `githon serve`: 28.2s → 0.9s in [examples/benchmark](examples/benchmark)
     - Also, support `--reload` flag for force refresh
+- Improve plugin loading logics
+    - Reduce cost of finding `githon-plugin-*` and `gitbook-plugin-*`
+    - Support `githon-plugin-*` and `@scope/githon-plguin-*` (GitBook does not support a scoped module)
 - Remove `install` command
     - Instead of it, just use `npm install` or `yarn install` 
 - Remove `global-npm` dependency
     - You can use it with another npm package manager like `yarn`
+- Update dependencies
+    - Upgrade to nunjucks@2 etc...
+    - It will reduce bug
 
 ## Migration from GitBook
 
