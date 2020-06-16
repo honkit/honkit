@@ -5,10 +5,11 @@ const Promise = require("../utils/promise");
 /**
     Validate a plugin
 
-    @param {Plugin}
+    @param {Plugin} plugin
     @return {Promise<Plugin>}
 */
 function validatePlugin(plugin) {
+    console.log("plugin", plugin);
     const packageInfos = plugin.getPackage();
 
     const isValid =

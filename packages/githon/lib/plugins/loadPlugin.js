@@ -80,7 +80,7 @@ function loadPlugin(book, plugin) {
                 content: Immutable.fromJS(content || {}),
             });
         })
-        .then(validatePlugin)
+        .then((plugin) => validatePlugin(plugin))
         .then((plugin) => {
             logger.info(`plugin "${plugin.get("name")} is loaded\n`);
             return plugin;
