@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592347449593,
+  "lastUpdate": 1592348757784,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
     "GitHon benchmark": [
@@ -1796,6 +1796,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.12,
             "range": "±0.64%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "bbe0e410032a2c17d1596f29db65154a6626788c",
+          "message": "fix(githon): use lstat instead of stat\n\nrefs https://github.com/GitbookIO/gitbook/pull/2099",
+          "timestamp": "2020-06-17T08:03:13+09:00",
+          "tree_id": "83c6be297286cf4fce43659da8c691a1bb2532e5",
+          "url": "https://github.com/azu/githon/commit/bbe0e410032a2c17d1596f29db65154a6626788c"
+        },
+        "date": 1592348757336,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.12,
+            "range": "±1.75%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
