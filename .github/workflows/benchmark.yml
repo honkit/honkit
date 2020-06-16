@@ -28,7 +28,7 @@ jobs:
       - name: Store benchmark result
         uses: rhysd/github-action-benchmark@v1
         with:
-          name: Githon benchmark
+          name: GitHon benchmark
           tool: 'benchmarkjs'
           output-file-path: examples/benchmark/output.txt
           # Use "bot-user" token
