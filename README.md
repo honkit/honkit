@@ -66,7 +66,7 @@ GitHon is a fork of [GitBook (Legacy)](https://legacy.gitbook.com/).
     - `githon build`: use file cache by default
     - `githon serve`: 28.2s → 0.9s in [examples/benchmark](examples/benchmark)
     - Also, support `--reload` flag for force refresh
-- Improve plugin loading logics
+- Improve plugin loading logic
     - Reduce cost of finding `githon-plugin-*` and `gitbook-plugin-*`
     - Support `githon-plugin-*` and `@scope/githon-plguin-*` (GitBook does not support a scoped module)
 - Remove `install` command
