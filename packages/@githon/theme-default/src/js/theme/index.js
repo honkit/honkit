@@ -1,8 +1,8 @@
-var dropdown =   require('./dropdown');
-var keyboard =   require('./keyboard');
-var navigation = require('./navigation');
-var sidebar =    require('./sidebar');
-var toolbar =    require('./toolbar');
+var dropdown = require("./dropdown");
+var keyboard = require("./keyboard");
+var navigation = require("./navigation");
+var sidebar = require("./sidebar");
+var toolbar = require("./toolbar");
 
 var gitbook = window.gitbook;
 
@@ -22,15 +22,15 @@ function init() {
     // Add action to toggle sidebar
     toolbar.createButton({
         index: 0,
-        icon: 'fa fa-align-justify',
-        onClick: function(e) {
+        icon: "fa fa-align-justify",
+        onClick: function (e) {
             e.preventDefault();
             sidebar.toggle();
-        }
+        },
     });
 }
 
-gitbook.events.on('start', init);
+gitbook.events.on("start", init);
 
 gitbook.keyboard = keyboard;
 gitbook.navigation = navigation;

@@ -1,21 +1,21 @@
-var $ = require('jquery');
-var url = require('url');
+var $ = require("jquery");
+var url = require("url");
 
-var loading = require('./loading');
-var platform = require('./platform');
+var loading = require("./loading");
+var platform = require("./platform");
 
 var gitbook = window.gitbook;
 
-var usePushState = (typeof history.pushState !== 'undefined');
+var usePushState = typeof history.pushState !== "undefined";
 
 /*
     Get current scroller element
 */
 function getScroller() {
     if (platform.isSmallScreen()) {
-        return $('.book-body');
+        return $(".book-body");
     } else {
-        return $('.body-inner');
+        return $(".body-inner");
     }
 }
 
@@ -36,13 +36,18 @@ function scrollToHash(hash) {
     }
 
     // Unbind scroll detection
-    $scroller.unbind('scroll');
-    $scroller.animate({
-        scrollTop: dest
-    }, 800, 'swing', function() {
-        // Reset scroll binding when finished
-        $scroller.scroll(handleScrolling);
-    });
+    $scroller.unbind("scroll");
+    $scroller.animate(
+        {
+            scrollTop: dest,
+        },
+        800,
+        "swing",
+        function () {
+            // Reset scroll binding when finished
+            $scroller.scroll(handleScrolling);
+        }
+    );
 
     // Directly set chapter as active
     setChapterActive(null, hash);
@@ -52,8 +57,8 @@ function scrollToHash(hash) {
     Return wether the element exists on the page
  */
 function pageHasElement(id) {
-    var $scroller  = getScroller(),
-        $el        = $scroller.find(id);
+    var $scroller = getScroller(),
+        $el = $scroller.find(id);
 
     return !!$el.length;
 }
@@ -70,7 +75,6 @@ function isEmpty(element) {
 // Any returns true if the predicate is true on any of the elements in the list
 function any(arr, predicate) {
     return arr.length > 0 && arr.filter(predicate).length > 0;
-
 }
 
 /*
@@ -78,11 +82,11 @@ function any(arr, predicate) {
  */
 function getElementTopPosition(id) {
     // Get actual position of element if nested
-    var $scroller  = getScroller(),
-        $container = $scroller.find('.page-inner'),
-        $el        = $scroller.find(id),
-        $parent    = $el.offsetParent(),
-        dest       = 0;
+    var $scroller = getScroller(),
+        $container = $scroller.find(".page-inner"),
+        $el = $scroller.find(id),
+        $parent = $el.offsetParent(),
+        dest = 0;
 
     // Exit early if we can't find any of those elements
     if (any([$scroller, $container, $el, $parent], isEmpty)) {
@@ -112,12 +116,10 @@ function getElementTopPosition(id) {
     return Math.floor(dest);
 }
 
-
 /*
     Handle updating summary at scrolling
 */
-var $chapters,
-    $activeChapter;
+var $chapters, $activeChapter;
 
 // Set a chapter as active in summary and update state
 function setChapterActive($chapter, hash) {
@@ -130,10 +132,12 @@ function setChapterActive($chapter, hash) {
     if (!!hash) {
         // Multiple chapters for this file
         if ($chapters.length > 1) {
-            $chapter = $chapters.filter(function() {
-                var titleId = getChapterHash($(this));
-                return titleId == hash;
-            }).first();
+            $chapter = $chapters
+                .filter(function () {
+                    var titleId = getChapterHash($(this));
+                    return titleId == hash;
+                })
+                .first();
         }
         // Only one chapter, no need to search
         else {
@@ -150,8 +154,8 @@ function setChapterActive($chapter, hash) {
     $activeChapter = $chapter;
 
     // Add class to selected chapter
-    $chapters.removeClass('active');
-    $chapter.addClass('active');
+    $chapters.removeClass("active");
+    $chapter.addClass("active");
 
     // Update history state if needed
     hash = getChapterHash($chapter);
@@ -166,25 +170,25 @@ function setChapterActive($chapter, hash) {
 
 // Return the hash of link for a chapter
 function getChapterHash($chapter) {
-    var $link = $chapter.children('a'),
-        hash = $link.attr('href').split('#')[1];
+    var $link = $chapter.children("a"),
+        hash = $link.attr("href").split("#")[1];
 
-    if (hash) hash = '#'+hash;
-    return (!!hash)? hash : '';
+    if (hash) hash = "#" + hash;
+    return !!hash ? hash : "";
 }
 
 // Handle user scrolling
 function handleScrolling() {
     // Get current page scroll
-    var $scroller      = getScroller(),
-        scrollTop      = $scroller.scrollTop(),
-        scrollHeight   = $scroller.prop('scrollHeight'),
-        clientHeight   = $scroller.prop('clientHeight'),
-        nbChapters     = $chapters.length,
-        $chapter       = null;
+    var $scroller = getScroller(),
+        scrollTop = $scroller.scrollTop(),
+        scrollHeight = $scroller.prop("scrollHeight"),
+        clientHeight = $scroller.prop("clientHeight"),
+        nbChapters = $chapters.length,
+        $chapter = null;
 
     // Find each title position in reverse order
-    $($chapters.get().reverse()).each(function(index) {
+    $($chapters.get().reverse()).each(function (index) {
         var titleId = getChapterHash($(this)),
             titleTop;
 
@@ -197,7 +201,7 @@ function handleScrolling() {
             }
         }
         // If no active chapter when reaching first chapter, set it as active
-        if (index == (nbChapters - 1) && !$chapter) {
+        if (index == nbChapters - 1 && !$chapter) {
             $chapter = $(this);
         }
     });
@@ -208,7 +212,7 @@ function handleScrolling() {
     }
 
     // Set last chapter as active if scrolled to bottom of page
-    if (!!scrollTop && (scrollHeight - scrollTop == clientHeight)) {
+    if (!!scrollTop && scrollHeight - scrollTop == clientHeight) {
         $chapter = $chapters.last();
     }
 
@@ -227,7 +231,7 @@ function handleNavigation(relativeUrl, push) {
     var hash = uriParsed.hash;
 
     // Is it the same url (just hash changed?)
-    var pathHasChanged = (uriParsed.pathname !== prevUriParsed.pathname);
+    var pathHasChanged = uriParsed.pathname !== prevUriParsed.pathname;
 
     // Is it an absolute url
     var isAbsolute = Boolean(uriParsed.hostname);
@@ -246,75 +250,79 @@ function handleNavigation(relativeUrl, push) {
 
     prevUri = uri;
 
-    var promise = $.Deferred(function(deferred) {
+    var promise = $.Deferred(function (deferred) {
         $.ajax({
-            type: 'GET',
+            type: "GET",
             url: uri,
             cache: true,
-            headers:{
-                'Access-Control-Expose-Headers': 'X-Current-Location'
+            headers: {
+                "Access-Control-Expose-Headers": "X-Current-Location",
             },
-            success: function(html, status, xhr) {
+            success: function (html, status, xhr) {
                 // For GitBook.com, we handle redirection signaled by the server
-                var responseURL = xhr.getResponseHeader('X-Current-Location') || uri;
+                var responseURL = xhr.getResponseHeader("X-Current-Location") || uri;
 
                 // Replace html content
-                html = html.replace( /<(\/?)(html|head|body)([^>]*)>/ig, function(a,b,c,d){
-                    return '<' + b + 'div' + ( b ? '' : ' data-element="' + c + '"' ) + d + '>';
+                html = html.replace(/<(\/?)(html|head|body)([^>]*)>/gi, function (a, b, c, d) {
+                    return "<" + b + "div" + (b ? "" : ' data-element="' + c + '"') + d + ">";
                 });
 
                 var $page = $(html),
-                    $pageBody = $page.find('.book'),
+                    $pageBody = $page.find(".book"),
                     $pageHead;
 
                 // We only use history.pushState for pages generated with GitBook
                 if ($pageBody.length === 0) {
-                    var err = new Error('Invalid gitbook page, redirecting...');
+                    var err = new Error("Invalid gitbook page, redirecting...");
                     return deferred.reject(err);
                 }
 
                 // Push url to history
                 if (push) {
-                    history.pushState({
-                        path: responseURL
-                    }, null, responseURL);
+                    history.pushState(
+                        {
+                            path: responseURL,
+                        },
+                        null,
+                        responseURL
+                    );
                 }
 
                 // Force reparsing HTML to prevent wrong URLs in Safari
                 $page = $(html);
-                $pageHead = $page.find('[data-element=head]');
-                $pageBody = $page.find('.book');
+                $pageHead = $page.find("[data-element=head]");
+                $pageBody = $page.find(".book");
 
                 // Merge heads
                 // !! Warning !!: we only update necessary portions to avoid strange behavior (page flickering etc ...)
 
                 // Update title
-                document.title = $pageHead.find('title').text();
+                document.title = $pageHead.find("title").text();
 
                 // Reference to $('head');
-                var $head = $('head');
+                var $head = $("head");
 
                 // Update next & prev <link> tags
                 // Remove old
-                $head.find('link[rel=prev]').remove();
-                $head.find('link[rel=next]').remove();
+                $head.find("link[rel=prev]").remove();
+                $head.find("link[rel=next]").remove();
 
                 // Add new next * prev <link> tags
-                $head.append($pageHead.find('link[rel=prev]'));
-                $head.append($pageHead.find('link[rel=next]'));
+                $head.append($pageHead.find("link[rel=prev]"));
+                $head.append($pageHead.find("link[rel=next]"));
 
                 // Merge body
-                var bodyClass = $('.book').attr('class');
-                var scrollPosition = $('.book-summary').scrollTop();
+                var bodyClass = $(".book").attr("class");
+                var scrollPosition = $(".book-summary").scrollTop();
 
-                $pageBody.toggleClass('with-summary', $('.book').hasClass('with-summary'));
+                $pageBody.toggleClass("with-summary", $(".book").hasClass("with-summary"));
 
-                $('.book').replaceWith($pageBody);
-                $('.book').attr('class', bodyClass);
-                $('.book-summary').scrollTop(scrollPosition);
+                $(".book").replaceWith($pageBody);
+                $(".book").attr("class", bodyClass);
+                $(".book-summary").scrollTop(scrollPosition);
 
                 // Update state
-                gitbook.state.$book = $('.book');
+                gitbook.state.$book = $(".book");
                 preparePage(!hash);
 
                 // Scroll to hashtag position
@@ -323,13 +331,12 @@ function handleNavigation(relativeUrl, push) {
                 }
 
                 deferred.resolve();
-            }
+            },
         });
     }).promise();
 
     return loading.show(
-        promise
-        .fail(function (e) {
+        promise.fail(function (e) {
             console.log(e); // eslint-disable-line no-console
             // location.href = relativeUrl;
         })
@@ -339,21 +346,21 @@ function handleNavigation(relativeUrl, push) {
 function updateNavigationPosition() {
     var bodyInnerWidth, pageWrapperWidth;
 
-    bodyInnerWidth = parseInt($('.body-inner').css('width'), 10);
-    pageWrapperWidth = parseInt($('.page-wrapper').css('width'), 10);
-    $('.navigation-next').css('margin-right', (bodyInnerWidth - pageWrapperWidth) + 'px');
+    bodyInnerWidth = parseInt($(".body-inner").css("width"), 10);
+    pageWrapperWidth = parseInt($(".page-wrapper").css("width"), 10);
+    $(".navigation-next").css("margin-right", bodyInnerWidth - pageWrapperWidth + "px");
 
     // Reset scroll to get current scroller
     var $scroller = getScroller();
     // Unbind existing scroll event
-    $scroller.unbind('scroll');
+    $scroller.unbind("scroll");
     $scroller.scroll(handleScrolling);
 }
 
 function preparePage(resetScroll) {
-    var $bookBody = $('.book-body');
-    var $bookInner = $bookBody.find('.body-inner');
-    var $pageWrapper = $bookInner.find('.page-wrapper');
+    var $bookBody = $(".book-body");
+    var $bookInner = $bookBody.find(".body-inner");
+    var $pageWrapper = $bookInner.find(".page-wrapper");
 
     // Update navigation position
     updateNavigationPosition();
@@ -370,17 +377,15 @@ function preparePage(resetScroll) {
     }
 
     // Get current page summary chapters
-    $chapters = $('.book-summary .summary .chapter')
-    .filter(function() {
-        var $link = $(this).children('a'),
-            href  = null;
+    $chapters = $(".book-summary .summary .chapter").filter(function () {
+        var $link = $(this).children("a"),
+            href = null;
 
         // Chapter doesn't have a link
         if (!$link.length) {
             return false;
-        }
-        else {
-            href = $link.attr('href').split('#')[0];
+        } else {
+            href = $link.attr("href").split("#")[0];
         }
 
         var resolvedRef = url.resolve(window.location.pathname, href);
@@ -410,7 +415,7 @@ function isModifiedEvent(e) {
 */
 function handleLinkClick(e) {
     var $this = $(this);
-    var target = $this.attr('target');
+    var target = $this.attr("target");
 
     if (isModifiedEvent(e) || !isLeftClickEvent(e) || target) {
         return;
@@ -419,30 +424,29 @@ function handleLinkClick(e) {
     e.stopPropagation();
     e.preventDefault();
 
-    var url = $this.attr('href');
+    var url = $this.attr("href");
     if (url) handleNavigation(url, true);
 }
 
 function goNext() {
-    var url = $('.navigation-next').attr('href');
+    var url = $(".navigation-next").attr("href");
     if (url) handleNavigation(url, true);
 }
 
 function goPrev() {
-    var url = $('.navigation-prev').attr('href');
+    var url = $(".navigation-prev").attr("href");
     if (url) handleNavigation(url, true);
 }
-
 
 function init() {
     // Prevent cache so that using the back button works
     // See: http://stackoverflow.com/a/15805399/983070
     $.ajaxSetup({
-        cache: false
+        cache: false,
     });
 
     // Recreate first page when the page loads.
-    history.replaceState({ path: window.location.href }, '');
+    history.replaceState({ path: window.location.href }, "");
 
     // Back Button Hijacking :(
     window.onpopstate = function (event) {
@@ -453,10 +457,10 @@ function init() {
         return handleNavigation(event.state.path, false);
     };
 
-    $(document).on('click', '.navigation-prev', handleLinkClick);
-    $(document).on('click', '.navigation-next', handleLinkClick);
-    $(document).on('click', '.summary [data-path] a', handleLinkClick);
-    $(document).on('click', '.page-inner a', handleLinkClick);
+    $(document).on("click", ".navigation-prev", handleLinkClick);
+    $(document).on("click", ".navigation-next", handleLinkClick);
+    $(document).on("click", ".summary [data-path] a", handleLinkClick);
+    $(document).on("click", ".page-inner a", handleLinkClick);
 
     $(window).resize(updateNavigationPosition);
 
@@ -467,5 +471,5 @@ function init() {
 module.exports = {
     init: init,
     goNext: goNext,
-    goPrev: goPrev
+    goPrev: goPrev,
 };

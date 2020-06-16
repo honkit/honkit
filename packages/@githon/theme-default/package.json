@@ -1,5 +1,5 @@
 {
-  "name": "gitbook-plugin-theme-default",
+  "name": "@githon/githon-plugin-theme-default",
   "description": "Default theme for GitBook",
   "main": "./index.js",
   "version": "1.0.7",
