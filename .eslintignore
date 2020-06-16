@@ -3,3 +3,4 @@ _book/**
 **/node_modules/**
 **/test/**
 examples/**
+theme-default/

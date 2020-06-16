@@ -21,6 +21,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: yarn install
+      - name: Build
+        run: yarn run build
       - name: Run Benchmark
         run: cd examples/benchmark && node benchmark.js | tee output.txt
       - name: Store benchmark result

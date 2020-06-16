@@ -20,8 +20,8 @@
     "examples/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap --ci",
     "lint": "eslint .",
+    "build": "lerna run build",
     "test": "lerna run test",
     "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
     "versionup": "lerna version --conventional-commits",

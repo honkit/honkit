@@ -4,6 +4,10 @@ const path = require("path");
 const util = require("./package-name-util");
 const tryResolve = require("try-resolve");
 
+const SPECIAL_PACKAGE_NAME = [
+    "theme-default", // → @githon/githon-plugin-theme-default
+];
+
 /**
  * This class aim to resolve githon's package name and get the module path.
  *
@@ -32,16 +36,21 @@ class GitHonPluginResolver {
      */
     resolvePluginPackageName(packageName) {
         const baseDir = this.baseDirectory;
-        const githonFullPackageName = util.createFullPackageName("gitbook-plugin-", packageName);
+        const githonFullPackageName = util.createFullPackageName("githon-plugin-", packageName);
         // githon > gitbook > normal
         const gitbookFullPackageName = util.createFullPackageName("gitbook-plugin-", packageName);
+        // special case for backward-compatible
+        // e.g.) load theme-default as @githon/githon-plugins-theme-default
+        const githonScopePackageName = `@githon/${githonFullPackageName}`;
         // In sometimes, GitBook package has not main field - so search package.json
         const pkgPath =
             tryResolve(path.join(baseDir, githonFullPackageName, "/package.json")) ||
             tryResolve(path.join(baseDir, gitbookFullPackageName, "/package.json")) ||
-            tryResolve(path.join(baseDir, packageName, "/package.json"));
+            tryResolve(path.join(baseDir, packageName, "/package.json")) ||
+            (SPECIAL_PACKAGE_NAME.includes(packageName) &&
+                tryResolve(path.join(baseDir, githonScopePackageName, "/package.json")));
         if (!pkgPath) {
-            throw new ReferenceError(`Failed to load githon's plugin module: "${packageName}" is not found.
+            throw new ReferenceError(`Failed to load GitHon's plugin module: "${packageName}" is not found.
 
 cwd: ${process.cwd()}
 baseDir: ${baseDir}

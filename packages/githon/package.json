@@ -64,7 +64,7 @@
         "gitbook-plugin-livereload": "0.0.1",
         "gitbook-plugin-lunr": "^1.2.0",
         "gitbook-plugin-search": "^2.2.1",
-        "gitbook-plugin-theme-default": "^1.0.7",
+        "@githon/githon-plugin-theme-default": "^1.0.7",
         "github-slugid": "1.0.1",
         "global-npm": "^0.4.0",
         "i18n-t": "1.0.1",
