@@ -48,7 +48,7 @@ baseDir: ${baseDir}
 
 `);
         }
-        return pkgPath.replace("/package.json", "");
+        return pkgPath.substring(0, pkgPath.length - "/package.json".length);
     }
 }
 
