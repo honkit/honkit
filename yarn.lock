@@ -4804,10 +4804,6 @@ gitbook-asciidoc@0.2.4:
     lodash "^3.2.0"
     q "^1.1.2"
 
-"gitbook-logos@git+https://github.com/GitbookIO/logos.git#2.0.2":
-  version "2.0.2"
-  resolved "git+https://github.com/GitbookIO/logos.git#b9de63d9cb92cdc5a413e8b5fa39d10977c65959"
-
 gitbook-markdown-css@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/gitbook-markdown-css/-/gitbook-markdown-css-1.0.1.tgz#d8fe2ed198a997403e85273816ddc61c02bb2730"
@@ -4918,11 +4914,6 @@ gitbook-plugin-search@*, gitbook-plugin-search@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/gitbook-plugin-search/-/gitbook-plugin-search-2.2.1.tgz#6d25b5a776990fa98fdfdfa37de331f78e0f6b13"
   integrity sha1-bSW1p3aZD6mP39+jfeMx944PaxM=
-
-gitbook-plugin-theme-default@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/gitbook-plugin-theme-default/-/gitbook-plugin-theme-default-1.0.7.tgz#51f71fbca74a261054e9e9d141c42167afefce88"
-  integrity sha512-vY+8Prz58H6iu6c7KHyOISxapKnwU8P1TWNqOzESFAB40ny9D/R7GpNL2IluicrsDvtI6VfpQeCYQbBniamulw==
 
 gitbook-restructuredtext@0.2.3:
   version "0.2.3"
@@ -8443,10 +8434,6 @@ posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
-
-"preboot@git+https://github.com/mdo/preboot.git#4aab4edd85f076d50609cbe28e4fe66cc0771701":
-  version "2.0.0"
-  resolved "git+https://github.com/mdo/preboot.git#4aab4edd85f076d50609cbe28e4fe66cc0771701"
 
 prelude-ls@~1.1.2:
   version "1.1.2"

@@ -38,7 +38,7 @@ window.require = function (mods, fn) {
     mods = mods.map(function (mod) {
         mod = mod.toLowerCase();
         if (!MODULES[mod]) {
-            throw new Error("GitBook module " + mod + " doesn't exist");
+            throw new Error("GitHon module " + mod + " doesn't exist");
         }
 
         return MODULES[mod];
