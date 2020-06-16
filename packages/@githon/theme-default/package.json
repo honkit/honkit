@@ -6,6 +6,11 @@
   "engines": {
     "gitbook": ">=3.0.0"
   },
+  "files": [
+    "_assets",
+    "_i18n",
+    "_layouts"
+  ],
   "dependencies": {},
   "devDependencies": {
     "browserify": "13.1.0",
