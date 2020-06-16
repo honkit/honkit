@@ -32,7 +32,7 @@ describe("i18n", () => {
                 const engine = createTemplateEngine(output, "README.md");
                 const t = engine.getFilters().get("t");
 
-                expect(t("GITBOOK_LINK")).toEqual("Publié avec GitBook");
+                expect(t("GITBOOK_LINK")).toEqual("Publié avec GitHon");
             });
     });
 });
