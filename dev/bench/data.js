@@ -2,7 +2,7 @@ window.BENCHMARK_DATA = {
   "lastUpdate": 1592324353555,
   "repoUrl": "https://github.com/azu/githon",
   "entries": {
-    "Githon benchmark": [
+    "GitHon benchmark": [
       {
         "commit": {
           "author": {
