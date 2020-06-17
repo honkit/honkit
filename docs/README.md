@@ -8,7 +8,7 @@ This document aims to be a comprehensive guide to the GitHon command line tool, 
 
 `githon` can output your content as a website ([customizable](themes/README.md) and [extensibles](plugins/README.md)) or as an ebook (PDF, ePub or Mobi).
 
-`githon` is a fork of GitHon.
+`githon` is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
 
 ### Help and Support
 
