@@ -32,7 +32,15 @@ A plugin manifest `package.json` can also contain details about the required con
 
 You can learn more about `package.json` from the [NPM documentation](https://docs.npmjs.com/files/package.json).
 
-The **package name** must begin with `gitbook-plugin-` and the **package engines** should contains `gitbook`.
+The **package name** must begin with following patterns:
+
+- `@<scope>/githon-plugin-`
+- `githon-plugin-`
+- `@<scope>/gitbook-plugin-`
+- `gitbook-plugin-`
+
+
+And the **package engines** should contains `githon` or `gitbook`.
 
 #### index.js
 

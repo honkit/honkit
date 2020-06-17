@@ -26,9 +26,11 @@ The following is a reference of the available data during book's parsing and the
 
 ### GitHon Variables
 
+TODO: We use `gitbook` variable for backward compatible. To support `githon` variables.
+
 | Variable | Description |
 | -------- | ----------- |
-| `gitbook.time` | The current time (when you run the `gitbook` command) . |
+| `gitbook.time` | The current time (when you run the `githon` command) . |
 | `gitbook.version` | Version of GitHon used to generate the book |
 
 ### File Variables

@@ -29,7 +29,7 @@ Since version 3.0.0, GitHon can use themes. See [the theming section](themes/REA
 
 ### Structure
 
-In addition to the `root` variable, you can tell Gitbook the name of the files for Readme, Summary, Glossary, Languages (instead of using the default names such as `README.md`).
+In addition to the `root` variable, you can tell GitHon the name of the files for Readme, Summary, Glossary, Languages (instead of using the default names such as `README.md`).
 These files must be at the root of your book (or the root of every language book). Paths such as `dir/MY_README.md` are not accepted.
 
 | Variable | Description |

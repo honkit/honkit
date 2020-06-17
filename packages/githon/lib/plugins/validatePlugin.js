@@ -16,7 +16,7 @@ function validatePlugin(plugin) {
         packageInfos &&
         packageInfos.get("name") &&
         packageInfos.get("engines") &&
-        packageInfos.get("engines").get("gitbook");
+        (packageInfos.get("engines").get("gitbook") || packageInfos.get("engines").get("githon"));
 
     if (!isValid) {
         return Promise.reject(new Error(`Error loading plugin "${plugin.getName()}" at "${plugin.getPath()}"`));
