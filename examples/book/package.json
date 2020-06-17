@@ -1,7 +1,7 @@
 {
-    "private": true,
     "name": "book",
     "version": "3.3.3",
+    "private": true,
     "description": "",
     "keywords": [],
     "license": "MIT",

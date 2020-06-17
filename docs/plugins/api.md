@@ -4,7 +4,7 @@ GitHons provides different APIs and contexts to plugins. These APIs can vary acc
 
 #### Book instance
 
-The `Book` class is the central point of GitHon, it centralize all access read methods. This class is defined in [book.js](https://github.com/azu/githon/blob/master/lib/book.js).
+The `Book` class is the central point of GitHon, it centralize all access read methods. This class is defined in [book.js](https://github.com/githon/githon/blob/master/lib/book.js).
 
 ```js
 // Read configuration from book.json

@@ -1,16 +1,51 @@
 {
   "name": "@githon/githon-plugin-theme-default",
-  "description": "Default theme for GitBook",
-  "main": "./index.js",
   "version": "3.3.3",
-  "engines": {
-    "gitbook": ">=3.0.0"
+  "description": "Default theme for GitBook",
+  "bugs": {
+    "url": "https://github.com/githon/githon/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/githon/githon.git"
+  },
+  "license": "Apache-2.0",
+  "author": "azu <azuciao@gmail.com>",
+  "contributors": [
+    {
+      "name": "FriendCode Inc.",
+      "email": "contact@gitbook.com"
+    },
+    {
+      "name": "Samy Pessé",
+      "email": "samy@gitbook.com"
+    }
+  ],
   "files": [
     "_assets",
     "_i18n",
     "_layouts"
   ],
+  "main": "./index.js",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "npm-run-all build:js build:css cp",
+    "build:css": "npm-run-all -p build:css:*",
+    "build:css:ebook": "lessc -clean-css src/less/ebook.less _assets/ebook/ebook.css",
+    "build:css:epub": "lessc -clean-css src/less/epub.less _assets/ebook/epub.css",
+    "build:css:mobi": "lessc -clean-css src/less/mobi.less _assets/ebook/mobi.css",
+    "build:css:pdf": "lessc -clean-css src/less/pdf.less _assets/ebook/pdf.css",
+    "build:css:website": "lessc -clean-css src/less/website.less _assets/website/style.css",
+    "build:js": "npm-run-all -p build:js:*",
+    "build:js:gitbook": "browserify src/js/core/index.js | uglifyjs -mc > _assets/website/gitbook.js",
+    "build:js:theme": "browserify src/js/theme/index.js | uglifyjs -mc > _assets/website/theme.js",
+    "clean": "rimraf _assets && mkdirp _assets/ebook/ _assets/website/ _assets/website/fonts _assets/website/images",
+    "cp": "npm-run-all -p cp:*",
+    "cp:favicon": "cpy logo/favicon.ico _assets/website/images/",
+    "cp:font-awesome": "cpy font-awesome/fonts/ _assets/website/fonts/fontawesome/",
+    "cp:logo": "cpy logo/apple-touch-icon.png _assets/website/images/apple-touch-icon-precomposed-152.png",
+    "prepublish": "npm run build"
+  },
   "devDependencies": {
     "browserify": "13.1.0",
     "cpy-cli": "^3.1.1",
@@ -26,44 +61,12 @@
     "rimraf": "^3.0.2",
     "uglify-js": "2.7.3"
   },
-  "scripts": {
-    "prepublish": "npm run build",
-    "prebuild": "npm run clean",
-    "build": "npm-run-all build:js build:css cp",
-    "clean": "rimraf _assets && mkdirp _assets/ebook/ _assets/website/ _assets/website/fonts _assets/website/images",
-    "build:js": "npm-run-all -p build:js:*",
-    "build:js:gitbook": "browserify src/js/core/index.js | uglifyjs -mc > _assets/website/gitbook.js",
-    "build:js:theme": "browserify src/js/theme/index.js | uglifyjs -mc > _assets/website/theme.js",
-    "build:css": "npm-run-all -p build:css:*",
-    "build:css:website": "lessc -clean-css src/less/website.less _assets/website/style.css",
-    "build:css:ebook": "lessc -clean-css src/less/ebook.less _assets/ebook/ebook.css",
-    "build:css:pdf": "lessc -clean-css src/less/pdf.less _assets/ebook/pdf.css",
-    "build:css:mobi": "lessc -clean-css src/less/mobi.less _assets/ebook/mobi.css",
-    "build:css:epub": "lessc -clean-css src/less/epub.less _assets/ebook/epub.css",
-    "cp": "npm-run-all -p cp:*",
-    "cp:font-awesome": "cpy font-awesome/fonts/ _assets/website/fonts/fontawesome/",
-    "cp:favicon": "cpy logo/favicon.ico _assets/website/images/",
-    "cp:logo": "cpy logo/apple-touch-icon.png _assets/website/images/apple-touch-icon-precomposed-152.png"
+  "engines": {
+    "gitbook": ">=3.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/GitbookIO/theme-default.git"
+  "publishConfig": {
+    "access": "public"
   },
-  "author": "azu <azuciao@gmail.com>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/GitbookIO/theme-default/issues"
-  },
-  "contributors": [
-    {
-      "name": "FriendCode Inc.",
-      "email": "contact@gitbook.com"
-    },
-    {
-      "name": "Samy Pessé",
-      "email": "samy@gitbook.com"
-    }
-  ],
   "gitbook": {
     "properties": {
       "styles": {
@@ -102,8 +105,5 @@
         "default": false
       }
     }
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

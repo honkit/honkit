@@ -45,6 +45,6 @@
 
 * [FAQ](faq.md)
 * [Examples](examples.md)
-* [Release notes](https://github.com/azu/githon/blob/master/CHANGELOG.md)
+* [Release notes](https://github.com/githon/githon/blob/master/CHANGELOG.md)
 
 

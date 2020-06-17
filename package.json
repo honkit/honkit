@@ -1,13 +1,13 @@
 {
   "name": "githon",
   "private": true,
-  "homepage": "https://github.com/GitbookIO/gitbook#readme",
+  "homepage": "https://github.com/githon/githon",
   "bugs": {
-    "url": "https://github.com/GitbookIO/gitbook/issues"
+    "url": "https://github.com/githon/githon/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GitbookIO/gitbook.git"
+    "url": "git+https://github.com/githon/githon.git"
   },
   "license": "Apache-2.0",
   "authors": [

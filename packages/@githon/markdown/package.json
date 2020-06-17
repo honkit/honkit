@@ -2,17 +2,21 @@
   "name": "@githon/markdown",
   "version": "3.3.1",
   "description": "Parse markdown content for githon",
-  "homepage": "https://github.com/azu/githon",
+  "homepage": "https://github.com/githon/githon",
   "bugs": {
-    "url": "https://github.com/azu/githon/issues"
+    "url": "https://github.com/githon/githon/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/azu/githon.git"
+    "url": "https://github.com/githon/githon.git"
   },
   "license": "Apache-2.0",
-  "author": "FriendCode Inc. <contact@gitbook.com>",
+  "author": "azu <azuciao@gmail.com>",
   "contributors": [
+    {
+      "name": "FriendCode Inc.",
+      "email": "contact@gitbook.com"
+    },
     {
       "name": "Aaron O'Mullan",
       "email": "aaron@gitbook.com"
