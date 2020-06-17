@@ -1,6 +1,6 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592370321046,
-  "repoUrl": "https://github.com/azu/githon",
+  "lastUpdate": 1592397952101,
+  "repoUrl": "https://github.com/githon/githon",
   "entries": {
     "GitHon benchmark": [
       {
@@ -1982,6 +1982,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.11,
             "range": "±0.81%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "5386f6123f132eb6dc113190f3e251d70779eed4",
+          "message": "chore: transfer to githon org\n\nfix #28 - Transfer to GitHon org",
+          "timestamp": "2020-06-17T21:42:56+09:00",
+          "tree_id": "d77624a7abe0d61dc1501a1645bb9cc5b7a838d7",
+          "url": "https://github.com/githon/githon/commit/5386f6123f132eb6dc113190f3e251d70779eed4"
+        },
+        "date": 1592397950995,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.11,
+            "range": "±0.94%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
