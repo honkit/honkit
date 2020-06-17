@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.4](https://github.com/githon/githon/compare/v3.3.3...v3.3.4) (2020-06-17)
+
+
+### Bug Fixes
+
+* **theme-default:** fix ja translation ([4f1a1ec](https://github.com/githon/githon/commit/4f1a1ecaac797da29191dfa863634836a6ab53d0))
+
+
+
+
+
 ## [3.3.3](https://github.com/GitbookIO/theme-default/compare/v3.3.2...v3.3.3) (2020-06-16)
 
 

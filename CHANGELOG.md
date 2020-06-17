@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.4](https://github.com/githon/githon/compare/v3.3.3...v3.3.4) (2020-06-17)
+
+
+### Bug Fixes
+
+* **githon:** disable confirm on copyDir ([008d66f](https://github.com/githon/githon/commit/008d66f29b5488a37b456a4ba6bc426c9ff23a94))
+* **githon:** ignore symlink ([662028a](https://github.com/githon/githon/commit/662028a696f962d306da58ee71a8e8bcb61f5287))
+* **githon:** use Buffer.from instead of Buffer constructor ([1d4fe84](https://github.com/githon/githon/commit/1d4fe848a80c2bbe052ea5e847cb07529d5087e5)), closes [#26](https://github.com/githon/githon/issues/26)
+* **githon:** use lstat instead of stat ([bbe0e41](https://github.com/githon/githon/commit/bbe0e410032a2c17d1596f29db65154a6626788c))
+* **theme-default:** fix ja translation ([4f1a1ec](https://github.com/githon/githon/commit/4f1a1ecaac797da29191dfa863634836a6ab53d0))
+
+
+
+
+
 ## [3.3.3](https://github.com/GitbookIO/gitbook/compare/v3.3.2...v3.3.3) (2020-06-16)
 
 

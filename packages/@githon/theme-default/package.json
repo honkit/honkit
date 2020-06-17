@@ -1,6 +1,6 @@
 {
   "name": "@githon/githon-plugin-theme-default",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "description": "Default theme for GitBook",
   "bugs": {
     "url": "https://github.com/githon/githon/issues"
