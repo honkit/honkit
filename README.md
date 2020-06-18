@@ -2,6 +2,8 @@
 
 GitHon is building beautiful books using GitHub/Git and Markdown.
 
+![GitHon Screenshot](./githon.png)
+
 ## Documentation and Demo
 
 GitHon documentation is built by GitHon!
