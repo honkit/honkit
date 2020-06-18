@@ -24,6 +24,7 @@
   "env": {
     "node": true,
     "jest": true,
+    "mocha": true,
     "es6": true
   },
   "globals": {
