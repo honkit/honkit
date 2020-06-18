@@ -1,5 +1,5 @@
-const MarkupIt = require("markup-it");
-const gitbookSyntax = require("markup-it/syntaxes/markdown");
+const MarkupIt = require("@githon/markup-it");
+const gitbookSyntax = require("@githon/markup-it/syntaxes/markdown");
 
 const RAW_START = "{% raw %}";
 const RAW_END = "{% endraw %}";
