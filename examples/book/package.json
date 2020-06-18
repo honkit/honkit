@@ -1,6 +1,6 @@
 {
     "name": "book",
-    "version": "3.3.7",
+    "version": "3.3.8",
     "private": true,
     "description": "",
     "keywords": [],
@@ -13,6 +13,6 @@
         "help": "githon --help"
     },
     "devDependencies": {
-        "githon": "^3.3.7"
+        "githon": "^3.3.8"
     }
 }

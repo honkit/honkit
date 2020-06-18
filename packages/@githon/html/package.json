@@ -1,6 +1,6 @@
 {
   "name": "@githon/html",
-  "version": "3.3.7",
+  "version": "3.3.8",
   "description": "Parse HTML content for gitbook",
   "homepage": "https://github.com/githon/githon",
   "bugs": {
