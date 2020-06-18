@@ -2,7 +2,9 @@
 
 GitHon is building beautiful books using GitHub/Git and Markdown.
 
-## Documentation
+## Documentation and Demo
+
+GitHon documentation is built by GitHon!
 
 - <https://githon.netlify.app/>
 
