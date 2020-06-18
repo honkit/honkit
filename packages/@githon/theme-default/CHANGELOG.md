@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.9](https://github.com/githon/githon/compare/v3.3.8...v3.3.9) (2020-06-18)
+
+
+### Bug Fixes
+
+* **theme-default:** fix apple-touch-icon-precomposed-152.png name ([7bb6516](https://github.com/githon/githon/commit/7bb6516d21100d9b281f523b5f6ad9c2fa7d88b9))
+
+
+
+
+
 ## [3.3.8](https://github.com/githon/githon/compare/v3.3.7...v3.3.8) (2020-06-18)
 
 **Note:** Version bump only for package @githon/githon-plugin-theme-default
