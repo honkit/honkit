@@ -41,7 +41,7 @@ Or build the static website using:
 $ npx githon build
 ```
 
-You can start to write your book! 
+You can start to write your book!
 
 For more details, see [GitHon's documentation](https://githon.netlify.app/).
 
@@ -70,7 +70,7 @@ GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
     - Reduce cost of finding `githon-plugin-*` and `gitbook-plugin-*`
     - Support `githon-plugin-*` and `@scope/githon-plguin-*` (GitBook does not support a scoped module)
 - Remove `install` command
-    - Instead of it, just use `npm install` or `yarn install` 
+    - Instead of it, just use `npm install` or `yarn install`
 - Remove `global-npm` dependency
     - You can use it with another npm package manager like `yarn`
 - Update dependencies
@@ -105,7 +105,7 @@ After that, GitHon just work!
 
 `githon build` benchmark:
 
-- <https://azu.github.io/githon/dev/bench/>
+- <https://githon.github.io/githon/dev/bench/>
 
 ## Licensing
 
@@ -117,7 +117,7 @@ GitBook is licensed under the Apache License, Version 2.0.
 Also, it includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
 
 ## Sponsors
-  
+
 <a href="https://www.netlify.com">
 <img src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg" alt="Deploys by Netlify" />
 </a>
