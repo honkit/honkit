@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592402164899,
+  "lastUpdate": 1592491341940,
   "repoUrl": "https://github.com/githon/githon",
   "entries": {
     "GitHon benchmark": [
@@ -2075,6 +2075,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.1,
             "range": "±2.97%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "a80b123c8aa8cf0ac807d756846b2e7891bf7a6c",
+          "message": "chore(deps): update eslint",
+          "timestamp": "2020-06-18T23:39:32+09:00",
+          "tree_id": "73887275eec312e33ea8427c1b4c816fa6d1f5f8",
+          "url": "https://github.com/githon/githon/commit/a80b123c8aa8cf0ac807d756846b2e7891bf7a6c"
+        },
+        "date": 1592491341446,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.11,
+            "range": "±1.20%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
