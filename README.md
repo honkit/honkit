@@ -61,6 +61,10 @@ For more details, see [GitHon's documentation](https://githon.netlify.app/).
 * [Plugins](https://githon.netlify.app/plugins/)
 * [Beautiful default theme](./packages/@githon/theme-default)
 
+## Compatibility with GitBook
+
+- Almost plugins work without changes!
+
 ## Differences with GitBook
 
 GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
