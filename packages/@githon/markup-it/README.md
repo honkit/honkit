@@ -2,7 +2,7 @@
 
 `@githone/markup-it` is a JavaScript library to parse and modify markuped content (for example Markdown) using an intermediate format backed by an immutable model.
 
-@githone/markup-it is fork of [markup-it](https://github.com/GitbookIO/markup-it)@2.2.0
+`@githone/markup-it` is fork of [markup-it](https://github.com/GitbookIO/markup-it)@2.2.0
 
 - Less dependency
 - For stability
