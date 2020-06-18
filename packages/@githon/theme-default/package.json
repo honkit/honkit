@@ -49,7 +49,7 @@
   "devDependencies": {
     "browserify": "13.1.0",
     "cpy-cli": "^3.1.1",
-    "eslint": "3.6.1",
+    "eslint": "7.2.0",
     "font-awesome": "4.6.3",
     "gitbook-markdown-css": "1.0.1",
     "jquery": "3.5.1",
