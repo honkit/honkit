@@ -83,7 +83,7 @@ GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
 - Remove `install` command
     - Instead of it, just use `npm install` or `yarn install`
 - Remove `global-npm` dependency
-    - You can use it with another npm package manager like `yarn`
+    - You can use GitHon with another npm package manager like `yarn`
 - Update dependencies
     - Upgrade to nunjucks@2 etc...
     - It will reduce bug
