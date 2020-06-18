@@ -1,6 +1,6 @@
 {
     "name": "@githon/markup-it",
-    "version": "3.3.6",
+    "version": "3.3.7",
     "description": "Pipeline for working with markup input (for example Markdown)",
     "keywords": [
         "draft-js",
