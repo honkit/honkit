@@ -1,0 +1,24 @@
+{
+    "rules": {
+        "no-unused-vars": [
+            2,
+            {
+                "vars": "all",
+                "args": "none"
+            }
+        ],
+        "spaced-comment": [
+            2,
+            "always"
+        ]
+    },
+    "env": {
+        "node": true,
+        "mocha": true,
+        "browser": false
+    },
+    "globals": {
+        "mock": true
+    },
+    "extends": "eslint:recommended"
+}

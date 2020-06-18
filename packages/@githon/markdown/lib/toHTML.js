@@ -1,6 +1,6 @@
-const MarkupIt = require("markup-it");
-const markdownSyntax = require("markup-it/syntaxes/markdown");
-const htmlSyntax = require("markup-it/syntaxes/html");
+const MarkupIt = require("@githon/markup-it");
+const markdownSyntax = require("@githon/markup-it/syntaxes/markdown");
+const htmlSyntax = require("@githon/markup-it/syntaxes/html");
 
 const markdown = new MarkupIt(markdownSyntax);
 const html = new MarkupIt(htmlSyntax);

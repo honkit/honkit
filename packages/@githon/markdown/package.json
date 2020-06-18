@@ -36,7 +36,7 @@
   "dependencies": {
     "@githon/html": "^3.3.4",
     "markdown-escape": "^1.0.1",
-    "markup-it": "~2.2.0"
+    "@githon/markup-it": "^2.2.0"
   },
   "devDependencies": {
     "mocha": "^8.0.1"
