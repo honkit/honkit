@@ -1,6 +1,6 @@
 {
   "name": "@githon/markdown",
-  "version": "3.3.5",
+  "version": "3.3.6",
   "description": "Parse markdown content for githon",
   "homepage": "https://github.com/githon/githon",
   "bugs": {
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@githon/html": "^3.3.4",
-    "@githon/markup-it": "^3.3.5",
+    "@githon/markup-it": "^3.3.6",
     "markdown-escape": "^1.0.1"
   },
   "devDependencies": {

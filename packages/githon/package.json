@@ -1,6 +1,6 @@
 {
   "name": "githon",
-  "version": "3.3.5",
+  "version": "3.3.6",
   "description": "Githon is building beautiful books using GitHub/Git and Markdown.",
   "keywords": [
     "git",
@@ -43,7 +43,7 @@
   "dependencies": {
     "@githon/asciidoc": "^3.3.4",
     "@githon/githon-plugin-theme-default": "^3.3.5",
-    "@githon/markdown": "^3.3.5",
+    "@githon/markdown": "^3.3.6",
     "bash-color": "0.0.4",
     "cheerio": "0.20.0",
     "chokidar": "^3.3.0",

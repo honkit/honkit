@@ -1,6 +1,6 @@
 {
     "name": "@githon/markup-it",
-    "version": "3.3.5",
+    "version": "3.3.6",
     "description": "Pipeline for working with markup input (for example Markdown)",
     "main": "lib/index.js",
     "scripts": {
