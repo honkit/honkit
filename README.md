@@ -55,7 +55,7 @@ For more details, see [GitHon's documentation](https://githon.netlify.app/).
 * [Variables and Templating](https://githon.netlify.app/templating/)
 * [Content References](https://githon.netlify.app/templating/conrefs.html)
 * [Plugins](https://githon.netlify.app/plugins/)
-* [Beautiful default theme](https://github.com/GitbookIO/theme-default)
+* [Beautiful default theme](./packages/@githon/theme-default)
 
 ## Differences with GitBook
 
