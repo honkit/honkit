@@ -2,32 +2,30 @@
     "name": "@githon/markup-it",
     "version": "3.3.6",
     "description": "Pipeline for working with markup input (for example Markdown)",
-    "main": "lib/index.js",
-    "scripts": {
-        "lint": "eslint .",
-        "test": "mocha ./testing/setup.js \"./lib/**/*/__tests__/*.js\" \"./lib/__tests__/*.js\" \"./syntaxes/**/*/__tests__/*.js\" --reporter=list --timeout=10000"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/GitbookIO/draft-markup.git"
-    },
     "keywords": [
         "draft-js",
         "markdown",
         "asciidoc",
         "gitbook"
     ],
-    "author": "Samy Pesse <samy@gitbook.com>",
-    "license": "Apache-2.0",
+    "homepage": "https://github.com/GitbookIO/markup-it#readme",
     "bugs": {
         "url": "https://github.com/GitbookIO/markup-it/issues"
     },
-    "homepage": "https://github.com/GitbookIO/markup-it#readme",
-    "devDependencies": {
-        "eslint": "^7.2.0",
-        "jsdom": "^16.2.2",
-        "mocha": "^8.0.1",
-        "should": "^13.2.3"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GitbookIO/draft-markup.git"
+    },
+    "license": "Apache-2.0",
+    "author": "Samy Pesse <samy@gitbook.com>",
+    "files": [
+        "lib",
+        "syntaxes"
+    ],
+    "main": "lib/index.js",
+    "scripts": {
+        "lint": "eslint .",
+        "test": "mocha ./testing/setup.js \"./lib/**/*/__tests__/*.js\" \"./lib/__tests__/*.js\" \"./syntaxes/**/*/__tests__/*.js\" --reporter=list --timeout=10000"
     },
     "dependencies": {
         "escape-string-regexp": "^4.0.0",
@@ -39,6 +37,12 @@
         "object-values": "^2.0.0",
         "range-utils": "^1.1.0",
         "rtrim": "^1.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.2.0",
+        "jsdom": "^16.2.2",
+        "mocha": "^8.0.1",
+        "should": "^13.2.3"
     },
     "publishConfig": {
         "access": "public"
