@@ -64,6 +64,9 @@ For more details, see [GitHon's documentation](https://githon.netlify.app/).
 ## Compatibility with GitBook
 
 - Almost plugins work without changes!
+- Support `gitbook-plugin-*` packages
+    - You should install these plugins via npm or yarn
+    - `npm install gitbook-plugin-<example> --save-dev`
 
 ## Differences with GitBook
 
