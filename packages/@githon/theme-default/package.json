@@ -24,7 +24,8 @@
   "files": [
     "_assets",
     "_i18n",
-    "_layouts"
+    "_layouts",
+    "!__tests__"
   ],
   "main": "./index.js",
   "scripts": {

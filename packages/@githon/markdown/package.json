@@ -27,7 +27,8 @@
     }
   ],
   "files": [
-    "lib"
+    "lib",
+    "!__tests__"
   ],
   "main": "lib/index.js",
   "scripts": {

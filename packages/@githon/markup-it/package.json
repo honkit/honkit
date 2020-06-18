@@ -20,7 +20,8 @@
     "author": "Samy Pesse <samy@gitbook.com>",
     "files": [
         "lib",
-        "syntaxes"
+        "syntaxes",
+        "!__tests__"
     ],
     "main": "lib/index.js",
     "scripts": {
