@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592633072330,
+  "lastUpdate": 1592661207399,
   "repoUrl": "https://github.com/githon/githon",
   "entries": {
     "GitHon benchmark": [
@@ -2788,6 +2788,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.11,
             "range": "±1.38%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "33f4315ae5ce92cfcb50f14119dd2aef3a481168",
+          "message": "docs: add note about GitBook fork\n\nfix https://github.com/githon/githon/issues/47",
+          "timestamp": "2020-06-20T22:50:57+09:00",
+          "tree_id": "b6134697607db3066a0c3d00f1324b222bdce7ee",
+          "url": "https://github.com/githon/githon/commit/33f4315ae5ce92cfcb50f14119dd2aef3a481168"
+        },
+        "date": 1592661206500,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.12,
+            "range": "±1.42%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
