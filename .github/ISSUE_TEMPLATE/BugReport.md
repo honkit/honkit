@@ -9,11 +9,6 @@ about: Create a bug report
 
 - GitHon version:
 
-<!--
-You can get GitHon version from
-  $ githon --version
--->
-
 ## Step to reproduce
 
 1.
@@ -33,7 +28,7 @@ You can get GitHon version from
 
 <!--
 
-Please inlucudes actual log with --loglevel=debug
+Please includes actual log with --loglevel=debug
 
 $ gitbook build --loglevel=debug
 
