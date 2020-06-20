@@ -125,7 +125,7 @@ GitHon is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE)
 GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
 GitBook is licensed under the Apache License, Version 2.0.
 
-Also, it includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
+Also, GitHon includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
 
 ## Sponsors
 
