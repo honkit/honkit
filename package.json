@@ -37,7 +37,8 @@
     "husky": "^4.2.5",
     "lerna": "^3.22.1",
     "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.5"
   },
   "prettier": {
     "singleQuote": false,
