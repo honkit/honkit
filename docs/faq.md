@@ -8,7 +8,18 @@ Questions about the legacy platform at legacy.githon.com and the Editor are gath
 
 Publish to [GitHub Pages](https://pages.github.com/) or [Netlify](https://www.netlify.com/), and more.
 
----
+#### Does not reload plugins?
+
+GitHon use file cache per text content file by default.
+
+This file cache check file changes and reload it automatically.
+In some case, GitHon cannot detect the changes of plugins.
+
+If you want to refresh force, please use `--reload` flag.
+
+```
+$ githon build --reload
+```
 
 #### Does GitHon supports RTL/bi-directional text ?
 
