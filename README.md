@@ -99,7 +99,7 @@ npm uninstall gitbook-cli
 npm install githon --save-dev
 ```
 
-Replace `gitbook` command with `githon`.
+Replace `gitbook` command with `githon` command.
 
 ```diff
   "scripts": {
