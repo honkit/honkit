@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.10](https://github.com/githon/githon/compare/v3.3.9...v3.3.10) (2020-06-20)
+
+**Note:** Version bump only for package benchmark
+
+
+
+
+
 ## [3.3.9](https://github.com/githon/githon/compare/v3.3.8...v3.3.9) (2020-06-18)
 
 **Note:** Version bump only for package benchmark
