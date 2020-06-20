@@ -3,11 +3,11 @@ const githon = require("../githon");
 const Promise = require("../utils/promise");
 
 /**
-    Validate a plugin
+ Validate a plugin
 
-    @param {Plugin} plugin
-    @return {Promise<Plugin>}
-*/
+ @param {Plugin} plugin
+ @return {Promise<Plugin>}
+ */
 function validatePlugin(plugin) {
     const packageInfos = plugin.getPackage();
 
@@ -18,13 +18,22 @@ function validatePlugin(plugin) {
         packageInfos.get("engines") &&
         (packageInfos.get("engines").get("gitbook") || packageInfos.get("engines").get("githon"));
 
+    const pluginName = packageInfos.get("name") || "unknown plugin";
     if (!isValid) {
-        return Promise.reject(new Error(`Error loading plugin "${plugin.getName()}" at "${plugin.getPath()}"`));
+        return Promise.reject(new Error(`Error loading plugin "${pluginName}" at "${plugin.getPath()}"`));
     }
-
-    const engine = packageInfos.get("engines").get("gitbook");
-    if (!githon.satisfies(engine)) {
-        return Promise.reject(new Error(`Githon doesn't satisfy the requirements of this plugin: ${engine}`));
+    const gitbookVersion = packageInfos.get("engines").get("gitbook");
+    const githonVersion = packageInfos.get("engines").get("githon");
+    // support "gitbook" and "githon"
+    if (gitbookVersion && !githon.satisfies(gitbookVersion)) {
+        return Promise.reject(
+            new Error(`GitHon doesn't satisfy the requirements of this plugin: ${pluginName} require ${githonVersion}`)
+        );
+    }
+    if (githonVersion && !githon.satisfies(githonVersion)) {
+        return Promise.reject(
+            new Error(`GitHon doesn't satisfy the requirements of this plugin: ${pluginName} require ${githonVersion}`)
+        );
     }
 
     return Promise(plugin);
