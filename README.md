@@ -61,16 +61,21 @@ For more details, see [GitHon's documentation](https://githon.netlify.app/).
 * [Plugins](https://githon.netlify.app/plugins/)
 * [Beautiful default theme](./packages/@githon/theme-default)
 
-## Compatibility with GitBook
+## Fork of GitBook
+
+GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
+[GitBook (Legacy)](https://github.com/GitbookIO/gitbook) is [deprecated](https://github.com/GitbookIO/gitbook/commit/6c6ef7f4af32a2977e44dd23d3feb6ebf28970f4) and inactive project.
+
+GitHon aim to smooth migration from GitBook (Legacy) to GitHon.
+
+### Compatibility with GitBook
 
 - Almost plugins work without changes!
 - Support `gitbook-plugin-*` packages
     - You should install these plugins via npm or yarn
     - `npm install gitbook-plugin-<example> --save-dev`
 
-## Differences with GitBook
-
-GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
+### Differences with GitBook
 
 - Node.js 14+ supports
 - Improve `build`/`serve` performance
@@ -90,7 +95,7 @@ GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
 - Monorepo codebase
     - Easy to maintain
 
-## Migration from GitBook
+### Migration from GitBook
 
 Replace `gitbook-cli` with `githon`.
 
