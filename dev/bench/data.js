@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592575428954,
+  "lastUpdate": 1592612052964,
   "repoUrl": "https://github.com/githon/githon",
   "entries": {
     "GitHon benchmark": [
@@ -2478,6 +2478,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.13,
             "range": "±4.31%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "93acc9874e0e5bb1c5ce09cc653d528460aaa778",
+          "message": "Merge pull request #43 from githon/fix/42\n\nfix(githon): relax \"gitbook\" engine version check",
+          "timestamp": "2020-06-20T09:11:44+09:00",
+          "tree_id": "8fb9a2a445974da51abd9cb499835fdc47305c80",
+          "url": "https://github.com/githon/githon/commit/93acc9874e0e5bb1c5ce09cc653d528460aaa778"
+        },
+        "date": 1592612051858,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.12,
+            "range": "±1.32%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
