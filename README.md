@@ -14,7 +14,7 @@ GitHon documentation is built by GitHon!
 
 ### Installation
 
-- Requirement: Node.js
+- Requirement: [Node.js](https://nodejs.org)
 
 The best way to install GitHon is via **NPM** or **Yarn**.
 
