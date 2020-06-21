@@ -1,6 +1,6 @@
 # Configuration
 
-GitHon allows you to customize your book using a flexible configuration. These options are specified in a `book.json` file. For authors unfamiliar with the JSON syntax, you can validate the syntax using tools such as [JSONlint](http://jsonlint.com).
+HonKit allows you to customize your book using a flexible configuration. These options are specified in a `book.json` file. For authors unfamiliar with the JSON syntax, you can validate the syntax using tools such as [JSONlint](http://jsonlint.com).
 
 ### General Settings
 
@@ -9,18 +9,19 @@ GitHon allows you to customize your book using a flexible configuration. These o
 | `root` | Path to the root folder containing all the book's files, except `book.json`|
 | `structure` | To specify paths for Readme, Summary, Glossary etc. See [Structure paragraph](#structure). |
 | `title` | Title of your book, default value is extracted from the README. |
-| `description` | Description of your book, default value is extracted from the README. On legacy.githon.com this field is pre-filled. |
-| `author` | Name of the author. On legacy.githon.com this field is pre-filled. |
+| `description` | Description of your book, default value is extracted from the README. |
+| `author` | Name of the author. |
 | `isbn` | ISBN of the book |
 | `language` | [ISO code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of the book's language, default value is `en` |
 | `direction` | Text's direction. Can be `rtl` or `ltr`, the default value depends on the value of `language` |
-| `githon` | Version of GitHon that should be used. Uses the [SemVer](http://semver.org) specification and accepts conditions like `">= 3.0.0"` |
+| `gitbook` | Version of HonKit that should be used. Uses the [SemVer](http://semver.org) specification and accepts conditions like `">= 3.0.0"` |
+| `honkit` | Version of HonKit that should be used. Uses the [SemVer](http://semver.org) specification and accepts conditions like `">= 3.0.0"` |
 
 ### Plugins
 
 Plugins and their configurations are specified in the `book.json`. See [the plugins section](plugins/README.md) for more details.
 
-Since version 3.0.0, GitHon can use themes. See [the theming section](themes/README.md) for more details.
+Since version 3.0.0, HonKit can use themes. See [the theming section](themes/README.md) for more details.
 
 | Variable | Description |
 | -------- | ----------- |
@@ -29,7 +30,7 @@ Since version 3.0.0, GitHon can use themes. See [the theming section](themes/REA
 
 ### Structure
 
-In addition to the `root` variable, you can tell GitHon the name of the files for Readme, Summary, Glossary, Languages (instead of using the default names such as `README.md`).
+In addition to the `root` variable, you can tell HonKit the name of the files for Readme, Summary, Glossary, Languages (instead of using the default names such as `README.md`).
 These files must be at the root of your book (or the root of every language book). Paths such as `dir/MY_README.md` are not accepted.
 
 | Variable | Description |

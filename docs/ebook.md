@@ -1,16 +1,16 @@
 # Generating eBooks and PDFs
 
-GitHon can generates a website, but can also output content as ebook (ePub, Mobi, PDF).
+HonKit can generates a website, but can also output content as ebook (ePub, Mobi, PDF).
 
 ```
 # Generate a PDF file
-$ githon pdf ./ ./mybook.pdf
+$ honkit pdf ./ ./mybook.pdf
 
 # Generate an ePub file
-$ githon epub ./ ./mybook.epub
+$ honkit epub ./ ./mybook.epub
 
 # Generate a Mobi file
-$ githon mobi ./ ./mybook.mobi
+$ honkit mobi ./ ./mybook.mobi
 ```
 
 ### Installing ebook-convert

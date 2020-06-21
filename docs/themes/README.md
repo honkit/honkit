@@ -1,6 +1,6 @@
 # Theming
 
-Since version 3.0.0, GitHon can be easily themed. Books use the [theme-default](https://github.com/GitbookIO/theme-default) theme by default.
+Since version 3.0.0, HonKit can be easily themed. Books use the [theme-default](https://github.com/GitbookIO/theme-default) theme by default.
 
 > **Caution**: Custom theming can block some plugins from working correctly.
 
@@ -36,4 +36,4 @@ Take a look at the [API](https://github.com/GitbookIO/theme-api) theme for a mor
 
 ### Publish a theme
 
-Themes are published as plugins ([see related docs](../plugins/README.md)) with a `theme-` prefix. For example the theme `awesome` will be loaded from the `theme-awesome` plugin, and then from the `githon-plugin-theme-awesome` NPM package.
+Themes are published as plugins ([see related docs](../plugins/README.md)) with a `theme-` prefix. For example the theme `awesome` will be loaded from the `theme-awesome` plugin, and then from the `honkit-plugin-theme-awesome` NPM package.

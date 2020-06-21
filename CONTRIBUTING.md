@@ -10,23 +10,23 @@ Please install following development prerequisites. You also need a [GitHub](htt
 - [Yarn](https://classic.yarnpkg.com/en/)
 
 
-### Cloning Copy of GitHon
+### Cloning Copy of HonKit
 
-Forking a repository allows you to work with githon codebase without special permission to the githon repository itself.
+Forking a repository allows you to work with HonKit codebase without special permission to the HonKit repository itself.
 
-1. Navigate to [githon](https://github.com/githon/githon/) repository
+1. Navigate to [HonKit](https://github.com/HonKit/HonKit/) repository
 2. In the top–right corner of the page, click **Fork** button
 3. Create a clone of the fork locally in your terminal:
 
     ```sh
-    $ git clone --recursive https://github.com/YOUR_ACCOUNT/githon YOUR_FORKED_REPOSITORY
+    $ git clone --recursive https://github.com/YOUR_ACCOUNT/HonKit YOUR_FORKED_REPOSITORY
     ```
 
 See [Fork A Repo: GitHub Help](https://help.github.com/articles/fork-a-repo/) for further detail.
 
-### Building GitHon
+### Building HonKit
 
-After getting your clone, you can start playing with GitHon.
+After getting your clone, you can start playing with HonKit.
 
 1. Change directory to your clone:
 
@@ -46,10 +46,10 @@ After getting your clone, you can start playing with GitHon.
     $ yarn run build
     ```
 
-Under the hood, GitHon uses [Lerna](https://lerna.js.org/) to manage multiple packages:
+Under the hood, HonKit uses [Lerna](https://lerna.js.org/) to manage multiple packages:
 
 - `packages/*`
-- `packages/@githon/*`
+- `packages/@honkit/*`
 - `examples/*`
 
 If you are new to Lerna, it seems to add another layer of complexity, but it's simpler than you think; you can edit codes, run tests, commit changes, etc. as usual in most cases.
@@ -66,7 +66,7 @@ $ git checkout -b your-new-feature
 
 ### Making Changes
 
-You have your feature branch with working githon then it's time to start making changes! Edit codes with text editor of your choice and add commits as you work on. Please don't forget to add or modify test cases and documents according to your changes.
+You have your feature branch with working HonKit then it's time to start making changes! Edit codes with text editor of your choice and add commits as you work on. Please don't forget to add or modify test cases and documents according to your changes.
 
 
 #### Coding Guideline
@@ -177,10 +177,10 @@ Once a pull request has been created, it will initiate continuous integration bu
 
 ### Merging
 
-After all participants on pull request are satisfied to the changes, we will merge your code into the GitHon master branch. Yay!
+After all participants on pull request are satisfied to the changes, we will merge your code into the HonKit master branch. Yay!
 
 ## Benchmark
 
-GitHon has a continuous benchmark:
+HonKit has a continuous benchmark:
 
-- <https://githon.github.io/githon/dev/bench/>
+- <https://honkit.github.io/honkit/dev/bench/>

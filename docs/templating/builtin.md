@@ -1,6 +1,6 @@
 # Builtin Templating Helpers
 
-GitHon provides a serie of builtin filters and blocks to help you write templates.
+HonKit provides a serie of builtin filters and blocks to help you write templates.
 
 ### Filters
 

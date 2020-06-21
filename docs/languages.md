@@ -1,6 +1,6 @@
 # Multi-Languages
 
-GitHon supports building books written in multiple languages. Each language should be a sub-directory following the normal GitHon format, and a file named `LANGS.md` should be present at the root of the repository with the following format:
+HonKit supports building books written in multiple languages. Each language should be a sub-directory following the normal HonKit format, and a file named `LANGS.md` should be present at the root of the repository with the following format:
 
 ```markdown
 # Languages

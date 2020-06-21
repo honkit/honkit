@@ -1,14 +1,14 @@
-# GitHon
+# HonKit
 
-GitHon is building beautiful books using GitHub/Git and Markdown.
+HonKit is building beautiful books using GitHub/Git and Markdown.
 
-![GitHon Screenshot](./githon.png)
+![HonKit Screenshot](./honkit.png)
 
 ## Documentation and Demo
 
-GitHon documentation is built by GitHon!
+HonKit documentation is built by HonKit!
 
-- <https://githon.netlify.app/>
+- <https://honkit.netlify.app/>
 
 ## Quick Start
 
@@ -16,57 +16,57 @@ GitHon documentation is built by GitHon!
 
 - Requirement: [Node.js](https://nodejs.org)
 
-The best way to install GitHon is via **NPM** or **Yarn**.
+The best way to install HonKit is via **NPM** or **Yarn**.
 
 ```
 $ npm init --yes
-$ npm install githon --save-dev
+$ npm install honkit --save-dev
 ```
 
 ### Create a book
 
-GitHon can set up a boilerplate book:
+HonKit can set up a boilerplate book:
 
 ```
-$ npx githon init
+$ npx honkit init
 ```
 
-If you wish to create the book into a new directory, you can do so by running `githon init ./directory`
+If you wish to create the book into a new directory, you can do so by running `honkit init ./directory`
 
 Preview and serve your book using:
 
 ```
-$ npx githon serve
+$ npx honkit serve
 ```
 
 Or build the static website using:
 
 ```
-$ npx githon build
+$ npx honkit build
 ```
 
 You can start to write your book!
 
-For more details, see [GitHon's documentation](https://githon.netlify.app/).
+For more details, see [HonKit's documentation](https://honkit.netlify.app/).
 
 ## Features
 
-* Write using [Markdown](https://githon.netlify.app/syntax/markdown.html) or [AsciiDoc](https://githon.netlify.app/syntax/asciidoc.html)
-* Output as a website or [ebook (pdf, epub, mobi)](https://githon.netlify.app/ebook.html)
-* [Multi-Languages](https://githon.netlify.app/languages.html)
-* [Lexicon / Glossary](https://githon.netlify.app/lexicon.html)
-* [Cover](https://githon.netlify.app/ebook.html)
-* [Variables and Templating](https://githon.netlify.app/templating/)
-* [Content References](https://githon.netlify.app/templating/conrefs.html)
-* [Plugins](https://githon.netlify.app/plugins/)
-* [Beautiful default theme](./packages/@githon/theme-default)
+* Write using [Markdown](https://honkit.netlify.app/syntax/markdown.html) or [AsciiDoc](https://honkit.netlify.app/syntax/asciidoc.html)
+* Output as a website or [ebook (pdf, epub, mobi)](https://honkit.netlify.app/ebook.html)
+* [Multi-Languages](https://honkit.netlify.app/languages.html)
+* [Lexicon / Glossary](https://honkit.netlify.app/lexicon.html)
+* [Cover](https://honkit.netlify.app/ebook.html)
+* [Variables and Templating](https://honkit.netlify.app/templating/)
+* [Content References](https://honkit.netlify.app/templating/conrefs.html)
+* [Plugins](https://honkit.netlify.app/plugins/)
+* [Beautiful default theme](./packages/@honkit/theme-default)
 
 ## Fork of GitBook
 
-GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
+HonKit is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
 [GitBook (Legacy)](https://github.com/GitbookIO/gitbook) is [deprecated](https://github.com/GitbookIO/gitbook/commit/6c6ef7f4af32a2977e44dd23d3feb6ebf28970f4) and inactive project.
 
-GitHon aim to smooth migration from GitBook (Legacy) to GitHon.
+HonKit aim to smooth migration from GitBook (Legacy) to HonKit.
 
 ### Compatibility with GitBook
 
@@ -79,16 +79,16 @@ GitHon aim to smooth migration from GitBook (Legacy) to GitHon.
 
 - Node.js 14+ supports
 - Improve `build`/`serve` performance
-    - `githon build`: use file cache by default
-    - `githon serve`: 28.2s → 0.9s in [examples/benchmark](examples/benchmark)
+    - `honkit build`: use file cache by default
+    - `honkit serve`: 28.2s → 0.9s in [examples/benchmark](examples/benchmark)
     - Also, support `--reload` flag for force refresh
 - Improve plugin loading logic
-    - Reduce cost of finding `githon-plugin-*` and `gitbook-plugin-*`
-    - Support `githon-plugin-*` and `@scope/githon-plguin-*` (GitBook does not support a scoped module)
+    - Reduce cost of finding `honkit-plugin-*` and `gitbook-plugin-*`
+    - Support `honkit-plugin-*` and `@scope/honkit-plguin-*` (GitBook does not support a scoped module)
 - Remove `install` command
     - Instead of it, just use `npm install` or `yarn install`
 - Remove `global-npm` dependency
-    - You can use GitHon with another npm package manager like `yarn`
+    - You can use HonKit with another npm package manager like `yarn`
 - Update dependencies
     - Upgrade to nunjucks@2 etc...
     - It will reduce bug
@@ -97,40 +97,40 @@ GitHon aim to smooth migration from GitBook (Legacy) to GitHon.
 
 ### Migration from GitBook
 
-Replace `gitbook-cli` with `githon`.
+Replace `gitbook-cli` with `honkit`.
 
 ```
 npm uninstall gitbook-cli
-npm install githon --save-dev
+npm install honkit --save-dev
 ```
 
-Replace `gitbook` command with `githon` command.
+Replace `gitbook` command with `honkit` command.
 
 ```diff
   "scripts": {
 -    "build": "gitbook build",
-+    "build": "githon build",
++    "build": "honkit build",
 -    "serve": "gitbook serve"
-+    "serve": "githon serve"
++    "serve": "honkit serve"
   },
 ```
 
-After that, GitHon just work!
+After that, HonKit just work!
 
 ## Benchmarks
 
-`githon build` benchmark:
+`honkit build` benchmark:
 
-- <https://githon.github.io/githon/dev/bench/>
+- <https://honkit.github.io/honkit/dev/bench/>
 
 ## Licensing
 
-GitHon is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.
+HonKit is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.
 
-GitHon is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
+HonKit is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
 GitBook is licensed under the Apache License, Version 2.0.
 
-Also, GitHon includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
+Also, HonKit includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
 
 ## Sponsors
 

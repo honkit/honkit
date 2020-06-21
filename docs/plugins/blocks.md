@@ -20,7 +20,7 @@ module.exports = {
 };
 ```
 
-The `process` should return the html content that will replace the tag. Refer to [Context and APIs](./api.md) to learn more about `this` and GitHon API.
+The `process` should return the html content that will replace the tag. Refer to [Context and APIs](./api.md) to learn more about `this` and HonKit API.
 
 ### Handling block arguments
 

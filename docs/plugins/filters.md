@@ -13,7 +13,7 @@ Filters are essentially functions that can be applied to variables. They are cal
 Plugins can extend filters by defining custom functions in their entry point under the `filters` scope.
 
 A filter function takes as first argument the content to filter, and should return the new content.
-Refer to [Context and APIs](./api.md) to learn more about `this` and GitHon API.
+Refer to [Context and APIs](./api.md) to learn more about `this` and HonKit API.
 
 ```js
 module.exports = {
