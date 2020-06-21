@@ -32,7 +32,7 @@
     "main": "lib/index.js",
     "scripts": {
         "build": "tsc -p .",
-        "test": "mocha test/"
+        "test": "jest"
     },
     "dependencies": {
         "@githon/html": "^3.3.8",

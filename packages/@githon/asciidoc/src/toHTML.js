@@ -1,4 +1,4 @@
-const asciidoctor = require("asciidoctor.js")();
+const asciidoctor = require("asciidoctor")();
 
 // Render Asciidoc to HTML (block)
 function asciidocToHTML(content) {
