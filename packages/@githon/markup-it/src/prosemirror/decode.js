@@ -1,7 +1,7 @@
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
-const Content = require("../models/content");
-const Token = require("../models/token");
+import Content from "../models/content";
+import Token from "../models/token";
 
 /**
  * Decode marks as tokens

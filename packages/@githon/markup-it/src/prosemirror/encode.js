@@ -1,8 +1,8 @@
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
-const BLOCKS = require("../constants/blocks");
-const Token = require("../models/token");
-const MARK_TYPES = require("./markTypes");
+import BLOCKS from "../constants/blocks";
+import Token from "../models/token";
+import MARK_TYPES from "./markTypes";
 
 /**
  * Encode data of a token, it ignores undefined value

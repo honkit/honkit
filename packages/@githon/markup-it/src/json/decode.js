@@ -1,4 +1,4 @@
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
 const Content = require("../models/content");
 const Token = require("../models/token");
@@ -39,4 +39,4 @@ function decodeContentFromJSON(json) {
     return Content.createFromToken(json.syntax, decodeTokenFromJSON(json.token));
 }
 
-module.exports = decodeContentFromJSON;
+export default decodeContentFromJSON;

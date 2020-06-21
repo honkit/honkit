@@ -1,6 +1,6 @@
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
-const STYLES = require("../constants/styles");
-const ENTITIES = require("../constants/entities");
+import STYLES from "../constants/styles";
+import ENTITIES from "../constants/entities";
 
 module.exports = Immutable.List([STYLES.BOLD, STYLES.ITALIC, STYLES.CODE, STYLES.STRIKETHROUGH, ENTITIES.LINK]);

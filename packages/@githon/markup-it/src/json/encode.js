@@ -50,4 +50,4 @@ function encodeContentToJSON(content) {
     };
 }
 
-module.exports = encodeContentToJSON;
+export default encodeContentToJSON;

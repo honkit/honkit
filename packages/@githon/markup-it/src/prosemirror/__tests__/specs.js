@@ -1,8 +1,8 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const encode = require("../encode");
-const JSONUtils = require("../../json");
+import encode from "../encode";
+import JSONUtils from "../../json";
 
 const FIXTURES = path.resolve(__dirname, "specs");
 
