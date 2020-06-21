@@ -1,7 +1,8 @@
 docs/**
 _book/**
 **/node_modules/**
-**/test/**
+packages/@githon/*/test
+packages/@githon/*/__tests__
 examples/**
 theme-default/
 packages/*/lib
