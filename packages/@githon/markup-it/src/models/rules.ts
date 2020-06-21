@@ -10,9 +10,13 @@ const RulesSetRecord = Immutable.Record({
 });
 
 function RulesSet(rules) {
-    if (!(this instanceof RulesSet)) return RulesSet(rules);
+    if (!(this instanceof RulesSet)) {
+        // @ts-ignore
+        return new RulesSet(rules);
+    }
 
-    rules = RulesList(rules);
+    // @ts-ignore
+    rules = new RulesList(rules);
 
     RulesSetRecord.call(this, {
         rules: rules,
@@ -54,7 +58,8 @@ RulesSet.prototype.unshift = function (newRules) {
     let rules = this.getRules();
 
     // Prepare new rules
-    newRules = RulesList(newRules);
+    // @ts-ignore
+    newRules = new RulesList(newRules);
 
     // Add rules
     rules = rules.unshift.apply(rules, newRules.toArray());

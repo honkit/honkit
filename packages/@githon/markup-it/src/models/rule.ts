@@ -14,7 +14,10 @@ const RuleRecord = Immutable.Record({
 });
 
 function Rule(type) {
-    if (!(this instanceof Rule)) return Rule(type);
+    if (!(this instanceof Rule)) {
+        // @ts-ignore
+        return new Rule(type);
+    }
 
     RuleRecord.call(this, {
         type: type,

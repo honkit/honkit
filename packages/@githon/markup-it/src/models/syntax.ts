@@ -14,7 +14,8 @@ const SyntaxSetRecord = Immutable.Record({
 
 function SyntaxSet(name, def) {
     if (!(this instanceof SyntaxSet)) {
-        return SyntaxSet(name, def);
+        // @ts-ignore
+        return new SyntaxSet(name, def);
     }
 
     SyntaxSetRecord.call(this, {
