@@ -1,8 +1,8 @@
 docs/**
 _book/**
 **/node_modules/**
-packages/@githon/*/test
-packages/@githon/*/__tests__
+packages/@honkit/*/test
+packages/@honkit/*/__tests__
 examples/**
 theme-default/
 packages/**/lib
