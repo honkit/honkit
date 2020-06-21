@@ -1,4 +1,5 @@
 {
+    "exclude": ["lib", "src/**/__tests__"],
     "include": ["src"],
     "extends": "../../tsconfig.json",
     "compilerOptions": {

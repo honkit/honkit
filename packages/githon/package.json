@@ -39,8 +39,8 @@
         "githon": "./bin/githon.js"
     },
     "scripts": {
-        "build": "tsc -p .",
-        "test": "jest"
+        "build": "rimraf lib && tsc -p .",
+        "test": "jest src"
     },
     "dependencies": {
         "@githon/asciidoc": "^3.3.8",
