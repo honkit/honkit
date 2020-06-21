@@ -1,6 +1,6 @@
 # example netlify.toml
 [build]
-  command = "yarn run build && yarn run githon:build"
+  command = "yarn run build && yarn run honkit:build"
   functions = "functions"
   publish = "_book"
 

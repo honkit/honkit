@@ -9,8 +9,8 @@
     "test": "test"
   },
   "scripts": {
-    "build": "githon build",
-    "serve": "githon serve"
+    "build": "honkit build",
+    "serve": "honkit serve"
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
@@ -23,7 +23,7 @@
     "gitbook-plugin-js-console": "^2.0.4",
     "gitbook-plugin-page-toc-button": "^0.1.1",
     "gitbook-summary-to-path": "^1.1.0",
-    "githon": "^3.3.10",
+    "honkit": "^3.3.10",
     "jest": "^26.0.1"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "githon",
+  "name": "honkit",
   "private": true,
   "homepage": "https://github.com/honkit/githon",
   "bugs": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/honkit/githon.git"
+    "url": "git+https://github.com/honkit/honkit.git"
   },
   "license": "Apache-2.0",
   "authors": [
@@ -30,8 +30,8 @@
     "versionup:minor": "lerna version minor --conventional-commits",
     "versionup:major": "lerna version major --conventional-commits",
     "release": "lerna publish from-package",
-    "githon:build": "githon build",
-    "githon:serve": "githon serve"
+    "honkit:build": "honkit build",
+    "honkit:serve": "honkit serve"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.18",

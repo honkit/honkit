@@ -1,10 +1,10 @@
 const { execFileSync } = require("child_process");
 const Benchmark = require("benchmark");
 const suite = new Benchmark.Suite();
-const githonBin = require.resolve(".bin/githon");
+const honkitBin = require.resolve(".bin/honkit");
 suite
-    .add("run githon build", () => {
-        execFileSync(githonBin, ["build"], {
+    .add("run honkit build", () => {
+        execFileSync(honkitBin, ["build"], {
             cwd: __dirname,
         });
     })
