@@ -1,49 +1,51 @@
 {
-    "name": "@githon/asciidoc",
-    "version": "3.3.8",
-    "description": "Parse AsciiDoc content for gitbook",
-    "homepage": "https://github.com/githon/githon",
-    "bugs": {
-        "url": "https://github.com/githon/githon/issues"
+  "name": "@githon/asciidoc",
+  "version": "3.3.8",
+  "description": "Parse AsciiDoc content for gitbook",
+  "homepage": "https://github.com/githon/githon",
+  "bugs": {
+    "url": "https://github.com/githon/githon/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/githon/githon.git"
+  },
+  "license": "Apache-2.0",
+  "contributors": [
+    {
+      "name": "FriendCode Inc.",
+      "email": "contact@gitbook.com"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/githon/githon.git"
+    {
+      "name": "Aaron O'Mullan",
+      "email": "aaron@gitbook.com"
     },
-    "license": "Apache-2.0",
-    "contributors": [
-        {
-            "name": "FriendCode Inc.",
-            "email": "contact@gitbook.com"
-        },
-        {
-            "name": "Aaron O'Mullan",
-            "email": "aaron@gitbook.com"
-        },
-        {
-            "name": "Samy Pessé",
-            "email": "samy@gitbook.com"
-        }
-    ],
-    "files": [
-        "lib",
-        "!__tests__"
-    ],
-    "main": "lib/index.js",
-    "scripts": {
-        "build": "tsc -p .",
-        "test": "jest"
-    },
-    "dependencies": {
-        "@githon/html": "^3.3.8",
-        "asciidoctor": "^2.2.0",
-        "lodash": "^4.13.1"
-    },
-    "devDependencies": {
-        "mocha": "^8.0.1"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "authors": "azu <azuciao@gmail.com>"
+    {
+      "name": "Samy Pessé",
+      "email": "samy@gitbook.com"
+    }
+  ],
+  "files": [
+    "lib",
+    "!__tests__"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "clean": "rimraf lib/",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@githon/html": "^3.3.8",
+    "asciidoctor": "^2.2.0",
+    "lodash": "^4.13.1"
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1",
+    "rimraf": "^3.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": "azu <azuciao@gmail.com>"
 }
