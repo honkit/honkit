@@ -21,7 +21,7 @@
     ],
     "scripts": {
         "lint": "eslint .",
-        "build": "yarn workspaces run build",
+        "build": "lerna run build",
         "test": "lerna run test",
         "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
         "versionup": "lerna version --conventional-commits",
