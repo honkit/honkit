@@ -1,6 +1,6 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592757192434,
-  "repoUrl": "https://github.com/githon/githon",
+  "lastUpdate": 1592762117883,
+  "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
       {
@@ -2943,6 +2943,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.08,
             "range": "±0.26%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "307add513ff3a8942d792d6d0023a85c8584a7d0",
+          "message": "chore: rename",
+          "timestamp": "2020-06-22T02:52:19+09:00",
+          "tree_id": "bff6657e84763a63cd4fdb33824c739c87fdbcf5",
+          "url": "https://github.com/honkit/honkit/commit/307add513ff3a8942d792d6d0023a85c8584a7d0"
+        },
+        "date": 1592762116814,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±0.94%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
