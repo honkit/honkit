@@ -16,9 +16,9 @@ Installing HonKit is easy and straightforward. Your system just needs to meet th
 The best way to install HonKit is via **NPM** or **Yarn** At the terminal prompt, simply run the following command to install HonKit:
 
 ```
-$ npm install githon --save-dev
+$ npm install honkit --save-dev
 # or
-$ yarn install githon --save
+$ yarn install honkit --save
 ```
 
 ##### Create a book
@@ -26,7 +26,7 @@ $ yarn install githon --save
 HonKit can setup a boilerplate book:
 
 ```
-$ githon init
+$ honkit init
 ```
 
 If you wish to create the book into a new directory, you can do so by running `honkit init ./directory`
@@ -34,13 +34,13 @@ If you wish to create the book into a new directory, you can do so by running `h
 Preview and serve your book using:
 
 ```
-$ githon serve
+$ honkit serve
 ```
 
 Or build the static website using:
 
 ```
-$ githon build
+$ honkit build
 ```
 
 
@@ -49,6 +49,6 @@ $ githon build
 You can use the options `--log=debug` and `--debug` to get better error messages (with stack trace). For example:
 
 ```
-$ githon build ./ --log=debug --debug
+$ honkit build ./ --log=debug --debug
 ```
 

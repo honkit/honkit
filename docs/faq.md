@@ -2,8 +2,6 @@
 
 This page gathers common questions and answers concerning the HonKit format and toolchain.
 
-Questions about the legacy platform at legacy.githon.com and the Editor are gather into the [help.legacy.githon.com's FAQ](http://help.legacy.githon.com/faq.html).
-
 #### How can I host/publish my book?
 
 Publish to [GitHub Pages](https://pages.github.com/) or [Netlify](https://www.netlify.com/), and more.
@@ -41,7 +39,7 @@ You should always use paths and the `.md` extensions when linking to your files,
 
 #### Can I create a HonKit in a sub-directory of my repository?
 
-Yes, HonKits can be created in [sub-directories](structure.md#subdirectory). legacy.githon.com and the CLI also looks by default in a serie of [folders](structure.md).
+Yes, HonKits can be created in [sub-directories](structure.md#subdirectory). 
 
 #### Does HonKit supports RTL languages?
 
@@ -51,7 +49,7 @@ Yes, HonKit automatically detect the direction in your pages (`rtl` or `ltr`) an
 
 #### Does HonKit support Math equations?
 
-HonKit supports math equations and TeX thanks to plugins. There are currently 2 official plugins to display math: [mathjax](https://plugins.githon.com/plugin/mathjax) and [katex](https://plugins.githon.com/plugin/katex).
+HonKit supports math equations and TeX thanks to plugins. There are currently 2 official plugins to display math: [mathjax](https://plugins.honkit.com/plugin/mathjax) and [katex](https://plugins.honkit.com/plugin/katex).
 
 #### Can I customize/theme the output?
 
@@ -59,4 +57,4 @@ Yes, both the website and ebook outputs can be customized using [themes](themes/
 
 #### Can I add interactive content (videos, etc)?
 
-HonKit is very [extensible](plugins/README.md). You can use [existing plugins](https://plugins.githon.com) or create your own!
+HonKit is very [extensible](plugins/README.md). You can use [existing plugins](https://plugins.honkit.com) or create your own!

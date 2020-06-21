@@ -2,13 +2,13 @@
   "name": "@honkit/asciidoc",
   "version": "3.3.8",
   "description": "Parse AsciiDoc content for gitbook",
-  "homepage": "https://github.com/honkit/githon",
+  "homepage": "https://github.com/honkit/honkit",
   "bugs": {
-    "url": "https://github.com/honkit/githon/issues"
+    "url": "https://github.com/honkit/honkit/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/honkit/githon.git"
+    "url": "https://github.com/honkit/honkit.git"
   },
   "license": "Apache-2.0",
   "contributors": [

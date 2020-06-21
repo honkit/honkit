@@ -1,14 +1,14 @@
 {
   "name": "@honkit/markdown",
   "version": "3.3.8",
-  "description": "Parse markdown content for githon",
-  "homepage": "https://github.com/honkit/githon",
+  "description": "Parse markdown content for honkit",
+  "homepage": "https://github.com/honkit/honkit",
   "bugs": {
-    "url": "https://github.com/honkit/githon/issues"
+    "url": "https://github.com/honkit/honkit/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/honkit/githon.git"
+    "url": "https://github.com/honkit/honkit.git"
   },
   "license": "Apache-2.0",
   "author": "azu <azuciao@gmail.com>",

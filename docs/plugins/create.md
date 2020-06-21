@@ -16,9 +16,9 @@ A plugin manifest `package.json` can also contain details about the required con
     "version": "0.0.1",
     "description": "This is my first HonKit plugin",
     "engines": {
-        "githon": ">1.x.x"
+        "honkit": ">1.x.x"
     },
-    "githon": {
+    "honkit": {
         "properties": {
             "myConfigKey": {
                 "type": "string",
@@ -76,7 +76,7 @@ Private plugins can be hosted on GitHub and included using `git` urls:
 ```
 {
     "plugins": [
-        "myplugin@git+https://github.com/MyCompany/mygithonplugin.git#1.0.0"
+        "myplugin@git+https://github.com/MyCompany/myhonkitplugin.git#1.0.0"
     ]
 }
 ```

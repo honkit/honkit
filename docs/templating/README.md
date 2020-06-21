@@ -68,7 +68,7 @@ You can specify alternate conditions with `elif` and `else`:
 ```twig
 # Chapters about HonKit
 
-{% for article in glossary.terms['githon'].articles %}
+{% for article in glossary.terms['gitbook'].articles %}
 * [{{ article.title }}]({{ article.path }})
 {% endfor %}
 ```

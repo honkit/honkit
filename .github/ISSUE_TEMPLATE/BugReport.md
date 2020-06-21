@@ -7,7 +7,7 @@ about: Create a bug report
 
 <!-- Please describe your issue -->
 
-- GitHon version:
+- HonKit version:
 
 ## Step to reproduce
 

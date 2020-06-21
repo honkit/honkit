@@ -1,9 +1,9 @@
 {
   "name": "honkit",
   "private": true,
-  "homepage": "https://github.com/honkit/githon",
+  "homepage": "https://github.com/honkit/honkit",
   "bugs": {
-    "url": "https://github.com/honkit/githon/issues"
+    "url": "https://github.com/honkit/honkit/issues"
   },
   "repository": {
     "type": "git",
