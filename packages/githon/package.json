@@ -40,7 +40,7 @@
     },
     "scripts": {
         "build": "tsc -p .",
-        "test": "jest src"
+        "test": "jest"
     },
     "dependencies": {
         "@githon/asciidoc": "^3.3.8",
