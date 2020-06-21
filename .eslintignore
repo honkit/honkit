@@ -5,4 +5,5 @@ packages/@githon/*/test
 packages/@githon/*/__tests__
 examples/**
 theme-default/
-packages/*/lib
+packages/**/lib
+packages/**/__tests__
