@@ -14,7 +14,7 @@ Please install following development prerequisites. You also need a [GitHub](htt
 
 Forking a repository allows you to work with HonKit codebase without special permission to the HonKit repository itself.
 
-1. Navigate to [HonKit](https://github.com/HonKit/HonKit/) repository
+1. Navigate to [HonKit](https://github.com/honkit/honkit/) repository
 2. In the top–right corner of the page, click **Fork** button
 3. Create a clone of the fork locally in your terminal:
 
