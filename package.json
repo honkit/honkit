@@ -22,6 +22,7 @@
     "scripts": {
         "lint": "eslint .",
         "build": "lerna run build",
+        "clean": "lerna run clean",
         "test": "lerna run test",
         "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
         "versionup": "lerna version --conventional-commits",
@@ -40,7 +41,6 @@
         "lerna": "^3.22.1",
         "lint-staged": "^10.2.11",
         "prettier": "^2.0.5",
-        "rimraf": "^3.0.2",
         "ts-jest": "^26.1.0",
         "typescript": "^3.9.5"
     },
