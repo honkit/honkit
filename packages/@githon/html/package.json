@@ -1,48 +1,49 @@
 {
-  "name": "@githon/html",
-  "version": "3.3.8",
-  "description": "Parse HTML content for gitbook",
-  "homepage": "https://github.com/githon/githon",
-  "bugs": {
-    "url": "https://github.com/githon/githon/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/githon/githon.git"
-  },
-  "license": "Apache-2.0",
-  "author": "azu <azuciao@gmail.com>",
-  "contributors": [
-    {
-      "name": "FriendCode Inc.",
-      "email": "contact@gitbook.com"
+    "name": "@githon/html",
+    "version": "3.3.8",
+    "description": "Parse HTML content for gitbook",
+    "homepage": "https://github.com/githon/githon",
+    "bugs": {
+        "url": "https://github.com/githon/githon/issues"
     },
-    {
-      "name": "Aaron O'Mullan",
-      "email": "aaron@gitbook.com"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/githon/githon.git"
     },
-    {
-      "name": "Samy Pessé",
-      "email": "samy@gitbook.com"
+    "license": "Apache-2.0",
+    "author": "azu <azuciao@gmail.com>",
+    "contributors": [
+        {
+            "name": "FriendCode Inc.",
+            "email": "contact@gitbook.com"
+        },
+        {
+            "name": "Aaron O'Mullan",
+            "email": "aaron@gitbook.com"
+        },
+        {
+            "name": "Samy Pessé",
+            "email": "samy@gitbook.com"
+        }
+    ],
+    "files": [
+        "lib",
+        "!__tests__"
+    ],
+    "main": "lib/index.js",
+    "scripts": {
+        "build": "tsc -p .",
+        "test": "mocha test/"
+    },
+    "dependencies": {
+        "cheerio": "^0.20.0 && >=0.20.0",
+        "lodash": "^4.13.1",
+        "q": "^1.1.2"
+    },
+    "devDependencies": {
+        "mocha": "^8.0.1"
+    },
+    "publishConfig": {
+        "access": "public"
     }
-  ],
-  "files": [
-    "lib",
-    "!__tests__"
-  ],
-  "main": "lib/index.js",
-  "scripts": {
-    "test": "mocha test/"
-  },
-  "dependencies": {
-    "cheerio": "^0.20.0 && >=0.20.0",
-    "lodash": "^4.13.1",
-    "q": "^1.1.2"
-  },
-  "devDependencies": {
-    "mocha": "^8.0.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
 }

@@ -31,6 +31,7 @@
     ],
     "main": "lib/index.js",
     "scripts": {
+        "build": "tsc -p .",
         "test": "mocha test/"
     },
     "dependencies": {

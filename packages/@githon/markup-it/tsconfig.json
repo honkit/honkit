@@ -1,0 +1,9 @@
+{
+    "include": ["src"],
+    "extends": "../../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "lib",
+        "rootDir": "src",
+        "allowJs": true
+    }
+}
