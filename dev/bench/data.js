@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592661207399,
+  "lastUpdate": 1592746669609,
   "repoUrl": "https://github.com/githon/githon",
   "entries": {
     "GitHon benchmark": [
@@ -2819,6 +2819,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.12,
             "range": "±1.42%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b2879e30ae96773c917c15a991bee30dbe7945d2",
+          "message": "Merge pull request #46 from mizchi/tsnize\n\nAdd typescript (and misc)",
+          "timestamp": "2020-06-21T22:34:14+09:00",
+          "tree_id": "92caa633134c9d3fa091f9f8825cb6e434c7b338",
+          "url": "https://github.com/githon/githon/commit/b2879e30ae96773c917c15a991bee30dbe7945d2"
+        },
+        "date": 1592746668644,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.08,
+            "range": "±1.08%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
