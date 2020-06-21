@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592746669609,
+  "lastUpdate": 1592747986786,
   "repoUrl": "https://github.com/githon/githon",
   "entries": {
     "GitHon benchmark": [
@@ -2850,6 +2850,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.08,
             "range": "±1.08%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "38e95a4e78c01cb8041fe1274b58c58071d94b82",
+          "message": "Merge pull request #50 from githon/feature/49-clean\n\nchore: add \"clean\" command",
+          "timestamp": "2020-06-21T22:56:58+09:00",
+          "tree_id": "c27cf0d16ab14a70945ce8b03a9017bd6984a17b",
+          "url": "https://github.com/githon/githon/commit/38e95a4e78c01cb8041fe1274b58c58071d94b82"
+        },
+        "date": 1592747985836,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.11,
+            "range": "±1.35%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
