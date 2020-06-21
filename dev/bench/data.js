@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1592747986786,
+  "lastUpdate": 1592756897779,
   "repoUrl": "https://github.com/githon/githon",
   "entries": {
     "GitHon benchmark": [
@@ -2881,6 +2881,37 @@ window.BENCHMARK_DATA = {
             "name": "run githon build",
             "value": 0.11,
             "range": "±1.35%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "adb6aa398b0287d544ee7e124f33bffa0f81986f",
+          "message": "Merge branch 'tsnize-more'",
+          "timestamp": "2020-06-22T01:23:54+09:00",
+          "tree_id": "dab753f7b210395bd9e404b6f62cbdbe160ccb0d",
+          "url": "https://github.com/githon/githon/commit/adb6aa398b0287d544ee7e124f33bffa0f81986f"
+        },
+        "date": 1592756896790,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run githon build",
+            "value": 0.09,
+            "range": "±0.72%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
