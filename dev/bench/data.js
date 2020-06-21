@@ -2,7 +2,7 @@ window.BENCHMARK_DATA = {
   "lastUpdate": 1592757192434,
   "repoUrl": "https://github.com/githon/githon",
   "entries": {
-    "GitHon benchmark": [
+    "HonKit benchmark": [
       {
         "commit": {
           "author": {
