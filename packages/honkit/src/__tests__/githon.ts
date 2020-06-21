@@ -1,7 +1,7 @@
-import githon from "../githon";
+import honkit from "../honkit";
 
 describe("satisfies", () => {
     test("should return true for *", () => {
-        expect(githon.satisfies("*")).toBe(true);
+        expect(honkit.satisfies("*")).toBe(true);
     });
 });

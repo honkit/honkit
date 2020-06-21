@@ -1,5 +1,5 @@
 const flatCache = require("flat-cache");
-const cache = flatCache.create("githon");
+const cache = flatCache.create("honkit");
 module.exports.getCache = () => {
     return cache;
 };

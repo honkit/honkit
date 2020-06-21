@@ -1,6 +1,6 @@
 const extend = require("extend");
 
-const githon = require("../githon");
+const honkit = require("../honkit");
 const encodeSummary = require("./encodeSummary");
 const encodeGlossary = require("./encodeGlossary");
 const encodeReadme = require("./encodeReadme");
@@ -27,8 +27,8 @@ function encodeBookToJson(book) {
         languages: book.isMultilingual() ? encodeLanguages(book.getLanguages()) : undefined,
 
         gitbook: {
-            version: githon.version,
-            time: githon.START_TIME,
+            version: honkit.version,
+            time: honkit.START_TIME,
         },
         book: extend(
             {

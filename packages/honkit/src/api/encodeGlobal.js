@@ -7,7 +7,7 @@ const Plugins = require("../plugins");
 const deprecate = require("./deprecate");
 const fileToURL = require("../output/helper/fileToURL");
 const defaultBlocks = require("../constants/defaultBlocks");
-const githon = require("../githon");
+const honkit = require("../honkit");
 const parsers = require("../parsers");
 
 const encodeConfig = require("./encodeConfig");
@@ -222,7 +222,7 @@ function encodeGlobal(output) {
         },
 
         gitbook: {
-            version: githon.version,
+            version: honkit.version,
         },
     };
 

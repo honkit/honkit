@@ -5,11 +5,11 @@ const util = require("./package-name-util");
 const tryResolve = require("try-resolve");
 
 const SPECIAL_PACKAGE_NAME = [
-    "theme-default", // → @honkit/githon-plugin-theme-default
+    "theme-default", // → @honkit/honkit-plugin-theme-default
 ];
 
 /**
- * This class aim to resolve githon's package name and get the module path.
+ * This class aim to resolve honkit's package name and get the module path.
  *
  * Define
  *
@@ -18,7 +18,7 @@ const SPECIAL_PACKAGE_NAME = [
  *
  * ## Support
  *
- * - githon-plugin-*
+ * - honkit-plugin-*
  * - gitbook-plugin-*
  */
 class PluginResolver {
@@ -36,19 +36,19 @@ class PluginResolver {
      */
     resolvePluginPackageName(packageName) {
         const baseDir = this.baseDirectory;
-        const githonFullPackageName = util.createFullPackageName("githon-plugin-", packageName);
-        // githon > gitbook > normal
+        const honkitFullPackageName = util.createFullPackageName("honkit-plugin-", packageName);
+        // honkit > gitbook > normal
         const gitbookFullPackageName = util.createFullPackageName("gitbook-plugin-", packageName);
         // special case for backward-compatible
-        // e.g.) load theme-default as @honkit/githon-plugins-theme-default
-        const githonScopePackageName = `@honkit/${githonFullPackageName}`;
+        // e.g.) load theme-default as @honkit/honkit-plugins-theme-default
+        const honkitScopePackageName = `@honkit/${honkitFullPackageName}`;
         // In sometimes, GitBook package has not main field - so search package.json
         const pkgPath =
-            tryResolve(path.join(baseDir, githonFullPackageName, "/package.json")) ||
+            tryResolve(path.join(baseDir, honkitFullPackageName, "/package.json")) ||
             tryResolve(path.join(baseDir, gitbookFullPackageName, "/package.json")) ||
             tryResolve(path.join(baseDir, packageName, "/package.json")) ||
             (SPECIAL_PACKAGE_NAME.includes(packageName) &&
-                tryResolve(path.join(baseDir, githonScopePackageName, "/package.json")));
+                tryResolve(path.join(baseDir, honkitScopePackageName, "/package.json")));
         if (!pkgPath) {
             throw new ReferenceError(`Failed to load HonKit's plugin module: "${packageName}" is not found.
 

@@ -1,4 +1,4 @@
-const githon = require("../githon");
+const honkit = require("../honkit");
 
 const Promise = require("../utils/promise");
 
@@ -16,23 +16,23 @@ function validatePlugin(plugin) {
         packageInfos &&
         packageInfos.get("name") &&
         packageInfos.get("engines") &&
-        (packageInfos.get("engines").get("gitbook") || packageInfos.get("engines").get("githon"));
+        (packageInfos.get("engines").get("gitbook") || packageInfos.get("engines").get("honkit"));
 
     const pluginName = packageInfos.get("name") || "unknown plugin";
     if (!isValid) {
         return Promise.reject(new Error(`Error loading plugin "${pluginName}" at "${plugin.getPath()}"`));
     }
     const gitbookVersion = packageInfos.get("engines").get("gitbook");
-    const githonVersion = packageInfos.get("engines").get("githon");
-    // support "gitbook" and "githon"
-    if (gitbookVersion && !githon.satisfies(gitbookVersion)) {
+    const honkitVersion = packageInfos.get("engines").get("honkit");
+    // support "gitbook" and "honkit"
+    if (gitbookVersion && !honkit.satisfies(gitbookVersion)) {
         return Promise.reject(
-            new Error(`HonKit doesn't satisfy the requirements of this plugin: ${pluginName} require ${githonVersion}`)
+            new Error(`HonKit doesn't satisfy the requirements of this plugin: ${pluginName} require ${honkitVersion}`)
         );
     }
-    if (githonVersion && !githon.satisfies(githonVersion)) {
+    if (honkitVersion && !honkit.satisfies(honkitVersion)) {
         return Promise.reject(
-            new Error(`HonKit doesn't satisfy the requirements of this plugin: ${pluginName} require ${githonVersion}`)
+            new Error(`HonKit doesn't satisfy the requirements of this plugin: ${pluginName} require ${honkitVersion}`)
         );
     }
 

@@ -18,7 +18,7 @@ function satisfies(condition) {
     if (semver.satisfies(VERSION, condition)) return true;
 
     // If plugin require -alpha -beta engine, skip it
-    // https://github.com/githon/githon/issues/42
+    // https://github.com/honkit/honkit/issues/42
     if (/-(\S+)$/.test(condition)) {
         return true;
     }
