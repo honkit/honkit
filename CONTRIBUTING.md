@@ -19,7 +19,7 @@ Forking a repository allows you to work with HonKit codebase without special per
 3. Create a clone of the fork locally in your terminal:
 
     ```sh
-    $ git clone --recursive https://github.com/YOUR_ACCOUNT/HonKit YOUR_FORKED_REPOSITORY
+    $ git clone --recursive https://github.com/YOUR_ACCOUNT/honkit YOUR_FORKED_REPOSITORY
     ```
 
 See [Fork A Repo: GitHub Help](https://help.github.com/articles/fork-a-repo/) for further detail.
