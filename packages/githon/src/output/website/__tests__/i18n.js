@@ -1,8 +1,8 @@
-const createMockOutput = require("../../testing/createMock");
-const prepareI18n = require("../prepareI18n");
-const createTemplateEngine = require("../createTemplateEngine");
+import createMockOutput from "../../testing/createMock";
+import prepareI18n from "../prepareI18n";
+import createTemplateEngine from "../createTemplateEngine";
 
-const WebsiteGenerator = require("../");
+import WebsiteGenerator from "../";
 
 describe("i18n", () => {
     test("should correctly use english as default language", () => {

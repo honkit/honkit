@@ -1,1 +1,1 @@
-module.exports = [".adoc", ".asciidoc"];
+export default [".adoc", ".asciidoc"];

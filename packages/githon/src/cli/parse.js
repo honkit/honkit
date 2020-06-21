@@ -1,7 +1,7 @@
-const options = require("./options");
-const getBook = require("./getBook");
+import options from "./options";
+import getBook from "./getBook";
 
-const Parse = require("../parse");
+import Parse from "../parse";
 
 function printBook(book) {
     const logger = book.getLogger();
@@ -49,7 +49,7 @@ function printMultingualBook(book) {
     });
 }
 
-module.exports = {
+export default {
     name: "parse [book]",
     description: "parse and print debug information about a book",
     options: [options.log],

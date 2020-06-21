@@ -1,16 +1,16 @@
-const path = require("path");
-const Immutable = require("immutable");
+import path from "path";
+import Immutable from "immutable";
 
-const Output = require("../models/output");
-const Promise = require("../utils/promise");
-const fs = require("../utils/fs");
+import Output from "../models/output";
+import Promise from "../utils/promise";
+import fs from "../utils/fs";
 
-const callHook = require("./callHook");
-const preparePlugins = require("./preparePlugins");
-const preparePages = require("./preparePages");
-const prepareAssets = require("./prepareAssets");
-const generateAssets = require("./generateAssets");
-const generatePages = require("./generatePages");
+import callHook from "./callHook";
+import preparePlugins from "./preparePlugins";
+import preparePages from "./preparePages";
+import prepareAssets from "./prepareAssets";
+import generateAssets from "./generateAssets";
+import generatePages from "./generatePages";
 
 /**
  * Process an output to generate the book

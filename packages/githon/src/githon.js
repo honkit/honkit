@@ -1,5 +1,5 @@
-const semver = require("semver");
-const pkg = require("../package.json");
+import semver from "semver";
+import pkg from "../package.json";
 
 const VERSION = pkg.version;
 const VERSION_STABLE = VERSION.replace(/-(\S+)/g, "");
@@ -26,7 +26,7 @@ function satisfies(condition) {
     return semver.satisfies(VERSION_STABLE, condition);
 }
 
-module.exports = {
+export default {
     version: pkg.version,
     satisfies: satisfies,
     START_TIME: START_TIME,

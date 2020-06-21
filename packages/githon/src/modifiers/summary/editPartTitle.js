@@ -20,4 +20,4 @@ function editPartTitle(summary, index, newTitle) {
     return summary.set("parts", parts);
 }
 
-module.exports = editPartTitle;
+export default editPartTitle;

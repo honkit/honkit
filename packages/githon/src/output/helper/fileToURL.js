@@ -1,7 +1,7 @@
-const path = require("path");
-const LocationUtils = require("../../utils/location");
+import path from "path";
+import LocationUtils from "../../utils/location";
 
-const fileToOutput = require("./fileToOutput");
+import fileToOutput from "./fileToOutput";
 
 /**
     Convert a filePath (absolute) to an url (without hostname).
@@ -28,4 +28,4 @@ function fileToURL(output, filePath) {
     return LocationUtils.normalize(filePath);
 }
 
-module.exports = fileToURL;
+export default fileToURL;

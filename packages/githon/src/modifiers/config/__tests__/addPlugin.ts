@@ -1,10 +1,11 @@
 // FIXME: Avoid scope error
 export {};
 
-const addPlugin = require("../addPlugin");
-const Config = require("../../../models/config");
+import addPlugin from "../addPlugin";
+import Config from "../../../models/config";
 
 describe("addPlugin", () => {
+    // @ts-ignore
     const config = Config.createWithValues({
         plugins: ["hello", "world", "-disabled"],
     });
@@ -18,6 +19,7 @@ describe("addPlugin", () => {
     });
 
     test("should add the plugin to the list", () => {
+        // @ts-ignore
         const newConfig = addPlugin(config, "test");
 
         const testDep = newConfig.getPluginDependency("test");

@@ -1,10 +1,10 @@
-const path = require("path");
+import path from "path";
 
-const fs = require("../../utils/fs");
-const LocationUtils = require("../../utils/location");
+import fs from "../../utils/fs";
+import LocationUtils from "../../utils/location";
 
-const editHTMLElement = require("./editHTMLElement");
-const cheerio = require("cheerio");
+import editHTMLElement from "./editHTMLElement";
+import cheerio from "cheerio";
 
 /**
     Inline SVG images as needed
@@ -38,4 +38,4 @@ function inlineSvg(rootFolder, currentFile, $) {
     });
 }
 
-module.exports = inlineSvg;
+export default inlineSvg;

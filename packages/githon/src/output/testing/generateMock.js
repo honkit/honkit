@@ -1,8 +1,8 @@
-const tmp = require("tmp");
+import tmp from "tmp";
 
-const Book = require("../../models/book");
-const createMockFS = require("../../fs/mock");
-const parseBook = require("../../parse/parseBook");
+import Book from "../../models/book";
+import createMockFS from "../../fs/mock";
+import parseBook from "../../parse/parseBook";
 const generateBook = require("../generateBook").generateBook;
 
 /**
@@ -31,4 +31,4 @@ function generateMock(Generator, files) {
         .thenResolve(dir.name);
 }
 
-module.exports = generateMock;
+export default generateMock;

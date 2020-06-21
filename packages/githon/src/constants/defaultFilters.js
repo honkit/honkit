@@ -1,7 +1,7 @@
-const Immutable = require("immutable");
-const moment = require("moment");
+import Immutable from "immutable";
+import moment from "moment";
 
-module.exports = Immutable.Map({
+export default Immutable.Map({
     // Format a date
     // ex: 'MMMM Do YYYY, h:mm:ss a
     date: function (time, format) {

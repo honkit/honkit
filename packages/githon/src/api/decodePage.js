@@ -1,4 +1,4 @@
-const deprecate = require("./deprecate");
+import deprecate from "./deprecate";
 
 /**
     Decode changes from a JS API to a page object.
@@ -44,4 +44,4 @@ function decodePage(output, page, result) {
     return page;
 }
 
-module.exports = decodePage;
+export default decodePage;

@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("../../utils/fs");
+import path from "path";
+import fs from "../../utils/fs";
 
 /**
     Resolve path to cover file to use
@@ -27,4 +27,4 @@ function getCoverPath(output) {
     return cover;
 }
 
-module.exports = getCoverPath;
+export default getCoverPath;

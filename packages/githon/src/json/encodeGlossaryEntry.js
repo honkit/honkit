@@ -12,4 +12,4 @@ function encodeGlossaryEntry(entry) {
     };
 }
 
-module.exports = encodeGlossaryEntry;
+export default encodeGlossaryEntry;

@@ -22,4 +22,4 @@ function encodeSummaryArticle(article, recursive) {
     };
 }
 
-module.exports = encodeSummaryArticle;
+export default encodeSummaryArticle;

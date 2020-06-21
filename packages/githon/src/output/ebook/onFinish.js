@@ -1,14 +1,14 @@
-const path = require("path");
+import path from "path";
 
-const WebsiteGenerator = require("../website");
-const JSONUtils = require("../../json");
-const Templating = require("../../templating");
-const Promise = require("../../utils/promise");
-const error = require("../../utils/error");
-const command = require("../../utils/command");
-const writeFile = require("../helper/writeFile");
+import WebsiteGenerator from "../website";
+import JSONUtils from "../../json";
+import Templating from "../../templating";
+import Promise from "../../utils/promise";
+import error from "../../utils/error";
+import command from "../../utils/command";
+import writeFile from "../helper/writeFile";
 
-const getConvertOptions = require("./getConvertOptions");
+import getConvertOptions from "./getConvertOptions";
 const SUMMARY_FILE = "SUMMARY.html";
 
 /**
@@ -90,4 +90,4 @@ function onFinish(output) {
     return writeSummary(output).then(runEbookConvert);
 }
 
-module.exports = onFinish;
+export default onFinish;

@@ -1,9 +1,9 @@
 import Immutable from "immutable";
 
-const Book = require("../../models/book");
-const createMockFS = require("../../fs/mock");
-const listAssets = require("../listAssets");
-const parseGlossary = require("../parseGlossary");
+import Book from "../../models/book";
+import createMockFS from "../../fs/mock";
+import listAssets from "../listAssets";
+import parseGlossary from "../parseGlossary";
 
 describe("listAssets", () => {
     test("should not list glossary as asset", () => {
@@ -14,6 +14,7 @@ describe("listAssets", () => {
                 "file.js": "",
             },
         });
+        // @ts-expect-error
         const book = Book.createForFS(fs);
 
         return parseGlossary(book)

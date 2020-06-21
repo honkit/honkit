@@ -1,10 +1,11 @@
 // FIXME: Avoid scope error
 export {};
 
-const removePlugin = require("../removePlugin");
-const Config = require("../../../models/config");
+import removePlugin from "../removePlugin";
+import Config from "../../../models/config";
 
 describe("removePlugin", () => {
+    // @ts-ignore
     const config = Config.createWithValues({
         plugins: ["hello", "world", "-disabled"],
     });

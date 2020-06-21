@@ -1,5 +1,5 @@
-const parseStructureFile = require("./parseStructureFile");
-const Summary = require("../models/summary");
+import parseStructureFile from "./parseStructureFile";
+import Summary from "../models/summary";
 const SummaryModifier = require("../modifiers").Summary;
 
 /**
@@ -40,4 +40,4 @@ function parseSummary(book) {
     });
 }
 
-module.exports = parseSummary;
+export default parseSummary;

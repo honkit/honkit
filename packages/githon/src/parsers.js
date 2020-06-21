@@ -1,12 +1,12 @@
-const path = require("path");
-const Immutable = require("immutable");
+import path from "path";
+import Immutable from "immutable";
 
-const markdownParser = require("@githon/markdown");
-const asciidocParser = require("@githon/asciidoc");
+import markdownParser from "@githon/markdown";
+import asciidocParser from "@githon/asciidoc";
 
-const EXTENSIONS_MARKDOWN = require("./constants/extsMarkdown");
-const EXTENSIONS_ASCIIDOC = require("./constants/extsAsciidoc");
-const Parser = require("./models/parser");
+import EXTENSIONS_MARKDOWN from "./constants/extsMarkdown";
+import EXTENSIONS_ASCIIDOC from "./constants/extsAsciidoc";
+import Parser from "./models/parser";
 
 // This list is ordered by priority of parsers to use
 const parsers = Immutable.List([
@@ -55,7 +55,7 @@ const extensions = parsers
     })
     .flatten();
 
-module.exports = {
+export default {
     extensions: extensions,
     get: getParser,
     getByExt: getParserByExt,

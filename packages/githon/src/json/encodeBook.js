@@ -1,10 +1,10 @@
-const extend = require("extend");
+import extend from "extend";
 
-const githon = require("../githon");
-const encodeSummary = require("./encodeSummary");
-const encodeGlossary = require("./encodeGlossary");
-const encodeReadme = require("./encodeReadme");
-const encodeLanguages = require("./encodeLanguages");
+import githon from "../githon";
+import encodeSummary from "./encodeSummary";
+import encodeGlossary from "./encodeGlossary";
+import encodeReadme from "./encodeReadme";
+import encodeLanguages from "./encodeLanguages";
 
 /**
     Encode a book to JSON
@@ -39,4 +39,4 @@ function encodeBookToJson(book) {
     };
 }
 
-module.exports = encodeBookToJson;
+export default encodeBookToJson;

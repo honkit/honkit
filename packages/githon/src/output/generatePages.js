@@ -1,8 +1,8 @@
-const path = require("path");
-const Promise = require("../utils/promise");
-const generatePage = require("./generatePage");
-const { getCache } = require("./page-cache");
-const Page = require("../models/page");
+import path from "path";
+import Promise from "../utils/promise";
+import generatePage from "./generatePage";
+import { getCache } from "./page-cache";
+import Page from "../models/page";
 
 /**
  Output all pages using a generator
@@ -60,4 +60,4 @@ function generatePages(generator, output) {
     });
 }
 
-module.exports = generatePages;
+export default generatePages;

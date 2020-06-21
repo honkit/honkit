@@ -1,6 +1,6 @@
-const is = require("is");
-const mergeAtLevel = require("./mergeAtLevel");
-const indexArticleLevels = require("./indexArticleLevels");
+import is from "is";
+import mergeAtLevel from "./mergeAtLevel";
+import indexArticleLevels from "./indexArticleLevels";
 
 /**
     Remove an article from a level.
@@ -34,4 +34,4 @@ function removeArticle(summary, level) {
     return mergeAtLevel(summary, parent.getLevel(), parent);
 }
 
-module.exports = removeArticle;
+export default removeArticle;

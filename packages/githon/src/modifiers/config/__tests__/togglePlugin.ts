@@ -1,15 +1,17 @@
 // FIXME: Avoid scope error
 export {};
 
-const togglePlugin = require("../togglePlugin");
-const Config = require("../../../models/config");
+import togglePlugin from "../togglePlugin";
+import Config from "../../../models/config";
 
 describe("togglePlugin", () => {
+    // @ts-ignore
     const config = Config.createWithValues({
         plugins: ["hello", "world", "-disabled"],
     });
 
     test("should enable plugin", () => {
+        // @ts-ignore
         const newConfig = togglePlugin(config, "disabled");
 
         const testDep = newConfig.getPluginDependency("disabled");
@@ -19,6 +21,7 @@ describe("togglePlugin", () => {
     });
 
     test("should disable plugin", () => {
+        // @ts-ignore
         const newConfig = togglePlugin(config, "world");
 
         const testDep = newConfig.getPluginDependency("world");

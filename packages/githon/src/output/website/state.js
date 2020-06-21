@@ -1,5 +1,5 @@
-const I18n = require("i18n-t");
-const Immutable = require("immutable");
+import I18n from "i18n-t";
+import Immutable from "immutable";
 
 const GeneratorState = Immutable.Record({
     i18n: I18n(),
@@ -16,4 +16,4 @@ GeneratorState.prototype.getResources = function () {
     return this.get("resources");
 };
 
-module.exports = GeneratorState;
+export default GeneratorState;

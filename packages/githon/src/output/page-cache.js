@@ -1,4 +1,4 @@
-const flatCache = require("flat-cache");
+import flatCache from "flat-cache";
 const cache = flatCache.create("githon");
 module.exports.getCache = () => {
     return cache;

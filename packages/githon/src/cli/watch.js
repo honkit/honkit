@@ -1,7 +1,7 @@
-const path = require("path");
-const chokidar = require("chokidar");
+import path from "path";
+import chokidar from "chokidar";
 
-const parsers = require("../parsers");
+import parsers from "../parsers";
 
 /**
  Watch a folder and resolve promise once a file is modified
@@ -34,4 +34,4 @@ function watch(dir, callback) {
     });
 }
 
-module.exports = watch;
+export default watch;

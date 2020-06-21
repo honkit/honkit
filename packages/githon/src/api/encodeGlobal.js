@@ -1,19 +1,19 @@
-const path = require("path");
-const Promise = require("../utils/promise");
-const PathUtils = require("../utils/path");
-const fs = require("../utils/fs");
+import path from "path";
+import Promise from "../utils/promise";
+import PathUtils from "../utils/path";
+import fs from "../utils/fs";
 
-const Plugins = require("../plugins");
-const deprecate = require("./deprecate");
-const fileToURL = require("../output/helper/fileToURL");
-const defaultBlocks = require("../constants/defaultBlocks");
-const githon = require("../githon");
-const parsers = require("../parsers");
+import Plugins from "../plugins";
+import deprecate from "./deprecate";
+import fileToURL from "../output/helper/fileToURL";
+import defaultBlocks from "../constants/defaultBlocks";
+import githon from "../githon";
+import parsers from "../parsers";
 
-const encodeConfig = require("./encodeConfig");
-const encodeSummary = require("./encodeSummary");
-const encodeNavigation = require("./encodeNavigation");
-const encodePage = require("./encodePage");
+import encodeConfig from "./encodeConfig";
+import encodeSummary from "./encodeSummary";
+import encodeNavigation from "./encodeNavigation";
+import encodePage from "./encodePage";
 
 /**
     Encode a global context into a JS object
@@ -272,4 +272,4 @@ function encodeGlobal(output) {
     return result;
 }
 
-module.exports = encodeGlobal;
+export default encodeGlobal;

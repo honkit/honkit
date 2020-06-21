@@ -1,8 +1,8 @@
-const path = require("path");
-const url = require("url");
+import path from "path";
+import url from "url";
 
-const LocationUtils = require("../../utils/location");
-const editHTMLElement = require("./editHTMLElement");
+import LocationUtils from "../../utils/location";
+import editHTMLElement from "./editHTMLElement";
 
 /**
     Resolve all HTML links:
@@ -50,4 +50,4 @@ function resolveLinks(currentFile, resolveFile, $) {
     });
 }
 
-module.exports = resolveLinks;
+export default resolveLinks;

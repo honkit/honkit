@@ -1,6 +1,6 @@
-const encodeOutput = require("./encodeOutput");
-const encodePage = require("./encodePage");
-const encodeFile = require("./encodeFile");
+import encodeOutput from "./encodeOutput";
+import encodePage from "./encodePage";
+import encodeFile from "./encodeFile";
 
 /**
  * Return a JSON representation of a book with a specific file
@@ -20,4 +20,4 @@ function encodeOutputWithPage(output, page) {
     return result;
 }
 
-module.exports = encodeOutputWithPage;
+export default encodeOutputWithPage;

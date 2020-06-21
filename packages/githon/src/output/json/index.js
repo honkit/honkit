@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     name: "json",
     Options: require("./options"),
     onPage: require("./onPage"),

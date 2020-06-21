@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("../../utils/fs");
+import path from "path";
+import fs from "../../utils/fs";
 
 /**
     Copy an asset to the output folder
@@ -25,4 +25,4 @@ function onAsset(output, asset) {
         .thenResolve(output);
 }
 
-module.exports = onAsset;
+export default onAsset;

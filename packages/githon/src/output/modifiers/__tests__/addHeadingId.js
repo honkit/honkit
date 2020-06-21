@@ -1,5 +1,5 @@
-const cheerio = require("cheerio");
-const addHeadingId = require("../addHeadingId");
+import cheerio from "cheerio";
+import addHeadingId from "../addHeadingId";
 
 describe("addHeadingId", () => {
     test("should add an ID if none", () => {

@@ -1,4 +1,4 @@
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
 /**
     Encode an article for next/prev
@@ -60,4 +60,4 @@ function encodeNavigation(output) {
     return Immutable.Map(navigation).toJS();
 }
 
-module.exports = encodeNavigation;
+export default encodeNavigation;

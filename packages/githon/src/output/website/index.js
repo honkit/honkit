@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     name: "website",
     State: require("./state"),
     Options: require("./options"),

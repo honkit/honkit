@@ -1,8 +1,8 @@
-const is = require("is");
-const Immutable = require("immutable");
-const Promise = require("../../utils/promise");
+import is from "is";
+import Immutable from "immutable";
+import Promise from "../../utils/promise";
 
-const Api = require("../../api");
+import Api from "../../api";
 
 /**
     Prepare plugins resources, add all output corresponding type resources
@@ -48,4 +48,4 @@ function prepareResources(output) {
     });
 }
 
-module.exports = prepareResources;
+export default prepareResources;

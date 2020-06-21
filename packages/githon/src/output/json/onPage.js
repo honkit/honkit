@@ -1,8 +1,8 @@
-const JSONUtils = require("../../json");
-const PathUtils = require("../../utils/path");
-const Modifiers = require("../modifiers");
-const writeFile = require("../helper/writeFile");
-const getModifiers = require("../getModifiers");
+import JSONUtils from "../../json";
+import PathUtils from "../../utils/path";
+import Modifiers from "../modifiers";
+import writeFile from "../helper/writeFile";
+import getModifiers from "../getModifiers";
 
 const JSON_VERSION = "3";
 
@@ -35,4 +35,4 @@ function onPage(output, page) {
     });
 }
 
-module.exports = onPage;
+export default onPage;

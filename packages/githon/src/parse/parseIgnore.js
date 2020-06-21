@@ -1,5 +1,5 @@
-const Promise = require("../utils/promise");
-const IGNORE_FILES = require("../constants/ignoreFiles");
+import Promise from "../utils/promise";
+import IGNORE_FILES from "../constants/ignoreFiles";
 
 const DEFAULT_IGNORES = [
     // Skip Git stuff
@@ -48,4 +48,4 @@ function parseIgnore(book) {
     });
 }
 
-module.exports = parseIgnore;
+export default parseIgnore;

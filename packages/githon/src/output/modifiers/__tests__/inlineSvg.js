@@ -1,12 +1,12 @@
-const cheerio = require("cheerio");
-const tmp = require("tmp");
-const path = require("path");
-const fs = require("fs");
+import cheerio from "cheerio";
+import tmp from "tmp";
+import path from "path";
+import fs from "fs";
 
 describe("inlineSvg", () => {
     let dir;
     let svgPath;
-    const inlineSvg = require("../inlineSvg");
+    import inlineSvg from "../inlineSvg";
 
     beforeEach(() => {
         dir = tmp.dirSync();

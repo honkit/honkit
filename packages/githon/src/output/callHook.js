@@ -1,6 +1,6 @@
-const Promise = require("../utils/promise");
-const timing = require("../utils/timing");
-const Api = require("../api");
+import Promise from "../utils/promise";
+import timing from "../utils/timing";
+import Api from "../api";
 
 function defaultGetArgument() {
     return undefined;
@@ -60,4 +60,4 @@ function callHook(name, getArgument, handleResult, output) {
     );
 }
 
-module.exports = callHook;
+export default callHook;

@@ -1,10 +1,10 @@
-const events = require("events");
-const http = require("http");
-const send = require("send");
-const util = require("util");
-const url = require("url");
+import events from "events";
+import http from "http";
+import send from "send";
+import util from "util";
+import url from "url";
 
-const Promise = require("../utils/promise");
+import Promise from "../utils/promise";
 
 function Server() {
     this.running = null;
@@ -126,4 +126,4 @@ function urlTransform(uri, fn) {
     return url.format(fn(url.parse(uri)));
 }
 
-module.exports = Server;
+export default Server;

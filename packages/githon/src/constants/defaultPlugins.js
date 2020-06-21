@@ -1,7 +1,7 @@
-const Immutable = require("immutable");
-const PluginDependency = require("../models/pluginDependency");
+import Immutable from "immutable";
+import PluginDependency from "../models/pluginDependency";
 
-const pkg = require("../../package.json");
+import pkg from "../../package.json";
 
 /**
  * Create a PluginDependency from a dependency of gitbook
@@ -19,6 +19,6 @@ function createFromDependency(pluginName) {
  * List of default plugins for all books,
  * default plugins should be installed in node dependencies of GitBook
  */
-module.exports = Immutable.List(["highlight", "search", "lunr", "fontsettings", "theme-default"]).map(
+export default Immutable.List(["highlight", "search", "lunr", "fontsettings", "theme-default"]).map(
     createFromDependency
 );

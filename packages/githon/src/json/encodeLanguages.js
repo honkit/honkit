@@ -1,4 +1,4 @@
-const encodeFile = require("./encodeFile");
+import encodeFile from "./encodeFile";
 
 /**
     Encode a languages listing to JSON
@@ -24,4 +24,4 @@ function encodeLanguages(languages) {
     };
 }
 
-module.exports = encodeLanguages;
+export default encodeLanguages;

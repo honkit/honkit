@@ -1,5 +1,5 @@
 import parsePageFromString from "../parsePageFromString";
-const Page = require("../../models/page");
+import Page from "../../models/page";
 
 describe("parsePageFromString", () => {
     const page = new Page();

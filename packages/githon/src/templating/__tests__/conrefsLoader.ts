@@ -1,8 +1,8 @@
 import path from "path";
 
-const TemplateEngine = require("../../models/templateEngine");
-const renderTemplate = require("../render");
-const ConrefsLoader = require("../conrefsLoader");
+import TemplateEngine from "../../models/templateEngine";
+import renderTemplate from "../render";
+import ConrefsLoader from "../conrefsLoader";
 
 describe("ConrefsLoader", () => {
     const dirName = `${__dirname}/`;

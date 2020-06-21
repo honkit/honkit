@@ -1,4 +1,4 @@
-const findParsableFile = require("./findParsableFile");
+import findParsableFile from "./findParsableFile";
 
 /**
     Lookup a structure file (ex: SUMMARY.md, GLOSSARY.md) in a book. Uses
@@ -17,4 +17,4 @@ function lookupStructureFile(book, type) {
     return findParsableFile(book, fileToSearch);
 }
 
-module.exports = lookupStructureFile;
+export default lookupStructureFile;

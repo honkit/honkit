@@ -17,4 +17,4 @@ function encodeFileToJson(file) {
     };
 }
 
-module.exports = encodeFileToJson;
+export default encodeFileToJson;

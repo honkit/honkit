@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     modifyHTML: require("./modifyHTML"),
     inlineAssets: require("./inlineAssets"),
 

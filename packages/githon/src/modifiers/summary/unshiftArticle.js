@@ -1,7 +1,7 @@
-const SummaryArticle = require("../../models/summaryArticle");
-const SummaryPart = require("../../models/summaryPart");
+import SummaryArticle from "../../models/summaryArticle";
+import SummaryPart from "../../models/summaryPart";
 
-const indexLevels = require("./indexLevels");
+import indexLevels from "./indexLevels";
 
 /**
     Insert an article at the beginning of summary
@@ -26,4 +26,4 @@ function unshiftArticle(summary, article) {
     return indexLevels(summary);
 }
 
-module.exports = unshiftArticle;
+export default unshiftArticle;

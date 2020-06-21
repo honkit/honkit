@@ -1,7 +1,7 @@
-const path = require("path");
+import path from "path";
 
-const PathUtils = require("../../utils/path");
-const LocationUtils = require("../../utils/location");
+import PathUtils from "../../utils/path";
+import LocationUtils from "../../utils/location";
 
 const OUTPUT_EXTENSION = ".html";
 
@@ -29,4 +29,4 @@ function fileToOutput(output, filePath) {
     return LocationUtils.normalize(filePath);
 }
 
-module.exports = fileToOutput;
+export default fileToOutput;

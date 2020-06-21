@@ -1,21 +1,21 @@
 /* eslint-disable no-console */
 
-const tinylr = require("tiny-lr");
-const open = require("open");
-const Immutable = require("immutable");
+import tinylr from "tiny-lr";
+import open from "open";
+import Immutable from "immutable";
 
-const Parse = require("../parse");
-const Output = require("../output");
+import Parse from "../parse";
+import Output from "../output";
 const ConfigModifier = require("../modifiers").Config;
 
-const Promise = require("../utils/promise");
+import Promise from "../utils/promise";
 
-const options = require("./options");
-const getBook = require("./getBook");
-const getOutputFolder = require("./getOutputFolder");
-const Server = require("./server");
-const watch = require("./watch");
-const { clearCache } = require("../output/page-cache");
+import options from "./options";
+import getBook from "./getBook";
+import getOutputFolder from "./getOutputFolder";
+import Server from "./server";
+import watch from "./watch";
+import { clearCache } from "../output/page-cache";
 
 let server, lrServer, lrPath;
 
@@ -131,7 +131,7 @@ function incrementalBuild({ output, Generator }) {
     return Output.incrementalBuild(Generator, output);
 }
 
-module.exports = {
+export default {
     name: "serve [book] [output]",
     description: "serve the book as a website for testing",
     options: [

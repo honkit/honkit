@@ -1,5 +1,5 @@
-const tmp = require("tmp");
-const initBook = require("../init");
+import tmp from "tmp";
+import initBook from "../init";
 
 describe("initBook", () => {
     let dir;

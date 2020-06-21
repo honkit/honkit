@@ -18,4 +18,4 @@ function listSearchPaths(output) {
     return searchPaths.unshift(book.getContentRoot());
 }
 
-module.exports = listSearchPaths;
+export default listSearchPaths;

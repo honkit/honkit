@@ -1,22 +1,22 @@
-const path = require("path");
-const nunjucks = require("nunjucks");
+import path from "path";
+import nunjucks from "nunjucks";
 const DoExtension = require("nunjucks-do")(nunjucks);
-const memoizeOne = require("memoize-one");
+import memoizeOne from "memoize-one";
 
-const Api = require("../../api");
-const deprecate = require("../../api/deprecate");
-const JSONUtils = require("../../json");
-const LocationUtils = require("../../utils/location");
-const fs = require("../../utils/fs");
-const PathUtils = require("../../utils/path");
-const TemplateEngine = require("../../models/templateEngine");
-const templatesFolder = require("../../constants/templatesFolder");
-const defaultFilters = require("../../constants/defaultFilters");
-const Templating = require("../../templating");
-const listSearchPaths = require("./listSearchPaths");
+import Api from "../../api";
+import deprecate from "../../api/deprecate";
+import JSONUtils from "../../json";
+import LocationUtils from "../../utils/location";
+import fs from "../../utils/fs";
+import PathUtils from "../../utils/path";
+import TemplateEngine from "../../models/templateEngine";
+import templatesFolder from "../../constants/templatesFolder";
+import defaultFilters from "../../constants/defaultFilters";
+import Templating from "../../templating";
+import listSearchPaths from "./listSearchPaths";
 
-const fileToURL = require("../helper/fileToURL");
-const resolveFileToURL = require("../helper/resolveFileToURL");
+import fileToURL from "../helper/fileToURL";
+import resolveFileToURL from "../helper/resolveFileToURL";
 
 /**
  * Directory for a theme with the templates
@@ -157,4 +157,4 @@ function createTemplateEngine(output, currentFile) {
     });
 }
 
-module.exports = createTemplateEngine;
+export default createTemplateEngine;

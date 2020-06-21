@@ -1,4 +1,4 @@
-const encodeSummaryArticle = require("./encodeSummaryArticle");
+import encodeSummaryArticle from "./encodeSummaryArticle";
 
 /**
     Return a JSON representation of a page
@@ -36,4 +36,4 @@ function encodePage(page, summary) {
     return result;
 }
 
-module.exports = encodePage;
+export default encodePage;

@@ -1,6 +1,6 @@
-const extend = require("extend");
+import extend from "extend";
 
-const common = require("./browser");
+import common from "./browser";
 
 module.exports = extend(
     {

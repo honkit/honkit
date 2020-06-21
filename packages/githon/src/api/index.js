@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     encodePage: require("./encodePage"),
     decodePage: require("./decodePage"),
 

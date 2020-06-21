@@ -1,9 +1,9 @@
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
-const timing = require("../utils/timing");
-const Page = require("../models/page");
-const walkSummary = require("./walkSummary");
-const parsePage = require("./parsePage");
+import timing from "../utils/timing";
+import Page from "../models/page";
+import walkSummary from "./walkSummary";
+import parsePage from "./parsePage";
 
 /**
     Parse a page from a path
@@ -93,4 +93,4 @@ function parsePagesList(book) {
     );
 }
 
-module.exports = parsePagesList;
+export default parsePagesList;

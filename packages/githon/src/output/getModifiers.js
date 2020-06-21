@@ -1,10 +1,10 @@
-const Modifiers = require("./modifiers");
-const resolveFileToURL = require("./helper/resolveFileToURL");
-const Api = require("../api");
-const Plugins = require("../plugins");
-const Promise = require("../utils/promise");
-const defaultBlocks = require("../constants/defaultBlocks");
-const fileToOutput = require("./helper/fileToOutput");
+import Modifiers from "./modifiers";
+import resolveFileToURL from "./helper/resolveFileToURL";
+import Api from "../api";
+import Plugins from "../plugins";
+import Promise from "../utils/promise";
+import defaultBlocks from "../constants/defaultBlocks";
+import fileToOutput from "./helper/fileToOutput";
 
 const CODEBLOCK = "code";
 
@@ -71,4 +71,4 @@ function getModifiers(output, page) {
     ];
 }
 
-module.exports = getModifiers;
+export default getModifiers;

@@ -1,4 +1,4 @@
-const mergeAtLevel = require("./mergeAtLevel");
+import mergeAtLevel from "./mergeAtLevel";
 
 /**
     Edit the ref of an article
@@ -14,4 +14,4 @@ function editArticleRef(summary, level, newRef) {
     });
 }
 
-module.exports = editArticleRef;
+export default editArticleRef;

@@ -1,5 +1,5 @@
-const parseStructureFile = require("./parseStructureFile");
-const Glossary = require("../models/glossary");
+import parseStructureFile from "./parseStructureFile";
+import Glossary from "../models/glossary";
 
 /**
     Parse glossary
@@ -22,4 +22,4 @@ function parseGlossary(book) {
     });
 }
 
-module.exports = parseGlossary;
+export default parseGlossary;

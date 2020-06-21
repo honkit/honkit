@@ -1,6 +1,6 @@
-const is = require("is");
-const removeArticle = require("./removeArticle");
-const insertArticle = require("./insertArticle");
+import is from "is";
+import removeArticle from "./removeArticle";
+import insertArticle from "./insertArticle";
 
 /**
     Returns a new summary, with the an article moved after another
@@ -57,4 +57,4 @@ function increment(level) {
     return arrayToLevel(level);
 }
 
-module.exports = moveArticleAfter;
+export default moveArticleAfter;

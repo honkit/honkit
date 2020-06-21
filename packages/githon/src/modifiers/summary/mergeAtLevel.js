@@ -68,4 +68,4 @@ function mergeAtLevel(summary, level, newValue) {
     return summary.set("parts", parts);
 }
 
-module.exports = mergeAtLevel;
+export default mergeAtLevel;

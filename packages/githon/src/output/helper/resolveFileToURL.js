@@ -1,6 +1,6 @@
-const LocationUtils = require("../../utils/location");
+import LocationUtils from "../../utils/location";
 
-const fileToURL = require("./fileToURL");
+import fileToURL from "./fileToURL";
 
 /**
  * Resolve an absolute path (extracted from a link)
@@ -23,4 +23,4 @@ function resolveFileToURL(output, filePath) {
     return LocationUtils.normalize(filePath);
 }
 
-module.exports = resolveFileToURL;
+export default resolveFileToURL;

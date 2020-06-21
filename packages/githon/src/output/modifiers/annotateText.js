@@ -1,4 +1,4 @@
-const escape = require("escape-html");
+import escape from "escape-html";
 
 // Selector to ignore
 const ANNOTATION_IGNORE = ".no-glossary,code,pre,a,script,h1,h2,h3,h4,h5,h6";
@@ -82,4 +82,4 @@ function annotateText(entries, glossaryFilePath, $) {
     });
 }
 
-module.exports = annotateText;
+export default annotateText;

@@ -1,8 +1,8 @@
-const path = require("path");
-const Immutable = require("immutable");
+import path from "path";
+import Immutable from "immutable";
 
-const fs = require("../utils/fs");
-const FS = require("../models/fs");
+import fs from "../utils/fs";
+import FS from "../models/fs";
 
 function fsReadDir(folder) {
     return fs.readdir(folder).then((files) => {
@@ -29,7 +29,7 @@ function fsLoadObject(filename) {
     return require(filename);
 }
 
-module.exports = function createNodeFS(root) {
+export default function createNodeFS(root) {
     return FS.create({
         root: root,
 
@@ -40,4 +40,4 @@ module.exports = function createNodeFS(root) {
         fsLoadObject: fsLoadObject,
         fsReadAsStream: fs.readStream,
     });
-};
+}

@@ -1,4 +1,4 @@
-const indexPartLevels = require("./indexPartLevels");
+import indexPartLevels from "./indexPartLevels";
 
 /**
     Index all levels in the summary
@@ -13,4 +13,4 @@ function indexLevels(summary) {
     return summary.set("parts", parts);
 }
 
-module.exports = indexLevels;
+export default indexLevels;

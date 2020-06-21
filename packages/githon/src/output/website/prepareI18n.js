@@ -1,8 +1,8 @@
-const path = require("path");
+import path from "path";
 
-const fs = require("../../utils/fs");
-const Promise = require("../../utils/promise");
-const listSearchPaths = require("./listSearchPaths");
+import fs from "../../utils/fs";
+import Promise from "../../utils/promise";
+import listSearchPaths from "./listSearchPaths";
 
 /**
  * Prepare i18n, load translations from plugins and book
@@ -25,4 +25,4 @@ function prepareI18n(output) {
     return Promise(output);
 }
 
-module.exports = prepareI18n;
+export default prepareI18n;

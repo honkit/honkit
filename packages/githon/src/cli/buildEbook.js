@@ -1,16 +1,16 @@
-const path = require("path");
-const tmp = require("tmp");
+import path from "path";
+import tmp from "tmp";
 
-const Promise = require("../utils/promise");
-const fs = require("../utils/fs");
-const Parse = require("../parse");
-const Output = require("../output");
+import Promise from "../utils/promise";
+import fs from "../utils/fs";
+import Parse from "../parse";
+import Output from "../output";
 
-const options = require("./options");
-const getBook = require("./getBook");
-const { clearCache } = require("../output/page-cache");
+import options from "./options";
+import getBook from "./getBook";
+import { clearCache } from "../output/page-cache";
 
-module.exports = function (format) {
+export default function (format) {
     return {
         name: `${format} [book] [output]`,
         description: "build a book into an ebook file",
@@ -70,4 +70,4 @@ module.exports = function (format) {
             );
         },
     };
-};
+}

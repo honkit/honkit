@@ -1,5 +1,5 @@
-const encodeFile = require("./encodeFile");
-const encodeGlossaryEntry = require("./encodeGlossaryEntry");
+import encodeFile from "./encodeFile";
+import encodeGlossaryEntry from "./encodeGlossaryEntry";
 
 /**
     Encode a glossary to JSON
@@ -17,4 +17,4 @@ function encodeGlossary(glossary) {
     };
 }
 
-module.exports = encodeGlossary;
+export default encodeGlossary;

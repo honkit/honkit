@@ -1,6 +1,6 @@
-const Immutable = require("immutable");
-const fm = require("front-matter");
-const direction = require("direction");
+import Immutable from "immutable";
+import fm from "front-matter";
+import direction from "direction";
 
 /**
  * Parse a page, its content and the YAMl header
@@ -19,4 +19,4 @@ function parsePageFromString(page, content) {
     });
 }
 
-module.exports = parsePageFromString;
+export default parsePageFromString;

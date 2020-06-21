@@ -1,5 +1,5 @@
-const SummaryPart = require("../../models/summaryPart");
-const indexLevels = require("./indexLevels");
+import SummaryPart from "../../models/summaryPart";
+import indexLevels from "./indexLevels";
 
 /**
     Returns a new Summary with a part inserted at given index
@@ -16,4 +16,4 @@ function insertPart(summary, part, index) {
     return indexLevels(summary.set("parts", parts));
 }
 
-module.exports = insertPart;
+export default insertPart;

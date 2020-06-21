@@ -1,9 +1,9 @@
-const path = require("path");
+import path from "path";
 
-const options = require("./options");
-const initBook = require("../init");
+import options from "./options";
+import initBook from "../init";
 
-module.exports = {
+export default {
     name: "init [book]",
     description: "setup and create files for chapters",
     options: [options.log],

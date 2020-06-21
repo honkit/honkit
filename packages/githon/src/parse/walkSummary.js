@@ -1,4 +1,4 @@
-const Promise = require("../utils/promise");
+import Promise from "../utils/promise";
 
 /**
     Walk over a list of articles
@@ -30,4 +30,4 @@ function walkSummary(summary, fn) {
     });
 }
 
-module.exports = walkSummary;
+export default walkSummary;

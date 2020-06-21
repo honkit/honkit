@@ -1,10 +1,11 @@
 import Immutable from "immutable";
 
-const TemplateBlock = require("../../models/templateBlock");
-const replaceShortcuts = require("../replaceShortcuts");
+import TemplateBlock from "../../models/templateBlock";
+import replaceShortcuts from "../replaceShortcuts";
 
 describe("replaceShortcuts", () => {
     const blocks = Immutable.List([
+        // @ts-expect-error
         TemplateBlock.create("math", {
             shortcuts: {
                 start: "$$",

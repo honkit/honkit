@@ -1,7 +1,7 @@
-const is = require("is");
-const SummaryArticle = require("../../models/summaryArticle");
-const mergeAtLevel = require("./mergeAtLevel");
-const indexArticleLevels = require("./indexArticleLevels");
+import is from "is";
+import SummaryArticle from "../../models/summaryArticle";
+import mergeAtLevel from "./mergeAtLevel";
+import indexArticleLevels from "./indexArticleLevels";
 
 /**
     Returns a new Summary with the article at the given level, with
@@ -46,4 +46,4 @@ function getLeafIndex(level) {
     return arr[arr.length - 1] - 1;
 }
 
-module.exports = insertArticle;
+export default insertArticle;

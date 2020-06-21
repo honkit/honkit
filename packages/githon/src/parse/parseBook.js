@@ -1,13 +1,13 @@
-const Promise = require("../utils/promise");
-const timing = require("../utils/timing");
-const Book = require("../models/book");
+import Promise from "../utils/promise";
+import timing from "../utils/timing";
+import Book from "../models/book";
 
-const parseIgnore = require("./parseIgnore");
-const parseConfig = require("./parseConfig");
-const parseGlossary = require("./parseGlossary");
-const parseSummary = require("./parseSummary");
-const parseReadme = require("./parseReadme");
-const parseLanguages = require("./parseLanguages");
+import parseIgnore from "./parseIgnore";
+import parseConfig from "./parseConfig";
+import parseGlossary from "./parseGlossary";
+import parseSummary from "./parseSummary";
+import parseReadme from "./parseReadme";
+import parseLanguages from "./parseLanguages";
 
 /**
     Parse content of a book
@@ -74,4 +74,4 @@ function parseBook(book) {
     );
 }
 
-module.exports = parseBook;
+export default parseBook;

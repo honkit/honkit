@@ -1,5 +1,5 @@
-const generateMock = require("../testing/generateMock");
-const JSONGenerator = require("../json");
+import generateMock from "../testing/generateMock";
+import JSONGenerator from "../json";
 describe("JSONGenerator", () => {
     test("should generate a README.json", () => {
         return generateMock(JSONGenerator, {

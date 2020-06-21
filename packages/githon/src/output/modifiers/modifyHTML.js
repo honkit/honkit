@@ -1,5 +1,5 @@
-const cheerio = require("cheerio");
-const Promise = require("../../utils/promise");
+import cheerio from "cheerio";
+import Promise from "../../utils/promise";
 
 /**
     Apply a list of operations to a page and
@@ -21,4 +21,4 @@ function modifyHTML(page, operations) {
     });
 }
 
-module.exports = modifyHTML;
+export default modifyHTML;

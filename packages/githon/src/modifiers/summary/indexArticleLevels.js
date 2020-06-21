@@ -19,4 +19,4 @@ function indexArticleLevels(article, baseLevel) {
     });
 }
 
-module.exports = indexArticleLevels;
+export default indexArticleLevels;

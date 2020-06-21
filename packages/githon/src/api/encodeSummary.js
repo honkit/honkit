@@ -1,4 +1,4 @@
-const encodeSummaryArticle = require("../json/encodeSummaryArticle");
+import encodeSummaryArticle from "../json/encodeSummaryArticle";
 
 /**
     Encode summary to provide an API to plugin
@@ -48,4 +48,4 @@ function encodeSummary(output, summary) {
     return result;
 }
 
-module.exports = encodeSummary;
+export default encodeSummary;

@@ -1,10 +1,10 @@
-const path = require("path");
-const crc = require("crc");
-const domSerializer = require("dom-serializer");
+import path from "path";
+import crc from "crc";
+import domSerializer from "dom-serializer";
 
-const editHTMLElement = require("./editHTMLElement");
-const fs = require("../../utils/fs");
-const LocationUtils = require("../../utils/location");
+import editHTMLElement from "./editHTMLElement";
+import fs from "../../utils/fs";
+import LocationUtils from "../../utils/location";
 
 /**
     Render a cheerio DOM as html
@@ -59,4 +59,4 @@ function svgToImg(baseFolder, currentFile, $) {
     });
 }
 
-module.exports = svgToImg;
+export default svgToImg;

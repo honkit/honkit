@@ -1,5 +1,5 @@
-const Parse = require("../parse");
-const Promise = require("../utils/promise");
+import Parse from "../parse";
+import Promise from "../utils/promise";
 
 /**
     List and prepare all pages
@@ -22,4 +22,4 @@ function preparePages(output) {
     });
 }
 
-module.exports = preparePages;
+export default preparePages;

@@ -1,4 +1,4 @@
-const Parse = require("../parse");
+import Parse from "../parse";
 
 /**
     List all assets in the book
@@ -18,4 +18,4 @@ function prepareAssets(output) {
     });
 }
 
-module.exports = prepareAssets;
+export default prepareAssets;

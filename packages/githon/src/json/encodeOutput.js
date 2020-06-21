@@ -1,4 +1,4 @@
-const encodeBook = require("./encodeBook");
+import encodeBook from "./encodeBook";
 
 /**
  * Encode an output to JSON
@@ -22,4 +22,4 @@ function encodeOutputToJson(output) {
     return result;
 }
 
-module.exports = encodeOutputToJson;
+export default encodeOutputToJson;

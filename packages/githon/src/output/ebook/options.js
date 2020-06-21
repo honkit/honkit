@@ -1,4 +1,4 @@
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
 const Options = Immutable.Record({
     // Root folder for the output
@@ -14,4 +14,4 @@ const Options = Immutable.Record({
     directoryIndex: Boolean(false),
 });
 
-module.exports = Options;
+export default Options;

@@ -1,10 +1,10 @@
-const resolveImages = require("./resolveImages");
-const fetchRemoteImages = require("./fetchRemoteImages");
-const svgToImg = require("./svgToImg");
-const inlineSvg = require("./inlineSvg");
-const inlinePng = require("./inlinePng");
+import resolveImages from "./resolveImages";
+import fetchRemoteImages from "./fetchRemoteImages";
+import svgToImg from "./svgToImg";
+import inlineSvg from "./inlineSvg";
+import inlinePng from "./inlinePng";
 
-const Promise = require("../../utils/promise");
+import Promise from "../../utils/promise";
 
 /**
     Inline all assets in a page
@@ -27,4 +27,4 @@ function inlineAssets(rootFolder, currentFile) {
     };
 }
 
-module.exports = inlineAssets;
+export default inlineAssets;

@@ -1,9 +1,10 @@
-const PluginDependency = require("../../models/pluginDependency");
+import PluginDependency from "../../models/pluginDependency";
 import listDependencies from "../listDependencies";
-const toNames = require("../toNames");
+import toNames from "../toNames";
 
 describe("listDependencies", () => {
     test("must list default", () => {
+        // @ts-expect-error
         const deps = PluginDependency.listFromString("ga,great");
         const plugins = listDependencies(deps);
         const names = toNames(plugins);
@@ -12,6 +13,7 @@ describe("listDependencies", () => {
     });
 
     test("must list from array with -", () => {
+        // @ts-expect-error
         const deps = PluginDependency.listFromString("ga,-great");
         const plugins = listDependencies(deps);
         const names = toNames(plugins);
@@ -20,6 +22,7 @@ describe("listDependencies", () => {
     });
 
     test("must remove default plugins using -", () => {
+        // @ts-expect-error
         const deps = PluginDependency.listFromString("ga,-search");
         const plugins = listDependencies(deps);
         const names = toNames(plugins);

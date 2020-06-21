@@ -1,4 +1,4 @@
-const parsePageFromString = require("./parsePageFromString");
+import parsePageFromString from "./parsePageFromString";
 
 /**
  * Parse a page, read its content and parse the YAMl header
@@ -16,4 +16,4 @@ function parsePage(book, page) {
     });
 }
 
-module.exports = parsePage;
+export default parsePage;

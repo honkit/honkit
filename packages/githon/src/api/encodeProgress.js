@@ -1,5 +1,5 @@
-const Immutable = require("immutable");
-const encodeNavigation = require("./encodeNavigation");
+import Immutable from "immutable";
+import encodeNavigation from "./encodeNavigation";
 
 /**
     page.progress is a deprecated property from GitBook v2
@@ -61,4 +61,4 @@ function encodeProgress(output, page) {
     };
 }
 
-module.exports = encodeProgress;
+export default encodeProgress;

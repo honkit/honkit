@@ -1,8 +1,8 @@
-const path = require("path");
+import path from "path";
 
-const ASSET_FOLDER = require("../../constants/pluginAssetsFolder");
-const Promise = require("../../utils/promise");
-const fs = require("../../utils/fs");
+import ASSET_FOLDER from "../../constants/pluginAssetsFolder";
+import Promise from "../../utils/promise";
+import fs from "../../utils/fs";
 
 /**
     Copy all assets from plugins.
@@ -105,4 +105,4 @@ function copyResources(output, plugin) {
     });
 }
 
-module.exports = copyPluginAssets;
+export default copyPluginAssets;

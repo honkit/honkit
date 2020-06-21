@@ -1,6 +1,6 @@
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
-const { generateBook, incrementalBuild } = require("./generateBook");
+import { generateBook, incrementalBuild } from "./generateBook";
 
 const generators = Immutable.List([require("./json"), require("./website"), require("./ebook")]);
 /**
@@ -14,7 +14,7 @@ function getGenerator(name) {
         return generator.name == name;
     });
 }
-module.exports = {
+export default {
     generate: generateBook,
     incrementalBuild,
     getGenerator: getGenerator,

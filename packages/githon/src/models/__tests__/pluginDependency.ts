@@ -1,5 +1,5 @@
 import Immutable from "immutable";
-const PluginDependency = require("../pluginDependency");
+import PluginDependency from "../pluginDependency";
 
 describe("PluginDependency", () => {
     describe("createFromString", () => {

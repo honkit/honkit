@@ -1,11 +1,11 @@
-const crc = require("crc");
-const path = require("path");
+import crc from "crc";
+import path from "path";
 
-const imagesUtil = require("../../utils/images");
-const fs = require("../../utils/fs");
-const LocationUtils = require("../../utils/location");
+import imagesUtil from "../../utils/images";
+import fs from "../../utils/fs";
+import LocationUtils from "../../utils/location";
 
-const editHTMLElement = require("./editHTMLElement");
+import editHTMLElement from "./editHTMLElement";
 
 /**
     Convert all inline PNG images to PNG file
@@ -44,4 +44,4 @@ function inlinePng(rootFolder, currentFile, $) {
     });
 }
 
-module.exports = inlinePng;
+export default inlinePng;

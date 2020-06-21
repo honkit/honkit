@@ -1,9 +1,9 @@
-const jsonschema = require("jsonschema");
-const jsonSchemaDefaults = require("json-schema-defaults");
+import jsonschema from "jsonschema";
+import jsonSchemaDefaults from "json-schema-defaults";
 
-const schema = require("../constants/configSchema");
-const error = require("../utils/error");
-const mergeDefaults = require("../utils/mergeDefaults");
+import schema from "../constants/configSchema";
+import error from "../utils/error";
+import mergeDefaults from "../utils/mergeDefaults";
 
 /**
     Validate a book.json content
@@ -28,4 +28,4 @@ function validateConfig(bookJson) {
     return mergeDefaults(bookJson, defaults);
 }
 
-module.exports = validateConfig;
+export default validateConfig;

@@ -1,4 +1,4 @@
-const Promise = require("../../utils/promise");
+import Promise from "../../utils/promise";
 
 /**
     Edit all elements matching a selector
@@ -12,4 +12,4 @@ function editHTMLElement($, selector, fn) {
     });
 }
 
-module.exports = editHTMLElement;
+export default editHTMLElement;

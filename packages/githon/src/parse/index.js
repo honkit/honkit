@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     parseBook: require("./parseBook"),
     parseSummary: require("./parseSummary"),
     parseGlossary: require("./parseGlossary"),

@@ -1,4 +1,4 @@
-const timing = require("../utils/timing");
+import timing from "../utils/timing";
 
 /**
     List all assets in a book
@@ -37,4 +37,4 @@ function listAssets(book, pages) {
     return timing.measure("parse.listAssets", fs.listAllFiles(".", filterFile));
 }
 
-module.exports = listAssets;
+export default listAssets;

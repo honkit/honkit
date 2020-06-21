@@ -1,8 +1,8 @@
-const is = require("is");
-const Immutable = require("immutable");
+import is from "is";
+import Immutable from "immutable";
 
-const Promise = require("../../utils/promise");
-const editHTMLElement = require("./editHTMLElement");
+import Promise from "../../utils/promise";
+import editHTMLElement from "./editHTMLElement";
 
 /**
     Return language for a code blocks from a list of class names
@@ -53,4 +53,4 @@ function highlightCode(highlight, $) {
     });
 }
 
-module.exports = highlightCode;
+export default highlightCode;

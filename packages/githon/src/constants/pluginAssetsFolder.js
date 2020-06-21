@@ -1,1 +1,1 @@
-module.exports = "_assets";
+export default "_assets";

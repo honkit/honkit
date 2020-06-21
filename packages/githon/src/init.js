@@ -1,12 +1,12 @@
-const path = require("path");
+import path from "path";
 
-const createNodeFS = require("./fs/node");
-const fs = require("./utils/fs");
-const Promise = require("./utils/promise");
-const File = require("./models/file");
-const Readme = require("./models/readme");
-const Book = require("./models/book");
-const Parse = require("./parse");
+import createNodeFS from "./fs/node";
+import fs from "./utils/fs";
+import Promise from "./utils/promise";
+import File from "./models/file";
+import Readme from "./models/readme";
+import Book from "./models/book";
+import Parse from "./parse";
 
 /**
     Initialize folder structure for a book
@@ -90,4 +90,4 @@ function initBook(rootFolder) {
     );
 }
 
-module.exports = initBook;
+export default initBook;

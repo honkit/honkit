@@ -1,7 +1,7 @@
-const path = require("path");
+import path from "path";
 
-const Promise = require("../utils/promise");
-const parsers = require("../parsers");
+import Promise from "../utils/promise";
+import parsers from "../parsers";
 
 /**
     Find a file parsable (Markdown or AsciiDoc) in a book
@@ -32,4 +32,4 @@ function findParsableFile(book, filename) {
     });
 }
 
-module.exports = findParsableFile;
+export default findParsableFile;

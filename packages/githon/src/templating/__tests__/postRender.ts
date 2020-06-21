@@ -1,16 +1,19 @@
-const TemplateEngine = require("../../models/templateEngine");
-const TemplateBlock = require("../../models/templateBlock");
+import TemplateEngine from "../../models/templateEngine";
+import TemplateBlock from "../../models/templateBlock";
 
-const renderTemplate = require("../render");
-const postRender = require("../postRender");
+import renderTemplate from "../render";
+import postRender from "../postRender";
 
 describe("postRender", () => {
     let testPost;
+    // @ts-expect-error
     const engine = TemplateEngine.create({
         blocks: [
+            // @ts-expect-error
             TemplateBlock.create("lower", (blk) => {
                 return blk.body.toLowerCase();
             }),
+            // @ts-expect-error
             TemplateBlock.create("prefix", (blk) => {
                 return {
                     body: `_${blk.body}_`,

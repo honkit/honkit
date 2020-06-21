@@ -1,13 +1,13 @@
-const Parse = require("../parse");
-const Output = require("../output");
-const timing = require("../utils/timing");
+import Parse from "../parse";
+import Output from "../output";
+import timing from "../utils/timing";
 
-const options = require("./options");
-const getBook = require("./getBook");
-const getOutputFolder = require("./getOutputFolder");
-const { clearCache } = require("../output/page-cache");
+import options from "./options";
+import getBook from "./getBook";
+import getOutputFolder from "./getOutputFolder";
+import { clearCache } from "../output/page-cache";
 
-module.exports = {
+export default {
     name: "build [book] [output]",
     description: "build a book",
     options: [options.log, options.format, options.timing, options.reaload],

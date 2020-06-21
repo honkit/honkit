@@ -1,4 +1,4 @@
-const indexArticleLevels = require("./indexArticleLevels");
+import indexArticleLevels from "./indexArticleLevels";
 
 /**
     Index levels in a part
@@ -21,4 +21,4 @@ function indexPartLevels(part, index) {
     });
 }
 
-module.exports = indexPartLevels;
+export default indexPartLevels;

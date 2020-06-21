@@ -1,5 +1,5 @@
-const generateMock = require("../testing/generateMock");
-const EbookGenerator = require("../ebook");
+import generateMock from "../testing/generateMock";
+import EbookGenerator from "../ebook";
 
 describe("EbookGenerator", () => {
     test("should generate a SUMMARY.html", () => {

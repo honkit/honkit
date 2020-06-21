@@ -1,6 +1,6 @@
-const fs = require("fs");
-const generateMock = require("../testing/generateMock");
-const WebsiteGenerator = require("../website");
+import fs from "fs";
+import generateMock from "../testing/generateMock";
+import WebsiteGenerator from "../website";
 
 describe("WebsiteGenerator", () => {
     test("should generate an index.html", async () => {

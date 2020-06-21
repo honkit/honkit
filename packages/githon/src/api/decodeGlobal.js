@@ -1,4 +1,4 @@
-const decodeConfig = require("./decodeConfig");
+import decodeConfig from "./decodeConfig";
 
 /**
     Decode changes from a JS API to a output object.
@@ -19,4 +19,4 @@ function decodeGlobal(output, result) {
     return output.set("book", book);
 }
 
-module.exports = decodeGlobal;
+export default decodeGlobal;

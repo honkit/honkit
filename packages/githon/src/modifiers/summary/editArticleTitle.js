@@ -1,4 +1,4 @@
-const mergeAtLevel = require("./mergeAtLevel");
+import mergeAtLevel from "./mergeAtLevel";
 
 /**
     Edit title of an article
@@ -14,4 +14,4 @@ function editArticleTitle(summary, level, newTitle) {
     });
 }
 
-module.exports = editArticleTitle;
+export default editArticleTitle;

@@ -1,4 +1,4 @@
-const indexLevels = require("./indexLevels");
+import indexLevels from "./indexLevels";
 
 /**
     Remove a part at given index
@@ -12,4 +12,4 @@ function removePart(summary, index) {
     return indexLevels(summary.set("parts", parts));
 }
 
-module.exports = removePart;
+export default removePart;

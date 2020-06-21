@@ -1,6 +1,6 @@
-const path = require("path");
-const Book = require("../models/book");
-const createNodeFS = require("../fs/node");
+import path from "path";
+import Book from "../models/book";
+import createNodeFS from "../fs/node";
 
 /**
     Return a book instance to work on from
@@ -20,4 +20,4 @@ function getBook(args, kwargs) {
     return book.setLogLevel(logLevel);
 }
 
-module.exports = getBook;
+export default getBook;

@@ -1,5 +1,5 @@
-const Api = require("../api");
-const callHook = require("./callHook");
+import Api from "../api";
+import callHook from "./callHook";
 
 /**
     Call a hook for a specific page
@@ -25,4 +25,4 @@ function callPageHook(name, output, page) {
     );
 }
 
-module.exports = callPageHook;
+export default callPageHook;

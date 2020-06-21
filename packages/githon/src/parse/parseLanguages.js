@@ -1,5 +1,5 @@
-const parseStructureFile = require("./parseStructureFile");
-const Languages = require("../models/languages");
+import parseStructureFile from "./parseStructureFile";
+import Languages from "../models/languages";
 
 /**
     Parse languages list from book
@@ -24,4 +24,4 @@ function parseLanguages(book) {
     });
 }
 
-module.exports = parseLanguages;
+export default parseLanguages;

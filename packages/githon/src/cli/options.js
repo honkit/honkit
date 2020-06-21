@@ -1,4 +1,4 @@
-const Logger = require("../utils/logger");
+import Logger from "../utils/logger";
 
 const logOptions = {
     name: "log",
@@ -30,7 +30,7 @@ const reloadOption = {
     defaults: false,
 };
 
-module.exports = {
+export default {
     log: logOptions,
     format: formatOption,
     timing: timingOption,

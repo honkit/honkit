@@ -14,4 +14,4 @@ function decodeGlobal(config, result) {
     return config.updateValues(values);
 }
 
-module.exports = decodeGlobal;
+export default decodeGlobal;

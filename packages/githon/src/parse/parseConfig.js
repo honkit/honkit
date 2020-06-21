@@ -1,7 +1,7 @@
-const Promise = require("../utils/promise");
+import Promise from "../utils/promise";
 
-const validateConfig = require("./validateConfig");
-const CONFIG_FILES = require("../constants/configFiles");
+import validateConfig from "./validateConfig";
+import CONFIG_FILES from "../constants/configFiles";
 
 /**
     Parse configuration from "book.json" or "book.js"
@@ -50,4 +50,4 @@ function parseConfig(book) {
     });
 }
 
-module.exports = parseConfig;
+export default parseConfig;

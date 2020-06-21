@@ -1,7 +1,7 @@
-const Immutable = require("immutable");
-const Promise = require("../../utils/promise");
-const Plugin = require("../../models/plugin");
-const validatePlugin = require("../validatePlugin");
+import Immutable from "immutable";
+import Promise from "../../utils/promise";
+import Plugin from "../../models/plugin";
+import validatePlugin from "../validatePlugin";
 
 describe("validatePlugin", () => {
     test("must not validate a not loaded plugin", () => {

@@ -1,11 +1,11 @@
-const Templating = require("../templating");
-const TemplateEngine = require("../models/templateEngine");
+import Templating from "../templating";
+import TemplateEngine from "../models/templateEngine";
 
-const Api = require("../api");
-const Plugins = require("../plugins");
+import Api from "../api";
+import Plugins from "../plugins";
 
-const defaultBlocks = require("../constants/defaultBlocks");
-const defaultFilters = require("../constants/defaultFilters");
+import defaultBlocks from "../constants/defaultBlocks";
+import defaultFilters from "../constants/defaultFilters";
 
 /**
     Create template engine for an output.
@@ -42,4 +42,4 @@ function createTemplateEngine(output) {
     });
 }
 
-module.exports = createTemplateEngine;
+export default createTemplateEngine;

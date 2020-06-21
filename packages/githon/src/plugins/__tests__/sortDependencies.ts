@@ -1,9 +1,10 @@
-const PluginDependency = require("../../models/pluginDependency");
+import PluginDependency from "../../models/pluginDependency";
 import sortDependencies from "../sortDependencies";
-const toNames = require("../toNames");
+import toNames from "../toNames";
 
 describe("sortDependencies", () => {
     test("must load themes after plugins", () => {
+        // @ts-expect-error
         const allPlugins = PluginDependency.listFromArray(["hello", "theme-test", "world"]);
 
         const sorted = sortDependencies(allPlugins);
@@ -13,6 +14,7 @@ describe("sortDependencies", () => {
     });
 
     test("must keep order of themes", () => {
+        // @ts-expect-error
         const allPlugins = PluginDependency.listFromArray([
             "theme-test",
             "theme-test1",

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     insertArticle: require("./insertArticle"),
     moveArticle: require("./moveArticle"),
     moveArticleAfter: require("./moveArticleAfter"),

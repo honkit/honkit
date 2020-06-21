@@ -1,4 +1,4 @@
-const Promise = require("../utils/promise");
+import Promise from "../utils/promise";
 
 /**
     Output all assets using a generator
@@ -27,4 +27,4 @@ function generateAssets(generator, output) {
     );
 }
 
-module.exports = generateAssets;
+export default generateAssets;

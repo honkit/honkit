@@ -1,7 +1,7 @@
-const extend = require("extend");
-const WebsiteGenerator = require("../website");
+import extend from "extend";
+import WebsiteGenerator from "../website";
 
-module.exports = extend({}, WebsiteGenerator, {
+export default extend({}, WebsiteGenerator, {
     name: "ebook",
     Options: require("./options"),
     onPage: require("./onPage"),

@@ -1,9 +1,9 @@
-const juice = require("juice");
+import juice from "juice";
 
-const WebsiteGenerator = require("../website");
-const JSONUtils = require("../../json");
-const Templating = require("../../templating");
-const Promise = require("../../utils/promise");
+import WebsiteGenerator from "../website";
+import JSONUtils from "../../json";
+import Templating from "../../templating";
+import Promise from "../../utils/promise";
 
 /**
     Generate PDF header/footer templates
@@ -39,4 +39,4 @@ function getPDFTemplate(output, type) {
     );
 }
 
-module.exports = getPDFTemplate;
+export default getPDFTemplate;

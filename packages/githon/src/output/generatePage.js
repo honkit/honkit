@@ -1,13 +1,13 @@
-const path = require("path");
+import path from "path";
 
-const Promise = require("../utils/promise");
-const error = require("../utils/error");
-const timing = require("../utils/timing");
+import Promise from "../utils/promise";
+import error from "../utils/error";
+import timing from "../utils/timing";
 
-const Templating = require("../templating");
-const JSONUtils = require("../json");
-const createTemplateEngine = require("./createTemplateEngine");
-const callPageHook = require("./callPageHook");
+import Templating from "../templating";
+import JSONUtils from "../json";
+import createTemplateEngine from "./createTemplateEngine";
+import callPageHook from "./callPageHook";
 
 /**
  * Prepare and generate HTML for a page
@@ -89,4 +89,4 @@ function generatePage(output, page) {
     );
 }
 
-module.exports = generatePage;
+export default generatePage;

@@ -1,10 +1,10 @@
-const path = require("path");
-const is = require("is");
+import path from "path";
+import is from "is";
 const Buffer = require("buffer").Buffer;
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
-const FS = require("../models/fs");
-const error = require("../utils/error");
+import FS from "../models/fs";
+import error from "../utils/error";
 
 /**
     Create a fake filesystem for unit testing GitBook.
@@ -92,4 +92,4 @@ function createMockFS(files) {
     });
 }
 
-module.exports = createMockFS;
+export default createMockFS;

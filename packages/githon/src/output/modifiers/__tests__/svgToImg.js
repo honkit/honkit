@@ -1,9 +1,9 @@
-const cheerio = require("cheerio");
-const tmp = require("tmp");
+import cheerio from "cheerio";
+import tmp from "tmp";
 
 describe("svgToImg", () => {
     let dir;
-    const svgToImg = require("../svgToImg");
+    import svgToImg from "../svgToImg";
 
     beforeEach(() => {
         dir = tmp.dirSync();

@@ -1,5 +1,5 @@
-const slug = require("github-slugid");
-const editHTMLElement = require("./editHTMLElement");
+import slug from "github-slugid";
+import editHTMLElement from "./editHTMLElement";
 
 /**
     Add ID to an heading
@@ -20,4 +20,4 @@ function addHeadingId($) {
     return editHTMLElement($, "h1,h2,h3,h4,h5,h6", addId);
 }
 
-module.exports = addHeadingId;
+export default addHeadingId;
