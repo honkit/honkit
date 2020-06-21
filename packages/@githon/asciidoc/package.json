@@ -36,7 +36,7 @@
     },
     "dependencies": {
         "@githon/html": "^3.3.8",
-        "asciidoctor.js": "1.5.5-4",
+        "asciidoctor": "^2.2.0",
         "lodash": "^4.13.1"
     },
     "devDependencies": {
