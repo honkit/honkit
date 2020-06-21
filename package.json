@@ -1,63 +1,63 @@
 {
-    "name": "githon",
-    "private": true,
-    "homepage": "https://github.com/githon/githon",
-    "bugs": {
-        "url": "https://github.com/githon/githon/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/githon/githon.git"
-    },
-    "license": "Apache-2.0",
-    "authors": [
-        "azu. <azuciao@gmail.com>",
-        "GitBook Inc. <contact@gitbook.com>"
-    ],
-    "workspaces": [
-        "packages/*",
-        "packages/@githon/*",
-        "examples/*"
-    ],
-    "scripts": {
-        "lint": "eslint .",
-        "build": "lerna run build",
-        "clean": "lerna run clean",
-        "test": "lerna run test",
-        "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
-        "versionup": "lerna version --conventional-commits",
-        "versionup:patch": "lerna version patch --conventional-commits",
-        "versionup:minor": "lerna version minor --conventional-commits",
-        "versionup:major": "lerna version major --conventional-commits",
-        "release": "lerna publish from-package",
-        "githon:build": "githon build",
-        "githon:serve": "githon serve"
-    },
-    "devDependencies": {
-        "@types/cheerio": "^0.22.18",
-        "@types/jest": "^26.0.0",
-        "@types/jsonschema": "^1.1.1",
-        "eslint": "^7.2.0",
-        "husky": "^4.2.5",
-        "lerna": "^3.22.1",
-        "lint-staged": "^10.2.11",
-        "prettier": "^2.0.5",
-        "ts-jest": "^26.1.0",
-        "typescript": "^3.9.5"
-    },
-    "prettier": {
-        "singleQuote": false,
-        "printWidth": 120,
-        "tabWidth": 4
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{js,jsx,ts,tsx,css}": [
-            "prettier --write"
-        ]
+  "name": "honkit",
+  "private": true,
+  "homepage": "https://github.com/honkit/githon",
+  "bugs": {
+    "url": "https://github.com/honkit/githon/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/honkit/honkit.git"
+  },
+  "license": "Apache-2.0",
+  "authors": [
+    "azu. <azuciao@gmail.com>",
+    "GitBook Inc. <contact@gitbook.com>"
+  ],
+  "workspaces": [
+    "packages/*",
+    "packages/@honkit/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "build": "lerna run build",
+    "clean": "lerna run clean",
+    "test": "lerna run test",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "versionup": "lerna version --conventional-commits",
+    "versionup:patch": "lerna version patch --conventional-commits",
+    "versionup:minor": "lerna version minor --conventional-commits",
+    "versionup:major": "lerna version major --conventional-commits",
+    "release": "lerna publish from-package",
+    "honkit:build": "honkit build",
+    "honkit:serve": "honkit serve"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.18",
+    "@types/jest": "^26.0.0",
+    "@types/jsonschema": "^1.1.1",
+    "eslint": "^7.2.0",
+    "husky": "^4.2.5",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "printWidth": 120,
+    "tabWidth": 4
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css}": [
+      "prettier --write"
+    ]
+  }
 }

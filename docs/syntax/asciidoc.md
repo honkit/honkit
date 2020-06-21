@@ -1,10 +1,10 @@
 # AsciiDoc
 
-Since version `2.0.0`, GitHon can also accept AsciiDoc as an input format.
+Since version `2.0.0`, HonKit can also accept AsciiDoc as an input format.
 
 Please refer to the [AsciiDoc Syntax Quick Reference](http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/) for more informations about the format.
 
-Just like for markdown, GitHon is using some special files to extract structures: `README.adoc`, `SUMMARY.adoc`, `LANGS.adoc` and `GLOSSARY.adoc`.
+Just like for markdown, HonKit is using some special files to extract structures: `README.adoc`, `SUMMARY.adoc`, `LANGS.adoc` and `GLOSSARY.adoc`.
 
 ### README.adoc
 

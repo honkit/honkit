@@ -7,7 +7,7 @@ The following is a reference of the available data during book's parsing and the
 | Variable | Description |
 | -------- | ----------- |
 | `book` | Book-wide information + configuration settings from `book.json`. See below for details. |
-| `gitbook` | GitHon specific information |
+| `gitbook` | HonKit specific information |
 | `page` | Current page specific information |
 | `file` | File associated with the current page specific information |
 | `readme` | Information about the Readme |
@@ -24,14 +24,14 @@ The following is a reference of the available data during book's parsing and the
 | `book.[CONFIGURATION_DATA]` | All the `variables` set via the `book.json` are available through the book variable. |
 | `book.language` | Current language for a multilingual book |
 
-### GitHon Variables
+### HonKit Variables
 
-TODO: We use `gitbook` variable for backward compatible. To support `githon` variables.
+TODO: We use `gitbook` variable for backward compatible. To support `honkit` variables.
 
 | Variable | Description |
 | -------- | ----------- |
-| `gitbook.time` | The current time (when you run the `githon` command) . |
-| `gitbook.version` | Version of GitHon used to generate the book |
+| `gitbook.time` | The current time (when you run the `honkit` command) . |
+| `gitbook.version` | Version of HonKit used to generate the book |
 
 ### File Variables
 

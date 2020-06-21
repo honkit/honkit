@@ -1,20 +1,20 @@
 # Create and publish a plugin
 
-A GitHon plugin is a node package published on NPM that follow a defined convention.
+A HonKit plugin is a node package published on NPM that follow a defined convention.
 
 ## Structure
 
 #### package.json
 
-The `package.json` is a manifest format for describing **Node.js modules**. GitHon plugins are built on top of Node modules. It declares dependencies, version, ownership, and other information required to run a plugin in GitHon. This document describes the schema in detail.
+The `package.json` is a manifest format for describing **Node.js modules**. HonKit plugins are built on top of Node modules. It declares dependencies, version, ownership, and other information required to run a plugin in HonKit. This document describes the schema in detail.
 
-A plugin manifest `package.json` can also contain details about the required configuration. The configuration schema is defined in the `githon` field of the `package.json` (This field follow the [JSON-Schema](http://json-schema.org) guidelines):
+A plugin manifest `package.json` can also contain details about the required configuration. The configuration schema is defined in the `honkit` field of the `package.json` (This field follow the [JSON-Schema](http://json-schema.org) guidelines):
 
 ```js
 {
-    "name": "githon-plugin-mytest",
+    "name": "honkit-plugin-mytest",
     "version": "0.0.1",
-    "description": "This is my first GitHon plugin",
+    "description": "This is my first HonKit plugin",
     "engines": {
         "githon": ">1.x.x"
     },
@@ -34,13 +34,13 @@ You can learn more about `package.json` from the [NPM documentation](https://doc
 
 The **package name** must begin with following patterns:
 
-- `@<scope>/githon-plugin-`
-- `githon-plugin-`
+- `@<scope>/honkit-plugin-`
+- `honkit-plugin-`
 - `@<scope>/gitbook-plugin-`
 - `gitbook-plugin-`
 
 
-And the **package engines** should contains `githon` or `gitbook`.
+And the **package engines** should contains `honkit` or `gitbook`.
 
 #### index.js
 
@@ -61,7 +61,7 @@ module.exports = {
 
 ## Publish your plugin
 
-GitHon plugins can be published on [NPM](https://www.npmjs.com).
+HonKit plugins can be published on [NPM](https://www.npmjs.com).
 
 To publish a new plugin, you need to create an account on [npmjs.com](https://www.npmjs.com) then publish it from the command line:
 

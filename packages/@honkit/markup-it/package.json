@@ -1,0 +1,55 @@
+{
+  "name": "@honkit/markup-it",
+  "version": "3.3.8",
+  "description": "Pipeline for working with markup input (for example Markdown)",
+  "keywords": [
+    "draft-js",
+    "markdown",
+    "asciidoc",
+    "gitbook"
+  ],
+  "homepage": "https://github.com/GitbookIO/markup-it#readme",
+  "bugs": {
+    "url": "https://github.com/GitbookIO/markup-it/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitbookIO/draft-markup.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Samy Pesse <samy@gitbook.com>",
+  "files": [
+    "lib",
+    "syntaxes",
+    "!__tests__"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "clean": "rimraf lib/",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "escape-string-regexp": "^4.0.0",
+    "html-entities": "^1.3.1",
+    "htmlparser2": "^4.1.0",
+    "immutable": "^3.7.6",
+    "is": "^3.3.0",
+    "ltrim": "^1.0.0",
+    "object-values": "^2.0.0",
+    "range-utils": "^1.1.0",
+    "rtrim": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "jsdom": "^16.2.2",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.0.1",
+    "rimraf": "^3.0.2",
+    "should": "^13.2.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

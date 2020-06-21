@@ -366,6 +366,53 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@githon/asciidoc@^3.3.8":
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/@githon/asciidoc/-/asciidoc-3.3.8.tgz#51f9ca378d9a28a54b2d3602671f99138036c3b5"
+  integrity sha512-/S8Vu+wRfzPlPU11pmlVI1RFGrcfpLuID+huTQy8ienabOVvLBx4jNQVOf8uKTJY8bB+fSCraAu/T9psNMpt7A==
+  dependencies:
+    "@githon/html" "^3.3.8"
+    asciidoctor.js "1.5.5-4"
+    lodash "^4.13.1"
+
+"@githon/githon-plugin-theme-default@^3.3.9":
+  version "3.3.9"
+  resolved "https://registry.yarnpkg.com/@githon/githon-plugin-theme-default/-/githon-plugin-theme-default-3.3.9.tgz#df311c383e46ce99688a99693099c9a42ffa3313"
+  integrity sha512-NmuKDhVJh7Yvc69zK5+kD5PF7D/8i4M1BNB5I8XL8Nc4KJpbAnZaeCGVT1RgWkAomfEi2bv+nPmhVztSQ5Z1yw==
+
+"@githon/html@^3.3.8":
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/@githon/html/-/html-3.3.8.tgz#005b6fcaf0d2a3a777d913dd0664c7ed9299e268"
+  integrity sha512-sis5uqDpMOg9tDHHh7mynPyTXPhkggHJhW+lZGoIogufCNpov6rPaOcpkeA+cALUGyCokr/GJiBjTq04SwS/+A==
+  dependencies:
+    cheerio "^0.20.0 && >=0.20.0"
+    lodash "^4.13.1"
+    q "^1.1.2"
+
+"@githon/markdown@^3.3.8":
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/@githon/markdown/-/markdown-3.3.8.tgz#1c47ffb33dd829d10a71e8507dfb773a1092007f"
+  integrity sha512-h/+rWxAjyDwVa47RMQRapsGirczoWFEj5LFGe8pme2R6AhnMvPVQ2/u7cgRJqbCJ2dd3HlpAu2Fi9RdlK26p3w==
+  dependencies:
+    "@githon/html" "^3.3.8"
+    "@githon/markup-it" "^3.3.8"
+    markdown-escape "^1.0.1"
+
+"@githon/markup-it@^3.3.8":
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/@githon/markup-it/-/markup-it-3.3.8.tgz#ed47450f2ff094f6754dab3064893fdda917c3ef"
+  integrity sha512-VwRIEvPN0Qclbq6ozxcu54aa03c+szVJ2f2WDWBfnHMHRxLqaO7DI8Gfskevukhjq0DyvyXp6qM7S0bXRZPLNQ==
+  dependencies:
+    escape-string-regexp "^4.0.0"
+    html-entities "^1.3.1"
+    htmlparser2 "^4.1.0"
+    immutable "^3.7.6"
+    is "^3.3.0"
+    ltrim "^1.0.0"
+    object-values "^2.0.0"
+    range-utils "^1.1.0"
+    rtrim "^1.0.0"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1615,7 +1662,12 @@ acorn-node@^1.2.0, acorn-node@^1.3.0, acorn-node@^1.5.2:
     acorn-walk "^7.0.0"
     xtend "^4.0.2"
 
-acorn-walk@^7.0.0, acorn-walk@^7.1.1:
+acorn-walk@^7.0.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-7.2.0.tgz#0de889a601203909b0fbe07b8938dc21d2e967bc"
+  integrity sha512-OPdCF6GsMIP+Az+aWfAAOEt2/+iVDKE7oy6lJ098aoe59oAmK76qV6Gw60SbZ8jHuG2wH058GF4pLFbYamYrVA==
+
+acorn-walk@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-7.1.1.tgz#345f0dffad5c735e7373d2fec9a1023e6a44b83e"
   integrity sha512-wdlPY2tm/9XBr7QkKlq0WQVgiuGTX6YWPyRyBviSoScBuLfTVQhvwg6wJ369GJ/1nPfTLMfnrFIfjqVg6d+jQQ==
@@ -1883,6 +1935,14 @@ asciidoctor.js@1.5.3-preview.1:
   dependencies:
     opal-npm-wrapper "^0.1.1"
     xmlhttprequest "~1.6.0"
+
+asciidoctor.js@1.5.5-4:
+  version "1.5.5-4"
+  resolved "https://registry.yarnpkg.com/asciidoctor.js/-/asciidoctor.js-1.5.5-4.tgz#6f2b8389ea6e5ec7f25e78436c69773d1eb0f98b"
+  integrity sha1-byuDiepuXsfyXnhDbGl3PR6w+Ys=
+  dependencies:
+    opal-runtime "0.10.2"
+    xmlhttprequest "~1.7.0"
 
 asciidoctor@^2.2.0:
   version "2.2.0"
@@ -3737,9 +3797,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 elliptic@^6.0.0, elliptic@^6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.2.tgz#05c5678d7173c049d8ca433552224a495d0e3762"
-  integrity sha512-f4x70okzZbIQl/NSRLkI/+tteV/9WqL98zx+SQ69KbXxmVrmjwsNUPn/gYJJ0sHvEak24cZgHIPegRePAtA/xw==
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.3.tgz#cb59eb2efdaf73a0bd78ccd7015a62ad6e0f93d6"
+  integrity sha512-IMqzv5wNQf+E6aHeIqATs0tOLeOTwj1QKbRcS3jBbYkl5oLAserA8yJTT7/VyHUYG91PRmPyeQDObKLPpeS4dw==
   dependencies:
     bn.js "^4.4.0"
     brorand "^1.0.1"
@@ -4732,6 +4792,65 @@ gitconfiglocal@^1.0.0:
   dependencies:
     ini "^1.3.2"
 
+githon@^3.3.10:
+  version "3.3.10"
+  resolved "https://registry.yarnpkg.com/githon/-/githon-3.3.10.tgz#d7ce5f48c36cdf1f7b1ed09c7633f1da0bf2a2ae"
+  integrity sha512-zsD7GBHqj9MpsaMuUGPCTnfGdt3cT1qzWARrLr55KMBSRhY9k+R3k99xz497vKF83Muhm+knr4apVmJKAD+YhQ==
+  dependencies:
+    "@githon/asciidoc" "^3.3.8"
+    "@githon/githon-plugin-theme-default" "^3.3.9"
+    "@githon/markdown" "^3.3.8"
+    bash-color "0.0.4"
+    cheerio "0.20.0"
+    chokidar "^3.3.0"
+    commander "^5.1.0"
+    cp "0.2.0"
+    cpr "3.0.1"
+    crc "3.8.0"
+    destroy "1.0.4"
+    direction "0.1.5"
+    dom-serializer "0.1.0"
+    error "7.0.2"
+    escape-html "^1.0.3"
+    escape-string-regexp "4.0.0"
+    extend "^3.0.0"
+    flat-cache "^2.0.1"
+    front-matter "^2.1.0"
+    gitbook-plugin-fontsettings "^2.0.0"
+    gitbook-plugin-highlight "^2.0.3"
+    gitbook-plugin-livereload "0.0.1"
+    gitbook-plugin-lunr "^1.2.0"
+    gitbook-plugin-search "^2.2.1"
+    github-slugid "1.0.1"
+    global-npm "^0.4.0"
+    i18n-t "1.0.1"
+    ignore "5.1.8"
+    immutable "^3.8.1"
+    is "^3.1.0"
+    js-yaml "^3.6.1"
+    json-schema-defaults "0.1.1"
+    jsonschema "1.1.0"
+    juice "^6.0.0"
+    memoize-one "^5.1.1"
+    mkdirp "1.0.4"
+    moment "^2.24.0"
+    nunjucks "^3.2.0"
+    nunjucks-do "1.0.0"
+    object-path "^0.9.2"
+    omit-keys "^0.1.0"
+    open "^7.0.0"
+    q "1.5.1"
+    read-installed "^4.0.3"
+    request "^2.88.0"
+    resolve "1.17.0"
+    semver "5.1.0"
+    send "^0.17.1"
+    spawn-cmd "0.0.2"
+    tiny-lr "^1.1.1"
+    tmp "0.0.28"
+    try-resolve "^1.0.1"
+    urijs "1.18.0"
+
 github-slugid@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/github-slugid/-/github-slugid-1.0.1.tgz#bccdd0815bfad69d8a359fa4fd65947d606ec3c0"
@@ -4756,6 +4875,17 @@ glob-to-regexp@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.3.0.tgz#8c5a1494d2066c570cc3bfe4496175acc4d502ab"
   integrity sha1-jFoUlNIGbFcMw7/kSWF1rMTVAqs=
+
+glob@6.0.4:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-6.0.4.tgz#0f08860f6a155127b2fadd4f9ce24b1aab6e4d22"
+  integrity sha1-DwiGD2oVUSey+t1PnOJLGqtuTSI=
+  dependencies:
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "2 || 3"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
 
 glob@7.1.3:
   version "7.1.3"
@@ -7641,6 +7771,13 @@ opal-npm-wrapper@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/opal-npm-wrapper/-/opal-npm-wrapper-0.1.1.tgz#9c94d20be4e4ba2df2a92da6bbde6f3213ac2095"
   integrity sha1-nJTSC+Tkui3yqS2mu95vMhOsIJU=
+
+opal-runtime@0.10.2:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/opal-runtime/-/opal-runtime-0.10.2.tgz#b2c48a234b8db94e2a1d49b8fd45b8db9d91c929"
+  integrity sha1-ssSKI0uNuU4qHUm4/UW4252RySk=
+  dependencies:
+    glob "6.0.4"
 
 open@^7.0.0:
   version "7.0.4"
@@ -10717,6 +10854,11 @@ xmlhttprequest@~1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/xmlhttprequest/-/xmlhttprequest-1.6.0.tgz#493d285f59266fdcb8d4fefd25345a7b693c966c"
   integrity sha1-ST0oX1kmb9y41P79JTRae2k8lmw=
+
+xmlhttprequest@~1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/xmlhttprequest/-/xmlhttprequest-1.7.0.tgz#dc697a8df0258afacad526c1c296b1bdd12c4ab3"
+  integrity sha1-3Gl6jfAlivrK1SbBwpaxvdEsSrM=
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@^4.0.2, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.2"

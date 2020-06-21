@@ -1,18 +1,18 @@
 {
-    "name": "book",
-    "version": "3.3.10",
-    "private": true,
-    "description": "",
-    "keywords": [],
-    "license": "MIT",
-    "author": "azu",
-    "main": "index.js",
-    "scripts": {
-        "build": "githon build",
-        "dev": "githon serve",
-        "help": "githon --help"
-    },
-    "devDependencies": {
-        "githon": "^3.3.10"
-    }
+  "name": "book",
+  "version": "3.3.10",
+  "private": true,
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "azu",
+  "main": "index.js",
+  "scripts": {
+    "build": "honkit build",
+    "dev": "honkit serve",
+    "help": "honkit --help"
+  },
+  "devDependencies": {
+    "honkit": "^3.3.10"
+  }
 }
