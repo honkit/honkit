@@ -4,3 +4,4 @@ _book/**
 **/test/**
 examples/**
 theme-default/
+packages/*/lib

@@ -1,61 +1,61 @@
 {
-  "name": "githon",
-  "private": true,
-  "homepage": "https://github.com/githon/githon",
-  "bugs": {
-    "url": "https://github.com/githon/githon/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/githon/githon.git"
-  },
-  "license": "Apache-2.0",
-  "authors": [
-    "azu. <azuciao@gmail.com>",
-    "GitBook Inc. <contact@gitbook.com>"
-  ],
-  "workspaces": [
-    "packages/*",
-    "packages/@githon/*",
-    "examples/*"
-  ],
-  "scripts": {
-    "lint": "eslint .",
-    "build": "lerna run build",
-    "test": "lerna run test",
-    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
-    "versionup": "lerna version --conventional-commits",
-    "versionup:patch": "lerna version patch --conventional-commits",
-    "versionup:minor": "lerna version minor --conventional-commits",
-    "versionup:major": "lerna version major --conventional-commits",
-    "release": "lerna publish from-package",
-    "githon:build": "githon build",
-    "githon:serve": "githon serve"
-  },
-  "devDependencies": {
-    "@types/jest": "^26.0.0",
-    "@types/jsonschema": "^1.1.1",
-    "eslint": "^7.2.0",
-    "husky": "^4.2.5",
-    "lerna": "^3.22.1",
-    "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5",
-    "ts-jest": "^26.1.0",
-    "typescript": "^3.9.5"
-  },
-  "prettier": {
-    "singleQuote": false,
-    "printWidth": 120,
-    "tabWidth": 4
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "githon",
+    "private": true,
+    "homepage": "https://github.com/githon/githon",
+    "bugs": {
+        "url": "https://github.com/githon/githon/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/githon/githon.git"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        "azu. <azuciao@gmail.com>",
+        "GitBook Inc. <contact@gitbook.com>"
+    ],
+    "workspaces": [
+        "packages/*",
+        "packages/@githon/*",
+        "examples/*"
+    ],
+    "scripts": {
+        "lint": "eslint .",
+        "build": "yarn workspaces run build",
+        "test": "lerna run test",
+        "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+        "versionup": "lerna version --conventional-commits",
+        "versionup:patch": "lerna version patch --conventional-commits",
+        "versionup:minor": "lerna version minor --conventional-commits",
+        "versionup:major": "lerna version major --conventional-commits",
+        "release": "lerna publish from-package",
+        "githon:build": "githon build",
+        "githon:serve": "githon serve"
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.0",
+        "@types/jsonschema": "^1.1.1",
+        "eslint": "^7.2.0",
+        "husky": "^4.2.5",
+        "lerna": "^3.22.1",
+        "lint-staged": "^10.2.11",
+        "prettier": "^2.0.5",
+        "ts-jest": "^26.1.0",
+        "typescript": "^3.9.5"
+    },
+    "prettier": {
+        "singleQuote": false,
+        "printWidth": 120,
+        "tabWidth": 4
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx,css}": [
+            "prettier --write"
+        ]
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,css}": [
-      "prettier --write"
-    ]
-  }
 }
