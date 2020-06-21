@@ -1,9 +1,9 @@
 // Return N time a string
-function ns(s, n) {
+function ns(s: string, n: number) {
     return Array(n + 1).join(s);
 }
 
-module.exports = {
+export default {
     onTitleStart: function (level) {
         return `${ns("=", level)} `;
     },

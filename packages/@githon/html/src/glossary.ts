@@ -1,4 +1,5 @@
-const dom = require("./dom");
+// const dom = require("./dom");
+import * as dom from "./dom";
 
 /**
     Parse an HTML content into a list of glossary entry
@@ -6,17 +7,17 @@ const dom = require("./dom");
     @param {String} html
     @return {Array}
 */
-function parseGlossary(html) {
-    const $ = dom.parse(html);
+function parseGlossary(html: string) {
+    const $: any = dom.parse(html);
 
-    const entries = [];
+    const entries: Array<{ name: string; description: any }> = [];
 
     $("h2").each(function () {
         const $heading = $(this);
         const $next = $heading.next();
         const $p = $next.is("p") ? $next.first() : $next.find("p").first();
 
-        const entry = {};
+        const entry: any = {};
 
         entry.name = $heading.text();
         entry.description = $p.text();
@@ -26,5 +27,4 @@ function parseGlossary(html) {
 
     return entries;
 }
-
-module.exports = parseGlossary;
+export default parseGlossary;

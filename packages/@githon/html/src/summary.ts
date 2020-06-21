@@ -1,4 +1,4 @@
-const dom = require("./dom");
+import * as dom from "./dom";
 
 const SELECTOR_LIST = "ol, ul";
 const SELECTOR_LINK = "> a, p > a";
@@ -28,7 +28,7 @@ function parseList($ul, $) {
     const articles = [];
 
     $ul.children("li").each(function () {
-        const article = {};
+        const article: any = {};
         const $li = $(this);
 
         // Get text for the entry
@@ -129,8 +129,8 @@ function getPartTitle(el, $) {
     @param {String} html
     @return {Object}
 */
-function parseSummary(html) {
-    const $ = dom.parse(html);
+function parseSummary(html: string) {
+    const $: any = dom.parse(html);
     const $root = dom.cleanup(dom.root($), $);
 
     const parts = findParts($root, $);
@@ -151,4 +151,4 @@ function parseSummary(html) {
     };
 }
 
-module.exports = parseSummary;
+export default parseSummary;

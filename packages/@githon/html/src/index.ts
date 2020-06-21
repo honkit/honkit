@@ -1,12 +1,18 @@
-const _ = require("lodash");
-const ToText = require("./totext");
+import _ from "lodash";
+import ToText from "./totext";
+// import
+import summary from "./summary";
+import glossary from "./glossary";
+import langs from "./langs";
+import readme from "./readme";
+import page from "./page";
 
 const htmlParser = {
-    summary: require("./summary"),
-    glossary: require("./glossary"),
-    langs: require("./langs"),
-    readme: require("./readme"),
-    page: require("./page"),
+    summary,
+    glossary,
+    langs,
+    readme,
+    page,
 };
 
 // Compose a function with a transform function for the first argument only
@@ -20,7 +26,7 @@ function compose(toHTML, fn) {
 }
 
 // Create a GitBook parser from an HTML converter
-function createParser(toHTML, toText) {
+function createParser(toHTML, toText = undefined) {
     if (_.isFunction(toHTML)) {
         toHTML = {
             inline: toHTML,
@@ -28,7 +34,7 @@ function createParser(toHTML, toText) {
         };
     }
 
-    const parser = {
+    const parser: any = {
         summary: compose(toHTML.block, htmlParser.summary),
         glossary: compose(toHTML.block, htmlParser.glossary),
         langs: compose(toHTML.block, htmlParser.langs),
@@ -37,6 +43,7 @@ function createParser(toHTML, toText) {
         inline: compose(toHTML.inline, htmlParser.page),
     };
 
+    // @ts-expect-error
     const _toText = new ToText(toText);
     parser.summary.toText = _toText.summary;
     parser.langs.toText = _toText.langs;

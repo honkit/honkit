@@ -2,7 +2,7 @@ var fs = require("fs");
 var path = require("path");
 var assert = require("assert");
 
-var langs = require("../lib").langs;
+var langs = require("../").langs;
 
 var LEXED;
 

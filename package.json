@@ -34,6 +34,7 @@
         "githon:serve": "githon serve"
     },
     "devDependencies": {
+        "@types/cheerio": "^0.22.18",
         "@types/jest": "^26.0.0",
         "@types/jsonschema": "^1.1.1",
         "eslint": "^7.2.0",

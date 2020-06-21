@@ -1,4 +1,4 @@
-const _ = require("lodash");
+import _ from "lodash";
 
 /*
     This class is extended by gitbook-markdown and gitbook-asciidoc
@@ -7,6 +7,7 @@ const _ = require("lodash");
 
 function ToText(markup) {
     if (!(this instanceof ToText)) {
+        // @ts-expect-error
         return new ToText(markup);
     }
 
@@ -174,4 +175,4 @@ ToText.prototype._spaces = function (n, s) {
     return Array(n + 1).join(s || " ");
 };
 
-module.exports = ToText;
+export default ToText;

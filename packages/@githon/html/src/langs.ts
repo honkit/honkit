@@ -1,4 +1,4 @@
-const parseSummary = require("./summary");
+import parseSummary from "./summary";
 
 /**
     Parse an HTML content into a list of language
@@ -15,4 +15,4 @@ function parseLangs(content) {
     return [];
 }
 
-module.exports = parseLangs;
+export default parseLangs;

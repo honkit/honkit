@@ -9,5 +9,4 @@ function parsePage(html) {
         content: html,
     };
 }
-
-module.exports = parsePage;
+export default parsePage;

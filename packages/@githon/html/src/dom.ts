@@ -1,5 +1,5 @@
-const _ = require("lodash");
-const cheerio = require("cheerio");
+import _ from "lodash";
+import cheerio from "cheerio";
 
 /**
     Parse an HTML string and return its content
@@ -7,7 +7,7 @@ const cheerio = require("cheerio");
     @param {String}
     @return {cheerio.DOM}
 */
-function parse(html) {
+export function parse(html: string) {
     const $ = cheerio.load(html);
     const $el = $("html, body").first();
 
@@ -20,7 +20,7 @@ function parse(html) {
     @param {cheerio.DOM}
     @return {cheerio.Node}
 */
-function root($) {
+export function root($) {
     const $el = $("html, body, > div").first();
     return $el.length > 0 ? $el : $.root();
 }
@@ -31,7 +31,7 @@ function root($) {
     @param {cheerio.Node}
     @return {String}
 */
-function textNode($el) {
+export function textNode($el) {
     return _.reduce(
         $el.children,
         (text, e) => {
@@ -49,7 +49,7 @@ function textNode($el) {
     @param {cheerio.DOM}
     @return {cheerio.Node}
 */
-function cleanup($el, $) {
+export function cleanup($el, $) {
     $el.find("div").each(function () {
         const $div = $(this);
         cleanup($div, $);
@@ -59,10 +59,3 @@ function cleanup($el, $) {
 
     return $el;
 }
-
-module.exports = {
-    parse: parse,
-    textNode: textNode,
-    root: root,
-    cleanup: cleanup,
-};

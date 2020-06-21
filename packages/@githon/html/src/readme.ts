@@ -1,4 +1,4 @@
-const dom = require("./dom");
+import * as dom from "./dom";
 
 /**
     Parse an HTML content into metadata about a readme
@@ -7,7 +7,7 @@ const dom = require("./dom");
     @return {Object}
 */
 function parseReadme(html) {
-    const $ = dom.parse(html);
+    const $: any = dom.parse(html);
 
     return {
         title: $("h1:first-child").text().trim(),
@@ -15,5 +15,4 @@ function parseReadme(html) {
     };
 }
 
-// Exports
-module.exports = parseReadme;
+export default parseReadme;
