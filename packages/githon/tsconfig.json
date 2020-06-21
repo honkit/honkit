@@ -1,0 +1,12 @@
+{
+    "exclude": ["lib", "src/**/__tests__"],
+    "include": ["src"],
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "lib",
+        "rootDir": "src",
+        "target": "es2019",
+        "module": "commonjs",
+        "allowJs": true
+    }
+}

@@ -25,6 +25,7 @@
     ],
     "main": "lib/index.js",
     "scripts": {
+        "build": "tsc -p .",
         "lint": "eslint .",
         "test": "mocha ./testing/setup.js \"./lib/**/*/__tests__/*.js\" \"./lib/__tests__/*.js\" \"./syntaxes/**/*/__tests__/*.js\" --reporter=list --timeout=10000"
     },

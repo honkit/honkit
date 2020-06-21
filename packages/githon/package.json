@@ -1,102 +1,103 @@
 {
-  "name": "githon",
-  "version": "3.3.10",
-  "description": "Githon is building beautiful books using GitHub/Git and Markdown.",
-  "keywords": [
-    "git",
-    "book",
-    "githon",
-    "gitbook"
-  ],
-  "homepage": "https://github.com/githon/githon",
-  "bugs": {
-    "url": "https://github.com/githon/githon/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/githon/githon.git"
-  },
-  "license": "Apache-2.0",
-  "author": "azu <azuciao@gmail.com>",
-  "contributors": [
-    {
-      "name": "Aaron O'Mullan",
-      "email": "aaron@gitbook.com"
+    "name": "githon",
+    "version": "3.3.10",
+    "description": "Githon is building beautiful books using GitHub/Git and Markdown.",
+    "keywords": [
+        "git",
+        "book",
+        "githon",
+        "gitbook"
+    ],
+    "homepage": "https://github.com/githon/githon",
+    "bugs": {
+        "url": "https://github.com/githon/githon/issues"
     },
-    {
-      "name": "Samy Pessé",
-      "email": "samy@gitbook.com"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/githon/githon.git"
+    },
+    "license": "Apache-2.0",
+    "author": "azu <azuciao@gmail.com>",
+    "contributors": [
+        {
+            "name": "Aaron O'Mullan",
+            "email": "aaron@gitbook.com"
+        },
+        {
+            "name": "Samy Pessé",
+            "email": "samy@gitbook.com"
+        }
+    ],
+    "files": [
+        "bin",
+        "lib",
+        "!__tests__"
+    ],
+    "main": "lib/index.js",
+    "browser": "./lib/browser.js",
+    "bin": {
+        "githon": "./bin/githon.js"
+    },
+    "scripts": {
+        "build": "rimraf lib && tsc -p .",
+        "test": "jest src"
+    },
+    "dependencies": {
+        "@githon/asciidoc": "^3.3.8",
+        "@githon/githon-plugin-theme-default": "^3.3.9",
+        "@githon/markdown": "^3.3.8",
+        "bash-color": "0.0.4",
+        "cheerio": "0.20.0",
+        "chokidar": "^3.3.0",
+        "commander": "^5.1.0",
+        "cp": "0.2.0",
+        "cpr": "3.0.1",
+        "crc": "3.8.0",
+        "destroy": "1.0.4",
+        "direction": "0.1.5",
+        "dom-serializer": "0.1.0",
+        "error": "7.0.2",
+        "escape-html": "^1.0.3",
+        "escape-string-regexp": "4.0.0",
+        "extend": "^3.0.0",
+        "flat-cache": "^2.0.1",
+        "front-matter": "^2.1.0",
+        "gitbook-plugin-fontsettings": "^2.0.0",
+        "gitbook-plugin-highlight": "^2.0.3",
+        "gitbook-plugin-livereload": "0.0.1",
+        "gitbook-plugin-lunr": "^1.2.0",
+        "gitbook-plugin-search": "^2.2.1",
+        "github-slugid": "1.0.1",
+        "global-npm": "^0.4.0",
+        "i18n-t": "1.0.1",
+        "ignore": "5.1.8",
+        "immutable": "^3.8.1",
+        "is": "^3.1.0",
+        "js-yaml": "^3.6.1",
+        "json-schema-defaults": "0.1.1",
+        "jsonschema": "1.1.0",
+        "juice": "^6.0.0",
+        "memoize-one": "^5.1.1",
+        "mkdirp": "1.0.4",
+        "moment": "^2.24.0",
+        "nunjucks": "^3.2.0",
+        "nunjucks-do": "1.0.0",
+        "object-path": "^0.9.2",
+        "omit-keys": "^0.1.0",
+        "open": "^7.0.0",
+        "q": "1.5.1",
+        "read-installed": "^4.0.3",
+        "request": "^2.88.0",
+        "resolve": "1.17.0",
+        "semver": "5.1.0",
+        "send": "^0.17.1",
+        "spawn-cmd": "0.0.2",
+        "tiny-lr": "^1.1.1",
+        "tmp": "0.0.28",
+        "try-resolve": "^1.0.1",
+        "urijs": "1.18.0"
+    },
+    "devDependencies": {
+        "jest": "^26.0.1"
     }
-  ],
-  "files": [
-    "bin",
-    "lib",
-    "!__tests__"
-  ],
-  "main": "lib/index.js",
-  "browser": "./lib/browser.js",
-  "bin": {
-    "githon": "./bin/githon.js"
-  },
-  "scripts": {
-    "test": "jest"
-  },
-  "dependencies": {
-    "@githon/asciidoc": "^3.3.8",
-    "@githon/githon-plugin-theme-default": "^3.3.9",
-    "@githon/markdown": "^3.3.8",
-    "bash-color": "0.0.4",
-    "cheerio": "0.20.0",
-    "chokidar": "^3.3.0",
-    "commander": "^5.1.0",
-    "cp": "0.2.0",
-    "cpr": "3.0.1",
-    "crc": "3.8.0",
-    "destroy": "1.0.4",
-    "direction": "0.1.5",
-    "dom-serializer": "0.1.0",
-    "error": "7.0.2",
-    "escape-html": "^1.0.3",
-    "escape-string-regexp": "4.0.0",
-    "extend": "^3.0.0",
-    "flat-cache": "^2.0.1",
-    "front-matter": "^2.1.0",
-    "gitbook-plugin-fontsettings": "^2.0.0",
-    "gitbook-plugin-highlight": "^2.0.3",
-    "gitbook-plugin-livereload": "0.0.1",
-    "gitbook-plugin-lunr": "^1.2.0",
-    "gitbook-plugin-search": "^2.2.1",
-    "github-slugid": "1.0.1",
-    "global-npm": "^0.4.0",
-    "i18n-t": "1.0.1",
-    "ignore": "5.1.8",
-    "immutable": "^3.8.1",
-    "is": "^3.1.0",
-    "js-yaml": "^3.6.1",
-    "json-schema-defaults": "0.1.1",
-    "jsonschema": "1.1.0",
-    "juice": "^6.0.0",
-    "memoize-one": "^5.1.1",
-    "mkdirp": "1.0.4",
-    "moment": "^2.24.0",
-    "nunjucks": "^3.2.0",
-    "nunjucks-do": "1.0.0",
-    "object-path": "^0.9.2",
-    "omit-keys": "^0.1.0",
-    "open": "^7.0.0",
-    "q": "1.5.1",
-    "read-installed": "^4.0.3",
-    "request": "^2.88.0",
-    "resolve": "1.17.0",
-    "semver": "5.1.0",
-    "send": "^0.17.1",
-    "spawn-cmd": "0.0.2",
-    "tiny-lr": "^1.1.1",
-    "tmp": "0.0.28",
-    "try-resolve": "^1.0.1",
-    "urijs": "1.18.0"
-  },
-  "devDependencies": {
-    "jest": "^26.0.1"
-  }
 }
