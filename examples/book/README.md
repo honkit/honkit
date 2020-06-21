@@ -1,3 +1,3 @@
 # Introduction
 
-- Githon Example
+- Honkit Example
