@@ -33,11 +33,14 @@
     "githon:serve": "githon serve"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "@types/jsonschema": "^1.1.1",
     "eslint": "^7.2.0",
     "husky": "^4.2.5",
     "lerna": "^3.22.1",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
+    "ts-jest": "^26.1.0",
     "typescript": "^3.9.5"
   },
   "prettier": {
