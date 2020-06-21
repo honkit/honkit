@@ -28,7 +28,7 @@
     "build": "tsc -p .",
     "clean": "rimraf lib/",
     "lint": "eslint .",
-    "test": "mocha ./testing/setup.js \"./lib/**/*/__tests__/*.js\" \"./lib/__tests__/*.js\" \"./syntaxes/**/*/__tests__/*.js\" --reporter=list --timeout=10000"
+    "test": "jest"
   },
   "dependencies": {
     "escape-string-regexp": "^4.0.0",
@@ -44,7 +44,8 @@
   "devDependencies": {
     "eslint": "^7.2.0",
     "jsdom": "^16.2.2",
-    "mocha": "^8.0.1",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.0.1",
     "rimraf": "^3.0.2",
     "should": "^13.2.3"
   },
