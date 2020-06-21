@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const assert = require("assert");
 
-const langs = require("../../lib").langs;
+const langs = require("../").langs;
 
 describe("Languages parsing", () => {
     let LEXED;

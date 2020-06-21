@@ -1,4 +1,4 @@
-const BLOCKS = require("../constants/blocks");
+import BLOCKS from "../constants/blocks";
 
 const BLOCK_TYPES = Object.values(BLOCKS);
 

@@ -1,18 +1,19 @@
 import Immutable from "immutable";
 import is from "is";
-
+import Rule from "./rule";
 const inherits = require("util").inherits;
-
-const Rule = require("./rule");
-
 const RulesSetRecord = Immutable.Record({
     rules: Immutable.List(),
 });
 
 function RulesSet(rules) {
-    if (!(this instanceof RulesSet)) return RulesSet(rules);
+    if (!(this instanceof RulesSet)) {
+        // @ts-expect-error workaround instanceof
+        return new RulesSet(rules);
+    }
 
-    rules = RulesList(rules);
+    // @ts-ignore
+    rules = new RulesList(rules);
 
     RulesSetRecord.call(this, {
         rules: rules,
@@ -37,7 +38,8 @@ RulesSet.prototype.add = function (newRules) {
     let rules = this.getRules();
 
     // Prepare new rules
-    newRules = RulesList(newRules);
+    // @ts-ignore
+    newRules = new RulesList(newRules);
 
     // Concat rules
     rules = rules.concat(newRules);
@@ -54,7 +56,8 @@ RulesSet.prototype.unshift = function (newRules) {
     let rules = this.getRules();
 
     // Prepare new rules
-    newRules = RulesList(newRules);
+    // @ts-ignore
+    newRules = new RulesList(newRules);
 
     // Add rules
     rules = rules.unshift.apply(rules, newRules.toArray());

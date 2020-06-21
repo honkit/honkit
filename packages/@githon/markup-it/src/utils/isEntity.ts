@@ -1,4 +1,4 @@
-const ENTITIES = require("../constants/entities");
+import ENTITIES from "../constants/entities";
 
 const ENTITY_TYPES = Object.values(ENTITIES);
 

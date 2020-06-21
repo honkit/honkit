@@ -34,7 +34,7 @@
   "scripts": {
     "build": "tsc -p .",
     "clean": "rimraf lib/",
-    "test": "mocha test/"
+    "test": "jest"
   },
   "dependencies": {
     "@githon/html": "^3.3.8",
@@ -42,7 +42,8 @@
     "markdown-escape": "^1.0.1"
   },
   "devDependencies": {
-    "mocha": "^8.0.1"
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0"
   },
   "publishConfig": {
     "access": "public"

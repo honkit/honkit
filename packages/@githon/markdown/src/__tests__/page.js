@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const assert = require("assert");
 
-const page = require("../../lib").page;
+const page = require("../").page;
 
 describe("Page parsing", () => {
     let LEXED;

@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const assert = require("assert");
 
-const inline = require("../../lib").inline;
+const inline = require("../").inline;
 
 describe("Inline", () => {
     it("should render inline markdown", () => {

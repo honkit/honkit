@@ -1,26 +1,31 @@
 import Immutable from "immutable";
+import Rule from "./rule";
+import RulesSet from "./rules";
+import defaultRules from "../constants/defaultRules";
 const inherits = require("util").inherits;
-
-const Rule = require("./rule");
-const RulesSet = require("./rules");
-const defaultRules = require("../constants/defaultRules");
 
 const SyntaxSetRecord = Immutable.Record({
     name: String(),
+    // @ts-ignore
     entryRule: new Rule(),
+    // @ts-ignore
     inline: new RulesSet([]),
+    // @ts-ignore
     blocks: new RulesSet([]),
 });
 
 function SyntaxSet(name, def) {
     if (!(this instanceof SyntaxSet)) {
-        return SyntaxSet(name, def);
+        // @ts-ignore
+        return new SyntaxSet(name, def);
     }
 
     SyntaxSetRecord.call(this, {
         name: name,
         entryRule: def.entryRule,
+        // @ts-ignore
         inline: new RulesSet(def.inline),
+        // @ts-ignore
         blocks: new RulesSet(def.blocks),
     });
 }

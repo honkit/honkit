@@ -12,9 +12,7 @@ const html = new MarkupIt(htmlSyntax);
  * @return {String} (html)
  */
 function convertMdToHTMLBlock(src: string) {
-    // @ts-expect-error
     const content = markdown.toContent(src);
-    // @ts-expect-error
     const textHtml = html.toText(content);
 
     return textHtml;

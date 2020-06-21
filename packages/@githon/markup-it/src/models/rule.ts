@@ -1,10 +1,8 @@
 import Immutable from "immutable";
 import is from "is";
+import Token from "./token";
 
 const inherits = require("util").inherits;
-
-const Token = require("./token");
-
 const RuleRecord = Immutable.Record({
     // Type of the rule
     type: new String(),
@@ -13,8 +11,11 @@ const RuleRecord = Immutable.Record({
     listeners: Immutable.Map(),
 });
 
-function Rule(type) {
-    if (!(this instanceof Rule)) return Rule(type);
+function Rule(type?) {
+    if (!(this instanceof Rule)) {
+        // @ts-expect-error
+        return new Rule(type);
+    }
 
     RuleRecord.call(this, {
         type: type,

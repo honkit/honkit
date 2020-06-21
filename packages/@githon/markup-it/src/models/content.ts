@@ -1,12 +1,13 @@
 import Immutable from "immutable";
-const Token = require("./token");
-const BLOCKS = require("../constants/blocks");
+import Token from "./token";
+import BLOCKS from "../constants/blocks";
 
 const Content: any = Immutable.Record({
     // Name of the syntax used to parse
     syntax: String(),
 
     // Entry token
+    // @ts-ignore
     token: Token.create(BLOCKS.DOCUMENT),
 });
 

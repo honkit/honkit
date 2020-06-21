@@ -1,7 +1,8 @@
 import Immutable from "immutable";
 
-const Content = require("../models/content");
-const Token = require("../models/token");
+import Token from "../models/token";
+
+import Content from "../models/content";
 
 /**
  * Decode a token
@@ -10,6 +11,7 @@ const Token = require("../models/token");
  * @return {Token}
  */
 function decodeTokenFromJSON(json) {
+    // @ts-ignore
     return new Token({
         type: json.type,
         text: json.text,
@@ -26,7 +28,7 @@ function decodeTokenFromJSON(json) {
  * @return {List<Token>}
  */
 function decodeTokensFromJSON(json) {
-    return new Immutable.List(json.map(decodeTokenFromJSON));
+    return Immutable.List(json.map(decodeTokenFromJSON));
 }
 
 /**

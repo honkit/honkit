@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const assert = require("assert");
 
-const summary = require("../../lib").summary;
+const summary = require("../").summary;
 
 function lex(fixtureFile) {
     return summary(fs.readFileSync(path.join(__dirname, "fixtures", fixtureFile), "utf8"));

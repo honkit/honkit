@@ -1,7 +1,9 @@
 const is = require("is");
 
 const MarkupIt = require("../../");
-const identity = require("../../lib/utils/identity");
+function identity(value) {
+    return value;
+}
 
 const SINGLE_TAG = ["img", "hr"];
 

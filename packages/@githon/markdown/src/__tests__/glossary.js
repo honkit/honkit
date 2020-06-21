@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const assert = require("assert");
 
-const glossary = require("../../lib").glossary;
+const glossary = require("../").glossary;
 
 describe("Glossary parsing", () => {
     let LEXED;

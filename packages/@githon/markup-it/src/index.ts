@@ -14,7 +14,6 @@ import parse from "./parse";
 import render from "./render";
 
 import JSONUtils from "./json";
-import ProseMirrorUtils from "./prosemirror";
 
 import genKey from "./utils/genKey";
 import transform from "./utils/transform";
@@ -34,7 +33,6 @@ module.exports.RulesSet = RulesSet;
 
 // Utils
 module.exports.JSONUtils = JSONUtils;
-module.exports.ProseMirrorUtils = ProseMirrorUtils;
 module.exports.genKey = genKey;
 module.exports.transform = transform;
 

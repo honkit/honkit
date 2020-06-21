@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const assert = require("assert");
 
-const readme = require("../../lib").readme;
+const readme = require("../").readme;
 
 describe("Readme parsing", () => {
     let LEXED;
