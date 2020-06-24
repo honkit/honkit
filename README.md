@@ -92,6 +92,7 @@ HonKit aim to smooth migration from GitBook (Legacy) to HonKit.
 - Update dependencies
     - Upgrade to nunjucks@2 etc...
     - It will reduce bug
+- TypeScript
 - Monorepo codebase
     - Easy to maintain
 
