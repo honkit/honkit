@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/honkit/honkit/compare/v3.3.11...v3.4.0) (2020-06-27)
+
+
+### Features
+
+* **ebook:** embed PDF fonts ([#62](https://github.com/honkit/honkit/issues/62)) ([fce5b18](https://github.com/honkit/honkit/commit/fce5b1890ff9e54052f81c23f3b9678ce97c7fee))
+
+
+
+
+
 ## [3.3.11](https://github.com/honkit/honkit/compare/v3.3.10...v3.3.11) (2020-06-27)
 
 
