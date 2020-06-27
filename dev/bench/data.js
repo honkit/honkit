@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593244290829,
+  "lastUpdate": 1593246807436,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3191,6 +3191,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±1.87%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "HugoDF@users.noreply.github.com",
+            "name": "Hugo",
+            "username": "HugoDF"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fce5b1890ff9e54052f81c23f3b9678ce97c7fee",
+          "message": "feat(ebook): embed PDF fonts (#62)\n\nAdd  `pdf.embedFonts` options",
+          "timestamp": "2020-06-27T17:30:02+09:00",
+          "tree_id": "4e3e68beb7eafba89f133ce0d6f97dfefdab9876",
+          "url": "https://github.com/honkit/honkit/commit/fce5b1890ff9e54052f81c23f3b9678ce97c7fee"
+        },
+        "date": 1593246806691,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±1.32%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
