@@ -1,6 +1,6 @@
 {
   "name": "@honkit/markup-it",
-  "version": "3.3.8",
+  "version": "3.3.11",
   "description": "Pipeline for working with markup input (for example Markdown)",
   "keywords": [
     "draft-js",
@@ -43,11 +43,11 @@
   },
   "devDependencies": {
     "eslint": "^7.2.0",
-    "jsdom": "^16.2.2",
     "jest": "^26.0.1",
-    "ts-jest": "^26.0.1",
+    "jsdom": "^16.2.2",
     "rimraf": "^3.0.2",
-    "should": "^13.2.3"
+    "should": "^13.2.3",
+    "ts-jest": "^26.0.1"
   },
   "publishConfig": {
     "access": "public"

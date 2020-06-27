@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.11](https://github.com/honkit/honkit/compare/v3.3.10...v3.3.11) (2020-06-27)
+
+
+### Bug Fixes
+
+* **honkit:** fix --reload options ([bb5149f](https://github.com/honkit/honkit/commit/bb5149f6cb1a13459aca5f646eada8faa08ecf07)), closes [#59](https://github.com/honkit/honkit/issues/59)
+* **markdown:** Do not force convert Indented CodeBlock to Fenced code blocks ([#60](https://github.com/honkit/honkit/issues/60)) ([ef55687](https://github.com/honkit/honkit/commit/ef556874f42d27a4d7b323acbc92fcadd579d034))
+
+
+
+
+
 ## [3.3.10](https://github.com/honkit/honkit/compare/v3.3.9...v3.3.10) (2020-06-20)
 
 
