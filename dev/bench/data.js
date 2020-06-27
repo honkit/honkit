@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593246862966,
+  "lastUpdate": 1593248581475,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3253,6 +3253,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.34%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "HugoDF@users.noreply.github.com",
+            "name": "Hugo",
+            "username": "HugoDF"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1a9cbf96860f03237d09e99a3a8dd6bae99d16c3",
+          "message": "chore: rename GitBook to HonKit (#64)\n\n* chore: rename GitBook to HonKit\r\n\r\n* Update packages/@honkit/theme-default/src/js/theme/navigation.js\r\n\r\nCo-authored-by: azu <azu@users.noreply.github.com>\r\n\r\nCo-authored-by: azu <azu@users.noreply.github.com>",
+          "timestamp": "2020-06-27T17:59:50+09:00",
+          "tree_id": "48c55094f7fbf161e894ede7acc2f5659ea20bfd",
+          "url": "https://github.com/honkit/honkit/commit/1a9cbf96860f03237d09e99a3a8dd6bae99d16c3"
+        },
+        "date": 1593248580746,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±4.09%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
