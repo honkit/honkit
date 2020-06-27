@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593229885476,
+  "lastUpdate": 1593243820745,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3129,6 +3129,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.24%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ef556874f42d27a4d7b323acbc92fcadd579d034",
+          "message": "fix(markdown): Do not force convert Indented CodeBlock to Fenced code blocks (#60)\n\nThis behavior break Fenced code blocks macro like https://github.com/vowstar/gitbook-plugin-uml\r\n\r\n- `page:before`: Convert Fenced code blocks to Block Tags that includes Indented CodeBlock\r\n- `plugin.prepare`: Convert Indented CodeBlock to Fenced code blocks <- This break the plugin and This commit fix it\r\n- Convert Block Tags by plugins\r\n\r\nThis commit remove `plugin.prepare` behavior that convert Indented CodeBlock to Fenced code blocks.\r\nAs a result, the plugin receive Indented CodeBlock's content instead of triple tick content.",
+          "timestamp": "2020-06-27T16:40:36+09:00",
+          "tree_id": "0168d65d51f24452a874c7838ddacd8f7aade7f8",
+          "url": "https://github.com/honkit/honkit/commit/ef556874f42d27a4d7b323acbc92fcadd579d034"
+        },
+        "date": 1593243820032,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±2.79%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
