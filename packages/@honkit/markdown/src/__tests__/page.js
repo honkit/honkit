@@ -29,21 +29,67 @@ describe("Page parsing", () => {
             page.prepare("Hello\n```js\nworld test\n```\n"),
             "Hello\n\n{% raw %}```js\nworld test\n```\n\n{% endraw %}"
         );
-        assert.equal(
-            page.prepare("Hello\n```\ntest\n\tworld\n\ttest\n```"),
-            "Hello\n\n{% raw %}```\ntest\n    world\n    test\n```\n\n{% endraw %}"
-        );
+        expect(page.prepare("Hello\n```\ntest\n\tworld\n\ttest\n```")).toMatchInlineSnapshot(`
+            "Hello
+
+            {% raw %}\`\`\`
+            test
+                world
+                test
+            \`\`\`
+
+            {% endraw %}"
+        `);
+        // preserve \t in CodeBlock
+        expect(page.prepare("Hello\n```js\n\tvar a = 1;\n\tconsole.log(a);\n```")).toMatchInlineSnapshot(`
+            "Hello
+
+            {% raw %}\`\`\`js
+                var a = 1;
+                console.log(a);
+            \`\`\`
+
+            {% endraw %}"
+        `);
     });
 
     it("should escape codeblocks in preparation (2)", () => {
-        assert.strictEqual(
-            page.prepare("Hello\n\n\n\tworld\n\thello\n\n\ntest"),
-            "Hello\n\n{% raw %}```\nworld\nhello\n```\n\n{% endraw %}test\n\n"
-        );
-        assert.strictEqual(
-            page.prepare("Hello\n\n\n\tworld\n\thello\n\n\n"),
-            "Hello\n\n{% raw %}```\nworld\nhello\n```\n\n{% endraw %}"
-        );
+        expect(
+            page.prepare(`Hello
+
+
+\tworld
+\thello
+
+
+test`)
+        ).toMatchInlineSnapshot(`
+            "Hello
+
+            {% raw %}        world
+                    hello
+
+            {% endraw %}test
+
+            "
+        `);
+        expect(
+            page.prepare(`Hello
+
+
+\tworld
+\thello
+
+
+`)
+        ).toMatchInlineSnapshot(`
+            "Hello
+
+            {% raw %}        world
+                    hello
+
+            {% endraw %}"
+        `);
     });
 
     it("should escape codeblocks with nunjucks tags", () => {
@@ -71,6 +117,41 @@ describe("Page parsing", () => {
             page.prepare("```\ntest\n```\n\n\n### Test"),
             "{% raw %}```\ntest\n```\n\n{% endraw %}### Test\n\n"
         );
+    });
+    it("escape {% uml %} block tags + Indented code block", () => {
+        const code = `{% uml %}
+@startuml
+
+\tClass Stage
+\tClass Timeout {
+\t\t+constructor:function(cfg)
+\t\t+timeout:function(ctx)
+\t\t+overdue:function(ctx)
+\t\t+stage: Stage
+\t}
+ \tStage <|-- Timeout
+
+@enduml
+{% enduml %}
+`;
+        expect(page.prepare(code)).toMatchInlineSnapshot(`
+            "{% uml %}
+            @startuml
+
+            {% raw %}        Class Stage
+                    Class Timeout {
+                        +constructor:function(cfg)
+                        +timeout:function(ctx)
+                        +overdue:function(ctx)
+                        +stage: Stage
+                    }
+                     Stage <|-- Timeout
+
+            {% endraw %}@enduml
+            {% enduml %}
+
+            "
+        `);
     });
 
     it("should not process math", () => {
