@@ -63,6 +63,7 @@ function getConvertOptions(output) {
                     "--pdf-sans-family": String(pdfOptions.fontFamily),
                     "--pdf-header-template": headerTpl,
                     "--pdf-footer-template": footerTpl,
+                    "--embed-all-fonts": true,
                 }));
             }
         );
