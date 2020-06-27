@@ -110,6 +110,7 @@ function startServer(args, kwargs) {
 function generateBook({ book, outputFolder, hasLiveReloading, Generator, reload }) {
     // Stop server if running
     if (reload) {
+        book.getLogger().info.ok(`Clear cache`);
         clearCache();
     }
 
@@ -167,7 +168,7 @@ module.exports = {
         },
         options.log,
         options.format,
-        options.reaload,
+        options.reload,
     ],
     exec: function (args, kwargs) {
         server = new Server();

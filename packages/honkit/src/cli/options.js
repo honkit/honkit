@@ -34,5 +34,5 @@ module.exports = {
     log: logOptions,
     format: formatOption,
     timing: timingOption,
-    reaload: reloadOption,
+    reload: reloadOption,
 };

@@ -10,13 +10,13 @@ const { clearCache } = require("../output/page-cache");
 module.exports = {
     name: "build [book] [output]",
     description: "build a book",
-    options: [options.log, options.format, options.timing, options.reaload],
+    options: [options.log, options.format, options.timing, options.reload],
     exec: function (args, kwargs) {
         const book = getBook(args, kwargs);
         const outputFolder = getOutputFolder(args);
         const Generator = Output.getGenerator(kwargs.format);
-
         if (kwargs.reload) {
+            book.getLogger().info.ok(`Clear cache`);
             clearCache();
         }
         return Parse.parseBook(book)
