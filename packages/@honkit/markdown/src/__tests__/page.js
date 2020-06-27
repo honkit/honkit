@@ -40,6 +40,17 @@ describe("Page parsing", () => {
 
             {% endraw %}"
         `);
+        // preserve \t in CodeBlock
+        expect(page.prepare("Hello\n```js\n\tvar a = 1;\n\tconsole.log(a);\n```")).toMatchInlineSnapshot(`
+            "Hello
+
+            {% raw %}\`\`\`js
+                var a = 1;
+                console.log(a);
+            \`\`\`
+
+            {% endraw %}"
+        `);
     });
 
     it("should escape codeblocks in preparation (2)", () => {
