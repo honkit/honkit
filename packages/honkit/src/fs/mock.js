@@ -7,7 +7,7 @@ const FS = require("../models/fs");
 const error = require("../utils/error");
 
 /**
-    Create a fake filesystem for unit testing GitBook.
+    Create a fake filesystem for unit testing HonKit.
 
     @param {Map<String:String|Map>}
 */

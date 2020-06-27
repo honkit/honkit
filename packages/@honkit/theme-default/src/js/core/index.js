@@ -50,7 +50,7 @@ window.require = function (mods, fn) {
 $(document).ready(function () {
     isPageReady = true;
 
-    // Call pile of function once GitBook is ready
+    // Call pile of function once HonKit is ready
     $.each(onLoad, function (i, fn) {
         fn();
     });

@@ -271,7 +271,7 @@ function handleNavigation(relativeUrl, push) {
                     $pageBody = $page.find(".book"),
                     $pageHead;
 
-                // We only use history.pushState for pages generated with GitBook
+                // We only use history.pushState for pages generated with HonKit
                 if ($pageBody.length === 0) {
                     var err = new Error("Invalid gitbook page, redirecting...");
                     return deferred.reject(err);

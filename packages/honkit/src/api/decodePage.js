@@ -20,7 +20,7 @@ function decodePage(output, page, result) {
 
     deprecate.disable("page.sections");
 
-    // GitBook 3
+    // GitBook/HonKit 3
     // Use returned page.content if different from original content
     if (result.content != originalContent) {
         page = page.set("content", result.content);

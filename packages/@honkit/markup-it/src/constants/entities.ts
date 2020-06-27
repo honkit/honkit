@@ -3,7 +3,7 @@ export default {
     IMAGE: "image",
     FOOTNOTE_REF: "footnote-ref",
 
-    // GitBook specifics
+    // HonKit specifics
     MATH: "math",
     TEMPLATE: "template",
 };

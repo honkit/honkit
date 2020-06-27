@@ -42,7 +42,7 @@ class PluginResolver {
         // special case for backward-compatible
         // e.g.) load theme-default as @honkit/honkit-plugins-theme-default
         const honkitScopePackageName = `@honkit/${honkitFullPackageName}`;
-        // In sometimes, GitBook package has not main field - so search package.json
+        // In sometimes, HonKit package has not main field - so search package.json
         const pkgPath =
             tryResolve(path.join(baseDir, honkitFullPackageName, "/package.json")) ||
             tryResolve(path.join(baseDir, gitbookFullPackageName, "/package.json")) ||
