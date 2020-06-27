@@ -259,7 +259,7 @@ function handleNavigation(relativeUrl, push) {
                 "Access-Control-Expose-Headers": "X-Current-Location",
             },
             success: function (html, status, xhr) {
-                // For HonKit.com, we handle redirection signaled by the server
+                // For GitBook.com, we handle redirection signaled by the server
                 var responseURL = xhr.getResponseHeader("X-Current-Location") || uri;
 
                 // Replace html content
