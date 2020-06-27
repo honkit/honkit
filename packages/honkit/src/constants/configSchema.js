@@ -172,6 +172,11 @@ module.exports = {
                         },
                     },
                 },
+                embedFonts: {
+                    type: "boolean",
+                    default: false,
+                    title: "Embed all fonts into the PDF",
+                },
             },
         },
     },
