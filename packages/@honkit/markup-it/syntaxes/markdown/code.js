@@ -39,13 +39,12 @@ const blockRule = MarkupIt.Rule(MarkupIt.BLOCKS.CODE)
         const data = token.getData();
         const syntax = data.get("syntax") || "";
         const type = data.get("type");
-        const hasFences = text.indexOf("`") >= 0;
         // Use fences if syntax is set
         if (syntax) {
             return `\`\`\`${syntax}\n${text}\n` + "```\n\n";
         }
         // Use fences if the original is fences
-        if (hasFences || type === "fences") {
+        if (type === "fences") {
             return `\`\`\`\n${text}\n` + "```\n\n";
         }
 
