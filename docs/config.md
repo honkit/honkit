@@ -54,3 +54,4 @@ PDF Output can be customized using a set of options in the `book.json`:
 | `pdf.margin.bottom` | Bottom margin (default is `56`) |
 | `pdf.margin.right` | Right margin (default is `62`) |
 | `pdf.margin.left` | Left margin (default is `62`) |
+| `pdf.embedFonts` | Embed all fonts into the PDF (default is `false`) |
