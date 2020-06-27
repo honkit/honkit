@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593225771460,
+  "lastUpdate": 1593229885476,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3098,6 +3098,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±1.01%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "bb5149f6cb1a13459aca5f646eada8faa08ecf07",
+          "message": "fix(honkit): fix --reload options\n\npreviously, does not work correctly\nfix #59",
+          "timestamp": "2020-06-27T12:47:39+09:00",
+          "tree_id": "fd38e65c1ee3a10024236444c76ce8a819d40ea6",
+          "url": "https://github.com/honkit/honkit/commit/bb5149f6cb1a13459aca5f646eada8faa08ecf07"
+        },
+        "date": 1593229884736,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±1.24%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
