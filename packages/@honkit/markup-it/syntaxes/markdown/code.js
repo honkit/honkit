@@ -12,6 +12,7 @@ const blockRule = MarkupIt.Rule(MarkupIt.BLOCKS.CODE)
             tokens: [MarkupIt.Token.createText(inner)],
             data: {
                 syntax: match[2],
+                type: "fences", // https://spec.commonmark.org/0.29/#fenced-code-blocks
             },
         };
     })
@@ -27,7 +28,7 @@ const blockRule = MarkupIt.Rule(MarkupIt.BLOCKS.CODE)
             tokens: [MarkupIt.Token.createText(inner)],
             data: {
                 syntax: undefined,
-                indented: true, // https://spec.commonmark.org/0.29/#indented-code-blocks
+                type: "indented", // https://spec.commonmark.org/0.29/#indented-code-blocks
             },
         };
     })
@@ -37,12 +38,15 @@ const blockRule = MarkupIt.Rule(MarkupIt.BLOCKS.CODE)
         const text = token.getAsPlainText();
         const data = token.getData();
         const syntax = data.get("syntax") || "";
-        const indented = data.get("indented");
+        const type = data.get("type");
         const hasFences = text.indexOf("`") >= 0;
-
         // Use fences if syntax is set
-        if (!hasFences && !indented) {
+        if (syntax) {
             return `\`\`\`${syntax}\n${text}\n` + "```\n\n";
+        }
+        // Use fences if the original is fences
+        if (hasFences || type === "fences") {
+            return `\`\`\`\n${text}\n` + "```\n\n";
         }
 
         // Use four spaces otherwise
