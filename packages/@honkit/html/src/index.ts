@@ -25,7 +25,7 @@ function compose(toHTML, fn) {
     };
 }
 
-// Create a GitBook parser from an HTML converter
+// Create a HonKit parser from an HTML converter
 function createParser(toHTML, toText = undefined) {
     if (_.isFunction(toHTML)) {
         toHTML = {

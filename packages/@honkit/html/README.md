@@ -1,4 +1,4 @@
-# GitBook HTML Parser
+# HonKit HTML Parser
 
 This node module parse HTML for gitbook (SUMMARY.html, README.html).
 

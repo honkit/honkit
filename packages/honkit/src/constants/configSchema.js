@@ -29,7 +29,7 @@ module.exports = {
         gitbook: {
             type: "string",
             default: "*",
-            title: "GitBook version to match",
+            title: "GitBook/HonKit version to match",
         },
         direction: {
             type: "string",

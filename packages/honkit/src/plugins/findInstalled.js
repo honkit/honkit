@@ -8,7 +8,7 @@ const Plugin = require("../models/plugin");
 const PREFIX = require("../constants/pluginPrefix");
 
 /**
- * Validate if a package name is a GitBook plugin
+ * Validate if a package name is a GitBook/HonKit plugin
  *
  * @return {Boolean}
  */

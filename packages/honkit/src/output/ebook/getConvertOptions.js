@@ -26,8 +26,8 @@ function getConvertOptions(output) {
             "--isbn": config.getValue("isbn"),
             "--authors": config.getValue("author"),
             "--language": book.getLanguage() || config.getValue("language"),
-            "--book-producer": "GitBook",
-            "--publisher": "GitBook",
+            "--book-producer": "HonKit",
+            "--publisher": "HonKit",
             "--chapter": "descendant-or-self::*[contains(concat(' ', normalize-space(@class), ' '), ' book-chapter ')]",
             "--level1-toc":
                 "descendant-or-self::*[contains(concat(' ', normalize-space(@class), ' '), ' book-chapter-1 ')]",

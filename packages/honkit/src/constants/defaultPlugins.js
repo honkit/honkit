@@ -17,7 +17,7 @@ function createFromDependency(pluginName) {
 
 /*
  * List of default plugins for all books,
- * default plugins should be installed in node dependencies of GitBook
+ * default plugins should be installed in node dependencies of HonKit
  */
 module.exports = Immutable.List(["highlight", "search", "lunr", "fontsettings", "theme-default"]).map(
     createFromDependency

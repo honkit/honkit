@@ -30,7 +30,7 @@ describe("parseBook", () => {
     test("should extend configuration for multilingual book", () => {
         const fs = createMockFS({
             "LANGS.md": "# Languages\n\n* [en](en)\n* [fr](fr)",
-            "book.json": '{ "title": "Test", "author": "GitBook" }',
+            "book.json": '{ "title": "Test", "author": "HonKit" }',
             en: {
                 "README.md": "Hello",
                 "book.json": '{ "title": "Test EN" }',
@@ -55,10 +55,10 @@ describe("parseBook", () => {
             const frConfig = fr.getConfig();
 
             expect(enConfig.getValue("title")).toBe("Test EN");
-            expect(enConfig.getValue("author")).toBe("GitBook");
+            expect(enConfig.getValue("author")).toBe("HonKit");
 
             expect(frConfig.getValue("title")).toBe("Test");
-            expect(frConfig.getValue("author")).toBe("GitBook");
+            expect(frConfig.getValue("author")).toBe("HonKit");
         });
     });
 

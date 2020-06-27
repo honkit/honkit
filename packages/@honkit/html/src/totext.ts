@@ -2,7 +2,7 @@ import _ from "lodash";
 
 /*
     This class is extended by gitbook-markdown and gitbook-asciidoc
-    to generate back markdown/asciidoc from GitBook metadata.
+    to generate back markdown/asciidoc from HonKit metadata.
 */
 
 function ToText(markup) {
