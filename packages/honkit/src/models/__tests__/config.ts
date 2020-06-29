@@ -90,4 +90,95 @@ describe("Config", () => {
             });
         });
     });
+
+    describe("getPluginDependencies", () => {
+        // @ts-expect-error
+        const config = Config.createWithValues({
+            plugins: [
+                "example",
+                "honkit-plugin-example",
+                "@example/example",
+                "@example/honkit-plugin-example",
+                "@honkit/honkit-plugin-example",
+                "-no-use",
+                "-honkit-plugin-no-use",
+                "-@honkit/honkit-plugin-no-use",
+                // GitBook logic - deprecated
+                "example-v@1.0.0",
+                "gitbook-plugin-example-v@1.0.0",
+                "example@git+ssh://samy@github.com/GitbookIO/plugin-ga.git",
+            ],
+        });
+
+        const dependencies = config.getPluginDependencies();
+
+        expect(dependencies.toJS()).toEqual([
+            {
+                enabled: true,
+                name: "example",
+                path: "",
+                version: "*",
+            },
+            {
+                enabled: true,
+                name: "honkit-plugin-example",
+                path: "",
+                version: "*",
+            },
+            {
+                enabled: true,
+                name: "@example/example",
+                path: "",
+                version: "*",
+            },
+            {
+                enabled: true,
+                name: "@example/honkit-plugin-example",
+                path: "",
+                version: "*",
+            },
+            {
+                enabled: true,
+                name: "@honkit/honkit-plugin-example",
+                path: "",
+                version: "*",
+            },
+            {
+                enabled: false,
+                name: "no-use",
+                path: "",
+                version: "*",
+            },
+            {
+                enabled: false,
+                name: "honkit-plugin-no-use",
+                path: "",
+                version: "*",
+            },
+            {
+                enabled: false,
+                name: "@honkit/honkit-plugin-no-use",
+                path: "",
+                version: "*",
+            },
+            {
+                enabled: true,
+                name: "example-v",
+                path: "",
+                version: "1.0.0",
+            },
+            {
+                enabled: true,
+                name: "gitbook-plugin-example-v",
+                path: "",
+                version: "1.0.0",
+            },
+            {
+                enabled: true,
+                name: "example",
+                path: "",
+                version: "git+ssh://samy@github.com/GitbookIO/plugin-ga.git",
+            },
+        ]);
+    });
 });

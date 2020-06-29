@@ -89,25 +89,60 @@ PluginDependency.create = function (name, version, enabled) {
 
 /**
  * Create a plugin from a string
- * @param {String}
+ * @param {string} s
  * @return {Plugin|undefined}
  */
 PluginDependency.createFromString = function (s) {
-    const parts = s.split("@");
-    let name = parts[0];
-    const version = parts.slice(1).join("@");
-    let enabled = true;
+    /*
+    HonKit will support following format
+     pkg
+     @scope/pkg
+     -pkg               - Disable package
+     -@scope/pkg        - Disable package
+    */
+    const packagePattern = /^(?<disabled>-)?(?<name>.+)$/;
+    const scopedPackagePattern = /^(?<disabled>-)?(?<name>@[^/]+\/.+)$/;
+    if (packagePattern.test(s) && !s.includes("@")) {
+        const match = s.match(packagePattern);
+        const enabled = !match.groups.disabled;
+        return new PluginDependency({
+            name: match.groups.name,
+            version: DEFAULT_VERSION,
+            enabled: enabled,
+        });
+    } else if (scopedPackagePattern.test(s)) {
+        const match = s.match(scopedPackagePattern);
+        const enabled = !match.groups.disabled;
+        return new PluginDependency({
+            name: match.groups.name,
+            version: DEFAULT_VERSION,
+            enabled: enabled,
+        });
+    } else {
+        /*
+         Deprecated It is only for backward compatible
+         This is original GitBook logic supports
 
-    if (name[0] === "-") {
-        enabled = false;
-        name = name.slice(1);
+         pkg@version          - backward compatible with GitBook
+         pkg@>=version        - backward compatible with GitBook
+         hello@git+ssh://samy@github.com/GitbookIO/plugin-ga.git
+
+         Note: This logic does not support scoped module
+         */
+        const parts = s.split("@");
+        let name = parts[0];
+        const version = parts.slice(1).join("@");
+        let enabled = true;
+        if (name[0] === "-") {
+            enabled = false;
+            name = name.slice(1);
+        }
+        return new PluginDependency({
+            name: name,
+            version: version || DEFAULT_VERSION,
+            enabled: enabled,
+        });
     }
-
-    return new PluginDependency({
-        name: name,
-        version: version || DEFAULT_VERSION,
-        enabled: enabled,
-    });
 };
 
 /**

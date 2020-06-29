@@ -39,8 +39,7 @@ The **package name** must begin with following patterns:
 - `@<scope>/gitbook-plugin-`
 - `gitbook-plugin-`
 
-
-And the **package engines** should contains `honkit` or `gitbook`.
+Also, the **package engines** should contain `honkit` or `gitbook`.
 
 #### index.js
 
