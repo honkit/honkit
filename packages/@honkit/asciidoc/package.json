@@ -1,6 +1,6 @@
 {
   "name": "@honkit/asciidoc",
-  "version": "3.3.11",
+  "version": "3.4.1",
   "description": "Parse AsciiDoc content for gitbook",
   "homepage": "https://github.com/honkit/honkit",
   "bugs": {
@@ -35,7 +35,7 @@
     "test": "yarn build && jest src"
   },
   "dependencies": {
-    "@honkit/html": "^3.3.11",
+    "@honkit/html": "^3.4.1",
     "asciidoctor": "^2.2.0",
     "lodash": "^4.13.1"
   },

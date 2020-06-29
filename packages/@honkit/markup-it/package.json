@@ -1,6 +1,6 @@
 {
   "name": "@honkit/markup-it",
-  "version": "3.3.11",
+  "version": "3.4.1",
   "description": "Pipeline for working with markup input (for example Markdown)",
   "keywords": [
     "draft-js",

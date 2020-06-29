@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.1](https://github.com/honkit/honkit/compare/v3.4.0...v3.4.1) (2020-06-29)
+
+
+### Bug Fixes
+
+* **honkit:** fix to load @scope/honkit-plugin-name ([#69](https://github.com/honkit/honkit/issues/69)) ([5c93524](https://github.com/honkit/honkit/commit/5c9352452fb3c15347d91c9fc30ad1d54e9fafc3))
+
+
+
+
+
 # [3.4.0](https://github.com/honkit/honkit/compare/v3.3.11...v3.4.0) (2020-06-27)
 
 
