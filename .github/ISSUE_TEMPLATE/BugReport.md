@@ -28,8 +28,8 @@ about: Create a bug report
 
 <!--
 
-Please includes actual log with --loglevel=debug
+Please includes actual log with --log=debug
 
-$ gitbook build --loglevel=debug
+$ gitbook build --log=debug
 
 -->
