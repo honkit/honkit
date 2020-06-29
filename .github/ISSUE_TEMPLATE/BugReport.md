@@ -30,6 +30,6 @@ about: Create a bug report
 
 Please includes actual log with --log=debug
 
-$ gitbook build --log=debug
+$ honkit build --log=debug
 
 -->
