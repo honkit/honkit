@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593431113292,
+  "lastUpdate": 1593436761998,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3346,6 +3346,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±1.34%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5c9352452fb3c15347d91c9fc30ad1d54e9fafc3",
+          "message": "fix(honkit): fix to load @scope/honkit-plugin-name (#69)\n\nFix to detect scoped module for loading\r\nPreviously, @scope/honkit-plugin-name is just ignored",
+          "timestamp": "2020-06-29T22:15:46+09:00",
+          "tree_id": "fc43cd235461ea4e8c6fbdcb0720ada3da08e358",
+          "url": "https://github.com/honkit/honkit/commit/5c9352452fb3c15347d91c9fc30ad1d54e9fafc3"
+        },
+        "date": 1593436761159,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±2.05%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
