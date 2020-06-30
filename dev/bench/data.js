@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593436823412,
+  "lastUpdate": 1593482861340,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3408,6 +3408,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.54%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "harshilparmar80@gmail.com",
+            "name": "Harshil Parmar",
+            "username": "harshilparmar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b13e0e5c2dd5c257e7daa540660b5fb56d79d64f",
+          "message": "fix(tsconfig.json) : change target compileroptions (#71)",
+          "timestamp": "2020-06-30T11:04:14+09:00",
+          "tree_id": "ee363aa31d2e807ae122bdf0d124fb07d59a55fe",
+          "url": "https://github.com/honkit/honkit/commit/b13e0e5c2dd5c257e7daa540660b5fb56d79d64f"
+        },
+        "date": 1593482860495,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.71%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
