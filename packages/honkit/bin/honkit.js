@@ -1,8 +1,11 @@
 #! /usr/bin/env node
 
 const Honkit = require("../lib");
+const pkg = require("../package.json");
 const program = require("commander");
 const assert = require("assert");
+
+program.version(pkg.version);
 
 Honkit.commands.forEach((spec) => {
     let subcommand = program.command(spec.name).description(spec.description);
