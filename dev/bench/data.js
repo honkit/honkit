@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593650510690,
+  "lastUpdate": 1593673308512,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3563,6 +3563,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±2.10%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a7089c36e00c62f752f90543ef9921aea0aa4a34",
+          "message": "docs: add warning about globally and locally (#81)",
+          "timestamp": "2020-07-02T15:58:03+09:00",
+          "tree_id": "a41cb61c60b39feaad912df5967489dcde592cc6",
+          "url": "https://github.com/honkit/honkit/commit/a7089c36e00c62f752f90543ef9921aea0aa4a34"
+        },
+        "date": 1593673307762,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±2.06%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
