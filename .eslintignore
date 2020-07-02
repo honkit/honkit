@@ -7,3 +7,5 @@ examples/**
 theme-default/
 packages/**/lib
 packages/**/__tests__
+__fixtures__
+__snapshots__
