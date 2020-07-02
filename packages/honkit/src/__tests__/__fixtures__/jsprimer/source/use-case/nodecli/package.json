@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "nodecli",
+  "version": "1.0.0",
+  "description": "nodecli usecase",
+  "scripts": {
+    "pretest": "bash bootstrap.sh",
+    "updateSnapshot": "UPDATE_SNAPSHOT=1 npm run unitest",
+    "test": "npm run unitest",
+    "unitest": "mocha test/test.js"
+  },
+  "keywords": [],
+  "author": "azu",
+  "license": "MIT",
+  "devDependencies": {
+    "execa": "^4.0.0",
+    "mocha": "^7.1.1"
+  }
+}

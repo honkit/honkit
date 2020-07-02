@@ -1,0 +1,317 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #FFF;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a, button {
+    outline: none !important;
+}
+
+/* = Bric adjustment margins
+-------------------------------------------------------------- */
+
+.mg-sm {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.mg-md {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.mg-lg {
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+/* = Buttons
+-------------------------------------------------------------- */
+
+.btn {
+    margin: 0 5px 5px 0;
+}
+
+.btn.pull-right {
+    margin: 0 0 5px 5px;
+}
+
+.btn-d, .btn-d:hover, .btn-d:focus {
+    color: #FFF;
+    background: rgba(0, 0, 0, .3);
+}
+
+/* Prevent ugly blue glow on chrome and safari */
+button {
+    outline: none !important;
+}
+
+.btn .caret {
+    margin: 0 0 0 5px
+}
+
+.dropdown a .caret {
+    margin: 0 0 0 5px
+}
+
+.btn-dropdown .dropdown-menu .dropdown {
+    padding: 3px 20px;
+}
+
+/* = Forms
+-------------------------------------------------------------- */
+
+.form-control {
+    border-color: rgba(0, 0, 0, .1);
+    box-shadow: none;
+}
+
+/* iFrame */
+
+iframe {
+    border: 0;
+}
+
+.container {
+    max-width: 1170px;
+}
+
+.main {
+}
+
+/* = Colour
+-------------------------------------------------------------- */
+
+/* Background colour styles */
+
+.bgc-white {
+    background-color: #ffffff;
+}
+
+/* = Mobile adjustments
+-------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .bloc {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    .b-parallax {
+        background-attachment: scroll;
+    }
+
+    .page-container, #hero-bloc {
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Prevent unwanted side scroll on mobile */
+}
+
+@media (max-width: 767px) {
+    .page-container {
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    #hero-bloc h1 {
+        font-size: 40px;
+    }
+
+    #hero-bloc h2 {
+        font-size: 34px;
+    }
+
+    #hero-bloc h3 {
+        font-size: 25px;
+    }
+
+    .bloc {
+        padding-left: 0;
+        padding-right: 0;
+        -webkit-background-size: auto 200%;
+        -moz-background-size: auto 200%;
+        -o-background-size: auto 200%;
+        background-size: auto 200%;
+    }
+
+    .b-parallax {
+        background-attachment: scroll;
+    }
+
+    .navbar .nav {
+        padding-top: 0;
+        border-top: 1px solid rgba(0, 0, 0, .2);
+        float: none !important;
+    }
+
+    .navbar.row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .site-navigation {
+        position: inherit;
+        transform: none;
+        -webkit-transform: none;
+        -ms-transform: none;
+    }
+
+    .nav > li {
+        margin-top: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        background: rgba(0, 0, 0, .05);
+        text-align: left;
+        padding-left: 15px;
+        width: 100%;
+    }
+
+    .nav > li:hover {
+        background: rgba(0, 0, 0, .08);
+    }
+
+    .dropdown .dropdown a .caret {
+        float: none;
+        margin: 5px 0 0 10px !important;
+        border: 4px solid black;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+    }
+
+    #hero-bloc .navbar .nav {
+        background: rgba(0, 0, 0, .8);
+    }
+
+    #hero-bloc .navbar .nav a {
+        color: rgba(255, 255, 255, .6);
+    }
+
+    .hero {
+        padding: 50px 0;
+    }
+
+    .hero-nav {
+        left: -1px;
+        right: -1px;
+    }
+
+    .navbar-collapse {
+        padding: 0;
+        overflow-x: hidden;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .navbar-brand img {
+        max-height: 40px;
+        width: auto;
+        margin: -10px 10px 0 0;
+    }
+
+    .nav-invert .navbar-header {
+        float: none;
+        width: 100%;
+    }
+
+    .nav-invert .navbar-toggle {
+        float: left;
+    }
+
+    .bloc-group .bloc {
+        display: block;
+        width: 100%;
+    }
+
+    .bloc-tile-2 .container, .bloc-tile-3 .container, .bloc-tile-4 .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .bloc-xxl, .bloc-xl, .bloc-lg {
+        padding: 40px 0;
+    }
+
+    .bloc-sm, .bloc-md {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .a-block {
+        padding: 0 10px;
+    }
+
+    .btn-dwn {
+        display: none;
+    }
+
+    .voffset {
+        margin-top: 5px;
+    }
+
+    .voffset-md {
+        margin-top: 20px;
+    }
+
+    .voffset-lg {
+        margin-top: 30px;
+    }
+
+    form {
+        padding: 5px;
+    }
+
+    .close-lightbox {
+        display: inline-block;
+    }
+
+    .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .video-bg-container {
+        display: none;
+    }
+
+    .blocsapp-device-iphone5 {
+        background-size: 216px 425px;
+        padding-top: 60px;
+        width: 216px;
+        height: 425px;
+    }
+
+    .blocsapp-device-iphone5 img {
+        width: 180px;
+        height: 320px;
+    }
+}
+
+@media (max-width: 420px) {
+    .mail-form {
+    }
+}
+
+.Landing-title {
+    margin-top: 0.5em !important;
+}

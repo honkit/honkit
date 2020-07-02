@@ -1,0 +1,26 @@
+{
+  "name": "benchmark",
+  "version": "3.5.0",
+  "private": true,
+  "description": "JavaScriptの入門本",
+  "license": "MIT",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve"
+  },
+  "devDependencies": {
+    "gitbook-plugin-anchors": "^0.7.1",
+    "gitbook-plugin-canonical-link": "^2.0.2",
+    "gitbook-plugin-custom-favicon": "0.0.4",
+    "gitbook-plugin-ga": "^1.0.0",
+    "gitbook-plugin-github-issue-feedback": "^1.1.1",
+    "gitbook-plugin-include-codeblock": "^3.0.0",
+    "gitbook-plugin-js-console": "^2.0.4",
+    "gitbook-plugin-page-toc-button": "^0.1.1",
+    "honkit": "^3.5.0"
+  }
+}
