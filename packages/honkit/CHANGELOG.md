@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/honkit/honkit/compare/v3.4.1...v3.5.0) (2020-07-02)
+
+
+### Features
+
+* **cli:** --version option ([#79](https://github.com/honkit/honkit/issues/79)) ([d68beaf](https://github.com/honkit/honkit/commit/d68beafd9f247e73c9d9ceb52bb40b1ef797a447))
+
+
+
+
+
 ## [3.4.1](https://github.com/honkit/honkit/compare/v3.4.0...v3.4.1) (2020-06-29)
 
 
