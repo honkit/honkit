@@ -41,6 +41,7 @@ export const directorySnapshot = async (basePath: string, maskContent: (content:
             continue;
         }
         const isFile = dirent.isFile();
+        // FIXME: windows and other output different result!
         const contents = maskContent(isFile ? (await readFile(filePath)).toString() : "");
         results.push({
             stats: {

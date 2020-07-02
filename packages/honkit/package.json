@@ -42,6 +42,7 @@
     "build": "rimraf lib && tsc -p .",
     "clean": "rimraf lib/",
     "test": "jest src",
+    "test:full": "cross-env TEST_TYPE=full jest src",
     "updateSnapshot": "jest src -u"
   },
   "dependencies": {
@@ -102,6 +103,7 @@
   "devDependencies": {
     "jest": "^26.0.1",
     "rimraf": "^3.0.2",
+    "cross-env": "^7.0.2",
     "gitbook-plugin-anchors": "^0.7.1",
     "gitbook-plugin-canonical-link": "^2.0.2",
     "gitbook-plugin-custom-favicon": "0.0.4",
