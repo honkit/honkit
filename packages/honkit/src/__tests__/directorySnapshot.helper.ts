@@ -14,7 +14,7 @@ async function* getFiles(dir: string) {
         } else {
             yield {
                 dirent,
-                filePath
+                filePath,
             };
         }
     }
@@ -47,13 +47,14 @@ export const directorySnapshot = async (basePath: string, maskContent: (content:
                 isDirectory: dirent.isDirectory(),
                 isFile: isFile,
                 isSymbolicLink: dirent.isSymbolicLink(),
-                isSocket: dirent.isSocket()
+                isSocket: dirent.isSocket(),
             },
-            filePath: path.relative(basePath, filePath),
-            contents
+            // normalize file path
+            filePath: path.relative(basePath, filePath).split(path.sep).join("/"),
+            contents,
         });
     }
     return {
-        contents: results
+        contents: results,
     };
 };
