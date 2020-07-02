@@ -14,7 +14,7 @@ HonKit documentation is built by HonKit!
 
 ### Installation
 
-- Requirement: [Node.js](https://nodejs.org)
+- Requirement: [Node.js](https://nodejs.org) [LTS](https://nodejs.org/ja/about/releases/) version
 
 The best way to install HonKit is via **NPM** or **Yarn**.
 
