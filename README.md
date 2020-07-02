@@ -23,6 +23,13 @@ $ npm init --yes
 $ npm install honkit --save-dev
 ```
 
+⚠️ Warning:
+
+- If you have installed `honkit` globally you must install each plugins rule globally as well
+- If you have installed `honkit` locally you must install each plugins locally as well
+
+We recommend installing `honkit` locally.
+
 ### Create a book
 
 HonKit can set up a boilerplate book:

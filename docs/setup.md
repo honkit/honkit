@@ -18,15 +18,22 @@ The best way to install HonKit is via **NPM** or **Yarn** At the terminal prompt
 ```
 $ npm install honkit --save-dev
 # or
-$ yarn install honkit --save
+$ yarn add honkit --dev
 ```
+
+⚠️ Warning:
+
+- If you have installed `honkit` globally(`--global`) you must install each plugins rule globally(`--global`) as well
+- If you have installed `honkit` locally you must install each plugins locally as well
+
+We recommend installing `honkit` locally.
 
 ##### Create a book
 
 HonKit can setup a boilerplate book:
 
 ```
-$ honkit init
+$ npx honkit init
 ```
 
 If you wish to create the book into a new directory, you can do so by running `honkit init ./directory`
@@ -34,15 +41,32 @@ If you wish to create the book into a new directory, you can do so by running `h
 Preview and serve your book using:
 
 ```
-$ honkit serve
+$ npx honkit serve
 ```
 
 Or build the static website using:
 
 ```
-$ honkit build
+$ npx honkit build
 ```
 
+You can also define `build` and `serve` command in `package.json` as [npm-run-scripts](https://docs.npmjs.com/cli/run-script).
+
+```diff
+  "scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve"
+  },
+```
+
+After this configuration, you can use `npm run` command.
+
+```
+# Build 
+npm run build
+# Start to server
+npm run serve
+```
 
 ##### Debugging
 
