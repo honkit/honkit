@@ -4,8 +4,10 @@ import { directorySnapshot } from "./directorySnapshot.helper";
 const bin = require("../bin.js");
 
 // This test is heavy and window can not output same result
-const test = process.env.TEST_TYPE === "full" ? global.it : global.it.skip;
 test("jsprimer snapshots", async () => {
+    if (process.env.TEST_TYPE !== "full") {
+        return;
+    }
     jest.setTimeout(60 * 1000);
     const bookDir = path.join(__dirname, "__fixtures__/jsprimer");
     const outputDir = path.join(__dirname, "__fixtures__/jsprimer/_book");

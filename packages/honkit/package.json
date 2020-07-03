@@ -43,7 +43,8 @@
     "clean": "rimraf lib/",
     "test": "jest src",
     "test:full": "cross-env TEST_TYPE=full jest src",
-    "updateSnapshot": "jest src -u"
+    "updateSnapshot": "jest src -u",
+    "updateSnapshot:full": "cross-env TEST_TYPE=full jest src -u"
   },
   "dependencies": {
     "@honkit/asciidoc": "^3.4.1",
