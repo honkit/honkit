@@ -11,10 +11,11 @@
         "@honkit/html": "^3.4.1"
     },
     "devDependencies": {
-        "mocha": "^8.0.1"
+        "mocha": "^8.0.1",
+        "cross-env": "^7.0.2"
     },
     "scripts": {
-        "test": "export TESTING=true; mocha --reporter list --bail"
+        "test": "cross-env TESTING=true mocha"
     },
     "repository": {
         "type": "git",
