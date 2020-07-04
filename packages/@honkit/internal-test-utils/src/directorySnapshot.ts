@@ -1,11 +1,11 @@
 import path from "path";
-import fs from "fs";
+import fs, { Dirent } from "fs";
 import { promisify } from "util";
 
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
 
-async function* getFiles(dir: string) {
+async function* getFiles(dir: string): AsyncIterable<{ dirent: Dirent; filePath: string }> {
     const dirents = await readdir(dir, { withFileTypes: true });
     for (const dirent of dirents) {
         const filePath = path.resolve(dir, dirent.name);
@@ -33,15 +33,21 @@ export type directorySnapshotFile = {
 
 const defaultMask = (s: string) => s;
 
-export async function* directorySnapshot(basePath: string, maskContent: (content: string) => string = defaultMask) {
-    const allowExtension = [".html"];
-    for await (const item of getFiles(basePath)) {
+export async function* iterateDirectoryContents({
+    baseDir,
+    allowExtensions,
+    maskContent = defaultMask,
+}: {
+    baseDir: string;
+    allowExtensions: string[];
+    maskContent?: (content: string) => string;
+}) {
+    for await (const item of getFiles(baseDir)) {
         const { dirent, filePath } = item;
-        if (!allowExtension.includes(path.extname(filePath))) {
+        if (!allowExtensions.includes(path.extname(filePath))) {
             continue;
         }
         const isFile = dirent.isFile();
-        // FIXME: windows and other output different result!
         const contents = maskContent(isFile ? (await readFile(filePath)).toString() : "");
         yield {
             stats: {
@@ -51,7 +57,7 @@ export async function* directorySnapshot(basePath: string, maskContent: (content
                 isSocket: dirent.isSocket(),
             },
             // normalize file path
-            filePath: path.relative(basePath, filePath).split(path.sep).join("/"),
+            filePath: path.relative(baseDir, filePath).split(path.sep).join("/"),
             contents,
         };
     }

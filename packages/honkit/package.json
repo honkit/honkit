@@ -42,9 +42,7 @@
     "build": "rimraf lib && tsc -p .",
     "clean": "rimraf lib/",
     "test": "jest src",
-    "test:full": "cross-env TEST_TYPE=full jest src",
-    "updateSnapshot": "jest src -u",
-    "updateSnapshot:full": "cross-env TEST_TYPE=full jest src -u"
+    "updateSnapshot": "jest src -u"
   },
   "dependencies": {
     "@honkit/asciidoc": "^3.4.1",
@@ -105,13 +103,6 @@
     "jest": "^26.0.1",
     "rimraf": "^3.0.2",
     "cross-env": "^7.0.2",
-    "gitbook-plugin-anchors": "^0.7.1",
-    "gitbook-plugin-canonical-link": "^2.0.2",
-    "gitbook-plugin-custom-favicon": "0.0.4",
-    "gitbook-plugin-ga": "^1.0.0",
-    "gitbook-plugin-github-issue-feedback": "^1.1.1",
-    "gitbook-plugin-include-codeblock": "^3.0.0",
-    "gitbook-plugin-js-console": "^2.0.4",
-    "gitbook-plugin-page-toc-button": "^0.1.1"
+    "@honkit/internal-test-utils": "^1.0.0"
   }
 }
