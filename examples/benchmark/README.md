@@ -17,3 +17,6 @@ See continuous benchmark results:
 It is for manual check:
 
     yarn test
+
+- [ ] This snapshot testing generate different result by OS
+    - The current snapshot is macOS/Linux
