@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page parsing conrefs.md and prepare test: conrefs.md 1`] = `
+"# Content References
+
+Content referencing (conref) is a convenient mechanism to reuse content from other files or books.
+
+### Importing local files
+
+Importing an other file's content is easy using the {% raw %}\`include\`{% endraw %} tag:
+
+{% raw %}\`\`\`
+{% include \\"./test.md\\" %}
+\`\`\`
+{% endraw %}
+### Importing file from another book
+
+HonKit can also resolve the include path by using git:
+
+{% raw %}\`\`\`
+{% include \\"git+https://github.com/GitbookIO/documentation.git/README.md#0.0.1\\" %}
+\`\`\`
+{% endraw %}
+The format of git url is:
+
+{% raw %}\`\`\`
+git+https://user@hostname/owner/project.git/file#commit-ish
+\`\`\`
+{% endraw %}
+The real git url part should finish with {% raw %}\`.git\`{% endraw %}, the filename to import is extracted after the {% raw %}\`.git\`{% endraw %} till the fragment of the url.
+
+The {% raw %}\`commit-ish\`{% endraw %} can be any tag, sha, or branch which can be supplied as an argument to {% raw %}\`git checkout\`{% endraw %}. The default is {% raw %}\`master\`{% endraw %}.
+
+### Inheritance
+
+Template inheritance is a way to make it easy to reuse templates. When writing a template, you can define \\"blocks\\" that child templates can override. The inheritance chain can be as long as you like.
+
+{% raw %}\`block\`{% endraw %} defines a section on the template and identifies it with a name. Base templates can specify blocks and child templates can override them with new content.
+
+{% raw %}\`\`\`
+{% extends \\"./mypage.md\\" %}
+
+{% block pageContent %}
+# This is my page content
+{% endblock %}
+\`\`\`
+{% endraw %}
+In the file {% raw %}\`mypage.md\`{% endraw %}, you should specify the blocks that can be extended:
+
+{% raw %}\`\`\`
+{% block pageContent %}
+This is the default content
+{% endblock %}
+
+# License
+
+{% include \\"./LICENSE\\" %}
+\`\`\`
+{% endraw %}"
+`;
+
+exports[`Page parsing conrefs.md inline and prepare test: conrefs.md inline 1`] = `
+"# Content References
+
+Content referencing (conref) is a convenient mechanism to reuse content from other files or books.
+
+### Importing local files
+
+Importing an other file's content is easy using the {% raw %}\`include\`{% endraw %} tag:
+
+{% raw %}\`\`\`
+{% include \\"./test.md\\" %}
+\`\`\`
+{% endraw %}
+### Importing file from another book
+
+HonKit can also resolve the include path by using git:
+
+{% raw %}\`\`\`
+{% include \\"git+https://github.com/GitbookIO/documentation.git/README.md#0.0.1\\" %}
+\`\`\`
+{% endraw %}
+The format of git url is:
+
+{% raw %}\`\`\`
+git+https://user@hostname/owner/project.git/file#commit-ish
+\`\`\`
+{% endraw %}
+The real git url part should finish with {% raw %}\`.git\`{% endraw %}, the filename to import is extracted after the {% raw %}\`.git\`{% endraw %} till the fragment of the url.
+
+The {% raw %}\`commit-ish\`{% endraw %} can be any tag, sha, or branch which can be supplied as an argument to {% raw %}\`git checkout\`{% endraw %}. The default is {% raw %}\`master\`{% endraw %}.
+
+### Inheritance
+
+Template inheritance is a way to make it easy to reuse templates. When writing a template, you can define \\"blocks\\" that child templates can override. The inheritance chain can be as long as you like.
+
+{% raw %}\`block\`{% endraw %} defines a section on the template and identifies it with a name. Base templates can specify blocks and child templates can override them with new content.
+
+{% raw %}\`\`\`
+{% extends \\"./mypage.md\\" %}
+
+{% block pageContent %}
+# This is my page content
+{% endblock %}
+\`\`\`
+{% endraw %}
+In the file {% raw %}\`mypage.md\`{% endraw %}, you should specify the blocks that can be extended:
+
+{% raw %}\`\`\`
+{% block pageContent %}
+This is the default content
+{% endblock %}
+
+# License
+
+{% include \\"./LICENSE\\" %}
+\`\`\`
+{% endraw %}"
+`;

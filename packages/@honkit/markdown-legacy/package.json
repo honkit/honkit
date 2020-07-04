@@ -4,18 +4,23 @@
     "homepage": "https://github.com/honkit/honkit",
     "description": "Parse markdown content for HonKit",
     "main": "lib/index.js",
+    "files": [
+        "lib",
+        "!__tests__"
+    ],
     "dependencies": {
         "lodash": "^4.13.1",
         "kramed": "0.5.6",
         "kramed-text-renderer": "0.2.1",
-        "@honkit/html": "^3.4.1"
+        "gitbook-html": "1.3.3"
     },
     "devDependencies": {
-        "mocha": "^8.0.1",
+        "jest": "^26.1.0",
         "cross-env": "^7.0.2"
     },
     "scripts": {
-        "test": "cross-env TESTING=true mocha"
+        "test": "jest",
+        "updateSnapshot": "jest -u"
     },
     "repository": {
         "type": "git",
