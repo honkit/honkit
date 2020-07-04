@@ -1,1 +1,0 @@
-var null; // => SyntaxError
