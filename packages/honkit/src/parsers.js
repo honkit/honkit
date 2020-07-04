@@ -1,7 +1,7 @@
 const path = require("path");
 const Immutable = require("immutable");
 
-const markdownParser = require("@honkit/markdown");
+const markdownParser = require("@honkit/markdown-legacy");
 const asciidocParser = require("@honkit/asciidoc");
 
 const EXTENSIONS_MARKDOWN = require("./constants/extsMarkdown");

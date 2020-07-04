@@ -1,9 +1,9 @@
-var _ = require('lodash');
-var kramed = require('kramed');
-var annotate = require('kramed/lib/annotate/');
+var _ = require("lodash");
+var kramed = require("kramed");
+var annotate = require("kramed/lib/annotate/");
 
-var RAW_START = '{% raw %}';
-var RAW_END = '{% endraw %}';
+var RAW_START = "{% raw %}";
+var RAW_END = "{% endraw %}";
 
 /**
     Escape a code block's content using raw blocks
@@ -22,7 +22,7 @@ function escape(str) {
     @return {String}
 */
 function combine(nodes) {
-    return _.map(nodes, 'raw').join('');
+    return _.map(nodes, "raw").join("");
 }
 
 /**
@@ -37,22 +37,22 @@ function preparePage(src) {
     var levelRaw = 0;
 
     function escapeCodeElement(el) {
-        if (el.type == 'code' && levelRaw == 0) {
+        if (el.type == "code" && levelRaw == 0) {
             el.raw = escape(el.raw);
-        } else if (el.type == 'tplexpr') {
+        } else if (el.type == "tplexpr") {
             var expr = el.matches[0];
-            if(expr === 'raw') {
+            if (expr === "raw") {
                 levelRaw = levelRaw + 1;
-            } else if(expr === 'endraw') {
+            } else if (expr === "endraw") {
                 levelRaw = 0;
             }
         }
         return el;
     }
 
-    var escaped = _.map(lexed, function(el) {
+    var escaped = _.map(lexed, function (el) {
         // Only escape paragraphs and headings
-        if(el.type == 'paragraph' || el.type == 'heading') {
+        if (el.type == "paragraph" || el.type == "heading") {
             var line = annotate.inline(el.raw);
 
             // Escape inline code blocks
@@ -71,5 +71,5 @@ function preparePage(src) {
 }
 
 module.exports = {
-    prepare: preparePage
+    prepare: preparePage,
 };

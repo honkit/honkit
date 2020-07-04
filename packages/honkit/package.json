@@ -47,7 +47,7 @@
   "dependencies": {
     "@honkit/asciidoc": "^3.4.1",
     "@honkit/honkit-plugin-theme-default": "^3.4.1",
-    "@honkit/markdown": "^3.4.1",
+    "@honkit/markdown-legacy": "^3.4.1",
     "bash-color": "0.0.4",
     "cheerio": "0.20.0",
     "chokidar": "^3.3.0",

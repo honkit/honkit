@@ -6437,6 +6437,11 @@ kramed@0.5.5:
   resolved "https://registry.yarnpkg.com/kramed/-/kramed-0.5.5.tgz#a933296a9e52db1386aae574584ea536e6b5f6db"
   integrity sha1-qTMpap5S2xOGquV0WE6lNua19ts=
 
+kramed@0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/kramed/-/kramed-0.5.6.tgz#5c37979bcbb59cbb7a8d231049409298857b5162"
+  integrity sha1-XDeXm8u1nLt6jSMQSUCSmIV7UWI=
+
 labeled-stream-splicer@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/labeled-stream-splicer/-/labeled-stream-splicer-2.0.2.tgz#42a41a16abcd46fd046306cf4f2c3576fffb1c21"

@@ -1,5 +1,5 @@
-var _ = require('lodash');
-var kramed = require('kramed');
+var _ = require("lodash");
+var kramed = require("kramed");
 
 /**
     Get renderer for kramed with correct configuration
@@ -8,11 +8,11 @@ var kramed = require('kramed');
 */
 function getRenderer() {
     return new kramed.Renderer({
-        langPrefix: 'lang-',
+        langPrefix: "lang-",
         smartypants: false,
-        headerPrefix: '',
+        headerPrefix: "",
         headerAutoId: false,
-        xhtml: false
+        xhtml: false,
     });
 }
 
@@ -23,7 +23,7 @@ function getRenderer() {
 */
 function getOption() {
     return _.extend({}, kramed.defaults, {
-        mathjax: false
+        mathjax: false,
     });
 }
 
@@ -35,7 +35,7 @@ function getOption() {
 */
 function convertMdToHTMLBlock(src) {
     var options = _.extend(getOption(), {
-        renderer: getRenderer()
+        renderer: getRenderer(),
     });
 
     return kramed(src, options);
@@ -53,5 +53,5 @@ function convertMdToHTMLInline(src) {
 
 module.exports = {
     block: convertMdToHTMLBlock,
-    inline: convertMdToHTMLInline
+    inline: convertMdToHTMLInline,
 };
