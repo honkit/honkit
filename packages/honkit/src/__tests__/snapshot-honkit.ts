@@ -8,7 +8,9 @@ it("HonKit snapshots", async () => {
     const outputDir = path.join(__dirname, "__fixtures__/honkit/_book");
     await bin.run([process.argv[0], ".", "build", bookDir, "--reload"]);
     const maskContent = (content) => {
-        return content.replace(/gitbook\.page\.hasChanged\(.*\);/g, ``);
+        return content
+            .replace(/gitbook\.page\.hasChanged\(.*\);/g, ``)
+            .replace(/<meta name="generator" content="HonKit .*">/g, "");
     };
     for await (const item of iterateDirectoryContents({
         baseDir: outputDir,

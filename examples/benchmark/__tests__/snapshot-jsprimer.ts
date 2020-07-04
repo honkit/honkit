@@ -10,7 +10,9 @@ it("jsprimer snapshots", async () => {
         stdio: "inherit"
     });
     const maskContent = (content) => {
-        return content.replace(/gitbook\.page\.hasChanged\(.*\);/g, ``);
+        return content
+            .replace(/gitbook\.page\.hasChanged\(.*\);/g, ``)
+            .replace(/<meta name="generator" content="HonKit .*">/g, "");
     };
     for await (const item of iterateDirectoryContents({
         baseDir: outputDir,

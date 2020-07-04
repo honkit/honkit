@@ -11,7 +11,7 @@ Object {
         <title>Configuration · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -896,7 +896,7 @@ Object {
         <title>eBook and PDF · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -1656,7 +1656,7 @@ Object {
         <title>FAQ · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -2422,7 +2422,7 @@ Object {
         <title>About this documentation · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -3160,7 +3160,7 @@ Object {
         <title>Multi-Lingual · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -3905,7 +3905,7 @@ Object {
         <title>Glossary · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -4649,7 +4649,7 @@ Object {
         <title>Pages and Summary · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -5457,7 +5457,7 @@ Object {
         <title>API & Context · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -6268,7 +6268,7 @@ Object {
         <title>Blocks · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -7044,7 +7044,7 @@ Object {
         <title>Create a plugin · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -7835,7 +7835,7 @@ Object {
         <title>Filters · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -8605,7 +8605,7 @@ Object {
         <title>Hooks · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -9445,7 +9445,7 @@ Object {
         <title>Plugins · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -10192,7 +10192,7 @@ Object {
         <title>Test your plugin · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -10935,7 +10935,7 @@ Object {
         <title>Installation and Setup · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -11711,7 +11711,7 @@ Object {
         <title>Directory structure · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -12508,7 +12508,7 @@ Object {
         <title>AsciiDoc · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -13287,7 +13287,7 @@ Object {
         <title>Markdown · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -14156,7 +14156,7 @@ Object {
         <title>Builtin · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -14901,7 +14901,7 @@ Object {
         <title>Content References · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -15663,7 +15663,7 @@ Object {
         <title>Templating · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -16457,7 +16457,7 @@ Object {
         <title>Variables · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
@@ -17415,7 +17415,7 @@ Object {
         <title>Theming · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
-        <meta name=\\"generator\\" content=\\"HonKit 3.5.0\\">
+        
         
         
         
