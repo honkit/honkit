@@ -3,10 +3,11 @@ import { directorySnapshot } from "./directorySnapshot.helper";
 
 const bin = require("../bin.js");
 
-// This test is heavy and window can not output same result
 describe("jsprimer snapshots", () => {
-    if (process.env.TEST_TYPE !== "full") {
-        it.skip("noop", () => {});
+    // This test is heavy and windows can not output same result
+    // TODO: skip it without yarn run test:full
+    if (process.env.TEST_TYPE === "full") {
+        it.skip("skip snapshot because TEST_TYPE:" + process.env.TEST_TYPE || "none", () => {});
     } else {
         it("snapshot testing", async () => {
             jest.setTimeout(60 * 1000);
