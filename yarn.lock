@@ -4884,16 +4884,6 @@ gitbook-markdown@0.5.3:
     kramed-text-renderer "0.2.1"
     lodash "^3.2.0"
 
-gitbook-markdown@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/gitbook-markdown/-/gitbook-markdown-1.3.2.tgz#c4238165eba74ae8dec7b14daddaf1b8a76be830"
-  integrity sha1-xCOBZeunSujex7FNrdrxuKdr6DA=
-  dependencies:
-    gitbook-html "1.3.3"
-    kramed "0.5.6"
-    kramed-text-renderer "0.2.1"
-    lodash "^4.13.1"
-
 gitbook-parsers@^0.8.9:
   version "0.8.9"
   resolved "https://registry.yarnpkg.com/gitbook-parsers/-/gitbook-parsers-0.8.9.tgz#982f7bcac4ada98a368c3007bbce8557d6348d79"
