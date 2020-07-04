@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593847786342,
+  "lastUpdate": 1593868426285,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3625,6 +3625,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±2.26%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "81b9815e1423f20829a765a73f8c6adffff737cd",
+          "message": "Merge pull request #85 from honkit/fix/77\n\nfix(honkit): use @honkit/markdown-legacy instead of @honkit/markdown",
+          "timestamp": "2020-07-04T22:10:22+09:00",
+          "tree_id": "02f71264028df6b580610bae0f8c973b60cc142e",
+          "url": "https://github.com/honkit/honkit/commit/81b9815e1423f20829a765a73f8c6adffff737cd"
+        },
+        "date": 1593868425490,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±2.01%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
