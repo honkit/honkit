@@ -21,9 +21,9 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "build": "lerna run build",
-    "clean": "lerna run clean",
-    "test": "lerna run test",
+    "build": "lerna run build --ignore \"@example/*\"",
+    "clean": "lerna run clean--ignore \"@example/*\"",
+    "test": "lerna run test --ignore \"@example/*\"",
     "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
     "versionup": "lerna version --conventional-commits",
     "versionup:patch": "lerna version patch --conventional-commits",

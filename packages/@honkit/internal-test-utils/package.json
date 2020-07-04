@@ -1,0 +1,47 @@
+{
+  "name": "@honkit/internal-test-utils",
+  "version": "1.0.0",
+  "description": "Internal utility for testing.",
+  "homepage": "https://github.com/honkit/honkit/tree/master/packages/@honkit/internal-test-utils/",
+  "bugs": {
+    "url": "https://github.com/honkit/honkit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/honkit/honkit.git"
+  },
+  "license": "MIT",
+  "author": "azu",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "bin/",
+    "lib/"
+  ],
+  "scripts": {
+    "build": "cross-env NODE_ENV=production tsc -p .",
+    "clean": "rimraf lib/",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "prepublish": "npm run --if-present build",
+    "watch": "tsc -p . --watch"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": false,
+    "tabWidth": 4
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.14",
+    "cross-env": "^7.0.2",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

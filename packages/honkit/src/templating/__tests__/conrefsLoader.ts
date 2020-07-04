@@ -14,6 +14,7 @@ describe("ConrefsLoader", () => {
         });
 
         test("should include content from git", () => {
+            jest.setTimeout(20 * 1000);
             return renderTemplate(
                 engine,
                 fileName,
@@ -24,6 +25,7 @@ describe("ConrefsLoader", () => {
         });
 
         test("should handle deep inclusion (1)", () => {
+            jest.setTimeout(20 * 1000);
             return renderTemplate(
                 engine,
                 fileName,
@@ -34,6 +36,7 @@ describe("ConrefsLoader", () => {
         });
 
         test("should handle deep inclusion (2)", () => {
+            jest.setTimeout(20 * 1000);
             return renderTemplate(
                 engine,
                 fileName,

@@ -41,7 +41,8 @@
   "scripts": {
     "build": "rimraf lib && tsc -p .",
     "clean": "rimraf lib/",
-    "test": "jest src"
+    "test": "jest src",
+    "updateSnapshot": "jest src -u"
   },
   "dependencies": {
     "@honkit/asciidoc": "^3.4.1",
@@ -100,6 +101,8 @@
   },
   "devDependencies": {
     "jest": "^26.0.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "cross-env": "^7.0.2",
+    "@honkit/internal-test-utils": "^1.0.0"
   }
 }

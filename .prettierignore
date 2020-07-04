@@ -3,3 +3,5 @@ _book/**
 **/node_modules/**
 **/test/**
 examples/**
+__fixtures__
+__snapshots__

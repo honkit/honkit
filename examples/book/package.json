@@ -1,5 +1,5 @@
 {
-  "name": "book",
+  "name": "@example/book",
   "version": "3.5.0",
   "private": true,
   "description": "",
