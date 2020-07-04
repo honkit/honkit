@@ -18,12 +18,12 @@
   },
   "license": "Apache-2.0",
   "author": "Samy Pesse <samy@gitbook.com>",
+  "main": "lib/index.js",
   "files": [
     "lib",
     "syntaxes",
     "!__tests__"
   ],
-  "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p .",
     "clean": "rimraf lib/",

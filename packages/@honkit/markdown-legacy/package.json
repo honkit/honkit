@@ -1,36 +1,17 @@
 {
     "name": "@honkit/markdown-legacy",
     "version": "3.4.1",
-    "homepage": "https://github.com/honkit/honkit",
     "description": "Parse markdown content for HonKit",
-    "main": "lib/index.js",
-    "files": [
-        "lib",
-        "!__tests__"
-    ],
-    "dependencies": {
-        "lodash": "^4.13.1",
-        "kramed": "0.5.6",
-        "kramed-text-renderer": "0.2.1",
-        "gitbook-html": "1.3.3"
-    },
-    "devDependencies": {
-        "jest": "^26.1.0",
-        "cross-env": "^7.0.2"
-    },
-    "scripts": {
-        "test": "jest",
-        "updateSnapshot": "jest -u"
+    "homepage": "https://github.com/honkit/honkit",
+    "bugs": {
+        "url": "https://github.com/honkit/honkit/issues"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/honkit/honkit.git"
     },
-    "author": "HonKit",
     "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/honkit/honkit/issues"
-    },
+    "author": "HonKit",
     "contributors": [
         {
             "name": "FriendCode Inc.",
@@ -44,5 +25,24 @@
             "name": "Samy Pessé",
             "email": "samy@gitbook.com"
         }
-    ]
+    ],
+    "main": "lib/index.js",
+    "files": [
+        "lib",
+        "!__tests__"
+    ],
+    "scripts": {
+        "test": "jest",
+        "updateSnapshot": "jest -u"
+    },
+    "dependencies": {
+        "gitbook-html": "1.3.3",
+        "kramed": "0.5.6",
+        "kramed-text-renderer": "0.2.1",
+        "lodash": "^4.13.1"
+    },
+    "devDependencies": {
+        "cross-env": "^7.0.2",
+        "jest": "^26.1.0"
+    }
 }

@@ -21,13 +21,13 @@
       "email": "samy@gitbook.com"
     }
   ],
+  "main": "./index.js",
   "files": [
     "_assets",
     "_i18n",
     "_layouts",
     "!__tests__"
   ],
-  "main": "./index.js",
   "scripts": {
     "prebuild": "npm run clean",
     "build": "npm-run-all build:js build:css cp",

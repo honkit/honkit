@@ -28,16 +28,16 @@
       "email": "samy@gitbook.com"
     }
   ],
-  "files": [
-    "bin",
-    "lib",
-    "!__tests__"
-  ],
   "main": "lib/index.js",
   "browser": "./lib/browser.js",
   "bin": {
     "honkit": "./bin/honkit.js"
   },
+  "files": [
+    "bin",
+    "lib",
+    "!__tests__"
+  ],
   "scripts": {
     "build": "rimraf lib && tsc -p .",
     "clean": "rimraf lib/",
@@ -100,9 +100,9 @@
     "urijs": "1.18.0"
   },
   "devDependencies": {
-    "jest": "^26.0.1",
-    "rimraf": "^3.0.2",
+    "@honkit/internal-test-utils": "^1.0.0",
     "cross-env": "^7.0.2",
-    "@honkit/internal-test-utils": "^1.0.0"
+    "jest": "^26.0.1",
+    "rimraf": "^3.0.2"
   }
 }

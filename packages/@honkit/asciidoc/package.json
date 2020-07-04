@@ -25,11 +25,11 @@
       "email": "samy@gitbook.com"
     }
   ],
+  "main": "lib/index.js",
   "files": [
     "lib",
     "!__tests__"
   ],
-  "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p .",
     "test": "yarn build && jest src"
