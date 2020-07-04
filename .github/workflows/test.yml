@@ -11,6 +11,9 @@ jobs:
         node-version: [10, 12, 14]
         os: [macos-latest, windows-latest, ubuntu-18.04]
     steps:
+      - name: Disable autocrlf
+        run: git config --global core.autocrlf false
+        if: matrix.os == 'windows-latest'
       - name: checkout
         uses: actions/checkout@v2
       - name: setup Node.js ${{ matrix.node-version }}
