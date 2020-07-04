@@ -33,7 +33,12 @@ function combine(nodes) {
     @return {String}
 */
 function preparePage(src) {
-    var lexed = annotate.blocks(src);
+    // annotate.blocks does not normalize src, so windows fail the reason
+    const normalizedSource = src
+        .replace(/\r\n|\r|\u2424/g, "\n")
+        .replace(/\t/g, "    ")
+        .replace(/\u00a0/g, " ");
+    var lexed = annotate.blocks(normalizedSource);
     var levelRaw = 0;
 
     function escapeCodeElement(el) {
