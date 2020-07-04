@@ -32,8 +32,8 @@ export type directorySnapshotFile = {
 };
 
 const defaultMask = (s: string) => s;
-export const directorySnapshot = async (basePath: string, maskContent: (content: string) => string = defaultMask) => {
-    const results: directorySnapshotFile[] = [];
+
+export async function* directorySnapshot(basePath: string, maskContent: (content: string) => string = defaultMask) {
     const allowExtension = [".html"];
     for await (const item of getFiles(basePath)) {
         const { dirent, filePath } = item;
@@ -43,7 +43,7 @@ export const directorySnapshot = async (basePath: string, maskContent: (content:
         const isFile = dirent.isFile();
         // FIXME: windows and other output different result!
         const contents = maskContent(isFile ? (await readFile(filePath)).toString() : "");
-        results.push({
+        yield {
             stats: {
                 isDirectory: dirent.isDirectory(),
                 isFile: isFile,
@@ -53,9 +53,6 @@ export const directorySnapshot = async (basePath: string, maskContent: (content:
             // normalize file path
             filePath: path.relative(basePath, filePath).split(path.sep).join("/"),
             contents,
-        });
+        };
     }
-    return {
-        contents: results,
-    };
-};
+}

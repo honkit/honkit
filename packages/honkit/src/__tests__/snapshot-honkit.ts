@@ -7,8 +7,10 @@ it("HonKit snapshots", async () => {
     const bookDir = path.join(__dirname, "__fixtures__/honkit");
     const outputDir = path.join(__dirname, "__fixtures__/honkit/_book");
     await bin.run([process.argv[0], ".", "build", bookDir]);
-    const outputs = await directorySnapshot(outputDir, content => {
+    const maskContent = (content) => {
         return content.replace(/gitbook\.page\.hasChanged\(.*\);/g, ``);
-    });
-    expect(outputs).toMatchSnapshot("honkit");
+    };
+    for await (const item of directorySnapshot(outputDir, maskContent)) {
+        expect(item).toMatchSnapshot(item.filePath);
+    }
 });
