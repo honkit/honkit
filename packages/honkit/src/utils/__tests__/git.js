@@ -4,6 +4,7 @@ const os = require("os");
 const Git = require("../git");
 
 describe("Git", () => {
+    jest.setTimeout(30 * 1000);
     describe("URL parsing", () => {
         test("should correctly validate git urls", () => {
             // HTTPS

@@ -26,12 +26,19 @@ function renderTemplate(engine, filePath, content, context) {
 
     return timing.measure(
         "template.render",
-
         Promise.nfcall(env.renderString.bind(env), content, context, {
             path: filePath,
-        }).then((content) => {
-            return TemplateOutput.create(content, blocks);
         })
+            .then((content) => {
+                return TemplateOutput.create(content, blocks);
+            })
+            .catch((error) => {
+                console.log("env:", env);
+                console.log("context:", context);
+                console.log("content:", content);
+                console.error("rendering error:", error);
+                return Promise.reject(error);
+            })
     );
 }
 

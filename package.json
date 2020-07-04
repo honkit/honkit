@@ -24,6 +24,7 @@
     "build": "lerna run build --ignore \"@example/*\"",
     "clean": "lerna run clean--ignore \"@example/*\"",
     "test": "lerna run test --ignore \"@example/*\"",
+    "updateSnapshot": "lerna run updateSnapshot --ignore \"@example/*\"",
     "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
     "versionup": "lerna version --conventional-commits",
     "versionup:patch": "lerna version patch --conventional-commits",

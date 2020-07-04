@@ -1,11 +1,14 @@
 import path from "path";
 import { iterateDirectoryContents } from "@honkit/internal-test-utils";
-
+const honkitBin = require.resolve(".bin/honkit");
 const spawn = require("cross-spawn");
 it("jsprimer snapshots", async () => {
     jest.setTimeout(60 * 1000);
     const outputDir = path.join(__dirname, "../_book");
-    spawn.sync("npm", ["run", "build"], { stdio: "inherit" });
+    spawn.sync(honkitBin, ["build", "--reload"], {
+        cwd: path.join(__dirname, ".."),
+        stdio: "inherit"
+    });
     const maskContent = (content) => {
         return content.replace(/gitbook\.page\.hasChanged\(.*\);/g, ``);
     };
