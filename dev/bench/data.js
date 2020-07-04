@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593673308512,
+  "lastUpdate": 1593847786342,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3594,6 +3594,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±2.06%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e5f58e467cdd85ca19b2d6a056930f5c80cecff1",
+          "message": "test(honkit): add snapshot testing for HonKit documentation (#83)\n\n* test(honkit): add snapshot testing using actual project\r\n\r\n* chore: add ignore list\r\n\r\n* chore(honkit): fix honkit command\r\n\r\n* test(honkit): normalize file path\r\n\r\n* test(honkit): add TEST_TYPE=full flag\r\n\r\n* test(honkit): add TEST_TYPE=full flag\r\n\r\n* test(honkit): skip snapshot if is not TEST_TYPE=full\r\n\r\n* test(honkit): iterate snapshot\r\n\r\n* test(honkit): add comment\r\n\r\n* test: add @honkit/internal-test-utils\r\n\r\nmove jsprimer snapshot to benchmark dir\r\n\r\n* chore: add files\r\n\r\n* test: remove unused files\r\n\r\n* test(honkit): fix jest config\r\n\r\n* chore: add note\r\n\r\n* test(honkit): add timeout for fetching external",
+          "timestamp": "2020-07-04T16:26:45+09:00",
+          "tree_id": "795cb28a89fb39650efb33d3bcdcb62ebc75bd3e",
+          "url": "https://github.com/honkit/honkit/commit/e5f58e467cdd85ca19b2d6a056930f5c80cecff1"
+        },
+        "date": 1593847785643,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±2.26%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
