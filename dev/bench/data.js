@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1593869898203,
+  "lastUpdate": 1593913127027,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3749,6 +3749,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±1.37%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "genbu2011@live.jp",
+            "name": "Solufa",
+            "username": "solufa"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "29424f3296eecd8267dc80edaa46127af3460fd7",
+          "message": "fix(markdown-legacy): normalize some characters for kramed's annotate function (#88)\n\n* CI: disable autocrlf on Windows\r\n\r\n* fix(markdown-legacy): add normalize src\r\n\r\n* fix(markdown-legacy): fix __tests__/page.js\r\n\r\n* chore(markdown-legacy): add normalize test\r\n\r\n* fix(ci): restore default git config",
+          "timestamp": "2020-07-05T10:35:20+09:00",
+          "tree_id": "2b547348759965f8c07c0b5f43318ed251ad0678",
+          "url": "https://github.com/honkit/honkit/commit/29424f3296eecd8267dc80edaa46127af3460fd7"
+        },
+        "date": 1593913126071,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±3.17%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
