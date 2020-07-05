@@ -31,18 +31,18 @@ describe("Page parsing", function () {
         );
         assert.equal(
             page.prepare("Hello\n```\ntest\n\tworld\n\ttest\n```"),
-            "Hello\n{% raw %}```\ntest\n\tworld\n\ttest\n```{% endraw %}"
+            "Hello\n{% raw %}```\ntest\n    world\n    test\n```{% endraw %}"
         );
     });
 
     it("should escape codeblocks in preparation (2)", function () {
         assert.equal(
             page.prepare("Hello\n\n\n\tworld\n\thello\n\n\ntest"),
-            "Hello\n\n\n{% raw %}\tworld\n\thello\n\n\n{% endraw %}test"
+            "Hello\n\n\n{% raw %}    world\n    hello\n\n\n{% endraw %}test"
         );
         assert.equal(
             page.prepare("Hello\n\n\n\tworld\n\thello\n\n\n"),
-            "Hello\n\n\n{% raw %}\tworld\n\thello\n\n\n{% endraw %}"
+            "Hello\n\n\n{% raw %}    world\n    hello\n\n\n{% endraw %}"
         );
     });
 
@@ -167,16 +167,16 @@ This is the default content
             "{% uml %}
             @startuml
 
-            {% raw %}	Class Stage
-            	Class Timeout {
-            		+constructor:function(cfg)
-            		+timeout:function(ctx)
-            		+overdue:function(ctx)
-            		+stage: Stage
-            	}
-            {% endraw %} 	Stage <|-- Timeout
+            {% raw %}    Class Stage
+                Class Timeout {
+                    +constructor:function(cfg)
+                    +timeout:function(ctx)
+                    +overdue:function(ctx)
+                    +stage: Stage
+                }
+                 Stage <|-- Timeout
 
-            @enduml
+            {% endraw %}@enduml
             {% enduml %}
             "
         `);
