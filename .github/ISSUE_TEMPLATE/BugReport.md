@@ -17,8 +17,10 @@ about: Create a bug report
 - Link to code example:
 
 <!--
-  Please provide a reproduce repository link.
-  It is not possible, please put your `book.json` file.
+  Please create a repository that reproduce the issue.
+  The repository help us to debug this issue.
+  
+  It is not possible, please put your `package.json` and `book.json` file.
 -->
 
 
