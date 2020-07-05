@@ -23,6 +23,7 @@
   ],
   "main": "./index.js",
   "files": [
+    "index.js",
     "_assets",
     "_i18n",
     "_layouts",
