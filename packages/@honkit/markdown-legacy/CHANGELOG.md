@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.2](https://github.com/honkit/honkit/compare/v3.5.1...v3.5.2) (2020-07-05)
+
+
+### Bug Fixes
+
+* **markdown-legacy:** normalize some characters for kramed's annotate function ([#88](https://github.com/honkit/honkit/issues/88)) ([29424f3](https://github.com/honkit/honkit/commit/29424f3296eecd8267dc80edaa46127af3460fd7))
+
+
+
+
+
 ## [3.5.1](https://github.com/honkit/honkit/compare/v3.5.0...v3.5.1) (2020-07-04)
 
 

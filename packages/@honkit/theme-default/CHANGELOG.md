@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.2](https://github.com/honkit/honkit/compare/v3.5.1...v3.5.2) (2020-07-05)
+
+
+### Bug Fixes
+
+* **theme-default:** include `index.js` to `files` ([#90](https://github.com/honkit/honkit/issues/90)) ([2ac7029](https://github.com/honkit/honkit/commit/2ac7029b97b8e2cedfe5bb2cba84b3ff66ba6d9a))
+
+
+
+
+
 ## [3.5.1](https://github.com/honkit/honkit/compare/v3.5.0...v3.5.1) (2020-07-04)
 
 **Note:** Version bump only for package @honkit/honkit-plugin-theme-default
