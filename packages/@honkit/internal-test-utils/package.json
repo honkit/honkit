@@ -23,7 +23,7 @@
     "lib/"
   ],
   "scripts": {
-    "build": "cross-env NODE_ENV=production tsc -p .",
+    "build": "tsc -p .",
     "clean": "rimraf lib/",
     "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
     "prepublish": "npm run --if-present build",
