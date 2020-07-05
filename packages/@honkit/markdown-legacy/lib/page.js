@@ -33,8 +33,8 @@ function combine(nodes) {
     @return {String}
 */
 function preparePage(src) {
-    // annotate.blocks does not normalize src, so windows fail the reason
-    const normalizedSource = src
+    // annotate.blocks does not normalize the following characters
+    var normalizedSource = src
         .replace(/\r\n|\r|\u2424/g, "\n")
         .replace(/\t/g, "    ")
         .replace(/\u00a0/g, " ");

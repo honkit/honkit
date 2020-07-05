@@ -70,6 +70,13 @@ describe("Page parsing", function () {
         assert.equal(page.prepare("```\ntest\n```\n\n\n### Test"), "{% raw %}```\ntest\n```\n{% endraw %}\n\n### Test");
     });
 
+    it("should normalize some characters for kramed's annotate function", function () {
+        assert.equal(
+            page.prepare("Hello\r\nworld\rhello\u2424world\ttest\u00a0"),
+            "Hello\nworld\nhello\nworld    test "
+        );
+    });
+
     it("should not process math", function () {
         assert.equal(page.prepare("Hello $world$"), "Hello $world$");
         assert.equal(page.prepare("Hello $$world$$"), "Hello $$world$$");
