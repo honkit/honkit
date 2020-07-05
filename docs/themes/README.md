@@ -1,6 +1,6 @@
 # Theming
 
-Since version 3.0.0, HonKit can be easily themed. Books use the [theme-default](https://github.com/GitbookIO/theme-default) theme by default.
+Since version 3.0.0, HonKit can be easily themed. Books use the [theme-default](https://github.com/honkit/honkit/tree/master/packages/%40honkit/theme-default) theme by default.
 
 > **Caution**: Custom theming can block some plugins from working correctly.
 
