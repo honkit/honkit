@@ -15,6 +15,13 @@
 {% endblock %}
 
 {% block javascript %}
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
     <script>
         // Restore sidebar state as critical path for prevent layout shift
         function __init__getSidebarState(defaultValue){
@@ -46,6 +53,7 @@
                 return;
             }
             book.classList.add("without-animation", "with-summary");
+            book.classList.remove("honkit-cloak");
         }
         __init__restoreLastSidebarState();
     </script>
@@ -61,7 +69,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         {% block book_sidebar %}
             {% block search_input %}{% endblock %}
