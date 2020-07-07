@@ -15,6 +15,40 @@
 {% endblock %}
 
 {% block javascript %}
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            if (!sidebarState) {
+                return;
+            }
+            var book = document.querySelector(".book");
+            if (!book) {
+                return;
+            }
+            book.classList.add("without-animation", "with-summary");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src="{{ "gitbook.js"|resolveAsset }}"></script>
     <script src="{{ "theme.js"|resolveAsset }}"></script>
     {% for resource in plugins.resources.js %}
