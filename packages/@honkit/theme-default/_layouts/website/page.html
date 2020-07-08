@@ -45,14 +45,11 @@
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(".book");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
             }
-            book.classList.add("without-animation", "with-summary");
             book.classList.remove("honkit-cloak");
         }
         __init__restoreLastSidebarState();
