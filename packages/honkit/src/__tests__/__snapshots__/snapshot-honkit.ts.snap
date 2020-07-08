@@ -877,14 +877,11 @@ These files must be at the root of your book (or the root of every language book
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -1679,14 +1676,11 @@ $ honkit mobi ./ ./mybook.mobi
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -2487,14 +2481,11 @@ In some case, HonKit cannot detect the changes of plugins.</p>
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -3267,14 +3258,11 @@ Object {
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -4054,14 +4042,11 @@ Object {
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -4840,14 +4825,11 @@ and all other kinds of inline markup ...
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -5690,14 +5672,11 @@ Markdown will dictates <span class=\\"hljs-emphasis\\">_most_</span> of your <sp
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -6543,14 +6522,11 @@ page.type (<span class=\\"hljs-string\\">&apos;markdown&apos;</span> or <span cl
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -7361,14 +7337,11 @@ This is the body of the block.
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -8194,14 +8167,11 @@ Object {
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -9006,14 +8976,11 @@ Refer to <a href=\\"api.html\\">Context and APIs</a> to learn more about <code>t
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -9888,14 +9855,11 @@ Object {
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -10677,14 +10641,11 @@ Object {
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -11462,14 +11423,11 @@ Object {
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -12280,14 +12238,11 @@ npm run serve
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -13119,14 +13074,11 @@ bin/*
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -13940,14 +13892,11 @@ but now stands for &quot;PHP: Hypertext Preprocessor&quot;).
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -14851,14 +14800,11 @@ Asterisks
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -15638,14 +15584,11 @@ Render inline asciidoc</p>
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -16442,14 +16385,11 @@ This is the default content
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -17278,14 +17218,11 @@ Current version is </span><span class=\\"hljs-template-variable\\">{{ softwareVe
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -18278,14 +18215,11 @@ Object {
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
@@ -19097,14 +19031,11 @@ Object {
                 return;
             }
             var sidebarState = __init__getSidebarState(true)
-            if (!sidebarState) {
-                return;
-            }
             var book = document.querySelector(\\".book\\");
-            if (!book) {
-                return;
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
-            book.classList.add(\\"without-animation\\", \\"with-summary\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
         __init__restoreLastSidebarState();
