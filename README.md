@@ -56,6 +56,12 @@ You can start to write your book!
 
 For more details, see [HonKit's documentation](https://honkit.netlify.app/).
 
+## Usage examples
+
+HonKit can be used to create a book, public documentation, enterprise manual, thesis, research papers, etc.
+
+You can find a list of [real-world examples](https://honkit.netlify.app/examples.html) in the documentation.
+
 ## Features
 
 * Write using [Markdown](https://honkit.netlify.app/syntax/markdown.html) or [AsciiDoc](https://honkit.netlify.app/syntax/asciidoc.html)
