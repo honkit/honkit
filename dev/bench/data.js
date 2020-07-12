@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1594283149876,
+  "lastUpdate": 1594520408461,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3935,6 +3935,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.12,
             "range": "±1.29%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "jrs.schloss@gmail.com",
+            "name": "James Schloss",
+            "username": "leios"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f997727d931ef5a5148745163e33b98d90c1f00f",
+          "message": "adding AAA to honkit examples (#97)",
+          "timestamp": "2020-07-12T11:17:36+09:00",
+          "tree_id": "e64d5b3c4143ac339fdb1dcb94499aab144243e8",
+          "url": "https://github.com/honkit/honkit/commit/f997727d931ef5a5148745163e33b98d90c1f00f"
+        },
+        "date": 1594520407738,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.12,
+            "range": "±0.53%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
