@@ -14,6 +14,9 @@ Real world examples of content published using HonKit.
 - Arcane Algorithm Archive
     - [Website](https://www.algorithm-archive.org/)
     - [Source](https://github.com/algorithm-archivists/algorithm-archive)
+- Django Girls Tutorial
+    - [Website](https://tutorial.djangogirls.org/)
+    - [Source](https://github.com/DjangoGirls/tutorial)
 
 ## Add to examples
 
