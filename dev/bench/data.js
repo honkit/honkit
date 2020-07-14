@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1594520408461,
+  "lastUpdate": 1594724637920,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3966,6 +3966,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.12,
             "range": "±0.53%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ewoud@kohlvanwijngaarden.nl",
+            "name": "Ewoud Kohl van Wijngaarden",
+            "username": "ekohl"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ee13cc8230ef74d226895f79f2f2972cbaa47fb3",
+          "message": "Add Django Girls Tutorial to examples (#98)\n\nRecently the Django Girls Tutorial converted from Gitbook Legacy to Honkit.",
+          "timestamp": "2020-07-14T20:01:25+09:00",
+          "tree_id": "e1c307a2545e7c54423d2989d65ac8d38986363d",
+          "url": "https://github.com/honkit/honkit/commit/ee13cc8230ef74d226895f79f2f2972cbaa47fb3"
+        },
+        "date": 1594724637204,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.12,
+            "range": "±1.04%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
