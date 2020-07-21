@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1594724637920,
+  "lastUpdate": 1595301889035,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -3997,6 +3997,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.12,
             "range": "±1.04%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c598208ed61802a74fb69b7ba95c323f38dcfeb7",
+          "message": "Bump lodash from 4.17.15 to 4.17.19 (#101)\n\nBumps [lodash](https://github.com/lodash/lodash) from 4.17.15 to 4.17.19.\r\n- [Release notes](https://github.com/lodash/lodash/releases)\r\n- [Commits](https://github.com/lodash/lodash/compare/4.17.15...4.17.19)\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2020-07-21T12:22:17+09:00",
+          "tree_id": "6174829b7741ed14b4b73a5a5722706e5eb27656",
+          "url": "https://github.com/honkit/honkit/commit/c598208ed61802a74fb69b7ba95c323f38dcfeb7"
+        },
+        "date": 1595301888273,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.12,
+            "range": "±0.70%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
