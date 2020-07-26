@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1595301889035,
+  "lastUpdate": 1595732043323,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4028,6 +4028,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.12,
             "range": "±0.70%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "tedster@tedster.net",
+            "name": "Ted Hart-Davis",
+            "username": "TedsterTech"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f5c616b87a44ebf662281942fd68782cad73f4ca",
+          "message": "simple typo fix (#102)",
+          "timestamp": "2020-07-26T11:51:34+09:00",
+          "tree_id": "cdb057018ba622faafe9f4d4ad0b3bb2498955c6",
+          "url": "https://github.com/honkit/honkit/commit/f5c616b87a44ebf662281942fd68782cad73f4ca"
+        },
+        "date": 1595732042490,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.12,
+            "range": "±0.72%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
