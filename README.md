@@ -97,7 +97,7 @@ HonKit aim to smooth migration from GitBook (Legacy) to HonKit.
     - Also, support `--reload` flag for force refresh
 - Improve plugin loading logic
     - Reduce cost of finding `honkit-plugin-*` and `gitbook-plugin-*`
-    - Support `honkit-plugin-*` and `@scope/honkit-plguin-*` (GitBook does not support a scoped module)
+    - Support `honkit-plugin-*` and `@scope/honkit-plugin-*` (GitBook does not support a scoped module)
 - Remove `install` command
     - Instead of it, just use `npm install` or `yarn install`
 - Remove `global-npm` dependency
