@@ -2,7 +2,7 @@ const path = require("path");
 const cheerio = require("cheerio");
 const resolveImages = require("../resolveImages");
 
-describe("resolveLinks", () => {
+describe("resolveImages", () => {
     describe("img tag", () => {
         const TEST = '<img src="http://www.github.com">';
 
