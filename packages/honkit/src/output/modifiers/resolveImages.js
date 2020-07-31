@@ -16,7 +16,7 @@ function resolveImages(currentFile, $) {
     return editHTMLElement($, "img", ($img) => {
         let src = $img.attr("src");
 
-        if (LocationUtils.isExternal(src) || LocationUtils.isDataURI(src)) {
+        if (src === null || src === undefined || LocationUtils.isExternal(src) || LocationUtils.isDataURI(src)) {
             return;
         }
 
