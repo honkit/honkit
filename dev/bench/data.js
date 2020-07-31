@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1595732043323,
+  "lastUpdate": 1596236799679,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4059,6 +4059,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.12,
             "range": "±0.72%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ktat@cpan.org",
+            "name": "Atsushi Kato",
+            "username": "ktat"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "bedbf565b885e03c74e7a7f4ee419f437f3c1622",
+          "message": "fix(honkit): return if src is null or undefined in resolveImages (#103)\n\n* return if src is null or undefined.\r\n\r\n* add resolveImages.js test.\r\n\r\n* Update packages/honkit/src/output/modifiers/__tests__/resolveImages.js\r\n\r\nCo-authored-by: azu <azu@users.noreply.github.com>",
+          "timestamp": "2020-08-01T08:03:15+09:00",
+          "tree_id": "69e9633f8981d5d63e8e25f49fa047fca7bc313f",
+          "url": "https://github.com/honkit/honkit/commit/bedbf565b885e03c74e7a7f4ee419f437f3c1622"
+        },
+        "date": 1596236798936,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±2.30%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
