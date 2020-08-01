@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.4](https://github.com/honkit/honkit/compare/v3.5.3...v3.5.4) (2020-08-01)
+
+
+### Bug Fixes
+
+* add prepublish script ([810fcc7](https://github.com/honkit/honkit/commit/810fcc7f45f3b1ab8d9527e8738f9861fdbe2c31))
+
+
+
+
+
 ## [3.5.3](https://github.com/honkit/honkit/compare/v3.5.2...v3.5.3) (2020-07-31)
 
 
