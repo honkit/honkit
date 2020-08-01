@@ -34,7 +34,8 @@
   "scripts": {
     "build": "tsc -p .",
     "clean": "rimraf lib/",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "npm run --if-present build"
   },
   "dependencies": {
     "@honkit/html": "^3.5.1",

@@ -28,7 +28,8 @@
     "build": "tsc -p .",
     "clean": "rimraf lib/",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "npm run --if-present build"
   },
   "dependencies": {
     "escape-string-regexp": "^4.0.0",

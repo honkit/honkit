@@ -32,7 +32,8 @@
   ],
   "scripts": {
     "build": "tsc -p .",
-    "test": "yarn build && jest src"
+    "test": "yarn build && jest src",
+    "prepublish": "npm run --if-present build"
   },
   "dependencies": {
     "@honkit/html": "^3.5.1",

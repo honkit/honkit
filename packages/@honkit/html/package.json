@@ -34,7 +34,8 @@
   "scripts": {
     "build": "tsc -p .",
     "clean": "rimraf lib/",
-    "test": "mocha test/"
+    "test": "mocha test/",
+    "prepublish": "npm run --if-present build"
   },
   "dependencies": {
     "cheerio": "^0.20.0 && >=0.20.0",
