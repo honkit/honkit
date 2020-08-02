@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1596259614435,
+  "lastUpdate": 1596330736686,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4152,6 +4152,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.12,
             "range": "±1.67%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1893864362f971b940b9b20eac200d1b36f94d11",
+          "message": "Merge pull request #105 from honkit/feature/104\n\nfix(honkit/html): fix cheerio versioning",
+          "timestamp": "2020-08-02T10:09:11+09:00",
+          "tree_id": "17e68febfdcb36289fb8af1b3b6eb720f86cdba5",
+          "url": "https://github.com/honkit/honkit/commit/1893864362f971b940b9b20eac200d1b36f94d11"
+        },
+        "date": 1596330735781,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±6.61%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
