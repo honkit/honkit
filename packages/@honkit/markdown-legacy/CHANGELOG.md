@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.5](https://github.com/honkit/honkit/compare/v3.5.4...v3.5.5) (2020-08-02)
+
+
+### Bug Fixes
+
+* **markdown-legacy:** use @honkit/html ([96a22df](https://github.com/honkit/honkit/commit/96a22df6ee046ce25eb38a208584c29520b5c9ce))
+
+
+
+
+
 ## [3.5.2](https://github.com/honkit/honkit/compare/v3.5.1...v3.5.2) (2020-07-05)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.5](https://github.com/honkit/honkit/compare/v3.5.4...v3.5.5) (2020-08-02)
+
+
+### Bug Fixes
+
+* **honkit/html:** fix cheerio versioning ([7849651](https://github.com/honkit/honkit/commit/7849651d61a4cbd89c808f7018872d87b8409eed))
+
+
+
+
+
 ## [3.5.4](https://github.com/honkit/honkit/compare/v3.5.3...v3.5.4) (2020-08-01)
 
 
