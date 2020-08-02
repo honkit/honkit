@@ -1,7 +1,12 @@
 docs/**
 _book/**
 **/node_modules/**
-**/test/**
+packages/@honkit/*/test
+packages/@honkit/*/__tests__
 examples/**
+theme-default/
+packages/**/lib
+packages/**/__tests__
 __fixtures__
 __snapshots__
+.yarn

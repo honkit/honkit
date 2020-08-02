@@ -1,4 +1,4 @@
-var HTMLParser = require("gitbook-html");
+var HTMLParser = require("@honkit/html");
 
 var toHTML = require("./toHTML");
 var toMarkdown = require("./toMarkdown");
