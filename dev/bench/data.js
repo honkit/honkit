@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1596330779369,
+  "lastUpdate": 1596351742637,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4214,6 +4214,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.70%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "44a6be83e334e56b6692927d1652a51724bce8b8",
+          "message": "Merge pull request #106 from honkit/azu-patch-1\n\nDelete Blank.md",
+          "timestamp": "2020-08-02T15:59:23+09:00",
+          "tree_id": "011a2df61f59183753e206c74bd26a17652e2fd2",
+          "url": "https://github.com/honkit/honkit/commit/44a6be83e334e56b6692927d1652a51724bce8b8"
+        },
+        "date": 1596351741830,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.12,
+            "range": "±0.74%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
