@@ -26,6 +26,14 @@ module.exports = {
             type: "string",
             title: "Name of the author",
         },
+        producer: {
+            type: "string",
+            title: "Name of the producer"
+        },
+        publisher: {
+            type: "string",
+            title: "Name of the publisher",
+        },
         gitbook: {
             type: "string",
             default: "*",
