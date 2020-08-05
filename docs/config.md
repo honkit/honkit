@@ -16,7 +16,7 @@ HonKit allows you to customize your book using a flexible configuration. These o
 | `publisher` | Name of the publisher. |
 | `series` | The series this book belongs to. |
 | `seriesIndex` | Index of the book in this series. |
-| `pubdate` | Publication date of the book, formatted as YYYY-MM-DD. |
+| `pubdate` | Publication date of the book, formatted as YYYY-MM-DDTHH:MM:SS. |
 | `isbn` | ISBN of the book |
 | `language` | [ISO code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of the book's language, default value is `en` |
 | `direction` | Text's direction. Can be `rtl` or `ltr`, the default value depends on the value of `language` |
