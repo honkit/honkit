@@ -30,6 +30,14 @@ module.exports = {
             type: "string",
             title: "Publication date of the book",
         },
+        series: {
+            type: "string",
+            title: "Series this book belongs to",
+        },
+        seriesIndex: {
+            type: "string",
+            title: "Index of the book in this series",
+        },
         isbn: {
             type: "string",
             title: "ISBN for published book",
