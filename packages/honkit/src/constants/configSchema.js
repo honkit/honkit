@@ -14,14 +14,6 @@ module.exports = {
             type: "string",
             title: "Title of the book, default is extracted from README",
         },
-        isbn: {
-            type: "string",
-            title: "ISBN for published book",
-        },
-        language: {
-            type: "string",
-            title: "Language of the book",
-        },
         author: {
             type: "string",
             title: "Name of the author",
@@ -33,6 +25,18 @@ module.exports = {
         publisher: {
             type: "string",
             title: "Name of the publisher",
+        },
+        pubdate: {
+            type: "string",
+            title: "Publication date of the book",
+        },
+        isbn: {
+            type: "string",
+            title: "ISBN for published book",
+        },
+        language: {
+            type: "string",
+            title: "Language of the book",
         },
         gitbook: {
             type: "string",

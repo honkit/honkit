@@ -28,6 +28,7 @@ function getConvertOptions(output) {
             "--language": book.getLanguage() || config.getValue("language"),
             "--book-producer": config.getValue("producer") || "HonKit",
             "--publisher": config.getValue("publisher") || "HonKit",
+            "--pubdate": config.getValue("pubdate"),
             "--chapter": "descendant-or-self::*[contains(concat(' ', normalize-space(@class), ' '), ' book-chapter ')]",
             "--level1-toc":
                 "descendant-or-self::*[contains(concat(' ', normalize-space(@class), ' '), ' book-chapter-1 ')]",
