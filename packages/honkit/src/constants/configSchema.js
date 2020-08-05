@@ -18,6 +18,10 @@ module.exports = {
             type: "string",
             title: "Name of the author",
         },
+        authorSort: {
+            type: "string",
+            title: "String to be used to sort the author(s)",
+        },
         producer: {
             type: "string",
             title: "Name of the producer"

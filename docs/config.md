@@ -10,7 +10,8 @@ HonKit allows you to customize your book using a flexible configuration. These o
 | `structure` | To specify paths for Readme, Summary, Glossary etc. See [Structure paragraph](#structure). |
 | `title` | Title of your book, default value is extracted from the README. |
 | `description` | Description of your book, default value is extracted from the README. |
-| `author` | Name of the author. |
+| `author` | Name of the author(s), multiple authors should be separated by ampersands. |
+| `authorSort` | String to be used when sorting by author. |
 | `producer` | Name of the producer. |
 | `publisher` | Name of the publisher. |
 | `series` | The series this book belongs to. |
