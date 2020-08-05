@@ -11,8 +11,6 @@ HonKit allows you to customize your book using a flexible configuration. These o
 | `title` | Title of your book, default value is extracted from the README. |
 | `description` | Description of your book, default value is extracted from the README. |
 | `author` | Name of the author. |
-| `producer` | Name of the producer. |
-| `publisher` | Name of the publisher. |
 | `isbn` | ISBN of the book |
 | `language` | [ISO code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of the book's language, default value is `en` |
 | `direction` | Text's direction. Can be `rtl` or `ltr`, the default value depends on the value of `language` |
