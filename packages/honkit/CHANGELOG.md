@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/honkit/honkit/compare/v3.5.5...v3.6.0) (2020-08-06)
+
+
+### Features
+
+* **honkit:** Add publisher, producer, series, and author sort config options ([#108](https://github.com/honkit/honkit/issues/108)) ([fd7b05b](https://github.com/honkit/honkit/commit/fd7b05b6459885379962b00000bf6825bde3c1d2)), closes [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107)
+
+
+
+
+
 ## [3.5.5](https://github.com/honkit/honkit/compare/v3.5.4...v3.5.5) (2020-08-02)
 
 **Note:** Version bump only for package honkit
