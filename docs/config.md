@@ -10,7 +10,13 @@ HonKit allows you to customize your book using a flexible configuration. These o
 | `structure` | To specify paths for Readme, Summary, Glossary etc. See [Structure paragraph](#structure). |
 | `title` | Title of your book, default value is extracted from the README. |
 | `description` | Description of your book, default value is extracted from the README. |
-| `author` | Name of the author. |
+| `author` | Name of the author(s), multiple authors should be separated by ampersands. |
+| `authorSort` | String to be used when sorting by author. |
+| `producer` | Name of the producer. |
+| `publisher` | Name of the publisher. |
+| `series` | The series this book belongs to. |
+| `seriesIndex` | Index of the book in this series. |
+| `pubdate` | Publication date of the book, formatted as YYYY-MM-DDTHH:MM:SS. |
 | `isbn` | ISBN of the book |
 | `language` | [ISO code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of the book's language, default value is `en` |
 | `direction` | Text's direction. Can be `rtl` or `ltr`, the default value depends on the value of `language` |

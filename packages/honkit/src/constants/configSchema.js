@@ -14,6 +14,34 @@ module.exports = {
             type: "string",
             title: "Title of the book, default is extracted from README",
         },
+        author: {
+            type: "string",
+            title: "Name of the author",
+        },
+        authorSort: {
+            type: "string",
+            title: "String to be used to sort the author(s)",
+        },
+        producer: {
+            type: "string",
+            title: "Name of the producer"
+        },
+        publisher: {
+            type: "string",
+            title: "Name of the publisher",
+        },
+        pubdate: {
+            type: "string",
+            title: "Publication date of the book",
+        },
+        series: {
+            type: "string",
+            title: "Series this book belongs to",
+        },
+        seriesIndex: {
+            type: "string",
+            title: "Index of the book in this series",
+        },
         isbn: {
             type: "string",
             title: "ISBN for published book",
@@ -21,10 +49,6 @@ module.exports = {
         language: {
             type: "string",
             title: "Language of the book",
-        },
-        author: {
-            type: "string",
-            title: "Name of the author",
         },
         gitbook: {
             type: "string",
