@@ -2,7 +2,9 @@ const fs = require("fs");
 const generateMock = require("../testing/generateMock");
 const WebsiteGenerator = require("../website");
 
+const longTest = (name, fn) => test(name, fn, 1000 * 30);
 describe("WebsiteGenerator", () => {
+
     test("should generate an index.html", async () => {
         const folder = await generateMock(WebsiteGenerator, {
             "README.md": "Hello World",
@@ -26,21 +28,21 @@ describe("WebsiteGenerator", () => {
             });
         });
 
-        test("should generate a GLOSSARY.html", () => {
+        longTest("should generate a GLOSSARY.html", () => {
             expect(folder).toHaveFile("GLOSSARY.html");
         });
 
-        test("should correctly resolve glossary links in README", () => {
+        longTest("should correctly resolve glossary links in README", () => {
             const html = fs.readFileSync(`${folder}/index.html`, "utf8");
             expect(html).toHaveDOMElement('.page-inner a[href="GLOSSARY.html#hello"]');
         });
 
-        test("should correctly resolve glossary links in directory", () => {
+        longTest("should correctly resolve glossary links in directory", () => {
             const html = fs.readFileSync(`${folder}/folder/page.html`, "utf8");
             expect(html).toHaveDOMElement('.page-inner a[href="../GLOSSARY.html#hello"]');
         });
 
-        test("should accept a custom glossary file", () => {
+        longTest("should accept a custom glossary file", () => {
             return generateMock(WebsiteGenerator, {
                 "README.md": "Hello World",
                 "book.json": '{ "structure": { "glossary": "custom.md" } }',
@@ -77,7 +79,7 @@ describe("WebsiteGenerator", () => {
         expect(folder).toHaveFile("index.html");
     });
 
-    test("should generate an HTML file for each articles", () => {
+    longTest("should generate an HTML file for each articles", () => {
         return generateMock(WebsiteGenerator, {
             "README.md": "Hello World",
             "SUMMARY.md": "# Summary\n\n* [Page](test/page.md)",
@@ -90,7 +92,7 @@ describe("WebsiteGenerator", () => {
         });
     });
 
-    test("should not generate file if entry file doesn't exist", () => {
+    longTest("should not generate file if entry file doesn't exist", () => {
         return generateMock(WebsiteGenerator, {
             "README.md": "Hello World",
             "SUMMARY.md": "# Summary\n\n* [Page 1](page.md)\n* [Page 2](test/page.md)",
@@ -104,7 +106,7 @@ describe("WebsiteGenerator", () => {
         });
     });
 
-    test("should generate a multilingual book", () => {
+    longTest("should generate a multilingual book", () => {
         return generateMock(WebsiteGenerator, {
             "LANGS.md": "# Languages\n\n* [en](en)\n* [fr](fr)",
             en: {
