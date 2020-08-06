@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1596351742637,
+  "lastUpdate": 1596684291043,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4245,6 +4245,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.12,
             "range": "±0.74%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "anthony@nelzin.fr",
+            "name": "Anthony Nelzin-Santos",
+            "username": "anthonynelzin"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fd7b05b6459885379962b00000bf6825bde3c1d2",
+          "message": "feat(honkit): Add publisher, producer, series, and author sort config options (#108)\n\n* chore: ignore .DS_Store files\r\n\r\nNecessary to work on macOS.\r\n\r\nSigned-off-by: Anthony Nelzin-Santos <anthony@nelzin.fr>\r\n\r\n* feat(getConvertOptions): add producer and publisher roles\r\n\r\nThe book producer and publisher aren't harcoded anymore. Addresses #107.\r\n\r\nSigned-off-by: Anthony Nelzin-Santos <anthony@nelzin.fr>\r\n\r\n* docs(config): add producer and publisher roles\r\n\r\nRelated to 9d02c08dc4d6a28d9b8738354846b6f9616fda6b. Addresses #107.\r\n\r\nSigned-off-by: Anthony Nelzin-Santos <anthony@nelzin.fr>\r\n\r\n* fix(fixtures): revert unwanted changes\r\n\r\nNo need to update the fixtures! Duh.\r\n\r\nSigned-off-by: Anthony Nelzin-Santos <anthony@nelzin.fr>\r\n\r\n* feat(getConvertOptions): add pubdate\r\n\r\nNo if statement needed, although the code would probably be more robust with one, as ebook-convert ignores empty params. Addresses #107.\r\n\r\nSigned-off-by: Anthony Nelzin-Santos <anthony@nelzin.fr>\r\n\r\n* feat(getConvertOptions): add series and series-index\r\n\r\nAddresses #107.\r\n\r\nSigned-off-by: Anthony Nelzin-Santos <anthony@nelzin.fr>\r\n\r\n* feat(getConvertOptions): add authorSort\r\n\r\nAddresses #107.\r\n\r\nSigned-off-by: Anthony Nelzin-Santos <anthony@nelzin.fr>\r\n\r\n* fix(docs): correct pubdate doc\r\n\r\nAdd hour to ensure ebook-convert will output the correct date. If no/erroneous date is provided, the compile time will be used. Addresses #107.\r\n\r\nSigned-off-by: Anthony Nelzin-Santos <anthony@nelzin.fr>",
+          "timestamp": "2020-08-06T12:22:17+09:00",
+          "tree_id": "b133496adc6a00ae60248583360b90497f31e783",
+          "url": "https://github.com/honkit/honkit/commit/fd7b05b6459885379962b00000bf6825bde3c1d2"
+        },
+        "date": 1596684290236,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±1.16%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
