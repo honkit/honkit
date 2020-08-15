@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1596688489679,
+  "lastUpdate": 1597476373236,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4307,6 +4307,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±4.96%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fc54b71221cf209ffd5916383aafb948741f13fd",
+          "message": "fix(honkit): fix next/prev button on anchor article (#110)\n\n* fix(honkit): fix next/prev button on anchor article\r\n\r\nWhen next/prev article has anchor(hello.md#anchor), HonKit navigation will ignore it.\r\n\r\n* test: update snapshot",
+          "timestamp": "2020-08-15T16:23:09+09:00",
+          "tree_id": "978968eeed20b9b816dc2ffaf36dea79e397b709",
+          "url": "https://github.com/honkit/honkit/commit/fc54b71221cf209ffd5916383aafb948741f13fd"
+        },
+        "date": 1597476371760,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±1.36%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
