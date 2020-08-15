@@ -10,12 +10,12 @@ jobs:
       matrix:
         node-version: [10, 12, 14]
         os: [macos-latest, windows-latest, ubuntu-18.04]
-      exclude:
-        # mac tests is expensive, limit to 1 instance
-        - os: macos-latest
-          node: 10
-        - os: macos-latest
-          node: 12
+        exclude:
+          # mac tests is expensive, limit to 1 instance
+          - os: macos-latest
+            node: 10
+          - os: macos-latest
+            node: 12
     steps:
       - name: checkout
         uses: actions/checkout@v2
