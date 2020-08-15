@@ -64,4 +64,22 @@ describe("SummaryArticle", () => {
             expect(article.isFile(file)).toBe(false);
         });
     });
+
+    describe('hasAnchor', function() {
+        it('must return false when ref does not have anchor', function() {
+            var article = SummaryArticle.create({
+                ref: 'hello.md'
+            }, '1.1');
+
+            expect(article.hasAnchor()).toBe(false);
+        });
+
+        it('must return true when has anchor', function() {
+            var article = SummaryArticle.create({
+                ref: 'hello.md#world'
+            }, '1.1');
+
+            expect(article.hasAnchor()).toBe(true);
+        });
+    });
 });

@@ -165,6 +165,16 @@ SummaryArticle.create = function (def, level) {
 };
 
 /**
+ * Has anchor for this article
+ *
+ * @return {Boolean}
+ */
+SummaryArticle.prototype.hasAnchor = function () {
+    const ref = this.getRef();
+    return ref.includes("#");
+};
+
+/**
  * Find an article from a base one
  *
  * @param {Article|Part} base

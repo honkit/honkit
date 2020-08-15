@@ -13184,7 +13184,7 @@ but now stands for &quot;PHP: Hypertext Preprocessor&quot;).
 <hr>
 <div class=\\"btn-group btn-group-justified\\">
     
-    <a class=\\"btn\\" href=\\"markdown.html\\"><b>Previous:</b> Footnotes</a>
+    <a class=\\"btn\\" href=\\"markdown.html\\"><b>Previous:</b> Markdown</a>
     
     
     <a class=\\"btn\\" href=\\"../ebook.html\\"><b>Next:</b> eBook and PDF</a>
@@ -13216,7 +13216,7 @@ but now stands for &quot;PHP: Hypertext Preprocessor&quot;).
 
             
                 
-                <a href=\\"markdown.html#footnotes\\" class=\\"navigation navigation-prev \\" aria-label=\\"Previous page: Footnotes\\">
+                <a href=\\"markdown.html\\" class=\\"navigation navigation-prev \\" aria-label=\\"Previous page: Markdown\\">
                     <i class=\\"fa fa-angle-left\\"></i>
                 </a>
                 
@@ -13339,7 +13339,7 @@ Object {
     <link rel=\\"shortcut icon\\" href=\\"../gitbook/images/favicon.ico\\" type=\\"image/x-icon\\">
 
     
-    <link rel=\\"next\\" href=\\"markdown.html\\" />
+    <link rel=\\"next\\" href=\\"asciidoc.html\\" />
     
     
     <link rel=\\"prev\\" href=\\"../languages.html\\" />
@@ -14056,7 +14056,7 @@ Asterisks
     <a class=\\"btn\\" href=\\"../languages.html\\"><b>Previous:</b> Multi-Lingual</a>
     
     
-    <a class=\\"btn\\" href=\\"markdown.html\\"><b>Next:</b> Headings</a>
+    <a class=\\"btn\\" href=\\"asciidoc.html\\"><b>Next:</b> AsciiDoc</a>
     
 </div>
 
@@ -14090,7 +14090,7 @@ Asterisks
                 </a>
                 
                 
-                <a href=\\"markdown.html#headings\\" class=\\"navigation navigation-next \\" aria-label=\\"Next page: Headings\\">
+                <a href=\\"asciidoc.html\\" class=\\"navigation navigation-next \\" aria-label=\\"Next page: AsciiDoc\\">
                     <i class=\\"fa fa-angle-right\\"></i>
                 </a>
                 
