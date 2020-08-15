@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://github.com/honkit/honkit/compare/v3.6.0...v3.6.1) (2020-08-15)
+
+
+### Bug Fixes
+
+* **honkit:** fix next/prev button on anchor article ([#110](https://github.com/honkit/honkit/issues/110)) ([fc54b71](https://github.com/honkit/honkit/commit/fc54b71221cf209ffd5916383aafb948741f13fd))
+
+
+
+
+
 # [3.6.0](https://github.com/honkit/honkit/compare/v3.5.5...v3.6.0) (2020-08-06)
 
 
