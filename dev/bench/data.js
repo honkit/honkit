@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1597477059630,
+  "lastUpdate": 1597477082349,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4431,6 +4431,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±1.13%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "7f650b04a76d252d72057fb458bcea14c0b8dcdb",
+          "message": "CI: fix indent",
+          "timestamp": "2020-08-15T16:35:28+09:00",
+          "tree_id": "05521ddd8e118c6e0845ce7b99c9644c79dba50b",
+          "url": "https://github.com/honkit/honkit/commit/7f650b04a76d252d72057fb458bcea14c0b8dcdb"
+        },
+        "date": 1597477081410,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.12,
+            "range": "±1.98%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
