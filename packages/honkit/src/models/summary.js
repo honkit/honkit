@@ -40,7 +40,7 @@ Summary.prototype.getPart = function (i) {
     if "partIter" is set, it can also return a Part.
 
     @param {Function} iter
-    @param {Function} partIter
+    @param {Function} [partIter]
     @return {Article|Part}
 */
 Summary.prototype.getArticle = function (iter, partIter) {
@@ -104,9 +104,13 @@ Summary.prototype.getNextArticle = function (current) {
     let wasPrev = false;
 
     return this.getArticle((article) => {
-        if (wasPrev) return true;
+        if (wasPrev && !article.hasAnchor()) {
+            return true;
+        }
 
-        wasPrev = article.getLevel() == level;
+        if (!wasPrev) {
+            wasPrev = article.getLevel() === level;
+        }
         return false;
     });
 };
@@ -125,8 +129,9 @@ Summary.prototype.getPrevArticle = function (current) {
         if (article.getLevel() == level) {
             return true;
         }
-
-        prev = article;
+        if (!article.hasAnchor()) {
+            prev = article;
+        }
         return false;
     });
 

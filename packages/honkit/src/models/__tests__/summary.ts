@@ -1,30 +1,44 @@
 describe("Summary", () => {
     const File = require("../file");
     const Summary = require("../summary");
-
     const summary = Summary.createFromParts(File(), [
         {
             articles: [
+                // 1.1
                 {
                     title: "My First Article",
-                    ref: "README.md",
+                    ref: "README.md"
                 },
+                // 1.2
                 {
                     title: "My Second Article",
-                    ref: "article.md",
+                    ref: "article.md"
                 },
+                // 1.3
                 {
-                    title: "Article without ref",
+                    title: "My Third Article with anchor",
+                    ref: "article-anchor.md",
+                    articles: [
+                        {
+                            title: "Article with anchor",
+                            ref: "article-anchor.md#anchor"
+                        }
+                    ]
                 },
+                // 1.4
+                {
+                    title: "Article without ref"
+                },
+                // 1.5
                 {
                     title: "Article with absolute ref",
-                    ref: "https://google.fr",
-                },
-            ],
+                    ref: "https://google.fr"
+                }
+            ]
         },
         {
-            title: "Test",
-        },
+            title: "Test"
+        }
     ]);
 
     describe("createFromEntries", () => {
@@ -34,12 +48,35 @@ describe("Summary", () => {
         });
     });
 
+    describe("getNextArticle", function() {
+        it("return next article", function() {
+            const nextArticle = summary.getNextArticle("1.1");
+            expect(nextArticle.getLevel()).toBe("1.2");
+        });
+
+        it("ignore anchor article", function() {
+            const nextArticle = summary.getNextArticle("1.3"); // next is anchor
+            expect(nextArticle.getLevel()).toBe("1.4");
+        });
+    });
+
+    describe("getPrevArticle", function() {
+        it("return prev article", function() {
+            const prevArticle = summary.getPrevArticle("1.2");
+            expect(prevArticle.getLevel()).toBe("1.1");
+        });
+
+        it("ignore anchor article", function() {
+            const prevArticle = summary.getPrevArticle("1.4");
+            expect(prevArticle.getLevel()).toBe("1.3");
+        });
+    });
     describe("getByLevel", () => {
         test("can return a Part", () => {
             const part = summary.getByLevel("1");
 
             expect(part).toBeDefined();
-            expect(part.getArticles().size).toBe(4);
+            expect(part.getArticles().size).toBe(5);
         });
 
         test("can return a Part (2)", () => {
