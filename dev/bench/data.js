@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1597476382122,
+  "lastUpdate": 1597476944688,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4369,6 +4369,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.11,
             "range": "±3.55%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "f1bc03ee9b8fd2994d54d1b21862c70f426b79ca",
+          "message": "CI: limit mac tests to 1",
+          "timestamp": "2020-08-15T16:32:47+09:00",
+          "tree_id": "f7264306ad94f24872425d3db9c1f9adab054fb3",
+          "url": "https://github.com/honkit/honkit/commit/f1bc03ee9b8fd2994d54d1b21862c70f426b79ca"
+        },
+        "date": 1597476943956,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±1.69%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
