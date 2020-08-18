@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1597477141620,
+  "lastUpdate": 1597734044269,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4493,6 +4493,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.51%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "akahigeg@gmail.com",
+            "name": "akahige",
+            "username": "akahigeg"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e76b6b4c43adde5207b243c7cd15c98d794c21ff",
+          "message": "docs: Plugins searched on npmjs.com because plugins.gitbook.com is page not found now. (#111)",
+          "timestamp": "2020-08-18T15:57:37+09:00",
+          "tree_id": "5232ff927ecdd7e7db60a4e0cfd163edf7cd18e4",
+          "url": "https://github.com/honkit/honkit/commit/e76b6b4c43adde5207b243c7cd15c98d794c21ff"
+        },
+        "date": 1597734043428,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±5.08%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
