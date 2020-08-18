@@ -4,7 +4,7 @@ Plugins are the best way to extend HonKit functionalities (ebook and website). T
 
 ### How to find plugins?
 
-Plugins can be easily searched on [plugins.gitbook.com](https://plugins.gitbook.com).
+Plugins can be easily searched on [npmjs.com](https://www.npmjs.com/).
 
 Search on npm with keywords: `gitbook-plugin` or `honkit-plugin`
 
