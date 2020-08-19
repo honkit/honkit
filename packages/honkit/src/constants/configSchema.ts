@@ -24,7 +24,7 @@ module.exports = {
         },
         producer: {
             type: "string",
-            title: "Name of the producer"
+            title: "Name of the producer",
         },
         publisher: {
             type: "string",
