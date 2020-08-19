@@ -96,7 +96,6 @@ function runEbookConvert(output) {
     @param {Output}
     @return {Output}
 */
-// @ts-expect-error ts-migrate(2393) FIXME: Duplicate function implementation.
 function onFinish(output) {
     return writeSummary(output).then(runEbookConvert);
 }

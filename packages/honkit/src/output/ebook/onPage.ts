@@ -9,7 +9,6 @@ const Modifiers = require("../modifiers");
     @param {Output} output
     @param {Output}
 */
-// @ts-expect-error ts-migrate(2393) FIXME: Duplicate function implementation.
 function onPage(output, page) {
     const options = output.getOptions();
 

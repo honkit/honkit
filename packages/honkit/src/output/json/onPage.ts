@@ -1,12 +1,7 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'JSONUtils'... Remove this comment to see the full error message
 const JSONUtils = require("../../json");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PathUtils'... Remove this comment to see the full error message
 const PathUtils = require("../../utils/path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Modifiers'... Remove this comment to see the full error message
 const Modifiers = require("../modifiers");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'writeFile'... Remove this comment to see the full error message
 const writeFile = require("../helper/writeFile");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getModifie... Remove this comment to see the full error message
 const getModifiers = require("../getModifiers");
 
 const JSON_VERSION = "3";
@@ -40,4 +35,4 @@ function onPage(output, page) {
     });
 }
 
-module.exports = onPage;
+export { onPage };

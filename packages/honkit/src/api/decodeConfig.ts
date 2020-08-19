@@ -1,12 +1,11 @@
 /**
-    Decode changes from a JS API to a config object
+ Decode changes from a JS API to a config object
 
-    @param {Config} config
-    @param {Object} result: result from API
-    @return {Config}
-*/
-// @ts-expect-error ts-migrate(2393) FIXME: Duplicate function implementation.
-function decodeGlobal(config, result) {
+ @param {Config} config
+ @param {Object} result: result from API
+ @return {Config}
+ */
+function decodeConfig(config, result) {
     const values = result.values;
 
     delete values.generator;
@@ -15,4 +14,4 @@ function decodeGlobal(config, result) {
     return config.updateValues(values);
 }
 
-module.exports = decodeGlobal;
+export { decodeConfig };

@@ -1,25 +1,18 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../../utils/promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("../../utils/fs");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'JSONUtils'... Remove this comment to see the full error message
 const JSONUtils = require("../../json");
 
 /**
-    Finish the generation
-
-    @param {Output}
-    @return {Output}
-*/
+ Finish the generation
+ @param {Output} output
+ @return {Output}
+ */
 function onFinish(output) {
     const book = output.getBook();
     const outputRoot = output.getRoot();
 
     if (!book.isMultilingual()) {
-        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise(output);
     }
 
@@ -49,4 +42,4 @@ function onFinish(output) {
     );
 }
 
-module.exports = onFinish;
+export { onFinish };
