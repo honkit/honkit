@@ -47,6 +47,7 @@ function editArticleInPart(part, level, newArticle) {
     @param {Article|Part} newValue
     @return {Summary}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'mergeAtLev... Remove this comment to see the full error message
 function mergeAtLevel(summary, level, newValue) {
     const levelParts = level.split(".");
     const partIndex = Number(levelParts[0]) - 1;

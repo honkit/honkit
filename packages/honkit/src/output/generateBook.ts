@@ -1,15 +1,26 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Output'.
 const Output = require("../models/output");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("../utils/fs");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'callHook'.
 const callHook = require("./callHook");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'preparePlu... Remove this comment to see the full error message
 const preparePlugins = require("./preparePlugins");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'preparePag... Remove this comment to see the full error message
 const preparePages = require("./preparePages");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'prepareAss... Remove this comment to see the full error message
 const prepareAssets = require("./prepareAssets");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'generateAs... Remove this comment to see the full error message
 const generateAssets = require("./generateAssets");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'generatePa... Remove this comment to see the full error message
 const generatePages = require("./generatePages");
 
 /**
@@ -20,6 +31,7 @@ const generatePages = require("./generatePages");
  * @return {Promise<Output>}
  */
 function processOutput(generator, output) {
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise(output)
         .then(preparePlugins)
         .then(preparePages)
@@ -99,6 +111,7 @@ function processOutput(generator, output) {
                 logger.info.ln(`generating language "${langBook.getLanguage()}"`);
                 return processOutput(generator, langOutput);
             });
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'thenResolve' does not exist on type 'Pro... Remove this comment to see the full error message
             return Promise.all(bookList.toArray()).thenResolve(output);
         })
 
@@ -158,12 +171,14 @@ function processOutput(generator, output) {
  * @param {Object} options
  * @return {Promise<Output>}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'generateBo... Remove this comment to see the full error message
 function generateBook(generator, book, options) {
     options = generator.Options(options);
     const state = generator.State ? generator.State({}) : Immutable.Map();
     const start = Date.now();
 
     return (
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         Promise(
             new Output({
                 book: book,
@@ -203,6 +218,7 @@ function generateBook(generator, book, options) {
  * @param output
  * @returns {Promise<Promise<Output>>}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'incrementa... Remove this comment to see the full error message
 function incrementalBuild(generator, output) {
     const start = Date.now();
     return generateAssets(generator, output)

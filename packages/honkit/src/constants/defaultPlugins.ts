@@ -1,6 +1,9 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginDepe... Remove this comment to see the full error message
 const PluginDependency = require("../models/pluginDependency");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'pkg'.
 const pkg = require("../../package.json");
 
 /**

@@ -1,6 +1,8 @@
 // LICENSE : MIT
 "use strict";
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'util'.
 const util = require("./package-name-util");
 const tryResolve = require("try-resolve");
 
@@ -21,7 +23,9 @@ const SPECIAL_PACKAGE_NAME = [
  * - honkit-plugin-*
  * - gitbook-plugin-*
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginReso... Remove this comment to see the full error message
 class PluginResolver {
+    baseDirectory: any;
     constructor(config) {
         /**
          * @type {string} baseDirectory for resolving

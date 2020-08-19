@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
 const markdownParser = require("@honkit/markdown-legacy");
@@ -6,9 +8,11 @@ const asciidocParser = require("@honkit/asciidoc");
 
 const EXTENSIONS_MARKDOWN = require("./constants/extsMarkdown");
 const EXTENSIONS_ASCIIDOC = require("./constants/extsAsciidoc");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parser'.
 const Parser = require("./models/parser");
 
 // This list is ordered by priority of parsers to use
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsers'.
 const parsers = Immutable.List([
     Parser.create("markdown", EXTENSIONS_MARKDOWN, markdownParser),
     Parser.create("asciidoc", EXTENSIONS_ASCIIDOC, asciidocParser),

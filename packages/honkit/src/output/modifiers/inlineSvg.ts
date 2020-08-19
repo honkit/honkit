@@ -1,9 +1,14 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("../../utils/fs");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
 const LocationUtils = require("../../utils/location");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'editHTMLEl... Remove this comment to see the full error message
 const editHTMLElement = require("./editHTMLElement");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
 const cheerio = require("cheerio");
 
 /**
@@ -13,6 +18,7 @@ const cheerio = require("cheerio");
     @param {HTMLDom} $
     @return {Promise}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'inlineSvg'... Remove this comment to see the full error message
 function inlineSvg(rootFolder, currentFile, $) {
     const currentDirectory = path.dirname(currentFile);
 

@@ -1,5 +1,7 @@
 const encodeOutput = require("./encodeOutput");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodePage... Remove this comment to see the full error message
 const encodePage = require("./encodePage");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeFile... Remove this comment to see the full error message
 const encodeFile = require("./encodeFile");
 
 /**

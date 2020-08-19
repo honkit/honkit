@@ -1,6 +1,8 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
 const is = require("is");
 const childProcess = require("child_process");
 const spawn = require("spawn-cmd").spawn;
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("./promise");
 
 /**
@@ -11,6 +13,7 @@ const Promise = require("./promise");
     @return {Promise}
 */
 function exec(command, options) {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
     const d = Promise.defer();
 
     const child = childProcess.exec(command, options, (err, stdout, stderr) => {
@@ -42,6 +45,7 @@ function exec(command, options) {
     @return {Promise}
 */
 function spawnCmd(command, args, options) {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
     const d = Promise.defer();
     const child = spawn(command, args, options);
 

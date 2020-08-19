@@ -1,25 +1,37 @@
 /* eslint-disable no-console */
 
 const tinylr = require("tiny-lr");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'open'.
 const open = require("open");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parse'.
 const Parse = require("../parse");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Output'.
 const Output = require("../output");
 const ConfigModifier = require("../modifiers").Config;
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'options'.
 const options = require("./options");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getBook'.
 const getBook = require("./getBook");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getOutputF... Remove this comment to see the full error message
 const getOutputFolder = require("./getOutputFolder");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Server'.
 const Server = require("./server");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'watch'.
 const watch = require("./watch");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'clearCache... Remove this comment to see the full error message
 const { clearCache } = require("../output/page-cache");
 
 let server, lrServer, lrPath;
 
 function waitForCtrlC() {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
     const d = Promise.defer();
 
     process.on("SIGINT", () => {
@@ -57,6 +69,7 @@ function startServer(args, kwargs) {
         .then(() => {
             console.log(`Serving book on http://localhost:${port}`);
             if (hasOpen) {
+                // @ts-expect-error ts-migrate(2345) FIXME: Argument of type '{ app: any; }' is not assignable... Remove this comment to see the full error message
                 open(`http://localhost:${port}`, { app: browser });
             }
         })
@@ -107,6 +120,7 @@ function startServer(args, kwargs) {
         });
 }
 
+// @ts-expect-error ts-migrate(2393) FIXME: Duplicate function implementation.
 function generateBook({ book, outputFolder, hasLiveReloading, Generator, reload }) {
     // Stop server if running
     if (reload) {
@@ -128,6 +142,7 @@ function generateBook({ book, outputFolder, hasLiveReloading, Generator, reload 
     });
 }
 
+// @ts-expect-error ts-migrate(2393) FIXME: Duplicate function implementation.
 function incrementalBuild({ output, Generator }) {
     return Output.incrementalBuild(Generator, output);
 }
@@ -175,6 +190,7 @@ module.exports = {
         const hasWatch = kwargs["watch"];
         const hasLiveReloading = kwargs["live"];
 
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise()
             .then(() => {
                 if (!hasWatch || !hasLiveReloading) {
@@ -182,6 +198,7 @@ module.exports = {
                 }
 
                 lrServer = tinylr({});
+                // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfcall' does not exist on type 'PromiseC... Remove this comment to see the full error message
                 return Promise.nfcall(lrServer.listen.bind(lrServer), kwargs.lrport).then(() => {
                     console.log("Live reload server started on port:", kwargs.lrport);
                     console.log("Press CTRL+C to quit ...");

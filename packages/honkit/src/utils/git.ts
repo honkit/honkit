@@ -1,11 +1,17 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
 const is = require("is");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'crc'.
 const crc = require("crc");
 const URI = require("urijs");
 
 const pathUtil = require("./path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("./promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'command'.
 const command = require("./command");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("./fs");
 
 const GIT_PREFIX = "git+";
@@ -24,6 +30,7 @@ Git.prototype.repoID = function (host, ref) {
 Git.prototype.allocateDir = function () {
     const that = this;
 
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     if (this.tmpDir) return Promise();
 
     return fs.tmpDir().then((dir) => {
@@ -70,10 +77,13 @@ Git.prototype.clone = function (host, ref) {
 Git.prototype.resolve = function (giturl) {
     // Path to a file in a git repo?
     if (!Git.isUrl(giturl)) {
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         if (this.resolveRoot(giturl)) return Promise(giturl);
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise(null);
     }
     if (is.string(giturl)) giturl = Git.parseUrl(giturl);
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     if (!giturl) return Promise(null);
 
     // Clone or get from cache

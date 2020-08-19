@@ -1,11 +1,15 @@
 const events = require("events");
 const http = require("http");
 const send = require("send");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'util'.
 const util = require("util");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'url'.
 const url = require("url");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Server'.
 function Server() {
     this.running = null;
     this.dir = null;
@@ -31,8 +35,10 @@ Server.prototype.isRunning = function () {
  */
 Server.prototype.stop = function () {
     const that = this;
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     if (!this.isRunning()) return Promise();
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
     const d = Promise.defer();
     this.running.close((err) => {
         that.running = null;
@@ -56,11 +62,13 @@ Server.prototype.stop = function () {
  */
 Server.prototype.start = function (dir, port) {
     const that = this;
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     let pre = Promise();
     port = port || 8004;
 
     if (that.isRunning()) pre = this.stop();
     return pre.then(() => {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
         const d = Promise.defer();
 
         that.running = http.createServer((req, res) => {

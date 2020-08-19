@@ -1,9 +1,14 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 const yaml = require("js-yaml");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
 const File = require("./file");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'hashString... Remove this comment to see the full error message
 const { hashString } = require("./hash.js");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Page'.
 const Page = Immutable.Record({
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type '{ new (fileBits: BlobPart[], fileNa... Remove this comment to see the full error message
     file: File(),
 
     // Attributes extracted from the YAML header
@@ -82,6 +87,7 @@ Page.loadFile = function (file, content) {
 
 Page.fromJSON = function (json) {
     return new Page({
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2-3 arguments, but got 1.
         file: new File(json.file),
         // Attributes extracted from the YAML header
         attributes: Immutable.Map(json.atributes),

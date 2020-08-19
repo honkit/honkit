@@ -1,12 +1,18 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 const stream = require("stream");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
 const File = require("./file");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
 const error = require("../utils/error");
 const PathUtil = require("../utils/path");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'FS'.
 const FS = Immutable.Record({
     root: String(),
 
@@ -72,6 +78,7 @@ FS.prototype.resolve = function () {
 FS.prototype.exists = function (filename) {
     const that = this;
 
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise().then(() => {
         filename = that.resolve(filename);
         const exists = that.get("fsExists");
@@ -89,6 +96,7 @@ FS.prototype.exists = function (filename) {
 FS.prototype.read = function (filename) {
     const that = this;
 
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise().then(() => {
         filename = that.resolve(filename);
         const read = that.get("fsReadFile");
@@ -123,6 +131,7 @@ FS.prototype.readAsStream = function (filename) {
     const fsReadAsStream = this.get("fsReadAsStream");
 
     if (fsReadAsStream) {
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise(fsReadAsStream(filepath));
     }
 
@@ -143,6 +152,7 @@ FS.prototype.readAsStream = function (filename) {
 FS.prototype.statFile = function (filename) {
     const that = this;
 
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise()
         .then(() => {
             const filepath = that.resolve(filename);
@@ -151,6 +161,7 @@ FS.prototype.statFile = function (filename) {
             return stat(filepath);
         })
         .then((stat) => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromStat' does not exist on type '... Remove this comment to see the full error message
             return File.createFromStat(filename, stat);
         });
 };
@@ -165,6 +176,7 @@ FS.prototype.statFile = function (filename) {
 FS.prototype.readDir = function (dirname) {
     const that = this;
 
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise()
         .then(() => {
             const dirpath = that.resolve(dirname);
@@ -202,6 +214,7 @@ FS.prototype.listAllFiles = function (dirName, filterFn) {
     dirName = dirName || ".";
 
     return this.readDir(dirName).then((files) => {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'reduce' does not exist on type 'PromiseC... Remove this comment to see the full error message
         return Promise.reduce(
             files,
             (out, file) => {
@@ -255,6 +268,7 @@ FS.prototype.loadAsObject = function (filename) {
     return this.exists(filename).then((exists) => {
         if (!exists) {
             const err = new Error("Module doesn't exist");
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'code' does not exist on type 'Error'.
             err.code = "MODULE_NOT_FOUND";
 
             throw err;

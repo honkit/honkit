@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
 const encodeSummaryArticle = require("./encodeSummaryArticle");
 
 /**
@@ -7,6 +8,7 @@ const encodeSummaryArticle = require("./encodeSummaryArticle");
     @param {Summary} summary
     @return {Object}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodePage... Remove this comment to see the full error message
 function encodePage(page, summary) {
     const file = page.getFile();
     const attributes = page.getAttributes();

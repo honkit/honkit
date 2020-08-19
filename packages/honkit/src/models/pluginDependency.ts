@@ -1,14 +1,20 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
 const is = require("is");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'semver'.
 const semver = require("semver");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PREFIX'.
 const PREFIX = require("../constants/pluginPrefix");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'DEFAULT_VE... Remove this comment to see the full error message
 const DEFAULT_VERSION = "*";
 
 /*
  * PluginDependency represents the informations about a plugin
  * stored in config.plugins
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginDepe... Remove this comment to see the full error message
 const PluginDependency = Immutable.Record(
     {
         name: String(),

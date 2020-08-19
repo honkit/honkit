@@ -1,4 +1,5 @@
 const escapeStringRegexp = require("escape-string-regexp");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'listShortc... Remove this comment to see the full error message
 const listShortcuts = require("./listShortcuts");
 
 /**
@@ -28,6 +29,7 @@ function applyShortcut(content, shortcut) {
  * @param {String} content
  * @return {String}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'replaceSho... Remove this comment to see the full error message
 function replaceShortcuts(blocks, filePath, content) {
     const shortcuts = listShortcuts(blocks, filePath);
     return shortcuts.reduce(applyShortcut, content);

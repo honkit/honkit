@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeNavi... Remove this comment to see the full error message
 const encodeNavigation = require("./encodeNavigation");
 
 /**
@@ -8,6 +10,7 @@ const encodeNavigation = require("./encodeNavigation");
     @param {Page}
     @return {Object}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeProg... Remove this comment to see the full error message
 function encodeProgress(output, page) {
     const current = page.getPath();
     let navigation = encodeNavigation(output);

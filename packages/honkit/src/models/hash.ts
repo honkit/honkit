@@ -19,6 +19,7 @@ let objHashUID = 0;
 
 let UID_HASH_KEY = "__immutablehash__";
 if (typeof Symbol === "function") {
+    // @ts-expect-error ts-migrate(2322) FIXME: Type 'symbol' is not assignable to type 'string'.
     UID_HASH_KEY = Symbol(UID_HASH_KEY);
 }
 
@@ -91,6 +92,7 @@ function cachedHashString(string) {
 }
 
 // http://jsperf.com/hashing-strings
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'hashString... Remove this comment to see the full error message
 function hashString(string) {
     // This is the hash from JVM
     // The hash code for a string is computed as

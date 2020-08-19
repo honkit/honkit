@@ -1,9 +1,15 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
 const is = require("is");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Buffer'.
 const Buffer = require("buffer").Buffer;
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'FS'.
 const FS = require("../models/fs");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
 const error = require("../utils/error");
 
 /**
@@ -11,6 +17,7 @@ const error = require("../utils/error");
 
     @param {Map<String:String|Map>}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createMock... Remove this comment to see the full error message
 function createMockFS(files) {
     files = Immutable.fromJS(files);
     const mtime = new Date();

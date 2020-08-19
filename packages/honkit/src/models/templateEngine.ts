@@ -1,6 +1,9 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'nunjucks'.
 const nunjucks = require("nunjucks");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateEn... Remove this comment to see the full error message
 const TemplateEngine = Immutable.Record(
     {
         // Map of {TemplateBlock}

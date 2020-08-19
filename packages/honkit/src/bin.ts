@@ -1,5 +1,6 @@
 const assert = require("assert");
 const { Command } = require("commander");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'pkg'.
 const pkg = require("../package.json");
 const Honkit = require("./index");
 module.exports.run = (argv = process.argv) => {

@@ -1,9 +1,15 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'jsonschema... Remove this comment to see the full error message
 const jsonschema = require("jsonschema");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'jsonSchema... Remove this comment to see the full error message
 const jsonSchemaDefaults = require("json-schema-defaults");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
 const error = require("../utils/error");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'mergeDefau... Remove this comment to see the full error message
 const mergeDefaults = require("../utils/mergeDefaults");
 
 /**
@@ -58,7 +64,9 @@ function validatePluginConfig(book, plugin) {
     @param {OrderedMap<String:Plugin>}
     @return {Promise<Book>}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'validateCo... Remove this comment to see the full error message
 function validateConfig(book, plugins) {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'reduce' does not exist on type 'PromiseC... Remove this comment to see the full error message
     return Promise.reduce(
         plugins,
         (newBook, plugin) => {

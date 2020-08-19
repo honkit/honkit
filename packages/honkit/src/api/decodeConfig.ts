@@ -5,6 +5,7 @@
     @param {Object} result: result from API
     @return {Config}
 */
+// @ts-expect-error ts-migrate(2393) FIXME: Duplicate function implementation.
 function decodeGlobal(config, result) {
     const values = result.values;
 

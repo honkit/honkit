@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'objectPath... Remove this comment to see the full error message
 const objectPath = require("object-path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'deprecate'... Remove this comment to see the full error message
 const deprecate = require("./deprecate");
 
 /**
@@ -8,6 +10,7 @@ const deprecate = require("./deprecate");
  @param {Config} config
  @return {Object}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeConf... Remove this comment to see the full error message
 function encodeConfig(output, config) {
     const result = {
         values: config.getValues().toJS(),

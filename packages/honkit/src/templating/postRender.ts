@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
 
 /**
@@ -37,6 +38,7 @@ function postRender(engine, output) {
 
     const result = replaceBlocks(content, blocks);
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'forEach' does not exist on type 'Promise... Remove this comment to see the full error message
     return Promise.forEach(blocks, (block) => {
         const post = block.get("post");
 

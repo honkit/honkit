@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'findParsab... Remove this comment to see the full error message
 const findParsableFile = require("./findParsableFile");
 
 /**
@@ -9,6 +10,7 @@ const findParsableFile = require("./findParsableFile");
     @return {Promise<File | Undefined>} The path of the file found, relative
     to the book content root.
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'lookupStru... Remove this comment to see the full error message
 function lookupStructureFile(book, type) {
     const config = book.getConfig();
 

@@ -1,10 +1,13 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
 const is = require("is");
 
 /*
     A TemplateShortcut is defined in plugin's template blocks
     to replace content with a templating block using delimiters.
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateSh... Remove this comment to see the full error message
 const TemplateShortcut = Immutable.Record(
     {
         // List of parser names accepting this shortcut

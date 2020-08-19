@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseStruc... Remove this comment to see the full error message
 const parseStructureFile = require("./parseStructureFile");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Glossary'.
 const Glossary = require("../models/glossary");
 
 /**
@@ -7,6 +9,7 @@ const Glossary = require("../models/glossary");
     @param {Book} book
     @return {Promise<Book>}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseGloss... Remove this comment to see the full error message
 function parseGlossary(book) {
     const logger = book.getLogger();
 

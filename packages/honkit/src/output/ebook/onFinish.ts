@@ -1,13 +1,22 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'WebsiteGen... Remove this comment to see the full error message
 const WebsiteGenerator = require("../website");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'JSONUtils'... Remove this comment to see the full error message
 const JSONUtils = require("../../json");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Templating... Remove this comment to see the full error message
 const Templating = require("../../templating");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
 const error = require("../../utils/error");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'command'.
 const command = require("../../utils/command");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'writeFile'... Remove this comment to see the full error message
 const writeFile = require("../helper/writeFile");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getConvert... Remove this comment to see the full error message
 const getConvertOptions = require("./getConvertOptions");
 const SUMMARY_FILE = "SUMMARY.html";
 
@@ -49,6 +58,7 @@ function runEbookConvert(output) {
     const outputFolder = output.getRoot();
 
     if (!format) {
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise(output);
     }
 
@@ -86,6 +96,7 @@ function runEbookConvert(output) {
     @param {Output}
     @return {Output}
 */
+// @ts-expect-error ts-migrate(2393) FIXME: Duplicate function implementation.
 function onFinish(output) {
     return writeSummary(output).then(runEbookConvert);
 }

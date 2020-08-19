@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'WebsiteGen... Remove this comment to see the full error message
 const WebsiteGenerator = require("../website");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Modifiers'... Remove this comment to see the full error message
 const Modifiers = require("../modifiers");
 
 /**
@@ -7,6 +9,7 @@ const Modifiers = require("../modifiers");
     @param {Output} output
     @param {Output}
 */
+// @ts-expect-error ts-migrate(2393) FIXME: Duplicate function implementation.
 function onPage(output, page) {
     const options = output.getOptions();
 

@@ -1,18 +1,32 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PathUtils'... Remove this comment to see the full error message
 const PathUtils = require("../utils/path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("../utils/fs");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Plugins'.
 const Plugins = require("../plugins");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'deprecate'... Remove this comment to see the full error message
 const deprecate = require("./deprecate");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fileToURL'... Remove this comment to see the full error message
 const fileToURL = require("../output/helper/fileToURL");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'defaultBlo... Remove this comment to see the full error message
 const defaultBlocks = require("../constants/defaultBlocks");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'honkit'.
 const honkit = require("../honkit");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsers'.
 const parsers = require("../parsers");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeConf... Remove this comment to see the full error message
 const encodeConfig = require("./encodeConfig");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
 const encodeSummary = require("./encodeSummary");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeNavi... Remove this comment to see the full error message
 const encodeNavigation = require("./encodeNavigation");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodePage... Remove this comment to see the full error message
 const encodePage = require("./encodePage");
 
 /**
@@ -132,6 +146,7 @@ function encodeGlobal(output) {
             */
             applyBlock: function (name, blockData) {
                 const block = blocks.get(name) || defaultBlocks.get(name);
+                // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
                 return Promise(block.applyBlock(blockData, result));
             },
         },
@@ -176,6 +191,7 @@ function encodeGlobal(output) {
                 @return {Promise}
             */
             hasFile: function (fileName, content) {
+                // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
                 return Promise().then(() => {
                     const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
 
@@ -192,6 +208,7 @@ function encodeGlobal(output) {
                 @return {Promise}
             */
             writeFile: function (fileName, content) {
+                // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
                 return Promise().then(() => {
                     const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
 
@@ -211,6 +228,7 @@ function encodeGlobal(output) {
                 @return {Promise}
             */
             copyFile: function (inputFile, outputFile, content) {
+                // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
                 return Promise().then(() => {
                     const outputFilePath = PathUtils.resolveInRoot(outputFolder, outputFile);
 

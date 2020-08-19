@@ -1,6 +1,9 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
 const LocationUtils = require("../../utils/location");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fileToOutp... Remove this comment to see the full error message
 const fileToOutput = require("./fileToOutput");
 
 /**
@@ -15,6 +18,7 @@ const fileToOutput = require("./fileToOutput");
     @param {String} filePath
     @return {String}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fileToURL'... Remove this comment to see the full error message
 function fileToURL(output, filePath) {
     const options = output.getOptions();
     const directoryIndex = options.get("directoryIndex");

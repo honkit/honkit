@@ -1,12 +1,20 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
 const error = require("../utils/error");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'timing'.
 const timing = require("../utils/timing");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Templating... Remove this comment to see the full error message
 const Templating = require("../templating");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'JSONUtils'... Remove this comment to see the full error message
 const JSONUtils = require("../json");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createTemp... Remove this comment to see the full error message
 const createTemplateEngine = require("./createTemplateEngine");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'callPageHo... Remove this comment to see the full error message
 const callPageHook = require("./callPageHook");
 
 /**
@@ -16,12 +24,14 @@ const callPageHook = require("./callPageHook");
  * @param {Page} page
  * @return {Promise<Page>}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'generatePa... Remove this comment to see the full error message
 function generatePage(output, page) {
     const book = output.getBook();
     const engine = createTemplateEngine(output);
 
     return timing.measure(
         "page.generate",
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         Promise(page).then((resultPage) => {
             const file = resultPage.getFile();
             const filePath = file.getPath();

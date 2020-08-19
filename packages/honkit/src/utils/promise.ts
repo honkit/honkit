@@ -1,4 +1,5 @@
 const Q = require("q");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
 // Debugging for long stack traces
@@ -32,6 +33,7 @@ function reduce(arr, iter, base) {
  * @return {Promise}
  */
 function forEach(arr, iter) {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     return reduce(arr, (val, el, key) => {
         return iter(el, key);
     });

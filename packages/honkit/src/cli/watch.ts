@@ -1,6 +1,8 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
 const chokidar = require("chokidar");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsers'.
 const parsers = require("../parsers");
 
 /**
@@ -10,6 +12,7 @@ const parsers = require("../parsers");
  @param callback
  @return {Promise}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'watch'.
 function watch(dir, callback) {
     dir = path.resolve(dir);
 

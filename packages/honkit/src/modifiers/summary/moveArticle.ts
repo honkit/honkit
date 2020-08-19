@@ -1,5 +1,8 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
 const is = require("is");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'removeArti... Remove this comment to see the full error message
 const removeArticle = require("./removeArticle");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'insertArti... Remove this comment to see the full error message
 const insertArticle = require("./insertArticle");
 
 /**

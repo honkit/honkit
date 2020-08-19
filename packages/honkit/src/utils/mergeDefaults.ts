@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
 /**
@@ -6,6 +7,7 @@ const Immutable = require("immutable");
  * @param  {Object|Map} src
  * @return {Object}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'mergeDefau... Remove this comment to see the full error message
 function mergeDefaults(obj, src) {
     const objValue = Immutable.fromJS(obj);
     const srcValue = Immutable.fromJS(src);

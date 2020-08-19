@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Api'.
 const Api = require("../api");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'callHook'.
 const callHook = require("./callHook");
 
 /**
@@ -9,6 +11,7 @@ const callHook = require("./callHook");
     @param {Page} page
     @return {Promise<Page>}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'callPageHo... Remove this comment to see the full error message
 function callPageHook(name, output, page) {
     return callHook(
         name,

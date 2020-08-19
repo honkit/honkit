@@ -1,5 +1,8 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
 const error = require("../utils/error");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'lookupStru... Remove this comment to see the full error message
 const lookupStructureFile = require("./lookupStructureFile");
 
 /**
@@ -50,6 +53,7 @@ function parseFile(fs, file, type) {
     @param {String} type: one of ["glossary", "readme", "summary"]
     @return {Promise<List|Map>}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseStruc... Remove this comment to see the full error message
 function parseStructureFile(book, type) {
     const fs = book.getContentFS();
 

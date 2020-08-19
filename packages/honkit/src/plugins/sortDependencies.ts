@@ -1,5 +1,7 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'THEME_PREF... Remove this comment to see the full error message
 const THEME_PREFIX = require("../constants/themePrefix");
 
 const TYPE_PLUGIN = "plugin";
@@ -22,6 +24,7 @@ function pluginType(plugin) {
  * @param {List<PluginDependency>} deps
  * @return {List<PluginDependency>}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'sortDepend... Remove this comment to see the full error message
 function sortDependencies(plugins) {
     const byTypes = plugins.groupBy(pluginType);
 

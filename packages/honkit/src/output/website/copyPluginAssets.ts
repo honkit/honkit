@@ -1,7 +1,10 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
 
 const ASSET_FOLDER = require("../../constants/pluginAssetsFolder");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("../../utils/fs");
 
 /**
@@ -12,12 +15,14 @@ const fs = require("../../utils/fs");
     @param {Output}
     @return {Promise}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'copyPlugin... Remove this comment to see the full error message
 function copyPluginAssets(output) {
     const book = output.getBook();
 
     // Don't copy plugins assets for language book
     // It'll be resolved to the parent folder
     if (book.isLanguageBook()) {
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise(output);
     }
 
@@ -28,6 +33,7 @@ function copyPluginAssets(output) {
         // so that first plugins can replace assets from other plugins.
         .reverse();
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'forEach' does not exist on type 'Promise... Remove this comment to see the full error message
     return Promise.forEach(plugins, (plugin) => {
         return copyAssets(output, plugin).then(() => {
             return copyResources(output, plugin);
@@ -53,6 +59,7 @@ function copyAssets(output, plugin) {
     const assetFolder = path.join(pluginRoot, ASSET_FOLDER, prefix);
 
     if (!fs.existsSync(assetFolder)) {
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise();
     }
 
@@ -86,6 +93,7 @@ function copyResources(output, plugin) {
     const assetOutputFolder = path.join(outputRoot, "gitbook", plugin.getNpmID());
 
     if (!assetsFolder) {
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise();
     }
 
@@ -93,6 +101,7 @@ function copyResources(output, plugin) {
     assetsFolder = path.resolve(pluginRoot, assetsFolder);
     if (!fs.existsSync(assetsFolder)) {
         logger.warn.ln(`assets folder for plugin "${plugin.getName()}" doesn't exist`);
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise();
     }
 

@@ -1,12 +1,19 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
 const resolve = require("resolve");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
 const error = require("../utils/error");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'timing'.
 const timing = require("../utils/timing");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'validatePl... Remove this comment to see the full error message
 const validatePlugin = require("./validatePlugin");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Plugin'.
 const Plugin = require("../models/plugin");
 
 // Return true if an error is a "module not found"
@@ -23,6 +30,7 @@ function isModuleNotFound(err) {
  @param {String} pkgPath (optional)
  @return {Promise<Plugin>}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'loadPlugin... Remove this comment to see the full error message
 function loadPlugin(book, plugin) {
     const logger = book.getLogger();
 
@@ -30,6 +38,7 @@ function loadPlugin(book, plugin) {
     let pkgPath = plugin.getPath();
 
     // Try loading plugins from different location
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     let p = Promise()
         .then(() => {
             let packageContent;
@@ -72,6 +81,7 @@ function loadPlugin(book, plugin) {
             }
 
             // Update plugin
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 0 arguments, but got 1.
             return new Plugin({
                 name: name,
                 version: packageContent.version || "*",

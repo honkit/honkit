@@ -4,6 +4,7 @@
     @param {SummaryArticle}
     @return {Object}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
 function encodeSummaryArticle(article, recursive) {
     let articles = undefined;
     if (recursive !== false) {

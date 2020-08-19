@@ -1,5 +1,7 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'honkit'.
 const honkit = require("../honkit");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
 
 /**
@@ -8,6 +10,7 @@ const Promise = require("../utils/promise");
  @param {Plugin} plugin
  @return {Promise<Plugin>}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'validatePl... Remove this comment to see the full error message
 function validatePlugin(plugin) {
     const packageInfos = plugin.getPackage();
 
@@ -36,6 +39,7 @@ function validatePlugin(plugin) {
         );
     }
 
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise(plugin);
 }
 

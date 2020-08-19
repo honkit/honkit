@@ -1,11 +1,14 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryArt... Remove this comment to see the full error message
 const SummaryArticle = require("./summaryArticle");
 
 /*
     A part represents a section in the Summary / table of Contents
 */
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryPar... Remove this comment to see the full error message
 const SummaryPart = Immutable.Record({
     level: String(),
     title: String(),

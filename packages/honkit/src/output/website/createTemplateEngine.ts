@@ -1,21 +1,35 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'nunjucks'.
 const nunjucks = require("nunjucks");
 const DoExtension = require("nunjucks-do")(nunjucks);
 const memoizeOne = require("memoize-one");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Api'.
 const Api = require("../../api");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'deprecate'... Remove this comment to see the full error message
 const deprecate = require("../../api/deprecate");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'JSONUtils'... Remove this comment to see the full error message
 const JSONUtils = require("../../json");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
 const LocationUtils = require("../../utils/location");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("../../utils/fs");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PathUtils'... Remove this comment to see the full error message
 const PathUtils = require("../../utils/path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateEn... Remove this comment to see the full error message
 const TemplateEngine = require("../../models/templateEngine");
 const templatesFolder = require("../../constants/templatesFolder");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'defaultFil... Remove this comment to see the full error message
 const defaultFilters = require("../../constants/defaultFilters");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Templating... Remove this comment to see the full error message
 const Templating = require("../../templating");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'listSearch... Remove this comment to see the full error message
 const listSearchPaths = require("./listSearchPaths");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fileToURL'... Remove this comment to see the full error message
 const fileToURL = require("../helper/fileToURL");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'resolveFil... Remove this comment to see the full error message
 const resolveFileToURL = require("../helper/resolveFileToURL");
 
 /**
@@ -32,6 +46,7 @@ function templateFolder(dir) {
  * @param {String} currentFile
  * @return {TemplateEngine}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createTemp... Remove this comment to see the full error message
 function createTemplateEngine(output, currentFile) {
     const book = output.getBook();
     const state = output.getState();

@@ -1,7 +1,11 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'extend'.
 const extend = require("extend");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getPDFTemp... Remove this comment to see the full error message
 const getPDFTemplate = require("./getPDFTemplate");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getCoverPa... Remove this comment to see the full error message
 const getCoverPath = require("./getCoverPath");
 
 /**
@@ -10,6 +14,7 @@ const getCoverPath = require("./getCoverPath");
     @param {Output}
     @return {Promise<Object>}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getConvert... Remove this comment to see the full error message
 function getConvertOptions(output) {
     const options = output.getOptions();
     const format = options.get("format");
@@ -17,6 +22,7 @@ function getConvertOptions(output) {
     const book = output.getBook();
     const config = book.getConfig();
 
+    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise().then(() => {
         const coverPath = getCoverPath(output);
         let options = {
@@ -49,6 +55,7 @@ function getConvertOptions(output) {
             return options;
         }
 
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'spread' does not exist on type 'Promise<... Remove this comment to see the full error message
         return Promise.all([getPDFTemplate(output, "header"), getPDFTemplate(output, "footer")]).spread(
             (headerTpl, footerTpl) => {
                 const pdfOptions = config.getValue("pdf").toJS();

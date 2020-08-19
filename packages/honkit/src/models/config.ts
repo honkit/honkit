@@ -1,13 +1,20 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
 const is = require("is");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
 const File = require("./file");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginDepe... Remove this comment to see the full error message
 const PluginDependency = require("./pluginDependency");
 const configDefault = require("../constants/configDefault");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'reducedObj... Remove this comment to see the full error message
 const reducedObject = require("../utils/reducedObject");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Config'.
 const Config = Immutable.Record(
     {
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type '{ new (fileBits: BlobPart[], fileNa... Remove this comment to see the full error message
         file: File(),
         values: configDefault,
     },

@@ -1,11 +1,14 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'location'.
 const location = require("../utils/location");
 
 /*
     An article represents an entry in the Summary / table of Contents
 */
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryArt... Remove this comment to see the full error message
 const SummaryArticle = Immutable.Record(
     {
         level: String(),
@@ -63,6 +66,7 @@ SummaryArticle.prototype.getPath = function () {
     const pathname = parts.length > 1 ? parts.slice(0, -1).join("#") : ref;
 
     // Normalize path to remove ('./', '/...', etc)
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'flatten' does not exist on type 'Locatio... Remove this comment to see the full error message
     return location.flatten(pathname);
 };
 
@@ -139,6 +143,7 @@ SummaryArticle.prototype.isReadme = function (book) {
  * @return {Boolean}
  */
 SummaryArticle.prototype.isExternal = function () {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'isExternal' does not exist on type 'Loca... Remove this comment to see the full error message
     return location.isExternal(this.getRef());
 };
 

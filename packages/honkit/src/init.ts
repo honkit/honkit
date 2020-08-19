@@ -1,11 +1,19 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createNode... Remove this comment to see the full error message
 const createNodeFS = require("./fs/node");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("./utils/fs");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("./utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
 const File = require("./models/file");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Readme'.
 const Readme = require("./models/readme");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Book'.
 const Book = require("./models/book");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parse'.
 const Parse = require("./parse");
 
 /**
@@ -16,6 +24,7 @@ const Parse = require("./parse");
     @param {String}
     @return {Promise}
 */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'initBook'.
 function initBook(rootFolder) {
     const extension = ".md";
 
@@ -33,6 +42,7 @@ function initBook(rootFolder) {
 
                         // Setup default readme if doesn't found one
                         .fail(() => {
+                            // @ts-expect-error ts-migrate(2339) FIXME: Property 'createWithFilepath' does not exist on ty... Remove this comment to see the full error message
                             const readmeFile = File.createWithFilepath(`README${extension}`);
                             const readme = Readme.create(readmeFile);
                             return book.setReadme(readme);
@@ -51,6 +61,7 @@ function initBook(rootFolder) {
 
                 // Write pages
                 return (
+                    // @ts-expect-error ts-migrate(2339) FIXME: Property 'forEach' does not exist on type 'Promise... Remove this comment to see the full error message
                     Promise.forEach(articles, (article) => {
                         const articlePath = article.getPath();
                         const filePath = articlePath ? path.join(rootFolder, articlePath) : null;

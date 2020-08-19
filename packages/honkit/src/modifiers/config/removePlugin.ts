@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'togglePlug... Remove this comment to see the full error message
 const togglePlugin = require("./togglePlugin");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'isDefaultP... Remove this comment to see the full error message
 const isDefaultPlugin = require("./isDefaultPlugin");
 
 /**

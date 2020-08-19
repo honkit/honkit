@@ -1,5 +1,8 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'listDepsFo... Remove this comment to see the full error message
 const listDepsForBook = require("./listDepsForBook");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'loadPlugin... Remove this comment to see the full error message
 const { loadPlugin } = require("./loadPlugin");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginReso... Remove this comment to see the full error message
 const { PluginResolver } = require("./PluginResolver");
 
 /**
@@ -17,6 +20,7 @@ function loadForBook(book) {
      */
     const requirements = listDepsForBook(book);
 
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 0.
     const pluginResolver = new PluginResolver();
     const installedPlugins = requirements.map((dep) => {
         const name = dep.getName();

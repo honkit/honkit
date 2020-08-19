@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'escape'.
 const escape = require("escape-html");
 
 // Selector to ignore
@@ -72,6 +73,7 @@ function annotateText(entries, glossaryFilePath, $) {
 
             if ($this.is(ANNOTATION_IGNORE) || $this.parents(ANNOTATION_IGNORE).length > 0) return;
 
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 5 arguments, but got 4.
             replaceText($, this, searchRegex, (match) => {
                 return (
                     `<a href="/${glossaryFilePath}#${entryId}" ` +

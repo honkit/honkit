@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
 const cheerio = require("cheerio");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../../utils/promise");
 
 /**
@@ -13,6 +15,7 @@ function modifyHTML(page, operations) {
     const html = page.getContent();
     const $ = cheerio.load(html);
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'forEach' does not exist on type 'Promise... Remove this comment to see the full error message
     return Promise.forEach(operations, (op) => {
         return op($);
     }).then(() => {

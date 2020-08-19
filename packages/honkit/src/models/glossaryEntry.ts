@@ -1,10 +1,13 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'slug'.
 const slug = require("github-slugid");
 
 /*
     A definition represents an entry in the glossary
 */
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'GlossaryEn... Remove this comment to see the full error message
 const GlossaryEntry = Immutable.Record({
     name: String(),
     description: String(),

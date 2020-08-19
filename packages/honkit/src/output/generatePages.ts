@@ -1,7 +1,11 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'generatePa... Remove this comment to see the full error message
 const generatePage = require("./generatePage");
 const { getCache } = require("./page-cache");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Page'.
 const Page = require("../models/page");
 
 /**
@@ -11,6 +15,7 @@ const Page = require("../models/page");
  @param {Output} output
  @return {Promise<Output>}
  */
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'generatePa... Remove this comment to see the full error message
 function generatePages(generator, output) {
     const cache = getCache();
     const pages = output.getPages();
@@ -18,6 +23,7 @@ function generatePages(generator, output) {
 
     // Is generator ignoring assets?
     if (!generator.onPage) {
+        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise(output);
     }
 
@@ -36,7 +42,8 @@ function generatePages(generator, output) {
         const pageHash = page.hash();
         const cachedPage = cache.getKey(pageHash);
         const pagePromise = cachedPage
-            ? Promise(Page.fromJSON(cachedPage))
+            ? // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+              Promise(Page.fromJSON(cachedPage))
             : generatePage(output, page).then((resultPage) => {
                   logger.debug.ln(`Update new page "${file.getPath()}"`);
                   cache.setKey(pageHash, Page.toJSON(resultPage));

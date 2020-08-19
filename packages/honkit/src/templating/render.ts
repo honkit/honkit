@@ -1,6 +1,10 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'timing'.
 const timing = require("../utils/timing");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateOu... Remove this comment to see the full error message
 const TemplateOutput = require("../models/templateOutput");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'replaceSho... Remove this comment to see the full error message
 const replaceShortcuts = require("./replaceShortcuts");
 
 /**
@@ -26,6 +30,7 @@ function renderTemplate(engine, filePath, content, context) {
 
     return timing.measure(
         "template.render",
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfcall' does not exist on type 'PromiseC... Remove this comment to see the full error message
         Promise.nfcall(env.renderString.bind(env), content, context, {
             path: filePath,
         })

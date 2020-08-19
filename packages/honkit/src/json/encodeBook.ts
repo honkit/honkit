@@ -1,9 +1,15 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'extend'.
 const extend = require("extend");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'honkit'.
 const honkit = require("../honkit");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
 const encodeSummary = require("./encodeSummary");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeGlos... Remove this comment to see the full error message
 const encodeGlossary = require("./encodeGlossary");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeRead... Remove this comment to see the full error message
 const encodeReadme = require("./encodeReadme");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeLang... Remove this comment to see the full error message
 const encodeLanguages = require("./encodeLanguages");
 
 /**

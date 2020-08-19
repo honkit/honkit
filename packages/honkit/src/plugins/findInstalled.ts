@@ -1,10 +1,16 @@
 const readInstalled = require("read-installed");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
 const Immutable = require("immutable");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require("path");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
 const Promise = require("../utils/promise");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
 const fs = require("../utils/fs");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Plugin'.
 const Plugin = require("../models/plugin");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PREFIX'.
 const PREFIX = require("../constants/pluginPrefix");
 
 /**
@@ -46,6 +52,7 @@ function findInstalled(folder) {
         } else {
             results = results.set(
                 pluginName,
+                // @ts-expect-error ts-migrate(2348) FIXME: Value of type '{ new (): Plugin; prototype: Plugin... Remove this comment to see the full error message
                 Plugin({
                     name: pluginName,
                     version: version,
@@ -68,18 +75,23 @@ function findInstalled(folder) {
     return fs
         .readdir(node_modules)
         .fail(() => {
+            // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
             return Promise([]);
         })
         .then((modules) => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'serie' does not exist on type 'PromiseCo... Remove this comment to see the full error message
             return Promise.serie(modules, (module) => {
                 // Not a gitbook-plugin
                 if (!validateId(module)) {
+                    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
                     return Promise();
                 }
 
                 // Read gitbook-plugin package details
                 const module_folder = path.join(node_modules, module);
+                // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfcall' does not exist on type 'PromiseC... Remove this comment to see the full error message
                 return Promise.nfcall(readInstalled, module_folder, options).then((data) => {
+                    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
                     onPackage(data);
                 });
             });
