@@ -1,6 +1,6 @@
 const FILENAME_REGEX = "^[a-zA-Z-._d,s]+$";
 
-module.exports = {
+export default {
     $schema: "http://json-schema.org/schema#",
     id: "https://gitbook.com/schemas/book.json",
     title: "HonKit Configuration",

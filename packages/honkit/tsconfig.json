@@ -1,15 +1,16 @@
 {
-  "exclude": [
-    "lib",
-    "src/**/__tests__"
-  ],
-  "include": [
-    "src"
-  ],
+
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
     "rootDir": "src",
-    "allowJs": true
-  }
+    "allowJs": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "lib"
+  ]
 }

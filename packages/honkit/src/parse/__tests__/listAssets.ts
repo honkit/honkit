@@ -1,7 +1,6 @@
 import Immutable from "immutable";
-
+import createMockFS from "../../fs/mock";
 const Book = require("../../models/book");
-const createMockFS = require("../../fs/mock");
 const listAssets = require("../listAssets");
 const parseGlossary = require("../parseGlossary");
 

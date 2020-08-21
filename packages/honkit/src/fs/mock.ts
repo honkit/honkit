@@ -99,4 +99,4 @@ function createMockFS(files) {
     });
 }
 
-module.exports = createMockFS;
+export default createMockFS;

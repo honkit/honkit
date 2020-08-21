@@ -1,7 +1,6 @@
 import Promise from "../../utils/promise";
+import createMockFS from "../../fs/mock";
 const Book = require("../../models/book");
-const createMockFS = require("../../fs/mock");
-
 describe("parseReadme", () => {
     const parseReadme = require("../parseReadme");
 

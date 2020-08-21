@@ -1,4 +1,8 @@
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
+
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createMock... Remove this comment to see the full error message
+import createMockFS from "../../fs/mock";
+
 const Immutable = require("immutable");
 
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Output'.
@@ -7,8 +11,6 @@ const Output = require("../../models/output");
 const Book = require("../../models/book");
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseBook'... Remove this comment to see the full error message
 const parseBook = require("../../parse/parseBook");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createMock... Remove this comment to see the full error message
-const createMockFS = require("../../fs/mock");
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'preparePlu... Remove this comment to see the full error message
 const preparePlugins = require("../preparePlugins");
 
