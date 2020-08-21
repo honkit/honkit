@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1597734044269,
+  "lastUpdate": 1597995431270,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4524,6 +4524,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±5.08%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "chris@lollyrock.com",
+            "name": "Christoph Hartmann",
+            "username": "chris-rock"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "26b8270ab80325d8a0a1d2ef49ceda60f2817723",
+          "message": "docs: update reference to ebook-convert (#114)",
+          "timestamp": "2020-08-21T16:34:13+09:00",
+          "tree_id": "e787ccf17b634a082a000483cccc956d0f6d1fe7",
+          "url": "https://github.com/honkit/honkit/commit/26b8270ab80325d8a0a1d2ef49ceda60f2817723"
+        },
+        "date": 1597995430458,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±1.55%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
