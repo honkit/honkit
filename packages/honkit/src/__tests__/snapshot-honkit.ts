@@ -1,6 +1,6 @@
 import path from "path";
 import { iterateDirectoryContents } from "@honkit/internal-test-utils";
-import * as bin from "../bin.js";
+import * as bin from "../bin";
 
 it("HonKit snapshots", async () => {
     jest.setTimeout(60 * 1000);

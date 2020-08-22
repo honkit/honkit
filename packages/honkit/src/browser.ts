@@ -18,8 +18,8 @@ export default {
     ConfigModifier: Modifiers.Config,
 
     // Constants
-    CONFIG_FILES: require("./constants/configFiles.js"),
-    IGNORE_FILES: require("./constants/ignoreFiles.js"),
+    CONFIG_FILES: require("./constants/configFiles"),
+    IGNORE_FILES: require("./constants/ignoreFiles"),
     DEFAULT_PLUGINS: require("./constants/defaultPlugins"),
     EXTENSIONS_MARKDOWN: require("./constants/extsMarkdown"),
     EXTENSIONS_ASCIIDOC: require("./constants/extsAsciidoc"),

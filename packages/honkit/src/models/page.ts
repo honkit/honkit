@@ -1,7 +1,7 @@
 import Immutable from "immutable";
 import yaml from "js-yaml";
 import File from "./file";
-import { hashString } from "./hash.js";
+import { hashString } from "./hash";
 
 const Page = Immutable.Record({
     file: File(),
