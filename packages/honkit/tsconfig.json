@@ -1,5 +1,4 @@
 {
-
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
@@ -11,6 +10,7 @@
     "src"
   ],
   "exclude": [
-    "lib"
+    "lib",
+    "src/**/__tests__"
   ]
 }

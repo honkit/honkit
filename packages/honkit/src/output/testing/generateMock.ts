@@ -3,8 +3,7 @@ import createMockFS from "../../fs/mock";
 import tmp from "tmp";
 import Book from "../../models/book";
 import parseBook from "../../parse/parseBook";
-
-const generateBook = require("../generateBook").generateBook;
+import { generateBook } from "../generateBook";
 
 /**
  * Generate a book using a generator

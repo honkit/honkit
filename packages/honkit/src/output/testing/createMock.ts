@@ -13,6 +13,7 @@ import preparePlugins from "../preparePlugins";
  *
  * @param {Generator} generator
  * @param {Map<String:String|Map>} files
+ * @param {*} [options]
  * @return {Promise<Output>}
  */
 function createMockOutput(generator, files, options) {

@@ -1,8 +1,6 @@
-const path = require("path");
-const os = require("os");
-
-const Git = require("../git");
-
+import path from "path";
+import os from "os";
+import Git from "../git";
 describe("Git", () => {
     jest.setTimeout(30 * 1000);
     describe("URL parsing", () => {
@@ -51,7 +49,7 @@ describe("Git", () => {
 
     describe("Cloning and resolving", () => {
         test("should clone an HTTPS url", () => {
-            const git = new Git(path.join(os.tmpdir(), `test-git-${Date.now()}`));
+            const git = new Git();
             return git.resolve("git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md").then((filename) => {
                 expect(path.extname(filename)).toBe(".md");
             });

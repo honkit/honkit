@@ -1,5 +1,5 @@
-const cheerio = require("cheerio");
-const tmp = require("tmp");
+import cheerio from "cheerio";
+import tmp from "tmp";
 
 describe("svgToImg", () => {
     let dir;
@@ -28,6 +28,7 @@ describe("svgToImg", () => {
         );
 
         return svgToImg(dir.name, "index.html", $).then(() => {
+            // @ts-expect-error
             expect($.contains("img")).toBe(false);
         });
     });

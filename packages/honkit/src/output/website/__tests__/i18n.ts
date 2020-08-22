@@ -1,11 +1,11 @@
-const createMockOutput = require("../../testing/createMock");
-const prepareI18n = require("../prepareI18n");
-const createTemplateEngine = require("../createTemplateEngine");
-
-const WebsiteGenerator = require("../");
+import createTemplateEngine from "../createTemplateEngine";
+import createMockOutput from "../../testing/createMock";
+import prepareI18n from "../prepareI18n";
+import WebsiteGenerator from "../";
 
 describe("i18n", () => {
     test("should correctly use english as default language", () => {
+        // @ts-expect-error
         return createMockOutput(WebsiteGenerator, {
             "README.md": "Hello World"
         })
@@ -21,6 +21,7 @@ describe("i18n", () => {
     });
 
     test("should correctly use language from book.json", () => {
+        // @ts-expect-error
         return createMockOutput(WebsiteGenerator, {
             "README.md": "Hello World",
             "book.json": JSON.stringify({ language: "fr" })

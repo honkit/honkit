@@ -57,7 +57,7 @@ function flatten(href) {
 /**
  * Convert a relative path to absolute
  *
- * @param {String} href
+ * @param {String} _href
  * @param {String} dir: directory parent of the file currently in rendering process
  * @param {String} outdir: directory parent from the html output
  * @return {String}

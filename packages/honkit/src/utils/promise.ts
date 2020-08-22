@@ -140,6 +140,11 @@ function wrap(func) {
         });
     };
 }
-
+Q.forEach = forEach;
+Q.reduce = reduce;
+Q.map = map;
+Q.serie = serie;
+Q.some = some;
+Q.wrap = wrap;
 export default Q;
 export { forEach, reduce, map, serie, some, wrap };

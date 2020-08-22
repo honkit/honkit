@@ -1,5 +1,4 @@
-const LocationUtils = require("../location");
-
+import LocationUtils from "../location";
 describe("LocationUtils", () => {
     test("should correctly test external location", () => {
         expect(LocationUtils.isExternal("http://google.fr")).toBe(true);
@@ -56,6 +55,7 @@ describe("LocationUtils", () => {
 
     describe(".toAbsolute", () => {
         test("should correctly transform as absolute", () => {
+            // @ts-expect-error
             expect(LocationUtils.toAbsolute("http://google.fr")).toBe("http://google.fr");
             expect(LocationUtils.toAbsolute("test.md", "./", "./")).toBe("test.md");
             expect(LocationUtils.toAbsolute("folder/test.md", "./", "./")).toBe("folder/test.md");

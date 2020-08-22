@@ -1,5 +1,4 @@
-const path = require("path");
-
+import path from "path";
 describe("Paths", () => {
     const PathUtils = require("..//path");
 
