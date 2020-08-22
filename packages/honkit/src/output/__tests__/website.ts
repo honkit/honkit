@@ -1,6 +1,6 @@
-const fs = require("fs");
-const generateMock = require("../testing/generateMock");
-const WebsiteGenerator = require("../website");
+import fs from "fs";
+import generateMock from "../testing/generateMock";
+import WebsiteGenerator from "../website";
 
 const longTest = (name, fn) => test(name, fn, 1000 * 30);
 describe("WebsiteGenerator", () => {
