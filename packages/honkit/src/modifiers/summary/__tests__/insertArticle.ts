@@ -10,13 +10,13 @@ describe("insertArticle", () => {
             articles: [
                 {
                     title: "1.1",
-                    path: "1.1",
+                    path: "1.1"
                 },
                 {
                     title: "1.2",
-                    path: "1.2",
-                },
-            ],
+                    path: "1.2"
+                }
+            ]
         },
         {
             title: "Part I",
@@ -27,27 +27,27 @@ describe("insertArticle", () => {
                     articles: [
                         {
                             title: "2.1.1",
-                            path: "2.1.1",
+                            path: "2.1.1"
                         },
                         {
                             title: "2.1.2",
-                            path: "2.1.2",
-                        },
-                    ],
+                            path: "2.1.2"
+                        }
+                    ]
                 },
                 {
                     title: "2.2",
-                    path: "2.2",
-                },
-            ],
-        },
+                    path: "2.2"
+                }
+            ]
+        }
     ]);
 
     test("should insert an article at a given level", () => {
         // @ts-expect-error
         const article = SummaryArticle.create(
             {
-                title: "Inserted",
+                title: "Inserted"
             },
             "fake.level"
         );
@@ -68,7 +68,7 @@ describe("insertArticle", () => {
         // @ts-expect-error
         const article = SummaryArticle.create(
             {
-                title: "Inserted",
+                title: "Inserted"
             },
             "fake.level"
         );

@@ -1,25 +1,14 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'tmp'.
-const tmp = require("tmp");
+import path from "path";
+import tmp from "tmp";
+import Promise from "../utils/promise";
+import fs from "../utils/fs";
+import Parse from "../parse";
+import Output from "../output";
+import options from "./options";
+import getBook from "./getBook";
+import { clearCache } from "../output/page-cache";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("../utils/fs");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parse'.
-const Parse = require("../parse");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Output'.
-const Output = require("../output");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'options'.
-const options = require("./options");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getBook'.
-const getBook = require("./getBook");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'clearCache... Remove this comment to see the full error message
-const { clearCache } = require("../output/page-cache");
-
-module.exports = function (format) {
+export default function (format) {
     return {
         name: `${format} [book] [output]`,
         description: "build a book into an ebook file",
@@ -54,7 +43,6 @@ module.exports = function (format) {
                         const languages = book.getLanguages();
 
                         if (book.isMultilingual()) {
-                            // @ts-expect-error ts-migrate(2339) FIXME: Property 'forEach' does not exist on type 'Promise... Remove this comment to see the full error message
                             return Promise.forEach(languages.getList(), (lang) => {
                                 const langID = lang.getID();
 
@@ -80,4 +68,4 @@ module.exports = function (format) {
             );
         },
     };
-};
+}

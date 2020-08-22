@@ -48,25 +48,25 @@ describe("Summary", () => {
         });
     });
 
-    describe("getNextArticle", function() {
-        it("return next article", function() {
+    describe("getNextArticle", () => {
+        it("return next article", () => {
             const nextArticle = summary.getNextArticle("1.1");
             expect(nextArticle.getLevel()).toBe("1.2");
         });
 
-        it("ignore anchor article", function() {
+        it("ignore anchor article", () => {
             const nextArticle = summary.getNextArticle("1.3"); // next is anchor
             expect(nextArticle.getLevel()).toBe("1.4");
         });
     });
 
-    describe("getPrevArticle", function() {
-        it("return prev article", function() {
+    describe("getPrevArticle", () => {
+        it("return prev article", () => {
             const prevArticle = summary.getPrevArticle("1.2");
             expect(prevArticle.getLevel()).toBe("1.1");
         });
 
-        it("ignore anchor article", function() {
+        it("ignore anchor article", () => {
             const prevArticle = summary.getPrevArticle("1.4");
             expect(prevArticle.getLevel()).toBe("1.3");
         });

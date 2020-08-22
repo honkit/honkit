@@ -1,15 +1,13 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseStruc... Remove this comment to see the full error message
-const parseStructureFile = require("./parseStructureFile");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Glossary'.
-const Glossary = require("../models/glossary");
+import parseStructureFile from "./parseStructureFile";
+import Glossary from "../models/glossary";
 
 /**
-    Parse glossary
+ Parse glossary
 
-    @param {Book} book
-    @return {Promise<Book>}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseGloss... Remove this comment to see the full error message
+ @param {Book} book
+ @return {Promise<Book>}
+ */
+
 function parseGlossary(book) {
     const logger = book.getLogger();
 
@@ -20,9 +18,10 @@ function parseGlossary(book) {
 
         logger.debug.ln("glossary index file found at", file.getPath());
 
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromEntries' does not exist on typ... Remove this comment to see the full error message
         const glossary = Glossary.createFromEntries(file, entries);
         return book.set("glossary", glossary);
     });
 }
 
-module.exports = parseGlossary;
+export default parseGlossary;

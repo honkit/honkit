@@ -1,10 +1,10 @@
 /**
-    Encode a SummaryArticle to JSON
+ Encode a SummaryArticle to JSON
 
-    @param {SummaryArticle}
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
+ @param {SummaryArticle}
+ @return {Object}
+ */
+
 function encodeSummaryArticle(article, recursive) {
     let articles = undefined;
     if (recursive !== false) {
@@ -23,4 +23,4 @@ function encodeSummaryArticle(article, recursive) {
     };
 }
 
-module.exports = encodeSummaryArticle;
+export default encodeSummaryArticle;

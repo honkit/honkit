@@ -3,13 +3,14 @@ import Immutable from "immutable";
 import Config from "../config";
 
 describe("Config", () => {
-    // @ts-ignore
+    
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createWithValues' does not exist on type... Remove this comment to see the full error message
     const config = Config.createWithValues({
         hello: {
             world: 1,
             test: "Hello",
-            isFalse: false,
-        },
+            isFalse: false
+        }
     });
 
     describe("getValue", () => {
@@ -37,7 +38,7 @@ describe("Config", () => {
     describe("setValue", () => {
         test("must set value as immutable", () => {
             const testConfig = config.setValue("hello", {
-                cool: 1,
+                cool: 1
             });
             const value = testConfig.getValue("hello");
 
@@ -60,33 +61,35 @@ describe("Config", () => {
 
     describe("toReducedVersion", () => {
         test("must only return diffs for simple values", () => {
-            // @ts-ignore
 
+            
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'createWithValues' does not exist on type... Remove this comment to see the full error message
             const _config = Config.createWithValues({
-                gitbook: "3.0.0",
+                gitbook: "3.0.0"
             });
 
             const reducedVersion = _config.toReducedVersion();
 
             expect(reducedVersion.toJS()).toEqual({
-                gitbook: "3.0.0",
+                gitbook: "3.0.0"
             });
         });
 
         test("must only return diffs for deep values", () => {
-            // @ts-ignore
+            
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'createWithValues' does not exist on type... Remove this comment to see the full error message
             const _config = Config.createWithValues({
                 structure: {
-                    readme: "intro.md",
-                },
+                    readme: "intro.md"
+                }
             });
 
             const reducedVersion = _config.toReducedVersion();
 
             expect(reducedVersion.toJS()).toEqual({
                 structure: {
-                    readme: "intro.md",
-                },
+                    readme: "intro.md"
+                }
             });
         });
     });
@@ -106,8 +109,8 @@ describe("Config", () => {
                 // GitBook logic - deprecated
                 "example-v@1.0.0",
                 "gitbook-plugin-example-v@1.0.0",
-                "example@git+ssh://samy@github.com/GitbookIO/plugin-ga.git",
-            ],
+                "example@git+ssh://samy@github.com/GitbookIO/plugin-ga.git"
+            ]
         });
 
         const dependencies = config.getPluginDependencies();
@@ -117,68 +120,68 @@ describe("Config", () => {
                 enabled: true,
                 name: "example",
                 path: "",
-                version: "*",
+                version: "*"
             },
             {
                 enabled: true,
                 name: "honkit-plugin-example",
                 path: "",
-                version: "*",
+                version: "*"
             },
             {
                 enabled: true,
                 name: "@example/example",
                 path: "",
-                version: "*",
+                version: "*"
             },
             {
                 enabled: true,
                 name: "@example/honkit-plugin-example",
                 path: "",
-                version: "*",
+                version: "*"
             },
             {
                 enabled: true,
                 name: "@honkit/honkit-plugin-example",
                 path: "",
-                version: "*",
+                version: "*"
             },
             {
                 enabled: false,
                 name: "no-use",
                 path: "",
-                version: "*",
+                version: "*"
             },
             {
                 enabled: false,
                 name: "honkit-plugin-no-use",
                 path: "",
-                version: "*",
+                version: "*"
             },
             {
                 enabled: false,
                 name: "@honkit/honkit-plugin-no-use",
                 path: "",
-                version: "*",
+                version: "*"
             },
             {
                 enabled: true,
                 name: "example-v",
                 path: "",
-                version: "1.0.0",
+                version: "1.0.0"
             },
             {
                 enabled: true,
                 name: "gitbook-plugin-example-v",
                 path: "",
-                version: "1.0.0",
+                version: "1.0.0"
             },
             {
                 enabled: true,
                 name: "example",
                 path: "",
-                version: "git+ssh://samy@github.com/GitbookIO/plugin-ga.git",
-            },
+                version: "git+ssh://samy@github.com/GitbookIO/plugin-ga.git"
+            }
         ]);
     });
 });

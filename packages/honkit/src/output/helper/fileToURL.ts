@@ -1,24 +1,20 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
-const LocationUtils = require("../../utils/location");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fileToOutp... Remove this comment to see the full error message
-const fileToOutput = require("./fileToOutput");
+import path from "path";
+import LocationUtils from "../../utils/location";
+import fileToOutput from "./fileToOutput";
 
 /**
-    Convert a filePath (absolute) to an url (without hostname).
-    It returns an absolute path.
+ Convert a filePath (absolute) to an url (without hostname).
+ It returns an absolute path.
 
-    "README.md" -> "/"
-    "test/hello.md" -> "test/hello.html"
-    "test/README.md" -> "test/"
+ "README.md" -> "/"
+ "test/hello.md" -> "test/hello.html"
+ "test/README.md" -> "test/"
 
-    @param {Output} output
-    @param {String} filePath
-    @return {String}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fileToURL'... Remove this comment to see the full error message
+ @param {Output} output
+ @param {String} filePath
+ @return {String}
+ */
+
 function fileToURL(output, filePath) {
     const options = output.getOptions();
     const directoryIndex = options.get("directoryIndex");
@@ -32,4 +28,4 @@ function fileToURL(output, filePath) {
     return LocationUtils.normalize(filePath);
 }
 
-module.exports = fileToURL;
+export default fileToURL;

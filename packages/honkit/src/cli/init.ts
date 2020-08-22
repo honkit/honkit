@@ -1,12 +1,8 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
+import path from "path";
+import options from "./options";
+import initBook from "../init";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'options'.
-const options = require("./options");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'initBook'.
-const initBook = require("../init");
-
-module.exports = {
+export default {
     name: "init [book]",
     description: "setup and create files for chapters",
     options: [options.log],

@@ -1,18 +1,15 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'JSONUtils'... Remove this comment to see the full error message
-const JSONUtils = require("../json");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'deprecate'... Remove this comment to see the full error message
-const deprecate = require("./deprecate");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeProg... Remove this comment to see the full error message
-const encodeProgress = require("./encodeProgress");
+import JSONUtils from "../json";
+import deprecate from "./deprecate";
+import encodeProgress from "./encodeProgress";
 
 /**
-    Encode a page in a context to a JS API
+ Encode a page in a context to a JS API
 
-    @param {Output} output
-    @param {Page} page
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodePage... Remove this comment to see the full error message
+ @param {Output} output
+ @param {Page} page
+ @return {Object}
+ */
+
 function encodePage(output, page) {
     const book = output.getBook();
     const summary = book.getSummary();
@@ -54,4 +51,4 @@ function encodePage(output, page) {
     return result;
 }
 
-module.exports = encodePage;
+export default encodePage;

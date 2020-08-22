@@ -3,16 +3,17 @@ import Glossary from "../glossary";
 import GlossaryEntry from "../glossaryEntry";
 
 describe("Glossary", () => {
-    // @ts-ignore
+
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromEntries' does not exist on typ... Remove this comment to see the full error message
     const glossary = Glossary.createFromEntries(File(), [
         {
             name: "Hello World",
-            description: "Awesome!",
+            description: "Awesome!"
         },
         {
             name: "JavaScript",
-            description: "This is a cool language",
-        },
+            description: "This is a cool language"
+        }
     ]);
 
     describe("createFromEntries", () => {

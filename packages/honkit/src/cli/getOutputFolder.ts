@@ -1,13 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
+import path from "path";
 
 /**
-    Return path to output folder
+ Return path to output folder
 
-    @param {Array} args
-    @return {String}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getOutputF... Remove this comment to see the full error message
+ @param {Array} args
+ @return {String}
+ */
+
 function getOutputFolder(args) {
     const bookRoot = path.resolve(args[0] || process.cwd());
     const defaultOutputRoot = path.join(bookRoot, "_book");
@@ -16,4 +15,4 @@ function getOutputFolder(args) {
     return outputFolder;
 }
 
-module.exports = getOutputFolder;
+export default getOutputFolder;

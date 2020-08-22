@@ -1,18 +1,11 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'crc'.
-const crc = require("crc");
-const URI = require("urijs");
-
-const pathUtil = require("./path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("./promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'command'.
-const command = require("./command");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("./fs");
+import is from "is";
+import path from "path";
+import crc from "crc";
+import URI from "urijs";
+import pathUtil from "./path";
+import Promise from "./promise";
+import command from "./command";
+import fs from "./fs";
 
 const GIT_PREFIX = "git+";
 
@@ -30,9 +23,9 @@ Git.prototype.repoID = function (host, ref) {
 Git.prototype.allocateDir = function () {
     const that = this;
 
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     if (this.tmpDir) return Promise();
 
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 0.
     return fs.tmpDir().then((dir) => {
         that.tmpDir = dir;
     });
@@ -58,6 +51,8 @@ Git.prototype.clone = function (host, ref) {
                 // Clone repo
                 return (
                     command
+
+                        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
                         .exec(`git clone ${host} ${repoPath}`)
 
                         // Checkout reference if specified
@@ -77,13 +72,12 @@ Git.prototype.clone = function (host, ref) {
 Git.prototype.resolve = function (giturl) {
     // Path to a file in a git repo?
     if (!Git.isUrl(giturl)) {
-        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         if (this.resolveRoot(giturl)) return Promise(giturl);
-        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
         return Promise(null);
     }
     if (is.string(giturl)) giturl = Git.parseUrl(giturl);
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     if (!giturl) return Promise(null);
 
     // Clone or get from cache
@@ -139,4 +133,4 @@ Git.parseUrl = function (giturl) {
     };
 };
 
-module.exports = Git;
+export default Git;

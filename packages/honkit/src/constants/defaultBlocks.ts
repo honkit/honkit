@@ -1,9 +1,7 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateBl... Remove this comment to see the full error message
-const TemplateBlock = require("../models/templateBlock");
+import Immutable from "immutable";
+import TemplateBlock from "../models/templateBlock";
 
-module.exports = Immutable.Map({
+export default Immutable.Map({
     html: TemplateBlock({
         name: "html",
         process: function (blk) {

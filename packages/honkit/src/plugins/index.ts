@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     loadForBook: require("./loadForBook"),
     validateConfig: require("./validateConfig"),
     listResources: require("./listResources"),

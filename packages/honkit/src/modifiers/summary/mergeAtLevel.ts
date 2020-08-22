@@ -1,11 +1,11 @@
 /**
-    Edit a list of articles
+ Edit a list of articles
 
-    @param {List<Article>} articles
-    @param {String} level
-    @param {Article} newArticle
-    @return {List<Article>}
-*/
+ @param {List<Article>} articles
+ @param {String} level
+ @param {Article} newArticle
+ @return {List<Article>}
+ */
 function editArticleInList(articles, level, newArticle) {
     return articles.map((article) => {
         const articleLevel = article.getLevel();
@@ -25,13 +25,13 @@ function editArticleInList(articles, level, newArticle) {
 }
 
 /**
-    Edit an article in a part
+ Edit an article in a part
 
-    @param {Part} part
-    @param {String} level
-    @param {Article} newArticle
-    @return {Part}
-*/
+ @param {Part} part
+ @param {String} level
+ @param {Article} newArticle
+ @return {Part}
+ */
 function editArticleInPart(part, level, newArticle) {
     let articles = part.getArticles();
     articles = editArticleInList(articles, level, newArticle);
@@ -40,14 +40,14 @@ function editArticleInPart(part, level, newArticle) {
 }
 
 /**
-    Edit an article, or a part, in a summary. Does a shallow merge.
+ Edit an article, or a part, in a summary. Does a shallow merge.
 
-    @param {Summary} summary
-    @param {String} level
-    @param {Article|Part} newValue
-    @return {Summary}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'mergeAtLev... Remove this comment to see the full error message
+ @param {Summary} summary
+ @param {String} level
+ @param {Article|Part} newValue
+ @return {Summary}
+ */
+
 function mergeAtLevel(summary, level, newValue) {
     const levelParts = level.split(".");
     const partIndex = Number(levelParts[0]) - 1;
@@ -69,4 +69,4 @@ function mergeAtLevel(summary, level, newValue) {
     return summary.set("parts", parts);
 }
 
-module.exports = mergeAtLevel;
+export default mergeAtLevel;

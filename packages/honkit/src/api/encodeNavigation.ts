@@ -1,13 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
 /**
-    Encode an article for next/prev
+ Encode an article for next/prev
 
-    @param {Map<String:Page>}
-    @param {Article}
-    @return {Object}
-*/
+ @param {Map<String:Page>}
+ @param {Article}
+ @return {Object}
+ */
 function encodeArticle(pages, article) {
     const articlePath = article.getPath();
 
@@ -21,12 +20,12 @@ function encodeArticle(pages, article) {
 }
 
 /**
-    this.navigation is a deprecated property from GitBook v2
+ this.navigation is a deprecated property from GitBook v2
 
-    @param {Output}
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeNavi... Remove this comment to see the full error message
+ @param {Output}
+ @return {Object}
+ */
+
 function encodeNavigation(output) {
     const book = output.getBook();
     const pages = output.getPages();
@@ -62,4 +61,4 @@ function encodeNavigation(output) {
     return Immutable.Map(navigation).toJS();
 }
 
-module.exports = encodeNavigation;
+export default encodeNavigation;

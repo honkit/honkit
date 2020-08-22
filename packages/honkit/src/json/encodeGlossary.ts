@@ -1,15 +1,13 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeFile... Remove this comment to see the full error message
-const encodeFile = require("./encodeFile");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeGlos... Remove this comment to see the full error message
-const encodeGlossaryEntry = require("./encodeGlossaryEntry");
+import encodeFile from "./encodeFile";
+import encodeGlossaryEntry from "./encodeGlossaryEntry";
 
 /**
-    Encode a glossary to JSON
+ Encode a glossary to JSON
 
-    @param {Glossary}
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeGlos... Remove this comment to see the full error message
+ @param {Glossary}
+ @return {Object}
+ */
+
 function encodeGlossary(glossary) {
     const file = glossary.getFile();
     const entries = glossary.getEntries();
@@ -20,4 +18,4 @@ function encodeGlossary(glossary) {
     };
 }
 
-module.exports = encodeGlossary;
+export default encodeGlossary;

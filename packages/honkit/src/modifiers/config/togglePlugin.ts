@@ -1,9 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginDepe... Remove this comment to see the full error message
-const PluginDependency = require("../../models/pluginDependency");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'hasPlugin'... Remove this comment to see the full error message
-const hasPlugin = require("./hasPlugin");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'isDefaultP... Remove this comment to see the full error message
-const isDefaultPlugin = require("./isDefaultPlugin");
+import PluginDependency from "../../models/pluginDependency";
+import hasPlugin from "./hasPlugin";
+import isDefaultPlugin from "./isDefaultPlugin";
 
 /**
  * Enable/disable a plugin dependency
@@ -12,13 +9,15 @@ const isDefaultPlugin = require("./isDefaultPlugin");
  * @param {Boolean} state (optional)
  * @return {Config}
  */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'togglePlug... Remove this comment to see the full error message
+
 function togglePlugin(config, pluginName, state) {
     let deps = config.getPluginDependencies();
 
     // For default plugin, we should ensure it's listed first
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
+
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     if (isDefaultPlugin(pluginName) && !hasPlugin(deps, pluginName)) {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         deps = deps.push(PluginDependency.create(pluginName));
     }
 
@@ -33,4 +32,4 @@ function togglePlugin(config, pluginName, state) {
     return config.setPluginDependencies(deps);
 }
 
-module.exports = togglePlugin;
+export default togglePlugin;

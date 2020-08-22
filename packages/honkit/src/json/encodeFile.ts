@@ -1,9 +1,9 @@
 /**
-    Return a JSON representation of a file
+ Return a JSON representation of a file
 
-    @param {File} file
-    @return {Object}
-*/
+ @param {File} file
+ @return {Object}
+ */
 function encodeFileToJson(file) {
     const filePath = file.getPath();
     if (!filePath) {
@@ -17,4 +17,4 @@ function encodeFileToJson(file) {
     };
 }
 
-module.exports = encodeFileToJson;
+export default encodeFileToJson;

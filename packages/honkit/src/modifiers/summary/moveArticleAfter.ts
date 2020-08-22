@@ -1,20 +1,17 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'removeArti... Remove this comment to see the full error message
-const removeArticle = require("./removeArticle");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'insertArti... Remove this comment to see the full error message
-const insertArticle = require("./insertArticle");
+import is from "is";
+import removeArticle from "./removeArticle";
+import insertArticle from "./insertArticle";
 
 /**
-    Returns a new summary, with the an article moved after another
-    article. Unlike `moveArticle`, does not ensure that the article
-    will be found at the target's level plus one.
+ Returns a new summary, with the an article moved after another
+ article. Unlike `moveArticle`, does not ensure that the article
+ will be found at the target's level plus one.
 
-    @param {Summary} summary
-    @param {String|SummaryArticle} origin
-    @param {String|SummaryArticle} afterTarget
-    @return {Summary}
-*/
+ @param {Summary} summary
+ @param {String|SummaryArticle} origin
+ @param {String|SummaryArticle} afterTarget
+ @return {Summary}
+ */
 function moveArticleAfter(summary, origin, afterTarget) {
     // Coerce to level
     const originLevel = is.string(origin) ? origin : origin.getLevel();
@@ -37,8 +34,8 @@ function moveArticleAfter(summary, origin, afterTarget) {
 }
 
 /**
-    @param {String}
-    @return {Array<Number>}
+ @param {String}
+ @return {Array<Number>}
  */
 function levelToArray(l) {
     return l.split(".").map((char) => {
@@ -47,8 +44,8 @@ function levelToArray(l) {
 }
 
 /**
-    @param {Array<Number>}
-    @return {String}
+ @param {Array<Number>}
+ @return {String}
  */
 function arrayToLevel(a) {
     return a.join(".");
@@ -60,4 +57,4 @@ function increment(level) {
     return arrayToLevel(level);
 }
 
-module.exports = moveArticleAfter;
+export default moveArticleAfter;

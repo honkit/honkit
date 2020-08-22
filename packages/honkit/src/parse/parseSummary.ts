@@ -1,17 +1,16 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseStruc... Remove this comment to see the full error message
-const parseStructureFile = require("./parseStructureFile");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Summary'.
-const Summary = require("../models/summary");
+import parseStructureFile from "./parseStructureFile";
+import Summary from "../models/summary";
+
 const SummaryModifier = require("../modifiers").Summary;
 
 /**
-    Parse summary in a book, the summary can only be parsed
-    if the readme as be detected before.
+ Parse summary in a book, the summary can only be parsed
+ if the readme as be detected before.
 
-    @param {Book} book
-    @return {Promise<Book>}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseSumma... Remove this comment to see the full error message
+ @param {Book} book
+ @return {Promise<Book>}
+ */
+
 function parseSummary(book) {
     const readme = book.getReadme();
     const logger = book.getLogger();
@@ -25,6 +24,8 @@ function parseSummary(book) {
             summary = Summary();
         } else {
             logger.debug.ln("summary file found at", file.getPath());
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
             summary = Summary.createFromParts(file, result.parts);
         }
 
@@ -43,4 +44,4 @@ function parseSummary(book) {
     });
 }
 
-module.exports = parseSummary;
+export default parseSummary;

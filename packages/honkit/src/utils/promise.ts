@@ -1,6 +1,5 @@
-const Q = require("q");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import Q from "q";
+import Immutable from "immutable";
 
 // Debugging for long stack traces
 if (process.env.DEBUG || process.env.CI) {
@@ -142,10 +141,5 @@ function wrap(func) {
     };
 }
 
-module.exports = Q;
-module.exports.forEach = forEach;
-module.exports.reduce = reduce;
-module.exports.map = map;
-module.exports.serie = serie;
-module.exports.some = some;
-module.exports.wrapfn = wrap;
+export default Q;
+export { forEach, reduce, map, serie, some, wrap };

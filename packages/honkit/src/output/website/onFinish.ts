@@ -1,15 +1,15 @@
-const Promise = require("../../utils/promise");
-const JSONUtils = require("../../json");
-const Templating = require("../../templating");
-const writeFile = require("../helper/writeFile");
-const createTemplateEngine = require("./createTemplateEngine");
+import Promise from "../../utils/promise";
+import JSONUtils from "../../json";
+import Templating from "../../templating";
+import writeFile from "../helper/writeFile";
+import createTemplateEngine from "./createTemplateEngine";
 
 /**
-    Finish the generation, write the languages index
+ Finish the generation, write the languages index
 
-    @param {Output} output
-    @return {Output}
-*/
+ @param {Output} output
+ @return {Output}
+ */
 function onFinish(output) {
     const book = output.getBook();
     const options = output.getOptions();

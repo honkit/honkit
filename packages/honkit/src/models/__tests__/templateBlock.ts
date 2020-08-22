@@ -1,6 +1,6 @@
-const nunjucks = require("nunjucks");
-const Immutable = require("immutable");
-const PromiseUtil = require("../../utils/promise");
+import nunjucks from "nunjucks";
+import Immutable from "immutable";
+import PromiseUtil from "../../utils/promise";
 
 describe("TemplateBlock", () => {
     const TemplateBlock = require("../templateBlock");
@@ -10,7 +10,7 @@ describe("TemplateBlock", () => {
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
-                    parse: true,
+                    parse: true
                 };
             });
 
@@ -37,7 +37,7 @@ describe("TemplateBlock", () => {
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
-                    parse: true,
+                    parse: true
                 };
             });
 
@@ -46,14 +46,14 @@ describe("TemplateBlock", () => {
 
         test("must return complete shortcut", () => {
             const templateBlock = TemplateBlock.create("sayhello", {
-                process: function (block) {
+                process: function(block) {
                     return "<p>Hello, World!</p>";
                 },
                 shortcuts: {
                     parsers: ["markdown"],
                     start: "$",
-                    end: "-",
-                },
+                    end: "-"
+                }
             });
 
             const shortcut = templateBlock.getShortcuts();
@@ -99,7 +99,7 @@ describe("TemplateBlock", () => {
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
-                    parse: true,
+                    parse: true
                 };
             });
 
@@ -121,7 +121,7 @@ describe("TemplateBlock", () => {
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: `<${block.kwargs.tag}>Hello, ${block.kwargs.name}!</${block.kwargs.tag}>`,
-                    parse: true,
+                    parse: true
                 };
             });
 
@@ -133,7 +133,7 @@ describe("TemplateBlock", () => {
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block
-            const src = '{% sayhello name="Samy", tag="p" %}{% endsayhello %}';
+            const src = "{% sayhello name=\"Samy\", tag=\"p\" %}{% endsayhello %}";
             return PromiseUtil.nfcall(env.renderString.bind(env), src).then((res) => {
                 expect(res).toBe("<p>Hello, Samy!</p>");
             });
@@ -144,7 +144,7 @@ describe("TemplateBlock", () => {
                 return PromiseUtil().then(() => {
                     return {
                         body: `Hello ${block.body}`,
-                        parse: true,
+                        parse: true
                     };
                 });
             });
@@ -167,7 +167,7 @@ describe("TemplateBlock", () => {
             const templateBlock = new TemplateBlock({
                 name: "yoda",
                 blocks: Immutable.List(["start", "end"]),
-                process: function (block) {
+                process: function(block) {
                     const nested: { end?: any; start?: any } = {};
 
                     block.blocks.forEach((blk) => {
@@ -176,9 +176,9 @@ describe("TemplateBlock", () => {
 
                     return {
                         body: `<p class="yoda">${nested.end} ${nested.start}</p>`,
-                        parse: true,
+                        parse: true
                     };
-                },
+                }
             });
 
             // Create a fresh Nunjucks environment
@@ -191,7 +191,7 @@ describe("TemplateBlock", () => {
             // Render a template using the block
             const src = "{% yoda %}{% start %}this sentence should be{% end %}inverted{% endyoda %}";
             return PromiseUtil.nfcall(env.renderString.bind(env), src).then((res) => {
-                expect(res).toBe('<p class="yoda">inverted this sentence should be</p>');
+                expect(res).toBe("<p class=\"yoda\">inverted this sentence should be</p>");
             });
         });
     });

@@ -1,21 +1,15 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("fs");
-const mkdirp = require("mkdirp");
-const destroy = require("destroy");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'tmp'.
-const tmp = require("tmp");
-const request = require("request");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-const cp = require("cp");
-const cpr = require("cpr");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("./promise");
+import fs from "fs";
+import mkdirp from "mkdirp";
+import destroy from "destroy";
+import tmp from "tmp";
+import request from "request";
+import path from "path";
+import cp from "cp";
+import cpr from "cpr";
+import Promise from "./promise";
 
 // Write a stream to a file
 function writeStream(filename, st) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
     const d = Promise.defer();
 
     const wstream = fs.createWriteStream(filename);
@@ -45,7 +39,6 @@ function writeStream(filename, st) {
 
 // Return a promise resolved with a boolean
 function fileExists(filename) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
     const d = Promise.defer();
 
     fs.stat(filename, (error) => {
@@ -61,13 +54,11 @@ function fileExists(filename) {
 
 // Generate temporary file
 function genTmpFile(opts) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfcall' does not exist on type 'PromiseC... Remove this comment to see the full error message
     return Promise.nfcall(tmp.file, opts).get(0);
 }
 
 // Generate temporary dir
 function genTmpDir(opts) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfcall' does not exist on type 'PromiseC... Remove this comment to see the full error message
     return Promise.nfcall(tmp.dir, opts).get(0);
 }
 
@@ -90,20 +81,18 @@ function uniqueFilename(base, filename) {
         i = i + 1;
     }
 
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise(path.relative(base, _filename));
 }
 
 // Create all required folder to create a file
 function ensureFile(filename) {
     const base = path.dirname(filename);
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(mkdirp(base));
 }
 
 // Remove a folder
 function rmDir(base) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfcall' does not exist on type 'PromiseC... Remove this comment to see the full error message
     return Promise.nfcall(fs.rmdir, base, {
         recursive: true,
     });
@@ -149,23 +138,20 @@ function pickFile(rootFolder, fileName) {
 function ensureFolder(rootFolder) {
     return rmDir(rootFolder)
         .fail(() => {
-            // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
             return Promise();
         })
         .then(() => {
-            // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
             return Promise(mkdirp(rootFolder));
         });
 }
 
-module.exports = {
+export default {
     exists: fileExists,
     existsSync: fs.existsSync,
     mkdirp: mkdirp,
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfbind' does not exist on type 'PromiseC... Remove this comment to see the full error message
+
     readFile: Promise.nfbind(fs.readFile),
     writeFile: (filePath, content) => {
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
         const d = Promise.defer();
         fs.writeFile(filePath, content, (error) => {
             if (error) {
@@ -178,16 +164,16 @@ module.exports = {
     },
     assertFile: assertFile,
     pickFile: pickFile,
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfbind' does not exist on type 'PromiseC... Remove this comment to see the full error message
+
     stat: Promise.nfbind(fs.lstat),
     statSync: fs.lstatSync,
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfbind' does not exist on type 'PromiseC... Remove this comment to see the full error message
+
     readdir: Promise.nfbind(fs.readdir),
     writeStream: writeStream,
     readStream: fs.createReadStream,
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfbind' does not exist on type 'PromiseC... Remove this comment to see the full error message
+
     copy: Promise.nfbind(cp),
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nfbind' does not exist on type 'PromiseC... Remove this comment to see the full error message
+
     copyDir: Promise.nfbind(cpr),
     tmpFile: genTmpFile,
     tmpDir: genTmpDir,

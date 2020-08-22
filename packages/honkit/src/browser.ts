@@ -1,7 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Modifiers'... Remove this comment to see the full error message
-const Modifiers = require("./modifiers");
+import Modifiers from "./modifiers";
 
-module.exports = {
+export default {
     Parse: require("./parse"),
 
     // Models

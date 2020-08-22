@@ -1,19 +1,15 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
-const LocationUtils = require("../utils/location");
-const PLUGIN_RESOURCES = require("../constants/pluginResources");
+import Immutable from "immutable";
+import path from "path";
+import LocationUtils from "../utils/location";
+import PLUGIN_RESOURCES from "../constants/pluginResources";
 
 /**
-    List all resources from a list of plugins
+ List all resources from a list of plugins
 
-    @param {OrderedMap<String:Plugin>}
-    @param {String} type
-    @return {Map<String:List<{url, path}>}
-*/
+ @param {OrderedMap<String:Plugin>}
+ @param {String} type
+ @return {Map<String:List<{url, path}>}
+ */
 function listResources(plugins, resources) {
     return plugins.reduce((result, plugin) => {
         const npmId = plugin.getNpmID();
@@ -45,4 +41,4 @@ function listResources(plugins, resources) {
     }, Immutable.Map());
 }
 
-module.exports = listResources;
+export default listResources;

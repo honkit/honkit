@@ -1,26 +1,28 @@
 import Immutable from "immutable";
-const Summary = require("../../../models/summary");
-const File = require("../../../models/file");
+import Summary from "../../../models/summary";
+import File from "../../../models/file";
 
 describe("mergeAtLevel", () => {
     const mergeAtLevel = require("../mergeAtLevel");
+    
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
     const summary = Summary.createFromParts(File(), [
         {
             articles: [
                 {
                     title: "1.1",
-                    path: "1.1",
+                    path: "1.1"
                 },
                 {
                     title: "1.2",
-                    path: "1.2",
-                },
-            ],
+                    path: "1.2"
+                }
+            ]
         },
         {
             title: "Part I",
-            articles: [],
-        },
+            articles: []
+        }
     ]);
 
     test("should edit a part", () => {

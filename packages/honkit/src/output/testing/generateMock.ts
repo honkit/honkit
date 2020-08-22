@@ -1,9 +1,9 @@
 import createMockFS from "../../fs/mock";
 
-const tmp = require("tmp");
+import tmp from "tmp";
+import Book from "../../models/book";
+import parseBook from "../../parse/parseBook";
 
-const Book = require("../../models/book");
-const parseBook = require("../../parse/parseBook");
 const generateBook = require("../generateBook").generateBook;
 
 /**
@@ -18,6 +18,8 @@ const generateBook = require("../generateBook").generateBook;
  */
 function generateMock(Generator, files) {
     const fs = createMockFS(files);
+
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
     let book = Book.createForFS(fs);
     const dir = tmp.dirSync();
 
@@ -32,4 +34,4 @@ function generateMock(Generator, files) {
         .thenResolve(dir.name);
 }
 
-module.exports = generateMock;
+export default generateMock;

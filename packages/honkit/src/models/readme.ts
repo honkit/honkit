@@ -1,12 +1,7 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import Immutable from "immutable";
+import File from "./file";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
-const File = require("./file");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Readme'.
 const Readme = Immutable.Record({
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type '{ new (fileBits: BlobPart[], fileNa... Remove this comment to see the full error message
     file: File(),
     title: String(),
     description: String(),
@@ -25,12 +20,14 @@ Readme.prototype.getDescription = function () {
 };
 
 /**
-    Create a new readme
+ Create a new readme
 
-    @param {File} file
-    @param {Object} def
-    @return {Readme}
-*/
+ @param {File} file
+ @param {Object} def
+ @return {Readme}
+ */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 Readme.create = function (file, def) {
     def = def || {};
 
@@ -41,4 +38,4 @@ Readme.create = function (file, def) {
     });
 };
 
-module.exports = Readme;
+export default Readme;

@@ -1,7 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'url'.
-const url = require("url");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
+import url from "url";
+import path from "path";
 
 // Is the url an external url
 function isExternal(href) {
@@ -127,7 +125,7 @@ function areIdenticalPaths(p1, p2) {
     return normalize(p1) === normalize(p2);
 }
 
-module.exports = {
+export default {
     areIdenticalPaths: areIdenticalPaths,
     isDataURI: isDataURI,
     isExternal: isExternal,

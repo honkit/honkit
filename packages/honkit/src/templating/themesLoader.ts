@@ -1,14 +1,8 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'nunjucks'.
-const nunjucks = require("nunjucks");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("fs");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PathUtils'... Remove this comment to see the full error message
-const PathUtils = require("../utils/path");
+import Immutable from "immutable";
+import nunjucks from "nunjucks";
+import fs from "fs";
+import path from "path";
+import PathUtils from "../utils/path";
 
 const ThemesLoader = nunjucks.Loader.extend({
     init: function (searchPaths) {
@@ -112,4 +106,4 @@ const ThemesLoader = nunjucks.Loader.extend({
     },
 });
 
-module.exports = ThemesLoader;
+export default ThemesLoader;

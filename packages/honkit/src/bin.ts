@@ -1,8 +1,10 @@
 import assert from "assert";
-const { Command } = require("commander");
+import { Command } from "commander";
+
 const pkg = require("../package.json");
-const Honkit = require("./index");
-module.exports.run = (argv = process.argv) => {
+import Honkit from "./index";
+
+export const run = (argv = process.argv) => {
     const program = new Command();
     return new Promise((resolve, reject) => {
         program.version(pkg.version);

@@ -1,17 +1,10 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Modifiers'... Remove this comment to see the full error message
-const Modifiers = require("./modifiers");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'resolveFil... Remove this comment to see the full error message
-const resolveFileToURL = require("./helper/resolveFileToURL");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Api'.
-const Api = require("../api");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Plugins'.
-const Plugins = require("../plugins");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'defaultBlo... Remove this comment to see the full error message
-const defaultBlocks = require("../constants/defaultBlocks");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fileToOutp... Remove this comment to see the full error message
-const fileToOutput = require("./helper/fileToOutput");
+import Modifiers from "./modifiers";
+import resolveFileToURL from "./helper/resolveFileToURL";
+import Api from "../api";
+import Plugins from "../plugins";
+import Promise from "../utils/promise";
+import defaultBlocks from "../constants/defaultBlocks";
+import fileToOutput from "./helper/fileToOutput";
 
 const CODEBLOCK = "code";
 
@@ -57,7 +50,6 @@ function getModifiers(output, page) {
 
         // Highlight code blocks using "code" block
         Modifiers.highlightCode.bind(null, (lang, source) => {
-            // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
             return Promise(
                 code.applyBlock(
                     {
@@ -79,4 +71,4 @@ function getModifiers(output, page) {
     ];
 }
 
-module.exports = getModifiers;
+export default getModifiers;

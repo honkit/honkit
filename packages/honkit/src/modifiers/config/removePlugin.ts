@@ -1,7 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'togglePlug... Remove this comment to see the full error message
-const togglePlugin = require("./togglePlugin");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'isDefaultP... Remove this comment to see the full error message
-const isDefaultPlugin = require("./isDefaultPlugin");
+import togglePlugin from "./togglePlugin";
+import isDefaultPlugin from "./isDefaultPlugin";
 
 /**
  * Remove a plugin from a book's configuration
@@ -13,6 +11,8 @@ function removePlugin(config, pluginName) {
     let deps = config.getPluginDependencies();
 
     // For default plugin, we have to disable it instead of removing from the list
+
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     if (isDefaultPlugin(pluginName)) {
         return togglePlugin(config, pluginName, false);
     }
@@ -24,4 +24,4 @@ function removePlugin(config, pluginName) {
     return config.setPluginDependencies(deps);
 }
 
-module.exports = removePlugin;
+export default removePlugin;

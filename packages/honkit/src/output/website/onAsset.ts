@@ -1,14 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("../../utils/fs");
+import path from "path";
+import fs from "../../utils/fs";
 
 /**
-    Copy an asset to the output folder
+ Copy an asset to the output folder
 
-    @param {Output} output
-    @param {Page} page
-*/
+ @param {Output} output
+ @param {Page} page
+ */
 function onAsset(output, asset) {
     const book = output.getBook();
     const options = output.getOptions();
@@ -27,4 +25,4 @@ function onAsset(output, asset) {
         .thenResolve(output);
 }
 
-module.exports = onAsset;
+export default onAsset;

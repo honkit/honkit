@@ -1,7 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateOu... Remove this comment to see the full error message
 const TemplateOutput = Immutable.Record(
     {
         // Text content of the template
@@ -37,6 +35,8 @@ TemplateOutput.prototype.setContent = function (content) {
  * @param {Object} blocks
  * @return {TemplateOutput}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 TemplateOutput.create = function (content, blocks) {
     return new TemplateOutput({
         content: content,
@@ -44,4 +44,4 @@ TemplateOutput.create = function (content, blocks) {
     });
 };
 
-module.exports = TemplateOutput;
+export default TemplateOutput;

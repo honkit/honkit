@@ -1,5 +1,4 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import Immutable from "immutable";
 
 /**
  *  Reduce the difference between a map and its default version
@@ -7,7 +6,7 @@ const Immutable = require("immutable");
  *  @param {Map} currentVersion
  *  @return {Map} The properties of currentVersion that differs from defaultVersion
  */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'reducedObj... Remove this comment to see the full error message
+
 function reducedObject(defaultVersion, currentVersion) {
     if (defaultVersion === undefined) {
         return currentVersion;
@@ -32,4 +31,4 @@ function reducedObject(defaultVersion, currentVersion) {
     }, Immutable.Map());
 }
 
-module.exports = reducedObject;
+export default reducedObject;

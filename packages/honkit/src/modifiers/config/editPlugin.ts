@@ -9,4 +9,4 @@ function editPlugin(config, pluginName, pluginConfig) {
     return config.setValue(`pluginsConfig.${pluginName}`, pluginConfig);
 }
 
-module.exports = editPlugin;
+export default editPlugin;

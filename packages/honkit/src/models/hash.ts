@@ -27,7 +27,8 @@ const STRING_HASH_CACHE_MIN_STRLEN = 16;
 const STRING_HASH_CACHE_MAX_SIZE = 255;
 let STRING_HASH_CACHE_SIZE = 0;
 let stringHashCache = {};
-module.exports.hash = function hash(o) {
+
+export const hash = function hash(o) {
     switch (typeof o) {
         case "boolean":
             // The hash values for built-in constants are a 1 value for each 5-byte
@@ -92,7 +93,8 @@ function cachedHashString(string) {
 }
 
 // http://jsperf.com/hashing-strings
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'hashString... Remove this comment to see the full error message
+
+// @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'hashString'.
 function hashString(string) {
     // This is the hash from JVM
     // The hash code for a string is computed as
@@ -106,7 +108,9 @@ function hashString(string) {
     }
     return smi(hashed);
 }
-module.exports.hashString = hashString;
+
+// @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'hashString'.
+export const hashString = hashString;
 
 function hashJSObj(obj) {
     let hashed;

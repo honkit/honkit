@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     addPlugin: require("./addPlugin"),
     removePlugin: require("./removePlugin"),
     togglePlugin: require("./togglePlugin"),

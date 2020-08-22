@@ -1,7 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'DEFAULT_PL... Remove this comment to see the full error message
-const DEFAULT_PLUGINS = require("../constants/defaultPlugins");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'sortDepend... Remove this comment to see the full error message
-const sortDependencies = require("./sortDependencies");
+import DEFAULT_PLUGINS from "../constants/defaultPlugins";
+import sortDependencies from "./sortDependencies";
 
 /**
  * List all dependencies for a book, including default plugins.
@@ -10,7 +8,7 @@ const sortDependencies = require("./sortDependencies");
  * @param {List<PluginDependency>} deps
  * @return {List<PluginDependency>}
  */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'listDepend... Remove this comment to see the full error message
+
 function listDependencies(deps) {
     // Extract list of plugins to disable (starting with -)
     const toRemove = deps
@@ -33,4 +31,4 @@ function listDependencies(deps) {
     return sortDependencies(deps);
 }
 
-module.exports = listDependencies;
+export default listDependencies;

@@ -1,6 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
-const IGNORE_FILES = require("../constants/ignoreFiles");
+import Promise from "../utils/promise";
+import IGNORE_FILES from "../constants/ignoreFiles";
 
 const DEFAULT_IGNORES = [
     // Skip Git stuff
@@ -20,12 +19,12 @@ const DEFAULT_IGNORES = [
 ];
 
 /**
-    Parse ignore files
+ Parse ignore files
 
-    @param {Book}
-    @return {Book}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseIgnor... Remove this comment to see the full error message
+ @param {Book}
+ @return {Book}
+ */
+
 function parseIgnore(book) {
     if (book.isLanguageBook()) {
         return Promise.reject(new Error("Ignore files could be parsed for language books"));
@@ -36,14 +35,12 @@ function parseIgnore(book) {
 
     ignore = ignore.add(DEFAULT_IGNORES);
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'serie' does not exist on type 'PromiseCo... Remove this comment to see the full error message
     return Promise.serie(IGNORE_FILES, (filename) => {
         return fs.readAsString(filename).then(
             (content) => {
                 ignore = ignore.add(content.toString().split(/\r?\n/));
             },
             (err) => {
-                // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
                 return Promise();
             }
         );
@@ -52,4 +49,4 @@ function parseIgnore(book) {
     });
 }
 
-module.exports = parseIgnore;
+export default parseIgnore;

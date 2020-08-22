@@ -1,23 +1,16 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'extend'.
-const extend = require("extend");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'honkit'.
-const honkit = require("../honkit");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
-const encodeSummary = require("./encodeSummary");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeGlos... Remove this comment to see the full error message
-const encodeGlossary = require("./encodeGlossary");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeRead... Remove this comment to see the full error message
-const encodeReadme = require("./encodeReadme");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeLang... Remove this comment to see the full error message
-const encodeLanguages = require("./encodeLanguages");
+import extend from "extend";
+import honkit from "../honkit";
+import encodeSummary from "./encodeSummary";
+import encodeGlossary from "./encodeGlossary";
+import encodeReadme from "./encodeReadme";
+import encodeLanguages from "./encodeLanguages";
 
 /**
-    Encode a book to JSON
+ Encode a book to JSON
 
-    @param {Book}
-    @return {Object}
-*/
+ @param {Book}
+ @return {Object}
+ */
 function encodeBookToJson(book) {
     const config = book.getConfig();
     const language = book.getLanguage();
@@ -45,4 +38,4 @@ function encodeBookToJson(book) {
     };
 }
 
-module.exports = encodeBookToJson;
+export default encodeBookToJson;

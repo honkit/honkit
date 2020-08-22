@@ -1,18 +1,10 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createMock... Remove this comment to see the full error message
 import createMockFS from "../../fs/mock";
 
-const Immutable = require("immutable");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Output'.
-const Output = require("../../models/output");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Book'.
-const Book = require("../../models/book");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseBook'... Remove this comment to see the full error message
-const parseBook = require("../../parse/parseBook");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'preparePlu... Remove this comment to see the full error message
-const preparePlugins = require("../preparePlugins");
+import Immutable from "immutable";
+import Output from "../../models/output";
+import Book from "../../models/book";
+import parseBook from "../../parse/parseBook";
+import preparePlugins from "../preparePlugins";
 
 /**
  * Create an output using a generator
@@ -25,6 +17,8 @@ const preparePlugins = require("../preparePlugins");
  */
 function createMockOutput(generator, files, options) {
     const fs = createMockFS(files);
+
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
     let book = Book.createForFS(fs);
     const state = generator.State ? generator.State({}) : Immutable.Map();
 
@@ -43,4 +37,4 @@ function createMockOutput(generator, files, options) {
         .then(preparePlugins);
 }
 
-module.exports = createMockOutput;
+export default createMockOutput;

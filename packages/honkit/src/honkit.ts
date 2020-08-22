@@ -1,6 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'semver'.
-const semver = require("semver");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'pkg'.
+import semver from "semver";
+
 const pkg = require("../package.json");
 
 const VERSION = pkg.version;
@@ -28,7 +27,7 @@ function satisfies(condition) {
     return semver.satisfies(VERSION_STABLE, condition);
 }
 
-module.exports = {
+export default {
     version: pkg.version,
     satisfies: satisfies,
     START_TIME: START_TIME,

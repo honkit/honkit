@@ -1,7 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Plugins'.
-const Plugins = require("../plugins");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
+import Plugins from "../plugins";
+import Promise from "../utils/promise";
 
 /**
  * Load and setup plugins
@@ -9,12 +7,11 @@ const Promise = require("../utils/promise");
  * @param {Output}
  * @return {Promise<Output>}
  */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'preparePlu... Remove this comment to see the full error message
+
 function preparePlugins(output) {
     const book = output.getBook();
 
     return (
-        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         Promise()
             // Only load plugins for main book
             .then(() => {
@@ -37,4 +34,4 @@ function preparePlugins(output) {
     );
 }
 
-module.exports = preparePlugins;
+export default preparePlugins;

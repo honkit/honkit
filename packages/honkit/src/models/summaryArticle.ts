@@ -1,14 +1,10 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'location'.
-const location = require("../utils/location");
+import Immutable from "immutable";
+import location from "../utils/location";
 
 /*
     An article represents an entry in the Summary / table of Contents
 */
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryArt... Remove this comment to see the full error message
 const SummaryArticle = Immutable.Record(
     {
         level: String(),
@@ -66,7 +62,7 @@ SummaryArticle.prototype.getPath = function () {
     const pathname = parts.length > 1 ? parts.slice(0, -1).join("#") : ref;
 
     // Normalize path to remove ('./', '/...', etc)
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'flatten' does not exist on type 'Locatio... Remove this comment to see the full error message
+
     return location.flatten(pathname);
 };
 
@@ -143,7 +139,6 @@ SummaryArticle.prototype.isReadme = function (book) {
  * @return {Boolean}
  */
 SummaryArticle.prototype.isExternal = function () {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'isExternal' does not exist on type 'Loca... Remove this comment to see the full error message
     return location.isExternal(this.getRef());
 };
 
@@ -153,11 +148,15 @@ SummaryArticle.prototype.isExternal = function () {
  * @param {Object} def
  * @return {SummaryArticle}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 SummaryArticle.create = function (def, level) {
     const articles = (def.articles || []).map((article, i) => {
         if (article instanceof SummaryArticle) {
             return article;
         }
+
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         return SummaryArticle.create(article, [level, i + 1].join("."));
     });
 
@@ -186,6 +185,8 @@ SummaryArticle.prototype.hasAnchor = function () {
  * @param {Function(article)} iter
  * @return {Article}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'findArticle' does not exist on type 'Cla... Remove this comment to see the full error message
 SummaryArticle.findArticle = function (base, iter) {
     const articles = base.getArticles();
 
@@ -196,8 +197,9 @@ SummaryArticle.findArticle = function (base, iter) {
             return article;
         }
 
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'findArticle' does not exist on type 'Cla... Remove this comment to see the full error message
         return SummaryArticle.findArticle(article, iter);
     }, null);
 };
 
-module.exports = SummaryArticle;
+export default SummaryArticle;

@@ -1,19 +1,15 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
-const LocationUtils = require("../../utils/location");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'editHTMLEl... Remove this comment to see the full error message
-const editHTMLElement = require("./editHTMLElement");
+import path from "path";
+import LocationUtils from "../../utils/location";
+import editHTMLElement from "./editHTMLElement";
 
 /**
-    Resolve all HTML images:
-        - /test.png in hello -> ../test.html
+ Resolve all HTML images:
+ - /test.png in hello -> ../test.html
 
-    @param {String} currentFile
-    @param {HTMLDom} $
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'resolveIma... Remove this comment to see the full error message
+ @param {String} currentFile
+ @param {HTMLDom} $
+ */
+
 function resolveImages(currentFile, $) {
     const currentDirectory = path.dirname(currentFile);
 
@@ -34,4 +30,4 @@ function resolveImages(currentFile, $) {
     });
 }
 
-module.exports = resolveImages;
+export default resolveImages;

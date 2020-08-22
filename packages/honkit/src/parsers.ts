@@ -1,20 +1,17 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-
-const markdownParser = require("@honkit/markdown-legacy");
-const asciidocParser = require("@honkit/asciidoc");
-
-const EXTENSIONS_MARKDOWN = require("./constants/extsMarkdown");
-const EXTENSIONS_ASCIIDOC = require("./constants/extsAsciidoc");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parser'.
-const Parser = require("./models/parser");
+import path from "path";
+import Immutable from "immutable";
+import markdownParser from "@honkit/markdown-legacy";
+import asciidocParser from "@honkit/asciidoc";
+import EXTENSIONS_MARKDOWN from "./constants/extsMarkdown";
+import EXTENSIONS_ASCIIDOC from "./constants/extsAsciidoc";
+import Parser from "./models/parser";
 
 // This list is ordered by priority of parsers to use
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsers'.
 const parsers = Immutable.List([
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     Parser.create("markdown", EXTENSIONS_MARKDOWN, markdownParser),
+
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     Parser.create("asciidoc", EXTENSIONS_ASCIIDOC, asciidocParser),
 ]);
 
@@ -59,7 +56,7 @@ const extensions = parsers
     })
     .flatten();
 
-module.exports = {
+export default {
     extensions: extensions,
     get: getParser,
     getByExt: getParserByExt,

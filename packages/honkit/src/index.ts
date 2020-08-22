@@ -1,9 +1,7 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'extend'.
-const extend = require("extend");
+import extend from "extend";
+import common from "./browser";
 
-const common = require("./browser");
-
-module.exports = extend(
+export default extend(
     {
         initBook: require("./init"),
         createNodeFS: require("./fs/node"),

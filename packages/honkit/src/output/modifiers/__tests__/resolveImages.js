@@ -4,7 +4,7 @@ const resolveImages = require("../resolveImages");
 
 describe("resolveImages", () => {
     describe("img tag", () => {
-        const TEST = '<img src="http://www.github.com">';
+        const TEST = "<img src=\"http://www.github.com\">";
 
         test("no error occurs and return undefined", () => {
             const $ = cheerio.load(TEST);
@@ -16,7 +16,7 @@ describe("resolveImages", () => {
         });
     });
     describe("img tag with break line", () => {
-        const TEST = '<img \nsrc="http://www.github.com">';
+        const TEST = "<img \nsrc=\"http://www.github.com\">";
 
         test("no error occurs and return undefined", () => {
             const $ = cheerio.load(TEST);
@@ -27,7 +27,7 @@ describe("resolveImages", () => {
         });
     });
     describe("img tag with src with plus sign", () => {
-        const TEST = '<img +src="http://www.github.com">';
+        const TEST = "<img +src=\"http://www.github.com\">";
 
         test("no error occurs and return undefined", () => {
             const $ = cheerio.load(TEST);

@@ -1,14 +1,13 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'timing'.
-const timing = require("../utils/timing");
+import timing from "../utils/timing";
 
 /**
-    List all assets in a book
-    Assets are file not ignored and not a page
+ List all assets in a book
+ Assets are file not ignored and not a page
 
-    @param {Book} book
-    @param {List<String>} pages
-    @param
-*/
+ @param {Book} book
+ @param {List<String>} pages
+ @param
+ */
 function listAssets(book, pages) {
     const fs = book.getContentFS();
 
@@ -38,4 +37,4 @@ function listAssets(book, pages) {
     return timing.measure("parse.listAssets", fs.listAllFiles(".", filterFile));
 }
 
-module.exports = listAssets;
+export default listAssets;

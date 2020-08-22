@@ -1,14 +1,9 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-const yaml = require("js-yaml");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
-const File = require("./file");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'hashString... Remove this comment to see the full error message
-const { hashString } = require("./hash.js");
+import Immutable from "immutable";
+import yaml from "js-yaml";
+import File from "./file";
+import { hashString } from "./hash.js";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Page'.
 const Page = Immutable.Record({
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type '{ new (fileBits: BlobPart[], fileNa... Remove this comment to see the full error message
     file: File(),
 
     // Attributes extracted from the YAML header
@@ -66,6 +61,8 @@ Page.prototype.getPath = function () {
  * @param {File} file
  * @return {Page}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFile' does not exist on type 'C... Remove this comment to see the full error message
 Page.createForFile = function (file) {
     return new Page({
         file: file,
@@ -78,6 +75,8 @@ Page.createForFile = function (file) {
  * @param {string} content
  * @return {Page}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'loadFile' does not exist on type 'Class'... Remove this comment to see the full error message
 Page.loadFile = function (file, content) {
     return new Page({
         file: file,
@@ -85,9 +84,9 @@ Page.loadFile = function (file, content) {
     });
 };
 
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'fromJSON' does not exist on type 'Class'... Remove this comment to see the full error message
 Page.fromJSON = function (json) {
     return new Page({
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2-3 arguments, but got 1.
         file: new File(json.file),
         // Attributes extracted from the YAML header
         attributes: Immutable.Map(json.atributes),
@@ -97,6 +96,8 @@ Page.fromJSON = function (json) {
         dir: json.dir,
     });
 };
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'toJSON' does not exist on type 'Class'.
 Page.toJSON = function (page) {
     return page.toJS();
 };
@@ -104,4 +105,4 @@ Page.prototype.hash = function () {
     return hashString(JSON.stringify(this.toJS()));
 };
 
-module.exports = Page;
+export default Page;

@@ -1,18 +1,15 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
-const error = require("../utils/error");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'lookupStru... Remove this comment to see the full error message
-const lookupStructureFile = require("./lookupStructureFile");
+import Promise from "../utils/promise";
+import error from "../utils/error";
+import lookupStructureFile from "./lookupStructureFile";
 
 /**
-    Parse a ParsableFile using a specific method
+ Parse a ParsableFile using a specific method
 
-    @param {FS} fs
-    @param {ParsableFile} file
-    @param {String} type
-    @return {Promise<Array<String, List|Map>>}
-*/
+ @param {FS} fs
+ @param {ParsableFile} file
+ @param {String} type
+ @return {Promise<Array<String, List|Map>>}
+ */
 function parseFile(fs, file, type) {
     const filepath = file.getPath();
     const parser = file.getParser();
@@ -46,14 +43,14 @@ function parseFile(fs, file, type) {
 }
 
 /**
-    Parse a structure file (ex: SUMMARY.md, GLOSSARY.md).
-    It uses the configuration to find the specified file.
+ Parse a structure file (ex: SUMMARY.md, GLOSSARY.md).
+ It uses the configuration to find the specified file.
 
-    @param {Book} book
-    @param {String} type: one of ["glossary", "readme", "summary"]
-    @return {Promise<List|Map>}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseStruc... Remove this comment to see the full error message
+ @param {Book} book
+ @param {String} type: one of ["glossary", "readme", "summary"]
+ @return {Promise<List|Map>}
+ */
+
 function parseStructureFile(book, type) {
     const fs = book.getContentFS();
 
@@ -64,4 +61,4 @@ function parseStructureFile(book, type) {
     });
 }
 
-module.exports = parseStructureFile;
+export default parseStructureFile;

@@ -1,13 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parse'.
-const Parse = require("../parse");
+import Parse from "../parse";
 
 /**
-    List all assets in the book
+ List all assets in the book
 
-    @param {Output}
-    @return {Promise<Output>}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'prepareAss... Remove this comment to see the full error message
+ @param {Output}
+ @return {Promise<Output>}
+ */
+
 function prepareAssets(output) {
     const book = output.getBook();
     const pages = output.getPages();
@@ -20,4 +19,4 @@ function prepareAssets(output) {
     });
 }
 
-module.exports = prepareAssets;
+export default prepareAssets;

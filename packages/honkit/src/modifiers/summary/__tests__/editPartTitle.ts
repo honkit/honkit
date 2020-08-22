@@ -9,17 +9,17 @@ describe("editPartTitle", () => {
             articles: [
                 {
                     title: "My First Article",
-                    path: "README.md",
+                    path: "README.md"
                 },
                 {
                     title: "My Second Article",
-                    path: "article.md",
-                },
-            ],
+                    path: "article.md"
+                }
+            ]
         },
         {
-            title: "Test",
-        },
+            title: "Test"
+        }
     ]);
 
     test("should correctly set title of first part", () => {

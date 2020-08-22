@@ -1,18 +1,14 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseStruc... Remove this comment to see the full error message
-const parseStructureFile = require("./parseStructureFile");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Readme'.
-const Readme = require("../models/readme");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
-const error = require("../utils/error");
+import parseStructureFile from "./parseStructureFile";
+import Readme from "../models/readme";
+import error from "../utils/error";
 
 /**
-    Parse readme from book
+ Parse readme from book
 
-    @param {Book} book
-    @return {Promise<Book>}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseReadm... Remove this comment to see the full error message
+ @param {Book} book
+ @return {Promise<Book>}
+ */
+
 function parseReadme(book) {
     const logger = book.getLogger();
 
@@ -23,9 +19,10 @@ function parseReadme(book) {
 
         logger.debug.ln("readme found at", file.getPath());
 
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         const readme = Readme.create(file, result);
         return book.set("readme", readme);
     });
 }
 
-module.exports = parseReadme;
+export default parseReadme;

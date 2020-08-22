@@ -1,10 +1,7 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'util'.
-const util = require("util");
-const color = require("bash-color");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import is from "is";
+import util from "util";
+import color from "bash-color";
+import Immutable from "immutable";
 
 const LEVELS = Immutable.Map({
     DEBUG: 0,
@@ -22,6 +19,7 @@ const COLORS = Immutable.Map({
 });
 
 function Logger(write, logLevel) {
+    // @ts-expect-error ts-migrate(2350) FIXME: Only a void function can be called with the 'new' ... Remove this comment to see the full error message
     if (!(this instanceof Logger)) return new Logger(write, logLevel);
 
     this._write =
@@ -51,10 +49,10 @@ function Logger(write, logLevel) {
 }
 
 /**
-    Change minimum level
+ Change minimum level
 
-    @param {String} logLevel
-*/
+ @param {String} logLevel
+ */
 Logger.prototype.setLevel = function (logLevel) {
     if (is.string(logLevel)) {
         logLevel = logLevel.toUpperCase();
@@ -65,19 +63,19 @@ Logger.prototype.setLevel = function (logLevel) {
 };
 
 /**
-    Return minimum logging level
+ Return minimum logging level
 
-    @return {Number}
-*/
+ @return {Number}
+ */
 Logger.prototype.getLevel = function (logLevel) {
     return this.logLevel;
 };
 
 /**
-    Print a simple string
+ Print a simple string
 
-    @param {String}
-*/
+ @param {String}
+ */
 Logger.prototype.write = function (msg) {
     msg = msg.toString();
     this.lastChar = msg[msg.length - 1];
@@ -85,26 +83,26 @@ Logger.prototype.write = function (msg) {
 };
 
 /**
-    Format a string using the first argument as a printf-like format.
-*/
+ Format a string using the first argument as a printf-like format.
+ */
 Logger.prototype.format = function () {
     return util.format.apply(util, arguments);
 };
 
 /**
-    Print a line
+ Print a line
 
-    @param {String}
-*/
+ @param {String}
+ */
 Logger.prototype.writeLn = function (msg) {
     return this.write(`${msg || ""}\n`);
 };
 
 /**
-    Log/Print a message if level is allowed
+ Log/Print a message if level is allowed
 
-    @param {Number} level
-*/
+ @param {Number} level
+ */
 Logger.prototype.log = function (level) {
     if (level < this.logLevel) return;
 
@@ -122,8 +120,8 @@ Logger.prototype.log = function (level) {
 };
 
 /**
-    Log/Print a line if level is allowed
-*/
+ Log/Print a line if level is allowed
+ */
 Logger.prototype.logLn = function () {
     if (this.lastChar != "\n") this.write("\n");
 
@@ -133,8 +131,8 @@ Logger.prototype.logLn = function () {
 };
 
 /**
-    Log a confirmation [OK]
-*/
+ Log a confirmation [OK]
+ */
 Logger.prototype.ok = function (level) {
     const args = Array.prototype.slice.apply(arguments, [1]);
     const msg = this.format.apply(this, args);
@@ -146,19 +144,19 @@ Logger.prototype.ok = function (level) {
 };
 
 /**
-    Log a "FAIL"
-*/
+ Log a "FAIL"
+ */
 Logger.prototype.fail = function (level) {
     return this.log(level, `${color.red("ERROR")}\n`);
 };
 
 /**
-    Log state of a promise
+ Log state of a promise
 
-    @param {Number} level
-    @param {Promise}
-    @return {Promise}
-*/
+ @param {Number} level
+ @param {Promise}
+ @return {Promise}
+ */
 Logger.prototype.promise = function (level, p) {
     const that = this;
 
@@ -176,4 +174,4 @@ Logger.prototype.promise = function (level, p) {
 
 Logger.LEVELS = LEVELS;
 
-module.exports = Logger;
+export default Logger;

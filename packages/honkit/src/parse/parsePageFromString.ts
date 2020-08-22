@@ -1,7 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-const fm = require("front-matter");
-const direction = require("direction");
+import Immutable from "immutable";
+import fm from "front-matter";
+import direction from "direction";
 
 /**
  * Parse a page, its content and the YAMl header
@@ -9,7 +8,7 @@ const direction = require("direction");
  * @param {Page} page
  * @return {Page}
  */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsePageF... Remove this comment to see the full error message
+
 function parsePageFromString(page, content) {
     // Parse page YAML
     const parsed = fm(content);
@@ -21,4 +20,4 @@ function parsePageFromString(page, content) {
     });
 }
 
-module.exports = parsePageFromString;
+export default parsePageFromString;

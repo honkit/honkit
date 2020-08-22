@@ -1,21 +1,16 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'url'.
-const url = require("url");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
-const LocationUtils = require("../../utils/location");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'editHTMLEl... Remove this comment to see the full error message
-const editHTMLElement = require("./editHTMLElement");
+import path from "path";
+import url from "url";
+import LocationUtils from "../../utils/location";
+import editHTMLElement from "./editHTMLElement";
 
 /**
-    Resolve all HTML links:
-        - /test.md in hello -> ../test.html
+ Resolve all HTML links:
+ - /test.md in hello -> ../test.html
 
-    @param {String} currentFile
-    @param {Function(String) -> String} resolveFile
-    @param {HTMLDom} $
-*/
+ @param {String} currentFile
+ @param {Function(String) -> String} resolveFile
+ @param {HTMLDom} $
+ */
 function resolveLinks(currentFile, resolveFile, $) {
     const currentDirectory = path.dirname(currentFile);
 
@@ -54,4 +49,4 @@ function resolveLinks(currentFile, resolveFile, $) {
     });
 }
 
-module.exports = resolveLinks;
+export default resolveLinks;

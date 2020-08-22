@@ -1,15 +1,13 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("../../utils/fs");
+import path from "path";
+import fs from "../../utils/fs";
 
 /**
-    Resolve path to cover file to use
+ Resolve path to cover file to use
 
-    @param {Output}
-    @return {String}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getCoverPa... Remove this comment to see the full error message
+ @param {Output}
+ @return {String}
+ */
+
 function getCoverPath(output) {
     const outputRoot = output.getRoot();
     const book = output.getBook();
@@ -30,4 +28,4 @@ function getCoverPath(output) {
     return cover;
 }
 
-module.exports = getCoverPath;
+export default getCoverPath;

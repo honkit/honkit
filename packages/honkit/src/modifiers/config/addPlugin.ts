@@ -1,9 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginDepe... Remove this comment to see the full error message
-const PluginDependency = require("../../models/pluginDependency");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'togglePlug... Remove this comment to see the full error message
-const togglePlugin = require("./togglePlugin");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'isDefaultP... Remove this comment to see the full error message
-const isDefaultPlugin = require("./isDefaultPlugin");
+import PluginDependency from "../../models/pluginDependency";
+import togglePlugin from "./togglePlugin";
+import isDefaultPlugin from "./isDefaultPlugin";
 
 /**
  * Add a plugin to a book's configuration
@@ -19,10 +16,12 @@ function addPlugin(config, pluginName, version) {
     }
 
     let deps = config.getPluginDependencies();
+
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     const dep = PluginDependency.create(pluginName, version);
 
     deps = deps.push(dep);
     return config.setPluginDependencies(deps);
 }
 
-module.exports = addPlugin;
+export default addPlugin;

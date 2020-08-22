@@ -1,10 +1,10 @@
 /**
-    Encode a SummaryArticle to JSON
+ Encode a SummaryArticle to JSON
 
-    @param {GlossaryEntry}
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeGlos... Remove this comment to see the full error message
+ @param {GlossaryEntry}
+ @return {Object}
+ */
+
 function encodeGlossaryEntry(entry) {
     return {
         id: entry.getID(),
@@ -13,4 +13,4 @@ function encodeGlossaryEntry(entry) {
     };
 }
 
-module.exports = encodeGlossaryEntry;
+export default encodeGlossaryEntry;

@@ -1,22 +1,18 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryArt... Remove this comment to see the full error message
-const SummaryArticle = require("../../models/summaryArticle");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'mergeAtLev... Remove this comment to see the full error message
-const mergeAtLevel = require("./mergeAtLevel");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'indexArtic... Remove this comment to see the full error message
-const indexArticleLevels = require("./indexArticleLevels");
+import is from "is";
+import SummaryArticle from "../../models/summaryArticle";
+import mergeAtLevel from "./mergeAtLevel";
+import indexArticleLevels from "./indexArticleLevels";
 
 /**
-    Returns a new Summary with the article at the given level, with
-    subsequent article shifted.
+ Returns a new Summary with the article at the given level, with
+ subsequent article shifted.
 
-    @param {Summary} summary
-    @param {Article} article
-    @param {String|Article} level: level to insert at
-    @return {Summary}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'insertArti... Remove this comment to see the full error message
+ @param {Summary} summary
+ @param {Article} article
+ @param {String|Article} level: level to insert at
+ @return {Summary}
+ */
+
 function insertArticle(summary, article, level) {
     article = SummaryArticle(article);
     level = is.string(level) ? level : level.getLevel();
@@ -35,6 +31,7 @@ function insertArticle(summary, article, level) {
 
     // Reindex the level from here
     parent = parent.set("articles", articles);
+
     // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     parent = indexArticleLevels(parent);
 
@@ -42,8 +39,8 @@ function insertArticle(summary, article, level) {
 }
 
 /**
-    @param {String}
-    @return {Number} The index of this level within its parent's children
+ @param {String}
+ @return {Number} The index of this level within its parent's children
  */
 function getLeafIndex(level) {
     const arr = level.split(".").map((char) => {
@@ -52,4 +49,4 @@ function getLeafIndex(level) {
     return arr[arr.length - 1] - 1;
 }
 
-module.exports = insertArticle;
+export default insertArticle;

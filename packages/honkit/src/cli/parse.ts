@@ -1,10 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'options'.
-const options = require("./options");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getBook'.
-const getBook = require("./getBook");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parse'.
-const Parse = require("../parse");
+import options from "./options";
+import getBook from "./getBook";
+import Parse from "../parse";
 
 function printBook(book) {
     const logger = book.getLogger();
@@ -52,7 +48,7 @@ function printMultingualBook(book) {
     });
 }
 
-module.exports = {
+export default {
     name: "parse [book]",
     description: "parse and print debug information about a book",
     options: [options.log],

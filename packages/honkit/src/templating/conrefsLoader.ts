@@ -1,15 +1,9 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'nunjucks'.
-const nunjucks = require("nunjucks");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("../utils/fs");
-const Git = require("../utils/git");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
-const LocationUtils = require("../utils/location");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PathUtils'... Remove this comment to see the full error message
-const PathUtils = require("../utils/path");
+import path from "path";
+import nunjucks from "nunjucks";
+import fs from "../utils/fs";
+import Git from "../utils/git";
+import LocationUtils from "../utils/location";
+import PathUtils from "../utils/path";
 
 /**
  * Template loader resolving both:
@@ -76,12 +70,15 @@ const ConrefsLoader = nunjucks.Loader.extend({
             const href = LocationUtils.toAbsolute(to, path.dirname(fromRelative), "");
 
             // Return absolute path
+
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
             return PathUtils.resolveInRoot(this.rootFolder, href);
         }
 
         // If origin is in a git repository, we resolve file in the git repository
         const gitRoot = this.git.resolveRoot(from);
         if (gitRoot) {
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
             return PathUtils.resolveInRoot(gitRoot, to);
         }
 
@@ -95,4 +92,4 @@ const ConrefsLoader = nunjucks.Loader.extend({
     },
 });
 
-module.exports = ConrefsLoader;
+export default ConrefsLoader;

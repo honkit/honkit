@@ -1,29 +1,18 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import path from "path";
+import Immutable from "immutable";
+import Logger from "../utils/logger";
+import FS from "./fs";
+import Config from "./config";
+import Readme from "./readme";
+import Summary from "./summary";
+import Glossary from "./glossary";
+import Languages from "./languages";
+import Ignore from "./ignore";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Logger'.
-const Logger = require("../utils/logger");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'FS'.
-const FS = require("./fs");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Config'.
-const Config = require("./config");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Readme'.
-const Readme = require("./readme");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Summary'.
-const Summary = require("./summary");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Glossary'.
-const Glossary = require("./glossary");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Languages'... Remove this comment to see the full error message
-const Languages = require("./languages");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Ignore'.
-const Ignore = require("./ignore");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Book'.
 const Book = Immutable.Record({
     // Logger for outptu message
+
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 0.
     logger: Logger(),
 
     // Filesystem binded to the book scope to read files/directories
@@ -97,6 +86,7 @@ Book.prototype.getContentFS = function () {
     const rootFolder = config.getValue("root");
 
     if (rootFolder) {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'reduceScope' does not exist on type 'Cla... Remove this comment to see the full error message
         return FS.reduceScope(fs, rootFolder);
     }
 
@@ -268,6 +258,8 @@ Book.prototype.setLogLevel = function (level) {
  @param {FS} fs
  @return {Book}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
 Book.createForFS = function createForFS(fs) {
     return new Book({
         fs: fs,
@@ -352,6 +344,8 @@ Book.prototype.getDefaultGlossaryPath = function (absolute) {
  @param {String} language
  @return {Book}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParent' does not exist on type... Remove this comment to see the full error message
 Book.createFromParent = function createFromParent(parent, language) {
     const ignore = parent.getIgnore();
     let config = parent.getConfig();
@@ -366,8 +360,10 @@ Book.createFromParent = function createFromParent(parent, language) {
         ignore: ignore,
 
         language: language,
+
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'reduceScope' does not exist on type 'Cla... Remove this comment to see the full error message
         fs: FS.reduceScope(parent.getContentFS(), language),
     });
 };
 
-module.exports = Book;
+export default Book;

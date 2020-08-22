@@ -1,8 +1,8 @@
 import Immutable from "immutable";
 import createMockFS from "../../fs/mock";
-const Book = require("../../models/book");
-const listAssets = require("../listAssets");
-const parseGlossary = require("../parseGlossary");
+import Book from "../../models/book";
+import listAssets from "../listAssets";
+import parseGlossary from "../parseGlossary";
 
 describe("listAssets", () => {
     test("should not list glossary as asset", () => {
@@ -10,9 +10,11 @@ describe("listAssets", () => {
             "GLOSSARY.md": "# Glossary\n\n## Hello\nDescription for hello",
             "assetFile.js": "",
             assets: {
-                "file.js": "",
-            },
+                "file.js": ""
+            }
         });
+        
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
         const book = Book.createForFS(fs);
 
         return parseGlossary(book)

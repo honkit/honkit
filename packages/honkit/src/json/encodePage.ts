@@ -1,14 +1,13 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
-const encodeSummaryArticle = require("./encodeSummaryArticle");
+import encodeSummaryArticle from "./encodeSummaryArticle";
 
 /**
-    Return a JSON representation of a page
+ Return a JSON representation of a page
 
-    @param {Page} page
-    @param {Summary} summary
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodePage... Remove this comment to see the full error message
+ @param {Page} page
+ @param {Summary} summary
+ @return {Object}
+ */
+
 function encodePage(page, summary) {
     const file = page.getFile();
     const attributes = page.getAttributes();
@@ -23,11 +22,13 @@ function encodePage(page, summary) {
 
         const nextArticle = summary.getNextArticle(article);
         if (nextArticle) {
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
             result.next = encodeSummaryArticle(nextArticle);
         }
 
         const prevArticle = summary.getPrevArticle(article);
         if (prevArticle) {
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
             result.previous = encodeSummaryArticle(prevArticle);
         }
     }
@@ -38,4 +39,4 @@ function encodePage(page, summary) {
     return result;
 }
 
-module.exports = encodePage;
+export default encodePage;

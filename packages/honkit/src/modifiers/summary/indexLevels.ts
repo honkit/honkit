@@ -1,13 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'indexPartL... Remove this comment to see the full error message
-const indexPartLevels = require("./indexPartLevels");
+import indexPartLevels from "./indexPartLevels";
 
 /**
-    Index all levels in the summary
+ Index all levels in the summary
 
-    @param {Summary}
-    @return {Summary}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'indexLevel... Remove this comment to see the full error message
+ @param {Summary}
+ @return {Summary}
+ */
+
 function indexLevels(summary) {
     let parts = summary.getParts();
     parts = parts.map(indexPartLevels);
@@ -15,4 +14,4 @@ function indexLevels(summary) {
     return summary.set("parts", parts);
 }
 
-module.exports = indexLevels;
+export default indexLevels;

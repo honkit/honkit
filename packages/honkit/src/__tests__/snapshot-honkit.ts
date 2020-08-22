@@ -1,7 +1,7 @@
 import path from "path";
 import { iterateDirectoryContents } from "@honkit/internal-test-utils";
+import * as bin from "../bin.js";
 
-const bin = require("../bin.js");
 it("HonKit snapshots", async () => {
     jest.setTimeout(60 * 1000);
     const bookDir = path.join(__dirname, "__fixtures__/honkit");
@@ -15,7 +15,7 @@ it("HonKit snapshots", async () => {
     for await (const item of iterateDirectoryContents({
         baseDir: outputDir,
         allowExtensions: [".html"],
-        maskContent,
+        maskContent
     })) {
         expect(item).toMatchSnapshot(item.filePath);
     }

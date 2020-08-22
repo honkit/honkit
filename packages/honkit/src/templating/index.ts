@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     render: require("./render"),
     renderFile: require("./renderFile"),
     postRender: require("./postRender"),

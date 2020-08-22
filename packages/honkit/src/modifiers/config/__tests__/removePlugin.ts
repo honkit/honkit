@@ -1,12 +1,14 @@
 // FIXME: Avoid scope error
 export {};
 
-const removePlugin = require("../removePlugin");
-const Config = require("../../../models/config");
+import removePlugin from "../removePlugin";
+import Config from "../../../models/config";
 
 describe("removePlugin", () => {
+
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createWithValues' does not exist on type... Remove this comment to see the full error message
     const config = Config.createWithValues({
-        plugins: ["hello", "world", "-disabled"],
+        plugins: ["hello", "world", "-disabled"]
     });
 
     test("should remove the plugin from the list", () => {

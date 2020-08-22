@@ -1,13 +1,11 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
+import Immutable from "immutable";
+import is from "is";
 
 /*
     A TemplateShortcut is defined in plugin's template blocks
     to replace content with a templating block using delimiters.
 */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateSh... Remove this comment to see the full error message
+
 const TemplateShortcut = Immutable.Record(
     {
         // List of parser names accepting this shortcut
@@ -43,11 +41,11 @@ TemplateShortcut.prototype.getParsers = function () {
 };
 
 /**
-    Test if this shortcut accept a parser
+ Test if this shortcut accept a parser
 
-    @param {Parser|String} parser
-    @return {Boolean}
-*/
+ @param {Parser|String} parser
+ @return {Boolean}
+ */
 TemplateShortcut.prototype.acceptParser = function (parser) {
     if (!is.string(parser)) {
         parser = parser.getName();
@@ -58,12 +56,14 @@ TemplateShortcut.prototype.acceptParser = function (parser) {
 };
 
 /**
-    Create a shortcut for a block
+ Create a shortcut for a block
 
-    @param {TemplateBlock} block
-    @param {Map} details
-    @return {TemplateShortcut}
-*/
+ @param {TemplateBlock} block
+ @param {Map} details
+ @return {TemplateShortcut}
+ */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'createForBlock' does not exist on type '... Remove this comment to see the full error message
 TemplateShortcut.createForBlock = function (block, details) {
     details = Immutable.fromJS(details);
 
@@ -76,4 +76,4 @@ TemplateShortcut.createForBlock = function (block, details) {
     });
 };
 
-module.exports = TemplateShortcut;
+export default TemplateShortcut;

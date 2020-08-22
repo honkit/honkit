@@ -1,15 +1,13 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeFile... Remove this comment to see the full error message
-const encodeFile = require("./encodeFile");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
-const encodeSummaryPart = require("./encodeSummaryPart");
+import encodeFile from "./encodeFile";
+import encodeSummaryPart from "./encodeSummaryPart";
 
 /**
-    Encode a summary to JSON
+ Encode a summary to JSON
 
-    @param {Summary}
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
+ @param {Summary}
+ @return {Object}
+ */
+
 function encodeSummary(summary) {
     const file = summary.getFile();
     const parts = summary.getParts();
@@ -20,4 +18,4 @@ function encodeSummary(summary) {
     };
 }
 
-module.exports = encodeSummary;
+export default encodeSummary;

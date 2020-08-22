@@ -1,7 +1,7 @@
 import { onPage } from "./onPage";
 import { onFinish } from "./onFinish";
 
-module.exports = {
+export default {
     name: "website",
     State: require("./state"),
     Options: require("./options"),

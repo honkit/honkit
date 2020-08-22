@@ -1,24 +1,18 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'crc'.
-const crc = require("crc");
-const domSerializer = require("dom-serializer");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'editHTMLEl... Remove this comment to see the full error message
-const editHTMLElement = require("./editHTMLElement");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("../../utils/fs");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
-const LocationUtils = require("../../utils/location");
+import path from "path";
+import crc from "crc";
+import domSerializer from "dom-serializer";
+import editHTMLElement from "./editHTMLElement";
+import fs from "../../utils/fs";
+import LocationUtils from "../../utils/location";
 
 /**
-    Render a cheerio DOM as html
+ Render a cheerio DOM as html
 
-    @param {HTMLDom} $
-    @param {HTMLElement} dom
-    @param {Object}
-    @return {String}
-*/
+ @param {HTMLDom} $
+ @param {HTMLElement} dom
+ @param {Object}
+ @return {String}
+ */
 function renderDOM($, dom, options) {
     if (!dom && $._root && $._root.children) {
         dom = $._root.children;
@@ -28,12 +22,12 @@ function renderDOM($, dom, options) {
 }
 
 /**
-    Replace SVG tag by IMG
+ Replace SVG tag by IMG
 
-    @param {String} baseFolder
-    @param {HTMLDom} $
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'svgToImg'.
+ @param {String} baseFolder
+ @param {HTMLDom} $
+ */
+
 function svgToImg(baseFolder, currentFile, $) {
     const currentDirectory = path.dirname(currentFile);
 
@@ -54,6 +48,7 @@ function svgToImg(baseFolder, currentFile, $) {
         return (
             fs
                 .assertFile(filePath, () => {
+                    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 3.
                     return fs.writeFile(filePath, content, "utf8");
                 })
 
@@ -66,4 +61,4 @@ function svgToImg(baseFolder, currentFile, $) {
     });
 }
 
-module.exports = svgToImg;
+export default svgToImg;

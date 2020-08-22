@@ -1,18 +1,11 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-const stream = require("stream");
+import path from "path";
+import Immutable from "immutable";
+import stream from "stream";
+import File from "./file";
+import Promise from "../utils/promise";
+import error from "../utils/error";
+import PathUtil from "../utils/path";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
-const File = require("./file");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
-const error = require("../utils/error");
-const PathUtil = require("../utils/path");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'FS'.
 const FS = Immutable.Record({
     root: String(),
 
@@ -26,20 +19,20 @@ const FS = Immutable.Record({
 });
 
 /**
-    Return path to the root
+ Return path to the root
 
-    @return {String}
-*/
+ @return {String}
+ */
 FS.prototype.getRoot = function () {
     return this.get("root");
 };
 
 /**
-    Verify that a file is in the fs scope
+ Verify that a file is in the fs scope
 
-    @param {String} filename
-    @return {Boolean}
-*/
+ @param {String} filename
+ @return {Boolean}
+ */
 FS.prototype.isInScope = function (filename) {
     const rootPath = this.getRoot();
     filename = path.join(rootPath, filename);
@@ -48,11 +41,11 @@ FS.prototype.isInScope = function (filename) {
 };
 
 /**
-    Resolve a file in this FS
+ Resolve a file in this FS
 
-    @param {String}
-    @return {String}
-*/
+ @param {String}
+ @return {String}
+ */
 FS.prototype.resolve = function () {
     const rootPath = this.getRoot();
     const args = Array.prototype.slice.call(arguments);
@@ -70,15 +63,14 @@ FS.prototype.resolve = function () {
 };
 
 /**
-    Check if a file exists, run a Promise(true) if that's the case, Promise(false) otherwise
+ Check if a file exists, run a Promise(true) if that's the case, Promise(false) otherwise
 
-    @param {String} filename
-    @return {Promise<Boolean>}
-*/
+ @param {String} filename
+ @return {Promise<Boolean>}
+ */
 FS.prototype.exists = function (filename) {
     const that = this;
 
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise().then(() => {
         filename = that.resolve(filename);
         const exists = that.get("fsExists");
@@ -88,15 +80,14 @@ FS.prototype.exists = function (filename) {
 };
 
 /**
-    Read a file and returns a promise with the content as a buffer
+ Read a file and returns a promise with the content as a buffer
 
-    @param {String} filename
-    @return {Promise<Buffer>}
-*/
+ @param {String} filename
+ @return {Promise<Buffer>}
+ */
 FS.prototype.read = function (filename) {
     const that = this;
 
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise().then(() => {
         filename = that.resolve(filename);
         const read = that.get("fsReadFile");
@@ -106,11 +97,11 @@ FS.prototype.read = function (filename) {
 };
 
 /**
-    Read a file as a string (utf-8)
+ Read a file as a string (utf-8)
 
-    @param {String} filename
-    @return {Promise<String>}
-*/
+ @param {String} filename
+ @return {Promise<String>}
+ */
 FS.prototype.readAsString = function (filename, encoding) {
     encoding = encoding || "utf8";
 
@@ -120,18 +111,17 @@ FS.prototype.readAsString = function (filename, encoding) {
 };
 
 /**
-    Read file as a stream
+ Read file as a stream
 
-    @param {String} filename
-    @return {Promise<Stream>}
-*/
+ @param {String} filename
+ @return {Promise<Stream>}
+ */
 FS.prototype.readAsStream = function (filename) {
     const that = this;
     const filepath = that.resolve(filename);
     const fsReadAsStream = this.get("fsReadAsStream");
 
     if (fsReadAsStream) {
-        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise(fsReadAsStream(filepath));
     }
 
@@ -144,15 +134,14 @@ FS.prototype.readAsStream = function (filename) {
 };
 
 /**
-    Read stat infos about a file
+ Read stat infos about a file
 
-    @param {String} filename
-    @return {Promise<File>}
-*/
+ @param {String} filename
+ @return {Promise<File>}
+ */
 FS.prototype.statFile = function (filename) {
     const that = this;
 
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise()
         .then(() => {
             const filepath = that.resolve(filename);
@@ -167,16 +156,15 @@ FS.prototype.statFile = function (filename) {
 };
 
 /**
-    List files/directories in a directory.
-    Directories ends with '/'
+ List files/directories in a directory.
+ Directories ends with '/'
 
-    @param {String} dirname
-    @return {Promise<List<String>>}
-*/
+ @param {String} dirname
+ @return {Promise<List<String>>}
+ */
 FS.prototype.readDir = function (dirname) {
     const that = this;
 
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise()
         .then(() => {
             const dirpath = that.resolve(dirname);
@@ -190,12 +178,12 @@ FS.prototype.readDir = function (dirname) {
 };
 
 /**
-    List only files in a diretcory
-    Directories ends with '/'
+ List only files in a diretcory
+ Directories ends with '/'
 
-    @param {String} dirname
-    @return {Promise<List<String>>}
-*/
+ @param {String} dirname
+ @return {Promise<List<String>>}
+ */
 FS.prototype.listFiles = function (dirname) {
     return this.readDir(dirname).then((files) => {
         return files.filterNot(pathIsFolder);
@@ -203,18 +191,17 @@ FS.prototype.listFiles = function (dirname) {
 };
 
 /**
-    List all files in a directory
+ List all files in a directory
 
-    @param {String} dirName
-    @param {Function(dirName)} filterFn: call it for each file/directory to test if it should stop iterating
-    @return {Promise<List<String>>}
-*/
+ @param {String} dirName
+ @param {Function(dirName)} filterFn: call it for each file/directory to test if it should stop iterating
+ @return {Promise<List<String>>}
+ */
 FS.prototype.listAllFiles = function (dirName, filterFn) {
     const that = this;
     dirName = dirName || ".";
 
     return this.readDir(dirName).then((files) => {
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'reduce' does not exist on type 'PromiseC... Remove this comment to see the full error message
         return Promise.reduce(
             files,
             (out, file) => {
@@ -239,13 +226,13 @@ FS.prototype.listAllFiles = function (dirName, filterFn) {
 };
 
 /**
-    Find a file in a folder (case insensitive)
-    Return the found filename
+ Find a file in a folder (case insensitive)
+ Return the found filename
 
-    @param {String} dirname
-    @param {String} filename
-    @return {Promise<String>}
-*/
+ @param {String} dirname
+ @param {String} filename
+ @return {Promise<String>}
+ */
 FS.prototype.findFile = function (dirname, filename) {
     return this.listFiles(dirname).then((files) => {
         return files.find((file) => {
@@ -255,12 +242,12 @@ FS.prototype.findFile = function (dirname, filename) {
 };
 
 /**
-    Load a JSON file
-    By default, fs only supports JSON
+ Load a JSON file
+ By default, fs only supports JSON
 
-    @param {String} filename
-    @return {Promise<Object>}
-*/
+ @param {String} filename
+ @return {Promise<Object>}
+ */
 FS.prototype.loadAsObject = function (filename) {
     const that = this;
     const fsLoadObject = this.get("fsLoadObject");
@@ -268,6 +255,7 @@ FS.prototype.loadAsObject = function (filename) {
     return this.exists(filename).then((exists) => {
         if (!exists) {
             const err = new Error("Module doesn't exist");
+
             // @ts-expect-error ts-migrate(2339) FIXME: Property 'code' does not exist on type 'Error'.
             err.code = "MODULE_NOT_FOUND";
 
@@ -285,22 +273,26 @@ FS.prototype.loadAsObject = function (filename) {
 };
 
 /**
-    Create a FS instance
+ Create a FS instance
 
-    @param {Object} def
-    @return {FS}
-*/
+ @param {Object} def
+ @return {FS}
+ */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 FS.create = function create(def) {
     return new FS(def);
 };
 
 /**
-    Create a new FS instance with a reduced scope
+ Create a new FS instance with a reduced scope
 
-    @param {FS} fs
-    @param {String} scope
-    @return {FS}
-*/
+ @param {FS} fs
+ @param {String} scope
+ @return {FS}
+ */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'reduceScope' does not exist on type 'Cla... Remove this comment to see the full error message
 FS.reduceScope = function reduceScope(fs, scope) {
     return fs.set("root", path.join(fs.getRoot(), scope));
 };
@@ -311,4 +303,4 @@ function pathIsFolder(filename) {
     return lastChar == "/" || lastChar == "\\";
 }
 
-module.exports = FS;
+export default FS;

@@ -17,4 +17,4 @@ function getPluginConfig(config, pluginName) {
     }
 }
 
-module.exports = getPluginConfig;
+export default getPluginConfig;

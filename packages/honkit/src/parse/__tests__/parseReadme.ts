@@ -1,13 +1,16 @@
 import Promise from "../../utils/promise";
 import createMockFS from "../../fs/mock";
-const Book = require("../../models/book");
+import Book from "../../models/book";
+
 describe("parseReadme", () => {
     const parseReadme = require("../parseReadme");
 
     test("should parse summary if exists", () => {
         const fs = createMockFS({
-            "README.md": "# Hello\n\nAnd here is the description.",
+            "README.md": "# Hello\n\nAnd here is the description."
         });
+        
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
         const book = Book.createForFS(fs);
 
         return parseReadme(book).then((resultBook) => {
@@ -22,6 +25,8 @@ describe("parseReadme", () => {
 
     test("should fail if doesn't exist", () => {
         const fs = createMockFS({});
+        
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
         const book = Book.createForFS(fs);
 
         return parseReadme(book).then(

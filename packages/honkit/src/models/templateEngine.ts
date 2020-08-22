@@ -1,9 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'nunjucks'.
-const nunjucks = require("nunjucks");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import nunjucks from "nunjucks";
+import Immutable from "immutable";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateEn... Remove this comment to see the full error message
 const TemplateEngine = Immutable.Record(
     {
         // Map of {TemplateBlock}
@@ -56,11 +53,11 @@ TemplateEngine.prototype.getExtensions = function () {
 };
 
 /**
-    Return a block by its name (or undefined)
+ Return a block by its name (or undefined)
 
-    @param {String} name
-    @return {TemplateBlock}
-*/
+ @param {String} name
+ @return {TemplateBlock}
+ */
 TemplateEngine.prototype.getBlock = function (name) {
     const blocks = this.getBlocks();
     return blocks.find((block) => {
@@ -69,10 +66,10 @@ TemplateEngine.prototype.getBlock = function (name) {
 };
 
 /**
-    Return a nunjucks environment from this configuration
+ Return a nunjucks environment from this configuration
 
-    @return {Nunjucks.Environment}
-*/
+ @return {Nunjucks.Environment}
+ */
 TemplateEngine.prototype.toNunjucks = function (blocksOutput) {
     const loader = this.getLoader();
     const blocks = this.getBlocks();
@@ -123,11 +120,13 @@ TemplateEngine.prototype.toNunjucks = function (blocksOutput) {
 };
 
 /**
-    Create a template engine
+ Create a template engine
 
-    @param {Object} def
-    @return {TemplateEngine}
-*/
+ @param {Object} def
+ @return {TemplateEngine}
+ */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 TemplateEngine.create = function (def) {
     return new TemplateEngine({
         blocks: Immutable.List(def.blocks || []),
@@ -139,4 +138,4 @@ TemplateEngine.create = function (def) {
     });
 };
 
-module.exports = TemplateEngine;
+export default TemplateEngine;

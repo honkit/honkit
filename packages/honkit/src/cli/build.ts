@@ -1,20 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parse'.
-const Parse = require("../parse");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Output'.
-const Output = require("../output");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'timing'.
-const timing = require("../utils/timing");
+import Parse from "../parse";
+import Output from "../output";
+import timing from "../utils/timing";
+import options from "./options";
+import getBook from "./getBook";
+import getOutputFolder from "./getOutputFolder";
+import { clearCache } from "../output/page-cache";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'options'.
-const options = require("./options");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getBook'.
-const getBook = require("./getBook");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getOutputF... Remove this comment to see the full error message
-const getOutputFolder = require("./getOutputFolder");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'clearCache... Remove this comment to see the full error message
-const { clearCache } = require("../output/page-cache");
-
-module.exports = {
+export default {
     name: "build [book] [output]",
     description: "build a book",
     options: [options.log, options.format, options.timing, options.reload],

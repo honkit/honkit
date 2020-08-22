@@ -1,25 +1,14 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import is from "is";
+import Immutable from "immutable";
+import error from "../utils/error";
+import LocationUtils from "../utils/location";
+import File from "./file";
+import SummaryPart from "./summaryPart";
+import SummaryArticle from "./summaryArticle";
+import parsers from "../parsers";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
-const error = require("../utils/error");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
-const LocationUtils = require("../utils/location");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
-const File = require("./file");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryPar... Remove this comment to see the full error message
-const SummaryPart = require("./summaryPart");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryArt... Remove this comment to see the full error message
-const SummaryArticle = require("./summaryArticle");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsers'.
-const parsers = require("../parsers");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Summary'.
 const Summary = Immutable.Record(
     {
-        // @ts-expect-error ts-migrate(2348) FIXME: Value of type '{ new (fileBits: BlobPart[], fileNa... Remove this comment to see the full error message
         file: File(),
         parts: Immutable.List(),
     },
@@ -35,24 +24,24 @@ Summary.prototype.getParts = function () {
 };
 
 /**
-    Return a part by its index
+ Return a part by its index
 
-    @param {Number}
-    @return {Part}
-*/
+ @param {Number}
+ @return {Part}
+ */
 Summary.prototype.getPart = function (i) {
     const parts = this.getParts();
     return parts.get(i);
 };
 
 /**
-    Return an article using an iterator to find it.
-    if "partIter" is set, it can also return a Part.
+ Return an article using an iterator to find it.
+ if "partIter" is set, it can also return a Part.
 
-    @param {Function} iter
-    @param {Function} [partIter]
-    @return {Article|Part}
-*/
+ @param {Function} iter
+ @param {Function} [partIter]
+ @return {Article|Part}
+ */
 Summary.prototype.getArticle = function (iter, partIter) {
     const parts = this.getParts();
 
@@ -60,16 +49,18 @@ Summary.prototype.getArticle = function (iter, partIter) {
         if (result) return result;
 
         if (partIter && partIter(part)) return part;
+
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'findArticle' does not exist on type 'Cla... Remove this comment to see the full error message
         return SummaryArticle.findArticle(part, iter);
     }, null);
 };
 
 /**
-    Return a part/article by its level
+ Return a part/article by its level
 
-    @param {String} level
-    @return {Article|Part}
-*/
+ @param {String} level
+ @return {Article|Part}
+ */
 Summary.prototype.getByLevel = function (level) {
     function iterByLevel(article) {
         return article.getLevel() === level;
@@ -79,11 +70,11 @@ Summary.prototype.getByLevel = function (level) {
 };
 
 /**
-    Return an article by its path
+ Return an article by its path
 
-    @param {String} filePath
-    @return {Article}
-*/
+ @param {String} filePath
+ @return {Article}
+ */
 Summary.prototype.getByPath = function (filePath) {
     return this.getArticle((article) => {
         const articlePath = article.getPath();
@@ -93,10 +84,10 @@ Summary.prototype.getByPath = function (filePath) {
 };
 
 /**
-    Return the first article
+ Return the first article
 
-    @return {Article}
-*/
+ @return {Article}
+ */
 Summary.prototype.getFirstArticle = function () {
     return this.getArticle((article) => {
         return true;
@@ -104,11 +95,11 @@ Summary.prototype.getFirstArticle = function () {
 };
 
 /**
-    Return next article of an article
+ Return next article of an article
 
-    @param {Article} current
-    @return {Article}
-*/
+ @param {Article} current
+ @return {Article}
+ */
 Summary.prototype.getNextArticle = function (current) {
     const level = is.string(current) ? current : current.getLevel();
     let wasPrev = false;
@@ -126,11 +117,11 @@ Summary.prototype.getNextArticle = function (current) {
 };
 
 /**
-    Return previous article of an article
+ Return previous article of an article
 
-    @param {Article} current
-    @return {Article}
-*/
+ @param {Article} current
+ @return {Article}
+ */
 Summary.prototype.getPrevArticle = function (current) {
     const level = is.string(current) ? current : current.getLevel();
     let prev = undefined;
@@ -149,11 +140,11 @@ Summary.prototype.getPrevArticle = function (current) {
 };
 
 /**
-    Return the parent article, or parent part of an article
+ Return the parent article, or parent part of an article
 
-    @param {String|Article} current
-    @return {Article|Part|Null}
-*/
+ @param {String|Article} current
+ @return {Article|Part|Null}
+ */
 Summary.prototype.getParent = function (level) {
     // Coerce to level
     level = is.string(level) ? level : level.getLevel();
@@ -170,11 +161,11 @@ Summary.prototype.getParent = function (level) {
 };
 
 /**
-    Render summary as text
+ Render summary as text
 
-    @param {String} parseExt Extension of the parser to use
-    @return {Promise<String>}
-*/
+ @param {String} parseExt Extension of the parser to use
+ @return {Promise<String>}
+ */
 Summary.prototype.toText = function (parseExt) {
     const file = this.getFile();
     const parts = this.getParts();
@@ -193,10 +184,10 @@ Summary.prototype.toText = function (parseExt) {
 };
 
 /**
-    Return all articles as a list
+ Return all articles as a list
 
-    @return {List<Article>}
-*/
+ @return {List<Article>}
+ */
 Summary.prototype.getArticlesAsList = function () {
     const accu = [];
 
@@ -208,35 +199,40 @@ Summary.prototype.getArticlesAsList = function () {
 };
 
 /**
-    Create a new summary for a list of parts
+ Create a new summary for a list of parts
 
-    @param {Lust|Array} parts
-    @return {Summary}
-*/
+ @param {Lust|Array} parts
+ @return {Summary}
+ */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
 Summary.createFromParts = function createFromParts(file, parts) {
     parts = parts.map((part, i) => {
         if (part instanceof SummaryPart) {
             return part;
         }
 
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         return SummaryPart.create(part, i + 1);
     });
 
     return new Summary({
         file: file,
+
+        // @ts-expect-error ts-migrate(2350) FIXME: Only a void function can be called with the 'new' ... Remove this comment to see the full error message
         parts: new Immutable.List(parts),
     });
 };
 
 /**
-    Returns parent level of a level
+ Returns parent level of a level
 
-    @param {String} level
-    @return {String}
-*/
+ @param {String} level
+ @return {String}
+ */
 function getParentLevel(level) {
     const parts = level.split(".");
     return parts.slice(0, -1).join(".");
 }
 
-module.exports = Summary;
+export default Summary;

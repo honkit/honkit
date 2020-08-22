@@ -1,20 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import is from "is";
+import Immutable from "immutable";
+import File from "./file";
+import PluginDependency from "./pluginDependency";
+import configDefault from "../constants/configDefault";
+import reducedObject from "../utils/reducedObject";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
-const File = require("./file");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginDepe... Remove this comment to see the full error message
-const PluginDependency = require("./pluginDependency");
-const configDefault = require("../constants/configDefault");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'reducedObj... Remove this comment to see the full error message
-const reducedObject = require("../utils/reducedObject");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Config'.
 const Config = Immutable.Record(
     {
-        // @ts-expect-error ts-migrate(2348) FIXME: Value of type '{ new (fileBits: BlobPart[], fileNa... Remove this comment to see the full error message
         file: File(),
         values: configDefault,
     },
@@ -62,6 +54,8 @@ Config.prototype.setFile = function (file) {
  */
 Config.prototype.getValue = function (keyPath, def) {
     const values = this.getValues();
+
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'keyToKeyPath' does not exist on type 'Cl... Remove this comment to see the full error message
     keyPath = Config.keyToKeyPath(keyPath);
 
     if (!values.hasIn(keyPath)) {
@@ -78,6 +72,7 @@ Config.prototype.getValue = function (keyPath, def) {
  * @return {Config}
  */
 Config.prototype.setValue = function (keyPath, value) {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'keyToKeyPath' does not exist on type 'Cl... Remove this comment to see the full error message
     keyPath = Config.keyToKeyPath(keyPath);
 
     value = Immutable.fromJS(value);
@@ -95,8 +90,10 @@ Config.prototype.setValue = function (keyPath, value) {
 Config.prototype.getPluginDependencies = function () {
     const plugins = this.getValue("plugins");
     if (is.string(plugins)) {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromString' does not exist on type '... Remove this comment to see the full error message
         return PluginDependency.listFromString(plugins);
     } else {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromArray' does not exist on type 'C... Remove this comment to see the full error message
         return PluginDependency.listFromArray(plugins);
     }
 };
@@ -120,6 +117,7 @@ Config.prototype.getPluginDependency = function (name) {
  * @return {Config}
  */
 Config.prototype.setPluginDependencies = function (deps) {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'listToArray' does not exist on type 'Cla... Remove this comment to see the full error message
     const plugins = PluginDependency.listToArray(deps);
 
     return this.setValue("plugins", plugins);
@@ -157,6 +155,8 @@ Config.prototype.mergeValues = function (values) {
  * @param {Object} values
  * @returns {Config}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 Config.create = function (file, values) {
     return new Config({
         file: file,
@@ -169,6 +169,8 @@ Config.create = function (file, values) {
  * @param {Object} values
  * @returns {Config}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'createWithValues' does not exist on type... Remove this comment to see the full error message
 Config.createWithValues = function (values) {
     return new Config({
         values: Immutable.fromJS(values),
@@ -180,9 +182,11 @@ Config.createWithValues = function (values) {
  * @param {String|Array}
  * @return {Array}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'keyToKeyPath' does not exist on type 'Cl... Remove this comment to see the full error message
 Config.keyToKeyPath = function (keyPath) {
     if (is.string(keyPath)) keyPath = keyPath.split(".");
     return keyPath;
 };
 
-module.exports = Config;
+export default Config;

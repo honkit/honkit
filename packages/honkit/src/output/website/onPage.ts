@@ -1,15 +1,14 @@
-const path = require("path");
-const omit = require("omit-keys");
-
-const Templating = require("../../templating");
-const Plugins = require("../../plugins");
-const JSONUtils = require("../../json");
-const LocationUtils = require("../../utils/location");
-const Modifiers = require("../modifiers");
-const writeFile = require("../helper/writeFile");
-const getModifiers = require("../getModifiers");
-const createTemplateEngine = require("./createTemplateEngine");
-const fileToOutput = require("../helper/fileToOutput");
+import path from "path";
+import omit from "omit-keys";
+import Templating from "../../templating";
+import Plugins from "../../plugins";
+import JSONUtils from "../../json";
+import LocationUtils from "../../utils/location";
+import Modifiers from "../modifiers";
+import writeFile from "../helper/writeFile";
+import getModifiers from "../getModifiers";
+import createTemplateEngine from "./createTemplateEngine";
+import fileToOutput from "../helper/fileToOutput";
 
 /**
  * Write a page as a json file

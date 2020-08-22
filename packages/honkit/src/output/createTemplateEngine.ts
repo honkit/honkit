@@ -1,26 +1,18 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Templating... Remove this comment to see the full error message
-const Templating = require("../templating");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateEn... Remove this comment to see the full error message
-const TemplateEngine = require("../models/templateEngine");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Api'.
-const Api = require("../api");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Plugins'.
-const Plugins = require("../plugins");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'defaultBlo... Remove this comment to see the full error message
-const defaultBlocks = require("../constants/defaultBlocks");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'defaultFil... Remove this comment to see the full error message
-const defaultFilters = require("../constants/defaultFilters");
+import Templating from "../templating";
+import TemplateEngine from "../models/templateEngine";
+import Api from "../api";
+import Plugins from "../plugins";
+import defaultBlocks from "../constants/defaultBlocks";
+import defaultFilters from "../constants/defaultFilters";
 
 /**
-    Create template engine for an output.
-    It adds default filters/blocks, then add the ones from plugins
+ Create template engine for an output.
+ It adds default filters/blocks, then add the ones from plugins
 
-    @param {Output} output
-    @return {TemplateEngine}
-*/
-// @ts-expect-error ts-migrate(2393) FIXME: Duplicate function implementation.
+ @param {Output} output
+ @return {TemplateEngine}
+ */
+
 function createTemplateEngine(output) {
     const plugins = output.getPlugins();
     const book = output.getBook();
@@ -49,4 +41,4 @@ function createTemplateEngine(output) {
     });
 }
 
-module.exports = createTemplateEngine;
+export default createTemplateEngine;

@@ -1,15 +1,14 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'deprecate'... Remove this comment to see the full error message
-const deprecate = require("./deprecate");
+import deprecate from "./deprecate";
 
 /**
-    Decode changes from a JS API to a page object.
-    Only the content can be edited by plugin's hooks.
+ Decode changes from a JS API to a page object.
+ Only the content can be edited by plugin's hooks.
 
-    @param {Output} output
-    @param {Page} page: page instance to edit
-    @param {Object} result: result from API
-    @return {Page}
-*/
+ @param {Output} output
+ @param {Page} page: page instance to edit
+ @param {Object} result: result from API
+ @return {Page}
+ */
 function decodePage(output, page, result) {
     const originalContent = page.getContent();
 
@@ -45,4 +44,4 @@ function decodePage(output, page, result) {
     return page;
 }
 
-module.exports = decodePage;
+export default decodePage;

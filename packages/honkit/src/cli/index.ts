@@ -1,6 +1,6 @@
-const buildEbook = require("./buildEbook");
+import buildEbook from "./buildEbook";
 
-module.exports = [
+export default [
     require("./build"),
     require("./serve"),
     require("./parse"),

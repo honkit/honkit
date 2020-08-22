@@ -1,8 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'LocationUt... Remove this comment to see the full error message
-const LocationUtils = require("../../utils/location");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fileToURL'... Remove this comment to see the full error message
-const fileToURL = require("./fileToURL");
+import LocationUtils from "../../utils/location";
+import fileToURL from "./fileToURL";
 
 /**
  * Resolve an absolute path (extracted from a link)
@@ -11,7 +8,7 @@ const fileToURL = require("./fileToURL");
  * @param {String} filePath
  * @return {String}
  */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'resolveFil... Remove this comment to see the full error message
+
 function resolveFileToURL(output, filePath) {
     // Convert /test.png -> test.png
     filePath = LocationUtils.toAbsolute(filePath, "", "");
@@ -26,4 +23,4 @@ function resolveFileToURL(output, filePath) {
     return LocationUtils.normalize(filePath);
 }
 
-module.exports = resolveFileToURL;
+export default resolveFileToURL;

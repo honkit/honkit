@@ -1,8 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-
-const TypedError = require("error/typed");
-const WrappedError = require("error/wrapped");
+import is from "is";
+import TypedError from "error/typed";
+import WrappedError from "error/wrapped";
 
 // Enforce as an Error object, and cleanup message
 function enforce(err) {
@@ -81,7 +79,7 @@ const EbookError = WrappedError({
     stdout: "",
 });
 
-module.exports = {
+export default {
     enforce: enforce,
 
     ParsingError: ParsingError,

@@ -1,1 +1,1 @@
-module.exports = [".md", ".markdown", ".mdown"];
+export default [".md", ".markdown", ".mdown"];

@@ -1,19 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'extend'.
-const extend = require("extend");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
-const genKey = require("../utils/genKey");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateSh... Remove this comment to see the full error message
-const TemplateShortcut = require("./templateShortcut");
+import is from "is";
+import extend from "extend";
+import Immutable from "immutable";
+import Promise from "../utils/promise";
+import genKey from "../utils/genKey";
+import TemplateShortcut from "./templateShortcut";
 
 const NODE_ENDARGS = "%%endargs%%";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'TemplateBl... Remove this comment to see the full error message
 const TemplateBlock = Immutable.Record(
     {
         // Name of block, also the start tag
@@ -60,6 +53,7 @@ TemplateBlock.prototype.getShortcuts = function () {
         return undefined;
     }
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForBlock' does not exist on type '... Remove this comment to see the full error message
     return TemplateShortcut.createForBlock(this, shortcuts);
 };
 
@@ -175,7 +169,6 @@ TemplateBlock.prototype.toNunjucksExt = function (mainContext, blocksOutput) {
             const mainBlock = blocks.shift();
             mainBlock.blocks = blocks;
 
-            // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
             Promise()
                 .then(() => {
                     const ctx = extend(
@@ -213,7 +206,6 @@ TemplateBlock.prototype.applyBlock = function (inner, context) {
 
     const r = processFn.call(context, inner);
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'isPromiseAlike' does not exist on type '... Remove this comment to see the full error message
     if (Promise.isPromiseAlike(r)) {
         return r.then(this.normalizeBlockResult.bind(this));
     } else {
@@ -265,8 +257,11 @@ TemplateBlock.prototype.blockResultToHtml = function (result, blocksOutput) {
  * @param {Object} block
  * @return {TemplateBlock}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 TemplateBlock.create = function (blockName, block) {
     if (is.fn(block)) {
+        // @ts-expect-error ts-migrate(2350) FIXME: Only a void function can be called with the 'new' ... Remove this comment to see the full error message
         block = new Immutable.Map({
             process: block,
         });
@@ -287,4 +282,4 @@ function extractKwargs(args) {
     return is.object(last) && last.__keywords ? args.pop() : {};
 }
 
-module.exports = TemplateBlock;
+export default TemplateBlock;

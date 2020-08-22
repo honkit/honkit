@@ -1,9 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginDepe... Remove this comment to see the full error message
-const PluginDependency = require("../models/pluginDependency");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'pkg'.
+import Immutable from "immutable";
+import PluginDependency from "../models/pluginDependency";
 const pkg = require("../../package.json");
 
 /**
@@ -12,16 +8,14 @@ const pkg = require("../../package.json");
  * @return {PluginDependency}
  */
 function createFromDependency(pluginName) {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToNpmID' does not exist on type 'Cla... Remove this comment to see the full error message
     const npmID = PluginDependency.nameToNpmID(pluginName);
     const version = pkg.dependencies[npmID];
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     return PluginDependency.create(pluginName, version);
 }
 
-/*
- * List of default plugins for all books,
- * default plugins should be installed in node dependencies of HonKit
- */
-module.exports = Immutable.List(["highlight", "search", "lunr", "fontsettings", "theme-default"]).map(
+export default Immutable.List(["highlight", "search", "lunr", "fontsettings", "theme-default"]).map(
     createFromDependency
 );

@@ -1,18 +1,14 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryArt... Remove this comment to see the full error message
-const SummaryArticle = require("../../models/summaryArticle");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryPar... Remove this comment to see the full error message
-const SummaryPart = require("../../models/summaryPart");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'indexLevel... Remove this comment to see the full error message
-const indexLevels = require("./indexLevels");
+import SummaryArticle from "../../models/summaryArticle";
+import SummaryPart from "../../models/summaryPart";
+import indexLevels from "./indexLevels";
 
 /**
-    Insert an article at the beginning of summary
+ Insert an article at the beginning of summary
 
-    @param {Summary} summary
-    @param {Article} article
-    @return {Summary}
-*/
+ @param {Summary} summary
+ @param {Article} article
+ @return {Summary}
+ */
 function unshiftArticle(summary, article) {
     article = SummaryArticle(article);
 
@@ -29,4 +25,4 @@ function unshiftArticle(summary, article) {
     return indexLevels(summary);
 }
 
-module.exports = unshiftArticle;
+export default unshiftArticle;

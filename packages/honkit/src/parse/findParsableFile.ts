@@ -1,19 +1,15 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsers'.
-const parsers = require("../parsers");
+import path from "path";
+import Promise from "../utils/promise";
+import parsers from "../parsers";
 
 /**
-    Find a file parsable (Markdown or AsciiDoc) in a book
+ Find a file parsable (Markdown or AsciiDoc) in a book
 
-    @param {Book} book
-    @param {String} filename
-    @return {Promise<File | Undefined>}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'findParsab... Remove this comment to see the full error message
+ @param {Book} book
+ @param {String} filename
+ @return {Promise<File | Undefined>}
+ */
+
 function findParsableFile(book, filename) {
     const fs = book.getContentFS();
     const ext = path.extname(filename);
@@ -23,7 +19,6 @@ function findParsableFile(book, filename) {
     // Ordered list of extensions to test
     const exts = parsers.extensions;
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'some' does not exist on type 'PromiseCon... Remove this comment to see the full error message
     return Promise.some(exts, (ext) => {
         const filepath = basename + ext;
 
@@ -37,4 +32,4 @@ function findParsableFile(book, filename) {
     });
 }
 
-module.exports = findParsableFile;
+export default findParsableFile;

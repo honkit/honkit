@@ -26,30 +26,30 @@ describe("validatePlugin", () => {
             browser: "./_assets/plugin.js",
             version: "1.0.1",
             engines: {
-                gitbook: ">=4.0.0-alpha",
+                gitbook: ">=4.0.0-alpha"
             },
             dependencies: {
                 react: "^15.3.2",
-                "react-disqus-thread": "^0.4.0",
+                "react-disqus-thread": "^0.4.0"
             },
             devDependencies: {
                 "gitbook-plugin": "^4.0.0-alpha.0",
                 eslint: "3.7.1",
-                "eslint-config-gitbook": "1.4.0",
+                "eslint-config-gitbook": "1.4.0"
             },
             homepage: "https://github.com/GitbookIO/plugin-disqus",
             repository: {
                 type: "git",
-                url: "https://github.com/GitbookIO/plugin-disqus.git",
+                url: "https://github.com/GitbookIO/plugin-disqus.git"
             },
             license: "Apache-2.0",
             bugs: {
-                url: "https://github.com/GitbookIO/plugin-disqus/issues",
+                url: "https://github.com/GitbookIO/plugin-disqus/issues"
             },
             keywords: ["gitbook:social"],
             scripts: {
                 "build-js": "gitbook-plugin build ./src/index.js ./_assets/plugin.js",
-                prepublish: "npm run build-js",
+                prepublish: "npm run build-js"
             },
             gitbook: {
                 properties: {
@@ -57,13 +57,13 @@ describe("validatePlugin", () => {
                         type: "string",
                         title: "Website Shortname",
                         description: "Unique identifier for your website as registered on Disqus",
-                        required: true,
+                        required: true
                     },
                     useIdentifier: {
                         type: "boolean",
                         title: "Pass page identifier option to Disqus",
-                        default: false,
-                    },
+                        default: false
+                    }
                 },
                 page: {
                     title: "Disqus configuration for this page",
@@ -74,25 +74,25 @@ describe("validatePlugin", () => {
                                 enabled: {
                                     type: "boolean",
                                     title: "Enable Disqus comments for this page.",
-                                    default: true,
+                                    default: true
                                 },
                                 identifier: {
                                     type: "string",
                                     title: "Identifier for this page.",
-                                    description: "Tells the Disqus service how to identify the current page",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
+                                    description: "Tells the Disqus service how to identify the current page"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         };
         const plugin = new Plugin({
             name: "test",
             version: "4.0.0",
             path: "/",
             package: Immutable.fromJS(testPkgRequireAlphaVersion),
-            content: Immutable.fromJS({}),
+            content: Immutable.fromJS({})
         });
         return validatePlugin(plugin);
     });

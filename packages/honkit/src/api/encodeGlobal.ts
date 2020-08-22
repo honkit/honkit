@@ -1,41 +1,25 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PathUtils'... Remove this comment to see the full error message
-const PathUtils = require("../utils/path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("../utils/fs");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Plugins'.
-const Plugins = require("../plugins");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'deprecate'... Remove this comment to see the full error message
-const deprecate = require("./deprecate");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fileToURL'... Remove this comment to see the full error message
-const fileToURL = require("../output/helper/fileToURL");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'defaultBlo... Remove this comment to see the full error message
-const defaultBlocks = require("../constants/defaultBlocks");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'honkit'.
-const honkit = require("../honkit");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsers'.
-const parsers = require("../parsers");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeConf... Remove this comment to see the full error message
-const encodeConfig = require("./encodeConfig");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeSumm... Remove this comment to see the full error message
-const encodeSummary = require("./encodeSummary");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeNavi... Remove this comment to see the full error message
-const encodeNavigation = require("./encodeNavigation");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodePage... Remove this comment to see the full error message
-const encodePage = require("./encodePage");
+import path from "path";
+import Promise from "../utils/promise";
+import PathUtils from "../utils/path";
+import fs from "../utils/fs";
+import Plugins from "../plugins";
+import deprecate from "./deprecate";
+import fileToURL from "../output/helper/fileToURL";
+import defaultBlocks from "../constants/defaultBlocks";
+import honkit from "../honkit";
+import parsers from "../parsers";
+import encodeConfig from "./encodeConfig";
+import encodeSummary from "./encodeSummary";
+import encodeNavigation from "./encodeNavigation";
+import encodePage from "./encodePage";
 
 /**
-    Encode a global context into a JS object
-    It's the context for page's hook, etc
+ Encode a global context into a JS object
+ It's the context for page's hook, etc
 
-    @param {Output} output
-    @return {Object}
-*/
+ @param {Output} output
+ @return {Object}
+ */
 function encodeGlobal(output) {
     const book = output.getBook();
     const bookFS = book.getContentFS();
@@ -50,59 +34,59 @@ function encodeGlobal(output) {
         summary: encodeSummary(output, book.getSummary()),
 
         /**
-            Check if the book is a multilingual book
+         Check if the book is a multilingual book
 
-            @return {Boolean}
-        */
+         @return {Boolean}
+         */
         isMultilingual: function () {
             return book.isMultilingual();
         },
 
         /**
-            Check if the book is a language book for a multilingual book
+         Check if the book is a language book for a multilingual book
 
-            @return {Boolean}
-        */
+         @return {Boolean}
+         */
         isLanguageBook: function () {
             return book.isLanguageBook();
         },
 
         /**
-            Read a file from the book
+         Read a file from the book
 
-            @param {String} fileName
-            @return {Promise<Buffer>}
-        */
+         @param {String} fileName
+         @return {Promise<Buffer>}
+         */
         readFile: function (fileName) {
             return bookFS.read(fileName);
         },
 
         /**
-            Read a file from the book as a string
+         Read a file from the book as a string
 
-            @param {String} fileName
-            @return {Promise<String>}
-        */
+         @param {String} fileName
+         @return {Promise<String>}
+         */
         readFileAsString: function (fileName) {
             return bookFS.readAsString(fileName);
         },
 
         /**
-            Resolve a file from the book root
+         Resolve a file from the book root
 
-            @param {String} fileName
-            @return {String}
-        */
+         @param {String} fileName
+         @return {String}
+         */
         resolve: function (fileName) {
             return path.resolve(book.getContentRoot(), fileName);
         },
 
         /**
-            Resolve a page by it path
+         Resolve a page by it path
 
-            @param {String} filePath
-            @return {String}
-        */
+         @param {String} filePath
+         @return {String}
+         */
         getPageByPath: function (filePath) {
             const page = output.getPage(filePath);
             if (!page) return undefined;
@@ -111,12 +95,12 @@ function encodeGlobal(output) {
         },
 
         /**
-            Render a block of text (markdown/asciidoc)
+         Render a block of text (markdown/asciidoc)
 
-            @param {String} type
-            @param {String} text
-            @return {Promise<String>}
-        */
+         @param {String} type
+         @param {String} text
+         @return {Promise<String>}
+         */
         renderBlock: function (type, text) {
             const parser = parsers.get(type);
 
@@ -124,12 +108,12 @@ function encodeGlobal(output) {
         },
 
         /**
-            Render an inline text (markdown/asciidoc)
+         Render an inline text (markdown/asciidoc)
 
-            @param {String} type
-            @param {String} text
-            @return {Promise<String>}
-        */
+         @param {String} type
+         @param {String} text
+         @return {Promise<String>}
+         */
         renderInline: function (type, text) {
             const parser = parsers.get(type);
 
@@ -138,61 +122,61 @@ function encodeGlobal(output) {
 
         template: {
             /**
-                Apply a templating block and returns its result
+             Apply a templating block and returns its result
 
-                @param {String} name
-                @param {Object} blockData
-                @return {Promise|Object}
-            */
+             @param {String} name
+             @param {Object} blockData
+             @return {Promise|Object}
+             */
             applyBlock: function (name, blockData) {
                 const block = blocks.get(name) || defaultBlocks.get(name);
-                // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
                 return Promise(block.applyBlock(blockData, result));
             },
         },
 
         output: {
             /**
-                Name of the generator being used
-                {String}
-            */
+             Name of the generator being used
+             {String}
+             */
             name: output.getGenerator(),
 
             /**
-                Return absolute path to the root folder of output
-                @return {String}
-            */
+             Return absolute path to the root folder of output
+             @return {String}
+             */
             root: function () {
                 return outputFolder;
             },
 
             /**
-                Resolve a file from the output root
+             Resolve a file from the output root
 
-                @param {String} fileName
-                @return {String}
-            */
+             @param {String} fileName
+             @return {String}
+             */
             resolve: function (fileName) {
                 return path.resolve(outputFolder, fileName);
             },
 
             /**
-                Convert a filepath into an url
-                @return {String}
-            */
+             Convert a filepath into an url
+             @return {String}
+             */
             toURL: function (filePath) {
                 return fileToURL(output, filePath);
             },
 
             /**
-                Check that a file exists.
+             Check that a file exists.
 
-                @param {String} fileName
-                @return {Promise}
-            */
+             @param {String} fileName
+             @return {Promise}
+             */
             hasFile: function (fileName, content) {
-                // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
                 return Promise().then(() => {
+                    // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
                     const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
 
                     return fs.exists(filePath);
@@ -200,16 +184,16 @@ function encodeGlobal(output) {
             },
 
             /**
-                Write a file to the output folder,
-                It creates the required folder
+             Write a file to the output folder,
+             It creates the required folder
 
-                @param {String} fileName
-                @param {Buffer} content
-                @return {Promise}
-            */
+             @param {String} fileName
+             @param {Buffer} content
+             @return {Promise}
+             */
             writeFile: function (fileName, content) {
-                // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
                 return Promise().then(() => {
+                    // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
                     const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
 
                     return fs.ensureFile(filePath).then(() => {
@@ -219,17 +203,17 @@ function encodeGlobal(output) {
             },
 
             /**
-                Copy a file to the output folder
-                It creates the required folder.
+             Copy a file to the output folder
+             It creates the required folder.
 
-                @param {String} inputFile
-                @param {String} outputFile
-                @param {Buffer} content
-                @return {Promise}
-            */
+             @param {String} inputFile
+             @param {String} outputFile
+             @param {Buffer} content
+             @return {Promise}
+             */
             copyFile: function (inputFile, outputFile, content) {
-                // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
                 return Promise().then(() => {
+                    // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
                     const outputFilePath = PathUtils.resolveInRoot(outputFolder, outputFile);
 
                     return fs.ensureFile(outputFilePath).then(() => {
@@ -246,7 +230,10 @@ function encodeGlobal(output) {
 
     // Deprecated properties
 
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 6 arguments, but got 5.
     deprecate.renamedMethod(output, "this.isSubBook", result, "isSubBook", "isLanguageBook");
+
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 6 arguments, but got 5.
     deprecate.renamedMethod(output, "this.contentLink", result, "contentLink", "output.toURL");
 
     deprecate.field(
@@ -290,4 +277,4 @@ function encodeGlobal(output) {
     return result;
 }
 
-module.exports = encodeGlobal;
+export default encodeGlobal;

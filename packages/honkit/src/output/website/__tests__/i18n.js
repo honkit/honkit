@@ -7,7 +7,7 @@ const WebsiteGenerator = require("../");
 describe("i18n", () => {
     test("should correctly use english as default language", () => {
         return createMockOutput(WebsiteGenerator, {
-            "README.md": "Hello World",
+            "README.md": "Hello World"
         })
             .then((output) => {
                 return prepareI18n(output);
@@ -23,7 +23,7 @@ describe("i18n", () => {
     test("should correctly use language from book.json", () => {
         return createMockOutput(WebsiteGenerator, {
             "README.md": "Hello World",
-            "book.json": JSON.stringify({ language: "fr" }),
+            "book.json": JSON.stringify({ language: "fr" })
         })
             .then((output) => {
                 return prepareI18n(output);

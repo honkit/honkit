@@ -1,16 +1,14 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeNavi... Remove this comment to see the full error message
-const encodeNavigation = require("./encodeNavigation");
+import Immutable from "immutable";
+import encodeNavigation from "./encodeNavigation";
 
 /**
-    page.progress is a deprecated property from GitBook v2
+ page.progress is a deprecated property from GitBook v2
 
-    @param {Output}
-    @param {Page}
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeProg... Remove this comment to see the full error message
+ @param {Output}
+ @param {Page}
+ @return {Object}
+ */
+
 function encodeProgress(output, page) {
     const current = page.getPath();
     let navigation = encodeNavigation(output);
@@ -64,4 +62,4 @@ function encodeProgress(output, page) {
     };
 }
 
-module.exports = encodeProgress;
+export default encodeProgress;

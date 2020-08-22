@@ -1,18 +1,16 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
+import Immutable from "immutable";
+import is from "is";
 
 const timers = {};
 const startDate = Date.now();
 
 /**
-    Mesure an operation
+ Mesure an operation
 
-    @parqm {String} type
-    @param {Promise} p
-    @return {Promise}
-*/
+ @parqm {String} type
+ @param {Promise} p
+ @return {Promise}
+ */
 function measure(type, p) {
     timers[type] = timers[type] || {
         type: type,
@@ -42,11 +40,11 @@ function measure(type, p) {
 }
 
 /**
-    Return a milliseconds number as a second string
+ Return a milliseconds number as a second string
 
-    @param {Number} ms
-    @return {String}
-*/
+ @param {Number} ms
+ @return {String}
+ */
 function time(ms) {
     if (ms < 1000) {
         return `${ms.toFixed(0)}ms`;
@@ -56,10 +54,10 @@ function time(ms) {
 }
 
 /**
-    Dump all timers to a logger
+ Dump all timers to a logger
 
-    @param {Logger} logger
-*/
+ @param {Logger} logger
+ */
 function dump(logger) {
     const prefix = "    > ";
     let measured = 0;
@@ -72,14 +70,23 @@ function dump(logger) {
     Immutable.Map(timers)
         .valueSeq()
         .sortBy((timer) => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'total' does not exist on type 'unknown'.
             measured += timer.total;
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'total' does not exist on type 'unknown'.
             return timer.total;
         })
         .forEach((timer) => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'total' does not exist on type 'unknown'.
             const percent = (timer.total * 100) / totalDuration;
 
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'type' does not exist on type 'unknown'.
             logger.debug.ln(`${percent.toFixed(1)}% of time spent in "${timer.type}" (${timer.count} times) :`);
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'total' does not exist on type 'unknown'.
             logger.debug.ln(`${prefix}Total: ${time(timer.total)} | Average: ${time(timer.total / timer.count)}`);
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'min' does not exist on type 'unknown'.
             logger.debug.ln(`${prefix}Min: ${time(timer.min)} | Max: ${time(timer.max)}`);
             logger.debug.ln("---------------------------");
         });
@@ -90,7 +97,7 @@ function dump(logger) {
     logger.setLevel(logLevel);
 }
 
-module.exports = {
+export default {
     measure: measure,
     dump: dump,
 };

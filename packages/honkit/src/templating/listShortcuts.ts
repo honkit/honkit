@@ -1,7 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsers'.
-const parsers = require("../parsers");
+import Immutable from "immutable";
+import parsers from "../parsers";
 
 /**
  * Return a list of all shortcuts that can apply
@@ -11,7 +9,7 @@ const parsers = require("../parsers");
  * @param {String} filePath
  * @return {List<TemplateShortcut>}
  */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'listShortc... Remove this comment to see the full error message
+
 function listShortcuts(blocks, filePath) {
     const parser = parsers.getForFile(filePath);
 
@@ -28,4 +26,4 @@ function listShortcuts(blocks, filePath) {
         });
 }
 
-module.exports = listShortcuts;
+export default listShortcuts;

@@ -1,23 +1,17 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'jsonschema... Remove this comment to see the full error message
-const jsonschema = require("jsonschema");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'jsonSchema... Remove this comment to see the full error message
-const jsonSchemaDefaults = require("json-schema-defaults");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'schema'.
-const schema = require("../constants/configSchema");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
-const error = require("../utils/error");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'mergeDefau... Remove this comment to see the full error message
-const mergeDefaults = require("../utils/mergeDefaults");
+import jsonschema from "jsonschema";
+import jsonSchemaDefaults from "json-schema-defaults";
+import schema from "../constants/configSchema";
+import error from "../utils/error";
+import mergeDefaults from "../utils/mergeDefaults";
 
 /**
-    Validate a book.json content
-    And return a mix with the default value
+ Validate a book.json content
+ And return a mix with the default value
 
-    @param {Object} bookJson
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'validateCo... Remove this comment to see the full error message
+ @param {Object} bookJson
+ @return {Object}
+ */
+
 function validateConfig(bookJson) {
     const v = new jsonschema.Validator();
     const result = v.validate(bookJson, schema, {
@@ -34,4 +28,4 @@ function validateConfig(bookJson) {
     return mergeDefaults(bookJson, defaults);
 }
 
-module.exports = validateConfig;
+export default validateConfig;

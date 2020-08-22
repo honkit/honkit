@@ -1,14 +1,10 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryArt... Remove this comment to see the full error message
-const SummaryArticle = require("./summaryArticle");
+import Immutable from "immutable";
+import SummaryArticle from "./summaryArticle";
 
 /*
     A part represents a section in the Summary / table of Contents
 */
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'SummaryPar... Remove this comment to see the full error message
 const SummaryPart = Immutable.Record({
     level: String(),
     title: String(),
@@ -46,11 +42,15 @@ SummaryPart.prototype.createChildLevel = function () {
  * @param {Object} def
  * @return {SummaryPart}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 SummaryPart.create = function (def, level) {
     const articles = (def.articles || []).map((article, i) => {
         if (article instanceof SummaryArticle) {
             return article;
         }
+
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         return SummaryArticle.create(article, [level, i + 1].join("."));
     });
 
@@ -61,4 +61,4 @@ SummaryPart.create = function (def, level) {
     });
 };
 
-module.exports = SummaryPart;
+export default SummaryPart;

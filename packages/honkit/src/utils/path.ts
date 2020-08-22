@@ -1,7 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
-const error = require("./error");
+import path from "path";
+import error from "./error";
 
 // Normalize a filename
 function normalizePath(filename) {
@@ -60,7 +58,7 @@ function isPureRelative(filename) {
     return filename.indexOf("./") === 0 || filename.indexOf("../") === 0;
 }
 
-module.exports = {
+export default {
     isInRoot: isInRoot,
     resolveInRoot: resolveInRoot,
     normalize: normalizePath,

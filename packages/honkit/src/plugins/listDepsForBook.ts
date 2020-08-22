@@ -1,5 +1,4 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'listDepend... Remove this comment to see the full error message
-const listDependencies = require("./listDependencies");
+import listDependencies from "./listDependencies";
 
 /**
  * List all plugin requirements for a book.
@@ -9,7 +8,7 @@ const listDependencies = require("./listDependencies");
  * @param {Book}
  * @return {List<PluginDependency>}
  */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'listDepsFo... Remove this comment to see the full error message
+
 function listDepsForBook(book) {
     const config = book.getConfig();
     const plugins = config.getPluginDependencies();
@@ -17,4 +16,4 @@ function listDepsForBook(book) {
     return listDependencies(plugins);
 }
 
-module.exports = listDepsForBook;
+export default listDepsForBook;

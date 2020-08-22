@@ -1,13 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeFile... Remove this comment to see the full error message
-const encodeFile = require("./encodeFile");
+import encodeFile from "./encodeFile";
 
 /**
-    Encode a languages listing to JSON
+ Encode a languages listing to JSON
 
-    @param {Languages}
-    @return {Object}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeLang... Remove this comment to see the full error message
+ @param {Languages}
+ @return {Object}
+ */
+
 function encodeLanguages(languages) {
     const file = languages.getFile();
     const list = languages.getList();
@@ -26,4 +25,4 @@ function encodeLanguages(languages) {
     };
 }
 
-module.exports = encodeLanguages;
+export default encodeLanguages;

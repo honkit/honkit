@@ -1,7 +1,7 @@
 import { onFinish } from "./onFinish";
 import { onPage } from "./onPage";
 
-module.exports = {
+export default {
     name: "json",
     Options: require("./options"),
     onPage: onPage,

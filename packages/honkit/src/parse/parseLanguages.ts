@@ -1,15 +1,13 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseStruc... Remove this comment to see the full error message
-const parseStructureFile = require("./parseStructureFile");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Languages'... Remove this comment to see the full error message
-const Languages = require("../models/languages");
+import parseStructureFile from "./parseStructureFile";
+import Languages from "../models/languages";
 
 /**
-    Parse languages list from book
+ Parse languages list from book
 
-    @param {Book} book
-    @return {Promise<Book>}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parseLangu... Remove this comment to see the full error message
+ @param {Book} book
+ @return {Promise<Book>}
+ */
+
 function parseLanguages(book) {
     const logger = book.getLogger();
 
@@ -18,6 +16,7 @@ function parseLanguages(book) {
             return book;
         }
 
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromList' does not exist on type '... Remove this comment to see the full error message
         const languages = Languages.createFromList(file, result);
 
         logger.debug.ln("languages index file found at", file.getPath());
@@ -27,4 +26,4 @@ function parseLanguages(book) {
     });
 }
 
-module.exports = parseLanguages;
+export default parseLanguages;

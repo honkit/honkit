@@ -1,13 +1,10 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'slug'.
-const slug = require("github-slugid");
+import Immutable from "immutable";
+import slug from "github-slugid";
 
 /*
     A definition represents an entry in the glossary
 */
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'GlossaryEn... Remove this comment to see the full error message
 const GlossaryEntry = Immutable.Record({
     name: String(),
     description: String(),
@@ -22,22 +19,25 @@ GlossaryEntry.prototype.getDescription = function () {
 };
 
 /**
-    Get identifier for this entry
+ Get identifier for this entry
 
-    @retrun {Boolean}
-*/
+ @retrun {Boolean}
+ */
 GlossaryEntry.prototype.getID = function () {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToID' does not exist on type 'Class'... Remove this comment to see the full error message
     return GlossaryEntry.nameToID(this.getName());
 };
 
 /**
-    Normalize a glossary entry name into a unique id
+ Normalize a glossary entry name into a unique id
 
-    @param {String}
-    @return {String}
-*/
+ @param {String}
+ @return {String}
+ */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToID' does not exist on type 'Class'... Remove this comment to see the full error message
 GlossaryEntry.nameToID = function nameToID(name) {
     return slug(name);
 };
 
-module.exports = GlossaryEntry;
+export default GlossaryEntry;

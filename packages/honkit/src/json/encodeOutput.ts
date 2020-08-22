@@ -1,5 +1,4 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'encodeBook... Remove this comment to see the full error message
-const encodeBook = require("./encodeBook");
+import encodeBook from "./encodeBook";
 
 /**
  * Encode an output to JSON
@@ -14,13 +13,15 @@ function encodeOutputToJson(output) {
 
     const result = encodeBook(book);
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'output' does not exist on type '{ summar... Remove this comment to see the full error message
     result.output = {
         name: generator,
     };
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'options' does not exist on type '{ summa... Remove this comment to see the full error message
     result.options = options.toJS();
 
     return result;
 }
 
-module.exports = encodeOutputToJson;
+export default encodeOutputToJson;

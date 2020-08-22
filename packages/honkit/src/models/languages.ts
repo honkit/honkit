@@ -1,14 +1,8 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import Immutable from "immutable";
+import File from "./file";
+import Language from "./language";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
-const File = require("./file");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Language'.
-const Language = require("./language");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Languages'... Remove this comment to see the full error message
 const Languages = Immutable.Record({
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type '{ new (fileBits: BlobPart[], fileNa... Remove this comment to see the full error message
     file: File(),
     list: Immutable.OrderedMap(),
 });
@@ -22,40 +16,42 @@ Languages.prototype.getList = function () {
 };
 
 /**
-    Get default languages
+ Get default languages
 
-    @return {Language}
-*/
+ @return {Language}
+ */
 Languages.prototype.getDefaultLanguage = function () {
     return this.getList().first();
 };
 
 /**
-    Get a language by its ID
+ Get a language by its ID
 
-    @param {String} lang
-    @return {Language}
-*/
+ @param {String} lang
+ @return {Language}
+ */
 Languages.prototype.getLanguage = function (lang) {
     return this.getList().get(lang);
 };
 
 /**
-    Return count of langs
+ Return count of langs
 
-    @return {Number}
-*/
+ @return {Number}
+ */
 Languages.prototype.getCount = function () {
     return this.getList().size;
 };
 
 /**
-    Create a languages list from a JS object
+ Create a languages list from a JS object
 
-    @param {File}
-    @param {Array}
-    @return {Language}
-*/
+ @param {File}
+ @param {Array}
+ @return {Language}
+ */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromList' does not exist on type '... Remove this comment to see the full error message
 Languages.createFromList = function (file, langs) {
     let list = Immutable.OrderedMap();
 
@@ -73,4 +69,4 @@ Languages.createFromList = function (file, langs) {
     });
 };
 
-module.exports = Languages;
+export default Languages;

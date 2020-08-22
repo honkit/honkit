@@ -1,20 +1,14 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'semver'.
-const semver = require("semver");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import is from "is";
+import semver from "semver";
+import Immutable from "immutable";
+import PREFIX from "../constants/pluginPrefix";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PREFIX'.
-const PREFIX = require("../constants/pluginPrefix");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'DEFAULT_VE... Remove this comment to see the full error message
 const DEFAULT_VERSION = "*";
 
 /*
  * PluginDependency represents the informations about a plugin
  * stored in config.plugins
  */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'PluginDepe... Remove this comment to see the full error message
 const PluginDependency = Immutable.Record(
     {
         name: String(),
@@ -65,6 +59,7 @@ PluginDependency.prototype.toggle = function (state) {
  * @return {String}
  */
 PluginDependency.prototype.getNpmID = function () {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToNpmID' does not exist on type 'Cla... Remove this comment to see the full error message
     return PluginDependency.nameToNpmID(this.getName());
 };
 
@@ -81,6 +76,8 @@ PluginDependency.prototype.isGitDependency = function () {
  * @param {String}
  * @return {Plugin|undefined}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 PluginDependency.create = function (name, version, enabled) {
     if (is.undefined(enabled)) {
         enabled = true;
@@ -98,6 +95,8 @@ PluginDependency.create = function (name, version, enabled) {
  * @param {string} s
  * @return {Plugin|undefined}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromString' does not exist on type... Remove this comment to see the full error message
 PluginDependency.createFromString = function (s) {
     /*
     HonKit will support following format
@@ -156,8 +155,12 @@ PluginDependency.createFromString = function (s) {
  * @param {String}
  * @return {List<PluginDependency>}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromString' does not exist on type '... Remove this comment to see the full error message
 PluginDependency.listFromString = function (s) {
     const parts = s.split(",");
+
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromArray' does not exist on type 'C... Remove this comment to see the full error message
     return PluginDependency.listFromArray(parts);
 };
 
@@ -166,14 +169,20 @@ PluginDependency.listFromString = function (s) {
  * @param {Array}
  * @return {List<PluginDependency>}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromArray' does not exist on type 'C... Remove this comment to see the full error message
 PluginDependency.listFromArray = function (arr) {
     return Immutable.List(arr)
         .map((entry) => {
             if (is.string(entry)) {
+                // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromString' does not exist on type... Remove this comment to see the full error message
                 return PluginDependency.createFromString(entry);
             } else {
                 return PluginDependency({
+                    // @ts-expect-error ts-migrate(2339) FIXME: Property 'get' does not exist on type 'unknown'.
                     name: entry.get("name"),
+
+                    // @ts-expect-error ts-migrate(2339) FIXME: Property 'get' does not exist on type 'unknown'.
                     version: entry.get("version"),
                 });
             }
@@ -188,6 +197,8 @@ PluginDependency.listFromArray = function (arr) {
  * @param {List<PluginDependency>} list
  * @return {Array<String>}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'listToArray' does not exist on type 'Cla... Remove this comment to see the full error message
 PluginDependency.listToArray = function (list) {
     return list
         .map((dep) => {
@@ -212,8 +223,10 @@ PluginDependency.listToArray = function (list) {
  * @param {String}
  * @return {String}
  */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToNpmID' does not exist on type 'Cla... Remove this comment to see the full error message
 PluginDependency.nameToNpmID = function (s) {
     return PREFIX + s;
 };
 
-module.exports = PluginDependency;
+export default PluginDependency;

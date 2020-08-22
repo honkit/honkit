@@ -1,11 +1,10 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-const createIgnore = require("ignore");
+import Immutable from "immutable";
+import createIgnore from "ignore";
 
 /*
     Immutable version of node-ignore
 */
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Ignore'.
+
 const Ignore = Immutable.Record(
     {
         ignore: createIgnore(),
@@ -18,22 +17,22 @@ Ignore.prototype.getIgnore = function () {
 };
 
 /**
-    Test if a file is ignored by these rules
+ Test if a file is ignored by these rules
 
-    @param {String} filePath
-    @return {Boolean}
-*/
+ @param {String} filePath
+ @return {Boolean}
+ */
 Ignore.prototype.isFileIgnored = function (filename) {
     const ignore = this.getIgnore();
     return ignore.filter([filename]).length == 0;
 };
 
 /**
-    Add rules
+ Add rules
 
-    @param {String}
-    @return {Ignore}
-*/
+ @param {String}
+ @return {Ignore}
+ */
 Ignore.prototype.add = function (rule) {
     const ignore = this.getIgnore();
     const newIgnore = createIgnore();
@@ -44,4 +43,4 @@ Ignore.prototype.add = function (rule) {
     return this.set("ignore", newIgnore);
 };
 
-module.exports = Ignore;
+export default Ignore;

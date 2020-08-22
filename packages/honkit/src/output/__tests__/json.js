@@ -3,7 +3,7 @@ const JSONGenerator = require("../json");
 describe("JSONGenerator", () => {
     test("should generate a README.json", () => {
         return generateMock(JSONGenerator, {
-            "README.md": "Hello World",
+            "README.md": "Hello World"
         }).then((folder) => {
             expect(folder).toHaveFile("README.json");
         });
@@ -14,8 +14,8 @@ describe("JSONGenerator", () => {
             "README.md": "Hello World",
             "SUMMARY.md": "# Summary\n\n* [Page](test/page.md)",
             test: {
-                "page.md": "Hello 2",
-            },
+                "page.md": "Hello 2"
+            }
         }).then((folder) => {
             expect(folder).toHaveFile("README.json");
             expect(folder).toHaveFile("test/page.json");
@@ -26,11 +26,11 @@ describe("JSONGenerator", () => {
         return generateMock(JSONGenerator, {
             "LANGS.md": "# Languages\n\n* [en](en)\n* [fr](fr)",
             en: {
-                "README.md": "Hello",
+                "README.md": "Hello"
             },
             fr: {
-                "README.md": "Bonjour",
-            },
+                "README.md": "Bonjour"
+            }
         }).then((folder) => {
             expect(folder).toHaveFile("en/README.json");
             expect(folder).toHaveFile("fr/README.json");

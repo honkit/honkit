@@ -1,9 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
+import Immutable from "immutable";
+import Promise from "../utils/promise";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parser'.
 const Parser = Immutable.Record({
     name: String(),
 
@@ -31,54 +28,52 @@ Parser.prototype.getExtensions = function () {
 
 Parser.prototype.parseReadme = function (content) {
     const readme = this.get("readme");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(readme(content));
 };
 
 Parser.prototype.parseSummary = function (content) {
     const summary = this.get("summary");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(summary(content));
 };
 
 Parser.prototype.parseGlossary = function (content) {
     const glossary = this.get("glossary");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(glossary(content));
 };
 
 Parser.prototype.preparePage = function (content) {
     const page = this.get("page");
     if (!page.prepare) {
-        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
         return Promise(content);
     }
 
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
     return Promise(page.prepare(content));
 };
 
 Parser.prototype.parsePage = function (content) {
     const page = this.get("page");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(page(content));
 };
 
 Parser.prototype.parseInline = function (content) {
     const inline = this.get("inline");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(inline(content));
 };
 
 Parser.prototype.parseLanguages = function (content) {
     const langs = this.get("langs");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(langs(content));
 };
 
 Parser.prototype.parseInline = function (content) {
     const inline = this.get("inline");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(inline(content));
 };
 
@@ -86,41 +81,43 @@ Parser.prototype.parseInline = function (content) {
 
 Parser.prototype.renderLanguages = function (content) {
     const langs = this.get("langs");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(langs.toText(content));
 };
 
 Parser.prototype.renderSummary = function (content) {
     const summary = this.get("summary");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(summary.toText(content));
 };
 
 Parser.prototype.renderGlossary = function (content) {
     const glossary = this.get("glossary");
-    // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
     return Promise(glossary.toText(content));
 };
 
 /**
-    Test if this parser matches an extension
+ Test if this parser matches an extension
 
-    @param {String} ext
-    @return {Boolean}
-*/
+ @param {String} ext
+ @return {Boolean}
+ */
 Parser.prototype.matchExtension = function (ext) {
     const exts = this.getExtensions();
     return exts.includes(ext.toLowerCase());
 };
 
 /**
-    Create a new parser using a module (gitbook-markdown, etc)
+ Create a new parser using a module (gitbook-markdown, etc)
 
-    @param {String} name
-    @param {Array<String>} extensions
-    @param {Object} module
-    @return {Parser}
-*/
+ @param {String} name
+ @param {Array<String>} extensions
+ @param {Object} module
+ @return {Parser}
+ */
+
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
 Parser.create = function (name, extensions, module) {
     return new Parser({
         name: name,
@@ -134,4 +131,4 @@ Parser.create = function (name, extensions, module) {
     });
 };
 
-module.exports = Parser;
+export default Parser;

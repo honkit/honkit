@@ -1,7 +1,5 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("./promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("./fs");
+import Promise from "./promise";
+import fs from "./fs";
 
 // Converts a inline data: to png file
 function convertInlinePNG(source, dest) {
@@ -17,6 +15,6 @@ function convertInlinePNG(source, dest) {
     });
 }
 
-module.exports = {
+export default {
     convertInlinePNG: convertInlinePNG,
 };

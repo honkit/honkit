@@ -6,7 +6,7 @@ describe("Page", () => {
     describe("toText", () => {
         test("must not prepend frontmatter if no attributes", () => {
             const page = Page().merge({
-                content: "Hello World",
+                content: "Hello World"
             });
 
             // @ts-expect-error
@@ -17,8 +17,8 @@ describe("Page", () => {
             const page = Page().merge({
                 content: "Hello World",
                 attributes: Immutable.fromJS({
-                    hello: "world",
-                }),
+                    hello: "world"
+                })
             });
             // @ts-expect-error
             expect(page.toText()).toBe("---\nhello: world\n---\n\nHello World");

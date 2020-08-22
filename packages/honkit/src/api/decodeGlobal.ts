@@ -1,13 +1,13 @@
 import { decodeConfig } from "./decodeConfig";
 
 /**
-    Decode changes from a JS API to a output object.
-    Only the configuration can be edited by plugin's hooks
+ Decode changes from a JS API to a output object.
+ Only the configuration can be edited by plugin's hooks
 
-    @param {Output} output
-    @param {Object} result: result from API
-    @return {Output}
-*/
+ @param {Output} output
+ @param {Object} result: result from API
+ @return {Output}
+ */
 function decodeGlobal(output, result) {
     let book = output.getBook();
     let config = book.getConfig();

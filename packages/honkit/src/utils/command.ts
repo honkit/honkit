@@ -1,19 +1,17 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-const childProcess = require("child_process");
+import is from "is";
+import childProcess from "child_process";
+
 const spawn = require("spawn-cmd").spawn;
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("./promise");
+import Promise from "./promise";
 
 /**
-    Execute a command
+ Execute a command
 
-    @param {String} command
-    @param {Object} options
-    @return {Promise}
-*/
+ @param {String} command
+ @param {Object} options
+ @return {Promise}
+ */
 function exec(command, options) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
     const d = Promise.defer();
 
     const child = childProcess.exec(command, options, (err, stdout, stderr) => {
@@ -37,15 +35,14 @@ function exec(command, options) {
 }
 
 /**
-    Spawn an executable
+ Spawn an executable
 
-    @param {String} command
-    @param {Array} args
-    @param {Object} options
-    @return {Promise}
-*/
+ @param {String} command
+ @param {Array} args
+ @param {Object} options
+ @return {Promise}
+ */
 function spawnCmd(command, args, options) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'defer' does not exist on type 'PromiseCo... Remove this comment to see the full error message
     const d = Promise.defer();
     const child = spawn(command, args, options);
 
@@ -73,11 +70,11 @@ function spawnCmd(command, args, options) {
 }
 
 /**
-    Transform an option object to a command line string
+ Transform an option object to a command line string
 
-    @param {String|number} value
-    @param {String}
-*/
+ @param {String|number} value
+ @param {String}
+ */
 function escapeShellArg(value) {
     if (is.number(value)) {
         return value;
@@ -90,11 +87,11 @@ function escapeShellArg(value) {
 }
 
 /**
-    Transform a map of options into a command line arguments string
+ Transform a map of options into a command line arguments string
 
-    @param {Object} options
-    @return {String}
-*/
+ @param {Object} options
+ @return {String}
+ */
 function optionsToShellArgs(options) {
     const result = [];
 
@@ -115,7 +112,7 @@ function optionsToShellArgs(options) {
     return result.join(" ");
 }
 
-module.exports = {
+export default {
     exec: exec,
     spawn: spawnCmd,
     optionsToShellArgs: optionsToShellArgs,

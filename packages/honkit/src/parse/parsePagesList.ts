@@ -1,22 +1,16 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'timing'.
-const timing = require("../utils/timing");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Page'.
-const Page = require("../models/page");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'walkSummar... Remove this comment to see the full error message
-const walkSummary = require("./walkSummary");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parsePage'... Remove this comment to see the full error message
-const parsePage = require("./parsePage");
+import Immutable from "immutable";
+import timing from "../utils/timing";
+import Page from "../models/page";
+import walkSummary from "./walkSummary";
+import parsePage from "./parsePage";
 
 /**
-    Parse a page from a path
+ Parse a page from a path
 
-    @param {Book} book
-    @param {String} filePath
-    @return {Page?}
-*/
+ @param {Book} book
+ @param {String} filePath
+ @return {Page?}
+ */
 function parseFilePage(book, filePath) {
     const fs = book.getContentFS();
 
@@ -24,6 +18,7 @@ function parseFilePage(book, filePath) {
         .statFile(filePath)
         .then(
             (file) => {
+                // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFile' does not exist on type 'C... Remove this comment to see the full error message
                 const page = Page.createForFile(file);
                 return parsePage(book, page);
             },
@@ -40,11 +35,11 @@ function parseFilePage(book, filePath) {
 }
 
 /**
-    Parse all pages from a book as an OrderedMap
+ Parse all pages from a book as an OrderedMap
 
-    @param {Book} book
-    @return {Promise<OrderedMap<Page>>}
-*/
+ @param {Book} book
+ @return {Promise<OrderedMap<Page>>}
+ */
 function parsePagesList(book) {
     const summary = book.getSummary();
     const glossary = book.getGlossary();
@@ -98,4 +93,4 @@ function parsePagesList(book) {
     );
 }
 
-module.exports = parsePagesList;
+export default parsePagesList;

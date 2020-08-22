@@ -1,7 +1,9 @@
-const flatCache = require("flat-cache");
-module.exports.getCache = () => {
+import flatCache from "flat-cache";
+
+export const getCache = () => {
     return flatCache.create("honkit");
 };
-module.exports.clearCache = () => {
+
+export const clearCache = () => {
     return flatCache.clearCacheById("honkit");
 };

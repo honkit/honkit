@@ -1,11 +1,11 @@
 /**
-    Edit title of a part in the summary
+ Edit title of a part in the summary
 
-    @param {Summary} summary
-    @param {Number} index
-    @param {String} newTitle
-    @return {Summary}
-*/
+ @param {Summary} summary
+ @param {Number} index
+ @param {String} newTitle
+ @return {Summary}
+ */
 function editPartTitle(summary, index, newTitle) {
     let parts = summary.getParts();
 
@@ -20,4 +20,4 @@ function editPartTitle(summary, index, newTitle) {
     return summary.set("parts", parts);
 }
 
-module.exports = editPartTitle;
+export default editPartTitle;

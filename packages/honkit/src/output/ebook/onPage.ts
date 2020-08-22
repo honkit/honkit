@@ -1,14 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'WebsiteGen... Remove this comment to see the full error message
-const WebsiteGenerator = require("../website");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Modifiers'... Remove this comment to see the full error message
-const Modifiers = require("../modifiers");
+import WebsiteGenerator from "../website";
+import Modifiers from "../modifiers";
 
 /**
-    Write a page for ebook output
+ Write a page for ebook output
 
-    @param {Output} output
-    @param {Output}
-*/
+ @param {Output} output
+ @param {Output}
+ */
 function onPage(output, page) {
     const options = output.getOptions();
 
@@ -23,4 +21,4 @@ function onPage(output, page) {
     );
 }
 
-module.exports = onPage;
+export default onPage;

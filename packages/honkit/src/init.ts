@@ -1,30 +1,21 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createNode... Remove this comment to see the full error message
-const createNodeFS = require("./fs/node");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'fs'.
-const fs = require("./utils/fs");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("./utils/promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'File'.
-const File = require("./models/file");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Readme'.
-const Readme = require("./models/readme");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Book'.
-const Book = require("./models/book");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Parse'.
-const Parse = require("./parse");
+import path from "path";
+import createNodeFS from "./fs/node";
+import fs from "./utils/fs";
+import Promise from "./utils/promise";
+import File from "./models/file";
+import Readme from "./models/readme";
+import Book from "./models/book";
+import Parse from "./parse";
 
 /**
-    Initialize folder structure for a book
-    Read SUMMARY to created the right chapter
+ Initialize folder structure for a book
+ Read SUMMARY to created the right chapter
 
-    @param {Book}
-    @param {String}
-    @return {Promise}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'initBook'.
+ @param {Book}
+ @param {String}
+ @return {Promise}
+ */
+
 function initBook(rootFolder) {
     const extension = ".md";
 
@@ -35,6 +26,8 @@ function initBook(rootFolder) {
             // Parse the summary and readme
             .then(() => {
                 const fs = createNodeFS(rootFolder);
+
+                // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
                 const book = Book.createForFS(fs);
 
                 return (
@@ -44,6 +37,8 @@ function initBook(rootFolder) {
                         .fail(() => {
                             // @ts-expect-error ts-migrate(2339) FIXME: Property 'createWithFilepath' does not exist on ty... Remove this comment to see the full error message
                             const readmeFile = File.createWithFilepath(`README${extension}`);
+
+                            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
                             const readme = Readme.create(readmeFile);
                             return book.setReadme(readme);
                         })
@@ -61,7 +56,6 @@ function initBook(rootFolder) {
 
                 // Write pages
                 return (
-                    // @ts-expect-error ts-migrate(2339) FIXME: Property 'forEach' does not exist on type 'Promise... Remove this comment to see the full error message
                     Promise.forEach(articles, (article) => {
                         const articlePath = article.getPath();
                         const filePath = articlePath ? path.join(rootFolder, articlePath) : null;
@@ -101,4 +95,4 @@ function initBook(rootFolder) {
     );
 }
 
-module.exports = initBook;
+export default initBook;

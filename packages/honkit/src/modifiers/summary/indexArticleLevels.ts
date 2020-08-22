@@ -1,11 +1,11 @@
 /**
-    Index levels in an article tree
+ Index levels in an article tree
 
-    @param {Article}
-    @param {String} baseLevel
-    @return {Article}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'indexArtic... Remove this comment to see the full error message
+ @param {Article}
+ @param {String} baseLevel
+ @return {Article}
+ */
+
 function indexArticleLevels(article, baseLevel) {
     baseLevel = baseLevel || article.getLevel();
     let articles = article.getArticles();
@@ -20,4 +20,4 @@ function indexArticleLevels(article, baseLevel) {
     });
 }
 
-module.exports = indexArticleLevels;
+export default indexArticleLevels;

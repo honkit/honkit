@@ -12,4 +12,4 @@ function toNames(plugins) {
         .toArray();
 }
 
-module.exports = toNames;
+export default toNames;

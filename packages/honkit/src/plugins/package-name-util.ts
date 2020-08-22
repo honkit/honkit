@@ -42,5 +42,4 @@ const createFullPackageName = (prefix, name) => {
     return `${prefix}${name}`;
 };
 
-module.exports.createFullPackageName = createFullPackageName;
-module.exports.removePrefixFromPackageName = removePrefixFromPackageName;
+export { createFullPackageName, removePrefixFromPackageName };

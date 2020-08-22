@@ -10,4 +10,4 @@ function generateKey() {
     return "00000".slice(str.length) + str;
 }
 
-module.exports = generateKey;
+export default generateKey;

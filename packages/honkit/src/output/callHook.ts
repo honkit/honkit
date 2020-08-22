@@ -1,9 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Promise'.
-const Promise = require("../utils/promise");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'timing'.
-const timing = require("../utils/timing");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Api'.
-const Api = require("../api");
+import Promise from "../utils/promise";
+import timing from "../utils/timing";
+import Api from "../api";
 
 function defaultGetArgument() {
     return undefined;
@@ -14,15 +11,15 @@ function defaultHandleResult(output, result) {
 }
 
 /**
-    Call a "global" hook for an output
+ Call a "global" hook for an output
 
-    @param {String} name
-    @param {Function(Output) -> Mixed} getArgument
-    @param {Function(Output, result) -> Output} handleResult
-    @param {Output} output
-    @return {Promise<Output>}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'callHook'.
+ @param {String} name
+ @param {Function(Output) -> Mixed} getArgument
+ @param {Function(Output, result) -> Output} handleResult
+ @param {Output} output
+ @return {Promise<Output>}
+ */
+
 function callHook(name, getArgument, handleResult, output) {
     getArgument = getArgument || defaultGetArgument;
     handleResult = handleResult || defaultHandleResult;
@@ -39,11 +36,10 @@ function callHook(name, getArgument, handleResult, output) {
         `call.hook.${name}`,
 
         // Get the arguments
-        // @ts-expect-error ts-migrate(2348) FIXME: Value of type 'PromiseConstructor' is not callable... Remove this comment to see the full error message
+
         Promise(getArgument(output))
             // Call the hooks in serie
             .then((arg) => {
-                // @ts-expect-error ts-migrate(2339) FIXME: Property 'reduce' does not exist on type 'PromiseC... Remove this comment to see the full error message
                 return Promise.reduce(
                     plugins,
                     (prev, plugin) => {
@@ -66,4 +62,4 @@ function callHook(name, getArgument, handleResult, output) {
     );
 }
 
-module.exports = callHook;
+export default callHook;

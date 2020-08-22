@@ -1,23 +1,17 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require("path");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'is'.
-const is = require("is");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Buffer'.
-const Buffer = require("buffer").Buffer;
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'Immutable'... Remove this comment to see the full error message
-const Immutable = require("immutable");
+import path from "path";
+import is from "is";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'FS'.
-const FS = require("../models/fs");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'error'.
-const error = require("../utils/error");
+const Buffer = require("buffer").Buffer;
+import Immutable from "immutable";
+import FS from "../models/fs";
+import error from "../utils/error";
 
 /**
-    Create a fake filesystem for unit testing HonKit.
+ Create a fake filesystem for unit testing HonKit.
 
-    @param {Map<String:String|Map>}
-*/
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createMock... Remove this comment to see the full error message
+ @param {Map<String:String|Map>}
+ */
+
 function createMockFS(files) {
     files = Immutable.fromJS(files);
     const mtime = new Date();
@@ -90,6 +84,7 @@ function createMockFS(files) {
             .valueSeq();
     }
 
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     return FS.create({
         root: "",
         fsExists: fsExists,
