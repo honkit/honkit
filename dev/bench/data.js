@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1597995431270,
+  "lastUpdate": 1598284498052,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4555,6 +4555,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±1.55%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ed8ec44549c4ed9253c56dc9f24fda1f34449953",
+          "message": "refactor(honkit): Convert JavaScript to TypeScript (#112)\n\n* [ts-migrate][honkit] Init tsconfig.json file\r\n\r\nCo-authored-by: ts-migrate <>\r\n\r\n* [ts-migrate][honkit] Rename files from JS/JSX to TS/TSX\r\n\r\nCo-authored-by: ts-migrate <>\r\n\r\n* [ts-migrate][honkit] Run TS Migrate\r\n\r\nCo-authored-by: ts-migrate <>\r\n\r\n* refactor(honkit): fix duplicated function and remove ts-expect-error\r\n\r\n* chore(deps): add typescrtipt as devDeps\r\n\r\n* temp\r\n\r\n* refactor(honkit): convert to TypeScript\r\n\r\n* test(honkit): fix test\r\n\r\n* test(honkit): fix file suffix\r\n\r\n* test(honkit): ignore test again\r\n\r\n* fix: rename to js to ts\r\n\r\n* refactor(honkit): move to ts\r\n\r\n* fix: do not rename\r\n\r\n* fix: dist path\r\n\r\n* refactor: format browser.ts",
+          "timestamp": "2020-08-25T00:51:29+09:00",
+          "tree_id": "4263f93ec19ae8cdba56ab87ff872fe95166439c",
+          "url": "https://github.com/honkit/honkit/commit/ed8ec44549c4ed9253c56dc9f24fda1f34449953"
+        },
+        "date": 1598284496536,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±1.90%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
