@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     root: "./docs",
     title: "HonKit Documentation",
 
