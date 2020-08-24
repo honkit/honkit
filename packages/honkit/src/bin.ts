@@ -1,6 +1,5 @@
 import assert from "assert";
 import { Command } from "commander";
-// @ts-ignore
 import pkg from "../package.json";
 import Honkit from "./index";
 
