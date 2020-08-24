@@ -1,54 +1,40 @@
 import Modifiers from "./modifiers";
-
 import parse from "./parse";
-
-import models from "./models/book";
-
-import models0 from "./models/fs";
-
-import models01 from "./models/file";
-
-import models012 from "./models/summary";
-
-import models0123 from "./models/glossary";
-
-import models01234 from "./models/config";
-
-import models012345 from "./models/page";
-
-import models0123456 from "./models/pluginDependency";
-
-import constants from "./constants/configFiles";
-
-import constants0 from "./constants/ignoreFiles";
-
-import constants01 from "./constants/defaultPlugins";
-
-import constants012 from "./constants/extsMarkdown";
-
-import constants0123 from "./constants/extsAsciidoc";
+import Book from "./models/book";
+import FS from "./models/fs";
+import File from "./models/file";
+import Summary from "./models/summary";
+import Glossary from "./models/glossary";
+import Config from "./models/config";
+import Page from "./models/page";
+import PluginDependency from "./models/pluginDependency";
+import CONFIG_FILES from "./constants/configFiles";
+import IGNORE_FILES from "./constants/ignoreFiles";
+import DEFAULT_PLUGINS from "./constants/defaultPlugins";
+import EXTENSIONS_MARKDOWN from "./constants/extsMarkdown";
+import EXTENSIONS_ASCIIDOC from "./constants/extsAsciidoc";
 
 export default {
     Parse: parse,
 
     // Models
-    Book: models,
-    FS: models0,
-    File: models01,
-    Summary: models012,
-    Glossary: models0123,
-    Config: models01234,
-    Page: models012345,
-    PluginDependency: models0123456,
+    Book: Book,
+    FS: FS,
+    File: File,
+    Summary: Summary,
+    Glossary: Glossary,
+    Config: Config,
+    Page: Page,
+    PluginDependency: PluginDependency,
 
     // Modifiers
     SummaryModifier: Modifiers.Summary,
     ConfigModifier: Modifiers.Config,
 
     // Constants
-    CONFIG_FILES: constants,
-    IGNORE_FILES: constants0,
-    DEFAULT_PLUGINS: constants01,
-    EXTENSIONS_MARKDOWN: constants012,
-    EXTENSIONS_ASCIIDOC: constants0123,
+    CONFIG_FILES: CONFIG_FILES,
+    IGNORE_FILES: IGNORE_FILES,
+    DEFAULT_PLUGINS: DEFAULT_PLUGINS,
+    EXTENSIONS_MARKDOWN: EXTENSIONS_MARKDOWN,
+    EXTENSIONS_ASCIIDOC: EXTENSIONS_ASCIIDOC,
 };
