@@ -1,9 +1,7 @@
 import path from "path";
 import Immutable from "immutable";
-
+import findInstalled from "../findInstalled";
 describe("findInstalled", () => {
-    const findInstalled = require("../findInstalled");
-
     test.skip("must list default plugins for gitbook directory", () => {
         // Read gitbook-plugins from package.json
         const pkg = require(path.resolve(__dirname, "../../../package.json"));

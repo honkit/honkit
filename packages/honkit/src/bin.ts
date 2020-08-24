@@ -1,7 +1,7 @@
 import assert from "assert";
 import { Command } from "commander";
-
-const pkg = require("../package.json");
+// @ts-ignore
+import pkg from "../package.json";
 import Honkit from "./index";
 
 export const run = (argv = process.argv) => {

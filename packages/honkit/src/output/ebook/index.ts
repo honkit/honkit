@@ -1,9 +1,12 @@
 import extend from "extend";
 import WebsiteGenerator from "../website";
+import options from "./options";
+import onPage0 from "./onPage";
+import onFinish0 from "./onFinish";
 
 export default extend({}, WebsiteGenerator, {
     name: "ebook",
-    Options: require("./options"),
-    onPage: require("./onPage"),
-    onFinish: require("./onFinish"),
+    Options: options,
+    onPage: onPage0,
+    onFinish: onFinish0,
 });

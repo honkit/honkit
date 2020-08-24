@@ -1,6 +1,6 @@
-const cheerio = require("cheerio");
-const tmp = require("tmp");
-const inlinePng = require("../inlinePng");
+import cheerio from "cheerio";
+import tmp from "tmp";
+import inlinePng from "../inlinePng";
 
 describe("inlinePng", () => {
     let dir;

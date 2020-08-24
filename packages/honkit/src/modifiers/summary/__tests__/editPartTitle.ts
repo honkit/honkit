@@ -1,25 +1,26 @@
 import Summary from "../../../models/summary";
 import FileModel from "../../../models/file";
 
+import editPartTitle from "../editPartTitle";
+
 describe("editPartTitle", () => {
-    const editPartTitle = require("../editPartTitle");
     // @ts-expect-error
     const summary = Summary.createFromParts(FileModel(), [
         {
             articles: [
                 {
                     title: "My First Article",
-                    path: "README.md"
+                    path: "README.md",
                 },
                 {
                     title: "My Second Article",
-                    path: "article.md"
-                }
-            ]
+                    path: "article.md",
+                },
+            ],
         },
         {
-            title: "Test"
-        }
+            title: "Test",
+        },
     ]);
 
     test("should correctly set title of first part", () => {

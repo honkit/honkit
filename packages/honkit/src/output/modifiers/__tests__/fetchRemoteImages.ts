@@ -1,14 +1,13 @@
-const cheerio = require("cheerio");
-const tmp = require("tmp");
-const path = require("path");
+import cheerio from "cheerio";
+import tmp from "tmp";
+import path from "path";
+import fetchRemoteImages from "../fetchRemoteImages";
 
 const URL =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png";
 
 describe.skip("fetchRemoteImages", () => {
     let dir;
-    const fetchRemoteImages = require("../fetchRemoteImages");
-
     beforeEach(() => {
         dir = tmp.dirSync();
     });

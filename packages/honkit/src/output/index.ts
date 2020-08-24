@@ -1,7 +1,9 @@
 import Immutable from "immutable";
 import { generateBook, incrementalBuild } from "./generateBook";
-
-const generators = Immutable.List([require("./json"), require("./website"), require("./ebook")]);
+import json from "./json";
+import website from "./website";
+import ebook from "./ebook";
+const generators = Immutable.List([json, website, ebook]);
 
 /**
  Return a specific generator by its name

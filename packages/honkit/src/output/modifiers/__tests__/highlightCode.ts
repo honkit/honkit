@@ -1,6 +1,6 @@
-const cheerio = require("cheerio");
-const Promise = require("../../../utils/promise");
-const highlightCode = require("../highlightCode");
+import cheerio from "cheerio";
+import Promise from "../../../utils/promise";
+import highlightCode from "../highlightCode";
 
 describe("highlightCode", () => {
     function doHighlight(lang, code) {

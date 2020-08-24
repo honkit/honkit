@@ -1,6 +1,6 @@
-const path = require("path");
-const cheerio = require("cheerio");
-const resolveLinks = require("../resolveLinks");
+import path from "path";
+import cheerio from "cheerio";
+import resolveLinks from "../resolveLinks";
 
 describe("resolveLinks", () => {
     function resolveFileBasic(href) {

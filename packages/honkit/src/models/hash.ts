@@ -94,7 +94,6 @@ function cachedHashString(string) {
 
 // http://jsperf.com/hashing-strings
 
-// @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'hashString'.
 function hashString(string) {
     // This is the hash from JVM
     // The hash code for a string is computed as
@@ -109,8 +108,7 @@ function hashString(string) {
     return smi(hashed);
 }
 
-// @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'hashString'.
-export const hashString = hashString;
+export { hashString };
 
 function hashJSObj(obj) {
     let hashed;

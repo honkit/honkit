@@ -1,7 +1,7 @@
 import parseStructureFile from "./parseStructureFile";
 import Summary from "../models/summary";
-
-const SummaryModifier = require("../modifiers").Summary;
+import modifiers from "../modifiers";
+const SummaryModifier = modifiers.Summary;
 
 /**
  Parse summary in a book, the summary can only be parsed

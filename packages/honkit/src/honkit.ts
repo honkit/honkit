@@ -1,6 +1,6 @@
 import semver from "semver";
 
-const pkg = require("../package.json");
+import pkg from "../package.json";
 
 const VERSION = pkg.version;
 const VERSION_STABLE = VERSION.replace(/-(\S+)/g, "");

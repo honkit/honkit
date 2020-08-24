@@ -1,10 +1,11 @@
-const Immutable = require("immutable");
-const Promise = require("../../utils/promise");
-const Plugin = require("../../models/plugin");
-const validatePlugin = require("../validatePlugin");
+import Immutable from "immutable";
+import Promise from "../../utils/promise";
+import Plugin from "../../models/plugin";
+import validatePlugin from "../validatePlugin";
 
 describe("validatePlugin", () => {
     test("must not validate a not loaded plugin", () => {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromString' does not exist on type... Remove this comment to see the full error message
         const plugin = Plugin.createFromString("test");
 
         return validatePlugin(plugin).then(

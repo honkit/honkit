@@ -1,4 +1,6 @@
+import summary from "./summary";
+import config from "./config";
 export default {
-    Summary: require("./summary"),
-    Config: require("./config"),
+    Summary: summary,
+    Config: config,
 };

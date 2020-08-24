@@ -1,7 +1,7 @@
-const Immutable = require("immutable");
-const cheerio = require("cheerio");
-const GlossaryEntry = require("../../../models/glossaryEntry");
-const annotateText = require("../annotateText");
+import Immutable from "immutable";
+import cheerio from "cheerio";
+import GlossaryEntry from "../../../models/glossaryEntry";
+import annotateText from "../annotateText";
 
 describe("annotateText", () => {
     const entries = Immutable.List([GlossaryEntry({ name: "Word" }), GlossaryEntry({ name: "Multiple Words" })]);

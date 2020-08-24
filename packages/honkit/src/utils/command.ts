@@ -1,7 +1,7 @@
 import is from "is";
 import childProcess from "child_process";
 
-const spawn = require("spawn-cmd").spawn;
+import { spawn } from "spawn-cmd";
 import Promise from "./promise";
 
 /**

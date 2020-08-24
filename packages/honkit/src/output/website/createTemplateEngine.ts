@@ -1,7 +1,7 @@
 import path from "path";
 import nunjucks from "nunjucks";
-
-const DoExtension = require("nunjucks-do")(nunjucks);
+import nunjucks_do from "nunjucks-do";
+const DoExtension = nunjucks_do(nunjucks);
 import memoizeOne from "memoize-one";
 import Api from "../../api";
 import deprecate from "../../api/deprecate";
@@ -15,6 +15,7 @@ import defaultFilters from "../../constants/defaultFilters";
 import Templating from "../../templating";
 import listSearchPaths from "./listSearchPaths";
 import fileToURL from "../helper/fileToURL";
+
 import resolveFileToURL from "../helper/resolveFileToURL";
 
 /**
@@ -77,6 +78,7 @@ function createTemplateEngine(output, currentFile) {
         const article = summary.getByPath(filePath);
         if (!article) return undefined;
 
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         return JSONUtils.encodeSummaryArticle(article);
     }
 

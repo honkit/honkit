@@ -1,12 +1,11 @@
 import Book from "../../models/book";
 import createMockFS from "../../fs/mock";
+import parseGlossary from "../parseGlossary";
 
 describe("parseGlossary", () => {
-    const parseGlossary = require("../parseGlossary");
-
     test("should parse glossary if exists", () => {
         const fs = createMockFS({
-            "GLOSSARY.md": "# Glossary\n\n## Hello\nDescription for hello"
+            "GLOSSARY.md": "# Glossary\n\n## Hello\nDescription for hello",
         });
         // @ts-expect-error
         const book = Book.createForFS(fs);

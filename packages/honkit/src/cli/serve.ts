@@ -3,8 +3,7 @@ import open from "open";
 import Immutable from "immutable";
 import Parse from "../parse";
 import Output from "../output";
-
-const ConfigModifier = require("../modifiers").Config;
+import Modifiers from "../modifiers";
 
 import Promise from "../utils/promise";
 import options from "./options";
@@ -115,7 +114,8 @@ function generateBook({ book, outputFolder, hasLiveReloading, Generator, reload 
         if (hasLiveReloading) {
             // Enable livereload plugin
             let config = resultBook.getConfig();
-            config = ConfigModifier.addPlugin(config, "livereload");
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
+            config = Modifiers.Config.addPlugin(config, "livereload");
             resultBook = resultBook.set("config", config);
         }
 

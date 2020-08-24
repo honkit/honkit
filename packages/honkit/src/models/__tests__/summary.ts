@@ -1,6 +1,7 @@
+import Summary from "../summary";
+import File from "../file";
 describe("Summary", () => {
-    const File = require("../file");
-    const Summary = require("../summary");
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
     const summary = Summary.createFromParts(File(), [
         {
             articles: [

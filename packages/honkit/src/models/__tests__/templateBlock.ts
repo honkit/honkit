@@ -1,16 +1,15 @@
 import nunjucks from "nunjucks";
 import Immutable from "immutable";
 import PromiseUtil from "../../utils/promise";
-
+import TemplateBlock from "../templateBlock";
 describe("TemplateBlock", () => {
-    const TemplateBlock = require("../templateBlock");
-
     describe("create", () => {
         test("must initialize a simple TemplateBlock from a function", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
-                    parse: true
+                    parse: true,
                 };
             });
 
@@ -34,10 +33,11 @@ describe("TemplateBlock", () => {
 
     describe("getShortcuts", () => {
         test("must return undefined if no shortcuts", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
-                    parse: true
+                    parse: true,
                 };
             });
 
@@ -45,15 +45,16 @@ describe("TemplateBlock", () => {
         });
 
         test("must return complete shortcut", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", {
-                process: function(block) {
+                process: function (block) {
                     return "<p>Hello, World!</p>";
                 },
                 shortcuts: {
                     parsers: ["markdown"],
                     start: "$",
-                    end: "-"
-                }
+                    end: "-",
+                },
             });
 
             const shortcut = templateBlock.getShortcuts();
@@ -68,6 +69,7 @@ describe("TemplateBlock", () => {
 
     describe("toNunjucksExt()", () => {
         test("should replace by block anchor", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return "Hello";
             });
@@ -96,10 +98,11 @@ describe("TemplateBlock", () => {
         });
 
         test("must create a valid nunjucks extension", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
-                    parse: true
+                    parse: true,
                 };
             });
 
@@ -118,10 +121,11 @@ describe("TemplateBlock", () => {
         });
 
         test("must apply block arguments correctly", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: `<${block.kwargs.tag}>Hello, ${block.kwargs.name}!</${block.kwargs.tag}>`,
-                    parse: true
+                    parse: true,
                 };
             });
 
@@ -133,18 +137,19 @@ describe("TemplateBlock", () => {
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block
-            const src = "{% sayhello name=\"Samy\", tag=\"p\" %}{% endsayhello %}";
+            const src = '{% sayhello name="Samy", tag="p" %}{% endsayhello %}';
             return PromiseUtil.nfcall(env.renderString.bind(env), src).then((res) => {
                 expect(res).toBe("<p>Hello, Samy!</p>");
             });
         });
 
         test("must accept an async function", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return PromiseUtil().then(() => {
                     return {
                         body: `Hello ${block.body}`,
-                        parse: true
+                        parse: true,
                     };
                 });
             });
@@ -167,7 +172,7 @@ describe("TemplateBlock", () => {
             const templateBlock = new TemplateBlock({
                 name: "yoda",
                 blocks: Immutable.List(["start", "end"]),
-                process: function(block) {
+                process: function (block) {
                     const nested: { end?: any; start?: any } = {};
 
                     block.blocks.forEach((blk) => {
@@ -176,22 +181,24 @@ describe("TemplateBlock", () => {
 
                     return {
                         body: `<p class="yoda">${nested.end} ${nested.start}</p>`,
-                        parse: true
+                        parse: true,
                     };
-                }
+                },
             });
 
             // Create a fresh Nunjucks environment
             const env = new nunjucks.Environment(null, { autoescape: false });
 
             // Add template block to environement
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'toNunjucksExt' does not exist on type 'M... Remove this comment to see the full error message
             const Ext = templateBlock.toNunjucksExt();
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'getExtensionName' does not exist on type... Remove this comment to see the full error message
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block
             const src = "{% yoda %}{% start %}this sentence should be{% end %}inverted{% endyoda %}";
             return PromiseUtil.nfcall(env.renderString.bind(env), src).then((res) => {
-                expect(res).toBe("<p class=\"yoda\">inverted this sentence should be</p>");
+                expect(res).toBe('<p class="yoda">inverted this sentence should be</p>');
             });
         });
     });

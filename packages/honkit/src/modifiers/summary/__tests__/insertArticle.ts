@@ -2,21 +2,22 @@ import Summary from "../../../models/summary";
 import SummaryArticle from "../../../models/summaryArticle";
 import FileModel from "../../../models/file";
 
+import insertArticle from "../insertArticle";
+
 describe("insertArticle", () => {
-    const insertArticle = require("../insertArticle");
     // @ts-expect-error
     const summary = Summary.createFromParts(FileModel(), [
         {
             articles: [
                 {
                     title: "1.1",
-                    path: "1.1"
+                    path: "1.1",
                 },
                 {
                     title: "1.2",
-                    path: "1.2"
-                }
-            ]
+                    path: "1.2",
+                },
+            ],
         },
         {
             title: "Part I",
@@ -27,27 +28,27 @@ describe("insertArticle", () => {
                     articles: [
                         {
                             title: "2.1.1",
-                            path: "2.1.1"
+                            path: "2.1.1",
                         },
                         {
                             title: "2.1.2",
-                            path: "2.1.2"
-                        }
-                    ]
+                            path: "2.1.2",
+                        },
+                    ],
                 },
                 {
                     title: "2.2",
-                    path: "2.2"
-                }
-            ]
-        }
+                    path: "2.2",
+                },
+            ],
+        },
     ]);
 
     test("should insert an article at a given level", () => {
         // @ts-expect-error
         const article = SummaryArticle.create(
             {
-                title: "Inserted"
+                title: "Inserted",
             },
             "fake.level"
         );
@@ -68,7 +69,7 @@ describe("insertArticle", () => {
         // @ts-expect-error
         const article = SummaryArticle.create(
             {
-                title: "Inserted"
+                title: "Inserted",
             },
             "fake.level"
         );

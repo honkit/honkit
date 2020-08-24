@@ -1,7 +1,7 @@
 import path from "path";
 import is from "is";
 
-const Buffer = require("buffer").Buffer;
+import { Buffer } from "buffer";
 import Immutable from "immutable";
 import FS from "../models/fs";
 import error from "../utils/error";

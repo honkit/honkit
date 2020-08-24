@@ -39,15 +39,19 @@ function onPage(output, page) {
     return Modifiers.modifyHTML(page, getModifiers(output, page)).then((resultPage) => {
         // Generate the context
         const context = JSONUtils.encodeOutputWithPage(output, resultPage);
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'plugins' does not exist on type '{ summa... Remove this comment to see the full error message
         context.plugins = {
             resources: Plugins.listResources(plugins, resources).toJS(),
         };
 
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'template' does not exist on type '{ summ... Remove this comment to see the full error message
         context.template = {
             getJSContext: function () {
                 return {
+                    // @ts-expect-error ts-migrate(2339) FIXME: Property 'page' does not exist on type '{ summary:... Remove this comment to see the full error message
                     page: omit(context.page, "content"),
                     config: context.config,
+                    // @ts-expect-error ts-migrate(2339) FIXME: Property 'file' does not exist on type '{ summary:... Remove this comment to see the full error message
                     file: context.file,
                     gitbook: context.gitbook,
                     basePath: basePath,
@@ -59,6 +63,7 @@ function onPage(output, page) {
         };
 
         // We should probabbly move it to "template" or a "site" namespace
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'basePath' does not exist on type '{ summ... Remove this comment to see the full error message
         context.basePath = basePath;
 
         // Render the theme

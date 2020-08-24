@@ -1,6 +1,6 @@
-const path = require("path");
-const cheerio = require("cheerio");
-const resolveImages = require("../resolveImages");
+import path from "path";
+import cheerio from "cheerio";
+import resolveImages from "../resolveImages";
 
 describe("resolveImages", () => {
     describe("img tag", () => {

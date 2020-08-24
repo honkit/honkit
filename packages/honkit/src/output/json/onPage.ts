@@ -24,6 +24,7 @@ function onPage(output, page) {
         delete json.config;
 
         // Specify JSON output version
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'version' does not exist on type '{ summa... Remove this comment to see the full error message
         json.version = JSON_VERSION;
 
         // File path in the output folder

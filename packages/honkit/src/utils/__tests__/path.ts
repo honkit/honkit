@@ -1,7 +1,6 @@
 import path from "path";
+import PathUtils from "../path";
 describe("Paths", () => {
-    const PathUtils = require("..//path");
-
     describe("setExtension", () => {
         test("should correctly change extension of filename", () => {
             expect(PathUtils.setExtension("test.md", ".html")).toBe("test.html");

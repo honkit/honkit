@@ -1,12 +1,16 @@
 import extend from "extend";
 import common from "./browser";
+import init from "./init";
+import fs from "./fs/node";
+import output from "./output";
+import cli from "./cli";
 
 export default extend(
     {
-        initBook: require("./init"),
-        createNodeFS: require("./fs/node"),
-        Output: require("./output"),
-        commands: require("./cli"),
+        initBook: init,
+        createNodeFS: fs,
+        Output: output,
+        commands: cli,
     },
     common
 );

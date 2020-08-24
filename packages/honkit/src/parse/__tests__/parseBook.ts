@@ -1,18 +1,17 @@
 import Book from "../../models/book";
 import createMockFS from "../../fs/mock";
+import parseBook from "../parseBook";
 
 describe("parseBook", () => {
-    const parseBook = require("../parseBook");
-
     test("should parse multilingual book", () => {
         const fs = createMockFS({
             "LANGS.md": "# Languages\n\n* [en](en)\n* [fr](fr)",
             en: {
-                "README.md": "Hello"
+                "README.md": "Hello",
             },
             fr: {
-                "README.md": "Bonjour"
-            }
+                "README.md": "Bonjour",
+            },
         });
         // @ts-expect-error
         const book = Book.createForFS(fs);
@@ -30,14 +29,14 @@ describe("parseBook", () => {
     test("should extend configuration for multilingual book", () => {
         const fs = createMockFS({
             "LANGS.md": "# Languages\n\n* [en](en)\n* [fr](fr)",
-            "book.json": "{ \"title\": \"Test\", \"author\": \"HonKit\" }",
+            "book.json": '{ "title": "Test", "author": "HonKit" }',
             en: {
                 "README.md": "Hello",
-                "book.json": "{ \"title\": \"Test EN\" }"
+                "book.json": '{ "title": "Test EN" }',
             },
             fr: {
-                "README.md": "Bonjour"
-            }
+                "README.md": "Bonjour",
+            },
         });
         // @ts-expect-error
         const book = Book.createForFS(fs);
@@ -65,13 +64,13 @@ describe("parseBook", () => {
     test("should parse book in a directory", () => {
         const fs = createMockFS({
             "book.json": JSON.stringify({
-                root: "./test"
+                root: "./test",
             }),
             test: {
                 "README.md": "Hello World",
                 "SUMMARY.md": "# Summary\n\n* [Page](page.md)\n",
-                "page.md": "Page"
-            }
+                "page.md": "Page",
+            },
         });
         // @ts-expect-error
         const book = Book.createForFS(fs);

@@ -1,23 +1,21 @@
 import Immutable from "immutable";
 import Summary from "../../../models/summary";
 import File from "../../../models/file";
-
+import moveArticle from "../moveArticle";
 describe("moveArticle", () => {
-    const moveArticle = require("../moveArticle");
-    
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
     const summary = Summary.createFromParts(File(), [
         {
             articles: [
                 {
                     title: "1.1",
-                    path: "1.1"
+                    path: "1.1",
                 },
                 {
                     title: "1.2",
-                    path: "1.2"
-                }
-            ]
+                    path: "1.2",
+                },
+            ],
         },
         {
             title: "Part I",
@@ -28,20 +26,20 @@ describe("moveArticle", () => {
                     articles: [
                         {
                             title: "2.1.1",
-                            path: "2.1.1"
+                            path: "2.1.1",
                         },
                         {
                             title: "2.1.2",
-                            path: "2.1.2"
-                        }
-                    ]
+                            path: "2.1.2",
+                        },
+                    ],
                 },
                 {
                     title: "2.2",
-                    path: "2.2"
-                }
-            ]
-        }
+                    path: "2.2",
+                },
+            ],
+        },
     ]);
 
     test("should move an article to the same place", () => {

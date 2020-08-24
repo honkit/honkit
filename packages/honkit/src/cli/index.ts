@@ -1,11 +1,6 @@
 import buildEbook from "./buildEbook";
-
-export default [
-    require("./build"),
-    require("./serve"),
-    require("./parse"),
-    require("./init"),
-    buildEbook("pdf"),
-    buildEbook("epub"),
-    buildEbook("mobi"),
-];
+import build from "./build";
+import serve from "./serve";
+import parse from "./parse";
+import init from "./init";
+export default [build, serve, parse, init, buildEbook("pdf"), buildEbook("epub"), buildEbook("mobi")];
