@@ -1,22 +1,25 @@
-const SummaryArticle = require("../summaryArticle");
-// @ts-expect-error
-const File = require("../file");
+import SummaryArticle from "../summaryArticle";
+import File from "../file";
 
 describe("SummaryArticle", () => {
     describe("createChildLevel", () => {
         test("must create the right level", () => {
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create({}, "1.1");
             expect(article.createChildLevel()).toBe("1.1.1");
         });
 
         test("must create the right level when has articles", () => {
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create(
                 {
                     articles: [
                         {
-                            title: "Test",
-                        },
-                    ],
+                            title: "Test"
+                        }
+                    ]
                 },
                 "1.1"
             );
@@ -26,9 +29,11 @@ describe("SummaryArticle", () => {
 
     describe("isFile", () => {
         test("must return true when exactly the file", () => {
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create(
                 {
-                    ref: "hello.md",
+                    ref: "hello.md"
                 },
                 "1.1"
             );
@@ -39,9 +44,11 @@ describe("SummaryArticle", () => {
         });
 
         test("must return true when path is not normalized", () => {
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create(
                 {
-                    ref: "/hello.md",
+                    ref: "/hello.md"
                 },
                 "1.1"
             );
@@ -52,9 +59,11 @@ describe("SummaryArticle", () => {
         });
 
         test("must return false when has anchor", () => {
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create(
                 {
-                    ref: "hello.md#world",
+                    ref: "hello.md#world"
                 },
                 "1.1"
             );
@@ -65,19 +74,23 @@ describe("SummaryArticle", () => {
         });
     });
 
-    describe('hasAnchor', function() {
-        it('must return false when ref does not have anchor', function() {
+    describe("hasAnchor", function() {
+        it("must return false when ref does not have anchor", function() {
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             var article = SummaryArticle.create({
-                ref: 'hello.md'
-            }, '1.1');
+                ref: "hello.md"
+            }, "1.1");
 
             expect(article.hasAnchor()).toBe(false);
         });
 
-        it('must return true when has anchor', function() {
+        it("must return true when has anchor", function() {
+
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             var article = SummaryArticle.create({
-                ref: 'hello.md#world'
-            }, '1.1');
+                ref: "hello.md#world"
+            }, "1.1");
 
             expect(article.hasAnchor()).toBe(true);
         });

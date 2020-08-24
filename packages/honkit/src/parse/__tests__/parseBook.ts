@@ -1,9 +1,8 @@
 import Book from "../../models/book";
 import createMockFS from "../../fs/mock";
+import parseBook from "../parseBook";
 
 describe("parseBook", () => {
-    const parseBook = require("../parseBook");
-
     test("should parse multilingual book", () => {
         const fs = createMockFS({
             "LANGS.md": "# Languages\n\n* [en](en)\n* [fr](fr)",

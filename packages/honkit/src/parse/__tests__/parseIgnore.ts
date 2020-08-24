@@ -1,8 +1,8 @@
 import Book from "../../models/book";
 import createMockFS from "../../fs/mock";
+import parseIgnore from "../parseIgnore";
 
 describe("parseIgnore", () => {
-    const parseIgnore = require("../parseIgnore");
     const fs = createMockFS({
         ".ignore": "test-1.js",
         ".gitignore": "test-2.js\ntest-3.js",

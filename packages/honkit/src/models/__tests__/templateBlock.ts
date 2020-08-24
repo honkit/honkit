@@ -1,12 +1,11 @@
-const nunjucks = require("nunjucks");
-const Immutable = require("immutable");
-const PromiseUtil = require("../../utils/promise");
-
+import nunjucks from "nunjucks";
+import Immutable from "immutable";
+import PromiseUtil from "../../utils/promise";
+import TemplateBlock from "../templateBlock";
 describe("TemplateBlock", () => {
-    const TemplateBlock = require("../templateBlock");
-
     describe("create", () => {
         test("must initialize a simple TemplateBlock from a function", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
@@ -34,6 +33,7 @@ describe("TemplateBlock", () => {
 
     describe("getShortcuts", () => {
         test("must return undefined if no shortcuts", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
@@ -45,6 +45,7 @@ describe("TemplateBlock", () => {
         });
 
         test("must return complete shortcut", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", {
                 process: function (block) {
                     return "<p>Hello, World!</p>";
@@ -68,6 +69,7 @@ describe("TemplateBlock", () => {
 
     describe("toNunjucksExt()", () => {
         test("should replace by block anchor", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return "Hello";
             });
@@ -96,6 +98,7 @@ describe("TemplateBlock", () => {
         });
 
         test("must create a valid nunjucks extension", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
@@ -118,6 +121,7 @@ describe("TemplateBlock", () => {
         });
 
         test("must apply block arguments correctly", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: `<${block.kwargs.tag}>Hello, ${block.kwargs.name}!</${block.kwargs.tag}>`,
@@ -140,6 +144,7 @@ describe("TemplateBlock", () => {
         });
 
         test("must accept an async function", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return PromiseUtil().then(() => {
                     return {
@@ -185,7 +190,9 @@ describe("TemplateBlock", () => {
             const env = new nunjucks.Environment(null, { autoescape: false });
 
             // Add template block to environement
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'toNunjucksExt' does not exist on type 'M... Remove this comment to see the full error message
             const Ext = templateBlock.toNunjucksExt();
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'getExtensionName' does not exist on type... Remove this comment to see the full error message
             env.addExtension(templateBlock.getExtensionName(), new Ext());
 
             // Render a template using the block

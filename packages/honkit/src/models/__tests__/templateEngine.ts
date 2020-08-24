@@ -1,8 +1,8 @@
+import TemplateEngine from "../templateEngine";
 describe("TemplateBlock", () => {
-    const TemplateEngine = require("../templateEngine");
-
     describe("create", () => {
         test("must initialize with a list of filters", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const engine = TemplateEngine.create({
                 filters: {
                     hello: function (name) {
@@ -17,6 +17,7 @@ describe("TemplateBlock", () => {
         });
 
         test("must initialize with a list of globals", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const engine = TemplateEngine.create({
                 globals: {
                     hello: function (name) {
@@ -31,6 +32,7 @@ describe("TemplateBlock", () => {
         });
 
         test("must pass context to filters and blocks", () => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const engine = TemplateEngine.create({
                 filters: {
                     hello: function (name) {

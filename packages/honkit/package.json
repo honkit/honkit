@@ -39,7 +39,7 @@
     "!__tests__"
   ],
   "scripts": {
-    "prepublish": "npm run --if-present build",
+    "prepublish": "npm run clean && npm run build",
     "build": "rimraf lib && tsc -p .",
     "clean": "rimraf lib/",
     "test": "jest src",
@@ -104,6 +104,7 @@
     "@honkit/internal-test-utils": "^3.5.3",
     "cross-env": "^7.0.2",
     "jest": "^26.0.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.7"
   }
 }

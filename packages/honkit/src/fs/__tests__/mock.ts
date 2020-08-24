@@ -8,9 +8,9 @@ describe("MockFS", () => {
             "test.md": "Cool",
             folder2: {
                 "hello.md": "Hello",
-                "world.md": "World",
-            },
-        },
+                "world.md": "World"
+            }
+        }
     });
 
     describe("exists", () => {

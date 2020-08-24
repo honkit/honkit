@@ -1,8 +1,9 @@
 import Summary from "../../../models/summary";
 import FileModel from "../../../models/file";
 
+import editPartTitle from "../editPartTitle";
+
 describe("editPartTitle", () => {
-    const editPartTitle = require("../editPartTitle");
     // @ts-expect-error
     const summary = Summary.createFromParts(FileModel(), [
         {

@@ -1,10 +1,9 @@
-const Summary = require("../../../models/summary");
-const SummaryPart = require("../../../models/summaryPart");
-
+import Summary from "../../../models/summary";
+import SummaryPart from "../../../models/summaryPart";
 import FileModel from "../../../models/file";
-
+import insertPart from "../insertPart";
 describe("insertPart", () => {
-    const insertPart = require("../insertPart");
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
     const summary = Summary.createFromParts(FileModel(), [
         {
             articles: [
@@ -31,6 +30,7 @@ describe("insertPart", () => {
     ]);
 
     test("should insert an part at a given level", () => {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         const part = SummaryPart.create(
             {
                 title: "Inserted",
@@ -50,6 +50,7 @@ describe("insertPart", () => {
     });
 
     test("should insert an part in last position", () => {
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         const part = SummaryPart.create(
             {
                 title: "Inserted",

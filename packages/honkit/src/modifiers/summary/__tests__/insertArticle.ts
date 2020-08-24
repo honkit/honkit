@@ -2,8 +2,9 @@ import Summary from "../../../models/summary";
 import SummaryArticle from "../../../models/summaryArticle";
 import FileModel from "../../../models/file";
 
+import insertArticle from "../insertArticle";
+
 describe("insertArticle", () => {
-    const insertArticle = require("../insertArticle");
     // @ts-expect-error
     const summary = Summary.createFromParts(FileModel(), [
         {
