@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1598887089482,
+  "lastUpdate": 1598887651046,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4617,6 +4617,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±2.39%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "07dce989095792a229de3c6f3e001e2007d086a8",
+          "message": "v3.6.3: Basic docker support (#121)\n\n* docs: add Docker\r\n\r\n* docs: add Docker\r\n\r\n* CI(publish): fix to use HUB_TAG\r\n\r\n* chore(release): v3.6.3",
+          "timestamp": "2020-09-01T00:24:39+09:00",
+          "tree_id": "121d09c56b606926745d894db366c713c71b997e",
+          "url": "https://github.com/honkit/honkit/commit/07dce989095792a229de3c6f3e001e2007d086a8"
+        },
+        "date": 1598887649529,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±1.40%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
