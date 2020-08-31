@@ -212,6 +212,11 @@ git push origin HEAD -u
 
 Create a Pull Request from the release branch, and we will review it.
 
+:memo: GitHub Release page use this pull request.
+
+- Pull Request's title = Release title
+- Pull Request's body = Release body
+
 4. Merge the Pull Request
 
 Finally, GitHub Actions(CI) publish it to npm and dockerhub automatically.
