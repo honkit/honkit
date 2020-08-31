@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.5](https://github.com/honkit/honkit/compare/v3.6.4...v3.6.5) (2020-08-31)
+
+
+### Bug Fixes
+
+* **honkit:** fix empty publish ([92aabd6](https://github.com/honkit/honkit/commit/92aabd68063b3d5079665e5d863b433e13613548))
+
+
+
+
+
 ## [3.6.4](https://github.com/honkit/honkit/compare/v3.6.3...v3.6.4) (2020-08-31)
 
 **Note:** Version bump only for package honkit
