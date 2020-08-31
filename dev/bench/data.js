@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1598284498052,
+  "lastUpdate": 1598887089482,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4586,6 +4586,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.90%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f23a06f95d1b6a4687bd92780d0cdddbaaad4959",
+          "message": "Merge pull request #120 from honkit/docker\n\nfeat(docker): add basic Dockerfile",
+          "timestamp": "2020-09-01T00:09:44+09:00",
+          "tree_id": "1245a9e581f3fc74106b3066a5d0974c1bad0514",
+          "url": "https://github.com/honkit/honkit/commit/f23a06f95d1b6a4687bd92780d0cdddbaaad4959"
+        },
+        "date": 1598887088630,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±2.39%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
