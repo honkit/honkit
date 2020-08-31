@@ -4,7 +4,7 @@ LABEL maintainer="azu <azuciao@gmail.com>"
 LABEL Description="Docker Container for HonKit"
 
 ARG PACKAGE_VERSION
-ENV PACKAGE_VERSION ${PACKAGE_VERSION:-1.0.0}
+ENV PACKAGE_VERSION ${PACKAGE_VERSION:-latest}
 
 RUN npm install -g honkit@${PACKAGE_VERSION}
 
