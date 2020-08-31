@@ -106,14 +106,14 @@ jobs:
       - name: Build image
         if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
-          docker build . -t "${PKG_TAG}" --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
-          docker tag "${PKG_TAG}" "${HUB_TAG}"
-          docker tag "${PKG_TAG}" "${HUB_LATEST_TAG}"
+          docker build . -t "${HUB_TAG}" --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
+          docker tag "${HUB_TAG}" "${HUB_TAG}"
+          docker tag "${HUB_TAG}" "${HUB_LATEST_TAG}"
         working-directory: ./docker
       - name: Print version
         if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
-          docker run --rm ${PKG_TAG} --version
+          docker run --rm ${HUB_TAG} --version
         working-directory: ./docker
       - name: Login to Registries
         if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
