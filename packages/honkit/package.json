@@ -39,7 +39,7 @@
     "!__tests__"
   ],
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublish": "npm run clean && npm run build",
     "build": "tsc -p .",
     "clean": "rimraf lib/",
     "test": "jest src",
