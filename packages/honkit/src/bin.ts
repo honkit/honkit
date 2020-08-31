@@ -1,7 +1,7 @@
 import assert from "assert";
 import { Command } from "commander";
-import pkg from "../package.json";
 import Honkit from "./index";
+const pkg = require("../package.json");
 
 export const run = (argv = process.argv) => {
     const program = new Command();

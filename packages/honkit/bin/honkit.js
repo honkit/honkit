@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-require("../lib/src/bin.js")
+require("../lib/bin.js")
     .run()
     .catch((error) => {
         console.error(error);
