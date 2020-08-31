@@ -28,8 +28,8 @@
       "email": "samy@gitbook.com"
     }
   ],
-  "main": "lib/src/index.js",
-  "browser": "./lib/src/browser.js",
+  "main": "lib/index.js",
+  "browser": "./lib/browser.js",
   "bin": {
     "honkit": "./bin/honkit.js"
   },

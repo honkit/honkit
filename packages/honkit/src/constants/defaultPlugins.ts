@@ -1,6 +1,7 @@
 import Immutable from "immutable";
 import PluginDependency from "../models/pluginDependency";
-import pkg from "../../package.json";
+
+const pkg = require("../../package.json");
 
 /**
  * Create a PluginDependency from a dependency of gitbook
