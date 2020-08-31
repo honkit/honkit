@@ -28,8 +28,8 @@
       "email": "samy@gitbook.com"
     }
   ],
-  "main": "lib/index.js",
-  "browser": "./lib/browser.js",
+  "main": "lib/src/index.js",
+  "browser": "./lib/src/browser.js",
   "bin": {
     "honkit": "./bin/honkit.js"
   },
@@ -39,8 +39,8 @@
     "!__tests__"
   ],
   "scripts": {
-    "prepublish": "npm run clean && npm run build",
-    "build": "rimraf lib && tsc -p .",
+    "prepublish": "npm run build",
+    "build": "tsc -p .",
     "clean": "rimraf lib/",
     "test": "jest src",
     "updateSnapshot": "jest src -u"
