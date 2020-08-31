@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.4](https://github.com/honkit/honkit/compare/v3.6.3...v3.6.4) (2020-08-31)
+
+
+### Bug Fixes
+
+* **docker:** use latest as default ([ef7f0f1](https://github.com/honkit/honkit/commit/ef7f0f1f8c9a86ae79284d55ab2bc74e4a28481a))
+
+
+
+
+
 ## [3.6.3](https://github.com/honkit/honkit/compare/v3.6.1...v3.6.3) (2020-08-31)
 
 
