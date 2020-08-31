@@ -108,6 +108,7 @@ HonKit aim to smooth migration from GitBook (Legacy) to HonKit.
 - TypeScript
 - Monorepo codebase
     - Easy to maintain
+- Docker
 
 ### Migration from GitBook
 
