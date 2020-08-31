@@ -184,3 +184,36 @@ After all participants on pull request are satisfied to the changes, we will mer
 HonKit has a continuous benchmark:
 
 - <https://honkit.github.io/honkit/dev/bench/>
+
+## Release Flow
+
+A Maintainer releases a new version of HonKit by following way.
+
+1. Checkout release branch
+
+```
+# checkout release branch like "release/2019-10-10"
+git checkout -b "release/$(date '+%Y-%m-%d')"
+```
+
+2. Version up and Update CHANGELOG via `versionup` script
+
+`npm run versionup:*` script update version and generate CHANGELOG.md
+
+```
+# bump vesrion and update changelog
+npm run versionup
+## Also, availble npm run versionup:{patch,minor,major}
+# push the changes to release branch
+git push origin HEAD -u
+```
+
+3. Create a Pull Request and Review the release
+
+Create a Pull Request from the release branch, and we will review it.
+
+If you need, write blog posts in website/blog.
+
+4. Merge the Pull Request
+
+Finally, GitHub Actions(CI) publish it to npm and dockerhub automatically.
