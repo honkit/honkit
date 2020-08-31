@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1598889386571,
+  "lastUpdate": 1598891137103,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4679,6 +4679,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±3.45%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2069f67123008473c1ee1745ccbf991942c4ec1c",
+          "message": "Merge pull request #123 from honkit/fix-empty-publish\n\nfix(honkit): fix empty publish",
+          "timestamp": "2020-09-01T01:22:16+09:00",
+          "tree_id": "5ff63d28c513687ceca67cc3585384359b3a9135",
+          "url": "https://github.com/honkit/honkit/commit/2069f67123008473c1ee1745ccbf991942c4ec1c"
+        },
+        "date": 1598891135590,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±3.56%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
