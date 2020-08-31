@@ -31,6 +31,7 @@
     "versionup:minor": "lerna version minor --conventional-commits",
     "versionup:major": "lerna version major --conventional-commits",
     "release": "lerna publish from-package",
+    "release-ci": "yarn run build && lerna publish from-package --yes --no-verify-access",
     "honkit:build": "honkit build",
     "honkit:serve": "honkit serve"
   },

@@ -1,0 +1,129 @@
+name: Publish
+
+# Publish npm and dockerhub when Release Pull Request is merged
+#
+# https://hub.docker.com/r/honkit/honkit
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+env:
+  DOCKER_HUB_BASE_NAME: honkit/honkit
+
+jobs:
+  publish:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Git Identity
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install
+        run: yarn install
+      # Define ${CURRENT_VERSION}
+      - name: Set Current Version
+        run: |
+          CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
+          echo "::set-env name=CURRENT_VERSION::${CURRENT_VERSION}"
+      - name: Tag Check
+        id: tag_check
+        run: |
+          GET_API_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/git/ref/tags/v${CURRENT_VERSION}"
+          http_status_code=$(curl -LI $GET_API_URL -o /dev/null -w '%{http_code}\n' -s \
+            -H "Authorization: token ${GITHUB_TOKEN}")
+          if [ "$http_status_code" -ne "404" ] ; then
+            echo "::set-output name=exists_tag::true"
+          else
+            echo "::set-output name=exists_tag::false"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Publish to npm
+      - name: Publish
+        if: steps.tag_check.outputs.exists_tag == 'false'
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          yarn run release-ci
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create Git Tag
+        if: steps.tag_check.outputs.exists_tag == 'false'
+        uses: azu/action-package-version-to-git-tag@v1
+        with:
+          version: ${{ env.CURRENT_VERSION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
+      - name: Create Release
+        id: create_release
+        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.CURRENT_VERSION }}
+          # Copy Pull Request's tile and body to Release Note
+          release_name: ${{ github.event.pull_request.title }}
+          body: |
+            ${{ github.event.pull_request.body }}
+          draft: false
+          prerelease: false
+      - uses: actions/github-script@0.8.0
+        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🎉 Release https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }}'
+            })
+      # Publish to Docker
+      - name: "Set TAG_NAME=tags"
+        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+        run: |
+          echo "::set-env name=TAG_NAME::v${{ env.CURRENT_VERSION }}"
+          echo "::set-env name=PACKAGE_VERSION::${{ env.CURRENT_VERSION  }}"
+      - name: Set HUB_TAG
+        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+        run: |
+          echo "::set-env name=HUB_TAG::${DOCKER_HUB_BASE_NAME}:${TAG_NAME}"
+          echo "::set-env name=HUB_LATEST_TAG::${DOCKER_HUB_BASE_NAME}:latest"
+      - name: Build image
+        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+        run: |
+          docker build . -t "${PKG_TAG}" --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
+          docker tag "${PKG_TAG}" "${HUB_TAG}"
+          docker tag "${PKG_TAG}" "${HUB_LATEST_TAG}"
+        working-directory: ./docker
+      - name: Print version
+        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+        run: |
+          docker run --rm ${PKG_TAG} --version
+        working-directory: ./docker
+      - name: Login to Registries
+        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+        run: |
+          echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
+        env:
+          DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
+          DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Push to Docker Hub
+        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+        run: |
+          docker push "${HUB_TAG}"
+          docker push "${HUB_LATEST_TAG}"
