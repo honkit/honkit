@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.3](https://github.com/honkit/honkit/compare/v3.6.1...v3.6.3) (2020-08-31)
+
+
+### Bug Fixes
+
+* change versionup script ([7ed4bb3](https://github.com/honkit/honkit/commit/7ed4bb3d4668e18f016909e29e942f394643735d))
+
+
+### Features
+
+* **docker:** add basic Dockerfile ([4a56826](https://github.com/honkit/honkit/commit/4a568261516e809434521683b67a1659df248530))
+
+
+
+
+
 ## [3.6.2](https://github.com/honkit/honkit/compare/v3.6.1...v3.6.2) (2020-08-31)
 
 
