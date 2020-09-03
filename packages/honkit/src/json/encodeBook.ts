@@ -29,6 +29,10 @@ function encodeBookToJson(book) {
             version: honkit.version,
             time: honkit.START_TIME,
         },
+        honkit: {
+            version: honkit.version,
+            time: honkit.START_TIME,
+        },
         book: extend(
             {
                 language: language ? language : undefined,

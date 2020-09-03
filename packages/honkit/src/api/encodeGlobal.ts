@@ -226,6 +226,9 @@ function encodeGlobal(output) {
         gitbook: {
             version: honkit.version,
         },
+        honkit: {
+            version: honkit.version,
+        },
     };
 
     // Deprecated properties
