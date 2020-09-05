@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.6](https://github.com/honkit/honkit/compare/v3.6.5...v3.6.6) (2020-09-05)
+
+
+### Features
+
+* **docker:** add ebook-convert installation ([d7b63ed](https://github.com/honkit/honkit/commit/d7b63edc8d56b7651774b3b84e480c01a5f0e5ac))
+
+
+
+
+
 ## [3.6.5](https://github.com/honkit/honkit/compare/v3.6.4...v3.6.5) (2020-08-31)
 
 
