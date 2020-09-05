@@ -8,7 +8,7 @@ The following is a reference of the available data during book's parsing and the
 | -------- | ----------- |
 | `book` | Book-wide information + configuration settings from `book.json`. See below for details. |
 | `honkit` | HonKit specific information |
-| `gitbook` | HonKit specific information |
+| `gitbook` | HonKit specific information. It's alias to `honkit` |
 | `page` | Current page specific information |
 | `file` | File associated with the current page specific information |
 | `readme` | Information about the Readme |
