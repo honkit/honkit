@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1599290298060,
+  "lastUpdate": 1599311464264,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4741,6 +4741,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.26%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "471096bec322ce2e60202e3876845896b18e2159",
+          "message": "Merge pull request #126 from satoshicano/update-docs-support-honkit-vars\n\ndocs: support `honkit` variables #36",
+          "timestamp": "2020-09-05T22:08:06+09:00",
+          "tree_id": "09ce955f74ad7fb02c7ec43e2368648b4ddc3257",
+          "url": "https://github.com/honkit/honkit/commit/471096bec322ce2e60202e3876845896b18e2159"
+        },
+        "date": 1599311463372,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±2.46%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
