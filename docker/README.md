@@ -15,3 +15,7 @@ Show help
 Build
 
     $ docker run -v `pwd`:`pwd` -w `pwd` --rm -it honkit/honkit honkit build
+
+PDF build
+
+    $ docker run -v `pwd`:`pwd` -w `pwd` --rm -it honkit/honkit honkit pdf
