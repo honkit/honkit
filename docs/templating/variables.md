@@ -7,7 +7,8 @@ The following is a reference of the available data during book's parsing and the
 | Variable | Description |
 | -------- | ----------- |
 | `book` | Book-wide information + configuration settings from `book.json`. See below for details. |
-| `gitbook` | HonKit specific information |
+| `honkit` | HonKit specific information |
+| `gitbook` | HonKit specific information. It's alias to `honkit` |
 | `page` | Current page specific information |
 | `file` | File associated with the current page specific information |
 | `readme` | Information about the Readme |
@@ -26,11 +27,11 @@ The following is a reference of the available data during book's parsing and the
 
 ### HonKit Variables
 
-TODO: We use `gitbook` variable for backward compatible. To support `honkit` variables.
-
 | Variable | Description |
 | -------- | ----------- |
+| `honkit.time` | The current time (when you run the `honkit` command) . |
 | `gitbook.time` | The current time (when you run the `honkit` command) . |
+| `honkit.version` | Version of HonKit used to generate the book |
 | `gitbook.version` | Version of HonKit used to generate the book |
 
 ### File Variables
