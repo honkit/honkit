@@ -8,7 +8,7 @@ var isPageReady = false;
 var onLoad = window.gitbook || [];
 
 // Export APIs for plugins
-var gitbook = {
+var honkit = {
     events: events,
     page: page,
 
@@ -25,13 +25,18 @@ var gitbook = {
     },
 };
 
+// Define `gitbook` as alias
+var gitbook = honkit;
+
 // Modules mapping for plugins
 var MODULES = {
     gitbook: gitbook,
+    honkit: honkit,
     jquery: $,
 };
 
 window.gitbook = gitbook;
+window.honkit = honkit;
 window.$ = $;
 window.jQuery = $;
 window.require = function (mods, fn) {
