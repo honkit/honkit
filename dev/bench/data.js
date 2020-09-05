@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1599311464264,
+  "lastUpdate": 1599313961549,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4772,6 +4772,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±2.46%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3c41894ced1cbc2d2b4b4b3a24b5e93059a40266",
+          "message": "Merge pull request #125 from honkit/docker-ebook\n\nfeat(docker): add ebook-convert installation",
+          "timestamp": "2020-09-05T22:49:39+09:00",
+          "tree_id": "d03b55ec9ff873dd95e9554592fc5b2fdd1b377f",
+          "url": "https://github.com/honkit/honkit/commit/3c41894ced1cbc2d2b4b4b3a24b5e93059a40266"
+        },
+        "date": 1599313960047,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±2.04%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
