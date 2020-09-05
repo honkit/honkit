@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1599313961549,
+  "lastUpdate": 1599314682858,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4803,6 +4803,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±2.04%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f1512f4eef2db37d74442c6cf86cc0435a539b3f",
+          "message": "Merge pull request #127 from honkit/release/2020-09-05\n\nchore(release): v3.6.6",
+          "timestamp": "2020-09-05T23:01:54+09:00",
+          "tree_id": "4be381559b084831beb3858d6f22d194dac41cc6",
+          "url": "https://github.com/honkit/honkit/commit/f1512f4eef2db37d74442c6cf86cc0435a539b3f"
+        },
+        "date": 1599314682293,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±1.64%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
