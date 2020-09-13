@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1599314682858,
+  "lastUpdate": 1599970442016,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4834,6 +4834,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.11,
             "range": "±1.64%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9937b33a47de58e87c887a3b0d8aaca4945a494c",
+          "message": "Merge pull request #129 from honkit/dependabot/npm_and_yarn/node-fetch-2.6.1",
+          "timestamp": "2020-09-13T04:10:39Z",
+          "tree_id": "e3d35d74a12ce4227ef1b991510dd7388f20a180",
+          "url": "https://github.com/honkit/honkit/commit/9937b33a47de58e87c887a3b0d8aaca4945a494c"
+        },
+        "date": 1599970441079,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±1.40%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
