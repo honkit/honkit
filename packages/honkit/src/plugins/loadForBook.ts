@@ -1,3 +1,4 @@
+import path from "path";
 import listDepsForBook from "./listDepsForBook";
 import { loadPlugin } from "./loadPlugin";
 
@@ -19,7 +20,9 @@ function loadForBook(book) {
      */
     const requirements = listDepsForBook(book);
 
-    const pluginResolver = new PluginResolver();
+    const pluginResolver = new PluginResolver({
+        baseDirectories: [path.join(process.cwd(), "node_modules")],
+    });
     const installedPlugins = requirements.map((dep) => {
         const name = dep.getName();
         return dep.merge({
