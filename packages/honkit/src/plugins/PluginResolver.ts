@@ -47,12 +47,22 @@ class PluginResolver {
         // e.g.) load theme-default as @honkit/honkit-plugins-theme-default
         const honkitScopePackageName = `@honkit/${honkitFullPackageName}`;
         // In sometimes, HonKit package has not main field - so search package.json
-        const pkgPath =
-            tryResolve(path.join(baseDir, honkitFullPackageName, "/package.json")) ||
-            tryResolve(path.join(baseDir, gitbookFullPackageName, "/package.json")) ||
-            tryResolve(path.join(baseDir, packageName, "/package.json")) ||
-            (SPECIAL_PACKAGE_NAME.includes(packageName) &&
-                tryResolve(path.join(baseDir, honkitScopePackageName, "/package.json")));
+
+        // search ./node_modules first, then baseDir
+        for (const dir of [path.join(process.cwd(), "node_modules"), baseDir]) {
+            for (const name of [honkitFullPackageName, gitbookFullPackageName, packageName]) {
+                var pkgPath = tryResolve(path.join(dir, name, "package.json"));
+                if (pkgPath) {
+                    break;
+                }
+            }
+            if (!pkgPath && SPECIAL_PACKAGE_NAME.includes(packageName)) {
+                pkgPath = tryResolve(path.join(dir, honkitScopePackageName, "package.json"));
+            }
+            if (pkgPath) {
+                break;
+            }
+        }
         if (!pkgPath) {
             throw new ReferenceError(`Failed to load HonKit's plugin module: "${packageName}" is not found.
 
