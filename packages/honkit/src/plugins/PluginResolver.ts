@@ -24,13 +24,14 @@ const SPECIAL_PACKAGE_NAME = [
  */
 
 class PluginResolver {
-    baseDirectory: any;
+    baseDirectories: any;
 
     constructor(config) {
         /**
-         * @type {string} baseDirectory for resolving
+         * @type {array} baseDirectories for resolving
          */
-        this.baseDirectory = config && config.baseDirectory ? config.baseDirectory : "";
+        this.baseDirectories = config && config.baseDirectories ? config.baseDirectories : [];
+        this.baseDirectories.push("");
     }
 
     /**
