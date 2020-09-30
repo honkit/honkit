@@ -40,7 +40,7 @@ class PluginResolver {
      * @returns {string} return path to module
      */
     resolvePluginPackageName(packageName) {
-        const baseDir = this.baseDirectory;
+        const baseDirs = this.baseDirectories;
         const honkitFullPackageName = util.createFullPackageName("honkit-plugin-", packageName);
         // honkit > gitbook > normal
         const gitbookFullPackageName = util.createFullPackageName("gitbook-plugin-", packageName);
@@ -50,7 +50,7 @@ class PluginResolver {
         // In sometimes, HonKit package has not main field - so search package.json
 
         // search ./node_modules first, then baseDir
-        for (const dir of [path.join(process.cwd(), "node_modules"), baseDir]) {
+        for (const dir of baseDirs) {
             for (const name of [honkitFullPackageName, gitbookFullPackageName, packageName]) {
                 var pkgPath = tryResolve(path.join(dir, name, "package.json"));
                 if (pkgPath) {
@@ -64,11 +64,14 @@ class PluginResolver {
                 break;
             }
         }
+        if (pkgPath) {
+            console.log(`found ${pkgPath}`);
+        }
         if (!pkgPath) {
             throw new ReferenceError(`Failed to load HonKit's plugin module: "${packageName}" is not found.
 
 cwd: ${process.cwd()}
-baseDir: ${baseDir}
+baseDir: ${baseDirs}
 
 `);
         }
