@@ -22,6 +22,7 @@ function loadForBook(book) {
 
     const pluginResolver = new PluginResolver({
         baseDirectories: [path.join(process.cwd(), "node_modules")],
+        logger: logger,
     });
     const installedPlugins = requirements.map((dep) => {
         const name = dep.getName();

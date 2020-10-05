@@ -25,6 +25,7 @@ const SPECIAL_PACKAGE_NAME = [
 
 class PluginResolver {
     baseDirectories: any;
+    logger: any;
 
     constructor(config) {
         /**
@@ -32,6 +33,7 @@ class PluginResolver {
          */
         this.baseDirectories = config && config.baseDirectories ? config.baseDirectories : [];
         this.baseDirectories.push("");
+        this.logger = config && config.logger;
     }
 
     /**
@@ -39,7 +41,7 @@ class PluginResolver {
      * @param {string} packageName
      * @returns {string} return path to module
      */
-    resolvePluginPackageName(packageName, logger) {
+    resolvePluginPackageName(packageName) {
         const baseDirs = this.baseDirectories;
         const honkitFullPackageName = util.createFullPackageName("honkit-plugin-", packageName);
         // honkit > gitbook > normal
@@ -64,8 +66,8 @@ class PluginResolver {
                 break;
             }
         }
-        if (pkgPath && logger) {
-            logger.debug.ln(`plugin path: ${pkgPath}`);
+        if (pkgPath && this.logger) {
+            this.logger.debug.ln(`plugin path: ${pkgPath}`);
         }
         if (!pkgPath) {
             throw new ReferenceError(`Failed to load HonKit's plugin module: "${packageName}" is not found.
