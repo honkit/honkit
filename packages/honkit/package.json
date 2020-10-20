@@ -85,7 +85,7 @@
     "moment": "^2.24.0",
     "nunjucks": "^3.2.0",
     "nunjucks-do": "1.0.0",
-    "object-path": "^0.9.2",
+    "object-path": "^0.11.5",
     "omit-keys": "^0.1.0",
     "open": "^7.0.0",
     "q": "1.5.1",
