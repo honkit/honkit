@@ -29,7 +29,7 @@ function generatePages(generator, output) {
         const absoluteFilePath = path.join(root, file.getPath());
         // incremental build
         if (isIncrementBuilding && !output.incrementalChangeFileSet.has(absoluteFilePath)) {
-            logger.debug.ln(`slkip generate page "${file.getPath()}"`);
+            logger.debug.ln(`skip generate page "${file.getPath()}"`);
             return; // Skip build
         }
         // if has compiled pages, use it instead of compiling page

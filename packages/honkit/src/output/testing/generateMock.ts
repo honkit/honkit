@@ -11,11 +11,11 @@ import { generateBook } from "../generateBook";
  *
  * FOR TESTING PURPOSE ONLY
  *
- * @param {Generator}
+ * @param Generator
  * @param {Map<String:String|Map>} files
  * @return {Promise<String>}
  */
-function generateMock(Generator, files) {
+export function generateMockBook(Generator, files) {
     const fs = createMockFS(files);
 
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
@@ -30,7 +30,27 @@ function generateMock(Generator, files) {
                 root: dir.name,
             });
         })
-        .thenResolve(dir.name);
+        .then((output) => {
+            return {
+                book,
+                output,
+                dir: dir.name,
+            };
+        });
+}
+
+/**
+ * Generate a book using a generator
+ * And returns the path to the output dir.
+ *
+ * FOR TESTING PURPOSE ONLY
+ *
+ * @param Generator
+ * @param {Map<String:String|Map>} files
+ * @return {Promise<String>}
+ */
+function generateMock(Generator, files) {
+    return generateMockBook(Generator, files).then((ret) => ret.dir);
 }
 
 export default generateMock;
