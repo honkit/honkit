@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1599970442016,
+  "lastUpdate": 1603286031814,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4865,6 +4865,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.40%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cae82a2329c6a6d8b61360be942bb4a6550ceeea",
+          "message": "Merge pull request #138 from honkit/dependabot/npm_and_yarn/object-path-0.11.5\n\nchore(deps): bump object-path from 0.9.2 to 0.11.5",
+          "timestamp": "2020-10-21T22:10:07+09:00",
+          "tree_id": "cc92a2597266676caf5e66e305e9767dd52cda5c",
+          "url": "https://github.com/honkit/honkit/commit/cae82a2329c6a6d8b61360be942bb4a6550ceeea"
+        },
+        "date": 1603286031104,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±0.79%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
