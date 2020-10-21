@@ -1,10 +1,15 @@
-// LICENSE : MIT
-"use strict";
-
 import path from "path";
 import * as util from "./package-name-util";
-import tryResolve from "try-resolve";
 
+const tryResolve = (moduleName: string, paths: string[]): string | undefined => {
+    try {
+        return require.resolve(moduleName, {
+            paths,
+        });
+    } catch {
+        return;
+    }
+};
 const SPECIAL_PACKAGE_NAME = [
     "theme-default", // → @honkit/honkit-plugin-theme-default
 ];
@@ -23,14 +28,19 @@ const SPECIAL_PACKAGE_NAME = [
  * - gitbook-plugin-*
  */
 
-class PluginResolver {
-    baseDirectory: any;
+export type PluginResolverOptions = {
+    nodeModulePaths: string[];
+};
 
-    constructor(config) {
+export class PluginResolver {
+    nodeModulePaths: string[];
+
+    constructor(config: PluginResolverOptions) {
+        console.log("config.nodeModulePaths", config.nodeModulePaths);
         /**
          * @type {string} baseDirectory for resolving
          */
-        this.baseDirectory = config && config.baseDirectory ? config.baseDirectory : "";
+        this.nodeModulePaths = config && config.nodeModulePaths ? config.nodeModulePaths : [];
     }
 
     /**
@@ -39,7 +49,7 @@ class PluginResolver {
      * @returns {string} return path to module
      */
     resolvePluginPackageName(packageName) {
-        const baseDir = this.baseDirectory;
+        const basePaths = this.nodeModulePaths;
         const honkitFullPackageName = util.createFullPackageName("honkit-plugin-", packageName);
         // honkit > gitbook > normal
         const gitbookFullPackageName = util.createFullPackageName("gitbook-plugin-", packageName);
@@ -48,21 +58,19 @@ class PluginResolver {
         const honkitScopePackageName = `@honkit/${honkitFullPackageName}`;
         // In sometimes, HonKit package has not main field - so search package.json
         const pkgPath =
-            tryResolve(path.join(baseDir, honkitFullPackageName, "/package.json")) ||
-            tryResolve(path.join(baseDir, gitbookFullPackageName, "/package.json")) ||
-            tryResolve(path.join(baseDir, packageName, "/package.json")) ||
+            tryResolve(path.join(honkitFullPackageName, "/package.json"), basePaths) ||
+            tryResolve(path.join(gitbookFullPackageName, "/package.json"), basePaths) ||
+            tryResolve(path.join(packageName, "/package.json"), basePaths) ||
             (SPECIAL_PACKAGE_NAME.includes(packageName) &&
-                tryResolve(path.join(baseDir, honkitScopePackageName, "/package.json")));
+                tryResolve(path.join(honkitScopePackageName, "/package.json"), basePaths));
         if (!pkgPath) {
             throw new ReferenceError(`Failed to load HonKit's plugin module: "${packageName}" is not found.
 
 cwd: ${process.cwd()}
-baseDir: ${baseDir}
-
+baseDir: 
+${basePaths.join("\n")}
 `);
         }
         return pkgPath.substring(0, pkgPath.length - "/package.json".length);
     }
 }
-
-exports.PluginResolver = PluginResolver;

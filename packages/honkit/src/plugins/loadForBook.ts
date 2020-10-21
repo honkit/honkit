@@ -1,7 +1,6 @@
+import path from "path";
 import listDepsForBook from "./listDepsForBook";
 import { loadPlugin } from "./loadPlugin";
-
-// @ts-expect-error ts-migrate(2459) FIXME: Module '"./PluginResolver"' declares 'PluginResolv... Remove this comment to see the full error message
 import { PluginResolver } from "./PluginResolver";
 
 /**
@@ -19,7 +18,17 @@ function loadForBook(book) {
      */
     const requirements = listDepsForBook(book);
 
-    const pluginResolver = new PluginResolver();
+    /**
+     * Lookup order
+     * 1. Current Working Directory
+     * 2. HonKit Installed Directory
+     * 3. 2's prent directory ... loop 2
+     * 4. Global node_modules directory
+     * https://nodejs.org/api/modules.html#modules_require_resolve_request_options
+     */
+    const pluginResolver = new PluginResolver({
+        nodeModulePaths: [path.join(process.cwd(), "node_modules")].concat(require.resolve.paths("honkit")),
+    });
     const installedPlugins = requirements.map((dep) => {
         const name = dep.getName();
         return dep.merge({
