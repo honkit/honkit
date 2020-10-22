@@ -6,6 +6,8 @@ import Templating from "../templating";
 import JSONUtils from "../json";
 import createTemplateEngine from "./createTemplateEngine";
 import callPageHook from "./callPageHook";
+import { getCache } from "./page-cache";
+import Page from "../models/page";
 
 /**
  * Prepare and generate HTML for a page
@@ -18,7 +20,7 @@ import callPageHook from "./callPageHook";
 function generatePage(output, page) {
     const book = output.getBook();
     const engine = createTemplateEngine(output);
-
+    const cache = getCache();
     return timing.measure(
         "page.generate",
 
@@ -47,13 +49,24 @@ function generatePage(output, page) {
                     })
 
                     // Render templating syntax
-                    .then((content) => {
+                    .then(async (content) => {
                         // console.log("page:preparePage", Date.now() - start);
                         const absoluteFilePath = path.join(book.getContentRoot(), filePath);
+                        // if has compiled pages, use it instead of compiling page
+                        const pageHash = page.hash();
+                        const cachedPage = cache.getKey(pageHash);
+                        if (cachedPage) {
+                            // @ts-expect-error
+                            return Page.fromJSON(output);
+                        }
                         try {
-                            return Templating.render(engine, absoluteFilePath, content, context);
+                            const output = await Templating.render(engine, absoluteFilePath, content, context);
+                            // update cache
+                            // @ts-expect-error
+                            cache.setKey(pageHash, Page.toJSON(output));
+                            return output;
                         } catch (error) {
-                            console.error("Template Rendering Error");
+                            console.error("Template Rendering Error", error);
                             console.log("Template content", content);
                             throw error;
                         }

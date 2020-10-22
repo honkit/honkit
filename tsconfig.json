@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "es2018",
     "module": "commonjs",
-    "noEmit": true,
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,

@@ -1,19 +1,19 @@
 import assert from "assert";
-import generatePage from "../generatePage";
 import { generateMockBook } from "../testing/generateMock";
-import Output from "../../models/output";
 import Immutable from "immutable";
 import generatePages from "../generatePages";
 import Plugin from "../../models/plugin";
-import Plugins from "../../plugins";
-import createMockFS from "../../fs/mock";
-import Book from "../../models/book";
-import parseBook from "../../parse/parseBook";
-import { generateBook } from "../generateBook";
 import JSONGenerator from "../json";
 
-describe("generatePage", function () {
-    it("should call page when call generatePage", async () => {
+const createOutputWithPlugin = async ({ Generator, plugin, files }) => {
+    const { output } = await generateMockBook(Generator, files);
+    // add plugin
+    return output.merge({
+        plugins: [plugin],
+    });
+};
+describe("plugin-hooks", function () {
+    it(`should be called "page" and "page:before" when generate each pages`, async () => {
         let onPageBeforeCount = 0;
         let onPageCount = 0;
         const plugin = new Plugin({
@@ -36,17 +36,16 @@ describe("generatePage", function () {
                 },
             }),
         });
-        const { book, output } = await generateMockBook(JSONGenerator, {
-            "README.md": "Hello World",
-        });
-        // Setup plugin
-        const newOutput = output.merge({
-            plugins: [plugin],
+        const output = await createOutputWithPlugin({
+            Generator: JSONGenerator,
+            plugin,
+            files: {
+                "README.md": "Hello World",
+            },
         });
         // call twice
-        // @ts-ignore
-        await generatePages(JSONGenerator, newOutput);
-        await generatePages(JSONGenerator, newOutput);
+        await generatePages(JSONGenerator, output);
+        await generatePages(JSONGenerator, output);
         // assert
         assert.strictEqual(onPageBeforeCount, 2);
         assert.strictEqual(onPageCount, 2);
