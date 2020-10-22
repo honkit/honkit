@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1603286031814,
+  "lastUpdate": 1603370820728,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4896,6 +4896,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±0.79%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1ac77dee17c1135b5bbc89f9757f81f93b811c89",
+          "message": "Merge pull request #140 from honkit/fix-137\n\nfix(honkit): fix cache algorithm",
+          "timestamp": "2020-10-22T21:43:34+09:00",
+          "tree_id": "2a932c7bc15bdc50835abd95713613972769ae4a",
+          "url": "https://github.com/honkit/honkit/commit/1ac77dee17c1135b5bbc89f9757f81f93b811c89"
+        },
+        "date": 1603370819727,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±0.45%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
