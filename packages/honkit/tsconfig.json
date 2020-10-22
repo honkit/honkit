@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
+    // for importing package.json
     "rootDir": "src",
     "allowJs": true,
     "resolveJsonModule": true
