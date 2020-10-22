@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.7](https://github.com/honkit/honkit/compare/v3.6.6...v3.6.7) (2020-10-22)
+
+
+### Bug Fixes
+
+* **honkit:** call "page" and "page:before" if honkit has the cache ([3742225](https://github.com/honkit/honkit/commit/374222514c41d6164ca1c1804f4c18169c466daa))
+
+
+
+
+
 ## [3.6.6](https://github.com/honkit/honkit/compare/v3.6.5...v3.6.6) (2020-09-05)
 
 **Note:** Version bump only for package honkit
