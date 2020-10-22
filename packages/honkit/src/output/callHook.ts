@@ -26,7 +26,6 @@ function callHook(name, getArgument, handleResult, output) {
 
     const logger = output.getLogger();
     const plugins = output.getPlugins();
-
     logger.debug.ln(`calling hook "${name}"`);
 
     // Create the JS context for plugins

@@ -1,7 +1,6 @@
 import listDepsForBook from "./listDepsForBook";
 import { loadPlugin } from "./loadPlugin";
 
-// @ts-expect-error ts-migrate(2459) FIXME: Module '"./PluginResolver"' declares 'PluginResolv... Remove this comment to see the full error message
 import { PluginResolver } from "./PluginResolver";
 
 /**

@@ -21,6 +21,8 @@ Hooks is a method of augmenting or altering the behavior of the process, with cu
 | `page:before` | Called before running the templating engine on the page | Page Object |
 | `page` | Called before outputting and indexing the page. | Page Object |
 
+:memo: HonKit may skip these pages hooks on non-changed page when incremental mode(`honkit serve`)
+
 ##### Page Object
 
 ```js

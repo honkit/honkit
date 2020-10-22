@@ -6,6 +6,7 @@ import direction from "direction";
  * Parse a page, its content and the YAMl header
  *
  * @param {Page} page
+ * @param {string} content
  * @return {Page}
  */
 

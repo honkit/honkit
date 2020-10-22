@@ -23,10 +23,10 @@ const SPECIAL_PACKAGE_NAME = [
  * - gitbook-plugin-*
  */
 
-class PluginResolver {
-    baseDirectory: any;
+export class PluginResolver {
+    baseDirectory: string;
 
-    constructor(config) {
+    constructor(config: { baseDirectory?: string } = {}) {
         /**
          * @type {string} baseDirectory for resolving
          */
@@ -64,5 +64,3 @@ baseDir: ${baseDir}
         return pkgPath.substring(0, pkgPath.length - "/package.json".length);
     }
 }
-
-exports.PluginResolver = PluginResolver;

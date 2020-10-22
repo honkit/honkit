@@ -154,10 +154,10 @@ function processOutput(generator, output) {
  *
  * @param {Generator} generator
  * @param {Book} book
- * @param {Object} options
+ * @param {Object} [options = {}]
  * @return {Promise<Output>}
  */
-function generateBook(generator, book, options) {
+function generateBook(generator, book, options = {}) {
     options = generator.Options(options);
     const state = generator.State ? generator.State({}) : Immutable.Map();
     const start = Date.now();

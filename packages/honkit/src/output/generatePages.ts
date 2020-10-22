@@ -27,25 +27,12 @@ function generatePages(generator, output) {
         const file = page.getFile();
 
         const absoluteFilePath = path.join(root, file.getPath());
-        // incremental build
+        // When incremental build
         if (isIncrementBuilding && !output.incrementalChangeFileSet.has(absoluteFilePath)) {
-            logger.debug.ln(`slkip generate page "${file.getPath()}"`);
+            logger.debug.ln(`skip generate page "${file.getPath()}"`);
             return; // Skip build
         }
-        // if has compiled pages, use it instead of compiling page
-        const pageHash = page.hash();
-        const cachedPage = cache.getKey(pageHash);
-        const pagePromise = cachedPage
-            ? // @ts-expect-error ts-migrate(2339) FIXME: Property 'fromJSON' does not exist on type 'Class'... Remove this comment to see the full error message
-              Promise(Page.fromJSON(cachedPage))
-            : generatePage(output, page).then((resultPage) => {
-                  logger.debug.ln(`Update new page "${file.getPath()}"`);
-
-                  // @ts-expect-error ts-migrate(2339) FIXME: Property 'toJSON' does not exist on type 'Class'.
-                  cache.setKey(pageHash, Page.toJSON(resultPage));
-                  return resultPage;
-              });
-        return pagePromise
+        return generatePage(output, page)
             .then((resultPage) => {
                 // It call renderToString
                 // Create page file
