@@ -20,3 +20,4 @@ $ npm link honkit-plugin-<plugin's name>
 
 [gitbook-tester](https://github.com/todvora/gitbook-tester) makes it easy to write **Node.js/Mocha** unit tests for your plugins. Using [Travis.org](https://travis.org), tests can be run on each commits/tags.
 
+[honkit-tester](https://github.com/vowstar/honkit-tester) over time, in some cases gitbook-tester no longer works properly on the latest version of nodejs. This is a port of gitbook-tester, which could works on LTS version of nodejs v10 v12 v14, and using the honkit engine instead of gitbook to run test.
