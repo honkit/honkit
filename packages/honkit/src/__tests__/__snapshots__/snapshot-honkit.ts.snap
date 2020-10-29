@@ -72,7 +72,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -847,6 +847,45 @@ These files must be at the root of your book (or the root of every language book
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
     
@@ -957,7 +996,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -1607,6 +1646,45 @@ $ honkit mobi ./ ./mybook.mobi
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
     
@@ -1717,7 +1795,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -2373,6 +2451,45 @@ In some case, HonKit cannot detect the changes of plugins.</p>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
     
@@ -2481,7 +2598,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -3111,6 +3228,45 @@ Object {
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
     
@@ -3221,7 +3377,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -3856,6 +4012,45 @@ Object {
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
     
@@ -3966,7 +4161,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -4600,6 +4795,45 @@ and all other kinds of inline markup ...
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
     
@@ -4710,7 +4944,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -5408,6 +5642,45 @@ Markdown will dictates <span class=\\"hljs-emphasis\\">_most_</span> of your <sp
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
     
@@ -5518,7 +5791,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -6219,6 +6492,45 @@ page.type (<span class=\\"hljs-string\\">&apos;markdown&apos;</span> or <span cl
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -6329,7 +6641,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -6995,6 +7307,45 @@ This is the body of the block.
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -7105,7 +7456,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -7786,6 +8137,45 @@ Object {
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -7896,7 +8286,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -8556,6 +8946,45 @@ Refer to <a href=\\"api.html\\">Context and APIs</a> to learn more about <code>t
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -8666,7 +9095,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -9396,6 +9825,45 @@ Object {
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -9506,7 +9974,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -10143,6 +10611,45 @@ Object {
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -10253,7 +10760,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -10886,6 +11393,45 @@ Object {
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -10996,7 +11542,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -11662,6 +12208,45 @@ npm run serve
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
     
@@ -11772,7 +12357,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -12459,6 +13044,45 @@ bin/*
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
     
@@ -12569,7 +13193,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -13238,6 +13862,45 @@ but now stands for &quot;PHP: Hypertext Preprocessor&quot;).
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -13348,7 +14011,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -14107,6 +14770,45 @@ Asterisks
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -14217,7 +14919,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -14852,6 +15554,45 @@ Render inline asciidoc</p>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -14962,7 +15703,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -15614,6 +16355,45 @@ This is the default content
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -15724,7 +16504,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -16408,6 +17188,45 @@ Current version is </span><span class=\\"hljs-template-variable\\">{{ softwareVe
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -16518,7 +17337,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -17366,6 +18185,45 @@ Object {
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     
@@ -17476,7 +18334,7 @@ Object {
     </head>
     <body>
         
-<div class=\\"book\\">
+<div class=\\"book honkit-cloak\\">
     <div class=\\"book-summary\\">
         
             
@@ -18143,6 +19001,45 @@ Object {
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
     

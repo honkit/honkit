@@ -15,6 +15,45 @@
 {% endblock %}
 
 {% block javascript %}
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isNotMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isNotMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true)
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+            book.classList.remove("honkit-cloak");
+        }
+        __init__restoreLastSidebarState();
+    </script>
     <script src="{{ "gitbook.js"|resolveAsset }}"></script>
     <script src="{{ "theme.js"|resolveAsset }}"></script>
     {% for resource in plugins.resources.js %}
@@ -27,7 +66,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         {% block book_sidebar %}
             {% block search_input %}{% endblock %}
