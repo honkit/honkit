@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1603371982971,
+  "lastUpdate": 1603980605224,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -4989,6 +4989,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±2.29%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "09d6fc17d06855deaf725173058cd2d77097ed68",
+          "message": "Merge pull request #92 from honkit/fix/91\n\nperf(default-theme): move restoring sidebar logic to critical path",
+          "timestamp": "2020-10-29T23:07:20+09:00",
+          "tree_id": "b209874b99ab1fa31e63b872a2e920c861a46eb8",
+          "url": "https://github.com/honkit/honkit/commit/09d6fc17d06855deaf725173058cd2d77097ed68"
+        },
+        "date": 1603980604450,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±1.24%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
