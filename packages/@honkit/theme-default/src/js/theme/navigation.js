@@ -223,6 +223,7 @@ function handleScrolling() {
     Handle a change of url withotu refresh the whole page
 */
 var prevUri = location.href;
+
 function handleNavigation(relativeUrl, push) {
     var prevUriParsed = url.parse(prevUri);
 
@@ -366,13 +367,13 @@ function preparePage(resetScroll) {
     updateNavigationPosition();
 
     // Focus on content
-    $pageWrapper.focus();
+    $pageWrapper.focus({ preventScroll: true });
 
     // Get scroller
     var $scroller = getScroller();
 
     // Reset scroll
-    if (resetScroll !== false) {
+    if (resetScroll) {
         $scroller.scrollTop(0);
     }
 
