@@ -23,7 +23,8 @@ function listAssets(book, pages) {
     const config = book.getConfig();
     const configFile = config.getFile().getPath();
 
-    function filterFile(file) {
+    function filterFile(rawFile) {
+        const file = rawFile.replace(/\\/g, "/");
         return !(
             file === summaryFile ||
             file === glossaryFile ||
