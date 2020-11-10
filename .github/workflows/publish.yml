@@ -96,8 +96,8 @@ jobs:
       - name: "Set TAG_NAME=tags"
         if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
-          echo "TAG_NAME=v${env.CURRENT_VERSION}" >> $GITHUB_ENV
-          echo "PACKAGE_VERSION=${env.CURRENT_VERSION}" >> $GITHUB_ENV
+          echo "TAG_NAME=v${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
       - name: Set HUB_TAG
         if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
