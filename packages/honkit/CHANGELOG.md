@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.9](https://github.com/honkit/honkit/compare/v3.6.8...v3.6.9) (2020-11-10)
+
+
+### Bug Fixes
+
+* **honkit/theme-default:** fix first scroll position ([4fb9cd3](https://github.com/honkit/honkit/commit/4fb9cd361d0ae3b40394b632050d77f248ca051d))
+* **theme-default:** add .honkit-cloak ([77feada](https://github.com/honkit/honkit/commit/77feada7106e73a120e5ebd8c23f8546812fff9d))
+
+
+
+
+
 ## [3.6.8](https://github.com/honkit/honkit/compare/v3.6.6...v3.6.8) (2020-10-22)
 
 
