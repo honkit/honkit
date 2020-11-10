@@ -39,20 +39,25 @@
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia("(max-width: 600px)").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(".book");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add("without-animation", "with-summary");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
             book.classList.remove("honkit-cloak");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src="{{ "gitbook.js"|resolveAsset }}"></script>
     <script src="{{ "theme.js"|resolveAsset }}"></script>
