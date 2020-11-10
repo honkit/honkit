@@ -34,7 +34,7 @@ jobs:
       - name: Set Current Version
         run: |
           CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
-          echo "::set-env name=CURRENT_VERSION::${CURRENT_VERSION}"
+          echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
       - name: Tag Check
         id: tag_check
         run: |
@@ -96,13 +96,13 @@ jobs:
       - name: "Set TAG_NAME=tags"
         if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
-          echo "::set-env name=TAG_NAME::v${{ env.CURRENT_VERSION }}"
-          echo "::set-env name=PACKAGE_VERSION::${{ env.CURRENT_VERSION  }}"
+          echo "TAG_NAME=v${env.CURRENT_VERSION}" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=${env.CURRENT_VERSION}" >> $GITHUB_ENV
       - name: Set HUB_TAG
         if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
-          echo "::set-env name=HUB_TAG::${DOCKER_HUB_BASE_NAME}:${TAG_NAME}"
-          echo "::set-env name=HUB_LATEST_TAG::${DOCKER_HUB_BASE_NAME}:latest"
+          echo "HUB_TAG=${DOCKER_HUB_BASE_NAME}:${TAG_NAME}" >> $GITHUB_ENV
+          echo "HUB_LATEST_TAG=${DOCKER_HUB_BASE_NAME}:latest" >> $GITHUB_ENV
       - name: Build image
         if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
