@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1604996317184,
+  "lastUpdate": 1605009444267,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5113,6 +5113,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±1.92%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "59682979+uta-mori@users.noreply.github.com",
+            "name": "森 優太",
+            "username": "uta-mori"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ad1c7569f15396412dad5a8a00e5e499bfb12054",
+          "message": "CI(publish):👷 Migrate set-env to $GITHUB_ENV  (#150)\n\n* Migrate set-env to $GITHUB_ENV\r\n\r\n* fix typo",
+          "timestamp": "2020-11-10T20:53:54+09:00",
+          "tree_id": "1f2ac57bc99305d70b342c629817b65a3f185ffb",
+          "url": "https://github.com/honkit/honkit/commit/ad1c7569f15396412dad5a8a00e5e499bfb12054"
+        },
+        "date": 1605009442968,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±0.83%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
