@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1605021701581,
+  "lastUpdate": 1605022192198,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5175,6 +5175,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±0.88%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "b60aa562454be277e34d9e892a995d971f18dbad",
+          "message": "CI(publish): fix env.* substitution\n\nfix #149",
+          "timestamp": "2020-11-11T00:25:58+09:00",
+          "tree_id": "ff09145420753c4064948bf8274876d1a1f4dbd9",
+          "url": "https://github.com/honkit/honkit/commit/b60aa562454be277e34d9e892a995d971f18dbad"
+        },
+        "date": 1605022191407,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.93%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
