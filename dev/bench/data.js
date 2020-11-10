@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1604019541258,
+  "lastUpdate": 1604995780740,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5051,6 +5051,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.23%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "10fc599b680957871c7ed4f12f0451d5c91af34e",
+          "message": "Merge pull request #147 from dogatana/fix#146\n\nfix (parse/listAssets.ts): fix issue #146",
+          "timestamp": "2020-11-10T17:06:36+09:00",
+          "tree_id": "7fa54716456fcaed6b00f7c0e339f89d0ca9c7f8",
+          "url": "https://github.com/honkit/honkit/commit/10fc599b680957871c7ed4f12f0451d5c91af34e"
+        },
+        "date": 1604995779518,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.79%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
