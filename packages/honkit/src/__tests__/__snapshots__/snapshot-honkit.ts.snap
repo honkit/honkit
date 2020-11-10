@@ -871,20 +871,25 @@ These files must be at the root of your book (or the root of every language book
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
@@ -1670,20 +1675,25 @@ $ honkit mobi ./ ./mybook.mobi
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
@@ -2475,20 +2485,25 @@ In some case, HonKit cannot detect the changes of plugins.</p>
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
@@ -3252,20 +3267,25 @@ Object {
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
@@ -4036,20 +4056,25 @@ Object {
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
@@ -4819,20 +4844,25 @@ and all other kinds of inline markup ...
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
@@ -5666,20 +5696,25 @@ Markdown will dictates <span class=\\"hljs-emphasis\\">_most_</span> of your <sp
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
@@ -6516,20 +6551,25 @@ page.type (<span class=\\"hljs-string\\">&apos;markdown&apos;</span> or <span cl
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -7331,20 +7371,25 @@ This is the body of the block.
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -8161,20 +8206,25 @@ Object {
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -8970,20 +9020,25 @@ Refer to <a href=\\"api.html\\">Context and APIs</a> to learn more about <code>t
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -9849,20 +9904,25 @@ Object {
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -10635,20 +10695,25 @@ Object {
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -11417,20 +11482,25 @@ Object {
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -12232,20 +12302,25 @@ npm run serve
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
@@ -13068,20 +13143,25 @@ bin/*
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"gitbook/gitbook.js\\"></script>
     <script src=\\"gitbook/theme.js\\"></script>
@@ -13886,20 +13966,25 @@ but now stands for &quot;PHP: Hypertext Preprocessor&quot;).
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -14794,20 +14879,25 @@ Asterisks
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -15578,20 +15668,25 @@ Render inline asciidoc</p>
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -16379,20 +16474,25 @@ This is the default content
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -17212,20 +17312,25 @@ Current version is </span><span class=\\"hljs-template-variable\\">{{ softwareVe
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -18209,20 +18314,25 @@ Object {
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
@@ -19025,20 +19135,25 @@ Object {
             }
         }
         function __init__restoreLastSidebarState() {
-            var isNotMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
-            if (isNotMobile) {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
                 // Init last state if not mobile
                 return;
             }
-            var sidebarState = __init__getSidebarState(true)
+            var sidebarState = __init__getSidebarState(true);
             var book = document.querySelector(\\".book\\");
             // Show sidebar if it enabled
             if (sidebarState && book) {
                 book.classList.add(\\"without-animation\\", \\"with-summary\\");
             }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
             book.classList.remove(\\"honkit-cloak\\");
         }
-        __init__restoreLastSidebarState();
     </script>
     <script src=\\"../gitbook/gitbook.js\\"></script>
     <script src=\\"../gitbook/theme.js\\"></script>
