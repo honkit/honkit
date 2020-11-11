@@ -12191,7 +12191,7 @@ Object {
 <pre><code>$ npm install honkit --save-dev
 # or
 $ yarn add honkit --dev
-</code></pre><p>&#x26A0;&#xFE0F; Warning:</p>
+</code></pre><p>⚠️ Warning:</p>
 <ul>
 <li>If you have installed <code>honkit</code> globally(<code>--global</code>) you must install each plugins rule globally(<code>--global</code>) as well</li>
 <li>If you have installed <code>honkit</code> locally you must install each plugins locally as well</li>
@@ -13001,15 +13001,15 @@ Object {
 <p>HonKit uses a simple directory structure. All Markdown/Asciidoc files listed in the <a href=\\"pages.html\\">SUMMARY</a> will be transformed as HTML. Multi-Lingual books have a slightly <a href=\\"languages.html\\">different structure</a>.</p>
 <p>A basic HonKit usually looks something like this:</p>
 <pre><code>.
-&#x251C;&#x2500;&#x2500; book.json
-&#x251C;&#x2500;&#x2500; README.md
-&#x251C;&#x2500;&#x2500; SUMMARY.md
-&#x251C;&#x2500;&#x2500; chapter-1/
-|   &#x251C;&#x2500;&#x2500; README.md
-|   &#x2514;&#x2500;&#x2500; something.md
-&#x2514;&#x2500;&#x2500; chapter-2/
-    &#x251C;&#x2500;&#x2500; README.md
-    &#x2514;&#x2500;&#x2500; something.md
+├── book.json
+├── README.md
+├── SUMMARY.md
+├── chapter-1/
+|   ├── README.md
+|   └── something.md
+└── chapter-2/
+    ├── README.md
+    └── something.md
 </code></pre><p>An overview of what each of these does:</p>
 <table>
 <thead>
@@ -13052,10 +13052,10 @@ bin/*
 </code></pre><h3 id=\\"subdirectory\\">Project integration with subdirectory </h3>
 <p>For software projects, you can use a subdirectory (like <code>docs/</code>) to store the book for the project&apos;s documentation. You can configure the <a href=\\"config.html\\"><code>root</code> option</a> to indicate the folder where HonKit can find the book&apos;s files:</p>
 <pre><code>.
-&#x251C;&#x2500;&#x2500; book.json
-&#x2514;&#x2500;&#x2500; docs/
-    &#x251C;&#x2500;&#x2500; README.md
-    &#x2514;&#x2500;&#x2500; SUMMARY.md
+├── book.json
+└── docs/
+    ├── README.md
+    └── SUMMARY.md
 </code></pre><p>With <code>book.json</code> containing:</p>
 <pre><code>{
     &quot;root&quot;: &quot;./docs&quot;
@@ -14663,7 +14663,7 @@ Object {
 
                                 <h1 id=\\"markdown\\">Markdown</h1>
 <p>Most of the examples from this documentation are in Markdown. Markdown is default parser for HonKit, but one can also opt for the <a href=\\"asciidoc.html\\">AsciiDoc syntax</a>.</p>
-<p>Here&#x2019;s an overview of Markdown syntax that you can use with HonKit (same as GitHub with some additions).</p>
+<p>Here’s an overview of Markdown syntax that you can use with HonKit (same as GitHub with some additions).</p>
 <h3 id=\\"headings\\">Headings</h3>
 <p>To create a heading, add one to six <code>#</code> symbols before your heading text. The number of # you use will determine the size of the heading.</p>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\"># This is an &lt;h1&gt; tag</span>
@@ -14679,7 +14679,7 @@ Object {
 <span class=\\"hljs-section\\"># Hello # {#id}</span>
 </code></pre>
 <h3 id=\\"paragraphs\\">Paragraphs and Line Breaks </h3>
-<p>A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line &#x2014; a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.</p>
+<p>A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line — a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.</p>
 <pre><code>Here&apos;s a line for us to start with.
 
 This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
@@ -14697,7 +14697,7 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 <h3 id=\\"lists\\">Lists </h3>
 <p>Markdown supports ordered (numbered) and unordered (bulleted) lists.</p>
 <h5 id=\\"unordered\\">Unordered</h5>
-<p>Unordered lists use asterisks, pluses, and hyphens &#x2014; interchangably &#x2014; as list markers:</p>
+<p>Unordered lists use asterisks, pluses, and hyphens — interchangably — as list markers:</p>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-bullet\\">* </span>Item 1
 <span class=\\"hljs-bullet\\">* </span>Item 2
   * Item 2a
@@ -14746,7 +14746,7 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 </code></pre>
 <p>The pipes on either end of the table are optional. Cells can vary in width and do not need to be perfectly aligned within columns. There must be at least three hyphens in each column of the header row.</p>
 <h3 id=\\"code\\">Code </h3>
-<p>Markdown supports two different code block styles. One uses lines indented with either four spaces or one tab whereas the other uses lines with tilde characters as delimiters &#x2013; therefore the content does not need to be indented:</p>
+<p>Markdown supports two different code block styles. One uses lines indented with either four spaces or one tab whereas the other uses lines with tilde characters as delimiters – therefore the content does not need to be indented:</p>
 <pre><code class=\\"lang-markdown\\">This is a sample code block.
 
 <span class=\\"hljs-code\\">    Continued here.</span>
