@@ -47,4 +47,8 @@
 * [Examples](examples.md)
 * [Release notes](https://github.com/honkit/honkit/blob/master/CHANGELOG.md)
 
+--
+
+* [Encoding](encoding.md)
+
 
