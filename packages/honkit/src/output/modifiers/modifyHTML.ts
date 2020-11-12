@@ -17,8 +17,8 @@ function modifyHTML(page, operations) {
         return op($);
     }).then(() => {
         const resultHTML = $.html();
-        const unescapedHtml = resultHTML.replace(/&#x([0-9a-f]{4});/gi, (_, code) =>
-            String.fromCharCode(parseInt(code, 16))
+        const unescapedHtml = resultHTML.replace(/&#x([0-9a-f]{2,});/gi, (_, code) =>
+            String.fromCodePoint(parseInt(code, 16))
         );
         return page.set("content", unescapedHtml);
     });
