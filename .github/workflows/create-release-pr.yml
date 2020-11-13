@@ -33,14 +33,12 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           assignees: ${{ github.actor }}
           signoff: false
-          branch: feature/update-package
+          branch: release/${{ env.PACKAGE_VERSION }}
           branch-suffix: timestamp
           delete-branch: true
           title: 'v${{ env.PACKAGE_VERSION }}'
           body: |
             @${{ github.actor }} Please write release note in the body
-
-            # v${{ env.PACKAGE_VERSION }}
 
             ## Breaking Changes
 
