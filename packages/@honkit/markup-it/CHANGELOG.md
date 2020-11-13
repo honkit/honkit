@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.6.12 (2020-11-13)
+
+**Note:** Version bump only for package @honkit/markup-it
+
+
+
+
+
 ## [3.5.4](https://github.com/GitbookIO/draft-markup/compare/v3.5.3...v3.5.4) (2020-08-01)
 
 
