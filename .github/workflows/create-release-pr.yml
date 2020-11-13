@@ -1,0 +1,50 @@
+name: Create Release PR
+on:
+  workflow_dispatch:
+
+jobs:
+  create-release-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup Node
+        uses: actions/setup-node@v1
+      - name: Install
+        run: yarn install
+      - name: Update Version
+        run: yarn run versionup --yes
+      - name: package-version
+        run: node -p -e '`PACKAGE_VERSION=${require("./lerna.json").version}`' >> $GITHUB_ENV
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: |
+            chore(release): ${{ env.PACKAGE_VERSION }}
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          assignees: ${{ github.actor }}
+          signoff: false
+          branch: feature/update-package
+          branch-suffix: timestamp
+          delete-branch: true
+          title: 'v${{ env.PACKAGE_VERSION }}'
+          body: |
+            @${{ github.actor }} Please write release note in the body
+
+            # v${{ env.PACKAGE_VERSION }}
+
+            ## Breaking Changes
+
+            ## Features
+
+            ## Fixes
+
+          labels: |
+            Type:release
+      - name: Check Pull Request
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
