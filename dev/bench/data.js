@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1605022621633,
+  "lastUpdate": 1605266487743,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5237,6 +5237,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±7.18%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dogatana@gmail.com",
+            "name": "Toshihiko Ichida",
+            "username": "dogatana"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c9d78bf7714098c21d14df754d954bfd68ba8990",
+          "message": "fix (honkit): unescape characteres of output html (#155)",
+          "timestamp": "2020-11-13T20:18:11+09:00",
+          "tree_id": "149fb530d38868bc1447cac66a999d5d6905f0ad",
+          "url": "https://github.com/honkit/honkit/commit/c9d78bf7714098c21d14df754d954bfd68ba8990"
+        },
+        "date": 1605266486469,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±4.27%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
