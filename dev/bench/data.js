@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1605282330295,
+  "lastUpdate": 1605535706727,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5423,6 +5423,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±2.32%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b3acfe5b88221fdc180cb0465b083e57574ffbb5",
+          "message": "fix(docker): add calibre tarball (#158)",
+          "timestamp": "2020-11-16T23:04:35+09:00",
+          "tree_id": "af25052c3b48734d1757756e99ea066a66a53ca1",
+          "url": "https://github.com/honkit/honkit/commit/b3acfe5b88221fdc180cb0465b083e57574ffbb5"
+        },
+        "date": 1605535705645,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.42%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
