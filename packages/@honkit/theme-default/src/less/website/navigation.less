@@ -35,7 +35,7 @@
     }
 }
 
-@media (max-width: @mobileMaxWidth) {
+@media screen and (max-width: @mobileMaxWidth) {
     .navigation {
         position: static;
         top: auto;
@@ -51,3 +51,8 @@
     }
 }
 
+@media print {
+    .navigation {
+        display: none;
+    }
+}
