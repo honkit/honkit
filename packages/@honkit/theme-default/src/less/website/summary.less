@@ -91,7 +91,7 @@
         }
     }
 
-    @media (max-width: @sidebar-breakpoint) {
+    @media screen and (max-width: @sidebar-breakpoint) {
         width: calc(~"100% - 60px");
         bottom: 0px;
         left: -100%;
@@ -109,5 +109,14 @@
         .book-summary {
             .transition(none) !important;
         }
+    }
+}
+
+@media print {
+    .book-summary {
+        display: none;
+    }
+    .book-body {
+        left: 0;
     }
 }

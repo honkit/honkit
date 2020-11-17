@@ -56,7 +56,7 @@
             text-decoration: none;
         }
 
-        @media (max-width: 1000px) {
+        @media screen and (max-width: 1000px) {
             display: none;
         }
 
@@ -82,5 +82,11 @@
                 display: none;
             }
         }
+    }
+}
+
+@media print {
+    .book-header {
+        display: none;
     }
 }
