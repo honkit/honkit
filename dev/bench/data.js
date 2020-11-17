@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1605535706727,
+  "lastUpdate": 1605609508160,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5454,6 +5454,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±0.42%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "f@zenc.io",
+            "name": "François Wouts",
+            "username": "fwouts"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "672cb9c92f90dd154793b7a36d4dbf2654e7aec4",
+          "message": "fix(honkit): browser print layout in default theme (#159)",
+          "timestamp": "2020-11-17T19:34:26+09:00",
+          "tree_id": "de0cc9a651f1ccf20fef3054f28a123c1ac2c750",
+          "url": "https://github.com/honkit/honkit/commit/672cb9c92f90dd154793b7a36d4dbf2654e7aec4"
+        },
+        "date": 1605609506458,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.69%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
