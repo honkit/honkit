@@ -1,19 +1,16 @@
 {
-    "name": "gitbook-plugin-highlight",
-    "description": "Default code highlighter for GitBook",
+    "name": "@honkit/honkit-plugin-highlight",
+    "description": "Default code highlighter for HonKit",
     "main": "index.js",
     "version": "2.0.3",
-    "engines": {
-        "gitbook": ">=2.4.0"
-    },
-    "homepage": "https://github.com/GitbookIO/plugin-highlight",
+    "homepage": "https://github.com/honkit/honkit",
     "repository": {
         "type": "git",
-        "url": "https://github.com/GitbookIO/plugin-highlight.git"
+        "url": "https://github.com/honkit/honkit.git"
     },
     "license": "Apache 2",
     "bugs": {
-        "url": "https://github.com/GitbookIO/plugin-highlight/issues"
+        "url": "https://github.com/honkit/honkit/issues"
     },
     "dependencies": {
         "highlight.js": "9.8.0"
