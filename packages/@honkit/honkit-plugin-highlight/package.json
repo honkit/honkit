@@ -16,12 +16,9 @@
     "highlight.js": "9.8.0"
   },
   "devDependencies": {
-    "less": "2.7.1",
-    "mocha":"3.2.0",
-    "gitbook-tester":"1.4.3"
+    "less": "2.7.1"
   },
   "scripts": {
-    "prepublish": "mkdir -p css && lessc ./less/website.less > ./css/website.css; lessc ./less/ebook.less > ./css/ebook.css",
-    "test": "mocha test/"
+    "prepublish": "mkdir -p css && lessc ./less/website.less > ./css/website.css; lessc ./less/ebook.less > ./css/ebook.css"
   }
 }

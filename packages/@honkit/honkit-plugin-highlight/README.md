@@ -14,8 +14,13 @@ You can remove it using:
 }
 ```
 
+## TODO
+
+Currently, tests have been disabled due to issues regarding [gitbook-tester] which is used in the tests.
+
 ## License
 
 Apache-2.0 (same as [Gitbook/plugin-highlight])
 
 [Gitbook/plugin-highlight]: https://github.com/GitbookIO/plugin-highlight
+[gitbook-tester]: https://github.com/todvora/gitbook-tester
