@@ -22,7 +22,7 @@
     "less": "^3.12.2"
   },
   "scripts": {
-    "build": "mkdir -p css && lessc ./less/website.less > ./css/website.css; lessc ./less/ebook.less > ./css/ebook.css",
+    "build": "lessc ./less/website.less ./css/website.css && lessc ./less/ebook.less ./css/ebook.css",
     "prepublish": "npm run build"
   }
 }
