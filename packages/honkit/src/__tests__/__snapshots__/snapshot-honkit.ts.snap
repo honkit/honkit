@@ -4883,9 +4883,9 @@ Object {
 <p>HonKit supports building books written in multiple languages. Each language should be a sub-directory following the normal HonKit format, and a file named <code>LANGS.md</code> should be present at the root of the repository with the following format:</p>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\"># Languages</span>
 
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">English</span>](<span class=\\"hljs-link\\">en/</span>)
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">French</span>](<span class=\\"hljs-link\\">fr/</span>)
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">Español</span>](<span class=\\"hljs-link\\">es/</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">English</span>](<span class=\\"hljs-link\\">en/</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">French</span>](<span class=\\"hljs-link\\">fr/</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">Español</span>](<span class=\\"hljs-link\\">es/</span>)
 </code></pre>
 <h3 id=\\"configuration-for-each-language\\">Configuration for each language</h3>
 <p>When a language book (ex: <code>en</code>) has a <code>book.json</code>, its configuration will extend the main configuration.</p>
@@ -6504,12 +6504,12 @@ Object {
 <h5 id=\\"simple-example\\">Simple example</h5>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\"># Summary</span>
 
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">Part I</span>](<span class=\\"hljs-link\\">part1/README.md</span>)
-<span class=\\"hljs-code\\">    * [Writing is nice](part1/writing.md)</span>
-<span class=\\"hljs-code\\">    * [HonKit is nice](part1/honkit.md)</span>
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">Part II</span>](<span class=\\"hljs-link\\">part2/README.md</span>)
-<span class=\\"hljs-code\\">    * [We love feedback](part2/feedback_please.md)</span>
-<span class=\\"hljs-code\\">    * [Better tools for authors](part2/better_tools.md)</span>
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">Part I</span>](<span class=\\"hljs-link\\">part1/README.md</span>)
+<span class=\\"hljs-bullet\\">    *</span> [<span class=\\"hljs-string\\">Writing is nice</span>](<span class=\\"hljs-link\\">part1/writing.md</span>)
+<span class=\\"hljs-bullet\\">    *</span> [<span class=\\"hljs-string\\">HonKit is nice</span>](<span class=\\"hljs-link\\">part1/honkit.md</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">Part II</span>](<span class=\\"hljs-link\\">part2/README.md</span>)
+<span class=\\"hljs-bullet\\">    *</span> [<span class=\\"hljs-string\\">We love feedback</span>](<span class=\\"hljs-link\\">part2/feedback_please.md</span>)
+<span class=\\"hljs-bullet\\">    *</span> [<span class=\\"hljs-string\\">Better tools for authors</span>](<span class=\\"hljs-link\\">part2/better_tools.md</span>)
 </code></pre>
 <p>Each chapter has a dedicated page (<code>part#/README.md</code>) and is split into subchapters.</p>
 <h5 id=\\"anchors\\">Anchors</h5>
@@ -6518,12 +6518,12 @@ Object {
 
 <span class=\\"hljs-section\\">### Part I</span>
 
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">Part I</span>](<span class=\\"hljs-link\\">part1/README.md</span>)
-<span class=\\"hljs-code\\">    * [Writing is nice](part1/README.md#writing)</span>
-<span class=\\"hljs-code\\">    * [HonKit is nice](part1/README.md#honkit)</span>
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">Part II</span>](<span class=\\"hljs-link\\">part2/README.md</span>)
-<span class=\\"hljs-code\\">    * [We love feedback](part2/README.md#feedback)</span>
-<span class=\\"hljs-code\\">    * [Better tools for authors](part2/README.md#tools)</span>
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">Part I</span>](<span class=\\"hljs-link\\">part1/README.md</span>)
+<span class=\\"hljs-bullet\\">    *</span> [<span class=\\"hljs-string\\">Writing is nice</span>](<span class=\\"hljs-link\\">part1/README.md#writing</span>)
+<span class=\\"hljs-bullet\\">    *</span> [<span class=\\"hljs-string\\">HonKit is nice</span>](<span class=\\"hljs-link\\">part1/README.md#honkit</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">Part II</span>](<span class=\\"hljs-link\\">part2/README.md</span>)
+<span class=\\"hljs-bullet\\">    *</span> [<span class=\\"hljs-string\\">We love feedback</span>](<span class=\\"hljs-link\\">part2/README.md#feedback</span>)
+<span class=\\"hljs-bullet\\">    *</span> [<span class=\\"hljs-string\\">Better tools for authors</span>](<span class=\\"hljs-link\\">part2/README.md#tools</span>)
 </code></pre>
 <h5 id=\\"parts\\">Parts</h5>
 <p>The Table of Contents can be divided into parts separated by headings or horizontal lines:</p>
@@ -6531,17 +6531,17 @@ Object {
 
 <span class=\\"hljs-section\\">### Part I</span>
 
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">Writing is nice</span>](<span class=\\"hljs-link\\">part1/writing.md</span>)
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">HonKit is nice</span>](<span class=\\"hljs-link\\">part1/honkit.md</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">Writing is nice</span>](<span class=\\"hljs-link\\">part1/writing.md</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">HonKit is nice</span>](<span class=\\"hljs-link\\">part1/honkit.md</span>)
 
 <span class=\\"hljs-section\\">### Part II</span>
 
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">We love feedback</span>](<span class=\\"hljs-link\\">part2/feedback_please.md</span>)
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">Better tools for authors</span>](<span class=\\"hljs-link\\">part2/better_tools.md</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">We love feedback</span>](<span class=\\"hljs-link\\">part2/feedback_please.md</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">Better tools for authors</span>](<span class=\\"hljs-link\\">part2/better_tools.md</span>)
 
 ----
 
-<span class=\\"hljs-bullet\\">* </span>[<span class=\\"hljs-string\\">Last part without title</span>](<span class=\\"hljs-link\\">part3/title.md</span>)
+<span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">Last part without title</span>](<span class=\\"hljs-link\\">part3/title.md</span>)
 </code></pre>
 <p>Parts are just groups of chapters and do not have dedicated pages, but according to the theme, it will show in the navigation.</p>
 <h3 id=\\"pages\\">Pages</h3>
@@ -6563,11 +6563,11 @@ Markdown will dictates <span class=\\"hljs-emphasis\\">_most_</span> of your <sp
 <h4 id=\\"front-matter\\">Front Matter</h4>
 <p>Pages can contain an optional front matter. It can be used to define the page&apos;s description. The front matter must be the first thing in the file and must take the form of valid YAML set between triple-dashed lines. Here is a basic example:</p>
 <pre><code class=\\"lang-yaml\\"><span class=\\"hljs-meta\\">---</span>
-<span class=\\"hljs-attr\\">description:</span> This is a short description of my page
-<span class=\\"hljs-meta\\">---</span>
-
+<span class=\\"hljs-attr\\">description:</span> <span class=\\"hljs-string\\">This</span> <span class=\\"hljs-string\\">is</span> <span class=\\"hljs-string\\">a</span> <span class=\\"hljs-string\\">short</span> <span class=\\"hljs-string\\">description</span> <span class=\\"hljs-string\\">of</span> <span class=\\"hljs-string\\">my</span> <span class=\\"hljs-string\\">page</span>
+<span class=\\"hljs-meta\\">---
+</span>
 <span class=\\"hljs-comment\\"># The content of my page</span>
-...
+<span class=\\"hljs-string\\">...</span>
 </code></pre>
 <p>The front matter can define variables of your own, they will be added to the <a href=\\"templating/variables.html\\">page variable</a> so you can use them in your templating.</p>
 
@@ -7439,9 +7439,9 @@ page.type (<span class=\\"hljs-string\\">&apos;markdown&apos;</span> or <span cl
     <span class=\\"hljs-string\\">&quot;book&quot;</span> &lt;Book&gt;,
 
     <span class=\\"hljs-comment\\">// Output instance</span>
-    <span class=\\"hljs-string\\">&quot;output&quot;</span>: <span class=\\"xml\\"><span class=\\"hljs-tag\\">&lt;<span class=\\"hljs-name\\">Output</span>&gt;</span>
+    <span class=\\"hljs-string\\">&quot;output&quot;</span>: &lt;Output&gt;
 }
-</span></code></pre>
+</code></pre>
 <p>For example a filter or block function can access the current book using: <code>this.book</code>.</p>
 <h4 id=\\"context-for-hooks\\">Context for Hooks</h4>
 <p>Hooks only have access to the <code>&lt;Book&gt;</code> instance using <code>this.book</code>.</p>
@@ -9120,13 +9120,13 @@ Object {
 <p>The <code>index.js</code> is main entry point of your plugin runtime:</p>
 <pre><code class=\\"lang-js\\"><span class=\\"hljs-built_in\\">module</span>.exports = {
     <span class=\\"hljs-comment\\">// Map of hooks</span>
-    hooks: {},
+    <span class=\\"hljs-attr\\">hooks</span>: {},
 
     <span class=\\"hljs-comment\\">// Map of new blocks</span>
-    blocks: {},
+    <span class=\\"hljs-attr\\">blocks</span>: {},
 
     <span class=\\"hljs-comment\\">// Map of new filters</span>
-    filters: {}
+    <span class=\\"hljs-attr\\">filters</span>: {}
 };
 </code></pre>
 <h2 id=\\"publish-your-plugin\\">Publish your plugin</h2>
@@ -15843,9 +15843,9 @@ Object {
 <p>Here’s an overview of Markdown syntax that you can use with HonKit (same as GitHub with some additions).</p>
 <h3 id=\\"headings\\">Headings</h3>
 <p>To create a heading, add one to six <code>#</code> symbols before your heading text. The number of # you use will determine the size of the heading.</p>
-<pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\"># This is an &lt;h1&gt; tag</span>
-<span class=\\"hljs-section\\">## This is an &lt;h2&gt; tag</span>
-<span class=\\"hljs-section\\">###### This is an &lt;h6&gt; tag</span>
+<pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\"># This is an <span class=\\"xml\\"><span class=\\"hljs-tag\\">&lt;<span class=\\"hljs-name\\">h1</span>&gt;</span></span> tag</span>
+<span class=\\"hljs-section\\">## This is an <span class=\\"xml\\"><span class=\\"hljs-tag\\">&lt;<span class=\\"hljs-name\\">h2</span>&gt;</span></span> tag</span>
+<span class=\\"hljs-section\\">###### This is an <span class=\\"xml\\"><span class=\\"hljs-tag\\">&lt;<span class=\\"hljs-name\\">h6</span>&gt;</span></span> tag</span>
 </code></pre>
 <p>HonKit supports a nice way for explicitly setting the header ID. If you follow the header text with an opening curly bracket (separated from the text with a least one space), a hash, the ID and a closing curly bracket, the ID is set on the header. If you use the trailing hash feature of atx style headers, the header ID has to go after the trailing hashes. For example:</p>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\">Hello {#id}
@@ -15869,24 +15869,24 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 
 ~~This text will be crossed out.~~
 
-<span class=\\"hljs-emphasis\\">_You **can** combine them_</span>
+<span class=\\"hljs-emphasis\\">_You <span class=\\"hljs-strong\\">**can**</span> combine them_</span>
 </code></pre>
 <h3 id=\\"lists\\">Lists </h3>
 <p>Markdown supports ordered (numbered) and unordered (bulleted) lists.</p>
 <h5 id=\\"unordered\\">Unordered</h5>
 <p>Unordered lists use asterisks, pluses, and hyphens — interchangably — as list markers:</p>
-<pre><code class=\\"lang-markdown\\"><span class=\\"hljs-bullet\\">* </span>Item 1
-<span class=\\"hljs-bullet\\">* </span>Item 2
-  * Item 2a
-  * Item 2b
+<pre><code class=\\"lang-markdown\\"><span class=\\"hljs-bullet\\">*</span> Item 1
+<span class=\\"hljs-bullet\\">*</span> Item 2
+<span class=\\"hljs-bullet\\">  *</span> Item 2a
+<span class=\\"hljs-bullet\\">  *</span> Item 2b
 </code></pre>
 <h5 id=\\"ordered\\">Ordered</h5>
 <p>Ordered lists use numbers followed by periods:</p>
-<pre><code class=\\"lang-markdown\\"><span class=\\"hljs-bullet\\">1. </span>Item 1
-<span class=\\"hljs-bullet\\">2. </span>Item 2
-<span class=\\"hljs-bullet\\">3. </span>Item 3
-   * Item 3a
-   * Item 3b
+<pre><code class=\\"lang-markdown\\"><span class=\\"hljs-bullet\\">1.</span> Item 1
+<span class=\\"hljs-bullet\\">2.</span> Item 2
+<span class=\\"hljs-bullet\\">3.</span> Item 3
+<span class=\\"hljs-bullet\\">   *</span> Item 3a
+<span class=\\"hljs-bullet\\">   *</span> Item 3b
 </code></pre>
 <h3 id=\\"links\\">Links </h3>
 <p>Markdown supports two style of links: inline and reference.</p>
@@ -15926,8 +15926,8 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 <p>Markdown supports two different code block styles. One uses lines indented with either four spaces or one tab whereas the other uses lines with tilde characters as delimiters – therefore the content does not need to be indented:</p>
 <pre><code class=\\"lang-markdown\\">This is a sample code block.
 
-<span class=\\"hljs-code\\">    Continued here.</span>
-</code></pre>
+<span class=\\"hljs-code\\">    Continued here.
+</span></code></pre>
 <h5 id=\\"fenced-code-blocks\\">Fenced code blocks</h5>
 <p>You can create fenced code blocks by placing triple backticks <code>\`\`\` </code> before and after the code block. We recommend placing a blank line before and after code blocks to make the raw formatting easier to read.</p>
 <pre><code>\`\`\`
@@ -15966,10 +15966,10 @@ Markdown here will not be **parsed**
 
 Hyphens
 
-<span class=\\"hljs-emphasis\\">***</span>
+<span class=\\"hljs-strong\\">**<span class=\\"hljs-emphasis\\">*
 
 Asterisks
-</code></pre>
+</span></span></code></pre>
 <h3 id=\\"ignoring-markdown-formatting\\">Ignoring Markdown formatting</h3>
 <p>You can tell HonKit to ignore (or escape) Markdown formatting by using <code>\\\\</code> before the Markdown character.</p>
 <pre><code>Let&apos;s rename \\\\*our-new-project\\\\* to \\\\*our-old-project\\\\*.
@@ -18414,14 +18414,14 @@ Object {
 <pre><code class=\\"lang-twig\\"><span class=\\"xml\\">My name is </span><span class=\\"hljs-template-variable\\">{{ name }}</span><span class=\\"xml\\">, nice to meet you
 </span></code></pre>
 <p>This looks up username from the context and displays it. Variable names can have dots in them which lookup properties, just like JavaScript. You can also use the square bracket syntax.</p>
-<pre><code class=\\"lang-twig\\"><span class=\\"xml\\"></span><span class=\\"hljs-template-variable\\">{{ foo.bar }}</span><span class=\\"xml\\">
+<pre><code class=\\"lang-twig\\"><span class=\\"hljs-template-variable\\">{{ foo.bar }}</span><span class=\\"xml\\">
 </span><span class=\\"hljs-template-variable\\">{{ foo[&quot;bar&quot;] }}</span><span class=\\"xml\\">
 </span></code></pre>
 <p>If a value is undefined, nothing is displayed. The following all output nothing if foo is undefined: <code>{{ foo }}</code>, <code>{{ foo.bar }}</code>, <code>{{ foo.bar.baz }}</code>.</p>
 <p>HonKit provides a set of <a href=\\"variables.html\\">predefined  variables</a> from the context.</p>
 <h3 id=\\"filters\\">Filters</h3>
 <p>Filters are essentially functions that can be applied to variables. They are called with a pipe operator (<code>|</code>) and can take arguments.</p>
-<pre><code class=\\"lang-twig\\"><span class=\\"xml\\"></span><span class=\\"hljs-template-variable\\">{{ foo | title }}</span><span class=\\"xml\\">
+<pre><code class=\\"lang-twig\\"><span class=\\"hljs-template-variable\\">{{ foo | title }}</span><span class=\\"xml\\">
 </span><span class=\\"hljs-template-variable\\">{{ foo | join(&quot;,&quot;) }}</span><span class=\\"xml\\">
 </span><span class=\\"hljs-template-variable\\">{{ foo | replace(&quot;foo&quot;, &quot;bar&quot;) | capitalize }}</span><span class=\\"xml\\">
 </span></code></pre>
@@ -18429,13 +18429,13 @@ Object {
 <h3 id=\\"tags\\">Tags</h3>
 <h5 id=\\"if\\">if</h5>
 <p><code>if</code> tests a condition and lets you selectively display content. It behaves exactly as JavaScript&apos;s <code>if</code> behaves.</p>
-<pre><code class=\\"lang-twig\\"><span class=\\"xml\\"></span><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\"><span class=\\"hljs-keyword\\">if</span></span> variable %}</span><span class=\\"xml\\">
+<pre><code class=\\"lang-twig\\"><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\"><span class=\\"hljs-keyword\\">if</span></span> variable %}</span><span class=\\"xml\\">
   It is true
 </span><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\"><span class=\\"hljs-keyword\\">endif</span></span> %}</span><span class=\\"xml\\">
 </span></code></pre>
 <p>If variable is defined and evaluates to true, &quot;It is true&quot; will be displayed. Otherwise, nothing will be.</p>
 <p>You can specify alternate conditions with <code>elif</code> and <code>else</code>:</p>
-<pre><code class=\\"lang-twig\\"><span class=\\"xml\\"></span><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\"><span class=\\"hljs-keyword\\">if</span></span> hungry %}</span><span class=\\"xml\\">
+<pre><code class=\\"lang-twig\\"><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\"><span class=\\"hljs-keyword\\">if</span></span> hungry %}</span><span class=\\"xml\\">
   I am hungry
 </span><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\">elif</span> tired %}</span><span class=\\"xml\\">
   I am tired
@@ -18453,7 +18453,7 @@ Object {
 </span></code></pre>
 <h5 id=\\"set\\">set</h5>
 <p><code>set</code> lets you create/modify a variable.</p>
-<pre><code class=\\"lang-twig\\"><span class=\\"xml\\"></span><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\"><span class=\\"hljs-keyword\\">set</span></span> softwareVersion = &quot;1.0.0&quot; %}</span><span class=\\"xml\\">
+<pre><code class=\\"lang-twig\\"><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\"><span class=\\"hljs-keyword\\">set</span></span> softwareVersion = &quot;1.0.0&quot; %}</span><span class=\\"xml\\">
 
 Current version is </span><span class=\\"hljs-template-variable\\">{{ softwareVersion }}</span><span class=\\"xml\\">.
 [Download it](website.com/download/</span><span class=\\"hljs-template-variable\\">{{ softwareVersion }}</span><span class=\\"xml\\">)
@@ -18462,7 +18462,7 @@ Current version is </span><span class=\\"hljs-template-variable\\">{{ softwareVe
 <p>Inclusion and inheritance is detailled in the <a href=\\"conrefs.html\\">Content References</a> section.</p>
 <h3 id=\\"escaping\\">Escaping</h3>
 <p>If you want HonKit to ignore any of the special templating tags, you can use raw and anything inside of it will be output as plain text.</p>
-<pre><code class=\\"lang-twig\\"><span class=\\"xml\\"></span><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\">raw</span> %}</span><span class=\\"xml\\">
+<pre><code class=\\"lang-twig\\"><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\">raw</span> %}</span><span class=\\"xml\\">
   this will </span><span class=\\"hljs-template-variable\\">{{ not be processed }}</span><span class=\\"xml\\">
 </span><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\">endraw</span> %}</span><span class=\\"xml\\">
 </span></code></pre>
