@@ -22,7 +22,9 @@
     "less": "^3.12.2"
   },
   "scripts": {
-    "build": "lessc ./less/website.less ./css/website.css && lessc ./less/ebook.less ./css/ebook.css",
+    "build": "npm run build:less && npm run build:css",
+    "build:less": "node ./scripts/build-less.js",
+    "build:css": "lessc ./less/website.less ./css/website.css && lessc ./less/ebook.less ./css/ebook.css",
     "prepublish": "npm run build"
   }
 }
