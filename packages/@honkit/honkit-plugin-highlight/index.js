@@ -29,7 +29,9 @@ function highlight(lang, code) {
 
     try {
         return hljs.highlight(lang, code).value;
-    } catch (e) {}
+    } catch (e) {
+        console.error(e);
+    }
 
     return {
         body: code,
