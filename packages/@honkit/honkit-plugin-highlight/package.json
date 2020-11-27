@@ -16,7 +16,7 @@
     "highlight.js": "^10.4.0"
   },
   "devDependencies": {
-    "less": "2.7.1"
+    "less": "^3.12.2"
   },
   "scripts": {
     "prepublish": "mkdir -p css && lessc ./less/website.less > ./css/website.css; lessc ./less/ebook.less > ./css/ebook.css"
