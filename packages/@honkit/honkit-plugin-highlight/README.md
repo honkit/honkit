@@ -18,9 +18,8 @@ You can remove it using:
 
 Currently, tests have been disabled due to issues regarding [gitbook-tester] which is used in the tests.
 
-Replacing [gitbook-tester] with [honkit-tester] can solve the issues, but introduces another issue...
-[honkit-tester] tries to create a symbolic link called `@honkit/honkit-plugin-highlight`.
-That causes an `ENOENT` error because there is no `@honkit` directory.
+Replacing [gitbook-tester] with [honkit-tester] can solve the issues, but introduces other issues which block to enable the tests.
+That requires additional effort.
 
 ## License
 
