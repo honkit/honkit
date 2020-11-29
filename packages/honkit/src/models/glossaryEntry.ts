@@ -5,39 +5,31 @@ import slug from "github-slugid";
     A definition represents an entry in the glossary
 */
 
-const GlossaryEntry = Immutable.Record({
+class GlossaryEntry extends Immutable.Record({
     name: String(),
     description: String(),
-});
+}) {
+    getName(): string {
+        return this.get("name");
+    }
 
-GlossaryEntry.prototype.getName = function () {
-    return this.get("name");
-};
+    getDescription(): string {
+        return this.get("description");
+    }
 
-GlossaryEntry.prototype.getDescription = function () {
-    return this.get("description");
-};
+    /**
+     Get identifier for this entry
+     */
+    getID(): string {
+        return GlossaryEntry.nameToID(this.getName());
+    }
 
-/**
- Get identifier for this entry
-
- @retrun {boolean}
- */
-GlossaryEntry.prototype.getID = function () {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToID' does not exist on type 'Class'... Remove this comment to see the full error message
-    return GlossaryEntry.nameToID(this.getName());
-};
-
-/**
- Normalize a glossary entry name into a unique id
-
- @param {string}
- @return {string}
- */
-
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToID' does not exist on type 'Class'... Remove this comment to see the full error message
-GlossaryEntry.nameToID = function nameToID(name) {
-    return slug(name);
-};
+    /**
+     Normalize a glossary entry name into a unique id
+     */
+    static nameToID(name: string): string {
+        return slug(name);
+    }
+}
 
 export default GlossaryEntry;

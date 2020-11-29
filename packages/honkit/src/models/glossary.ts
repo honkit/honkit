@@ -23,8 +23,6 @@ class Glossary extends Immutable.Record({
      */
     getEntry(name: string) {
         const entries = this.getEntries();
-
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToID' does not exist on type 'Class'... Remove this comment to see the full error message
         const id = GlossaryEntry.nameToID(name);
 
         return entries.get(id);
@@ -57,22 +55,18 @@ class Glossary extends Immutable.Record({
      @param {GlossaryEntry} entry
      @return {Glossary}
      */
-    static addEntry(glossary: Glossary, entry) {
+    static addEntry(glossary: Glossary, entry: GlossaryEntry): Glossary {
         const id = entry.getID();
         let entries = glossary.getEntries();
 
         entries = entries.set(id, entry);
-        return glossary.set("entries", entries);
+        return glossary.set("entries", entries) as Glossary;
     }
 
     /**
      Add/Replace an entry to a glossary by name/description
-
-     @param {Glossary} glossary
-     @param {GlossaryEntry} entry
-     @return {Glossary}
      */
-    static addEntryByName(glossary, name, description) {
+    static addEntryByName(glossary: Glossary, name: string, description: string): Glossary {
         const entry = new GlossaryEntry({
             name: name,
             description: description,
@@ -83,11 +77,11 @@ class Glossary extends Immutable.Record({
     /**
      Create a glossary from a list of entries
 
-     @param {string} filename
+     @param file
      @param {Array|List} entries
      @return {Glossary}
      */
-    static createFromEntries(file, entries) {
+    static createFromEntries(file: string, entries: any[]) {
         entries = entries.map((entry) => {
             if (!(entry instanceof GlossaryEntry)) {
                 entry = new GlossaryEntry(entry);
