@@ -79,6 +79,10 @@ jobs:
           release_name: ${{ github.event.pull_request.title }}
           body: |
             ${{ github.event.pull_request.body }}
+
+            ---
+
+            [Comments](${{ github.event.pull_request.html_url }})
           draft: false
           prerelease: false
       - uses: actions/github-script@0.8.0
