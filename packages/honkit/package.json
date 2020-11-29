@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@honkit/asciidoc": "^3.6.13",
+    "@honkit/honkit-plugin-highlight": "^2.0.3",
     "@honkit/honkit-plugin-theme-default": "^3.6.13",
     "@honkit/markdown-legacy": "^3.6.13",
     "bash-color": "0.0.4",
@@ -66,7 +67,6 @@
     "flat-cache": "^2.0.1",
     "front-matter": "^2.1.0",
     "gitbook-plugin-fontsettings": "^2.0.0",
-    "gitbook-plugin-highlight": "^2.0.3",
     "gitbook-plugin-livereload": "0.0.1",
     "gitbook-plugin-lunr": "^1.2.0",
     "gitbook-plugin-search": "^2.2.1",

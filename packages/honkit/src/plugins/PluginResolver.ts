@@ -6,6 +6,7 @@ import * as util from "./package-name-util";
 import tryResolve from "try-resolve";
 
 const SPECIAL_PACKAGE_NAME = [
+    "highlight", // → @honkit/honkit-plugin-highlight
     "theme-default", // → @honkit/honkit-plugin-theme-default
 ];
 

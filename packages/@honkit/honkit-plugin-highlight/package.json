@@ -1,0 +1,37 @@
+{
+  "name": "@honkit/honkit-plugin-highlight",
+  "description": "Default code highlighter for HonKit",
+  "version": "2.0.3",
+  "homepage": "https://github.com/honkit/honkit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/honkit/honkit.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/honkit/honkit/issues"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "css"
+  ],
+  "dependencies": {
+    "highlight.js": "^10.4.0"
+  },
+  "devDependencies": {
+    "less": "^3.12.2"
+  },
+  "scripts": {
+    "build": "npm run build:less --scripts-prepend-node-path && npm run build:css --scripts-prepend-node-path",
+    "build:less": "node ./scripts/build-less.js",
+    "build:css": "lessc ./less/website.less ./css/website.css && lessc ./less/ebook.less ./css/ebook.css",
+    "prepublish": "npm run build"
+  },
+  "engines": {
+    "gitbook": ">=2.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
