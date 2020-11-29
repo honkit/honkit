@@ -8,10 +8,8 @@ import Parser from "./models/parser";
 
 // This list is ordered by priority of parsers to use
 const parsers = Immutable.List([
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     Parser.create("markdown", EXTENSIONS_MARKDOWN, markdownParser),
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     Parser.create("asciidoc", EXTENSIONS_ASCIIDOC, asciidocParser),
 ]);
 

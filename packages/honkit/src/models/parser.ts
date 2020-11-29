@@ -1,7 +1,7 @@
 import Immutable from "immutable";
 import Promise from "../utils/promise";
 
-const Parser = Immutable.Record({
+class Parser extends Immutable.Record({
     name: String(),
 
     // List of extensions that can be processed using this parser
@@ -14,121 +14,117 @@ const Parser = Immutable.Record({
     glossary: Function(),
     page: Function(),
     inline: Function(),
-});
-
-Parser.prototype.getName = function () {
-    return this.get("name");
-};
-
-Parser.prototype.getExtensions = function () {
-    return this.get("extensions");
-};
-
-// PARSE
-
-Parser.prototype.parseReadme = function (content) {
-    const readme = this.get("readme");
-
-    return Promise(readme(content));
-};
-
-Parser.prototype.parseSummary = function (content) {
-    const summary = this.get("summary");
-
-    return Promise(summary(content));
-};
-
-Parser.prototype.parseGlossary = function (content) {
-    const glossary = this.get("glossary");
-
-    return Promise(glossary(content));
-};
-
-Parser.prototype.preparePage = function (content) {
-    const page = this.get("page");
-    if (!page.prepare) {
-        return Promise(content);
+}) {
+    getName(): string {
+        return this.get("name");
     }
 
-    return Promise(page.prepare(content));
-};
+    getExtensions(): Immutable.List<string> {
+        return this.get("extensions");
+    }
 
-Parser.prototype.parsePage = function (content) {
-    const page = this.get("page");
+    // PARSE
 
-    return Promise(page(content));
-};
+    parseReadme(content: string) {
+        const readme = this.get("readme");
 
-Parser.prototype.parseInline = function (content) {
-    const inline = this.get("inline");
+        return Promise(readme(content));
+    }
 
-    return Promise(inline(content));
-};
+    parseSummary(content: string) {
+        const summary = this.get("summary");
 
-Parser.prototype.parseLanguages = function (content) {
-    const langs = this.get("langs");
+        return Promise(summary(content));
+    }
 
-    return Promise(langs(content));
-};
+    parseGlossary(content: string) {
+        const glossary = this.get("glossary");
 
-Parser.prototype.parseInline = function (content) {
-    const inline = this.get("inline");
+        return Promise(glossary(content));
+    }
 
-    return Promise(inline(content));
-};
+    preparePage(content: string) {
+        const page = this.get("page");
+        if (!page.prepare) {
+            return Promise(content);
+        }
 
-// TO TEXT
+        return Promise(page.prepare(content));
+    }
 
-Parser.prototype.renderLanguages = function (content) {
-    const langs = this.get("langs");
+    parsePage(content: string) {
+        const page = this.get("page");
 
-    return Promise(langs.toText(content));
-};
+        return Promise(page(content));
+    }
 
-Parser.prototype.renderSummary = function (content) {
-    const summary = this.get("summary");
+    parseInline(content: string) {
+        const inline = this.get("inline");
 
-    return Promise(summary.toText(content));
-};
+        return Promise(inline(content));
+    }
 
-Parser.prototype.renderGlossary = function (content) {
-    const glossary = this.get("glossary");
+    parseLanguages(content: string) {
+        const langs = this.get("langs");
 
-    return Promise(glossary.toText(content));
-};
+        return Promise(langs(content));
+    }
 
-/**
- Test if this parser matches an extension
+    // TO TEXT
 
- @param {string} ext
- @return {boolean}
- */
-Parser.prototype.matchExtension = function (ext) {
-    const exts = this.getExtensions();
-    return exts.includes(ext.toLowerCase());
-};
+    renderLanguages(content: string) {
+        const langs = this.get("langs");
 
-/**
- Create a new parser using a module (gitbook-markdown, etc)
+        return Promise(langs.toText(content));
+    }
 
- @param {string} name
- @param {Array<String>} extensions
- @param {Object} module
- @return {Parser}
- */
+    renderSummary(content: string) {
+        const summary = this.get("summary");
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
-Parser.create = function (name, extensions, module) {
-    return new Parser({
-        name: name,
-        extensions: Immutable.List(extensions),
-        readme: module.readme,
-        langs: module.langs,
-        summary: module.summary,
-        glossary: module.glossary,
-        page: module.page,
-        inline: module.inline,
-    });
-};
+        return Promise(summary.toText(content));
+    }
+
+    renderGlossary(content: string) {
+        const glossary = this.get("glossary");
+
+        return Promise(glossary.toText(content));
+    }
+
+    /**
+     Test if this parser matches an extension
+
+     @param {string} ext
+     @return {boolean}
+     */
+    matchExtension(ext: string) {
+        const exts = this.getExtensions();
+        return exts.includes(ext.toLowerCase());
+    }
+
+    /**
+     Create a new parser using a module (gitbook-markdown, etc)
+
+     @param {string} name
+     @param {Array<String>} extensions
+     @param {Object} module
+     @return {Parser}
+     */
+    static create(
+        name: string,
+        extensions: string[] | Immutable.Iterable.Indexed<unknown>,
+        module: { readme: any; langs: any; summary: any; glossary: any; page: any; inline: any }
+    ) {
+        return new Parser({
+            name: name,
+            extensions: Immutable.List(extensions),
+            readme: module.readme,
+            langs: module.langs,
+            summary: module.summary,
+            glossary: module.glossary,
+            page: module.page,
+            inline: module.inline,
+        });
+    }
+}
 
 export default Parser;

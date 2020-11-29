@@ -131,7 +131,7 @@ function map(arr, iter) {
  * @param {Function} func
  * @return {Funciton}
  */
-function wrap(func) {
+function wrap(func: Function) {
     return function () {
         const args = Array.prototype.slice.call(arguments, 0);
 
@@ -140,6 +140,7 @@ function wrap(func) {
         });
     };
 }
+
 Q.forEach = forEach;
 Q.reduce = reduce;
 Q.map = map;
