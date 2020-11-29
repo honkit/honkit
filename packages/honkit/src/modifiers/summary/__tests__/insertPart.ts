@@ -29,7 +29,6 @@ describe("insertPart", () => {
     ]);
 
     test("should insert an part at a given level", () => {
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         const part = SummaryPart.create(
             {
                 title: "Inserted",
@@ -49,7 +48,6 @@ describe("insertPart", () => {
     });
 
     test("should insert an part in last position", () => {
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         const part = SummaryPart.create(
             {
                 title: "Inserted",

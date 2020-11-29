@@ -203,8 +203,6 @@ class Summary extends Immutable.Record(
             if (part instanceof SummaryPart) {
                 return part;
             }
-
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             return SummaryPart.create(part, i + 1);
         });
 

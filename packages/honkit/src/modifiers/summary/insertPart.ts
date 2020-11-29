@@ -10,7 +10,7 @@ import indexLevels from "./indexLevels";
  @return {Summary}
  */
 function insertPart(summary, part, index) {
-    part = SummaryPart(part);
+    part = new SummaryPart(part);
 
     const parts = summary.getParts().insert(index, part);
     return indexLevels(summary.set("parts", parts));
