@@ -26,7 +26,7 @@ class Book extends Immutable.Record({
     readme: Readme(),
     summary: Summary(),
     glossary: new Glossary(),
-    languages: Languages(),
+    languages: new Languages(),
 
     // ID of the language for language books
     language: String(),
