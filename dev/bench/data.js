@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606640003893,
+  "lastUpdate": 1606652679550,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5764,6 +5764,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.25%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7c0666ca16a0b4d5a022f218aea4e8f4d16b8c0d",
+          "message": "Merge pull request #168 from honkit/migrate-fs.ts\n\nrefactor(honkit): migrate fs.ts to class-based model",
+          "timestamp": "2020-11-29T21:20:53+09:00",
+          "tree_id": "20072712901dcc2fb2dd016214d5aab87fd65382",
+          "url": "https://github.com/honkit/honkit/commit/7c0666ca16a0b4d5a022f218aea4e8f4d16b8c0d"
+        },
+        "date": 1606652678605,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.95%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
