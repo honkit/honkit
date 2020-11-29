@@ -33,7 +33,6 @@ function parseMultilingualBook(book) {
         (currentBook, lang) => {
             const langID = lang.getID();
 
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParent' does not exist on type... Remove this comment to see the full error message
             const child = Book.createFromParent(currentBook, langID);
             let ignore = currentBook.getIgnore();
 

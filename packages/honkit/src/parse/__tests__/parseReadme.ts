@@ -9,7 +9,6 @@ describe("parseReadme", () => {
             "README.md": "# Hello\n\nAnd here is the description.",
         });
 
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
         const book = Book.createForFS(fs);
 
         return parseReadme(book).then((resultBook) => {
@@ -25,7 +24,6 @@ describe("parseReadme", () => {
     test("should fail if doesn't exist", () => {
         const fs = createMockFS({});
 
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
         const book = Book.createForFS(fs);
 
         return parseReadme(book).then(

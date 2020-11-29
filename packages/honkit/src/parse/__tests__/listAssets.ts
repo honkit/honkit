@@ -5,18 +5,16 @@ import listAssets from "../listAssets";
 import parseGlossary from "../parseGlossary";
 import parseBook from "../parseBook";
 
-
 describe("listAssets", () => {
     test("should not list glossary as asset", () => {
         const fs = createMockFS({
             "GLOSSARY.md": "# Glossary\n\n## Hello\nDescription for hello",
             "assetFile.js": "",
             assets: {
-                "file.js": ""
-            }
+                "file.js": "",
+            },
         });
-        
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
+
         const book = Book.createForFS(fs);
 
         return parseGlossary(book)
@@ -33,7 +31,7 @@ describe("listAssets", () => {
     test("should not list README.md of pages as asset", () => {
         const fs = createMockFS({
             "book.json": JSON.stringify({
-                root: "./test"
+                root: "./test",
             }),
             test: {
                 "SUMMARY.md": `# Summary
@@ -46,14 +44,13 @@ describe("listAssets", () => {
                 "README.md": "top",
                 "sub/README-sub.md": "in sub",
                 "sub/sub/README-subsub.md": "in sub/sub",
-            }
+            },
         });
         const pages = new Map()
             .set("README.md", "top")
             .set("sub/README-sub.md", "sub")
-            .set("sub/sub/README-subsub.md", "sub/sub")
-        
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFS' does not exist on type 'Cla... Remove this comment to see the full error message
+            .set("sub/sub/README-subsub.md", "sub/sub");
+
         const book = Book.createForFS(fs);
 
         return parseBook(book)
