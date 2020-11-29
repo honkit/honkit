@@ -159,7 +159,7 @@ function processOutput(generator, output) {
  */
 function generateBook(generator, book, options = {}) {
     options = generator.Options(options);
-    const state = generator.State ? generator.State({}) : Immutable.Map();
+    const state = generator.State ? new generator.State({}) : Immutable.Map();
     const start = Date.now();
 
     return (
