@@ -4,7 +4,6 @@ import FileModel from "../../../models/file";
 import editPartTitle from "../editPartTitle";
 
 describe("editPartTitle", () => {
-    // @ts-expect-error
     const summary = Summary.createFromParts(new FileModel(), [
         {
             articles: [

@@ -5,7 +5,6 @@ import TemplateBlock from "../templateBlock";
 describe("TemplateBlock", () => {
     describe("create", () => {
         test("must initialize a simple TemplateBlock from a function", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
@@ -33,7 +32,6 @@ describe("TemplateBlock", () => {
 
     describe("getShortcuts", () => {
         test("must return undefined if no shortcuts", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
@@ -45,7 +43,6 @@ describe("TemplateBlock", () => {
         });
 
         test("must return complete shortcut", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", {
                 process: function (block) {
                     return "<p>Hello, World!</p>";
@@ -69,7 +66,6 @@ describe("TemplateBlock", () => {
 
     describe("toNunjucksExt()", () => {
         test("should replace by block anchor", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return "Hello";
             });
@@ -98,7 +94,6 @@ describe("TemplateBlock", () => {
         });
 
         test("must create a valid nunjucks extension", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: "<p>Hello, World!</p>",
@@ -121,7 +116,6 @@ describe("TemplateBlock", () => {
         });
 
         test("must apply block arguments correctly", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return {
                     body: `<${block.kwargs.tag}>Hello, ${block.kwargs.name}!</${block.kwargs.tag}>`,
@@ -144,7 +138,6 @@ describe("TemplateBlock", () => {
         });
 
         test("must accept an async function", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const templateBlock = TemplateBlock.create("sayhello", (block) => {
                 return PromiseUtil().then(() => {
                     return {

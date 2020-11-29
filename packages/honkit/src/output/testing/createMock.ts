@@ -20,7 +20,7 @@ function createMockOutput(generator, files, options) {
     const fs = createMockFS(files);
 
     let book = Book.createForFS(fs);
-    const state = generator.State ? generator.State({}) : Immutable.Map();
+    const state = generator.State ? new generator.State({}) : Immutable.Map();
 
     book = book.setLogLevel("disabled");
     options = generator.Options(options);

@@ -9,8 +9,8 @@ describe("ConrefsLoader", () => {
     const fileName = path.join(dirName, "test.md");
 
     describe("Git", () => {
-        const engine = TemplateEngine({
-            loader: new ConrefsLoader(dirName)
+        const engine = new TemplateEngine({
+            loader: new ConrefsLoader(dirName),
         });
 
         test("should include content from git", () => {
@@ -20,7 +20,7 @@ describe("ConrefsLoader", () => {
             return renderTemplate(
                 engine,
                 fileName,
-                "{% include \"git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md\" %}"
+                '{% include "git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test.md" %}'
             ).then((out) => {
                 expect(out.getContent()).toBe("Hello from git");
             });
@@ -33,7 +33,7 @@ describe("ConrefsLoader", () => {
             return renderTemplate(
                 engine,
                 fileName,
-                "{% include \"git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test2.md\" %}"
+                '{% include "git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test2.md" %}'
             ).then((out) => {
                 expect(out.getContent()).toBe("First Hello. Hello from git");
             });
@@ -46,7 +46,7 @@ describe("ConrefsLoader", () => {
             return renderTemplate(
                 engine,
                 fileName,
-                "{% include \"git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test3.md\" %}"
+                '{% include "git+https://gist.github.com/69ea4542e4c8967d2fa7.git/test3.md" %}'
             ).then((out) => {
                 expect(out.getContent()).toBe("First Hello. Hello from git");
             });
@@ -54,26 +54,24 @@ describe("ConrefsLoader", () => {
     });
 
     describe("Local", () => {
-        const engine = TemplateEngine({
-            loader: new ConrefsLoader(dirName)
+        const engine = new TemplateEngine({
+            loader: new ConrefsLoader(dirName),
         });
 
         describe("Relative", () => {
             test("should resolve basic relative filepath", () => {
-
                 // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
-                return renderTemplate(engine, fileName, "{% include \"include.md\" %}").then((out) => {
+                return renderTemplate(engine, fileName, '{% include "include.md" %}').then((out) => {
                     expect(out.getContent()).toBe("Hello World");
                 });
             });
 
             test("should resolve basic parent filepath", () => {
-
                 // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
                 return renderTemplate(
                     engine,
                     path.join(dirName, "hello/test.md"),
-                    "{% include \"../include.md\" %}"
+                    '{% include "../include.md" %}'
                 ).then((out) => {
                     expect(out.getContent()).toBe("Hello World");
                 });
@@ -82,17 +80,15 @@ describe("ConrefsLoader", () => {
 
         describe("Absolute", () => {
             test("should resolve absolute filepath", () => {
-
                 // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
-                return renderTemplate(engine, fileName, "{% include \"/include.md\" %}").then((out) => {
+                return renderTemplate(engine, fileName, '{% include "/include.md" %}').then((out) => {
                     expect(out.getContent()).toBe("Hello World");
                 });
             });
 
             test("should resolve absolute filepath when in a directory", () => {
-
                 // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
-                return renderTemplate(engine, path.join(dirName, "hello/test.md"), "{% include \"/include.md\" %}").then(
+                return renderTemplate(engine, path.join(dirName, "hello/test.md"), '{% include "/include.md" %}').then(
                     (out) => {
                         expect(out.getContent()).toBe("Hello World");
                     }
@@ -112,14 +108,13 @@ describe("ConrefsLoader", () => {
             return `test-${source}-endtest`;
         }
 
-        const engine = TemplateEngine({
-            loader: new ConrefsLoader(dirName, transform)
+        const engine = new TemplateEngine({
+            loader: new ConrefsLoader(dirName, transform),
         });
 
         test("should transform included content", () => {
-
             // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
-            return renderTemplate(engine, fileName, "{% include \"include.md\" %}").then((out) => {
+            return renderTemplate(engine, fileName, '{% include "include.md" %}').then((out) => {
                 expect(out.getContent()).toBe("test-Hello World-endtest");
             });
         });

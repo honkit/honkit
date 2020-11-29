@@ -10,10 +10,10 @@ import indexLevels from "./indexLevels";
  @return {Summary}
  */
 function unshiftArticle(summary, article) {
-    article = SummaryArticle(article);
+    article = new SummaryArticle(article);
 
     let parts = summary.getParts();
-    let part = parts.get(0) || SummaryPart();
+    let part = parts.get(0) || new SummaryPart();
 
     let articles = part.getArticles();
     articles = articles.unshift(article);

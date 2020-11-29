@@ -45,8 +45,7 @@ function findInstalled(folder) {
         } else {
             results = results.set(
                 pluginName,
-
-                Plugin({
+                new Plugin({
                     name: pluginName,
                     version: version,
                     path: pkgPath,

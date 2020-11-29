@@ -19,14 +19,14 @@ class Book extends Immutable.Record({
     fs: new FS(),
 
     // Ignore files parser
-    ignore: Ignore(),
+    ignore: new Ignore(),
 
     // Structure files
     config: new Config(),
-    readme: Readme(),
-    summary: Summary(),
+    readme: new Readme(),
+    summary: new Summary(),
     glossary: new Glossary(),
-    languages: Languages(),
+    languages: new Languages(),
 
     // ID of the language for language books
     language: String(),
@@ -38,31 +38,31 @@ class Book extends Immutable.Record({
         return this.get("logger");
     }
 
-    getFS() {
+    getFS(): FS {
         return this.get("fs");
     }
 
-    getIgnore() {
+    getIgnore(): Ignore {
         return this.get("ignore");
     }
 
-    getConfig() {
+    getConfig(): Config {
         return this.get("config");
     }
 
-    getReadme() {
+    getReadme(): Readme {
         return this.get("readme");
     }
 
-    getSummary() {
+    getSummary(): Summary {
         return this.get("summary");
     }
 
-    getGlossary() {
+    getGlossary(): Glossary {
         return this.get("glossary");
     }
 
-    getLanguages() {
+    getLanguages(): Languages {
         return this.get("languages");
     }
 
@@ -79,7 +79,7 @@ class Book extends Immutable.Record({
 
      @return {FS}
      */
-    getContentFS() {
+    getContentFS(): FS {
         const fs = this.getFS();
         const config = this.getConfig();
         const rootFolder = config.getValue("root");

@@ -56,13 +56,11 @@ function generatePage(output, page) {
                         const pageHash = page.hash();
                         const cachedPage = cache.getKey(pageHash);
                         if (cachedPage) {
-                            // @ts-expect-error
                             return Page.fromJSON(output);
                         }
                         try {
                             const output = await Templating.render(engine, absoluteFilePath, content, context);
                             // update cache
-                            // @ts-expect-error
                             cache.setKey(pageHash, Page.toJSON(output));
                             return output;
                         } catch (error) {

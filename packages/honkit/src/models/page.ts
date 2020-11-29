@@ -3,7 +3,7 @@ import yaml from "js-yaml";
 import File from "./file";
 import { hashString } from "./hash";
 
-const Page = Immutable.Record({
+class Page extends Immutable.Record({
     file: new File(),
 
     // Attributes extracted from the YAML header
@@ -14,95 +14,95 @@ const Page = Immutable.Record({
 
     // Direction of the text
     dir: String("ltr"),
-});
-
-Page.prototype.getFile = function () {
-    return this.get("file");
-};
-
-Page.prototype.getAttributes = function () {
-    return this.get("attributes");
-};
-
-Page.prototype.getContent = function () {
-    return this.get("content");
-};
-
-Page.prototype.getDir = function () {
-    return this.get("dir");
-};
-
-/**
- * Return page as text
- * @return {string}
- */
-Page.prototype.toText = function () {
-    const attrs = this.getAttributes();
-    const content = this.getContent();
-
-    if (attrs.size === 0) {
-        return content;
+}) {
+    getFile(): File {
+        return this.get("file");
     }
 
-    const frontMatter = `---\n${yaml.safeDump(attrs.toJS(), { skipInvalid: true })}---\n\n`;
-    return frontMatter + (content || "");
-};
+    getAttributes() {
+        return this.get("attributes");
+    }
 
-/**
- * Return path of the page
- * @return {string}
- */
-Page.prototype.getPath = function () {
-    return this.getFile().getPath();
-};
+    getContent(): string {
+        return this.get("content");
+    }
 
-/**
- * Create a page for a file
- * @param {File} file
- * @return {Page}
- */
+    getDir(): string {
+        return this.get("dir");
+    }
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'createForFile' does not exist on type 'C... Remove this comment to see the full error message
-Page.createForFile = function (file) {
-    return new Page({
-        file: file,
-    });
-};
+    /**
+     * Return page as text
+     * @return {string}
+     */
+    toText(): string {
+        const attrs = this.getAttributes();
+        const content = this.getContent();
 
-/**
- * Load a page for a file
- * @param {File} file
- * @param {string} content
- * @return {Page}
- */
+        if (attrs.size === 0) {
+            return content;
+        }
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'loadFile' does not exist on type 'Class'... Remove this comment to see the full error message
-Page.loadFile = function (file, content) {
-    return new Page({
-        file: file,
-        content: content,
-    });
-};
+        const frontMatter = `---\n${yaml.safeDump(attrs.toJS(), { skipInvalid: true })}---\n\n`;
+        return frontMatter + (content || "");
+    }
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'fromJSON' does not exist on type 'Class'... Remove this comment to see the full error message
-Page.fromJSON = function (json) {
-    return new Page({
-        file: new File(json.file),
-        // Attributes extracted from the YAML header
-        attributes: Immutable.Map(json.atributes),
-        // Content of the page
-        content: json.content,
-        // Direction of the text
-        dir: json.dir,
-    });
-};
+    /**
+     * Return path of the page
+     * @return {string}
+     */
+    getPath(): string {
+        return this.getFile().getPath();
+    }
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'toJSON' does not exist on type 'Class'.
-Page.toJSON = function (page) {
-    return page.toJS();
-};
-Page.prototype.hash = function () {
-    return hashString(JSON.stringify(this.toJS()));
-};
+    /**
+     * Create a page for a file
+     * @param {File} file
+     * @return {Page}
+     */
+    static createForFile(file: File): Page {
+        return new Page({
+            file: file,
+        });
+    }
+
+    /**
+     * Load a page for a file
+     * @param {File} file
+     * @param {string} content
+     * @return {Page}
+     */
+    static loadFile(file: File, content: string): Page {
+        return new Page({
+            file: file,
+            content: content,
+        });
+    }
+
+    static fromJSON(json: {
+        file: { [key: string]: any };
+        atributes: Immutable.Iterable.Keyed<unknown, unknown>;
+        content: any;
+        dir: any;
+    }) {
+        return new Page({
+            file: new File(json.file),
+            // Attributes extracted from the YAML header
+            attributes: Immutable.Map(json.atributes),
+            // Content of the page
+            content: json.content,
+            // Direction of the text
+            dir: json.dir,
+        });
+    }
+
+    static toJSON(page: Page) {
+        return page.toJS();
+    }
+
+    hash() {
+        return hashString(JSON.stringify(this.toJS()));
+    }
+}
 
 export default Page;

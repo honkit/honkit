@@ -1,21 +1,21 @@
 import path from "path";
 import Immutable from "immutable";
 
-const Language = Immutable.Record({
+class Language extends Immutable.Record({
     title: String(),
     path: String(),
-});
+}) {
+    getTitle(): string {
+        return this.get("title");
+    }
 
-Language.prototype.getTitle = function () {
-    return this.get("title");
-};
+    getPath(): string {
+        return this.get("path");
+    }
 
-Language.prototype.getPath = function () {
-    return this.get("path");
-};
-
-Language.prototype.getID = function () {
-    return path.basename(this.getPath());
-};
+    getID(): string {
+        return path.basename(this.getPath());
+    }
+}
 
 export default Language;

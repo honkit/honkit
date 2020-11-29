@@ -2,71 +2,68 @@ import Immutable from "immutable";
 import File from "./file";
 import Language from "./language";
 
-const Languages = Immutable.Record({
+class Languages extends Immutable.Record({
     file: new File(),
     list: Immutable.OrderedMap(),
-});
+}) {
+    getFile() {
+        return this.get("file");
+    }
 
-Languages.prototype.getFile = function () {
-    return this.get("file");
-};
+    getList() {
+        return this.get("list");
+    }
 
-Languages.prototype.getList = function () {
-    return this.get("list");
-};
+    /**
+     Get default languages
 
-/**
- Get default languages
+     @return {Language}
+     */
+    getDefaultLanguage(): Language {
+        return this.getList().first();
+    }
 
- @return {Language}
- */
-Languages.prototype.getDefaultLanguage = function () {
-    return this.getList().first();
-};
+    /**
+     Get a language by its ID
 
-/**
- Get a language by its ID
+     @param {string} lang
+     @return {Language}
+     */
+    getLanguage(lang: string): Language {
+        return this.getList().get(lang);
+    }
 
- @param {string} lang
- @return {Language}
- */
-Languages.prototype.getLanguage = function (lang) {
-    return this.getList().get(lang);
-};
+    /**
+     Return count of langs
 
-/**
- Return count of langs
+     @return {number}
+     */
+    getCount() {
+        return this.getList().size;
+    }
 
- @return {number}
- */
-Languages.prototype.getCount = function () {
-    return this.getList().size;
-};
+    /**
+     Create a languages list from a JS object
 
-/**
- Create a languages list from a JS object
+     @return {Language}
+     */
 
- @param {File}
- @param {Array}
- @return {Language}
- */
+    static createFromList(file: File, langs: Languages): Languages {
+        let list = Immutable.OrderedMap();
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromList' does not exist on type '... Remove this comment to see the full error message
-Languages.createFromList = function (file, langs) {
-    let list = Immutable.OrderedMap();
-
-    langs.forEach((lang) => {
-        lang = Language({
-            title: lang.title,
-            path: lang.ref,
+        langs.forEach((lang) => {
+            lang = new Language({
+                title: lang.title,
+                path: lang.ref,
+            });
+            list = list.set(lang.getID(), lang);
         });
-        list = list.set(lang.getID(), lang);
-    });
 
-    return Languages({
-        file: file,
-        list: list,
-    });
-};
+        return new Languages({
+            file: file,
+            list: list,
+        });
+    }
+}
 
 export default Languages;

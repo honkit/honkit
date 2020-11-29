@@ -4,8 +4,13 @@ import Immutable from "immutable";
 import parsePageFromString from "../parse/parsePageFromString";
 import Book from "./book";
 import LocationUtils from "../utils/location";
+import Page from "./page";
+import Logger from "../utils/logger";
 
-const Output = Immutable.Record({
+type Assets = Immutable.List<string>;
+type State = Immutable.Map<any, any>;
+type Options = Immutable.Map<any, any>;
+class Output extends Immutable.Record({
     book: new Book(),
 
     // Name of the generator being used
@@ -29,98 +34,98 @@ const Output = Immutable.Record({
     // incrementalChangeFileSet for incremental building
     // If it is empty, should build all
     incrementalChangeFileSet: Immutable.Set(),
-});
-
-Output.prototype.getBook = function () {
-    return this.get("book");
-};
-
-Output.prototype.getGenerator = function () {
-    return this.get("generator");
-};
-
-Output.prototype.getPlugins = function () {
-    return this.get("plugins");
-};
-
-Output.prototype.getPages = function () {
-    return this.get("pages");
-};
-
-Output.prototype.getOptions = function () {
-    return this.get("options");
-};
-
-Output.prototype.getAssets = function () {
-    return this.get("assets");
-};
-
-Output.prototype.getState = function () {
-    return this.get("state");
-};
-
-/**
- Return a page byt its file path
-
- @param {string} filePath
- @return {Page|undefined}
- */
-Output.prototype.getPage = function (filePath) {
-    filePath = LocationUtils.normalize(filePath);
-
-    const pages = this.getPages();
-    return pages.get(filePath);
-};
-
-Output.prototype.reloadPage = function (contentRootDir, filePath) {
-    const relativePath = LocationUtils.normalize(path.normalize(path.relative(contentRootDir, filePath)));
-    const pages = this.getPages();
-    const page = pages.get(relativePath);
-    if (!page) {
-        return this;
+}) {
+    getBook(): Book {
+        return this.get("book");
     }
-    const newPage = parsePageFromString(page, fs.readFileSync(filePath, "utf-8"));
-    return this.merge({
-        pages: pages.set(relativePath, newPage),
-    });
-};
 
-/**
- Get root folder for output
+    getGenerator(): string {
+        return this.get("generator");
+    }
 
- @return {string}
- */
-Output.prototype.getRoot = function () {
-    return this.getOptions().get("root");
-};
+    getPlugins(): Immutable.OrderedMap<string, Plugin> {
+        return this.get("plugins");
+    }
 
-/**
- Update state of output
+    getPages(): Immutable.OrderedMap<string, Page> {
+        return this.get("pages");
+    }
 
- @param {Map} newState
- @return {Output}
- */
-Output.prototype.setState = function (newState) {
-    return this.set("state", newState);
-};
+    getOptions(): Options {
+        return this.get("options");
+    }
 
-/**
- Update options
+    getAssets(): Assets {
+        return this.get("assets");
+    }
 
- @param {Map} newOptions
- @return {Output}
- */
-Output.prototype.setOptions = function (newOptions) {
-    return this.set("options", newOptions);
-};
+    getState(): State {
+        return this.get("state");
+    }
 
-/**
- Return logegr for this output (same as book)
+    /**
+     Return a page byt its file path
 
- @return {Logger}
- */
-Output.prototype.getLogger = function () {
-    return this.getBook().getLogger();
-};
+     @param {string} filePath
+     @return {Page|undefined}
+     */
+    getPage(filePath: string): Page | undefined {
+        filePath = LocationUtils.normalize(filePath);
+
+        const pages = this.getPages();
+        return pages.get(filePath);
+    }
+
+    reloadPage(contentRootDir: string, filePath: string) {
+        const relativePath = LocationUtils.normalize(path.normalize(path.relative(contentRootDir, filePath)));
+        const pages = this.getPages();
+        const page = pages.get(relativePath);
+        if (!page) {
+            return this;
+        }
+        const newPage = parsePageFromString(page, fs.readFileSync(filePath, "utf-8"));
+        return this.merge({
+            pages: pages.set(relativePath, newPage),
+        });
+    }
+
+    /**
+     Get root folder for output
+
+     @return {string}
+     */
+    getRoot(): string {
+        return this.getOptions().get("root");
+    }
+
+    /**
+     Update state of output
+
+     @param {Map} newState
+     @return {Output}
+     */
+    setState(newState: State): Output {
+        return this.set("state", newState) as Output;
+    }
+
+    /**
+     Update options
+
+     @param {Map} newOptions
+     @return {Output}
+     */
+    setOptions(newOptions: Options): Output {
+        return this.set("options", newOptions) as Output;
+    }
+
+    /**
+     Return logegr for this output (same as book)
+
+     @return {Logger}
+     */
+    getLogger() {
+        return this.getBook().getLogger();
+    }
+}
 
 export default Output;

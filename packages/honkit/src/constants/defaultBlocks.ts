@@ -2,14 +2,14 @@ import Immutable from "immutable";
 import TemplateBlock from "../models/templateBlock";
 
 export default Immutable.Map({
-    html: TemplateBlock({
+    html: new TemplateBlock({
         name: "html",
         process: function (blk) {
             return blk;
         },
     }),
 
-    code: TemplateBlock({
+    code: new TemplateBlock({
         name: "code",
         process: function (blk) {
             return {
@@ -19,7 +19,7 @@ export default Immutable.Map({
         },
     }),
 
-    markdown: TemplateBlock({
+    markdown: new TemplateBlock({
         name: "markdown",
         process: function (blk) {
             return this.book.renderInline("markdown", blk.body).then((out) => {
@@ -28,7 +28,7 @@ export default Immutable.Map({
         },
     }),
 
-    asciidoc: TemplateBlock({
+    asciidoc: new TemplateBlock({
         name: "asciidoc",
         process: function (blk) {
             return this.book.renderInline("asciidoc", blk.body).then((out) => {
@@ -37,7 +37,7 @@ export default Immutable.Map({
         },
     }),
 
-    markup: TemplateBlock({
+    markup: new TemplateBlock({
         name: "markup",
         process: function (blk) {
             return this.book.renderInline(this.ctx.file.type, blk.body).then((out) => {

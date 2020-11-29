@@ -281,8 +281,8 @@ class FS extends Immutable.Record({
      @param {string} scope
      @return {FS}
      */
-    static reduceScope(fs: FS, scope: string) {
-        return fs.set("root", path.join(fs.getRoot(), scope));
+    static reduceScope(fs: FS, scope: string): FS {
+        return fs.set("root", path.join(fs.getRoot(), scope)) as FS;
     }
 }
 

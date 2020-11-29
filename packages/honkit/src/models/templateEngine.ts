@@ -1,7 +1,11 @@
 import nunjucks from "nunjucks";
 import Immutable from "immutable";
+import TemplateBlock from "./templateBlock";
+import TemplateOutput from "./templateOutput";
 
-const TemplateEngine = Immutable.Record(
+type Extensions = Immutable.Map<any, any>;
+
+class TemplateEngine extends Immutable.Record(
     {
         // Map of {TemplateBlock}
         blocks: Immutable.Map(),
@@ -22,120 +26,116 @@ const TemplateEngine = Immutable.Record(
         loader: new nunjucks.FileSystemLoader("views"),
     },
     "TemplateEngine"
-);
+) {
+    getBlocks(): TemplateBlock {
+        return this.get("blocks");
+    }
 
-TemplateEngine.prototype.getBlocks = function () {
-    return this.get("blocks");
-};
+    getGlobals(): Immutable.Map<string, any> {
+        return this.get("globals");
+    }
 
-TemplateEngine.prototype.getGlobals = function () {
-    return this.get("globals");
-};
+    getFilters() {
+        return this.get("filters");
+    }
 
-TemplateEngine.prototype.getFilters = function () {
-    return this.get("filters");
-};
+    getShortcuts() {
+        return this.get("shortcuts");
+    }
 
-TemplateEngine.prototype.getShortcuts = function () {
-    return this.get("shortcuts");
-};
+    getLoader(): nunjucks.FileSystemLoader {
+        return this.get("loader");
+    }
 
-TemplateEngine.prototype.getLoader = function () {
-    return this.get("loader");
-};
+    getContext(): object {
+        return this.get("context");
+    }
 
-TemplateEngine.prototype.getContext = function () {
-    return this.get("context");
-};
+    getExtensions(): Extensions {
+        return this.get("extensions");
+    }
 
-TemplateEngine.prototype.getExtensions = function () {
-    return this.get("extensions");
-};
+    /**
+     Return a block by its name (or undefined)
 
-/**
- Return a block by its name (or undefined)
+     @param {string} name
+     @return {TemplateBlock}
+     */
+    getBlock(name: string): TemplateBlock {
+        const blocks = this.getBlocks();
+        return blocks.find((block) => {
+            return block.getName() === name;
+        });
+    }
 
- @param {string} name
- @return {TemplateBlock}
- */
-TemplateEngine.prototype.getBlock = function (name) {
-    const blocks = this.getBlocks();
-    return blocks.find((block) => {
-        return block.getName() === name;
-    });
-};
+    /**
+     Return a nunjucks environment from this configuration
+     */
+    toNunjucks(blocksOutput?: TemplateOutput): nunjucks.Environment {
+        const loader = this.getLoader();
+        const blocks = this.getBlocks();
+        const filters = this.getFilters();
+        const globals = this.getGlobals();
+        const extensions = this.getExtensions();
+        const context = this.getContext();
 
-/**
- Return a nunjucks environment from this configuration
+        const env = new nunjucks.Environment(loader, {
+            // Escaping is done after by the asciidoc/markdown parser
+            autoescape: false,
 
- @return {Nunjucks.Environment}
- */
-TemplateEngine.prototype.toNunjucks = function (blocksOutput) {
-    const loader = this.getLoader();
-    const blocks = this.getBlocks();
-    const filters = this.getFilters();
-    const globals = this.getGlobals();
-    const extensions = this.getExtensions();
-    const context = this.getContext();
+            // Syntax
+            tags: {
+                blockStart: "{%",
+                blockEnd: "%}",
+                variableStart: "{{",
+                variableEnd: "}}",
+                commentStart: "{###",
+                commentEnd: "###}",
+            },
+        });
 
-    const env = new nunjucks.Environment(loader, {
-        // Escaping is done after by the asciidoc/markdown parser
-        autoescape: false,
+        // Add filters
+        filters.forEach((filterFn, filterName) => {
+            env.addFilter(filterName, filterFn.bind(context));
+        });
 
-        // Syntax
-        tags: {
-            blockStart: "{%",
-            blockEnd: "%}",
-            variableStart: "{{",
-            variableEnd: "}}",
-            commentStart: "{###",
-            commentEnd: "###}",
-        },
-    });
+        // Add blocks
+        blocks.forEach((block) => {
+            const extName = block.getExtensionName();
+            const Ext = block.toNunjucksExt(context, blocksOutput);
 
-    // Add filters
-    filters.forEach((filterFn, filterName) => {
-        env.addFilter(filterName, filterFn.bind(context));
-    });
+            env.addExtension(extName, new Ext());
+        });
 
-    // Add blocks
-    blocks.forEach((block) => {
-        const extName = block.getExtensionName();
-        const Ext = block.toNunjucksExt(context, blocksOutput);
+        // Add globals
+        globals.forEach((globalValue, globalName) => {
+            env.addGlobal(globalName, globalValue);
+        });
 
-        env.addExtension(extName, new Ext());
-    });
+        // Add other extensions
+        extensions.forEach((ext, extName) => {
+            env.addExtension(extName, ext);
+        });
 
-    // Add globals
-    globals.forEach((globalValue, globalName) => {
-        env.addGlobal(globalName, globalValue);
-    });
+        return env;
+    }
 
-    // Add other extensions
-    extensions.forEach((ext, extName) => {
-        env.addExtension(extName, ext);
-    });
+    /**
+     Create a template engine
 
-    return env;
-};
-
-/**
- Create a template engine
-
- @param {Object} def
- @return {TemplateEngine}
- */
-
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
-TemplateEngine.create = function (def) {
-    return new TemplateEngine({
-        blocks: Immutable.List(def.blocks || []),
-        extensions: Immutable.Map(def.extensions || {}),
-        filters: Immutable.Map(def.filters || {}),
-        globals: Immutable.Map(def.globals || {}),
-        context: def.context,
-        loader: def.loader,
-    });
-};
+     @param {Object} def
+     @return {TemplateEngine}
+     */
+    static create(def: any): TemplateEngine {
+        return new TemplateEngine({
+            blocks: Immutable.List(def.blocks || []),
+            extensions: Immutable.Map(def.extensions || {}),
+            filters: Immutable.Map(def.filters || {}),
+            globals: Immutable.Map(def.globals || {}),
+            context: def.context,
+            loader: def.loader,
+        });
+    }
+}
 
 export default TemplateEngine;

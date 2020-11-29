@@ -17,6 +17,7 @@ import listSearchPaths from "./listSearchPaths";
 import fileToURL from "../helper/fileToURL";
 
 import resolveFileToURL from "../helper/resolveFileToURL";
+import Output from "../../models/output";
 
 /**
  * Directory for a theme with the templates
@@ -33,9 +34,10 @@ function templateFolder(dir) {
  * @return {TemplateEngine}
  */
 
-function createTemplateEngine(output, currentFile) {
+function createTemplateEngine(output: Output, currentFile: string): TemplateEngine {
     const book = output.getBook();
     const state = output.getState();
+    // @ts-expect-error: state type
     const i18n = state.getI18n();
     const config = book.getConfig();
     const summary = book.getSummary();
@@ -94,7 +96,6 @@ function createTemplateEngine(output, currentFile) {
         return JSONUtils.encodePage(page, summary);
     }
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     return TemplateEngine.create({
         loader: loader,
 
