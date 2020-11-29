@@ -3,8 +3,8 @@ import hasPlugin from "./hasPlugin";
 
 /**
  * Test if a plugin is a default one
- * @param {String} plugin
- * @param {String} version
+ * @param {string} plugin
+ * @param {string} version
  * @return {Boolean}
  */
 

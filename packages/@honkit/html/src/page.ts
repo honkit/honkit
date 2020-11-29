@@ -1,7 +1,7 @@
 /**
     Parse content of a page
 
-    @param {String} html
+    @param {string} html
     @return {Object}
 */
 function parsePage(html) {

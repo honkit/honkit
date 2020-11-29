@@ -3,9 +3,9 @@ import listShortcuts from "./listShortcuts";
 
 /**
  * Apply a shortcut of block to a template
- * @param {String} content
+ * @param {string} content
  * @param {Shortcut} shortcut
- * @return {String}
+ * @return {string}
  */
 function applyShortcut(content, shortcut) {
     const start = shortcut.getStart();
@@ -24,9 +24,9 @@ function applyShortcut(content, shortcut) {
  * Replace shortcuts from blocks in a string
  *
  * @param {List<TemplateBlock>} engine
- * @param {String} filePath
- * @param {String} content
- * @return {String}
+ * @param {string} filePath
+ * @param {string} content
+ * @return {string}
  */
 
 function replaceShortcuts(blocks, filePath, content) {

@@ -131,7 +131,7 @@ Token.prototype.setData = function (data) {
 
 /**
  * Return plain text of a token merged with its children.
- * @return {String}
+ * @return {string}
  */
 Token.prototype.getAsPlainText = function () {
     const tokens = this.getTokens();
@@ -175,7 +175,7 @@ Token.create = function (type, tok) {
 
 /**
  * Create a token for an inline text
- * @param {String} text
+ * @param {string} text
  * @return {Token}
  */
 Token.createText = function (text) {

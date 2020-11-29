@@ -7,8 +7,8 @@ import LocationUtils from "../../utils/location";
 /**
  Fetch all remote images
 
- @param {String} rootFolder
- @param {String} currentFile
+ @param {string} rootFolder
+ @param {string} currentFile
  @param {HTMLDom} $
  @return {Promise}
  */

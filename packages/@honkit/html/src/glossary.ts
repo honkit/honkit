@@ -4,7 +4,7 @@ import * as dom from "./dom";
 /**
     Parse an HTML content into a list of glossary entry
 
-    @param {String} html
+    @param {string} html
     @return {Array}
 */
 function parseGlossary(html: string) {

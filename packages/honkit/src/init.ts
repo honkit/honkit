@@ -12,7 +12,7 @@ import Parse from "./parse";
  Read SUMMARY to created the right chapter
 
  @param {Book}
- @param {String}
+ @param {string}
  @return {Promise}
  */
 

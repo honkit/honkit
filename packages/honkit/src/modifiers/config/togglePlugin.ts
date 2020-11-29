@@ -5,7 +5,7 @@ import isDefaultPlugin from "./isDefaultPlugin";
 /**
  * Enable/disable a plugin dependency
  * @param {Config} config
- * @param {String} pluginName
+ * @param {string} pluginName
  * @param {Boolean} state (optional)
  * @return {Config}
  */

@@ -18,7 +18,7 @@ function validateId(name) {
 /**
  * List all packages installed inside a folder
  *
- * @param {String} folder
+ * @param {string} folder
  * @return {OrderedMap<String:Plugin>}
  */
 function findInstalled(folder) {

@@ -5,7 +5,7 @@ import fs from "../../utils/fs";
  Resolve path to cover file to use
 
  @param {Output}
- @return {String}
+ @return {string}
  */
 
 function getCoverPath(output) {

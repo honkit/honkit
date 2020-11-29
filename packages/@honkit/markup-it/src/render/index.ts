@@ -4,7 +4,7 @@ import RenderingState from "./state";
  * Render a Content instance using a syntax
  * @param {Content}
  * @param {Object} options
- * @return {String}
+ * @return {string}
  */
 function render(syntax, content, options) {
     // @ts-ignore
@@ -19,7 +19,7 @@ function render(syntax, content, options) {
  * Parse a text using a syntax as inline content
  * @param  {Syntax} syntax
  * @param  {List<Token>} tokens
- * @return {String}
+ * @return {string}
  */
 function renderAsInline(syntax, tokens) {
     // @ts-ignore

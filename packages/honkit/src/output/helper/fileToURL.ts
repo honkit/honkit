@@ -11,8 +11,8 @@ import fileToOutput from "./fileToOutput";
  "test/README.md" -> "test/"
 
  @param {Output} output
- @param {String} filePath
- @return {String}
+ @param {string} filePath
+ @return {string}
  */
 
 function fileToURL(output, filePath) {

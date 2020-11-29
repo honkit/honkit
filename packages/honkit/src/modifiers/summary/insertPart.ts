@@ -6,7 +6,7 @@ import indexLevels from "./indexLevels";
 
  @param {Summary} summary
  @param {Part} part
- @param {Number} index
+ @param {number} index
  @return {Summary}
  */
 function insertPart(summary, part, index) {

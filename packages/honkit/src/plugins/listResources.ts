@@ -7,7 +7,7 @@ import PLUGIN_RESOURCES from "../constants/pluginResources";
  List all resources from a list of plugins
 
  @param {OrderedMap<String:Plugin>}
- @param {String} type
+ @param {string} type
  @return {Map<String:List<{url, path}>}
  */
 function listResources(plugins, resources) {

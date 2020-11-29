@@ -7,7 +7,7 @@ import editHTMLElement from "./editHTMLElement";
  Return language for a code blocks from a list of class names
 
  @param {Array<String>}
- @return {String}
+ @return {string}
  */
 function getLanguageForClass(classNames) {
     return Immutable.List(classNames)

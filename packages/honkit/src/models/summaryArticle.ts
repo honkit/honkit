@@ -35,7 +35,7 @@ SummaryArticle.prototype.getArticles = function () {
  * Return how deep the article is.
  * The README has a depth of 1
  *
- * @return {Number}
+ * @return {number}
  */
 SummaryArticle.prototype.getDepth = function () {
     return this.getLevel().split(".").length - 1;
@@ -45,7 +45,7 @@ SummaryArticle.prototype.getDepth = function () {
  * Get path (without anchor) to the pointing file.
  * It also normalizes the file path.
  *
- * @return {String}
+ * @return {string}
  */
 SummaryArticle.prototype.getPath = function () {
     if (this.isExternal()) {
@@ -69,7 +69,7 @@ SummaryArticle.prototype.getPath = function () {
 /**
  * Return url if article is external
  *
- * @return {String}
+ * @return {string}
  */
 SummaryArticle.prototype.getUrl = function () {
     return this.isExternal() ? this.getRef() : undefined;
@@ -78,7 +78,7 @@ SummaryArticle.prototype.getUrl = function () {
 /**
  * Get anchor for this article (or undefined)
  *
- * @return {String}
+ * @return {string}
  */
 SummaryArticle.prototype.getAnchor = function () {
     const ref = this.getRef();
@@ -91,7 +91,7 @@ SummaryArticle.prototype.getAnchor = function () {
 /**
  * Create a new level for a new child article
  *
- * @return {String}
+ * @return {string}
  */
 SummaryArticle.prototype.createChildLevel = function () {
     const level = this.getLevel();

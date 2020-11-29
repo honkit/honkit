@@ -31,8 +31,8 @@ GlossaryEntry.prototype.getID = function () {
 /**
  Normalize a glossary entry name into a unique id
 
- @param {String}
- @return {String}
+ @param {string}
+ @return {string}
  */
 
 // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToID' does not exist on type 'Class'... Remove this comment to see the full error message

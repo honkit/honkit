@@ -7,7 +7,7 @@ import editHTMLElement from "./editHTMLElement";
  Resolve all HTML links:
  - /test.md in hello -> ../test.html
 
- @param {String} currentFile
+ @param {string} currentFile
  @param {Function(String) -> String} resolveFile
  @param {HTMLDom} $
  */

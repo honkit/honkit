@@ -34,7 +34,7 @@ Page.prototype.getDir = function () {
 
 /**
  * Return page as text
- * @return {String}
+ * @return {string}
  */
 Page.prototype.toText = function () {
     const attrs = this.getAttributes();
@@ -50,7 +50,7 @@ Page.prototype.toText = function () {
 
 /**
  * Return path of the page
- * @return {String}
+ * @return {string}
  */
 Page.prototype.getPath = function () {
     return this.getFile().getPath();

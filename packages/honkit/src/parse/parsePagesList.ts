@@ -8,7 +8,7 @@ import parsePage from "./parsePage";
  Parse a page from a path
 
  @param {Book} book
- @param {String} filePath
+ @param {string} filePath
  @return {Page?}
  */
 function parseFilePage(book, filePath) {

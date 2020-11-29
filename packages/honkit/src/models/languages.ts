@@ -27,7 +27,7 @@ Languages.prototype.getDefaultLanguage = function () {
 /**
  Get a language by its ID
 
- @param {String} lang
+ @param {string} lang
  @return {Language}
  */
 Languages.prototype.getLanguage = function (lang) {
@@ -37,7 +37,7 @@ Languages.prototype.getLanguage = function (lang) {
 /**
  Return count of langs
 
- @return {Number}
+ @return {number}
  */
 Languages.prototype.getCount = function () {
     return this.getList().size;

@@ -1,7 +1,7 @@
 /**
  * Edit configuration of a plugin
  * @param {Config} config
- * @param {String} plugin
+ * @param {string} plugin
  * @param {Object} pluginConfig
  * @return {Config}
  */

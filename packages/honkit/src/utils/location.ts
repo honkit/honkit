@@ -42,8 +42,8 @@ function normalize(s) {
 /**
  * Flatten a path, it removes the leading "/"
  *
- * @param {String} href
- * @return {String}
+ * @param {string} href
+ * @return {string}
  */
 function flatten(href) {
     href = normalize(href);
@@ -57,10 +57,10 @@ function flatten(href) {
 /**
  * Convert a relative path to absolute
  *
- * @param {String} _href
- * @param {String} dir: directory parent of the file currently in rendering process
- * @param {String} outdir: directory parent from the html output
- * @return {String}
+ * @param {string} _href
+ * @param {string} dir: directory parent of the file currently in rendering process
+ * @param {string} outdir: directory parent from the html output
+ * @return {string}
  */
 function toAbsolute(_href, dir, outdir) {
     if (isExternal(_href) || isDataURI(_href)) {
@@ -92,9 +92,9 @@ function toAbsolute(_href, dir, outdir) {
  * Convert an absolute path to a relative path for a specific folder (dir)
  * ('test/', 'hello.md') -> '../hello.md'
  *
- * @param {String} dir: current directory
- * @param {String} file: absolute path of file
- * @return {String}
+ * @param {string} dir: current directory
+ * @param {string} file: absolute path of file
+ * @return {string}
  */
 function relative(dir, file) {
     const isDirectory = file.slice(-1) === "/";
@@ -105,9 +105,9 @@ function relative(dir, file) {
  * Convert an absolute path to a relative path for a specific folder (dir)
  * ('test/test.md', 'hello.md') -> '../hello.md'
  *
- * @param {String} baseFile: current file
- * @param {String} file: absolute path of file
- * @return {String}
+ * @param {string} baseFile: current file
+ * @param {string} file: absolute path of file
+ * @return {string}
  */
 function relativeForFile(baseFile, file) {
     return relative(path.dirname(baseFile), file);
@@ -117,8 +117,8 @@ function relativeForFile(baseFile, file) {
  * Compare two paths, return true if they are identical
  * ('README.md', './README.md') -> true
  *
- * @param {String} p1: first path
- * @param {String} p2: second path
+ * @param {string} p1: first path
+ * @param {string} p2: second path
  * @return {Boolean}
  */
 function areIdenticalPaths(p1, p2) {

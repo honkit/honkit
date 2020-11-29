@@ -2,7 +2,7 @@
  Index levels in an article tree
 
  @param {Article}
- @param {String} baseLevel
+ @param {string} baseLevel
  @return {Article}
  */
 

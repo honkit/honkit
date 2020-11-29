@@ -20,7 +20,7 @@ Glossary.prototype.getEntries = function () {
 /**
  Return an entry by its name
 
- @param {String} name
+ @param {string} name
  @return {GlossaryEntry}
  */
 Glossary.prototype.getEntry = function (name) {
@@ -91,7 +91,7 @@ Glossary.addEntryByName = function addEntryByName(glossary, name, description) {
 /**
  Create a glossary from a list of entries
 
- @param {String} filename
+ @param {string} filename
  @param {Array|List} entries
  @return {Glossary}
  */

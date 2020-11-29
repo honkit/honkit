@@ -7,8 +7,8 @@ import replaceShortcuts from "./replaceShortcuts";
  * Render a template
  *
  * @param {TemplateEngine} engine
- * @param {String} filePath: absolute path for the loader
- * @param {String} content
+ * @param {string} filePath: absolute path for the loader
+ * @param {string} content
  * @param {Object} context (optional)
  * @return {Promise<TemplateOutput>}
  */

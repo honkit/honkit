@@ -57,7 +57,7 @@ function replaceText($, el, search, replace, text_only) {
  * Annotate text using a list of GlossaryEntry
  *
  * @param {List<GlossaryEntry>}
- * @param {String} glossaryFilePath
+ * @param {string} glossaryFilePath
  * @param {HTMLDom} $
  */
 function annotateText(entries, glossaryFilePath, $) {

@@ -4,7 +4,7 @@ import path from "path";
  Return path to output folder
 
  @param {Array} args
- @return {String}
+ @return {string}
  */
 
 function getOutputFolder(args) {

@@ -117,7 +117,7 @@ function isPartNode(el) {
 
     @param el
     @param {cheerio.DOM} $
-    @return {String}
+    @return {string}
  */
 function getPartTitle(el, $) {
     return $(el).text().trim();
@@ -126,7 +126,7 @@ function getPartTitle(el, $) {
 /**
     Parse an HTML content into a tree of articles/parts
 
-    @param {String} html
+    @param {string} html
     @return {Object}
 */
 function parseSummary(html: string) {

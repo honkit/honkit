@@ -16,7 +16,7 @@ class Book extends Immutable.Record({
     logger: Logger(),
 
     // Filesystem binded to the book scope to read files/directories
-    fs: FS(),
+    fs: new FS(),
 
     // Ignore files parser
     ignore: Ignore(),
@@ -85,7 +85,6 @@ class Book extends Immutable.Record({
         const rootFolder = config.getValue("root");
 
         if (rootFolder) {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'reduceScope' does not exist on type 'Cla... Remove this comment to see the full error message
             return FS.reduceScope(fs, rootFolder);
         }
 
@@ -95,7 +94,7 @@ class Book extends Immutable.Record({
     /**
      Return root of the book
 
-     @return {String}
+     @return {string}
      */
     getRoot() {
         const fs = this.getFS();
@@ -105,7 +104,7 @@ class Book extends Immutable.Record({
     /**
      Return root for content of the book
 
-     @return {String}
+     @return {string}
      */
     getContentRoot() {
         const fs = this.getContentFS();
@@ -115,7 +114,7 @@ class Book extends Immutable.Record({
     /**
      Check if a file is ignore (should not being parsed, etc)
 
-     @param {String} ref
+     @param {string} ref
      @return {Page|undefined}
      */
     isFileIgnored(filename) {
@@ -133,7 +132,7 @@ class Book extends Immutable.Record({
     /**
      Check if a content file is ignore (should not being parsed, etc)
 
-     @param {String} ref
+     @param {string} ref
      @return {Page|undefined}
      */
     isContentFileIgnored(filename) {
@@ -168,7 +167,7 @@ class Book extends Immutable.Record({
     /**
      Return a languages book
 
-     @param {String} language
+     @param {string} language
      @return {Book}
      */
     getLanguageBook(language) {
@@ -179,7 +178,7 @@ class Book extends Immutable.Record({
     /**
      Add a new language book
 
-     @param {String} language
+     @param {string} language
      @param {Book} book
      @return {Book}
      */
@@ -233,7 +232,7 @@ class Book extends Immutable.Record({
     /**
      Change log level
 
-     @param {String} level
+     @param {string} level
      @return {Book}
      */
     setLogLevel(level) {
@@ -255,7 +254,7 @@ class Book extends Immutable.Record({
 
     /**
      Infers the default extension for files
-     @return {String}
+     @return {string}
      */
     getDefaultExt() {
         // Inferring sources
@@ -283,7 +282,7 @@ class Book extends Immutable.Record({
      Infer the default path for a Readme.
      @param {Boolean} [absolute=false] False for a path relative to
      this book's content root
-     @return {String}
+     @return {string}
      */
     getDefaultReadmePath(absolute) {
         const defaultPath = `README${this.getDefaultExt()}`;
@@ -298,7 +297,7 @@ class Book extends Immutable.Record({
      Infer the default path for a Summary.
      @param {Boolean} [absolute=false] False for a path relative to
      this book's content root
-     @return {String}
+     @return {string}
      */
     getDefaultSummaryPath(absolute) {
         const defaultPath = `SUMMARY${this.getDefaultExt()}`;
@@ -313,7 +312,7 @@ class Book extends Immutable.Record({
      Infer the default path for a Glossary.
      @param {Boolean} [absolute=false] False for a path relative to
      this book's content root
-     @return {String}
+     @return {string}
      */
     getDefaultGlossaryPath(absolute) {
         const defaultPath = `GLOSSARY${this.getDefaultExt()}`;
@@ -328,7 +327,7 @@ class Book extends Immutable.Record({
      Create a language book from a parent
 
      @param {Book} parent
-     @param {String} language
+     @param {string} language
      @return {Book}
      */
 
@@ -347,7 +346,6 @@ class Book extends Immutable.Record({
 
             language: language,
 
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'reduceScope' does not exist on type 'Cla... Remove this comment to see the full error message
             fs: FS.reduceScope(parent.getContentFS(), language),
         });
     }

@@ -26,7 +26,7 @@ function encodeSummary(output, summary) {
         /**
          Get an article by its level
 
-         @param {String} level
+         @param {string} level
          @return {Object}
          */
         getArticleByLevel: function (level) {
@@ -39,7 +39,7 @@ function encodeSummary(output, summary) {
         /**
          Get an article by its path
 
-         @param {String} level
+         @param {string} level
          @return {Object}
          */
         getArticleByPath: function (level) {

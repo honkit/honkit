@@ -1,8 +1,8 @@
 /**
  * Test if a plugin is listed
  * @param { {List<PluginDependency}} deps
- * @param {String} plugin
- * @param {String} version
+ * @param {string} plugin
+ * @param {string} version
  * @return {Boolean}
  */
 

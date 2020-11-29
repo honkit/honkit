@@ -6,7 +6,7 @@ import editHTMLElement from "./editHTMLElement";
  Resolve all HTML images:
  - /test.png in hello -> ../test.html
 
- @param {String} currentFile
+ @param {string} currentFile
  @param {HTMLDom} $
  */
 

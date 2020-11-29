@@ -6,7 +6,7 @@ import render from "./render";
  * Render a template
  *
  * @param {TemplateEngine} engine
- * @param {String} filePath
+ * @param {string} filePath
  * @param {Object} context
  * @return {Promise<TemplateOutput>}
  */

@@ -4,8 +4,8 @@ import mergeAtLevel from "./mergeAtLevel";
  Edit title of an article
 
  @param {Summary} summary
- @param {String} level
- @param {String} newTitle
+ @param {string} level
+ @param {string} newTitle
  @return {Summary}
  */
 function editArticleTitle(summary, level, newTitle) {

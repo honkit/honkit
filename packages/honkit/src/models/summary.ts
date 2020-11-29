@@ -26,7 +26,7 @@ Summary.prototype.getParts = function () {
 /**
  Return a part by its index
 
- @param {Number}
+ @param {number}
  @return {Part}
  */
 Summary.prototype.getPart = function (i) {
@@ -58,7 +58,7 @@ Summary.prototype.getArticle = function (iter, partIter) {
 /**
  Return a part/article by its level
 
- @param {String} level
+ @param {string} level
  @return {Article|Part}
  */
 Summary.prototype.getByLevel = function (level) {
@@ -72,7 +72,7 @@ Summary.prototype.getByLevel = function (level) {
 /**
  Return an article by its path
 
- @param {String} filePath
+ @param {string} filePath
  @return {Article}
  */
 Summary.prototype.getByPath = function (filePath) {
@@ -163,7 +163,7 @@ Summary.prototype.getParent = function (level) {
 /**
  Render summary as text
 
- @param {String} parseExt Extension of the parser to use
+ @param {string} parseExt Extension of the parser to use
  @return {Promise<String>}
  */
 Summary.prototype.toText = function (parseExt) {
@@ -227,8 +227,8 @@ Summary.createFromParts = function createFromParts(file, parts) {
 /**
  Returns parent level of a level
 
- @param {String} level
- @return {String}
+ @param {string} level
+ @return {string}
  */
 function getParentLevel(level) {
     const parts = level.split(".");

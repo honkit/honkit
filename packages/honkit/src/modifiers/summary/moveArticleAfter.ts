@@ -34,7 +34,7 @@ function moveArticleAfter(summary, origin, afterTarget) {
 }
 
 /**
- @param {String}
+ @param {string}
  @return {Array<Number>}
  */
 function levelToArray(l) {
@@ -45,7 +45,7 @@ function levelToArray(l) {
 
 /**
  @param {Array<Number>}
- @return {String}
+ @return {string}
  */
 function arrayToLevel(a) {
     return a.join(".");

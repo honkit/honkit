@@ -91,7 +91,7 @@ class Config extends Immutable.Record(
 
     /**
      * Return a plugin dependency by its name
-     * @param {String} name
+     * @param {string} name
      * @return {PluginDependency}
      */
     getPluginDependency(name: string) {

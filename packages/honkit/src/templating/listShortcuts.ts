@@ -6,7 +6,7 @@ import parsers from "../parsers";
  * to a file for a TemplatEngine
  *
  * @param {List<TemplateBlock>} engine
- * @param {String} filePath
+ * @param {string} filePath
  * @return {List<TemplateShortcut>}
  */
 

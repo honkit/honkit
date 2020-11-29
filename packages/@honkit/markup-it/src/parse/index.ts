@@ -5,7 +5,7 @@ import matchRule from "./matchRule";
 /**
  * Parse a text using a syntax
  * @param  {Syntax} syntax
- * @param  {String} text
+ * @param  {string} text
  * @return {Content}
  */
 function parse(syntax, text, options) {
@@ -20,7 +20,7 @@ function parse(syntax, text, options) {
 /**
  * Parse a text using a syntax as inline content
  * @param  {Syntax} syntax
- * @param  {String} text
+ * @param  {string} text
  * @return {List<Token>}
  */
 function parseAsInline(syntax, text, options) {

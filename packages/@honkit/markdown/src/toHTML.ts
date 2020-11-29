@@ -8,8 +8,8 @@ const html = new MarkupIt(htmlSyntax);
 /**
  * Convert Markdown block to HTML
  *
- * @param {String} src (markdown)
- * @return {String} (html)
+ * @param {string} src (markdown)
+ * @return {string} (html)
  */
 function convertMdToHTMLBlock(src: string) {
     const content = markdown.toContent(src);
@@ -21,8 +21,8 @@ function convertMdToHTMLBlock(src: string) {
 /**
  * Convert Markdown inline to HTML
  *
- * @param {String} src (markdown)
- * @return {String} (html)
+ * @param {string} src (markdown)
+ * @return {string} (html)
  */
 function convertMdToHTMLInline(src) {
     const content = markdown.toInlineContent(src);

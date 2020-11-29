@@ -3,7 +3,7 @@ import * as dom from "./dom";
 /**
     Parse an HTML content into metadata about a readme
 
-    @param {String} html
+    @param {string} html
     @return {Object}
 */
 function parseReadme(html) {

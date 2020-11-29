@@ -60,7 +60,7 @@ Plugin.prototype.getParent = function () {
 
 /**
  * Return the ID on NPM for this plugin
- * @return {String}
+ * @return {string}
  */
 
 Plugin.prototype.getNpmID = function () {
@@ -98,7 +98,7 @@ Plugin.prototype.getHooks = function () {
 
 /**
  * Return infos about resources for a specific type
- * @param {String} type
+ * @param {string} type
  * @return {Map<String:Mixed>}
  */
 
@@ -137,7 +137,7 @@ Plugin.prototype.getBlocks = function () {
 
 /**
  * Return a specific hook
- * @param {String} name
+ * @param {string} name
  * @return {Function|undefined}
  */
 
@@ -147,7 +147,7 @@ Plugin.prototype.getHook = function (name) {
 
 /**
  * Create a plugin from a string
- * @param {String}
+ * @param {string}
  * @return {Plugin}
  */
 

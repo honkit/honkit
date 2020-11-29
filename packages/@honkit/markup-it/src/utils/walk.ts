@@ -8,7 +8,7 @@ import Range from "range-utils";
  *
  * @param {Token} base
  * @param {Function(token, range)} iter: function to call for each range of text
- * @return {String}
+ * @return {string}
  */
 function walk(base, iter) {
     let offset = 0;

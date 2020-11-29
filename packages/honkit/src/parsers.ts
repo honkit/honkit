@@ -18,7 +18,7 @@ const parsers = Immutable.List([
 /**
  * Return a specific parser by its name
  *
- * @param {String} name
+ * @param {string} name
  * @return {Parser|undefined}
  */
 function getParser(name) {
@@ -30,7 +30,7 @@ function getParser(name) {
 /**
  * Return a specific parser according to an extension
  *
- * @param {String} ext
+ * @param {string} ext
  * @return {Parser|undefined}
  */
 function getParserByExt(ext) {
@@ -42,7 +42,7 @@ function getParserByExt(ext) {
 /**
  * Return parser for a file
  *
- * @param {String} ext
+ * @param {string} ext
  * @return {Parser|undefined}
  */
 function getParserForFile(filename) {

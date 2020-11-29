@@ -55,7 +55,7 @@ PluginDependency.prototype.toggle = function (state?: boolean) {
 
 /**
  * Return NPM ID for the dependency
- * @return {String}
+ * @return {string}
  */
 PluginDependency.prototype.getNpmID = function () {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToNpmID' does not exist on type 'Cla... Remove this comment to see the full error message
@@ -72,7 +72,7 @@ PluginDependency.prototype.isGitDependency = function () {
 
 /**
  * Create a plugin with a name and a plugin
- * @param {String}
+ * @param {string}
  * @return {Plugin|undefined}
  */
 
@@ -151,7 +151,7 @@ PluginDependency.createFromString = function (s) {
 
 /**
  * Create a PluginDependency from a string
- * @param {String}
+ * @param {string}
  * @return {List<PluginDependency>}
  */
 
@@ -219,8 +219,8 @@ PluginDependency.listToArray = function (list) {
 
 /**
  * Return NPM id for a plugin name
- * @param {String}
- * @return {String}
+ * @param {string}
+ * @return {string}
  */
 
 // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToNpmID' does not exist on type 'Cla... Remove this comment to see the full error message

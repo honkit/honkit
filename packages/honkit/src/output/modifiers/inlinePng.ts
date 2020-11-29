@@ -8,7 +8,7 @@ import editHTMLElement from "./editHTMLElement";
 /**
  Convert all inline PNG images to PNG file
 
- @param {String} rootFolder
+ @param {string} rootFolder
  @param {HTMLDom} $
  @return {Promise}
  */

@@ -2,7 +2,7 @@ let lastKey = 0;
 
 /*
     Generate a random key
-    @return {String}
+    @return {string}
 */
 function generateKey() {
     lastKey += 1;

@@ -39,8 +39,8 @@ function insertArticle(summary, article, level) {
 }
 
 /**
- @param {String}
- @return {Number} The index of this level within its parent's children
+ @param {string}
+ @return {number} The index of this level within its parent's children
  */
 function getLeafIndex(level) {
     const arr = level.split(".").map((char) => {

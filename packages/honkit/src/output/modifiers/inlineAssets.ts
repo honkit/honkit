@@ -8,7 +8,7 @@ import Promise from "../../utils/promise";
 /**
  Inline all assets in a page
 
- @param {String} rootFolder
+ @param {string} rootFolder
  */
 function inlineAssets(rootFolder, currentFile) {
     return function ($) {

@@ -4,7 +4,7 @@ import Promise from "../utils/promise";
  * Replace position markers of blocks by body after processing
  * This is done to avoid that markdown/asciidoc processer parse the block content
  *
- * @param {String} content
+ * @param {string} content
  * @return {Object} {blocks: Set, content: String}
  */
 function replaceBlocks(content, blocks) {
