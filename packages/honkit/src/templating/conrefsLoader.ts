@@ -15,6 +15,7 @@ import PathUtils from "../utils/path";
  * @param {Function(filePath, source)} transformFn (optional)
  * @param {Logger} logger (optional)
  */
+// @ts-expect-error: Property 'extend' does not exist on type 'typeof Loader'.
 const ConrefsLoader = nunjucks.Loader.extend({
     async: true,
 

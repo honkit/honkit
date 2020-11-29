@@ -5,15 +5,13 @@ import replaceShortcuts from "../replaceShortcuts";
 
 describe("replaceShortcuts", () => {
     const blocks = Immutable.List([
-
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         TemplateBlock.create("math", {
             shortcuts: {
                 start: "$$",
                 end: "$$",
-                parsers: ["markdown"]
-            }
-        })
+                parsers: ["markdown"],
+            },
+        }),
     ]);
 
     test("should correctly replace inline matches by block", () => {

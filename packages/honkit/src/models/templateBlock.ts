@@ -4,10 +4,11 @@ import Immutable from "immutable";
 import Promise from "../utils/promise";
 import genKey from "../utils/genKey";
 import TemplateShortcut from "./templateShortcut";
+import nunjucks from "nunjucks";
 
 const NODE_ENDARGS = "%%endargs%%";
 
-const TemplateBlock = Immutable.Record(
+class TemplateBlock extends Immutable.Record(
     {
         // Name of block, also the start tag
         name: String(),
@@ -25,259 +26,256 @@ const TemplateBlock = Immutable.Record(
         shortcuts: Immutable.Map(),
     },
     "TemplateBlock"
-);
-
-TemplateBlock.prototype.getName = function () {
-    return this.get("name");
-};
-
-TemplateBlock.prototype.getEndTag = function () {
-    return this.get("end") || `end${this.getName()}`;
-};
-
-TemplateBlock.prototype.getProcess = function () {
-    return this.get("process");
-};
-
-TemplateBlock.prototype.getBlocks = function () {
-    return this.get("blocks");
-};
-
-/**
- * Return shortcuts associated with this block or undefined
- * @return {TemplateShortcut|undefined}
- */
-TemplateBlock.prototype.getShortcuts = function () {
-    const shortcuts = this.get("shortcuts");
-    if (shortcuts.size === 0) {
-        return undefined;
+) {
+    getName(): string {
+        return this.get("name");
     }
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createForBlock' does not exist on type '... Remove this comment to see the full error message
-    return TemplateShortcut.createForBlock(this, shortcuts);
-};
+    getEndTag(): string {
+        return this.get("end") || `end${this.getName()}`;
+    }
 
-/**
- * Return name for the nunjucks extension
- * @return {string}
- */
-TemplateBlock.prototype.getExtensionName = function () {
-    return `Block${this.getName()}Extension`;
-};
+    getProcess(): Function {
+        return this.get("process");
+    }
 
-/**
- * Return a nunjucks extension to represents this block
- * @return {Nunjucks.Extension}
- */
-TemplateBlock.prototype.toNunjucksExt = function (mainContext, blocksOutput) {
-    blocksOutput = blocksOutput || {};
+    getBlocks(): Immutable.List<string> {
+        return this.get("blocks");
+    }
 
-    const that = this;
-    const name = this.getName();
-    const endTag = this.getEndTag();
-    const blocks = this.getBlocks().toJS();
+    /**
+     * Return shortcuts associated with this block or undefined
+     * @return {TemplateShortcut|undefined}
+     */
+    getShortcuts(): TemplateShortcut {
+        const shortcuts = this.get("shortcuts");
+        if (shortcuts.size === 0) {
+            return undefined;
+        }
+        return TemplateShortcut.createForBlock(this, shortcuts);
+    }
 
-    function Ext() {
-        this.tags = [name];
+    /**
+     * Return name for the nunjucks extension
+     * @return {string}
+     */
+    getExtensionName(): string {
+        return `Block${this.getName()}Extension`;
+    }
 
-        this.parse = function (parser, nodes) {
-            let lastBlockName = null;
-            let lastBlockArgs = null;
-            const allBlocks = blocks.concat([endTag]);
+    /**
+     * Return a nunjucks extension to represents this block
+     * @return {Nunjucks.Extension}
+     */
+    toNunjucksExt(mainContext, blocksOutput): nunjucks.Extension {
+        blocksOutput = blocksOutput || {};
 
-            // Parse first block
-            const tok = parser.nextToken();
-            lastBlockArgs = parser.parseSignature(null, true);
-            parser.advanceAfterBlockEnd(tok.value);
+        const that = this;
+        const name = this.getName();
+        const endTag = this.getEndTag();
+        const blocks = this.getBlocks().toJS();
 
-            const args = new nodes.NodeList();
-            const bodies = [];
-            const blockNamesNode = new nodes.Array(tok.lineno, tok.colno);
-            const blockArgCounts = new nodes.Array(tok.lineno, tok.colno);
+        function Ext() {
+            this.tags = [name];
 
-            // Parse while we found "end<block>"
-            do {
-                // Read body
-                const currentBody = parser.parseUntilBlocks.apply(parser, allBlocks);
+            this.parse = function (parser, nodes) {
+                let lastBlockName = null;
+                let lastBlockArgs = null;
+                const allBlocks = blocks.concat([endTag]);
 
-                // Handle body with previous block name and args
-                blockNamesNode.addChild(new nodes.Literal(args.lineno, args.colno, lastBlockName));
-                blockArgCounts.addChild(new nodes.Literal(args.lineno, args.colno, lastBlockArgs.children.length));
-                bodies.push(currentBody);
+                // Parse first block
+                const tok = parser.nextToken();
+                lastBlockArgs = parser.parseSignature(null, true);
+                parser.advanceAfterBlockEnd(tok.value);
 
-                // Append arguments of this block as arguments of the run function
-                lastBlockArgs.children.forEach((child) => {
-                    args.addChild(child);
+                const args = new nodes.NodeList();
+                const bodies = [];
+                const blockNamesNode = new nodes.Array(tok.lineno, tok.colno);
+                const blockArgCounts = new nodes.Array(tok.lineno, tok.colno);
+
+                // Parse while we found "end<block>"
+                do {
+                    // Read body
+                    const currentBody = parser.parseUntilBlocks.apply(parser, allBlocks);
+
+                    // Handle body with previous block name and args
+                    blockNamesNode.addChild(new nodes.Literal(args.lineno, args.colno, lastBlockName));
+                    blockArgCounts.addChild(new nodes.Literal(args.lineno, args.colno, lastBlockArgs.children.length));
+                    bodies.push(currentBody);
+
+                    // Append arguments of this block as arguments of the run function
+                    lastBlockArgs.children.forEach((child) => {
+                        args.addChild(child);
+                    });
+
+                    // Read new block
+                    lastBlockName = parser.nextToken().value;
+
+                    // Parse signature and move to the end of the block
+                    if (lastBlockName != endTag) {
+                        lastBlockArgs = parser.parseSignature(null, true);
+                    }
+
+                    parser.advanceAfterBlockEnd(lastBlockName);
+                } while (lastBlockName != endTag);
+
+                args.addChild(blockNamesNode);
+                args.addChild(blockArgCounts);
+                args.addChild(new nodes.Literal(args.lineno, args.colno, NODE_ENDARGS));
+
+                return new nodes.CallExtensionAsync(this, "run", args, bodies);
+            };
+
+            this.run = function (context) {
+                const fnArgs = Array.prototype.slice.call(arguments, 1);
+
+                let args;
+                const blocks = [];
+                let bodies = [];
+
+                // Extract callback
+                const callback = fnArgs.pop();
+
+                // Detect end of arguments
+                const endArgIndex = fnArgs.indexOf(NODE_ENDARGS);
+
+                // Extract arguments and bodies
+                args = fnArgs.slice(0, endArgIndex);
+                bodies = fnArgs.slice(endArgIndex + 1);
+
+                // Extract block counts
+                const blockArgCounts = args.pop();
+                const blockNames = args.pop();
+
+                // Recreate list of blocks
+                blockNames.forEach((name, i) => {
+                    const countArgs = blockArgCounts[i];
+                    const blockBody = bodies.shift();
+
+                    const blockArgs = countArgs > 0 ? args.slice(0, countArgs) : [];
+                    args = args.slice(countArgs);
+                    const blockKwargs = extractKwargs(blockArgs);
+
+                    blocks.push({
+                        name: name,
+                        body: blockBody(),
+                        args: blockArgs,
+                        kwargs: blockKwargs,
+                    });
                 });
 
-                // Read new block
-                lastBlockName = parser.nextToken().value;
+                const mainBlock = blocks.shift();
+                mainBlock.blocks = blocks;
 
-                // Parse signature and move to the end of the block
-                if (lastBlockName != endTag) {
-                    lastBlockArgs = parser.parseSignature(null, true);
-                }
+                Promise()
+                    .then(() => {
+                        const ctx = extend(
+                            {
+                                ctx: context,
+                            },
+                            mainContext || {}
+                        );
 
-                parser.advanceAfterBlockEnd(lastBlockName);
-            } while (lastBlockName != endTag);
+                        return that.applyBlock(mainBlock, ctx);
+                    })
+                    .then((result) => {
+                        return that.blockResultToHtml(result, blocksOutput);
+                    })
+                    .nodeify(callback);
+            };
+        }
 
-            args.addChild(blockNamesNode);
-            args.addChild(blockArgCounts);
-            args.addChild(new nodes.Literal(args.lineno, args.colno, NODE_ENDARGS));
+        // @ts-expect-error: nunjucks.Extension
+        return Ext;
+    }
 
-            return new nodes.CallExtensionAsync(this, "run", args, bodies);
-        };
+    /**
+     * Apply a block to a content
+     * @param {Object} inner
+     * @param {Object} context
+     * @return {Promise<String>|String}
+     */
+    applyBlock(inner, context) {
+        const processFn = this.getProcess();
 
-        this.run = function (context) {
-            const fnArgs = Array.prototype.slice.call(arguments, 1);
+        inner = inner || {};
+        inner.args = inner.args || [];
+        inner.kwargs = inner.kwargs || {};
+        inner.blocks = inner.blocks || [];
 
-            let args;
-            const blocks = [];
-            let bodies = [];
+        const r = processFn.call(context, inner);
 
-            // Extract callback
-            const callback = fnArgs.pop();
+        if (Promise.isPromiseAlike(r)) {
+            return r.then(this.normalizeBlockResult.bind(this));
+        } else {
+            return this.normalizeBlockResult(r);
+        }
+    }
 
-            // Detect end of arguments
-            const endArgIndex = fnArgs.indexOf(NODE_ENDARGS);
+    /**
+     * Normalize result from a block process function
+     * @param {Object|String} result
+     * @return {Object}
+     */
+    normalizeBlockResult(result) {
+        if (is.string(result)) {
+            result = { body: result };
+        }
+        result.name = this.getName();
 
-            // Extract arguments and bodies
-            args = fnArgs.slice(0, endArgIndex);
-            bodies = fnArgs.slice(endArgIndex + 1);
+        return result;
+    }
 
-            // Extract block counts
-            const blockArgCounts = args.pop();
-            const blockNames = args.pop();
+    /**
+     * Convert a block result to HTML
+     * @param {Object} result
+     * @param {Object} blocksOutput: stored post processing blocks in this object
+     * @return {string}
+     */
+    blockResultToHtml(result, blocksOutput) {
+        let indexedKey;
+        const toIndex = !result.parse || result.post !== undefined;
 
-            // Recreate list of blocks
-            blockNames.forEach((name, i) => {
-                const countArgs = blockArgCounts[i];
-                const blockBody = bodies.shift();
+        if (toIndex) {
+            indexedKey = genKey();
+            blocksOutput[indexedKey] = result;
+        }
 
-                const blockArgs = countArgs > 0 ? args.slice(0, countArgs) : [];
-                args = args.slice(countArgs);
-                const blockKwargs = extractKwargs(blockArgs);
+        // Parsable block, just return it
+        if (result.parse) {
+            return result.body;
+        }
 
-                blocks.push({
-                    name: name,
-                    body: blockBody(),
-                    args: blockArgs,
-                    kwargs: blockKwargs,
-                });
+        // Return it as a position marker
+        return `{{-%${indexedKey}%-}}`;
+    }
+
+    /**
+     * Create a template block from a function or an object
+     * @param {string} blockName
+     * @param {Object} block
+     * @return {TemplateBlock}
+     */
+    static create(blockName, block) {
+        if (is.fn(block)) {
+            // @ts-expect-error ts-migrate(2350) FIXME: Only a void function can be called with the 'new' ... Remove this comment to see the full error message
+            block = new Immutable.Map({
+                process: block,
             });
+        }
 
-            const mainBlock = blocks.shift();
-            mainBlock.blocks = blocks;
-
-            Promise()
-                .then(() => {
-                    const ctx = extend(
-                        {
-                            ctx: context,
-                        },
-                        mainContext || {}
-                    );
-
-                    return that.applyBlock(mainBlock, ctx);
-                })
-                .then((result) => {
-                    return that.blockResultToHtml(result, blocksOutput);
-                })
-                .nodeify(callback);
-        };
+        block = new TemplateBlock(block);
+        block = block.set("name", blockName);
+        return block;
     }
-
-    return Ext;
-};
-
-/**
- * Apply a block to a content
- * @param {Object} inner
- * @param {Object} context
- * @return {Promise<String>|String}
- */
-TemplateBlock.prototype.applyBlock = function (inner, context) {
-    const processFn = this.getProcess();
-
-    inner = inner || {};
-    inner.args = inner.args || [];
-    inner.kwargs = inner.kwargs || {};
-    inner.blocks = inner.blocks || [];
-
-    const r = processFn.call(context, inner);
-
-    if (Promise.isPromiseAlike(r)) {
-        return r.then(this.normalizeBlockResult.bind(this));
-    } else {
-        return this.normalizeBlockResult(r);
-    }
-};
-
-/**
- * Normalize result from a block process function
- * @param {Object|String} result
- * @return {Object}
- */
-TemplateBlock.prototype.normalizeBlockResult = function (result) {
-    if (is.string(result)) {
-        result = { body: result };
-    }
-    result.name = this.getName();
-
-    return result;
-};
-
-/**
- * Convert a block result to HTML
- * @param {Object} result
- * @param {Object} blocksOutput: stored post processing blocks in this object
- * @return {string}
- */
-TemplateBlock.prototype.blockResultToHtml = function (result, blocksOutput) {
-    let indexedKey;
-    const toIndex = !result.parse || result.post !== undefined;
-
-    if (toIndex) {
-        indexedKey = genKey();
-        blocksOutput[indexedKey] = result;
-    }
-
-    // Parsable block, just return it
-    if (result.parse) {
-        return result.body;
-    }
-
-    // Return it as a position marker
-    return `{{-%${indexedKey}%-}}`;
-};
-
-/**
- * Create a template block from a function or an object
- * @param {string} blockName
- * @param {Object} block
- * @return {TemplateBlock}
- */
-
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
-TemplateBlock.create = function (blockName, block) {
-    if (is.fn(block)) {
-        // @ts-expect-error ts-migrate(2350) FIXME: Only a void function can be called with the 'new' ... Remove this comment to see the full error message
-        block = new Immutable.Map({
-            process: block,
-        });
-    }
-
-    block = new TemplateBlock(block);
-    block = block.set("name", blockName);
-    return block;
-};
+}
 
 /**
  * Extract kwargs from an arguments array
  * @param {Array} args
  * @return {Object}
  */
-function extractKwargs(args) {
+function extractKwargs(args: any[]) {
     const last = args[args.length - 1];
     return is.object(last) && last.__keywords ? args.pop() : {};
 }

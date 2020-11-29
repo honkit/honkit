@@ -129,7 +129,6 @@ class Plugin extends Immutable.Record(
         blocks = blocks || Immutable.Map();
 
         return blocks.map((block, blockName) => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             return TemplateBlock.create(blockName, block);
         });
     }

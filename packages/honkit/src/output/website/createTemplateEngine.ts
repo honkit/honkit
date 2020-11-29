@@ -94,7 +94,6 @@ function createTemplateEngine(output, currentFile) {
         return JSONUtils.encodePage(page, summary);
     }
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     return TemplateEngine.create({
         loader: loader,
 

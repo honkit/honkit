@@ -31,7 +31,6 @@ function renderTemplate(engine, filePath, content, context) {
             path: filePath,
         })
             .then((content) => {
-                // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
                 return TemplateOutput.create(content, blocks);
             })
             .catch((error) => {
