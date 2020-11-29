@@ -6,7 +6,7 @@ import reducedObject from "../utils/reducedObject";
 
 class Config extends Immutable.Record(
     {
-        file: File(),
+        file: new File(),
         values: configDefault,
     },
     "Config"

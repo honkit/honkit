@@ -2,7 +2,7 @@ import Immutable from "immutable";
 import File from "./file";
 
 const Readme = Immutable.Record({
-    file: File(),
+    file: new File(),
     title: String(),
     description: String(),
 });

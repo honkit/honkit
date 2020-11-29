@@ -150,7 +150,6 @@ FS.prototype.statFile = function (filename) {
             return stat(filepath);
         })
         .then((stat) => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromStat' does not exist on type '... Remove this comment to see the full error message
             return File.createFromStat(filename, stat);
         });
 };
