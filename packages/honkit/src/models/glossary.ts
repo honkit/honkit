@@ -81,7 +81,7 @@ class Glossary extends Immutable.Record({
      @param {Array|List} entries
      @return {Glossary}
      */
-    static createFromEntries(file: string, entries: any[]) {
+    static createFromEntries(file: File, entries: any[]) {
         entries = entries.map((entry) => {
             if (!(entry instanceof GlossaryEntry)) {
                 entry = new GlossaryEntry(entry);
