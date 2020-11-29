@@ -50,7 +50,6 @@ SummaryPart.create = function (def, level) {
             return article;
         }
 
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         return SummaryArticle.create(article, [level, i + 1].join("."));
     });
 

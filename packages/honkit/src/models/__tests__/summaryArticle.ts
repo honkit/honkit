@@ -4,13 +4,11 @@ import File from "../file";
 describe("SummaryArticle", () => {
     describe("createChildLevel", () => {
         test("must create the right level", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create({}, "1.1");
             expect(article.createChildLevel()).toBe("1.1.1");
         });
 
         test("must create the right level when has articles", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create(
                 {
                     articles: [
@@ -27,7 +25,6 @@ describe("SummaryArticle", () => {
 
     describe("isFile", () => {
         test("must return true when exactly the file", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create(
                 {
                     ref: "hello.md",
@@ -40,7 +37,6 @@ describe("SummaryArticle", () => {
         });
 
         test("must return true when path is not normalized", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create(
                 {
                     ref: "/hello.md",
@@ -53,7 +49,6 @@ describe("SummaryArticle", () => {
         });
 
         test("must return false when has anchor", () => {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             const article = SummaryArticle.create(
                 {
                     ref: "hello.md#world",
@@ -68,7 +63,6 @@ describe("SummaryArticle", () => {
 
     describe("hasAnchor", function () {
         it("must return false when ref does not have anchor", function () {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             var article = SummaryArticle.create(
                 {
                     ref: "hello.md",
@@ -80,7 +74,6 @@ describe("SummaryArticle", () => {
         });
 
         it("must return true when has anchor", function () {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
             var article = SummaryArticle.create(
                 {
                     ref: "hello.md#world",

@@ -3,7 +3,6 @@ import Summary from "../../../models/summary";
 import File from "../../../models/file";
 import mergeAtLevel from "../mergeAtLevel";
 describe("mergeAtLevel", () => {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
     const summary = Summary.createFromParts(new File(), [
         {
             articles: [

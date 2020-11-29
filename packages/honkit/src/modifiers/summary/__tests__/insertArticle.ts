@@ -5,7 +5,6 @@ import FileModel from "../../../models/file";
 import insertArticle from "../insertArticle";
 
 describe("insertArticle", () => {
-    // @ts-expect-error
     const summary = Summary.createFromParts(new FileModel(), [
         {
             articles: [
@@ -45,7 +44,6 @@ describe("insertArticle", () => {
     ]);
 
     test("should insert an article at a given level", () => {
-        // @ts-expect-error
         const article = SummaryArticle.create(
             {
                 title: "Inserted",
@@ -66,7 +64,6 @@ describe("insertArticle", () => {
     });
 
     test("should insert an article in last position", () => {
-        // @ts-expect-error
         const article = SummaryArticle.create(
             {
                 title: "Inserted",

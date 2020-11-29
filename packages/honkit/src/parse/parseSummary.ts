@@ -21,11 +21,9 @@ function parseSummary(book) {
 
         if (!file) {
             logger.warn.ln("no summary file in this book");
-            summary = Summary();
+            summary = new Summary();
         } else {
             logger.debug.ln("summary file found at", file.getPath());
-
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
             summary = Summary.createFromParts(file, result.parts);
         }
 

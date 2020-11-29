@@ -25,25 +25,25 @@ class Parser extends Immutable.Record({
 
     // PARSE
 
-    parseReadme(content: string) {
+    parseReadme(content: any) {
         const readme = this.get("readme");
 
         return Promise(readme(content));
     }
 
-    parseSummary(content: string) {
+    parseSummary(content: any) {
         const summary = this.get("summary");
 
         return Promise(summary(content));
     }
 
-    parseGlossary(content: string) {
+    parseGlossary(content: any) {
         const glossary = this.get("glossary");
 
         return Promise(glossary(content));
     }
 
-    preparePage(content: string) {
+    preparePage(content: any) {
         const page = this.get("page");
         if (!page.prepare) {
             return Promise(content);
@@ -52,19 +52,19 @@ class Parser extends Immutable.Record({
         return Promise(page.prepare(content));
     }
 
-    parsePage(content: string) {
+    parsePage(content: any) {
         const page = this.get("page");
 
         return Promise(page(content));
     }
 
-    parseInline(content: string) {
+    parseInline(content: any) {
         const inline = this.get("inline");
 
         return Promise(inline(content));
     }
 
-    parseLanguages(content: string) {
+    parseLanguages(content: any) {
         const langs = this.get("langs");
 
         return Promise(langs(content));
@@ -72,19 +72,19 @@ class Parser extends Immutable.Record({
 
     // TO TEXT
 
-    renderLanguages(content: string) {
+    renderLanguages(content: any) {
         const langs = this.get("langs");
 
         return Promise(langs.toText(content));
     }
 
-    renderSummary(content: string) {
+    renderSummary(content: any) {
         const summary = this.get("summary");
 
         return Promise(summary.toText(content));
     }
 
-    renderGlossary(content: string) {
+    renderGlossary(content: any) {
         const glossary = this.get("glossary");
 
         return Promise(glossary.toText(content));

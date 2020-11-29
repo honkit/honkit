@@ -14,7 +14,7 @@ import indexArticleLevels from "./indexArticleLevels";
  */
 
 function insertArticle(summary, article, level) {
-    article = SummaryArticle(article);
+    article = new SummaryArticle(article);
     level = is.string(level) ? level : level.getLevel();
 
     let parent = summary.getParent(level);
