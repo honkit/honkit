@@ -7,7 +7,7 @@ import SummaryPart from "./summaryPart";
 import SummaryArticle from "./summaryArticle";
 import parsers from "../parsers";
 
-type Parts = Immutable.List<string>;
+type Parts = Immutable.List<any>;
 
 class Summary extends Immutable.Record(
     {
