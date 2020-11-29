@@ -2,18 +2,18 @@ import Summary from "../summary";
 import File from "../file";
 describe("Summary", () => {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
-    const summary = Summary.createFromParts(File(), [
+    const summary = Summary.createFromParts(new File(), [
         {
             articles: [
                 // 1.1
                 {
                     title: "My First Article",
-                    ref: "README.md"
+                    ref: "README.md",
                 },
                 // 1.2
                 {
                     title: "My Second Article",
-                    ref: "article.md"
+                    ref: "article.md",
                 },
                 // 1.3
                 {
@@ -22,24 +22,24 @@ describe("Summary", () => {
                     articles: [
                         {
                             title: "Article with anchor",
-                            ref: "article-anchor.md#anchor"
-                        }
-                    ]
+                            ref: "article-anchor.md#anchor",
+                        },
+                    ],
                 },
                 // 1.4
                 {
-                    title: "Article without ref"
+                    title: "Article without ref",
                 },
                 // 1.5
                 {
                     title: "Article with absolute ref",
-                    ref: "https://google.fr"
-                }
-            ]
+                    ref: "https://google.fr",
+                },
+            ],
         },
         {
-            title: "Test"
-        }
+            title: "Test",
+        },
     ]);
 
     describe("createFromEntries", () => {
