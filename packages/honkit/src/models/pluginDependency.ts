@@ -43,11 +43,10 @@ PluginDependency.prototype.isEnabled = function () {
 
 /**
  * Toggle this plugin state
- * @param  {Boolean}
  * @return {PluginDependency}
  */
-PluginDependency.prototype.toggle = function (state) {
-    if (is.undef(state)) {
+PluginDependency.prototype.toggle = function (state?: boolean) {
+    if (state === undefined) {
         state = !this.isEnabled();
     }
 

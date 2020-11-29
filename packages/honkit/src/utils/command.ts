@@ -102,7 +102,7 @@ function optionsToShellArgs(options) {
             continue;
         }
 
-        if (is.bool(value)) {
+        if (typeof value === "boolean") {
             result.push(key);
         } else {
             result.push(`${key}=${escapeShellArg(value)}`);
