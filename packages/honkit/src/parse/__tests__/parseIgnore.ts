@@ -13,7 +13,6 @@ describe("parseIgnore", () => {
     });
 
     function getBook() {
-        // @ts-expect-error
         const book = Book.createForFS(fs);
         return parseIgnore(book);
     }

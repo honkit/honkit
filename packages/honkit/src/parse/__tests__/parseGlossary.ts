@@ -7,7 +7,6 @@ describe("parseGlossary", () => {
         const fs = createMockFS({
             "GLOSSARY.md": "# Glossary\n\n## Hello\nDescription for hello",
         });
-        // @ts-expect-error
         const book = Book.createForFS(fs);
 
         return parseGlossary(book).then((resultBook) => {
@@ -22,7 +21,6 @@ describe("parseGlossary", () => {
 
     test("should not fail if doesn't exist", () => {
         const fs = createMockFS({});
-        // @ts-expect-error
         const book = Book.createForFS(fs);
 
         return parseGlossary(book).then((resultBook) => {

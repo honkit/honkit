@@ -13,7 +13,6 @@ describe("parseBook", () => {
                 "README.md": "Bonjour",
             },
         });
-        // @ts-expect-error
         const book = Book.createForFS(fs);
 
         return parseBook(book).then((resultBook) => {
@@ -38,7 +37,6 @@ describe("parseBook", () => {
                 "README.md": "Bonjour",
             },
         });
-        // @ts-expect-error
         const book = Book.createForFS(fs);
 
         return parseBook(book).then((resultBook) => {
@@ -72,7 +70,6 @@ describe("parseBook", () => {
                 "page.md": "Page",
             },
         });
-        // @ts-expect-error
         const book = Book.createForFS(fs);
 
         return parseBook(book).then((resultBook) => {

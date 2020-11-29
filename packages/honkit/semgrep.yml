@@ -1,0 +1,49 @@
+# Migrate Immutable.js model to class-based
+# https://github.com/honkit/honkit/issues/40#issuecomment-735353069
+rules:
+  - id: model
+    languages:
+      - typescript
+    message: |
+      use class
+    pattern: "const $X = Immutable.Record(...);"
+    fix-regex:
+      regex: 'const (\w+) = ([\s\S]+);'
+      replacement: 'class \1 extends \2{'
+    severity: WARNING
+  - id: instance-method
+    languages:
+      - typescript
+    message: |
+      prototype method to class instance methods
+    patterns:
+      - pattern: "$X.prototype.$Y = function(...){ ... }"
+      - pattern: "$X.prototype.$Y = function $Y(...){ ... }"
+      - pattern-not-inside: function (...){ ... }
+    fix-regex:
+      regex: '^(.*)\.prototype\.(.*) = function.*\('
+      replacement: '\2('
+    severity: WARNING
+  - id: static-method
+    languages:
+      - typescript
+    message: |
+      static method to class statics methods
+    patterns:
+      - pattern: "$X.$Y = function(...){ ... }"
+      - pattern: "$X.$Y = function $Y(...){ ... }"
+      - pattern-not-inside: function (...){ ... }
+    fix-regex:
+      regex: '^(.*?)\.(.*?) = function.*\('
+      replacement: 'static \2('
+    severity: WARNING
+  - id: export
+    languages:
+      - typescript
+    message: |
+      fix export
+    pattern: "export default $X;"
+    fix-regex:
+      regex: 'export default'
+      replacement: '}\nexport default'
+    severity: WARNING

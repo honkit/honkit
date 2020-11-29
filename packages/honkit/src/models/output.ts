@@ -6,7 +6,7 @@ import Book from "./book";
 import LocationUtils from "../utils/location";
 
 const Output = Immutable.Record({
-    book: Book(),
+    book: new Book(),
 
     // Name of the generator being used
     generator: String(),
