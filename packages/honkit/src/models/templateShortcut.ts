@@ -1,5 +1,4 @@
 import Immutable from "immutable";
-import is from "is";
 import Parser from "./parser";
 import TemplateBlock from "./templateBlock";
 

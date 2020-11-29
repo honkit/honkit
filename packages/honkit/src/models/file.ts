@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import Immutable from "immutable";
 import parsers from "../parsers";
+import Parser from "./parser";
 
 class File extends Immutable.Record({
     // Path of the file, relative to the FS
@@ -10,11 +11,11 @@ class File extends Immutable.Record({
     // Time when file data last modified
     mtime: Date(),
 }) {
-    getPath() {
+    getPath(): string {
         return this.get("path");
     }
 
-    getMTime() {
+    getMTime(): Date {
         return this.get("mtime");
     }
 
@@ -24,7 +25,7 @@ class File extends Immutable.Record({
      @return {boolean}
      */
 
-    exists() {
+    exists(): boolean {
         return Boolean(this.getPath());
     }
 
@@ -33,8 +34,7 @@ class File extends Immutable.Record({
 
      @return {string}
      */
-
-    getType() {
+    getType(): string {
         const parser = this.getParser();
         if (parser) {
             return parser.getName();
@@ -48,8 +48,7 @@ class File extends Immutable.Record({
 
      @return {string}
      */
-
-    getExtension() {
+    getExtension(): string {
         return path.extname(this.getPath()).toLowerCase();
     }
 
@@ -58,8 +57,7 @@ class File extends Immutable.Record({
 
      @return {Parser}
      */
-
-    getParser() {
+    getParser(): Parser {
         return parsers.getByExt(this.getExtension());
     }
 
@@ -70,7 +68,7 @@ class File extends Immutable.Record({
      @param {Object|fs.Stats} stat
      @return {File}
      */
-    static createFromStat(filepath: string, stat: fs.Stats) {
+    static createFromStat(filepath: string, stat: fs.Stats): File {
         return new File({
             path: filepath,
             mtime: stat.mtime,
@@ -82,7 +80,7 @@ class File extends Immutable.Record({
      @param {string} filepath
      @return {File}
      */
-    static createWithFilepath(filepath: string) {
+    static createWithFilepath(filepath: string): File {
         return new File({
             path: filepath,
         });
