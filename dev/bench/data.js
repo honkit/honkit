@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1605780681284,
+  "lastUpdate": 1606620836861,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5547,6 +5547,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±0.41%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0109e005d6fa6e8cf28931e4913cdad8d0a77b33",
+          "message": "Merge pull request #162 from masnagam/issue-161\n\nfix: bump highlight.js from 9.8.0 to 10.4.0",
+          "timestamp": "2020-11-29T12:30:43+09:00",
+          "tree_id": "9c5fd0be308811a0dc3ae93254e3ae156f52ccda",
+          "url": "https://github.com/honkit/honkit/commit/0109e005d6fa6e8cf28931e4913cdad8d0a77b33"
+        },
+        "date": 1606620835943,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±1.06%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
