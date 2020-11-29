@@ -106,7 +106,7 @@ function findParts($parent, $) {
     True if the element is a part
 
     @param el
-    @return {Boolean}
+    @return {boolean}
  */
 function isPartNode(el) {
     return SELECTOR_PART.indexOf(el.name) !== -1;

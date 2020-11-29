@@ -57,7 +57,7 @@ function createTemplateEngine(output, currentFile) {
     /**
      * Check if a file exists
      * @param {string} fileName
-     * @return {Boolean}
+     * @return {boolean}
      */
     function fileExists(fileName) {
         if (!fileName) {

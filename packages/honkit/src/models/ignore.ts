@@ -20,7 +20,7 @@ Ignore.prototype.getIgnore = function () {
  Test if a file is ignored by these rules
 
  @param {string} filePath
- @return {Boolean}
+ @return {boolean}
  */
 Ignore.prototype.isFileIgnored = function (filename) {
     const ignore = this.getIgnore();

@@ -64,7 +64,7 @@ PluginDependency.prototype.getNpmID = function () {
 
 /**
  * Is the plugin using a git dependency
- * @return {Boolean}
+ * @return {boolean}
  */
 PluginDependency.prototype.isGitDependency = function () {
     return !semver.validRange(this.getVersion());

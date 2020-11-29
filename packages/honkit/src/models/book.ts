@@ -149,7 +149,7 @@ class Book extends Immutable.Record({
     /**
      Is this book the parent of language's books
 
-     @return {Boolean}
+     @return {boolean}
      */
     isMultilingual() {
         return this.getLanguages().getCount() > 0;
@@ -158,7 +158,7 @@ class Book extends Immutable.Record({
     /**
      Return true if book is associated to a language
 
-     @return {Boolean}
+     @return {boolean}
      */
     isLanguageBook() {
         return Boolean(this.getLanguage());
@@ -280,7 +280,7 @@ class Book extends Immutable.Record({
 
     /**
      Infer the default path for a Readme.
-     @param {Boolean} [absolute=false] False for a path relative to
+     @param {boolean} [absolute=false] False for a path relative to
      this book's content root
      @return {string}
      */
@@ -295,7 +295,7 @@ class Book extends Immutable.Record({
 
     /**
      Infer the default path for a Summary.
-     @param {Boolean} [absolute=false] False for a path relative to
+     @param {boolean} [absolute=false] False for a path relative to
      this book's content root
      @return {string}
      */
@@ -310,7 +310,7 @@ class Book extends Immutable.Record({
 
     /**
      Infer the default path for a Glossary.
-     @param {Boolean} [absolute=false] False for a path relative to
+     @param {boolean} [absolute=false] False for a path relative to
      this book's content root
      @return {string}
      */

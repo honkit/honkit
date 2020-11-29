@@ -3,7 +3,7 @@
  * @param { {List<PluginDependency}} deps
  * @param {string} plugin
  * @param {string} version
- * @return {Boolean}
+ * @return {boolean}
  */
 
 function hasPlugin(deps, pluginName, version) {

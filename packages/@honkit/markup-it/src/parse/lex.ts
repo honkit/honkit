@@ -9,7 +9,7 @@ import matchRule from "./matchRule";
  *
  * @param {ParsingState} state
  * @param {List<Rule>} rules
- * @param {Boolean} isInline
+ * @param {boolean} isInline
  * @param {string} text
  * @return {List<Token>}
  */

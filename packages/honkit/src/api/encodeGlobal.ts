@@ -36,7 +36,7 @@ function encodeGlobal(output) {
         /**
          Check if the book is a multilingual book
 
-         @return {Boolean}
+         @return {boolean}
          */
         isMultilingual: function () {
             return book.isMultilingual();
@@ -45,7 +45,7 @@ function encodeGlobal(output) {
         /**
          Check if the book is a language book for a multilingual book
 
-         @return {Boolean}
+         @return {boolean}
          */
         isLanguageBook: function () {
             return book.isLanguageBook();

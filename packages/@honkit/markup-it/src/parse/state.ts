@@ -85,7 +85,7 @@ ParsingState.prototype.toggle = function (key, value, fn) {
 /**
  * Parse a text using a set of rules
  * @param {RulesSet} rules
- * @param {Boolean} isInline
+ * @param {boolean} isInline
  * @param {string} text
  * @return {List<Token>}
  */

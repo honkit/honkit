@@ -21,7 +21,7 @@ class File extends Immutable.Record({
     /**
      Does the file exists / is set
 
-     @return {Boolean}
+     @return {boolean}
      */
 
     exists() {

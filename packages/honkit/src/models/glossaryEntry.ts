@@ -21,7 +21,7 @@ GlossaryEntry.prototype.getDescription = function () {
 /**
  Get identifier for this entry
 
- @retrun {Boolean}
+ @retrun {boolean}
  */
 GlossaryEntry.prototype.getID = function () {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToID' does not exist on type 'Class'... Remove this comment to see the full error message

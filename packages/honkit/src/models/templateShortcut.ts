@@ -44,7 +44,7 @@ TemplateShortcut.prototype.getParsers = function () {
  Test if this shortcut accept a parser
 
  @param {Parser|String} parser
- @return {Boolean}
+ @return {boolean}
  */
 TemplateShortcut.prototype.acceptParser = function (parser) {
     if (!is.string(parser)) {

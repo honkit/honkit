@@ -5,7 +5,7 @@ import hasPlugin from "./hasPlugin";
  * Test if a plugin is a default one
  * @param {string} plugin
  * @param {string} version
- * @return {Boolean}
+ * @return {boolean}
  */
 
 function isDefaultPlugin(pluginName, version) {

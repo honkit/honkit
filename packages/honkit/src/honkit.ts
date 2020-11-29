@@ -11,7 +11,7 @@ const START_TIME = new Date();
  We can't directly use samver.satisfies since it will break all plugins when gitbook version is a prerelease (beta, alpha)
 
  @param {string} condition
- @return {Boolean}
+ @return {boolean}
  */
 function satisfies(condition) {
     // Test with real version

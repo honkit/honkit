@@ -31,7 +31,7 @@ class FS extends Immutable.Record({
      Verify that a file is in the fs scope
 
      @param {string} filename
-     @return {Boolean}
+     @return {boolean}
      */
     isInScope(filename: string): boolean {
         const rootPath = this.getRoot();

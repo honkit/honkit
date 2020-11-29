@@ -21,7 +21,7 @@ class Server extends events.EventEmitter {
     /**
      Return true if the server is running
 
-     @return {Boolean}
+     @return {boolean}
      */
     isRunning() {
         return !!this.running;

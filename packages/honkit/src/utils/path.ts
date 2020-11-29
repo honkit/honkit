@@ -52,7 +52,7 @@ function setExtension(filename, ext) {
     Return true if a filename is relative.
 
     @param {string}
-    @return {Boolean}
+    @return {boolean}
 */
 function isPureRelative(filename) {
     return filename.indexOf("./") === 0 || filename.indexOf("../") === 0;

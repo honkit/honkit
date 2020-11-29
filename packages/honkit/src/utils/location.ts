@@ -119,7 +119,7 @@ function relativeForFile(baseFile, file) {
  *
  * @param {string} p1: first path
  * @param {string} p2: second path
- * @return {Boolean}
+ * @return {boolean}
  */
 function areIdenticalPaths(p1, p2) {
     return normalize(p1) === normalize(p2);

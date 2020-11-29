@@ -101,7 +101,7 @@ Parser.prototype.renderGlossary = function (content) {
  Test if this parser matches an extension
 
  @param {string} ext
- @return {Boolean}
+ @return {boolean}
  */
 Parser.prototype.matchExtension = function (ext) {
     const exts = this.getExtensions();

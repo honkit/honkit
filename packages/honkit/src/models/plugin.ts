@@ -70,7 +70,7 @@ Plugin.prototype.getNpmID = function () {
 
 /**
  * Check if a plugin is loaded
- * @return {Boolean}
+ * @return {boolean}
  */
 
 Plugin.prototype.isLoaded = function () {
@@ -79,7 +79,7 @@ Plugin.prototype.isLoaded = function () {
 
 /**
  * Check if a plugin is a theme given its name
- * @return {Boolean}
+ * @return {boolean}
  */
 
 Plugin.prototype.isTheme = function () {
