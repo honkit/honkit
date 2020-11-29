@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606652679550,
+  "lastUpdate": 1606653467886,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5795,6 +5795,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±0.95%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0ed166189ecb0a2cb042aa6e98a303c8e471d5b0",
+          "message": "Merge pull request #170 from honkit/migrate-glossary.ts\n\nrefactor(honkit): migrate Glossary to class-based model",
+          "timestamp": "2020-11-29T21:34:08+09:00",
+          "tree_id": "e4737bae1157aa15ed9df97898b5cafa2a34b76f",
+          "url": "https://github.com/honkit/honkit/commit/0ed166189ecb0a2cb042aa6e98a303c8e471d5b0"
+        },
+        "date": 1606653466811,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.71%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
