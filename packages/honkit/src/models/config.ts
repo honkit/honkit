@@ -81,10 +81,8 @@ class Config extends Immutable.Record(
     getPluginDependencies() {
         const plugins = this.getValue("plugins");
         if (typeof plugins === "string") {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromString' does not exist on type '... Remove this comment to see the full error message
             return PluginDependency.listFromString(plugins);
         } else {
-            // @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromArray' does not exist on type 'C... Remove this comment to see the full error message
             return PluginDependency.listFromArray(plugins);
         }
     }
@@ -108,7 +106,6 @@ class Config extends Immutable.Record(
      * @return {Config}
      */
     setPluginDependencies(deps) {
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'listToArray' does not exist on type 'Cla... Remove this comment to see the full error message
         const plugins = PluginDependency.listToArray(deps);
 
         return this.setValue("plugins", plugins);

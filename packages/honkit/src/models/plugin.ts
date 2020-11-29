@@ -5,7 +5,10 @@ import THEME_PREFIX from "../constants/themePrefix";
 
 const DEFAULT_VERSION = "*";
 
-const Plugin = Immutable.Record(
+type Content = Immutable.Map<any, any>;
+type Package = Immutable.Map<any, any>;
+
+class Plugin extends Immutable.Record(
     {
         name: String(),
 
@@ -28,156 +31,148 @@ const Plugin = Immutable.Record(
         content: Immutable.Map(),
     },
     "Plugin"
-);
-
-Plugin.prototype.getName = function () {
-    return this.get("name");
-};
-
-Plugin.prototype.getPath = function () {
-    return this.get("path");
-};
-
-Plugin.prototype.getVersion = function () {
-    return this.get("version");
-};
-
-Plugin.prototype.getPackage = function () {
-    return this.get("package");
-};
-
-Plugin.prototype.getContent = function () {
-    return this.get("content");
-};
-
-Plugin.prototype.getDepth = function () {
-    return this.get("depth");
-};
-
-Plugin.prototype.getParent = function () {
-    return this.get("parent");
-};
-
-/**
- * Return the ID on NPM for this plugin
- * @return {string}
- */
-
-Plugin.prototype.getNpmID = function () {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToNpmID' does not exist on type 'Cla... Remove this comment to see the full error message
-    return PluginDependency.nameToNpmID(this.getName());
-};
-
-/**
- * Check if a plugin is loaded
- * @return {boolean}
- */
-
-Plugin.prototype.isLoaded = function () {
-    return Boolean(this.getPackage().size > 0);
-};
-
-/**
- * Check if a plugin is a theme given its name
- * @return {boolean}
- */
-
-Plugin.prototype.isTheme = function () {
-    const name = this.getName();
-    return name && name.indexOf(THEME_PREFIX) === 0;
-};
-
-/**
- * Return map of hooks
- * @return {Map<String:Function>}
- */
-
-Plugin.prototype.getHooks = function () {
-    return this.getContent().get("hooks") || Immutable.Map();
-};
-
-/**
- * Return infos about resources for a specific type
- * @param {string} type
- * @return {Map<String:Mixed>}
- */
-
-Plugin.prototype.getResources = function (type) {
-    if (type != "website" && type != "ebook") {
-        throw new Error(`Invalid assets type ${type}`);
+) {
+    getName(): string {
+        return this.get("name");
     }
 
-    const content = this.getContent();
-    return content.get(type) || (type == "website" ? content.get("book") : null) || Immutable.Map();
-};
+    getPath(): string {
+        return this.get("path");
+    }
 
-/**
- * Return map of filters
- * @return {Map<String:Function>}
- */
+    getVersion(): string {
+        return this.get("version");
+    }
 
-Plugin.prototype.getFilters = function () {
-    return this.getContent().get("filters");
-};
+    getPackage(): Package {
+        return this.get("package");
+    }
 
-/**
- * Return map of blocks
- * @return {Map<String:TemplateBlock>}
- */
+    getContent(): Content {
+        return this.get("content");
+    }
 
-Plugin.prototype.getBlocks = function () {
-    let blocks = this.getContent().get("blocks");
-    blocks = blocks || Immutable.Map();
+    getDepth(): number {
+        return this.get("depth");
+    }
 
-    return blocks.map((block, blockName) => {
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
-        return TemplateBlock.create(blockName, block);
-    });
-};
+    getParent(): string {
+        return this.get("parent");
+    }
 
-/**
- * Return a specific hook
- * @param {string} name
- * @return {Function|undefined}
- */
+    /**
+     * Return the ID on NPM for this plugin
+     * @return {string}
+     */
 
-Plugin.prototype.getHook = function (name) {
-    return this.getHooks().get(name);
-};
+    getNpmID(): string {
+        return PluginDependency.nameToNpmID(this.getName());
+    }
 
-/**
- * Create a plugin from a string
- * @param {string}
- * @return {Plugin}
- */
+    /**
+     * Check if a plugin is loaded
+     * @return {boolean}
+     */
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromString' does not exist on type... Remove this comment to see the full error message
-Plugin.createFromString = function (s) {
-    const parts = s.split("@");
-    const name = parts[0];
-    const version = parts.slice(1).join("@");
+    isLoaded(): boolean {
+        return Boolean(this.getPackage().size > 0);
+    }
 
-    return new Plugin({
-        name: name,
-        version: version || DEFAULT_VERSION,
-    });
-};
+    /**
+     * Check if a plugin is a theme given its name
+     * @return {boolean}
+     */
 
-/**
- * Create a plugin from a dependency
- * @param {PluginDependency}
- * @return {Plugin}
- */
+    isTheme(): boolean {
+        const name = this.getName();
+        return name && name.indexOf(THEME_PREFIX) === 0;
+    }
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromDep' does not exist on type 'C... Remove this comment to see the full error message
-Plugin.createFromDep = function (dep) {
-    return new Plugin({
-        name: dep.getName(),
-        version: dep.getVersion(),
-    });
-};
+    /**
+     * Return map of hooks
+     */
+    getHooks(): Immutable.Map<string, Function> {
+        return this.getContent().get("hooks") || Immutable.Map();
+    }
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToNpmID' does not exist on type 'Cla... Remove this comment to see the full error message
-Plugin.nameToNpmID = PluginDependency.nameToNpmID;
+    /**
+     * Return infos about resources for a specific type
+     * @param {string} type
+     * @return {Map<String:Mixed>}
+     */
 
+    getResources(type: string) {
+        if (type != "website" && type != "ebook") {
+            throw new Error(`Invalid assets type ${type}`);
+        }
+
+        const content = this.getContent();
+        return content.get(type) || (type == "website" ? content.get("book") : null) || Immutable.Map();
+    }
+
+    /**
+     * Return map of filters
+     * @return {Map<String:Function>}
+     */
+
+    getFilters() {
+        return this.getContent().get("filters");
+    }
+
+    /**
+     * Return map of blocks
+     * @return {Map<String:TemplateBlock>}
+     */
+
+    getBlocks() {
+        let blocks = this.getContent().get("blocks");
+        blocks = blocks || Immutable.Map();
+
+        return blocks.map((block, blockName) => {
+            // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
+            return TemplateBlock.create(blockName, block);
+        });
+    }
+
+    /**
+     * Return a specific hook
+     * @param {string} name
+     * @return {Function|undefined}
+     */
+
+    getHook(name: string) {
+        return this.getHooks().get(name);
+    }
+
+    /**
+     * Create a plugin from a string
+     * @param {string}
+     * @return {Plugin}
+     */
+
+    static createFromString(s: string) {
+        const parts = s.split("@");
+        const name = parts[0];
+        const version = parts.slice(1).join("@");
+
+        return new Plugin({
+            name: name,
+            version: version || DEFAULT_VERSION,
+        });
+    }
+
+    /**
+     * Create a plugin from a dependency
+     * @return {Plugin}
+     */
+
+    static createFromDep(dep: PluginDependency) {
+        return new Plugin({
+            name: dep.getName(),
+            version: dep.getVersion(),
+        });
+    }
+
+    static nameToNpmID = PluginDependency.nameToNpmID;
+}
 export default Plugin;

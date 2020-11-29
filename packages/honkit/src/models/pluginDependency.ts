@@ -9,7 +9,7 @@ const DEFAULT_VERSION = "*";
  * PluginDependency represents the informations about a plugin
  * stored in config.plugins
  */
-const PluginDependency = Immutable.Record(
+class PluginDependency extends Immutable.Record(
     {
         name: String(),
 
@@ -23,209 +23,188 @@ const PluginDependency = Immutable.Record(
         enabled: Boolean(true),
     },
     "PluginDependency"
-);
-
-PluginDependency.prototype.getName = function () {
-    return this.get("name");
-};
-
-PluginDependency.prototype.getVersion = function () {
-    return this.get("version");
-};
-
-PluginDependency.prototype.getPath = function () {
-    return this.get("path");
-};
-
-PluginDependency.prototype.isEnabled = function () {
-    return this.get("enabled");
-};
-
-/**
- * Toggle this plugin state
- * @return {PluginDependency}
- */
-PluginDependency.prototype.toggle = function (state?: boolean) {
-    if (state === undefined) {
-        state = !this.isEnabled();
+) {
+    getName() {
+        return this.get("name");
     }
 
-    return this.set("enabled", state);
-};
-
-/**
- * Return NPM ID for the dependency
- * @return {string}
- */
-PluginDependency.prototype.getNpmID = function () {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToNpmID' does not exist on type 'Cla... Remove this comment to see the full error message
-    return PluginDependency.nameToNpmID(this.getName());
-};
-
-/**
- * Is the plugin using a git dependency
- * @return {boolean}
- */
-PluginDependency.prototype.isGitDependency = function () {
-    return !semver.validRange(this.getVersion());
-};
-
-/**
- * Create a plugin with a name and a plugin
- * @param {string}
- * @return {Plugin|undefined}
- */
-
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
-PluginDependency.create = function (name, version, enabled) {
-    if (is.undefined(enabled)) {
-        enabled = true;
+    getVersion() {
+        return this.get("version");
     }
 
-    return new PluginDependency({
-        name: name,
-        version: version || DEFAULT_VERSION,
-        enabled: Boolean(enabled),
-    });
-};
+    getPath() {
+        return this.get("path");
+    }
 
-/**
- * Create a plugin from a string
- * @param {string} s
- * @return {Plugin|undefined}
- */
+    isEnabled() {
+        return this.get("enabled");
+    }
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromString' does not exist on type... Remove this comment to see the full error message
-PluginDependency.createFromString = function (s) {
-    /*
-    HonKit will support following format
-     pkg
-     @scope/pkg
-     -pkg               - Disable package
-     -@scope/pkg        - Disable package
-    */
-    const packagePattern = /^(?<disabled>-)?(?<name>.+)$/;
-    const scopedPackagePattern = /^(?<disabled>-)?(?<name>@[^/]+\/.+)$/;
-    if (packagePattern.test(s) && !s.includes("@")) {
-        const match = s.match(packagePattern);
-        const enabled = !match.groups.disabled;
-        return new PluginDependency({
-            name: match.groups.name,
-            version: DEFAULT_VERSION,
-            enabled: enabled,
-        });
-    } else if (scopedPackagePattern.test(s)) {
-        const match = s.match(scopedPackagePattern);
-        const enabled = !match.groups.disabled;
-        return new PluginDependency({
-            name: match.groups.name,
-            version: DEFAULT_VERSION,
-            enabled: enabled,
-        });
-    } else {
-        /*
-         Deprecated It is only for backward compatible
-         This is original GitBook logic supports
-
-         pkg@version          - backward compatible with GitBook
-         pkg@>=version        - backward compatible with GitBook
-         hello@git+ssh://samy@github.com/GitbookIO/plugin-ga.git
-
-         Note: This logic does not support scoped module
-         */
-        const parts = s.split("@");
-        let name = parts[0];
-        const version = parts.slice(1).join("@");
-        let enabled = true;
-        if (name[0] === "-") {
-            enabled = false;
-            name = name.slice(1);
+    /**
+     * Toggle this plugin state
+     * @return {PluginDependency}
+     */
+    toggle(state?: boolean) {
+        if (state === undefined) {
+            state = !this.isEnabled();
         }
+
+        return this.set("enabled", state);
+    }
+
+    /**
+     * Return NPM ID for the dependency
+     * @return {string}
+     */
+    getNpmID() {
+        return PluginDependency.nameToNpmID(this.getName());
+    }
+
+    /**
+     * Is the plugin using a git dependency
+     * @return {boolean}
+     */
+    isGitDependency() {
+        return !semver.validRange(this.getVersion());
+    }
+
+    /**
+     * Create a plugin with a name and a plugin
+     * @param {string}
+     * @return {Plugin|undefined}
+     */
+    static create(name, version, enabled) {
+        if (is.undefined(enabled)) {
+            enabled = true;
+        }
+
         return new PluginDependency({
             name: name,
             version: version || DEFAULT_VERSION,
-            enabled: enabled,
+            enabled: Boolean(enabled),
         });
     }
-};
 
-/**
- * Create a PluginDependency from a string
- * @param {string}
- * @return {List<PluginDependency>}
- */
+    /**
+     * Create a plugin from a string
+     * @param {string} s
+     * @return {Plugin|undefined}
+     */
+    static createFromString(s) {
+        /*
+        HonKit will support following format
+         pkg
+         @scope/pkg
+         -pkg               - Disable package
+         -@scope/pkg        - Disable package
+        */
+        const packagePattern = /^(?<disabled>-)?(?<name>.+)$/;
+        const scopedPackagePattern = /^(?<disabled>-)?(?<name>@[^/]+\/.+)$/;
+        if (packagePattern.test(s) && !s.includes("@")) {
+            const match = s.match(packagePattern);
+            const enabled = !match.groups.disabled;
+            return new PluginDependency({
+                name: match.groups.name,
+                version: DEFAULT_VERSION,
+                enabled: enabled,
+            });
+        } else if (scopedPackagePattern.test(s)) {
+            const match = s.match(scopedPackagePattern);
+            const enabled = !match.groups.disabled;
+            return new PluginDependency({
+                name: match.groups.name,
+                version: DEFAULT_VERSION,
+                enabled: enabled,
+            });
+        } else {
+            /*
+             Deprecated It is only for backward compatible
+             This is original GitBook logic supports
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromString' does not exist on type '... Remove this comment to see the full error message
-PluginDependency.listFromString = function (s) {
-    const parts = s.split(",");
+             pkg@version          - backward compatible with GitBook
+             pkg@>=version        - backward compatible with GitBook
+             hello@git+ssh://samy@github.com/GitbookIO/plugin-ga.git
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromArray' does not exist on type 'C... Remove this comment to see the full error message
-    return PluginDependency.listFromArray(parts);
-};
-
-/**
- * Create a PluginDependency from an array
- * @param {Array}
- * @return {List<PluginDependency>}
- */
-
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'listFromArray' does not exist on type 'C... Remove this comment to see the full error message
-PluginDependency.listFromArray = function (arr) {
-    return Immutable.List(arr)
-        .map((entry) => {
-            if (is.string(entry)) {
-                // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromString' does not exist on type... Remove this comment to see the full error message
-                return PluginDependency.createFromString(entry);
-            } else {
-                return PluginDependency({
-                    // @ts-expect-error ts-migrate(2339) FIXME: Property 'get' does not exist on type 'unknown'.
-                    name: entry.get("name"),
-
-                    // @ts-expect-error ts-migrate(2339) FIXME: Property 'get' does not exist on type 'unknown'.
-                    version: entry.get("version"),
-                });
+             Note: This logic does not support scoped module
+             */
+            const parts = s.split("@");
+            let name = parts[0];
+            const version = parts.slice(1).join("@");
+            let enabled = true;
+            if (name[0] === "-") {
+                enabled = false;
+                name = name.slice(1);
             }
-        })
-        .filter((dep) => {
-            return Boolean(dep.getName());
-        });
-};
+            return new PluginDependency({
+                name: name,
+                version: version || DEFAULT_VERSION,
+                enabled: enabled,
+            });
+        }
+    }
 
-/**
- * Export plugin dependencies as an array
- * @param {List<PluginDependency>} list
- * @return {Array<String>}
- */
+    /**
+     * Create a PluginDependency from a string
+     * @param {string}
+     * @return {List<PluginDependency>}
+     */
+    static listFromString(s) {
+        const parts = s.split(",");
+        return PluginDependency.listFromArray(parts);
+    }
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'listToArray' does not exist on type 'Cla... Remove this comment to see the full error message
-PluginDependency.listToArray = function (list) {
-    return list
-        .map((dep) => {
-            let result = "";
+    /**
+     * Create a PluginDependency from an array
+     */
+    static listFromArray(arr: (PluginDependency | string)[]) {
+        return Immutable.List(arr)
+            .map((entry) => {
+                if (typeof entry === "string") {
+                    return PluginDependency.createFromString(entry);
+                } else {
+                    return new PluginDependency({
+                        name: entry.get("name"),
+                        version: entry.get("version"),
+                    });
+                }
+            })
+            .filter((dep) => {
+                return Boolean(dep.getName());
+            });
+    }
 
-            if (!dep.isEnabled()) {
-                result += "-";
-            }
+    /**
+     * Export plugin dependencies as an array
+     * @param {List<PluginDependency>} list
+     * @return {Array<String>}
+     */
+    static listToArray(list) {
+        return list
+            .map((dep) => {
+                let result = "";
 
-            result += dep.getName();
-            if (dep.getVersion() !== DEFAULT_VERSION) {
-                result += `@${dep.getVersion()}`;
-            }
+                if (!dep.isEnabled()) {
+                    result += "-";
+                }
 
-            return result;
-        })
-        .toJS();
-};
+                result += dep.getName();
+                if (dep.getVersion() !== DEFAULT_VERSION) {
+                    result += `@${dep.getVersion()}`;
+                }
 
-/**
- * Return NPM id for a plugin name
- * @param {string}
- * @return {string}
- */
+                return result;
+            })
+            .toJS();
+    }
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToNpmID' does not exist on type 'Cla... Remove this comment to see the full error message
-PluginDependency.nameToNpmID = function (s) {
-    return PREFIX + s;
-};
+    /**
+     * Return NPM id for a plugin name
+     * @param {string}
+     * @return {string}
+     */
+    static nameToNpmID(s) {
+        return PREFIX + s;
+    }
+}
 
 export default PluginDependency;
