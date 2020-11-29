@@ -19,7 +19,6 @@ function parseReadme(book) {
 
         logger.debug.ln("readme found at", file.getPath());
 
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
         const readme = Readme.create(file, result);
         return book.set("readme", readme);
     });
