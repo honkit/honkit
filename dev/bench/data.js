@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606623424885,
+  "lastUpdate": 1606635475642,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5671,6 +5671,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±4.63%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a58998b2c2dc059c7c75162d9fd4a62ec2bc5b6a",
+          "message": "refactor(honkit): migrate book.ts to class-based immutable model (#165)\n\n* refactor(honkit): migrate book.ts to class-based immutable model\r\n\r\n* chore: add semgrep.yml",
+          "timestamp": "2020-11-29T16:34:26+09:00",
+          "tree_id": "72e97faf4f0d5c01ac40eeb2617b11cea4a0eafe",
+          "url": "https://github.com/honkit/honkit/commit/a58998b2c2dc059c7c75162d9fd4a62ec2bc5b6a"
+        },
+        "date": 1606635473452,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±1.73%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
