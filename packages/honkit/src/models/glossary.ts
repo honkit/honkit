@@ -4,112 +4,103 @@ import File from "./file";
 import GlossaryEntry from "./glossaryEntry";
 import parsers from "../parsers";
 
-const Glossary = Immutable.Record({
+class Glossary extends Immutable.Record({
     file: new File(),
     entries: Immutable.OrderedMap(),
-});
-
-Glossary.prototype.getFile = function () {
-    return this.get("file");
-};
-
-Glossary.prototype.getEntries = function () {
-    return this.get("entries");
-};
-
-/**
- Return an entry by its name
-
- @param {string} name
- @return {GlossaryEntry}
- */
-Glossary.prototype.getEntry = function (name) {
-    const entries = this.getEntries();
-
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToID' does not exist on type 'Class'... Remove this comment to see the full error message
-    const id = GlossaryEntry.nameToID(name);
-
-    return entries.get(id);
-};
-
-/**
- Render glossary as text
-
- @return {Promise<String>}
- */
-Glossary.prototype.toText = function (parser) {
-    const file = this.getFile();
-    const entries = this.getEntries();
-
-    parser = parser ? parsers.getByExt(parser) : file.getParser();
-
-    if (!parser) {
-        throw error.FileNotParsableError({
-            filename: file.getPath(),
-        });
+}) {
+    getFile() {
+        return this.get("file");
     }
 
-    return parser.renderGlossary(entries.toJS());
-};
+    getEntries() {
+        return this.get("entries");
+    }
 
-/**
- Add/Replace an entry to a glossary
+    /**
+     Return an entry by its name
+     @param {string} name
+     @return {GlossaryEntry}
+     */
+    getEntry(name: string) {
+        const entries = this.getEntries();
 
- @param {Glossary} glossary
- @param {GlossaryEntry} entry
- @return {Glossary}
- */
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'nameToID' does not exist on type 'Class'... Remove this comment to see the full error message
+        const id = GlossaryEntry.nameToID(name);
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'addEntry' does not exist on type 'Class'... Remove this comment to see the full error message
-Glossary.addEntry = function addEntry(glossary, entry) {
-    const id = entry.getID();
-    let entries = glossary.getEntries();
+        return entries.get(id);
+    }
 
-    entries = entries.set(id, entry);
-    return glossary.set("entries", entries);
-};
+    /**
+     Render glossary as text
 
-/**
- Add/Replace an entry to a glossary by name/description
+     @return {Promise<String>}
+     */
+    toText(parser) {
+        const file = this.getFile();
+        const entries = this.getEntries();
 
- @param {Glossary} glossary
- @param {GlossaryEntry} entry
- @return {Glossary}
- */
+        parser = parser ? parsers.getByExt(parser) : file.getParser();
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'addEntryByName' does not exist on type '... Remove this comment to see the full error message
-Glossary.addEntryByName = function addEntryByName(glossary, name, description) {
-    const entry = new GlossaryEntry({
-        name: name,
-        description: description,
-    });
-
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'addEntry' does not exist on type 'Class'... Remove this comment to see the full error message
-    return Glossary.addEntry(glossary, entry);
-};
-
-/**
- Create a glossary from a list of entries
-
- @param {string} filename
- @param {Array|List} entries
- @return {Glossary}
- */
-
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromEntries' does not exist on typ... Remove this comment to see the full error message
-Glossary.createFromEntries = function createFromEntries(file, entries) {
-    entries = entries.map((entry) => {
-        if (!(entry instanceof GlossaryEntry)) {
-            entry = new GlossaryEntry(entry);
+        if (!parser) {
+            throw error.FileNotParsableError({
+                filename: file.getPath(),
+            });
         }
 
-        return [entry.getID(), entry];
-    });
+        return parser.renderGlossary(entries.toJS());
+    }
 
-    return new Glossary({
-        file: file,
-        entries: Immutable.OrderedMap(entries),
-    });
-};
+    /**
+     Add/Replace an entry to a glossary
+
+     @param {Glossary} glossary
+     @param {GlossaryEntry} entry
+     @return {Glossary}
+     */
+    static addEntry(glossary: Glossary, entry) {
+        const id = entry.getID();
+        let entries = glossary.getEntries();
+
+        entries = entries.set(id, entry);
+        return glossary.set("entries", entries);
+    }
+
+    /**
+     Add/Replace an entry to a glossary by name/description
+
+     @param {Glossary} glossary
+     @param {GlossaryEntry} entry
+     @return {Glossary}
+     */
+    static addEntryByName(glossary, name, description) {
+        const entry = new GlossaryEntry({
+            name: name,
+            description: description,
+        });
+        return Glossary.addEntry(glossary, entry);
+    }
+
+    /**
+     Create a glossary from a list of entries
+
+     @param {string} filename
+     @param {Array|List} entries
+     @return {Glossary}
+     */
+    static createFromEntries(file, entries) {
+        entries = entries.map((entry) => {
+            if (!(entry instanceof GlossaryEntry)) {
+                entry = new GlossaryEntry(entry);
+            }
+
+            return [entry.getID(), entry];
+        });
+
+        return new Glossary({
+            file: file,
+            entries: Immutable.OrderedMap(entries),
+        });
+    }
+}
 
 export default Glossary;
