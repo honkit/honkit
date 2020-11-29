@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606621634260,
+  "lastUpdate": 1606623424885,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5640,6 +5640,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.61%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "93af869cf6417658e9921c290c6940832bea0ac1",
+          "message": "Merge remote-tracking branch 'origin/master'",
+          "timestamp": "2020-11-29T13:13:10+09:00",
+          "tree_id": "58528f2f4fc6c91f2fa37b76febb6a8f3d138e12",
+          "url": "https://github.com/honkit/honkit/commit/93af869cf6417658e9921c290c6940832bea0ac1"
+        },
+        "date": 1606623423814,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±4.63%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
