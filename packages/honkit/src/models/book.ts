@@ -19,7 +19,7 @@ class Book extends Immutable.Record({
     fs: new FS(),
 
     // Ignore files parser
-    ignore: Ignore(),
+    ignore: new Ignore(),
 
     // Structure files
     config: new Config(),

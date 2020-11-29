@@ -4,43 +4,41 @@ import createIgnore from "ignore";
 /*
     Immutable version of node-ignore
 */
-
-const Ignore = Immutable.Record(
+class Ignore extends Immutable.Record(
     {
         ignore: createIgnore(),
     },
     "Ignore"
-);
+) {
+    getIgnore() {
+        return this.get("ignore");
+    }
 
-Ignore.prototype.getIgnore = function () {
-    return this.get("ignore");
-};
+    /**
+     Test if a file is ignored by these rules
 
-/**
- Test if a file is ignored by these rules
+     @return {boolean}
+     * @param filename
+     */
+    isFileIgnored(filename: string) {
+        const ignore = this.getIgnore();
+        return ignore.filter([filename]).length == 0;
+    }
 
- @param {string} filePath
- @return {boolean}
- */
-Ignore.prototype.isFileIgnored = function (filename) {
-    const ignore = this.getIgnore();
-    return ignore.filter([filename]).length == 0;
-};
+    /**
+     Add rules
+     @param {string}
+     @return {Ignore}
+     */
+    add(rule: string | import("ignore").Ignore) {
+        const ignore = this.getIgnore();
+        const newIgnore = createIgnore();
 
-/**
- Add rules
+        newIgnore.add(ignore);
+        newIgnore.add(rule);
 
- @param {string}
- @return {Ignore}
- */
-Ignore.prototype.add = function (rule) {
-    const ignore = this.getIgnore();
-    const newIgnore = createIgnore();
-
-    newIgnore.add(ignore);
-    newIgnore.add(rule);
-
-    return this.set("ignore", newIgnore);
-};
+        return this.set("ignore", newIgnore);
+    }
+}
 
 export default Ignore;
