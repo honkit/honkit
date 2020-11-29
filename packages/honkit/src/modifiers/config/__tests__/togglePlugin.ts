@@ -5,14 +5,11 @@ import togglePlugin from "../togglePlugin";
 import Config from "../../../models/config";
 
 describe("togglePlugin", () => {
-    
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'createWithValues' does not exist on type... Remove this comment to see the full error message
     const config = Config.createWithValues({
-        plugins: ["hello", "world", "-disabled"]
+        plugins: ["hello", "world", "-disabled"],
     });
 
     test("should enable plugin", () => {
-        
         // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         const newConfig = togglePlugin(config, "disabled");
 
@@ -23,7 +20,6 @@ describe("togglePlugin", () => {
     });
 
     test("should disable plugin", () => {
-        
         // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         const newConfig = togglePlugin(config, "world");
 

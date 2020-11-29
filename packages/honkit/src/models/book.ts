@@ -22,7 +22,7 @@ class Book extends Immutable.Record({
     ignore: Ignore(),
 
     // Structure files
-    config: Config(),
+    config: new Config(),
     readme: Readme(),
     summary: Summary(),
     glossary: Glossary(),
