@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606635475642,
+  "lastUpdate": 1606637616675,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5702,6 +5702,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.73%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b63f6c52373f7309e8a728b6b37db8983302f5f8",
+          "message": "refactor(honkit): migrate config.ts to class-based (#166)\n\n* refactor(honkit): migrate config.ts to class-based\r\n\r\n* chore: add type",
+          "timestamp": "2020-11-29T17:10:03+09:00",
+          "tree_id": "91374d4f64357fd12900277564d49afed4fd345f",
+          "url": "https://github.com/honkit/honkit/commit/b63f6c52373f7309e8a728b6b37db8983302f5f8"
+        },
+        "date": 1606637615669,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±1.89%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
