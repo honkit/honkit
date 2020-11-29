@@ -240,7 +240,7 @@ class FS extends Immutable.Record({
      @param {string} filename
      @return {Promise<Object>}
      */
-    loadAsObject(filename) {
+    loadAsObject(filename: string) {
         const that = this;
         const fsLoadObject = this.get("fsLoadObject");
 
