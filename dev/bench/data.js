@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606653467886,
+  "lastUpdate": 1606659062811,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5826,6 +5826,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±0.71%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e22d85611b47012703ebaba55cf55b7d6f20dd63",
+          "message": "Merge pull request #171 from honkit/migrate-class-based-model\n\nrefactor(honkit): migrate prototype models to class-based models",
+          "timestamp": "2020-11-29T23:07:13+09:00",
+          "tree_id": "e55f2df6167fd568d871e64a4703e75c0ea55b66",
+          "url": "https://github.com/honkit/honkit/commit/e22d85611b47012703ebaba55cf55b7d6f20dd63"
+        },
+        "date": 1606659061317,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±1.23%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
