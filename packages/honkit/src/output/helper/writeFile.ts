@@ -5,7 +5,7 @@ import fs from "../../utils/fs";
  Write a file to the output folder
 
  @param {Output} output
- @param {String} filePath
+ @param {string} filePath
  @param {Buffer|String} content
  @return {Promise}
  */

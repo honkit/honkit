@@ -4,7 +4,7 @@ import cheerio from "cheerio";
 /**
     Parse an HTML string and return its content
 
-    @param {String}
+    @param {string}
     @return {cheerio.DOM}
 */
 export function parse(html: string) {
@@ -29,7 +29,7 @@ export function root($) {
     Return text node of an element
 
     @param {cheerio.Node}
-    @return {String}
+    @return {string}
 */
 export function textNode($el) {
     return _.reduce(

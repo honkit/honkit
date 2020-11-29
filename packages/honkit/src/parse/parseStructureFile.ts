@@ -7,7 +7,7 @@ import lookupStructureFile from "./lookupStructureFile";
 
  @param {FS} fs
  @param {ParsableFile} file
- @param {String} type
+ @param {string} type
  @return {Promise<Array<String, List|Map>>}
  */
 function parseFile(fs, file, type) {
@@ -47,7 +47,7 @@ function parseFile(fs, file, type) {
  It uses the configuration to find the specified file.
 
  @param {Book} book
- @param {String} type: one of ["glossary", "readme", "summary"]
+ @param {string} type: one of ["glossary", "readme", "summary"]
  @return {Promise<List|Map>}
  */
 

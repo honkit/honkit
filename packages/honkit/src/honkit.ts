@@ -10,8 +10,8 @@ const START_TIME = new Date();
  Verify that this gitbook version satisfies a requirement
  We can't directly use samver.satisfies since it will break all plugins when gitbook version is a prerelease (beta, alpha)
 
- @param {String} condition
- @return {Boolean}
+ @param {string} condition
+ @return {boolean}
  */
 function satisfies(condition) {
     // Test with real version

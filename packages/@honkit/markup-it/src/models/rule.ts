@@ -37,7 +37,7 @@ Rule.prototype.getListeners = function () {
 
 /**
  * Add a listener
- * @param {String} key
+ * @param {string} key
  * @param {Function} fn
  * @return {Rule}
  */
@@ -114,7 +114,7 @@ Rule.prototype.regExp = function (re, propsFn) {
 
 /**
  * Call listerners with a specific set of data
- * @param {String} key
+ * @param {string} key
  * @return {Mixed}
  */
 Rule.prototype.emit = function (key) {
@@ -134,7 +134,7 @@ Rule.prototype.emit = function (key) {
 /**
  * Parse a text using matching rules and return a list of tokens
  * @param  {ParsingState} state
- * @param  {String} text
+ * @param  {string} text
  * @return {List<Token>}
  */
 Rule.prototype.onText = function (state, text) {
@@ -145,7 +145,7 @@ Rule.prototype.onText = function (state, text) {
  * Render a token as a string
  * @param  {RenderingState} state
  * @param  {Token} token
- * @return {String}
+ * @return {string}
  */
 Rule.prototype.onToken = function (state, text) {
     return this.emit("text", state, text);

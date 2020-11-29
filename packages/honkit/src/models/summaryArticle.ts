@@ -35,7 +35,7 @@ SummaryArticle.prototype.getArticles = function () {
  * Return how deep the article is.
  * The README has a depth of 1
  *
- * @return {Number}
+ * @return {number}
  */
 SummaryArticle.prototype.getDepth = function () {
     return this.getLevel().split(".").length - 1;
@@ -45,7 +45,7 @@ SummaryArticle.prototype.getDepth = function () {
  * Get path (without anchor) to the pointing file.
  * It also normalizes the file path.
  *
- * @return {String}
+ * @return {string}
  */
 SummaryArticle.prototype.getPath = function () {
     if (this.isExternal()) {
@@ -69,7 +69,7 @@ SummaryArticle.prototype.getPath = function () {
 /**
  * Return url if article is external
  *
- * @return {String}
+ * @return {string}
  */
 SummaryArticle.prototype.getUrl = function () {
     return this.isExternal() ? this.getRef() : undefined;
@@ -78,7 +78,7 @@ SummaryArticle.prototype.getUrl = function () {
 /**
  * Get anchor for this article (or undefined)
  *
- * @return {String}
+ * @return {string}
  */
 SummaryArticle.prototype.getAnchor = function () {
     const ref = this.getRef();
@@ -91,7 +91,7 @@ SummaryArticle.prototype.getAnchor = function () {
 /**
  * Create a new level for a new child article
  *
- * @return {String}
+ * @return {string}
  */
 SummaryArticle.prototype.createChildLevel = function () {
     const level = this.getLevel();
@@ -104,7 +104,7 @@ SummaryArticle.prototype.createChildLevel = function () {
 /**
  * Is article pointing to a page of an absolute url
  *
- * @return {Boolean}
+ * @return {boolean}
  */
 SummaryArticle.prototype.isPage = function () {
     return !this.isExternal() && this.getRef();
@@ -114,7 +114,7 @@ SummaryArticle.prototype.isPage = function () {
  * Check if this article is a file (exatcly)
  *
  * @param {File} file
- * @return {Boolean}
+ * @return {boolean}
  */
 SummaryArticle.prototype.isFile = function (file) {
     return file.getPath() === this.getPath() && this.getAnchor() === undefined;
@@ -124,7 +124,7 @@ SummaryArticle.prototype.isFile = function (file) {
  * Check if this article is the introduction of the book
  *
  * @param {Book|Readme} book
- * @return {Boolean}
+ * @return {boolean}
  */
 SummaryArticle.prototype.isReadme = function (book) {
     const readme = book.getFile ? book : book.getReadme();
@@ -136,7 +136,7 @@ SummaryArticle.prototype.isReadme = function (book) {
 /**
  * Is article pointing to aan absolute url
  *
- * @return {Boolean}
+ * @return {boolean}
  */
 SummaryArticle.prototype.isExternal = function () {
     return location.isExternal(this.getRef());
@@ -171,7 +171,7 @@ SummaryArticle.create = function (def, level) {
 /**
  * Has anchor for this article
  *
- * @return {Boolean}
+ * @return {boolean}
  */
 SummaryArticle.prototype.hasAnchor = function () {
     const ref = this.getRef();

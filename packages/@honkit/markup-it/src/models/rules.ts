@@ -67,7 +67,7 @@ RulesSet.prototype.unshift = function (newRules) {
 
 /**
  * Remove a rule by its type
- * @param {String} ruleType
+ * @param {string} ruleType
  * @return {RulesSet}
  */
 RulesSet.prototype.del = function (ruleType) {
@@ -91,7 +91,7 @@ RulesSet.prototype.replace = function (rule) {
 
 /**
  * Get a specific rule using its type
- * @param {String} ruleType
+ * @param {string} ruleType
  * @return {Rule}
  */
 RulesSet.prototype.getRule = function (ruleType) {

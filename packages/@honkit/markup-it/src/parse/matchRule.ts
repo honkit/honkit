@@ -7,7 +7,7 @@ import Token from "../models/token";
  * Match a text using a rule
  * @param {ParsingState} state
  * @param {Rule} rule
- * @param {String} text
+ * @param {string} text
  * @return {List<Token>|null}
  */
 function matchRule(state, rule, text) {

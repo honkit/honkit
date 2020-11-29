@@ -84,7 +84,6 @@ function createMockFS(files) {
             .valueSeq();
     }
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     return FS.create({
         root: "",
         fsExists: fsExists,

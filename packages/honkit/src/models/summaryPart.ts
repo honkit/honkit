@@ -26,7 +26,7 @@ SummaryPart.prototype.getArticles = function () {
 /**
  * Create a new level for a new child article
  *
- * @return {String}
+ * @return {string}
  */
 SummaryPart.prototype.createChildLevel = function () {
     const level = this.getLevel();

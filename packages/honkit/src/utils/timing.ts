@@ -7,7 +7,7 @@ const startDate = Date.now();
 /**
  Mesure an operation
 
- @parqm {String} type
+ @parqm {string} type
  @param {Promise} p
  @return {Promise}
  */
@@ -42,8 +42,8 @@ function measure(type, p) {
 /**
  Return a milliseconds number as a second string
 
- @param {Number} ms
- @return {String}
+ @param {number} ms
+ @return {string}
  */
 function time(ms) {
     if (ms < 1000) {

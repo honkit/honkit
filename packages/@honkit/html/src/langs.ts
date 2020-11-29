@@ -3,7 +3,7 @@ import parseSummary from "./summary";
 /**
     Parse an HTML content into a list of language
 
-    @param {String} html
+    @param {string} html
     @return {Array}
 */
 function parseLangs(content) {

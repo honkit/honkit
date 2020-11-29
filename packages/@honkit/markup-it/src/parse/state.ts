@@ -18,7 +18,7 @@ function ParsingState(syntax, options) {
 
 /**
  * Get an option value
- * @param {String} key
+ * @param {string} key
  * @return {Mixed}
  */
 ParsingState.prototype.getOption = function (key) {
@@ -27,7 +27,7 @@ ParsingState.prototype.getOption = function (key) {
 
 /**
  * Get depth of parsing
- * @return {Number}
+ * @return {number}
  */
 ParsingState.prototype.getDepth = function () {
     return this.depth;
@@ -35,7 +35,7 @@ ParsingState.prototype.getDepth = function () {
 
 /**
  * Get depth of parent token
- * @return {Number}
+ * @return {number}
  */
 ParsingState.prototype.getParentDepth = function () {
     return this.getDepth() - 1;
@@ -43,7 +43,7 @@ ParsingState.prototype.getParentDepth = function () {
 
 /**
  * Get a state
- * @param {String} key
+ * @param {string} key
  * @return {Mixed}
  */
 ParsingState.prototype.get = function (key) {
@@ -52,7 +52,7 @@ ParsingState.prototype.get = function (key) {
 
 /**
  * Get a state
- * @param {String} key
+ * @param {string} key
  * @param {Mixed} value
  * @return {Mixed}
  */
@@ -63,7 +63,7 @@ ParsingState.prototype.set = function (key, value) {
 
 /**
  * Toggle a state and execute the function
- * @param {String} key
+ * @param {string} key
  * @param {[type]} [varname] [description]
  * @return {Mixed}
  */
@@ -85,8 +85,8 @@ ParsingState.prototype.toggle = function (key, value, fn) {
 /**
  * Parse a text using a set of rules
  * @param {RulesSet} rules
- * @param {Boolean} isInline
- * @param {String} text
+ * @param {boolean} isInline
+ * @param {string} text
  * @return {List<Token>}
  */
 ParsingState.prototype.parse = function (rulesSet, isInline, text) {
@@ -107,7 +107,7 @@ ParsingState.prototype.parse = function (rulesSet, isInline, text) {
 
 /**
  * Parse a text using inline rules
- * @param {String} text
+ * @param {string} text
  * @return {List<Token>}
  */
 ParsingState.prototype.parseAsInline = function (text) {
@@ -116,7 +116,7 @@ ParsingState.prototype.parseAsInline = function (text) {
 
 /**
  * Parse a text using inline rules
- * @param {String} text
+ * @param {string} text
  * @return {List<Token>}
  */
 ParsingState.prototype.parseAsBlock = function (text) {

@@ -6,7 +6,7 @@ import parsers from "../parsers";
  Find a file parsable (Markdown or AsciiDoc) in a book
 
  @param {Book} book
- @param {String} filename
+ @param {string} filename
  @return {Promise<File | Undefined>}
  */
 

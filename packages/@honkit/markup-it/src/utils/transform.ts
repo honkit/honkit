@@ -9,7 +9,7 @@ import Content from "../models/content";
  *
  * @param {Token|Content} base
  * @param {Function(token, depth)} iter
- * @param {Number} depth
+ * @param {number} depth
  * @return {Token}
  */
 function transformToken(base, iter, depth = 0) {
@@ -24,7 +24,7 @@ function transformToken(base, iter, depth = 0) {
  * Transform a list of tokens
  * @param {List<Token>} tokens
  * @param {Function} iter
- * @param {Number} depth
+ * @param {number} depth
  * @return {List<Token>}
  */
 function transformTokens(tokens, iter) {

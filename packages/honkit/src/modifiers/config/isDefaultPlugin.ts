@@ -3,9 +3,9 @@ import hasPlugin from "./hasPlugin";
 
 /**
  * Test if a plugin is a default one
- * @param {String} plugin
- * @param {String} version
- * @return {Boolean}
+ * @param {string} plugin
+ * @param {string} version
+ * @return {boolean}
  */
 
 function isDefaultPlugin(pluginName, version) {

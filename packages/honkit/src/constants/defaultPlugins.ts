@@ -5,7 +5,7 @@ const pkg = require("../../package.json");
 
 /**
  * Create a PluginDependency from a dependency of gitbook
- * @param {String} pluginName
+ * @param {string} pluginName
  * @return {PluginDependency}
  */
 function createFromDependency(pluginName) {

@@ -7,8 +7,8 @@ import matchRule from "./matchRule";
  * Create a text token inline or block
  *
  * @param {ParsingState} state
- * @param {Boolean} isInline
- * @param {String} text
+ * @param {boolean} isInline
+ * @param {string} text
  * @return {Token}
  */
 function createTextToken(state, isInline, text) {
@@ -20,8 +20,8 @@ function createTextToken(state, isInline, text) {
  * Convert a normal text into a list of unstyled tokens (block or inline)
  *
  * @param {ParsingState} state
- * @param {Boolean} isInline
- * @param {String} text
+ * @param {boolean} isInline
+ * @param {string} text
  * @return {List<Token>}
  */
 function textToUnstyledTokens(state, isInline, text) {

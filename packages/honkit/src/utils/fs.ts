@@ -101,7 +101,7 @@ function rmDir(base) {
 /**
  Assert a file, if it doesn't exist, call "generator"
 
- @param {String} filePath
+ @param {string} filePath
  @param {Function} generator
  @return {Promise}
  */
@@ -116,9 +116,9 @@ function assertFile(filePath, generator) {
 /**
  Pick a file, returns the absolute path if exists, undefined otherwise
 
- @param {String} rootFolder
- @param {String} fileName
- @return {String}
+ @param {string} rootFolder
+ @param {string} fileName
+ @return {string}
  */
 function pickFile(rootFolder, fileName) {
     const result = path.join(rootFolder, fileName);
@@ -132,7 +132,7 @@ function pickFile(rootFolder, fileName) {
 /**
  Ensure that a directory exists and is empty
 
- @param {String} folder
+ @param {string} folder
  @return {Promise}
  */
 function ensureFolder(rootFolder) {

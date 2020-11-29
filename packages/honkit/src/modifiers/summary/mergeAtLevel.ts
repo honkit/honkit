@@ -2,7 +2,7 @@
  Edit a list of articles
 
  @param {List<Article>} articles
- @param {String} level
+ @param {string} level
  @param {Article} newArticle
  @return {List<Article>}
  */
@@ -28,7 +28,7 @@ function editArticleInList(articles, level, newArticle) {
  Edit an article in a part
 
  @param {Part} part
- @param {String} level
+ @param {string} level
  @param {Article} newArticle
  @return {Part}
  */
@@ -43,7 +43,7 @@ function editArticleInPart(part, level, newArticle) {
  Edit an article, or a part, in a summary. Does a shallow merge.
 
  @param {Summary} summary
- @param {String} level
+ @param {string} level
  @param {Article|Part} newValue
  @return {Summary}
  */

@@ -29,7 +29,7 @@ function templateFolder(dir) {
  * Create templating engine to render themes
  *
  * @param {Output} output
- * @param {String} currentFile
+ * @param {string} currentFile
  * @return {TemplateEngine}
  */
 
@@ -56,8 +56,8 @@ function createTemplateEngine(output, currentFile) {
 
     /**
      * Check if a file exists
-     * @param {String} fileName
-     * @return {Boolean}
+     * @param {string} fileName
+     * @return {boolean}
      */
     function fileExists(fileName) {
         if (!fileName) {
@@ -71,7 +71,7 @@ function createTemplateEngine(output, currentFile) {
 
     /**
      * Return an article by its path
-     * @param {String} filePath
+     * @param {string} filePath
      * @return {Object|undefined}
      */
     function getArticleByPath(filePath) {
@@ -84,7 +84,7 @@ function createTemplateEngine(output, currentFile) {
 
     /**
      * Return a page by its path
-     * @param {String} filePath
+     * @param {string} filePath
      * @return {Object|undefined}
      */
     function getPageByPath(filePath) {

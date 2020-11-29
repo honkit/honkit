@@ -9,10 +9,10 @@ const TemplateEngine = Immutable.Record(
         // Map of Extension
         extensions: Immutable.Map(),
 
-        // Map of filters: {String} name -> {Function} fn
+        // Map of filters: {string} name -> {Function} fn
         filters: Immutable.Map(),
 
-        // Map of globals: {String} name -> {Mixed}
+        // Map of globals: {string} name -> {Mixed}
         globals: Immutable.Map(),
 
         // Context for filters / blocks
@@ -55,7 +55,7 @@ TemplateEngine.prototype.getExtensions = function () {
 /**
  Return a block by its name (or undefined)
 
- @param {String} name
+ @param {string} name
  @return {TemplateBlock}
  */
 TemplateEngine.prototype.getBlock = function (name) {

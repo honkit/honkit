@@ -7,7 +7,7 @@ import cheerio from "cheerio";
 /**
  Inline SVG images as needed
 
- @param {String} rootFolder
+ @param {string} rootFolder
  @param {HTMLDom} $
  @return {Promise}
  */

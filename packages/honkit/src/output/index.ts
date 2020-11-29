@@ -8,7 +8,7 @@ const generators = Immutable.List([json, website, ebook]);
 /**
  Return a specific generator by its name
 
- @param {String}
+ @param {string}
  @return {Generator}
  */
 function getGenerator(name) {

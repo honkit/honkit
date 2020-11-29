@@ -14,7 +14,7 @@ function RenderingState(syntax, options) {
 /**
  * Render a token using a set of rules
  * @param {RulesSet} rules
- * @param {Boolean} isInline
+ * @param {boolean} isInline
  * @param {Token|List<Token>} tokens
  * @return {List<Token>}
  */

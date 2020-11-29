@@ -4,7 +4,7 @@ import isDefaultPlugin from "./isDefaultPlugin";
 /**
  * Remove a plugin from a book's configuration
  * @param {Config} config
- * @param {String} plugin
+ * @param {string} plugin
  * @return {Config}
  */
 function removePlugin(config, pluginName) {

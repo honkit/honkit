@@ -21,7 +21,7 @@ class File extends Immutable.Record({
     /**
      Does the file exists / is set
 
-     @return {Boolean}
+     @return {boolean}
      */
 
     exists() {
@@ -31,7 +31,7 @@ class File extends Immutable.Record({
     /**
      Return type of file ('markdown' or 'asciidoc')
 
-     @return {String}
+     @return {string}
      */
 
     getType() {
@@ -46,7 +46,7 @@ class File extends Immutable.Record({
     /**
      Return extension of this file (lowercased)
 
-     @return {String}
+     @return {string}
      */
 
     getExtension() {
@@ -66,7 +66,7 @@ class File extends Immutable.Record({
     /**
      Create a file from stats informations
 
-     @param {String} filepath
+     @param {string} filepath
      @param {Object|fs.Stats} stat
      @return {File}
      */
@@ -79,7 +79,7 @@ class File extends Immutable.Record({
 
     /**
      Create a file with only a path
-     @param {String} filepath
+     @param {string} filepath
      @return {File}
      */
     static createWithFilepath(filepath: string) {

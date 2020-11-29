@@ -8,8 +8,8 @@ import Promise from "../../utils/promise";
  Generate PDF header/footer templates
 
  @param {Output} output
- @param {String} type
- @return {String}
+ @param {string} type
+ @return {string}
  */
 
 function getPDFTemplate(output, type) {

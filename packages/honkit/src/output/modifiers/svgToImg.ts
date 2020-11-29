@@ -11,7 +11,7 @@ import LocationUtils from "../../utils/location";
  @param {HTMLDom} $
  @param {HTMLElement} dom
  @param {Object}
- @return {String}
+ @return {string}
  */
 function renderDOM($, dom, options) {
     if (!dom && $._root && $._root.children) {
@@ -24,7 +24,7 @@ function renderDOM($, dom, options) {
 /**
  Replace SVG tag by IMG
 
- @param {String} baseFolder
+ @param {string} baseFolder
  @param {HTMLDom} $
  */
 

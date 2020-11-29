@@ -4,7 +4,7 @@ import indexArticleLevels from "./indexArticleLevels";
  Index levels in a part
 
  @param {Part}
- @param {Number} index
+ @param {number} index
  @return {Part}
  */
 

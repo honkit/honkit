@@ -18,7 +18,7 @@ function isModuleNotFound(err) {
 
  @param {Book} book
  @param {PluginDependency[]} plugin
- @param {String} pkgPath (optional)
+ @param {string} pkgPath (optional)
  @return {Promise<Plugin>}
  */
 function loadPlugin(book, plugin) {

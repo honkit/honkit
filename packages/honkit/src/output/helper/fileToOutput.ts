@@ -8,8 +8,8 @@ const OUTPUT_EXTENSION = ".html";
  * Convert a filePath (absolute) to a filename for output
  *
  * @param {Output} output
- * @param {String} filePath
- * @return {String}
+ * @param {string} filePath
+ * @return {string}
  */
 
 function fileToOutput(output, filePath) {

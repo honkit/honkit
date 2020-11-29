@@ -9,7 +9,7 @@ import PREFIX from "../constants/pluginPrefix";
 /**
  * Validate if a package name is a GitBook/HonKit plugin
  *
- * @return {Boolean}
+ * @return {boolean}
  */
 function validateId(name) {
     return name && name.indexOf(PREFIX) === 0;
@@ -18,7 +18,7 @@ function validateId(name) {
 /**
  * List all packages installed inside a folder
  *
- * @param {String} folder
+ * @param {string} folder
  * @return {OrderedMap<String:Plugin>}
  */
 function findInstalled(folder) {

@@ -5,7 +5,7 @@ import parsers from "../parsers";
 /**
  Watch a folder and resolve promise once a file is modified
 
- @param {String} dir
+ @param {string} dir
  @param callback
  @return {Promise}
  */

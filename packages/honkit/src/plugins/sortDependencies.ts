@@ -7,7 +7,7 @@ const TYPE_THEME = "theme";
 /**
  * Returns the type of a plugin given its name
  * @param {Plugin} plugin
- * @return {String}
+ * @return {string}
  */
 function pluginType(plugin) {
     const name = plugin.getName();

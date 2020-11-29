@@ -59,7 +59,7 @@ TemplateBlock.prototype.getShortcuts = function () {
 
 /**
  * Return name for the nunjucks extension
- * @return {String}
+ * @return {string}
  */
 TemplateBlock.prototype.getExtensionName = function () {
     return `Block${this.getName()}Extension`;
@@ -231,7 +231,7 @@ TemplateBlock.prototype.normalizeBlockResult = function (result) {
  * Convert a block result to HTML
  * @param {Object} result
  * @param {Object} blocksOutput: stored post processing blocks in this object
- * @return {String}
+ * @return {string}
  */
 TemplateBlock.prototype.blockResultToHtml = function (result, blocksOutput) {
     let indexedKey;
@@ -253,7 +253,7 @@ TemplateBlock.prototype.blockResultToHtml = function (result, blocksOutput) {
 
 /**
  * Create a template block from a function or an object
- * @param {String} blockName
+ * @param {string} blockName
  * @param {Object} block
  * @return {TemplateBlock}
  */

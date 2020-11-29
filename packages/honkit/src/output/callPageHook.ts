@@ -4,7 +4,7 @@ import callHook from "./callHook";
 /**
  Call a hook for a specific page
 
- @param {String} name
+ @param {string} name
  @param {Output} output
  @param {Page} page
  @return {Promise<Page>}

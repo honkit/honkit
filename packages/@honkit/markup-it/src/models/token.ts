@@ -64,7 +64,7 @@ Token.prototype.getTokens = function () {
 
 /**
  * Return true if is a block token
- * @return {Boolean}
+ * @return {boolean}
  */
 Token.prototype.isBlock = function () {
     return isBlock(this);
@@ -72,7 +72,7 @@ Token.prototype.isBlock = function () {
 
 /**
  * Return true if is an inline token
- * @return {Boolean}
+ * @return {boolean}
  */
 Token.prototype.isInline = function () {
     return !this.isBlock();
@@ -80,7 +80,7 @@ Token.prototype.isInline = function () {
 
 /**
  * Return true if is an inline style
- * @return {Boolean}
+ * @return {boolean}
  */
 Token.prototype.isStyle = function () {
     return isStyle(this);
@@ -88,7 +88,7 @@ Token.prototype.isStyle = function () {
 
 /**
  * Return true if is an inline entity
- * @return {Boolean}
+ * @return {boolean}
  */
 Token.prototype.isEntity = function () {
     return isEntity(this);
@@ -131,7 +131,7 @@ Token.prototype.setData = function (data) {
 
 /**
  * Return plain text of a token merged with its children.
- * @return {String}
+ * @return {string}
  */
 Token.prototype.getAsPlainText = function () {
     const tokens = this.getTokens();
@@ -175,7 +175,7 @@ Token.create = function (type, tok) {
 
 /**
  * Create a token for an inline text
- * @param {String} text
+ * @param {string} text
  * @return {Token}
  */
 Token.createText = function (text) {

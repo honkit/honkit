@@ -21,7 +21,7 @@ TemplateOutput.prototype.getBlocks = function () {
 
 /**
  * Update content of this output
- * @param {String} content
+ * @param {string} content
  * @return {TemplateContent}
  */
 TemplateOutput.prototype.setContent = function (content) {
@@ -31,7 +31,7 @@ TemplateOutput.prototype.setContent = function (content) {
 /**
  * Create a TemplateOutput from a text content
  * and an object containing block definition
- * @param {String} content
+ * @param {string} content
  * @param {Object} blocks
  * @return {TemplateOutput}
  */

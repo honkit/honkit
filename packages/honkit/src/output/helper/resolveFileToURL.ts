@@ -5,8 +5,8 @@ import fileToURL from "./fileToURL";
  * Resolve an absolute path (extracted from a link)
  *
  * @param {Output} output
- * @param {String} filePath
- * @return {String}
+ * @param {string} filePath
+ * @return {string}
  */
 
 function resolveFileToURL(output, filePath) {

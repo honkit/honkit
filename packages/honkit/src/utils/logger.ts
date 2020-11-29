@@ -51,7 +51,7 @@ function Logger(write, logLevel) {
 /**
  Change minimum level
 
- @param {String} logLevel
+ @param {string} logLevel
  */
 Logger.prototype.setLevel = function (logLevel) {
     if (is.string(logLevel)) {
@@ -65,7 +65,7 @@ Logger.prototype.setLevel = function (logLevel) {
 /**
  Return minimum logging level
 
- @return {Number}
+ @return {number}
  */
 Logger.prototype.getLevel = function (logLevel) {
     return this.logLevel;
@@ -74,7 +74,7 @@ Logger.prototype.getLevel = function (logLevel) {
 /**
  Print a simple string
 
- @param {String}
+ @param {string}
  */
 Logger.prototype.write = function (msg) {
     msg = msg.toString();
@@ -92,7 +92,7 @@ Logger.prototype.format = function () {
 /**
  Print a line
 
- @param {String}
+ @param {string}
  */
 Logger.prototype.writeLn = function (msg) {
     return this.write(`${msg || ""}\n`);
@@ -101,7 +101,7 @@ Logger.prototype.writeLn = function (msg) {
 /**
  Log/Print a message if level is allowed
 
- @param {Number} level
+ @param {number} level
  */
 Logger.prototype.log = function (level) {
     if (level < this.logLevel) return;
@@ -153,7 +153,7 @@ Logger.prototype.fail = function (level) {
 /**
  Log state of a promise
 
- @param {Number} level
+ @param {number} level
  @param {Promise}
  @return {Promise}
  */

@@ -100,8 +100,8 @@ Parser.prototype.renderGlossary = function (content) {
 /**
  Test if this parser matches an extension
 
- @param {String} ext
- @return {Boolean}
+ @param {string} ext
+ @return {boolean}
  */
 Parser.prototype.matchExtension = function (ext) {
     const exts = this.getExtensions();
@@ -111,7 +111,7 @@ Parser.prototype.matchExtension = function (ext) {
 /**
  Create a new parser using a module (gitbook-markdown, etc)
 
- @param {String} name
+ @param {string} name
  @param {Array<String>} extensions
  @param {Object} module
  @return {Parser}

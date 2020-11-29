@@ -16,7 +16,7 @@ function DraftMarkup(syntax) {
 
 /**
  * Convert a text into a parsed content
- * @param  {String} text
+ * @param  {string} text
  * @return {ContentState}
  */
 DraftMarkup.prototype.toContent = function toContent(text, options) {
@@ -25,7 +25,7 @@ DraftMarkup.prototype.toContent = function toContent(text, options) {
 
 /**
  * Convert a text into an inline parsed content
- * @param  {String} text
+ * @param  {string} text
  * @return {List<Tokens>}
  */
 DraftMarkup.prototype.toInlineContent = function toInlineContent(text) {
@@ -37,7 +37,7 @@ DraftMarkup.prototype.toInlineContent = function toInlineContent(text) {
  * Convert a content to text
  * @param  {ContentState} content
  * @param  {Object} options
- * @return {String}
+ * @return {string}
  */
 DraftMarkup.prototype.toText = function toText(content, options) {
     return render(this.syntax, content, options);
@@ -46,7 +46,7 @@ DraftMarkup.prototype.toText = function toText(content, options) {
 /**
  * Convert a content to text
  * @param  {List<Tokens>}
- * @return {String}
+ * @return {string}
  */
 DraftMarkup.prototype.toInlineText = function toInlineText(tokens) {
     return render.asInline(this.syntax, tokens);

@@ -13,7 +13,7 @@ function defaultHandleResult(output, result) {
 /**
  Call a "global" hook for an output
 
- @param {String} name
+ @param {string} name
  @param {Function(Output) -> Mixed} getArgument
  @param {Function(Output, result) -> Output} handleResult
  @param {Output} output

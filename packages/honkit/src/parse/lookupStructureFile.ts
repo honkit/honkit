@@ -5,7 +5,7 @@ import findParsableFile from "./findParsableFile";
  book's config to find it.
 
  @param {Book} book
- @param {String} type: one of ["glossary", "readme", "summary", "langs"]
+ @param {string} type: one of ["glossary", "readme", "summary", "langs"]
  @return {Promise<File | Undefined>} The path of the file found, relative
  to the book content root.
  */

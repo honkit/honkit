@@ -8,8 +8,8 @@ const markdown = new MarkupIt(gitbookSyntax);
 /**
  * Escape a code block's content using raw blocks
  *
- * @param {String}
- * @return {String}
+ * @param {string}
+ * @return {string}
  */
 function escape(str: string) {
     return RAW_START + str + RAW_END;
@@ -19,8 +19,8 @@ function escape(str: string) {
  * Add templating "raw" to code blocks to
  * avoid nunjucks processing their content.
  *
- * @param {String} src
- * @return {String}
+ * @param {string} src
+ * @return {string}
  */
 function preparePage(src) {
     let levelRaw = 0;

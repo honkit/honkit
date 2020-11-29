@@ -1,7 +1,7 @@
 /**
  * Return the configuration for a plugin
  * @param {Config} config
- * @param {String} pluginName
+ * @param {string} pluginName
  * @return {Object}
  */
 function getPluginConfig(config, pluginName) {

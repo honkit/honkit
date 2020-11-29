@@ -5,8 +5,8 @@ import isDefaultPlugin from "./isDefaultPlugin";
 /**
  * Add a plugin to a book's configuration
  * @param {Config} config
- * @param {String} pluginName
- * @param {String} version (optional)
+ * @param {string} pluginName
+ * @param {string} version (optional)
  * @return {Config}
  */
 function addPlugin(config, pluginName, version) {

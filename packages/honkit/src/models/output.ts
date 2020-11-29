@@ -62,7 +62,7 @@ Output.prototype.getState = function () {
 /**
  Return a page byt its file path
 
- @param {String} filePath
+ @param {string} filePath
  @return {Page|undefined}
  */
 Output.prototype.getPage = function (filePath) {
@@ -88,7 +88,7 @@ Output.prototype.reloadPage = function (contentRootDir, filePath) {
 /**
  Get root folder for output
 
- @return {String}
+ @return {string}
  */
 Output.prototype.getRoot = function () {
     return this.getOptions().get("root");

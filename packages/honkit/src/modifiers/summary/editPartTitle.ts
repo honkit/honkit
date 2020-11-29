@@ -2,8 +2,8 @@
  Edit title of a part in the summary
 
  @param {Summary} summary
- @param {Number} index
- @param {String} newTitle
+ @param {number} index
+ @param {string} newTitle
  @return {Summary}
  */
 function editPartTitle(summary, index, newTitle) {

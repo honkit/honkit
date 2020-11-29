@@ -21,7 +21,7 @@ class Server extends events.EventEmitter {
     /**
      Return true if the server is running
 
-     @return {Boolean}
+     @return {boolean}
      */
     isRunning() {
         return !!this.running;
@@ -122,9 +122,9 @@ class Server extends events.EventEmitter {
  urlTransform is a helper function that allows a function to transform
  a url string in it's parsed form and returns the new url as a string
 
- @param {String} uri
+ @param {string} uri
  @param {Function} fn
- @return {String}
+ @return {string}
  */
 function urlTransform(uri, fn) {
     return url.format(fn(url.parse(uri)));
