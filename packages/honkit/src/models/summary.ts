@@ -9,7 +9,7 @@ import parsers from "../parsers";
 
 const Summary = Immutable.Record(
     {
-        file: File(),
+        file: new File(),
         parts: Immutable.List(),
     },
     "Summary"

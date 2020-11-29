@@ -4,7 +4,7 @@ import File from "./file";
 import { hashString } from "./hash";
 
 const Page = Immutable.Record({
-    file: File(),
+    file: new File(),
 
     // Attributes extracted from the YAML header
     attributes: Immutable.Map(),

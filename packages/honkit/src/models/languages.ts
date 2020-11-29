@@ -3,7 +3,7 @@ import File from "./file";
 import Language from "./language";
 
 const Languages = Immutable.Record({
-    file: File(),
+    file: new File(),
     list: Immutable.OrderedMap(),
 });
 

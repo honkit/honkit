@@ -6,7 +6,7 @@ import insertArticle from "../insertArticle";
 
 describe("insertArticle", () => {
     // @ts-expect-error
-    const summary = Summary.createFromParts(FileModel(), [
+    const summary = Summary.createFromParts(new FileModel(), [
         {
             articles: [
                 {

@@ -5,7 +5,7 @@ import GlossaryEntry from "./glossaryEntry";
 import parsers from "../parsers";
 
 const Glossary = Immutable.Record({
-    file: File(),
+    file: new File(),
     entries: Immutable.OrderedMap(),
 });
 

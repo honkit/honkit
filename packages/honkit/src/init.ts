@@ -34,7 +34,6 @@ function initBook(rootFolder) {
 
                         // Setup default readme if doesn't found one
                         .fail(() => {
-                            // @ts-expect-error ts-migrate(2339) FIXME: Property 'createWithFilepath' does not exist on ty... Remove this comment to see the full error message
                             const readmeFile = File.createWithFilepath(`README${extension}`);
 
                             // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.

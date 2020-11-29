@@ -3,7 +3,7 @@ import FileModel from "../../../models/file";
 import removeArticle from "../removeArticle";
 describe("removeArticle", () => {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'createFromParts' does not exist on type ... Remove this comment to see the full error message
-    const summary = Summary.createFromParts(FileModel(), [
+    const summary = Summary.createFromParts(new FileModel(), [
         {
             articles: [
                 {
