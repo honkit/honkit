@@ -61,11 +61,9 @@ class Config extends Immutable.Record(
 
     /**
      * Update a configuration value
-     * @param {String} key
-     * @param {Mixed} value
      * @return {Config}
      */
-    setValue(keyPath, value): Config {
+    setValue(keyPath: string | string[], value: any): Config {
         keyPath = Config.keyToKeyPath(keyPath);
 
         value = Immutable.fromJS(value);
@@ -96,7 +94,7 @@ class Config extends Immutable.Record(
      * @param {String} name
      * @return {PluginDependency}
      */
-    getPluginDependency(name) {
+    getPluginDependency(name: string) {
         const plugins = this.getPluginDependencies();
 
         return plugins.find((dep) => {
