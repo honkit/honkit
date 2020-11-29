@@ -33,7 +33,7 @@ class FS extends Immutable.Record({
      @param {string} filename
      @return {Boolean}
      */
-    isInScope(filename: string) {
+    isInScope(filename: string): boolean {
         const rootPath = this.getRoot();
         filename = path.join(rootPath, filename);
 
@@ -44,7 +44,7 @@ class FS extends Immutable.Record({
      Resolve a file in this FS
      @return {string}
      */
-    resolve(...args: string[]) {
+    resolve(...args: string[]): string {
         const rootPath = this.getRoot();
         let filename = path.join.apply(path, [rootPath].concat(args));
         filename = path.normalize(filename);
@@ -65,7 +65,7 @@ class FS extends Immutable.Record({
      @param {string} filename
      @return {Promise<Boolean>}
      */
-    exists(filename: string) {
+    exists(filename: string): Promise<boolean> {
         const that = this;
 
         return Promise().then(() => {
@@ -82,7 +82,7 @@ class FS extends Immutable.Record({
      @param {string} filename
      @return {Promise<Buffer>}
      */
-    read(filename: string) {
+    read(filename: string): Promise<Buffer> {
         const that = this;
 
         return Promise().then(() => {
@@ -97,7 +97,7 @@ class FS extends Immutable.Record({
      Read a file as a string (utf-8)
      @return {Promise<String>}
      */
-    readAsString(filename: string, encoding: string = "utf8") {
+    readAsString(filename: string, encoding: string = "utf8"): Promise<string> {
         return this.read(filename).then((buf) => {
             return buf.toString(encoding);
         });
@@ -132,7 +132,7 @@ class FS extends Immutable.Record({
      @param {string} filename
      @return {Promise<File>}
      */
-    statFile(filename) {
+    statFile(filename: string): Promise<File> {
         const that = this;
 
         return Promise()
@@ -287,7 +287,7 @@ class FS extends Immutable.Record({
 }
 
 // .readdir return files/folder as a list of string, folder ending with '/'
-function pathIsFolder(filename) {
+function pathIsFolder(filename: string): boolean {
     const lastChar = filename[filename.length - 1];
     return lastChar == "/" || lastChar == "\\";
 }
