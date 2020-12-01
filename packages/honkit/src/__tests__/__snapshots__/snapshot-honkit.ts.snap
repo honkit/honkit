@@ -7,7 +7,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Configuration · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -956,7 +955,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>eBook and PDF · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -1780,7 +1778,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Encoding · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -2597,7 +2594,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>FAQ · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -3427,7 +3423,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>About this documentation · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -4229,7 +4224,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Multi-Lingual · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -5038,7 +5032,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Glossary · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -5846,7 +5839,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Pages and Summary · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -6718,7 +6710,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>API & Context · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -7593,7 +7584,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Blocks · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -8433,7 +8423,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Create a plugin · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -9288,7 +9277,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Filters · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -10122,7 +10110,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Hooks · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -11026,7 +11013,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Plugins · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -11837,7 +11823,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Test your plugin · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -12644,7 +12629,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Installation and Setup · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -13484,7 +13468,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Directory structure · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -14345,7 +14328,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>AsciiDoc · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -15188,7 +15170,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Markdown · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -16121,7 +16102,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Builtin · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -16930,7 +16910,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Content References · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -17756,7 +17735,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Templating · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -18614,7 +18592,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Variables · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
@@ -19636,7 +19613,6 @@ Object {
 <html lang=\\"\\" >
     <head>
         <meta charset=\\"UTF-8\\">
-        <meta content=\\"text/html; charset=utf-8\\" http-equiv=\\"Content-Type\\">
         <title>Theming · HonKit Documentation</title>
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
         <meta name=\\"description\\" content=\\"\\">
