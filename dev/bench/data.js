@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606659062811,
+  "lastUpdate": 1606811934299,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5857,6 +5857,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±1.23%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dogatana@gmail.com",
+            "name": "Toshihiko Ichida",
+            "username": "dogatana"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "220031ccff3a90ee47980a17ca332de0623531a6",
+          "message": "fix(theme-default): remove unnecessary meta tag (#173)\n\n* fix (theme/default): remove unnecessary meta tag\r\n\r\n`<meta charset=\"UTF-8\">` is enough for HTML5\r\n\r\n* fix (theme/default): update snapShot\r\n\r\nCo-authored-by: vagrant <vagrant@vagrant.vm>",
+          "timestamp": "2020-12-01T17:35:00+09:00",
+          "tree_id": "0e1b8ab1d7ab90ede99ee4d14ea52a6ee6e85ecd",
+          "url": "https://github.com/honkit/honkit/commit/220031ccff3a90ee47980a17ca332de0623531a6"
+        },
+        "date": 1606811932841,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±3.31%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
