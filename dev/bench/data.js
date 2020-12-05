@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1607141904087,
+  "lastUpdate": 1607142018360,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5950,6 +5950,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±0.68%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "aa788a0c07a82e81934f219c5c9e510f0396776f",
+          "message": "chore(release): v3.6.15 (#175)\n\nCo-authored-by: azu <azu@users.noreply.github.com>",
+          "timestamp": "2020-12-05T13:16:50+09:00",
+          "tree_id": "4ea98c5c7cc1bebd684e7757f5056833ebdc4631",
+          "url": "https://github.com/honkit/honkit/commit/aa788a0c07a82e81934f219c5c9e510f0396776f"
+        },
+        "date": 1607142017343,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±3.18%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
