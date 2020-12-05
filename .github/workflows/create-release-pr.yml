@@ -47,7 +47,7 @@ jobs:
             ## Fixes
 
           labels: |
-            Type:release
+            Type: release
       - name: Check Pull Request
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
