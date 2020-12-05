@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606811934299,
+  "lastUpdate": 1607141203298,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5888,6 +5888,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±3.31%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fda9bd625d6ab0e7df104341bd405ebf664bb185",
+          "message": "chore(deps): bump highlight.js from 10.4.0 to 10.4.1 (#174)\n\nBumps [highlight.js](https://github.com/highlightjs/highlight.js) from 10.4.0 to 10.4.1.\r\n- [Release notes](https://github.com/highlightjs/highlight.js/releases)\r\n- [Changelog](https://github.com/highlightjs/highlight.js/blob/master/CHANGES.md)\r\n- [Commits](https://github.com/highlightjs/highlight.js/compare/10.4.0...10.4.1)\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2020-12-05T13:03:22+09:00",
+          "tree_id": "6bf859b3509a28e7269fc1efdd7873cc919cad8f",
+          "url": "https://github.com/honkit/honkit/commit/fda9bd625d6ab0e7df104341bd405ebf664bb185"
+        },
+        "date": 1607141202374,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±0.98%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
