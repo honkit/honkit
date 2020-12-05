@@ -1,7 +1,7 @@
 {
   "name": "@honkit/honkit-plugin-highlight",
   "description": "Default code highlighter for HonKit",
-  "version": "3.6.14",
+  "version": "3.6.15",
   "homepage": "https://github.com/honkit/honkit",
   "repository": {
     "type": "git",
