@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1607142018360,
+  "lastUpdate": 1607818276004,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -5981,6 +5981,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±3.18%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "41440f2bcd30f2c905b153a3197e2f549693204e",
+          "message": "chore(deps): bump ini from 1.3.5 to 1.3.8 (#177)\n\nBumps [ini](https://github.com/isaacs/ini) from 1.3.5 to 1.3.8.\r\n- [Release notes](https://github.com/isaacs/ini/releases)\r\n- [Commits](https://github.com/isaacs/ini/compare/v1.3.5...v1.3.8)\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2020-12-13T09:08:08+09:00",
+          "tree_id": "4399fa1246a51c316cbdac663a1d3be7cda9d0b1",
+          "url": "https://github.com/honkit/honkit/commit/41440f2bcd30f2c905b153a3197e2f549693204e"
+        },
+        "date": 1607818275033,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.66%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
