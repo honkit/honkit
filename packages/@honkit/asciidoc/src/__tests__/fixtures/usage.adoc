@@ -1,0 +1,1 @@
+To create a book, type: `npx honkit init`

@@ -4,7 +4,7 @@ const asciidoctor = Asciidoctor();
 
 // Render Asciidoc to HTML (block)
 function asciidocToHTML(content: string) {
-    return asciidoctor.convert(content, { attributes: "showtitle" });
+    return asciidoctor.convert(content, { safe: "server", attributes: "showtitle" });
 }
 
 // Render Asciidoc to HTML (inline)
