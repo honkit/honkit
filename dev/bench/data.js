@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1608046751051,
+  "lastUpdate": 1608047088561,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6105,6 +6105,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±0.97%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "badad42e0232b6ac03ab767d0ed721a89735867a",
+          "message": "CI: change fetch-depth 1 to 200",
+          "timestamp": "2020-12-16T00:41:40+09:00",
+          "tree_id": "1c39378314e153dd40ee499dab08b1e34686242c",
+          "url": "https://github.com/honkit/honkit/commit/badad42e0232b6ac03ab767d0ed721a89735867a"
+        },
+        "date": 1608047087557,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±1.02%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
