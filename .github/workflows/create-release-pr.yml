@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 200
       - name: setup Node
         uses: actions/setup-node@v1
       - name: Install
