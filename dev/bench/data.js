@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1607818276004,
+  "lastUpdate": 1608018191031,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6012,6 +6012,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.66%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ggrossetie@gmail.com",
+            "name": "Guillaume Grossetie",
+            "username": "Mogztter"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1efc3530e95c059090b5e2ef1fcbf08f1cf93894",
+          "message": "feat(asciidoc) enable the include directive (#179)",
+          "timestamp": "2020-12-15T16:39:55+09:00",
+          "tree_id": "0b211b465494133fe8618e91b4cd2d182c9fc0b6",
+          "url": "https://github.com/honkit/honkit/commit/1efc3530e95c059090b5e2ef1fcbf08f1cf93894"
+        },
+        "date": 1608018190054,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±1.13%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
