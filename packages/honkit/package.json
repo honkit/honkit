@@ -98,7 +98,7 @@
     "tiny-lr": "^1.1.1",
     "tmp": "0.0.28",
     "try-resolve": "^1.0.1",
-    "urijs": "1.18.0"
+    "urijs": "1.19.4"
   },
   "devDependencies": {
     "@honkit/internal-test-utils": "^3.6.16",
