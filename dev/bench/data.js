@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1608047088561,
+  "lastUpdate": 1612798074341,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6136,6 +6136,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±1.02%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "161f76b2fff1f0fec7ee428d88657a8bfacce6e3",
+          "message": "chore(deps): bump urijs from 1.18.0 to 1.19.4 (#181)\n\nBumps [urijs](https://github.com/medialize/URI.js) from 1.18.0 to 1.19.4.\r\n- [Release notes](https://github.com/medialize/URI.js/releases)\r\n- [Changelog](https://github.com/medialize/URI.js/blob/gh-pages/CHANGELOG.md)\r\n- [Commits](https://github.com/medialize/URI.js/compare/v1.18.0...v1.19.4)\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2021-02-09T00:23:28+09:00",
+          "tree_id": "577201b76fc83b6a7260a4df99ce5436e9ea62bf",
+          "url": "https://github.com/honkit/honkit/commit/161f76b2fff1f0fec7ee428d88657a8bfacce6e3"
+        },
+        "date": 1612798073250,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.06,
+            "range": "±1.21%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
