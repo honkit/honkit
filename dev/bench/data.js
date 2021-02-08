@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1612798074341,
+  "lastUpdate": 1612799317516,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6167,6 +6167,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.06,
             "range": "±1.21%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a9495a22d962e33a43bb9b226b0dc6abd1924216",
+          "message": "chore(deps): update devDeps (#183)\n\n* chore(deps): update devDeps\r\n\r\n* chore(honkit): add void type",
+          "timestamp": "2021-02-09T00:44:12+09:00",
+          "tree_id": "84b38b559ef5049bc423518c42cceae7ce057a0d",
+          "url": "https://github.com/honkit/honkit/commit/a9495a22d962e33a43bb9b226b0dc6abd1924216"
+        },
+        "date": 1612799316003,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.06,
+            "range": "±1.00%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
