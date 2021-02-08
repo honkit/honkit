@@ -41,8 +41,8 @@
     "lodash": "^4.13.1"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "jest": "^26.1.0"
+    "cross-env": "^7.0.3",
+    "jest": "^26.6.3"
   },
   "publishConfig": {
     "access": "public"
