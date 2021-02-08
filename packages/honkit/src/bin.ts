@@ -3,9 +3,9 @@ import { Command } from "commander";
 import Honkit from "./index";
 const pkg = require("../package.json");
 
-export const run = (argv = process.argv) => {
+export const run = (argv = process.argv): Promise<void> => {
     const program = new Command();
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
         program.version(pkg.version);
         Honkit.commands.forEach((spec) => {
             let subcommand = program.command(spec.name).description(spec.description);

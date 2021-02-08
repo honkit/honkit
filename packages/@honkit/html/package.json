@@ -43,7 +43,7 @@
     "q": "^1.1.2"
   },
   "devDependencies": {
-    "mocha": "^8.0.1",
+    "mocha": "^8.2.1",
     "rimraf": "^3.0.2"
   },
   "publishConfig": {
