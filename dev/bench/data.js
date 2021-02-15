@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1612799317516,
+  "lastUpdate": 1613354438652,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6198,6 +6198,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.06,
             "range": "±1.00%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f0d1ef94f2ad5ba3b898a62212f47d4a2e23d9e3",
+          "message": "fix(honkit): use ^ semver for deps (#185)\n\n* fix(honkit): use ^ semver for deps\r\n\r\n* chore: downgrade jsonsschema",
+          "timestamp": "2021-02-15T10:57:25+09:00",
+          "tree_id": "b0b6b027f67125e5b1c7bb1eaba5e89e85b84ede",
+          "url": "https://github.com/honkit/honkit/commit/f0d1ef94f2ad5ba3b898a62212f47d4a2e23d9e3"
+        },
+        "date": 1613354437791,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±2.39%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
