@@ -6370,10 +6370,10 @@ jsonschema@*:
   resolved "https://registry.yarnpkg.com/jsonschema/-/jsonschema-1.2.6.tgz#52b0a8e9dc06bbae7295249d03e4b9faee8a0c0b"
   integrity sha512-SqhURKZG07JyKKeo/ir24QnS4/BV7a6gQy93bUSe4lUdNp0QNpIz2c9elWJQ9dpc5cQYY6cvCzgRwy0MQCLyqA==
 
-jsonschema@^1.1.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/jsonschema/-/jsonschema-1.4.0.tgz#1afa34c4bc22190d8e42271ec17ac8b3404f87b2"
-  integrity sha512-/YgW6pRMr6M7C+4o8kS+B/2myEpHCrxO4PEWnqJNBFMjn7EWXqlQ4tGwL6xTHeRplwuZmcAncdvfOad1nT2yMw==
+jsonschema@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/jsonschema/-/jsonschema-1.1.0.tgz#039cc219ed524b06e71daf12ca60d02639faf29a"
+  integrity sha1-A5zCGe1SSwbnHa8SymDQJjn68po=
 
 jsprim@^1.2.2:
   version "1.4.1"

@@ -4,7 +4,7 @@ import schema from "../configSchema";
 describe("configSchema", () => {
     function validate(cfg) {
         const v = new jsonschema.Validator();
-        return v.validate(cfg, schema as any, {
+        return v.validate(cfg, schema, {
             propertyName: "config"
         });
     }
