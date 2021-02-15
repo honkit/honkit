@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.17](https://github.com/honkit/honkit/compare/v3.6.16...v3.6.17) (2021-02-15)
+
+
+### Bug Fixes
+
+* **honkit:** use ^ semver for deps ([#185](https://github.com/honkit/honkit/issues/185)) ([f0d1ef9](https://github.com/honkit/honkit/commit/f0d1ef94f2ad5ba3b898a62212f47d4a2e23d9e3))
+* **hontkit:** update to urijs@^1.19.6 ([ff00810](https://github.com/honkit/honkit/commit/ff00810e98df735b8f3b11eda89476037c9797a9))
+
+
+
+
+
 ## 3.6.16 (2020-12-15)
 
 **Note:** Version bump only for package honkit
