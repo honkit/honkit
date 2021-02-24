@@ -82,7 +82,7 @@ function loadPlugin(book, plugin) {
         })
         .then((plugin) => validatePlugin(plugin))
         .then((plugin) => {
-            logger.info(`plugin "${plugin.get("name")} is loaded\n`);
+            logger.info(`plugin "${plugin.get("name")}" is loaded\n`);
             return plugin;
         });
     p = timing.measure("plugin.load", p);
