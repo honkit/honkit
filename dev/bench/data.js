@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1613358503398,
+  "lastUpdate": 1614144904936,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6291,6 +6291,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±2.83%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "shadowbq@users.noreply.github.com",
+            "name": "shadowbq",
+            "username": "shadowbq"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f596ffe7381e89e89b6fa7737c2e5622b6405dcd",
+          "message": "chore(honkit): Update loadPlugin.ts - fix logging output (#188)\n\ninfo: plugin \"highlight is loaded\r\ncorrected to..\r\n info: plugin \"highlight\" is loaded",
+          "timestamp": "2021-02-24T14:31:11+09:00",
+          "tree_id": "7e176c590554bb760b80272eb002e3fdef061a88",
+          "url": "https://github.com/honkit/honkit/commit/f596ffe7381e89e89b6fa7737c2e5622b6405dcd"
+        },
+        "date": 1614144903226,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±2.63%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
