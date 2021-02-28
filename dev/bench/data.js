@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1614515978925,
+  "lastUpdate": 1614526336904,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6353,6 +6353,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.52%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "Rafiot@users.noreply.github.com",
+            "name": "Raphaël Vinot",
+            "username": "Rafiot"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c92a5b981c18a1bde39978652f7c1e2d940c731a",
+          "message": "Update README.md (#189)\n\nAdd link to MISP Book migration",
+          "timestamp": "2021-03-01T00:28:25+09:00",
+          "tree_id": "c2ee38eaaa481178480cba7a66b1503f63cab016",
+          "url": "https://github.com/honkit/honkit/commit/c92a5b981c18a1bde39978652f7c1e2d940c731a"
+        },
+        "date": 1614526335914,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.81%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
