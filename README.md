@@ -132,6 +132,12 @@ Replace `gitbook` command with `honkit` command.
 
 After that, HonKit just work!
 
+Examples of migration:
+
+- [Add a Github action to deploy by ekohl · Pull Request #1666 · DjangoGirls/tutorial](https://github.com/DjangoGirls/tutorial/pull/1666)
+- [Migrate from GitBook to Honkit by swaroopch · Pull Request #88 · swaroopch/byte-of-python](https://github.com/swaroopch/byte-of-python/pull/88)
+- [replace Gitbook into Honkit by yamat47 · Pull Request #2 · yamat47/97-things-every-programmer-should-know](https://github.com/yamat47/97-things-every-programmer-should-know/pull/2)
+
 ## Benchmarks
 
 `honkit build` benchmark:
