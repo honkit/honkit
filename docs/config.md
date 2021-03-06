@@ -6,9 +6,9 @@ HonKit allows you to customize your book using a flexible configuration. These o
 
 | Variable | Description |
 | -------- | ----------- |
-| `root` | Path to the root folder containing all the book's files, except `book.json`|
+| `root` | Path to the root folder containing all the book's files, except `book.json` |
 | `structure` | To specify paths for Readme, Summary, Glossary etc. See [Structure paragraph](#structure). |
-| `title` | Title of your book, default value is extracted from the README. |
+| `title` | Title of your book, default value is `HonKit`. |
 | `description` | Description of your book, default value is extracted from the README. |
 | `author` | Name of the author(s), multiple authors should be separated by ampersands. |
 | `authorSort` | String to be used when sorting by author. |
