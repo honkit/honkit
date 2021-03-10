@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1615051049197,
+  "lastUpdate": 1615418419245,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6415,6 +6415,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.76%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "38402417299292c14065dd6eeb5f53e8f61f41dd",
+          "message": "chore(deps): bump elliptic from 6.5.3 to 6.5.4 (#192)\n\nBumps [elliptic](https://github.com/indutny/elliptic) from 6.5.3 to 6.5.4.\r\n- [Release notes](https://github.com/indutny/elliptic/releases)\r\n- [Commits](https://github.com/indutny/elliptic/compare/v6.5.3...v6.5.4)\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2021-03-11T08:16:09+09:00",
+          "tree_id": "087fbf833ba4319d4a67bf9203776b9ba0f1f5f3",
+          "url": "https://github.com/honkit/honkit/commit/38402417299292c14065dd6eeb5f53e8f61f41dd"
+        },
+        "date": 1615418418235,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.06,
+            "range": "±1.41%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
