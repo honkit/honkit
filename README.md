@@ -103,7 +103,7 @@ HonKit aim to smooth migration from GitBook (Legacy) to HonKit.
 - Remove `global-npm` dependency
     - You can use HonKit with another npm package manager like `yarn`
 - Update dependencies
-    - Upgrade to nunjucks@2 etc...
+    - Upgrade to nunjucks@2, highlight.js etc...
     - It will reduce bug
 - TypeScript
 - Monorepo codebase
