@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1616821215849,
+  "lastUpdate": 1616822595598,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6539,6 +6539,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±1.25%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "44334889aef22d991529c29ad823c6821f96614c",
+          "message": "fix(honkit-plugin-highlight): fix highlight.js warning (#200)\n\nfix https://github.com/honkit/honkit/issues/199\r\nrefs https://github.com/highlightjs/highlight.js/issues/2277",
+          "timestamp": "2021-03-27T14:19:35+09:00",
+          "tree_id": "e6e8237a6643814de461768880ebfd7b5f02f08e",
+          "url": "https://github.com/honkit/honkit/commit/44334889aef22d991529c29ad823c6821f96614c"
+        },
+        "date": 1616822594597,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.75%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
