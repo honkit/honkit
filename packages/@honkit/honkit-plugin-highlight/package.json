@@ -17,7 +17,7 @@
     "css"
   ],
   "dependencies": {
-    "highlight.js": "^10.4.0"
+    "highlight.js": "^10.7.1"
   },
   "devDependencies": {
     "less": "^3.12.2"
