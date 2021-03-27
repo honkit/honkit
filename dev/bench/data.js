@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1615418419245,
+  "lastUpdate": 1616820183325,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6446,6 +6446,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.06,
             "range": "±1.41%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "349aae6eedac78e21359d1914d4914156e32d1c5",
+          "message": "fix(theme-default): fix Uncaught TypeError when click a page (#196)\n\nCurrently, click body and throw an Error.\r\n\r\n```\r\nUncaught TypeError: ((ke.event.special[i.origType] || {}).handle || i.handler).apply is not a function\r\n    at HTMLDivElement.dispatch (theme.js:2)\r\n    at HTMLDivElement.v.handle (theme.js:2)\r\n```\r\n\r\nThis PR fixes it.\r\n\r\nuse native `.focus({ preventScroll :true })` instead of jQuery.\r\nIt seems that jQuery does not support  `preventScroll`.\r\n\r\n- [jQuery focus without scroll - Stack Overflow](https://stackoverflow.com/questions/4898203/jquery-focus-without-scroll)\r\n\r\nfix https://github.com/honkit/honkit/issues/191\r\nrefs https://github.com/honkit/honkit/issues/135",
+          "timestamp": "2021-03-27T13:39:31+09:00",
+          "tree_id": "546d2a9d57d8cd02a3e0f398513a61e59e5a0537",
+          "url": "https://github.com/honkit/honkit/commit/349aae6eedac78e21359d1914d4914156e32d1c5"
+        },
+        "date": 1616820182203,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±2.03%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
