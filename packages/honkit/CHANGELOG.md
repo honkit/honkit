@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.18](https://github.com/honkit/honkit/compare/v3.6.17...v3.6.18) (2021-03-27)
+
+**Note:** Version bump only for package honkit
+
+
+
+
+
 ## [3.6.17](https://github.com/honkit/honkit/compare/v3.6.16...v3.6.17) (2021-02-15)
 
 

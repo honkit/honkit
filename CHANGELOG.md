@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.18](https://github.com/honkit/honkit/compare/v3.6.17...v3.6.18) (2021-03-27)
+
+
+### Bug Fixes
+
+* **theme-default:** fix Uncaught TypeError when click a page ([#196](https://github.com/honkit/honkit/issues/196)) ([349aae6](https://github.com/honkit/honkit/commit/349aae6eedac78e21359d1914d4914156e32d1c5))
+
+
+
+
+
 ## [3.6.17](https://github.com/honkit/honkit/compare/v3.6.16...v3.6.17) (2021-02-15)
 
 
