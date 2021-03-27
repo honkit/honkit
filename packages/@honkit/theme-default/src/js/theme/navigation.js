@@ -367,7 +367,11 @@ function preparePage(resetScroll) {
     updateNavigationPosition();
 
     // Focus on content
-    $pageWrapper.focus({ preventScroll: true });
+    if ($pageWrapper && $pageWrapper[0]) {
+        // use Native focus
+        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus
+        $pageWrapper[0].focus({ preventScroll: true });
+    }
 
     // Get scroller
     var $scroller = getScroller();
