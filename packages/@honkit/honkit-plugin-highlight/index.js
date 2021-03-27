@@ -17,6 +17,11 @@ function normalize(lang) {
     return MAP[lower] || lower;
 }
 
+/**
+ * @param {string} lang
+ * @param {string} code
+ * @returns {string|{html: boolean, body}}
+ */
 function highlight(lang, code) {
     if (!lang)
         return {
@@ -28,7 +33,9 @@ function highlight(lang, code) {
     lang = normalize(lang);
 
     try {
-        return hljs.highlight(lang, code).value;
+        return hljs.highlight(code, {
+            language: lang,
+        }).value;
     } catch (e) {
         console.error(e);
     }
