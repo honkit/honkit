@@ -106,6 +106,7 @@ HonKit aim to smooth migration from GitBook (Legacy) to HonKit.
     - Upgrade to nunjucks@2, highlight.js etc...
     - It will reduce bug
 - TypeScript
+    - Rewritten by TypeScript
 - Monorepo codebase
     - Easy to maintain
 - Docker support
