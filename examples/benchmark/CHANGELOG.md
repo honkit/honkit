@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.20](https://github.com/honkit/honkit/compare/v3.6.19...v3.6.20) (2021-04-14)
+
+**Note:** Version bump only for package @example/benchmark
+
+
+
+
+
 ## [3.6.19](https://github.com/honkit/honkit/compare/v3.6.18...v3.6.19) (2021-03-27)
 
 **Note:** Version bump only for package @example/benchmark
