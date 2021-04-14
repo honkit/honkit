@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.20](https://github.com/honkit/honkit/compare/v3.6.19...v3.6.20) (2021-04-14)
+
+
+### Bug Fixes
+
+* **theme-detault:** Remove Console Log for Page Changes ([#203](https://github.com/honkit/honkit/issues/203)) ([5836f23](https://github.com/honkit/honkit/commit/5836f236e0a127cfeb4481cc5763f18cad5223a9))
+
+
+
+
+
 ## [3.6.19](https://github.com/honkit/honkit/compare/v3.6.18...v3.6.19) (2021-03-27)
 
 

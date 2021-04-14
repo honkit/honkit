@@ -1,6 +1,6 @@
 {
   "name": "@example/benchmark",
-  "version": "3.6.19",
+  "version": "3.6.20",
   "private": true,
   "description": "benchmark book",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "gitbook-plugin-js-console": "^2.0.4",
     "gitbook-plugin-page-toc-button": "^0.1.1",
     "gitbook-summary-to-path": "^1.1.0",
-    "honkit": "^3.6.19",
+    "honkit": "^3.6.20",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.0"
   }
