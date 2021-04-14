@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1616823880249,
+  "lastUpdate": 1618361687616,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6694,6 +6694,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±0.71%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "stuykgaming@gmail.com",
+            "name": "Stuyk",
+            "username": "Stuyk"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5836f236e0a127cfeb4481cc5763f18cad5223a9",
+          "message": "fix(theme-detault): Remove Console Log for Page Changes (#203)",
+          "timestamp": "2021-04-14T09:51:27+09:00",
+          "tree_id": "2b86e71829403dc1c3073b2a4286366934c77acf",
+          "url": "https://github.com/honkit/honkit/commit/5836f236e0a127cfeb4481cc5763f18cad5223a9"
+        },
+        "date": 1618361686656,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±2.14%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
