@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.7.0 (2021-04-14)
+
+
+### Bug Fixes
+
+* **honkit:** call "page" and "page:before" if honkit has the cache ([3742225](https://github.com/honkit/honkit/commit/374222514c41d6164ca1c1804f4c18169c466daa))
+* **honkit:** fix --reload options ([bb5149f](https://github.com/honkit/honkit/commit/bb5149f6cb1a13459aca5f646eada8faa08ecf07)), closes [#59](https://github.com/honkit/honkit/issues/59)
+* **honkit:** fix empty publish ([92aabd6](https://github.com/honkit/honkit/commit/92aabd68063b3d5079665e5d863b433e13613548))
+* **honkit:** fix next/prev button on anchor article ([#110](https://github.com/honkit/honkit/issues/110)) ([fc54b71](https://github.com/honkit/honkit/commit/fc54b71221cf209ffd5916383aafb948741f13fd))
+* **honkit:** fix to load @scope/honkit-plugin-name ([#69](https://github.com/honkit/honkit/issues/69)) ([5c93524](https://github.com/honkit/honkit/commit/5c9352452fb3c15347d91c9fc30ad1d54e9fafc3))
+* **honkit:** replace gitbook-plugin-highlight with @honkit/honkit-plugin-highlight ([6e322b7](https://github.com/honkit/honkit/commit/6e322b7b17583502ea72d359ed604af48777bb9c))
+* **honkit:** return if src is null or undefined in resolveImages ([#103](https://github.com/honkit/honkit/issues/103)) ([bedbf56](https://github.com/honkit/honkit/commit/bedbf565b885e03c74e7a7f4ee419f437f3c1622))
+* **honkit:** update snapshots ([c52d598](https://github.com/honkit/honkit/commit/c52d598fa5fdf3ae311f290abb3148d08e0c47fd))
+* **honkit:** use @honkit/markdown-legacy instead of @honkit/markdown ([e8549d5](https://github.com/honkit/honkit/commit/e8549d573603becc9f145a7c9cef5fd4ff013262))
+* add prepublish script ([810fcc7](https://github.com/honkit/honkit/commit/810fcc7f45f3b1ab8d9527e8738f9861fdbe2c31))
+* **honkit:** use ^ semver for deps ([#185](https://github.com/honkit/honkit/issues/185)) ([f0d1ef9](https://github.com/honkit/honkit/commit/f0d1ef94f2ad5ba3b898a62212f47d4a2e23d9e3))
+* **honkit:** use require for avoiding copy package.json ([50e8e4c](https://github.com/honkit/honkit/commit/50e8e4c0855dd1784912ebd59915f30f5cdc7dc4))
+* **honkit/theme-default:** fix first scroll position ([4fb9cd3](https://github.com/honkit/honkit/commit/4fb9cd361d0ae3b40394b632050d77f248ca051d))
+* **hontkit:** update to urijs@^1.19.6 ([ff00810](https://github.com/honkit/honkit/commit/ff00810e98df735b8f3b11eda89476037c9797a9))
+* **markdown-legacy:** fix new line encoding on Windows ([a5fa2fb](https://github.com/honkit/honkit/commit/a5fa2fbda1e5b725eaace2c17d396185e767a7b3))
+* **theme-default:** add .honkit-cloak ([77feada](https://github.com/honkit/honkit/commit/77feada7106e73a120e5ebd8c23f8546812fff9d))
+* **theme-default:** fix blank page on mobile ([6401745](https://github.com/honkit/honkit/commit/64017459d94a6ebf04635b5f1b544bc939014e21))
+* **theme-default:** remove unnecessary meta tag ([#173](https://github.com/honkit/honkit/issues/173)) ([220031c](https://github.com/honkit/honkit/commit/220031ccff3a90ee47980a17ca332de0623531a6))
+
+
+### Features
+
+* **cli:** --version option ([#79](https://github.com/honkit/honkit/issues/79)) ([d68beaf](https://github.com/honkit/honkit/commit/d68beafd9f247e73c9d9ceb52bb40b1ef797a447))
+* **ebook:** embed PDF fonts ([#62](https://github.com/honkit/honkit/issues/62)) ([fce5b18](https://github.com/honkit/honkit/commit/fce5b1890ff9e54052f81c23f3b9678ce97c7fee))
+* **honkit:** Add publisher, producer, series, and author sort config options ([#108](https://github.com/honkit/honkit/issues/108)) ([fd7b05b](https://github.com/honkit/honkit/commit/fd7b05b6459885379962b00000bf6825bde3c1d2)), closes [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107) [#107](https://github.com/honkit/honkit/issues/107)
+
+
+
+
+
 ## [3.6.19](https://github.com/honkit/honkit/compare/v3.6.18...v3.6.19) (2021-03-27)
 
 **Note:** Version bump only for package honkit

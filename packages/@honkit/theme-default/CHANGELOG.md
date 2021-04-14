@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.7.0 (2021-04-14)
+
+
+### Bug Fixes
+
+* **default-theme:** move restoring sidebar logic to critical path ([aa7a598](https://github.com/honkit/honkit/commit/aa7a598a7d0703f58e20c3aa3bed45c878918678))
+* **honkit:** browser print layout in default theme ([#159](https://github.com/honkit/honkit/issues/159)) ([672cb9c](https://github.com/honkit/honkit/commit/672cb9c92f90dd154793b7a36d4dbf2654e7aec4))
+* **honkit/theme-default:** fix first scroll position ([4fb9cd3](https://github.com/honkit/honkit/commit/4fb9cd361d0ae3b40394b632050d77f248ca051d))
+* **theme-default:** add .honkit-cloak ([77feada](https://github.com/honkit/honkit/commit/77feada7106e73a120e5ebd8c23f8546812fff9d))
+* **theme-default:** fix blank page on mobile ([1200422](https://github.com/honkit/honkit/commit/1200422056ea70f4aeba59c80ee8d62ba55967c6))
+* **theme-default:** fix restore login when disable sidebar ([8445459](https://github.com/honkit/honkit/commit/84454590130974215b6b92c0ed5df22d8bdbe9b2))
+* **theme-default:** fix Uncaught TypeError when click a page ([#196](https://github.com/honkit/honkit/issues/196)) ([349aae6](https://github.com/honkit/honkit/commit/349aae6eedac78e21359d1914d4914156e32d1c5))
+* **theme-default:** include `index.js` to `files` ([#90](https://github.com/honkit/honkit/issues/90)) ([2ac7029](https://github.com/honkit/honkit/commit/2ac7029b97b8e2cedfe5bb2cba84b3ff66ba6d9a))
+* **theme-default:** remove unnecessary meta tag ([#173](https://github.com/honkit/honkit/issues/173)) ([220031c](https://github.com/honkit/honkit/commit/220031ccff3a90ee47980a17ca332de0623531a6))
+* **theme-detault:** Remove Console Log for Page Changes ([#203](https://github.com/honkit/honkit/issues/203)) ([5836f23](https://github.com/honkit/honkit/commit/5836f236e0a127cfeb4481cc5763f18cad5223a9))
+
+
+
+
+
 ## [3.6.18](https://github.com/honkit/honkit/compare/v3.6.17...v3.6.18) (2021-03-27)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@honkit/internal-test-utils",
-  "version": "3.6.17",
+  "version": "3.7.0",
   "description": "Internal utility for testing.",
   "homepage": "https://github.com/honkit/honkit/tree/master/packages/@honkit/internal-test-utils/",
   "bugs": {

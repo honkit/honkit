@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.7.0 (2021-04-14)
+
+
+### Bug Fixes
+
+* add prepublish script ([810fcc7](https://github.com/honkit/honkit/commit/810fcc7f45f3b1ab8d9527e8738f9861fdbe2c31))
+
+
+
+
+
 ## [3.6.17](https://github.com/honkit/honkit/compare/v3.6.16...v3.6.17) (2021-02-15)
 
 **Note:** Version bump only for package @honkit/asciidoc

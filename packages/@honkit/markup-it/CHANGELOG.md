@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.7.0 (2021-04-14)
+
+
+### Bug Fixes
+
+* **markdown:** Do not force convert Indented CodeBlock to Fenced code blocks ([#60](https://github.com/GitbookIO/draft-markup/issues/60)) ([ef55687](https://github.com/GitbookIO/draft-markup/commit/ef556874f42d27a4d7b323acbc92fcadd579d034))
+* add prepublish script ([810fcc7](https://github.com/GitbookIO/draft-markup/commit/810fcc7f45f3b1ab8d9527e8738f9861fdbe2c31))
+
+
+
+
+
 ## [3.6.17](https://github.com/GitbookIO/draft-markup/compare/v3.6.16...v3.6.17) (2021-02-15)
 
 **Note:** Version bump only for package @honkit/markup-it
