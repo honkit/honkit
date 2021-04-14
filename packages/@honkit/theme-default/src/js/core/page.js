@@ -11,7 +11,6 @@ var state = {};
     themes after page is loaded and when navigation changed
 */
 function hasChanged(ctx) {
-    console.log("page has changed", ctx); // eslint-disable-line no-console
     setState(ctx);
 
     if (!started) {
