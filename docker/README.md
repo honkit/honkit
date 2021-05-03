@@ -20,6 +20,10 @@ PDF build
 
     $ docker run -v `pwd`:`pwd` -w `pwd` --rm -it honkit/honkit honkit pdf
 
+Serve on port 4000
+
+    $ docker run -it --init -p 4000:4000  -v `pwd`:`pwd` -w `pwd` --rm  honkit/honkit honkit serve
+
 ## Tips
 
 ### Custom Font
