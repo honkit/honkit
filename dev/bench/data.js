@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1618362627200,
+  "lastUpdate": 1620097663907,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6787,6 +6787,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±2.21%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "juaalta@users.noreply.github.com",
+            "name": "Juan Salvador Aleixandre",
+            "username": "juaalta"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7e5e38eed4d490890b0cbb99d8fd6390e2dc2a53",
+          "message": "Update readme file in Docker folder (#206)",
+          "timestamp": "2021-05-04T12:03:46+09:00",
+          "tree_id": "2dd10593797093893a7b01299b7ef053feae8eff",
+          "url": "https://github.com/honkit/honkit/commit/7e5e38eed4d490890b0cbb99d8fd6390e2dc2a53"
+        },
+        "date": 1620097662908,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±4.83%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
