@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1620097663907,
+  "lastUpdate": 1620522800575,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6818,6 +6818,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±4.83%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ae783adf0a06882d6ff7ceeb0b1f397a6ea01a9a",
+          "message": "chore(deps): bump handlebars from 4.7.6 to 4.7.7 (#208)\n\nBumps [handlebars](https://github.com/wycats/handlebars.js) from 4.7.6 to 4.7.7.\r\n- [Release notes](https://github.com/wycats/handlebars.js/releases)\r\n- [Changelog](https://github.com/handlebars-lang/handlebars.js/blob/master/release-notes.md)\r\n- [Commits](https://github.com/wycats/handlebars.js/compare/v4.7.6...v4.7.7)\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2021-05-09T10:10:13+09:00",
+          "tree_id": "ddb01ce7fab4fd1c4f66ee704ffaedffe7e1ad67",
+          "url": "https://github.com/honkit/honkit/commit/ae783adf0a06882d6ff7ceeb0b1f397a6ea01a9a"
+        },
+        "date": 1620522799664,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±1.89%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
