@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1621732322606,
+  "lastUpdate": 1621733894484,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6880,6 +6880,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.65%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "4a08d021e17abc484f3ec3499bda75592d66ac54",
+          "message": "fix: add ts-expect-error to wrong typing",
+          "timestamp": "2021-05-23T10:34:11+09:00",
+          "tree_id": "b14fc07badfd1361532ae456fc62452a7122f3f6",
+          "url": "https://github.com/honkit/honkit/commit/4a08d021e17abc484f3ec3499bda75592d66ac54"
+        },
+        "date": 1621733893095,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±5.06%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
