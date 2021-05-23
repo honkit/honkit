@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1620522800575,
+  "lastUpdate": 1621732322606,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6849,6 +6849,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±1.89%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "58008829833b63a27ce52b7371d33558ac4294df",
+          "message": "chore(deps): bump codemirror from 5.56.0 to 5.61.0 (#209)\n\nBumps [codemirror](https://github.com/codemirror/CodeMirror) from 5.56.0 to 5.61.0.\r\n- [Release notes](https://github.com/codemirror/CodeMirror/releases)\r\n- [Changelog](https://github.com/codemirror/CodeMirror/blob/master/CHANGELOG.md)\r\n- [Commits](https://github.com/codemirror/CodeMirror/compare/5.56.0...5.61.0)\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2021-05-23T10:09:05+09:00",
+          "tree_id": "25b1bdc66c6104fd10b4d6c6a0b3f813487dfddf",
+          "url": "https://github.com/honkit/honkit/commit/58008829833b63a27ce52b7371d33558ac4294df"
+        },
+        "date": 1621732321521,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.65%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
