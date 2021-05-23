@@ -48,6 +48,7 @@ function createTemplateEngine(output: Output, currentFile: string): TemplateEngi
     const tplSearchPaths = searchPaths.map(templateFolder);
 
     // Create loader
+    // @ts-expect-error: Expected 0 arguments, but got 1.
     const loader = new Templating.ThemesLoader(tplSearchPaths);
 
     // Get languages

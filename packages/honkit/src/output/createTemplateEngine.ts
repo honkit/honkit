@@ -28,6 +28,7 @@ function createTemplateEngine(output) {
 
     // Create loader
     const transformFn = Templating.replaceShortcuts.bind(null, blocks);
+    // @ts-expect-error: Expected 0 arguments, but got 3.
     const loader = new Templating.ConrefsLoader(rootFolder, transformFn, logger);
 
     // Create API context

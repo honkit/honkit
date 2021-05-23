@@ -15,7 +15,6 @@ import PathUtils from "../utils/path";
  * @param {Function(filePath, source)} transformFn (optional)
  * @param {Logger} logger (optional)
  */
-// @ts-expect-error: Property 'extend' does not exist on type 'typeof Loader'.
 const ConrefsLoader = nunjucks.Loader.extend({
     async: true,
 
@@ -26,6 +25,7 @@ const ConrefsLoader = nunjucks.Loader.extend({
         this.git = new Git();
     },
 
+    // @ts-expect-error: Property 'extend' does not exist on type 'typeof Loader'.
     getSource: function (sourceURL, callback) {
         const that = this;
 

@@ -30,6 +30,7 @@ function validatePluginConfig(book, plugin) {
     // Validate and throw if invalid
     const v = new jsonschema.Validator();
     const result = v.validate(pluginConfig, schema, {
+        // @ts-expect-error: https://github.com/tdegrunt/jsonschema/issues/340
         propertyName: configKey,
     });
 

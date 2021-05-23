@@ -10,6 +10,7 @@ describe("ConrefsLoader", () => {
 
     describe("Git", () => {
         const engine = new TemplateEngine({
+            // @ts-expect-error: Expected 0 arguments, but got 1.
             loader: new ConrefsLoader(dirName),
         });
 
@@ -55,6 +56,7 @@ describe("ConrefsLoader", () => {
 
     describe("Local", () => {
         const engine = new TemplateEngine({
+            // @ts-expect-error: Expected 0 arguments, but got 1.
             loader: new ConrefsLoader(dirName),
         });
 
@@ -109,6 +111,7 @@ describe("ConrefsLoader", () => {
         }
 
         const engine = new TemplateEngine({
+            // @ts-expect-error: Expected 0 arguments, but got 1.
             loader: new ConrefsLoader(dirName, transform),
         });
 

@@ -4,8 +4,8 @@ import fs from "fs";
 import path from "path";
 import PathUtils from "../utils/path";
 
-// @ts-expect-error: Property 'extend' does not exist on type 'typeof Loader'.
 const ThemesLoader = nunjucks.Loader.extend({
+    // @ts-expect-error: Property 'extend' does not exist on type 'typeof Loader'.
     init: function (searchPaths) {
         this.searchPaths = Immutable.List(searchPaths).map(path.normalize);
     },

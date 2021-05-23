@@ -15,6 +15,7 @@ import mergeDefaults from "../utils/mergeDefaults";
 function validateConfig(bookJson) {
     const v = new jsonschema.Validator();
     const result = v.validate(bookJson, schema, {
+        // @ts-expect-error: https://github.com/tdegrunt/jsonschema/issues/340
         propertyName: "config",
     });
 
