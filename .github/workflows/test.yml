@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [10, 12, 14]
+        node-version: [ 12, 14, 16 ]
         os: [macos-latest, windows-latest, ubuntu-18.04]
         exclude:
           # mac tests is expensive, limit to 1 instance
