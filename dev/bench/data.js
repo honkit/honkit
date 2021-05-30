@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1622040506107,
+  "lastUpdate": 1622382999842,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -6942,6 +6942,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±1.47%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7b0a3697a8c483a60ef027b28f0a0d8adf9e47ef",
+          "message": "chore(deps): bump ws from 7.4.5 to 7.4.6 (#210)\n\nBumps [ws](https://github.com/websockets/ws) from 7.4.5 to 7.4.6.\r\n- [Release notes](https://github.com/websockets/ws/releases)\r\n- [Commits](https://github.com/websockets/ws/compare/7.4.5...7.4.6)\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2021-05-30T22:53:53+09:00",
+          "tree_id": "d509cef8eec4eb3eb69876c2e9e3f833f2c1df92",
+          "url": "https://github.com/honkit/honkit/commit/7b0a3697a8c483a60ef027b28f0a0d8adf9e47ef"
+        },
+        "date": 1622382998454,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±0.50%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
