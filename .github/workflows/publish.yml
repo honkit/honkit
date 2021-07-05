@@ -11,6 +11,7 @@ on:
 env:
   DOCKER_HUB_BASE_NAME: honkit/honkit
 
+permissions: write-all
 jobs:
   publish:
     runs-on: ubuntu-18.04

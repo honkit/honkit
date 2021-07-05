@@ -5,6 +5,8 @@ on:
       - master
 env:
   CI: true
+permissions:
+  contents: write
 jobs:
   benchmark:
     name: "Test on Node.js ${{ matrix.node-version }}"
