@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1625484754151,
+  "lastUpdate": 1626787101878,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7004,6 +7004,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±2.45%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f0e87caf7cf3ab95cc3157d3dfb0491ebf64a2b0",
+          "message": "chore(deps): bump urijs from 1.19.6 to 1.19.7 (#213)\n\nBumps [urijs](https://github.com/medialize/URI.js) from 1.19.6 to 1.19.7.\r\n- [Release notes](https://github.com/medialize/URI.js/releases)\r\n- [Changelog](https://github.com/medialize/URI.js/blob/gh-pages/CHANGELOG.md)\r\n- [Commits](https://github.com/medialize/URI.js/compare/v1.19.6...v1.19.7)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: urijs\r\n  dependency-type: direct:production\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2021-07-20T22:14:22+09:00",
+          "tree_id": "2d8dba54d8c6db44436ea1e34ebd51755467ca34",
+          "url": "https://github.com/honkit/honkit/commit/f0e87caf7cf3ab95cc3157d3dfb0491ebf64a2b0"
+        },
+        "date": 1626787100746,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±1.36%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
