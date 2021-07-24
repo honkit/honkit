@@ -5,7 +5,6 @@ describe("configSchema", () => {
     function validate(cfg) {
         const v = new jsonschema.Validator();
         return v.validate(cfg, schema, {
-            // @ts-expect-error: https://github.com/tdegrunt/jsonschema/issues/340
             propertyName: "config",
         });
     }
