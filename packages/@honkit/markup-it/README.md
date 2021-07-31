@@ -1,8 +1,8 @@
-# @honkite/markup-it
+# @honkit/markup-it
 
-`@honkite/markup-it` is a JavaScript library to parse and modify markuped content (for example Markdown) using an intermediate format backed by an immutable model.
+`@honkit/markup-it` is a JavaScript library to parse and modify markuped content (for example Markdown) using an intermediate format backed by an immutable model.
 
-`@honkite/markup-it` is fork of [markup-it](https://github.com/GitbookIO/markup-it)@2.2.0
+`@honkit/markup-it` is fork of [markup-it](https://github.com/GitbookIO/markup-it)@2.2.0
 
 - Less dependency
 - For stability
@@ -10,7 +10,7 @@
 ### Installation
 
 ```
-$ npm i @honkite/markup-it  --save
+$ npm i @honkit/markup-it  --save
 ```
 
 ### Usage
@@ -18,9 +18,9 @@ $ npm i @honkite/markup-it  --save
 Initialize a syntax:
 
 ```js
-var MarkupIt = require('@honkite/markup-it');
-var markdownSyntax = require('@honkite/markup-it/syntaxes/markdown');
-var htmlSyntax = require('@honkite/markup-it/syntaxes/html');
+var MarkupIt = require('@honkit/markup-it');
+var markdownSyntax = require('@honkit/markup-it/syntaxes/markdown');
+var htmlSyntax = require('@honkit/markup-it/syntaxes/html');
 
 var markdown = new MarkupIt(markdownSyntax);
 var html = new MarkupIt(htmlSyntax);
