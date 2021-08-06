@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1627772765681,
+  "lastUpdate": 1628236435286,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7097,6 +7097,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±0.46%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fc465fa90a025eed143f48b41edbda7a5d0a312b",
+          "message": "Create codeql-analysis.yml",
+          "timestamp": "2021-08-06T16:50:46+09:00",
+          "tree_id": "3f07895bfde74bfb80b1e6c50c2790ff1053ec85",
+          "url": "https://github.com/honkit/honkit/commit/fc465fa90a025eed143f48b41edbda7a5d0a312b"
+        },
+        "date": 1628236434232,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±3.25%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
