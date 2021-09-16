@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1630573867212,
+  "lastUpdate": 1631752792873,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7159,6 +7159,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±1.11%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "yuk.horie@gmail.com",
+            "name": "yhor1e",
+            "username": "yhor1e"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7ffa1308c3a3da9330c268e743c48a212a666739",
+          "message": "fix(honkit): change pdf margin options (#223)\n\nThe ebook-covert options `--margin-left`, `--margin-right`, `--margin-top`, `--margin-bottom` don't work. So change them to  `--pdf-page-margin-left`, `--pdf-page-margin-right`, `--pdf-page-margin-top`, `--pdf-page-margin-bottom`.\r\n\r\nfix #221",
+          "timestamp": "2021-09-16T09:36:20+09:00",
+          "tree_id": "8e9f575a280ed8d6850fa331cde6612f80f45264",
+          "url": "https://github.com/honkit/honkit/commit/7ffa1308c3a3da9330c268e743c48a212a666739"
+        },
+        "date": 1631752791785,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.61%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
