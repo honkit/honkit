@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.21](https://github.com/honkit/honkit/compare/v3.6.20...v3.6.21) (2021-09-16)
+
+
+### Bug Fixes
+
+* add ts-expect-error to wrong typing ([4a08d02](https://github.com/honkit/honkit/commit/4a08d021e17abc484f3ec3499bda75592d66ac54))
+* **honkit:** change pdf margin options ([#223](https://github.com/honkit/honkit/issues/223)) ([7ffa130](https://github.com/honkit/honkit/commit/7ffa1308c3a3da9330c268e743c48a212a666739)), closes [#221](https://github.com/honkit/honkit/issues/221)
+
+
+
+
+
 ## [3.6.20](https://github.com/honkit/honkit/compare/v3.6.19...v3.6.20) (2021-04-14)
 
 
