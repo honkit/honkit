@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1632186358554,
+  "lastUpdate": 1632187713962,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7252,6 +7252,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.06,
             "range": "±0.53%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "adc9afb7f04ece171adc5234369ecc3c5178589d",
+          "message": "chore(deps): bump object-path from 0.11.6 to 0.11.8 (#226)\n\nBumps [object-path](https://github.com/mariocasciaro/object-path) from 0.11.6 to 0.11.8.\r\n- [Release notes](https://github.com/mariocasciaro/object-path/releases)\r\n- [Commits](https://github.com/mariocasciaro/object-path/commits)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: object-path\r\n  dependency-type: direct:production\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2021-09-21T10:24:46+09:00",
+          "tree_id": "bf6563eca554d3b483da0f38c1a91c97fe4ada9c",
+          "url": "https://github.com/honkit/honkit/commit/adc9afb7f04ece171adc5234369ecc3c5178589d"
+        },
+        "date": 1632187712912,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±2.43%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
