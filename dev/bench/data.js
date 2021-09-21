@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1632187713962,
+  "lastUpdate": 1632187717266,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7283,6 +7283,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±2.43%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "552fcd0b0d1e3500fd05e39be6954322c5e1feb2",
+          "message": "chore(deps): bump tmpl from 1.0.4 to 1.0.5 (#227)\n\nBumps [tmpl](https://github.com/daaku/nodejs-tmpl) from 1.0.4 to 1.0.5.\r\n- [Release notes](https://github.com/daaku/nodejs-tmpl/releases)\r\n- [Commits](https://github.com/daaku/nodejs-tmpl/commits/v1.0.5)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: tmpl\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2021-09-21T10:24:33+09:00",
+          "tree_id": "fe67e69f7fd8cb758559edbfe9b31705bf02c05f",
+          "url": "https://github.com/honkit/honkit/commit/552fcd0b0d1e3500fd05e39be6954322c5e1feb2"
+        },
+        "date": 1632187715781,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.45%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
