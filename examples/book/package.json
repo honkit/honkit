@@ -1,6 +1,6 @@
 {
   "name": "@example/book",
-  "version": "3.6.21",
+  "version": "3.6.22",
   "private": true,
   "description": "",
   "keywords": [],
@@ -13,6 +13,6 @@
     "help": "honkit --help"
   },
   "devDependencies": {
-    "honkit": "^3.6.21"
+    "honkit": "^3.6.22"
   }
 }
