@@ -9,6 +9,60 @@ import preparePages from "./preparePages";
 import prepareAssets from "./prepareAssets";
 import generateAssets from "./generateAssets";
 import generatePages from "./generatePages";
+import type { Generator } from "./Generator";
+
+const updateBookConfig = callHook.bind(
+    null,
+    "config",
+    (output) => {
+        const book = output.getBook();
+        const config = book.getConfig();
+        const values = config.getValues();
+        return values.toJS();
+    },
+    (output, result) => {
+        let book = output.getBook();
+        let config = book.getConfig();
+
+        config = config.updateValues(result);
+        book = book.set("config", config);
+        return output.set("book", book);
+    }
+);
+/**
+ * Update multiple languages books if the book has LANGS.md
+ * @param generator
+ * @param output
+ */
+const generateMultipleLanguages = (generator: Generator, output: Output) => {
+    const book = output.getBook();
+    if (!book.isMultilingual()) {
+        return;
+    }
+    const logger = book.getLogger();
+    const books = book.getBooks();
+    const outputRoot = output.getRoot();
+    const plugins = output.getPlugins();
+    const state = output.getState();
+    const options = output.getOptions();
+    const bookList = books.map((langBook) => {
+        // Inherits plugins list, options and state
+        const langOptions = options.set("root", path.join(outputRoot, langBook.getLanguage()));
+        const langOutput = new Output({
+            book: langBook,
+            options: langOptions,
+            state: state,
+            generator: generator.name,
+            plugins: plugins,
+        });
+
+        logger.info.ln("");
+        logger.info.ln(`generating language "${langBook.getLanguage()}"`);
+        return processOutput(generator, langOutput);
+    });
+
+    return Promise.all(bookList.toArray()).thenResolve(output);
+};
 
 /**
  * Process an output to generate the book
@@ -22,29 +76,7 @@ function processOutput(generator, output) {
         .then(preparePlugins)
         .then(preparePages)
         .then(prepareAssets)
-
-        .then(
-            callHook.bind(
-                null,
-                "config",
-                (output) => {
-                    const book = output.getBook();
-                    const config = book.getConfig();
-                    const values = config.getValues();
-
-                    return values.toJS();
-                },
-                (output, result) => {
-                    let book = output.getBook();
-                    let config = book.getConfig();
-
-                    config = config.updateValues(result);
-                    book = book.set("config", config);
-                    return output.set("book", book);
-                }
-            )
-        )
-
+        .then(updateBookConfig)
         .then(
             callHook.bind(
                 null,
@@ -68,39 +100,7 @@ function processOutput(generator, output) {
 
         .then((output) => generateAssets(generator, output))
         .then((output) => generatePages(generator, output))
-
-        .tap((output) => {
-            const book = output.getBook();
-
-            if (!book.isMultilingual()) {
-                return;
-            }
-
-            const logger = book.getLogger();
-            const books = book.getBooks();
-            const outputRoot = output.getRoot();
-            const plugins = output.getPlugins();
-            const state = output.getState();
-            const options = output.getOptions();
-            const bookList = books.map((langBook) => {
-                // Inherits plugins list, options and state
-                const langOptions = options.set("root", path.join(outputRoot, langBook.getLanguage()));
-                const langOutput = new Output({
-                    book: langBook,
-                    options: langOptions,
-                    state: state,
-                    generator: generator.name,
-                    plugins: plugins,
-                });
-
-                logger.info.ln("");
-                logger.info.ln(`generating language "${langBook.getLanguage()}"`);
-                return processOutput(generator, langOutput);
-            });
-
-            return Promise.all(bookList.toArray()).thenResolve(output);
-        })
-
+        .tap((output) => generateMultipleLanguages(generator, output))
         .then(
             callHook.bind(
                 null,
@@ -214,7 +214,8 @@ function incrementalBuild(generator, output) {
             logger.info.ok(`generation finished with success in ${duration.toFixed(1)}s !`);
 
             return output;
-        });
+        })
+        .tap((output) => generateMultipleLanguages(generator, output));
 }
 
 export { generateBook, incrementalBuild };
