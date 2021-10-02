@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1632187717266,
+  "lastUpdate": 1633183596094,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7314,6 +7314,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±0.45%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "feb8d3ebea86b1a0a8f6fd60825593ded262f634",
+          "message": " fix(honkit): fix incremental build on multiple languages  (#228)\n\n* chore(example): add multiple languages example\r\n\r\n* fix(honkit): fix incremental build on multiple languages",
+          "timestamp": "2021-10-02T23:02:44+09:00",
+          "tree_id": "ae0078e3873dacb681305a4e3c2494f6b495f233",
+          "url": "https://github.com/honkit/honkit/commit/feb8d3ebea86b1a0a8f6fd60825593ded262f634"
+        },
+        "date": 1633183595044,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±1.15%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
