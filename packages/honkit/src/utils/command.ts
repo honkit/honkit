@@ -1,7 +1,5 @@
 import is from "is";
 import childProcess from "child_process";
-
-import { spawn } from "spawn-cmd";
 import Promise from "./promise";
 
 /**
@@ -11,7 +9,7 @@ import Promise from "./promise";
  @param {Object} options
  @return {Promise}
  */
-function exec(command, options) {
+function exec(command: string, options: { encoding: "buffer" } & childProcess.ExecOptions) {
     const d = Promise.defer();
 
     const child = childProcess.exec(command, options, (err, stdout, stderr) => {
@@ -42,9 +40,9 @@ function exec(command, options) {
  @param {Object} options
  @return {Promise}
  */
-function spawnCmd(command, args, options) {
+function spawnCmd(command: string, args: readonly string[], options: childProcess.SpawnOptionsWithoutStdio) {
     const d = Promise.defer();
-    const child = spawn(command, args, options);
+    const child = childProcess.spawn(command, args, options);
 
     child.on("error", (error) => {
         return d.reject(error);
@@ -75,7 +73,7 @@ function spawnCmd(command, args, options) {
  @param {String|number} value
  @param {string}
  */
-function escapeShellArg(value) {
+function escapeShellArg(value: string) {
     if (is.number(value)) {
         return value;
     }
