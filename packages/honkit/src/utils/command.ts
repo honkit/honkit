@@ -17,7 +17,7 @@ function exec(command: string, options: { encoding?: "buffer" } & childProcess.E
             return d.resolve();
         }
 
-        err.message = stdout.toString("utf8") + stderr.toString("utf8");
+        err.message = stdout.toString() + stderr.toString();
         d.reject(err);
     });
 
