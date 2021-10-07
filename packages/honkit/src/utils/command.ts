@@ -1,7 +1,5 @@
 import is from "is";
 import childProcess from "child_process";
-
-import { spawn } from "spawn-cmd";
 import Promise from "./promise";
 
 /**
@@ -11,7 +9,7 @@ import Promise from "./promise";
  @param {Object} options
  @return {Promise}
  */
-function exec(command, options) {
+function exec(command: string, options: { encoding?: "buffer" } & childProcess.ExecOptions) {
     const d = Promise.defer();
 
     const child = childProcess.exec(command, options, (err, stdout, stderr) => {
@@ -19,7 +17,7 @@ function exec(command, options) {
             return d.resolve();
         }
 
-        err.message = stdout.toString("utf8") + stderr.toString("utf8");
+        err.message = stdout.toString() + stderr.toString();
         d.reject(err);
     });
 
@@ -35,47 +33,12 @@ function exec(command, options) {
 }
 
 /**
- Spawn an executable
-
- @param {string} command
- @param {Array} args
- @param {Object} options
- @return {Promise}
- */
-function spawnCmd(command, args, options) {
-    const d = Promise.defer();
-    const child = spawn(command, args, options);
-
-    child.on("error", (error) => {
-        return d.reject(error);
-    });
-
-    child.stdout.on("data", (data) => {
-        d.notify(data);
-    });
-
-    child.stderr.on("data", (data) => {
-        d.notify(data);
-    });
-
-    child.on("close", (code) => {
-        if (code === 0) {
-            d.resolve();
-        } else {
-            d.reject(new Error(`Error with command "${command}"`));
-        }
-    });
-
-    return d.promise;
-}
-
-/**
  Transform an option object to a command line string
 
  @param {String|number} value
  @param {string}
  */
-function escapeShellArg(value) {
+function escapeShellArg(value: string) {
     if (is.number(value)) {
         return value;
     }
@@ -114,6 +77,5 @@ function optionsToShellArgs(options) {
 
 export default {
     exec: exec,
-    spawn: spawnCmd,
     optionsToShellArgs: optionsToShellArgs,
 };
