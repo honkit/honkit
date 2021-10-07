@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1633183992756,
+  "lastUpdate": 1633617347741,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7407,6 +7407,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.50%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9640e65c588f0be90268c9b2b9e56997a486ee90",
+          "message": "fix(honit): remove spawn-cmd (#230)\n\n* fix(honit): remove spawn-cmd\r\n\r\n* fix(honkit): remove spanCmd from command.ts\r\n\r\n* chore: fix type\r\n\r\n* chore: remove invalid usage",
+          "timestamp": "2021-10-07T23:30:22+09:00",
+          "tree_id": "6543f7b30b3a91d98b21d0743a9dc867da839942",
+          "url": "https://github.com/honkit/honkit/commit/9640e65c588f0be90268c9b2b9e56997a486ee90"
+        },
+        "date": 1633617346158,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±2.64%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
