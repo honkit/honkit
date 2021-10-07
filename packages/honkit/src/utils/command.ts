@@ -33,41 +33,6 @@ function exec(command: string, options: { encoding: "buffer" } & childProcess.Ex
 }
 
 /**
- Spawn an executable
-
- @param {string} command
- @param {Array} args
- @param {Object} options
- @return {Promise}
- */
-function spawnCmd(command: string, args: readonly string[], options: childProcess.SpawnOptionsWithoutStdio) {
-    const d = Promise.defer();
-    const child = childProcess.spawn(command, args, options);
-
-    child.on("error", (error) => {
-        return d.reject(error);
-    });
-
-    child.stdout.on("data", (data) => {
-        d.notify(data);
-    });
-
-    child.stderr.on("data", (data) => {
-        d.notify(data);
-    });
-
-    child.on("close", (code) => {
-        if (code === 0) {
-            d.resolve();
-        } else {
-            d.reject(new Error(`Error with command "${command}"`));
-        }
-    });
-
-    return d.promise;
-}
-
-/**
  Transform an option object to a command line string
 
  @param {String|number} value
@@ -112,6 +77,5 @@ function optionsToShellArgs(options) {
 
 export default {
     exec: exec,
-    spawn: spawnCmd,
     optionsToShellArgs: optionsToShellArgs,
 };
