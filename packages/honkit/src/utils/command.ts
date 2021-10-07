@@ -9,7 +9,7 @@ import Promise from "./promise";
  @param {Object} options
  @return {Promise}
  */
-function exec(command: string, options: { encoding: "buffer" } & childProcess.ExecOptions) {
+function exec(command: string, options: { encoding?: "buffer" } & childProcess.ExecOptions) {
     const d = Promise.defer();
 
     const child = childProcess.exec(command, options, (err, stdout, stderr) => {
