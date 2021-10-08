@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1633617347741,
+  "lastUpdate": 1633707358180,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7438,6 +7438,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±2.64%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "be282ebe68ae63a2b7ca333b33147c0914dce41b",
+          "message": "Merge pull request #232 from honkit/feature/add-types-immutable-js-model-1\n\nix(honkit): add typing to encode{Navigation,Progress}",
+          "timestamp": "2021-10-09T00:32:59+09:00",
+          "tree_id": "a34824e6bc4b98bc35f4b7568b04903d30595857",
+          "url": "https://github.com/honkit/honkit/commit/be282ebe68ae63a2b7ca333b33147c0914dce41b"
+        },
+        "date": 1633707356729,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.90%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
