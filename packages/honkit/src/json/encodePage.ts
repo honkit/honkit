@@ -1,14 +1,23 @@
 import encodeSummaryArticle from "./encodeSummaryArticle";
+import Page from "../models/page";
+import Summary from "../models/summary";
+import SummaryArticle from "../models/summaryArticle";
+
+export type EncodedPage = {
+    content: string;
+    dir: string;
+} & Partial<{
+    title: string;
+    level: number;
+    depth: number;
+    next: SummaryArticle;
+    previous: SummaryArticle;
+}>;
 
 /**
  Return a JSON representation of a page
-
- @param {Page} page
- @param {Summary} summary
- @return {Object}
  */
-
-function encodePage(page, summary) {
+function encodePage(page: Page, summary: Summary): EncodedPage {
     const file = page.getFile();
     const attributes = page.getAttributes();
     const article = summary.getByPath(file.getPath());
@@ -22,13 +31,11 @@ function encodePage(page, summary) {
 
         const nextArticle = summary.getNextArticle(article);
         if (nextArticle) {
-            // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
             result.next = encodeSummaryArticle(nextArticle);
         }
 
         const prevArticle = summary.getPrevArticle(article);
         if (prevArticle) {
-            // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
             result.previous = encodeSummaryArticle(prevArticle);
         }
     }

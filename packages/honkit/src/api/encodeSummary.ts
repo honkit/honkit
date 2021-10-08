@@ -32,7 +32,6 @@ function encodeSummary(output, summary) {
         getArticleByLevel: function (level) {
             const article = summary.getByLevel(level);
 
-            // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
             return article ? encodeSummaryArticle(article) : undefined;
         },
 
@@ -45,7 +44,6 @@ function encodeSummary(output, summary) {
         getArticleByPath: function (level) {
             const article = summary.getByPath(level);
 
-            // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
             return article ? encodeSummaryArticle(article) : undefined;
         },
     };

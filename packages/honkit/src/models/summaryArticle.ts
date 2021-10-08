@@ -8,7 +8,7 @@ import Readme from "./readme";
     An article represents an entry in the Summary / table of Contents
 */
 
-type Articles = Immutable.List<string>;
+type Articles = Immutable.List<SummaryArticle>;
 
 class SummaryArticle extends Immutable.Record(
     {
@@ -187,7 +187,7 @@ class SummaryArticle extends Immutable.Record(
      * @return {Article}
      */
 
-    static findArticle(base, iter) {
+    static findArticle(base, iter): SummaryArticle | null {
         const articles = base.getArticles();
 
         return articles.reduce((result, article) => {

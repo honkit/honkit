@@ -81,7 +81,6 @@ function createTemplateEngine(output: Output, currentFile: string): TemplateEngi
         const article = summary.getByPath(filePath);
         if (!article) return undefined;
 
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         return JSONUtils.encodeSummaryArticle(article);
     }
 
