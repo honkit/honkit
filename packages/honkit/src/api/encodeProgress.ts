@@ -1,18 +1,39 @@
 import Immutable from "immutable";
-import encodeNavigation from "./encodeNavigation";
+import encodeNavigation, { EncodedNavigation } from "./encodeNavigation";
+import Output from "../models/output";
+import Page from "../models/page";
+
+export type EncodedChapters = Array<
+    EncodedNavigation[string] & {
+        path: string;
+        done: boolean;
+        percent: number;
+    }
+>;
+export type PartialEncodedChapterValue = EncodedNavigation[string] &
+    Partial<{
+        path: string;
+        done: boolean;
+        percent: number;
+    }>;
+export type EncodeProgress = {
+    // Previous percent
+    prevPercent: number;
+    // Current percent
+    percent: number;
+    // Current chapter
+    current: number;
+    // List of chapter with progress
+    chapters: EncodedChapters;
+};
 
 /**
  page.progress is a deprecated property from GitBook v2
-
- @param {Output}
- @param {Page}
- @return {Object}
  */
 
-function encodeProgress(output, page) {
+function encodeProgress(output: Output, page: Page): EncodeProgress {
     const current = page.getPath();
-    let navigation = encodeNavigation(output);
-    navigation = Immutable.Map(navigation);
+    const navigation = Immutable.Map<string, PartialEncodedChapterValue>(encodeNavigation(output));
 
     const n = navigation.size;
     let percent = 0,
@@ -45,7 +66,7 @@ function encodeProgress(output, page) {
 
             return nav;
         })
-        .toJS();
+        .toJS() as EncodedChapters;
 
     return {
         // Previous percent
