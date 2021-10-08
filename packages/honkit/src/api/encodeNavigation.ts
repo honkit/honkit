@@ -1,15 +1,13 @@
 import Immutable from "immutable";
-import Output from "../models/output";
-import Page from "../models/page";
+import type Output from "../models/output";
+import type Page from "../models/page";
+import type SummaryArticle from "../models/summaryArticle";
 
 /**
  Encode an article for next/prev
  @return {Object}
  */
-function encodeArticle(
-    pages: Immutable.OrderedMap<string, Page>,
-    article: { getPath: () => any; getTitle: () => any; getLevel: () => any; isExternal: () => any }
-) {
+function encodeArticle(pages: Immutable.OrderedMap<string, Page>, article: SummaryArticle) {
     const articlePath = article.getPath();
 
     return {
