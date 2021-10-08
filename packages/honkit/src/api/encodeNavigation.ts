@@ -1,13 +1,13 @@
 import Immutable from "immutable";
+import type Output from "../models/output";
+import type Page from "../models/page";
+import type SummaryArticle from "../models/summaryArticle";
 
 /**
  Encode an article for next/prev
-
- @param {Map<String:Page>}
- @param {Article}
  @return {Object}
  */
-function encodeArticle(pages, article) {
+function encodeArticle(pages: Immutable.OrderedMap<string, Page>, article: SummaryArticle) {
     const articlePath = article.getPath();
 
     return {
@@ -19,14 +19,24 @@ function encodeArticle(pages, article) {
     };
 }
 
+export type EncodedNavigation = {
+    [index: string]: {
+        index: number;
+        title: string;
+        introduction: boolean;
+        prev?: unknown;
+        next?: unknown;
+        level: number;
+    };
+};
+
 /**
  this.navigation is a deprecated property from GitBook v2
 
- @param {Output}
  @return {Object}
  */
 
-function encodeNavigation(output) {
+function encodeNavigation(output: Output): EncodedNavigation {
     const book = output.getBook();
     const pages = output.getPages();
     const summary = book.getSummary();
@@ -58,7 +68,7 @@ function encodeNavigation(output) {
             return Boolean(e);
         });
 
-    return Immutable.Map(navigation).toJS();
+    return Immutable.Map(navigation).toJS() as EncodedNavigation;
 }
 
 export default encodeNavigation;

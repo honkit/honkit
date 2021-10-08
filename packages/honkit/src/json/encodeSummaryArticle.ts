@@ -5,10 +5,15 @@
  @return {Object}
  */
 
-function encodeSummaryArticle(article, recursive) {
+import SummaryArticle from "../models/summaryArticle";
+
+function encodeSummaryArticle(article: SummaryArticle, recursive?: boolean) {
     let articles = undefined;
     if (recursive !== false) {
-        articles = article.getArticles().map(encodeSummaryArticle).toJS();
+        articles = article
+            .getArticles()
+            .map((article) => encodeSummaryArticle(article))
+            .toJS();
     }
 
     return {

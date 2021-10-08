@@ -1,15 +1,13 @@
 import objectPath from "object-path";
 import deprecate from "./deprecate";
+import Output from "../models/output";
+import Config from "../models/config";
 
 /**
  Encode a config object into a JS config api
-
- @param {Output} output
- @param {Config} config
- @return {Object}
  */
 
-function encodeConfig(output, config) {
+function encodeConfig(output: Output, config: Config) {
     const result = {
         values: config.getValues().toJS(),
 

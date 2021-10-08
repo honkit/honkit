@@ -1,23 +1,30 @@
 import JSONUtils from "../json";
+import Output from "../models/output";
+import Page from "../models/page";
 import deprecate from "./deprecate";
 import encodeProgress from "./encodeProgress";
+import { EncodedPage } from "../json/encodePage";
+
+type PageAttributes = {
+    type: string; // 'markdown' or 'asciidoc'
+    path: string;
+    rawPath: string;
+};
+export type EncodedPageWithAttributes = EncodedPage & PageAttributes;
+export type PartialEncodedPageWithAttributes = EncodedPage & Partial<PageAttributes>;
 
 /**
  Encode a page in a context to a JS API
-
- @param {Output} output
- @param {Page} page
- @return {Object}
  */
 
-function encodePage(output, page) {
+function encodePage(output: Output, page: Page): EncodedPageWithAttributes {
     const book = output.getBook();
     const summary = book.getSummary();
     const fs = book.getContentFS();
     const file = page.getFile();
 
     // JS Page is based on the JSON output
-    const result = JSONUtils.encodePage(page, summary);
+    const result: PartialEncodedPageWithAttributes = JSONUtils.encodePage(page, summary);
 
     result.type = file.getType();
     result.path = file.getPath();
@@ -48,7 +55,7 @@ function encodePage(output, page) {
         '"sections" property is deprecated, use page.content instead'
     );
 
-    return result;
+    return result as EncodedPageWithAttributes;
 }
 
 export default encodePage;

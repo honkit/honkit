@@ -40,7 +40,7 @@ class Summary extends Immutable.Record(
      @param {Function} [partIter]
      @return {Article|Part}
      */
-    getArticle(iter, partIter?) {
+    getArticle(iter, partIter?): SummaryArticle | null {
         const parts = this.getParts();
 
         return parts.reduce((result, part) => {
@@ -71,7 +71,7 @@ class Summary extends Immutable.Record(
      @param {string} filePath
      @return {Article}
      */
-    getByPath(filePath: string) {
+    getByPath(filePath: string): SummaryArticle {
         return this.getArticle((article) => {
             const articlePath = article.getPath();
 
