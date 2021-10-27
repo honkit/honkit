@@ -17,6 +17,9 @@ Real world examples of content published using HonKit.
 - Django Girls Tutorial
     - [Website](https://tutorial.djangogirls.org/)
     - [Source](https://github.com/DjangoGirls/tutorial)
+- MISP (the open source threat intelligence platform) book
+    - [Website](https://www.circl.lu/doc/misp/)
+    - [Source](https://github.com/MISP/misp-book)
 
 ## Add to examples
 
