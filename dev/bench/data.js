@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1633707358180,
+  "lastUpdate": 1635313031964,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7469,6 +7469,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.90%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "68a511730945777a467bc8e03986b38a0d209c04",
+          "message": "Merge pull request #235 from adulau/patch-1\n\nAdd MISP book",
+          "timestamp": "2021-10-27T14:33:29+09:00",
+          "tree_id": "ca5d568943ba0aed7b071bc77e87d2a4769006d2",
+          "url": "https://github.com/honkit/honkit/commit/68a511730945777a467bc8e03986b38a0d209c04"
+        },
+        "date": 1635313030441,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±3.71%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
