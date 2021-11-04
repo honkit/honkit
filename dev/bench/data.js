@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1635313031964,
+  "lastUpdate": 1636036139468,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7500,6 +7500,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±3.71%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "stephen.boissiere@gmail.com",
+            "name": "OlduwanSteve",
+            "username": "OlduwanSteve"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ebe4d60f9d716076174324768883032ba1215550",
+          "message": "fix(honkit): Replace newlines with white space in pdf headers + footers (#237)\n\nCo-authored-by: Steve Boissiere <sboissiere@meddbase.com>",
+          "timestamp": "2021-11-04T23:24:36+09:00",
+          "tree_id": "284e710e5e9cc366ebcccdf7da97466a6805204a",
+          "url": "https://github.com/honkit/honkit/commit/ebe4d60f9d716076174324768883032ba1215550"
+        },
+        "date": 1636036138322,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.06,
+            "range": "±0.91%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
