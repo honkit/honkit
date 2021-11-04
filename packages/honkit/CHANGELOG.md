@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.23](https://github.com/honkit/honkit/compare/v3.6.22...v3.6.23) (2021-11-04)
+
+
+### Bug Fixes
+
+* **honit:** remove spawn-cmd ([#230](https://github.com/honkit/honkit/issues/230)) ([9640e65](https://github.com/honkit/honkit/commit/9640e65c588f0be90268c9b2b9e56997a486ee90))
+* **honkit:** add typing to encode{Navigation,Progress} ([60895ec](https://github.com/honkit/honkit/commit/60895ecd250fb634a4968b5906c95639253ef620))
+* **honkit:** add typing to encodeConfig ([dba0a66](https://github.com/honkit/honkit/commit/dba0a66071da2e48f7bfe439d14058d0f1bce089))
+* **honkit:** add typing to encodePage ([63589ef](https://github.com/honkit/honkit/commit/63589ef4dfd20de6f6794eb3089fee9b1913783c))
+* **honkit:** Replace newlines with white space in pdf headers + footers ([#237](https://github.com/honkit/honkit/issues/237)) ([ebe4d60](https://github.com/honkit/honkit/commit/ebe4d60f9d716076174324768883032ba1215550))
+
+
+
+
+
 ## [3.6.22](https://github.com/honkit/honkit/compare/v3.6.21...v3.6.22) (2021-10-02)
 
 **Note:** Version bump only for package honkit
