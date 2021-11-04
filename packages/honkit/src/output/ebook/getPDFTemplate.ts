@@ -37,6 +37,7 @@ function getPDFTemplate(output, type) {
                     },
                 });
             })
+            .then((tplOut) => tplOut.replace(/\n/g, " ")) // PDF templates need to be on one line for inclusion in spawned command
     );
 }
 
