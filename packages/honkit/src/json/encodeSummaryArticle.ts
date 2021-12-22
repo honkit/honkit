@@ -7,7 +7,14 @@
 
 import SummaryArticle from "../models/summaryArticle";
 
+const articleMapByLevel = new Map();
+
 function encodeSummaryArticle(article: SummaryArticle, recursive?: boolean) {
+    const articleLevel = article.getLevel();
+    if (articleMapByLevel.has(articleLevel)) {
+        return articleMapByLevel.get(articleLevel);
+    }
+    
     let articles = undefined;
     if (recursive !== false) {
         articles = article
@@ -16,7 +23,7 @@ function encodeSummaryArticle(article: SummaryArticle, recursive?: boolean) {
             .toJS();
     }
 
-    return {
+    const encodedArticle = {
         title: article.getTitle(),
         level: article.getLevel(),
         depth: article.getDepth(),
@@ -26,6 +33,9 @@ function encodeSummaryArticle(article: SummaryArticle, recursive?: boolean) {
         ref: article.getRef(),
         articles: articles,
     };
+    articleMapByLevel.set(articleLevel, encodedArticle);
+
+    return encodedArticle;
 }
 
 export default encodeSummaryArticle;
