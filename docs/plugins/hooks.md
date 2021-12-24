@@ -42,7 +42,26 @@ Hooks is a method of augmenting or altering the behavior of the process, with cu
     // Content of the page
     // Markdown/Asciidoc in "page:before"
     // HTML in "page"
-    "content": "# Hello"
+    "content": "<h1>Hello</h1>"
+
+    // Level of the page
+    "level": "1.5.3.1"
+
+    // Depth of the page
+    "depth": "3"
+
+    // Other attributes appear in the .md between two '---' at the beginning of the content
+    // For example in the front of the markdown:
+    // ---
+    // description: This is a description
+    // ---
+    "description": "This is a description"
+
+    // Previous article
+    "previous": Article Object
+
+    // Next article
+    "next": Article Object
 }
 ```
 

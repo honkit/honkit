@@ -38,6 +38,14 @@ function encodePage(page: Page, summary: Summary): EncodedPage {
         if (prevArticle) {
             result.previous = encodeSummaryArticle(prevArticle);
         }
+
+        const articles = article
+            .getArticles()
+            .map((article) => encodeSummaryArticle(article))
+            .toJS();
+        if (articles.length > 0) {
+            result.articles = articles;
+        }
     }
 
     result.content = page.getContent();
