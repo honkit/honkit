@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1636036354087,
+  "lastUpdate": 1640313201609,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7562,6 +7562,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.06,
             "range": "±1.75%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "yilunsun11@yeah.net",
+            "name": "YilunSun",
+            "username": "Yilun-Sun"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8573db67cd3cfe0b7228f3deeeb8925f0d9980df",
+          "message": "feat(honkit): update page object (#242)\n\n* feat: add articles to page object\r\n\r\n* docs: update hooks document\r\n\r\n- add more details to page object",
+          "timestamp": "2021-12-24T11:30:15+09:00",
+          "tree_id": "931d41a24dfae3f54934c467cb423cc4f4d2ad2a",
+          "url": "https://github.com/honkit/honkit/commit/8573db67cd3cfe0b7228f3deeeb8925f0d9980df"
+        },
+        "date": 1640313200129,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±3.11%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
