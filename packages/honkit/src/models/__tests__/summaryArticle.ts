@@ -1,5 +1,7 @@
 import SummaryArticle from "../summaryArticle";
 import File from "../file";
+import encodeSummaryArticleWithCache from "../../json/encodeSummaryArticleWithCache";
+import encodeSummaryArticle from "../../json/encodeSummaryArticle";
 
 describe("SummaryArticle", () => {
     describe("createChildLevel", () => {
@@ -82,6 +84,101 @@ describe("SummaryArticle", () => {
             );
 
             expect(article.hasAnchor()).toBe(true);
+        });
+    });
+
+    describe("withCache", function () {
+        it("encodeSummaryArticle (non cached) should return an object", function () {
+            var article = SummaryArticle.create(
+                {
+                    ref: "1-1.md",
+                },
+                "1.1"
+            );
+
+            expect(encodeSummaryArticle(article)).toBeInstanceOf(Object)
+        });
+        
+        it("encodeSummaryArticleWithCache (cached) should return an object", function () {
+            var article = SummaryArticle.create(
+                {
+                    ref: "1-1.md",
+                },
+                "1.1"
+            );
+
+            expect(encodeSummaryArticleWithCache(article)).toBeInstanceOf(Object)
+        });
+
+        it("encodeSummaryArticle (non cached) should return different object when pass difference SummaryArticle", function () {
+            var article_1 = SummaryArticle.create(
+                {
+                    ref: "1-1.md"
+                },
+                "1.1"
+            );
+            var article_2 = SummaryArticle.create(
+                {
+                    ref: "1-2.md"
+                },
+                "1.2"
+            );
+
+            expect(encodeSummaryArticle(article_1)).not.toStrictEqual(encodeSummaryArticle(article_2));
+        });
+
+        it("encodeSummaryArticle (non cached) should return same object when pass same SummaryArticle", function () {
+            var article = SummaryArticle.create(
+                {
+                    ref: "1-1.md"
+                },
+                "1.1"
+            );
+
+            expect(encodeSummaryArticle(article)).toStrictEqual(encodeSummaryArticle(article));
+        });
+
+        it("encodeSummaryArticleWithCache (cached) should return different object when pass difference SummaryArticle", function () {
+            var article_1 = SummaryArticle.create(
+                {
+                    ref: "1-1.md"
+                },
+                "1.1"
+            );
+            var article_2 = SummaryArticle.create(
+                {
+                    ref: "1-2.md"
+                },
+                "1.2"
+            );
+
+            expect(encodeSummaryArticle(article_1)).not.toStrictEqual(encodeSummaryArticleWithCache(article_2));
+        });
+
+        it("encodeSummaryArticleWithCache (cached) should return same object when pass same SummaryArticle", function () {
+            var article = SummaryArticle.create(
+                {
+                    ref: "1-1.md"
+                },
+                "1.1"
+            );
+
+            expect(encodeSummaryArticle(article)).toStrictEqual(encodeSummaryArticle(article));
+        });
+
+        it("encodeSummaryArticle (non cached) and encodeSummaryArticleWithCache (cached) should return same object when pass same SummaryArticle", function () {
+            var article = SummaryArticle.create(
+                {
+                    ref: "1-1.md",
+                    articles: [SummaryArticle.create({
+                        ref: "2-1.md",
+                    },
+                    "2.1")]
+                },
+                "1.1"
+            );
+
+            expect(encodeSummaryArticle(article)).toStrictEqual(encodeSummaryArticleWithCache(article));
         });
     });
 });
