@@ -6,13 +6,14 @@
  */
 
 import SummaryArticle from "../models/summaryArticle";
+import encodeSummaryArticleWithCache from "./encodeSummaryArticleWithCache";
 
 function encodeSummaryArticle(article: SummaryArticle, recursive?: boolean) {
     let articles = undefined;
     if (recursive !== false) {
         articles = article
             .getArticles()
-            .map((article) => encodeSummaryArticle(article))
+            .map((article) => encodeSummaryArticleWithCache(article))
             .toJS();
     }
 

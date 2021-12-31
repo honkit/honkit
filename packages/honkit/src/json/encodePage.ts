@@ -1,4 +1,4 @@
-import encodeSummaryArticleWithCache from "./encodeSummaryArticleWithCache";
+import encodeSummaryArticle from "./encodeSummaryArticle";
 import Page from "../models/page";
 import Summary from "../models/summary";
 import SummaryArticle from "../models/summaryArticle";
@@ -31,12 +31,12 @@ function encodePage(page: Page, summary: Summary): EncodedPage {
 
         const nextArticle = summary.getNextArticle(article);
         if (nextArticle) {
-            result.next = encodeSummaryArticleWithCache(nextArticle);
+            result.next = encodeSummaryArticle(nextArticle);
         }
 
         const prevArticle = summary.getPrevArticle(article);
         if (prevArticle) {
-            result.previous = encodeSummaryArticleWithCache(prevArticle);
+            result.previous = encodeSummaryArticle(prevArticle);
         }
     }
 
