@@ -17,8 +17,7 @@
   ],
   "license": "Apache-2.0",
   "authors": [
-    "azu. <azuciao@gmail.com>",
-    "GitBook Inc. <contact@gitbook.com>"
+    "azu. <azuciao@gmail.com>"
   ],
   "workspaces": [
     "packages/*",
