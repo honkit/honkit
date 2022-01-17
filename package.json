@@ -9,6 +9,12 @@
     "type": "git",
     "url": "git+https://github.com/honkit/honkit.git"
   },
+  "keywords": [
+    "Markdown",
+    "Book",
+    "HonKit",
+    "GitBook"
+  ],
   "license": "Apache-2.0",
   "authors": [
     "azu. <azuciao@gmail.com>",
