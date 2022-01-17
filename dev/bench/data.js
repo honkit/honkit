@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1642425428244,
+  "lastUpdate": 1642426226318,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7624,6 +7624,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.06,
             "range": "±1.84%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8318021c6fd4cdd080a524cdec5fba7ee6aed81b",
+          "message": "refactor: use LRU_MAP (#248)",
+          "timestamp": "2022-01-17T22:26:39+09:00",
+          "tree_id": "baec30fd5c5e9060b1d3757e0c979cdb4c0fdaba",
+          "url": "https://github.com/honkit/honkit/commit/8318021c6fd4cdd080a524cdec5fba7ee6aed81b"
+        },
+        "date": 1642426225240,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±6.41%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
