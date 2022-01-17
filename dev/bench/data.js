@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1640313201609,
+  "lastUpdate": 1642425428244,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7593,6 +7593,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±3.11%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "osirisnero@gmail.com",
+            "name": "YilunSun",
+            "username": "Yilun-Sun"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "6b2292dc21f4090be9bb98fd037dfd37245d901e",
+          "message": "perf: memorize encoded summary article (#243)\n\n* perf: memorize encoded summary article\r\n\r\n* perf: improve encode summary article with memorized hash map\r\n\r\n* fix: change calling place of encode summary article with cache",
+          "timestamp": "2022-01-17T22:12:59+09:00",
+          "tree_id": "e6cbb4f3829757a1a85866b69f344f213e941530",
+          "url": "https://github.com/honkit/honkit/commit/6b2292dc21f4090be9bb98fd037dfd37245d901e"
+        },
+        "date": 1642425427085,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.06,
+            "range": "±1.84%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
