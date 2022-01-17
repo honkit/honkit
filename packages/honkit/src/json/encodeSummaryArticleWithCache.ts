@@ -6,10 +6,23 @@
  */
 
 import SummaryArticle from "../models/summaryArticle";
+import { LRUMap } from "lru_map";
 
-const articleCacheMap = new Map();
+const LRU_MAP_LIMIT = 1000;
+const articleCacheMap = new LRUMap<SummaryArticle, EncodedArticle>(LRU_MAP_LIMIT);
 
-function encodeSummaryArticleWithCache(article: SummaryArticle, recursive?: boolean) {
+export type EncodedArticle = {
+    title: string;
+    level: string;
+    depth: number;
+    anchor: string;
+    url: string;
+    path: string;
+    ref: string;
+    articles: EncodedArticle[];
+};
+
+function encodeSummaryArticleWithCache(article: SummaryArticle, recursive?: boolean): EncodedArticle {
     if (articleCacheMap.has(article)) {
         return articleCacheMap.get(article);
     }

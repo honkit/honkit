@@ -80,6 +80,7 @@
     "json-schema-defaults": "^0.1.1",
     "jsonschema": "1.1.0",
     "juice": "^6.0.0",
+    "lru_map": "^0.4.1",
     "memoize-one": "^5.1.1",
     "mkdirp": "^1.0.4",
     "moment": "^2.24.0",
