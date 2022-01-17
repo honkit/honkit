@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/honkit/honkit/compare/v3.6.23...v3.7.0) (2022-01-17)
+
+
+### Features
+
+* **honkit:** update page object ([#242](https://github.com/honkit/honkit/issues/242)) ([8573db6](https://github.com/honkit/honkit/commit/8573db67cd3cfe0b7228f3deeeb8925f0d9980df))
+
+
+### Performance Improvements
+
+* memorize encoded summary article ([#243](https://github.com/honkit/honkit/issues/243)) ([6b2292d](https://github.com/honkit/honkit/commit/6b2292dc21f4090be9bb98fd037dfd37245d901e))
+
+
+
+
+
 ## [3.6.23](https://github.com/honkit/honkit/compare/v3.6.22...v3.6.23) (2021-11-04)
 
 
