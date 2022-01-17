@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1642428805585,
+  "lastUpdate": 1642431736153,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7841,6 +7841,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±4.11%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "d329d8ef1938f9e4b1e80860a894ce76b39a02ab",
+          "message": "fix(markdown): fix em RegExp match (#251)\n\n* fix(markdown): fix em RegExp match\r\n\r\n* fix(markdown): fix em RegExp match",
+          "timestamp": "2022-01-17T23:59:24+09:00",
+          "tree_id": "1ef76b2fb64d1ddc4f20becd6cb99e17ffec31fe",
+          "url": "https://github.com/honkit/honkit/commit/d329d8ef1938f9e4b1e80860a894ce76b39a02ab"
+        },
+        "date": 1642431735173,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±1.25%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
