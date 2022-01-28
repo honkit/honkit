@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1642431736153,
+  "lastUpdate": 1643328866065,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7872,6 +7872,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±1.25%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a5735fdfb5215afc5029892fc402a14ef1858364",
+          "message": "chore(deps): bump cached-path-relative from 1.0.2 to 1.1.0 (#252)\n\nBumps [cached-path-relative](https://github.com/ashaffer/cached-path-relative) from 1.0.2 to 1.1.0.\r\n- [Release notes](https://github.com/ashaffer/cached-path-relative/releases)\r\n- [Commits](https://github.com/ashaffer/cached-path-relative/commits)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: cached-path-relative\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2022-01-28T09:11:12+09:00",
+          "tree_id": "189c5a1d30da4f1cdcf8912d81eada115d566b61",
+          "url": "https://github.com/honkit/honkit/commit/a5735fdfb5215afc5029892fc402a14ef1858364"
+        },
+        "date": 1643328865136,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.45%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
