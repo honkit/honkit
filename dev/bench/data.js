@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1646349715301,
+  "lastUpdate": 1646784074439,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7934,6 +7934,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.06,
             "range": "±3.72%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "47c54f51785aa7e644f2762be989200a9c5df626",
+          "message": "chore(deps): bump urijs from 1.19.9 to 1.19.10 (#255)\n\nBumps [urijs](https://github.com/medialize/URI.js) from 1.19.9 to 1.19.10.\r\n- [Release notes](https://github.com/medialize/URI.js/releases)\r\n- [Changelog](https://github.com/medialize/URI.js/blob/gh-pages/CHANGELOG.md)\r\n- [Commits](https://github.com/medialize/URI.js/compare/v1.19.9...v1.19.10)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: urijs\r\n  dependency-type: direct:production\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2022-03-09T08:58:18+09:00",
+          "tree_id": "02913c84b18d09c55dd0ced55add6350865e6f51",
+          "url": "https://github.com/honkit/honkit/commit/47c54f51785aa7e644f2762be989200a9c5df626"
+        },
+        "date": 1646784073394,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.43%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
