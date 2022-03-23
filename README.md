@@ -77,13 +77,13 @@ You can find a list of [real-world examples](https://honkit.netlify.app/examples
 ## Fork of GitBook
 
 HonKit is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
-[GitBook (Legacy)](https://github.com/GitbookIO/gitbook) is [deprecated](https://github.com/GitbookIO/gitbook/commit/6c6ef7f4af32a2977e44dd23d3feb6ebf28970f4) and inactive project.
+[GitBook (Legacy)](https://github.com/GitbookIO/gitbook) is [deprecated](https://github.com/GitbookIO/gitbook/commit/6c6ef7f4af32a2977e44dd23d3feb6ebf28970f4) and an inactive project.
 
-HonKit aim to smooth migration from GitBook (Legacy) to HonKit.
+HonKit aims to smooth the migration from GitBook (Legacy) to HonKit.
 
 ### Compatibility with GitBook
 
-- Almost plugins work without changes!
+- Almost all plugins work without changes!
 - Support `gitbook-plugin-*` packages
     - You should install these plugins via npm or yarn
     - `npm install gitbook-plugin-<example> --save-dev`
@@ -104,7 +104,7 @@ HonKit aim to smooth migration from GitBook (Legacy) to HonKit.
     - You can use HonKit with another npm package manager like `yarn`
 - Update dependencies
     - Upgrade to nunjucks@2, highlight.js etc...
-    - It will reduce bug
+    - It will reduce bugs
 - TypeScript
     - Rewritten by TypeScript
 - Monorepo codebase
@@ -131,7 +131,7 @@ Replace `gitbook` command with `honkit` command.
   },
 ```
 
-After that, HonKit just work!
+After that, HonKit just works!
 
 Examples of migration:
 
