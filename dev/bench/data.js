@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1648035770589,
+  "lastUpdate": 1653726755424,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -7996,6 +7996,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.88%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "84f1a0a67475e9f740d74334ac057c151802c9b6",
+          "message": "fix(honkit): getNpmID return pkg's name (#263)\n\n* chore: remove findInstalled.ts\r\n\r\n* fix(honkit): getNpmID return pkg's name\r\n\r\n* fix: use toJS\r\n\r\n* test: add test\r\n\r\n* test: update snapshot",
+          "timestamp": "2022-05-28T17:29:26+09:00",
+          "tree_id": "cf8a28e4926025ad45c2102013775fd4456c0c69",
+          "url": "https://github.com/honkit/honkit/commit/84f1a0a67475e9f740d74334ac057c151802c9b6"
+        },
+        "date": 1653726754562,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±0.61%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
