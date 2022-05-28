@@ -17,7 +17,6 @@ function addPlugin(config, pluginName, version) {
 
     let deps = config.getPluginDependencies();
 
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     const dep = PluginDependency.create(pluginName, version);
 
     deps = deps.push(dep);

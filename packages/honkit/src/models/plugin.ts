@@ -62,11 +62,16 @@ class Plugin extends Immutable.Record(
 
     /**
      * Return the ID on NPM for this plugin
+     * return package.json's name
      * @return {string}
      */
 
     getNpmID(): string {
-        return PluginDependency.nameToNpmID(this.getName());
+        const pkg = this.getPackage().toJS();
+        if ("name" in pkg) {
+            return pkg["name"];
+        }
+        throw new Error(`${this.getName()} plugin's package.json does not have "name" fields.`);
     }
 
     /**
@@ -145,8 +150,8 @@ class Plugin extends Immutable.Record(
 
     /**
      * Create a plugin from a string
-     * @param {string}
      * @return {Plugin}
+     * @param s
      */
 
     static createFromString(s: string) {
@@ -171,7 +176,6 @@ class Plugin extends Immutable.Record(
             version: dep.getVersion(),
         });
     }
-
-    static nameToNpmID = PluginDependency.nameToNpmID;
 }
+
 export default Plugin;
