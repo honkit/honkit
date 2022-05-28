@@ -67,7 +67,7 @@ class Plugin extends Immutable.Record(
      */
 
     getNpmID(): string {
-        const pkg = this.getPackage();
+        const pkg = this.getPackage().toJS();
         if ("name" in pkg) {
             return pkg["name"];
         }
@@ -150,8 +150,8 @@ class Plugin extends Immutable.Record(
 
     /**
      * Create a plugin from a string
-     * @param {string}
      * @return {Plugin}
+     * @param s
      */
 
     static createFromString(s: string) {
