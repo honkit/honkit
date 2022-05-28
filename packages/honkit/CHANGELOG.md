@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.2](https://github.com/honkit/honkit/compare/v3.7.1...v3.7.2) (2022-05-28)
+
+
+### Bug Fixes
+
+* **honkit:** getNpmID return pkg's name ([#263](https://github.com/honkit/honkit/issues/263)) ([84f1a0a](https://github.com/honkit/honkit/commit/84f1a0a67475e9f740d74334ac057c151802c9b6))
+
+
+
+
+
 ## [3.7.1](https://github.com/honkit/honkit/compare/v3.7.0...v3.7.1) (2022-01-17)
 
 **Note:** Version bump only for package honkit
