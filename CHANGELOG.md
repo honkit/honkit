@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.3](https://github.com/honkit/honkit/compare/v3.7.2...v3.7.3) (2022-05-28)
+
+
+### Bug Fixes
+
+* **theme-default:** prevent to replace html/head/body as strings ([#266](https://github.com/honkit/honkit/issues/266)) ([3d9392b](https://github.com/honkit/honkit/commit/3d9392bcd67b403c895f524d5fb3d5612c7fd288))
+
+
+
+
+
 ## [3.7.2](https://github.com/honkit/honkit/compare/v3.7.1...v3.7.2) (2022-05-28)
 
 
