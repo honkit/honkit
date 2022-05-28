@@ -2,15 +2,13 @@ import Immutable from "immutable";
 import path from "path";
 import LocationUtils from "../utils/location";
 import PLUGIN_RESOURCES from "../constants/pluginResources";
+import Plugin from "../models/plugin";
 
 /**
  List all resources from a list of plugins
-
- @param {OrderedMap<String:Plugin>}
- @param {string} type
  @return {Map<String:List<{url, path}>}
  */
-function listResources(plugins, resources) {
+function listResources(plugins: Plugin[], resources) {
     return plugins.reduce((result, plugin) => {
         const npmId = plugin.getNpmID();
         const pluginResources = resources.get(plugin.getName());
