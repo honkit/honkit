@@ -264,7 +264,12 @@ function handleNavigation(relativeUrl, push) {
                 var responseURL = xhr.getResponseHeader("X-Current-Location") || uri;
 
                 // Replace html content
-                html = html.replace(/<(\/?)(html|head|body)([^>]*)>/gi, function (a, b, c, d) {
+                // Replace first <html><head><body> at once https://github.com/honkit/honkit/issues/265
+                html = html.replace(/<(\/?)(html)([^>]*)>/i, function (a, b, c, d) {
+                    return "<" + b + "div" + (b ? "" : ' data-element="' + c + '"') + d + ">";
+                }).replace(/<(\/?)(head)([^>]*)>/i, function (a, b, c, d) {
+                    return "<" + b + "div" + (b ? "" : ' data-element="' + c + '"') + d + ">";
+                }).replace(/<(\/?)(body)([^>]*)>/i, function (a, b, c, d) {
                     return "<" + b + "div" + (b ? "" : ' data-element="' + c + '"') + d + ">";
                 });
 
