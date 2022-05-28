@@ -265,11 +265,11 @@ function handleNavigation(relativeUrl, push) {
 
                 // Replace html content
                 // Replace first <html><head><body> at once https://github.com/honkit/honkit/issues/265
-                html = html.replace(/<(\/?)(html)([^>]*)>/gi, function (a, b, c, d) {
+                html = html.replace(/<(\/?)(html)([^>]*)>/i, function (a, b, c, d) {
                     return "<" + b + "div" + (b ? "" : ' data-element="' + c + '"') + d + ">";
-                }).replace(/<(\/?)(head)([^>]*)>/gi, function (a, b, c, d) {
+                }).replace(/<(\/?)(head)([^>]*)>/i, function (a, b, c, d) {
                     return "<" + b + "div" + (b ? "" : ' data-element="' + c + '"') + d + ">";
-                }).replace(/<(\/?)(body)([^>]*)>/gi, function (a, b, c, d) {
+                }).replace(/<(\/?)(body)([^>]*)>/i, function (a, b, c, d) {
                     return "<" + b + "div" + (b ? "" : ' data-element="' + c + '"') + d + ">";
                 });
 
