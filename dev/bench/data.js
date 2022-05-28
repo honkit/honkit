@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1653729151654,
+  "lastUpdate": 1653755755202,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8058,6 +8058,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.42%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3d9392bcd67b403c895f524d5fb3d5612c7fd288",
+          "message": "fix(theme-default): prevent to replace html/head/body as strings (#266)\n\n* fix(theme-default): prevent to replace html/head/body string\r\n\r\n* fix: remove global flag\r\n\r\n* CI: use v3",
+          "timestamp": "2022-05-29T01:32:50+09:00",
+          "tree_id": "083a597ebd2e87366c7542f6dd1bc8b6cbfa9178",
+          "url": "https://github.com/honkit/honkit/commit/3d9392bcd67b403c895f524d5fb3d5612c7fd288"
+        },
+        "date": 1653755754302,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.89%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
