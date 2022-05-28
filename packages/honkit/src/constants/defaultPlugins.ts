@@ -9,10 +9,8 @@ const pkg = require("../../package.json");
  * @return {PluginDependency}
  */
 function createFromDependency(pluginName) {
-    const npmID = PluginDependency.nameToNpmID(pluginName);
+    const npmID = "gitbook-plugin-" + pluginName;
     const version = pkg.dependencies[npmID];
-
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'create' does not exist on type 'Class'.
     return PluginDependency.create(pluginName, version);
 }
 

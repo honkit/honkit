@@ -5,10 +5,10 @@ import parsePageFromString from "../parse/parsePageFromString";
 import Book from "./book";
 import LocationUtils from "../utils/location";
 import Page from "./page";
-import Logger from "../utils/logger";
+import type GeneratorState from "../output/website/state";
 
 type Assets = Immutable.List<string>;
-type State = Immutable.Map<any, any>;
+type State = GeneratorState;
 type Options = Immutable.Map<any, any>;
 class Output extends Immutable.Record({
     book: new Book(),

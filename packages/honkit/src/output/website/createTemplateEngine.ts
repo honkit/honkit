@@ -37,7 +37,6 @@ function templateFolder(dir) {
 function createTemplateEngine(output: Output, currentFile: string): TemplateEngine {
     const book = output.getBook();
     const state = output.getState();
-    // @ts-expect-error: state type
     const i18n = state.getI18n();
     const config = book.getConfig();
     const summary = book.getSummary();

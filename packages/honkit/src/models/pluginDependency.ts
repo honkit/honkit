@@ -6,7 +6,7 @@ import PREFIX from "../constants/pluginPrefix";
 const DEFAULT_VERSION = "*";
 
 /*
- * PluginDependency represents the informations about a plugin
+ * PluginDependency represents the information about a plugin
  * stored in config.plugins
  */
 class PluginDependency extends Immutable.Record(
@@ -53,14 +53,6 @@ class PluginDependency extends Immutable.Record(
     }
 
     /**
-     * Return NPM ID for the dependency
-     * @return {string}
-     */
-    getNpmID() {
-        return PluginDependency.nameToNpmID(this.getName());
-    }
-
-    /**
      * Is the plugin using a git dependency
      * @return {boolean}
      */
@@ -70,10 +62,9 @@ class PluginDependency extends Immutable.Record(
 
     /**
      * Create a plugin with a name and a plugin
-     * @param {string}
      * @return {Plugin|undefined}
      */
-    static create(name, version, enabled) {
+    static create(name: string, version: string, enabled?: boolean) {
         if (is.undefined(enabled)) {
             enabled = true;
         }
@@ -195,15 +186,6 @@ class PluginDependency extends Immutable.Record(
                 return result;
             })
             .toJS();
-    }
-
-    /**
-     * Return NPM id for a plugin name
-     * @param {string}
-     * @return {string}
-     */
-    static nameToNpmID(s) {
-        return PREFIX + s;
     }
 }
 
