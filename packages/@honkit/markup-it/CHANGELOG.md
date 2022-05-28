@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.2](https://github.com/GitbookIO/draft-markup/compare/v3.7.1...v3.7.2) (2022-05-28)
+
+
+### Bug Fixes
+
+* **markdown:** fix em RegExp match ([#251](https://github.com/GitbookIO/draft-markup/issues/251)) ([d329d8e](https://github.com/GitbookIO/draft-markup/commit/d329d8ef1938f9e4b1e80860a894ce76b39a02ab))
+
+
+
+
+
 ## [3.6.21](https://github.com/GitbookIO/draft-markup/compare/v3.6.20...v3.6.21) (2021-09-16)
 
 **Note:** Version bump only for package @honkit/markup-it
