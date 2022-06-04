@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1654301058649,
+  "lastUpdate": 1654301066764,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8151,6 +8151,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.44%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "17c1c19f2a88ba12186647015584e9cadd7ae5e9",
+          "message": "chore(deps): bump semver-regex from 3.1.3 to 3.1.4 (#268)\n\nBumps [semver-regex](https://github.com/sindresorhus/semver-regex) from 3.1.3 to 3.1.4.\r\n- [Release notes](https://github.com/sindresorhus/semver-regex/releases)\r\n- [Commits](https://github.com/sindresorhus/semver-regex/commits/v3.1.4)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: semver-regex\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2022-06-04T09:00:28+09:00",
+          "tree_id": "dc05be562307044b9868f8500162c23a592344a5",
+          "url": "https://github.com/honkit/honkit/commit/17c1c19f2a88ba12186647015584e9cadd7ae5e9"
+        },
+        "date": 1654301065143,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.06,
+            "range": "±0.92%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
