@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.4](https://github.com/honkit/honkit/compare/v3.7.3...v3.7.4) (2022-06-21)
+
+
+### Bug Fixes
+
+* **honkit:** make `honkit parse` work for multi lang book ([#271](https://github.com/honkit/honkit/issues/271)) ([83f7597](https://github.com/honkit/honkit/commit/83f7597688f549d7556f76d9883bc9b76dd5181a))
+
+
+
+
+
 ## [3.7.3](https://github.com/honkit/honkit/compare/v3.7.2...v3.7.3) (2022-05-28)
 
 **Note:** Version bump only for package honkit
