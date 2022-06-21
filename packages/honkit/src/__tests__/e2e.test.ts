@@ -8,7 +8,7 @@ const cwdPlugin: jest.SnapshotSerializerPlugin = {
     test: (value: any) => typeof value === "string" && value.includes(CWD),
     print: (value: unknown, serialize: any) => {
         if (typeof value === "string") {
-            return serialize(value.split(CWD).join("<CWD>"));
+            return serialize(value.split(CWD).join("<CWD>").replace(/\\/g, '/'));
         }
         return value;
     },
