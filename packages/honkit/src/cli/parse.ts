@@ -40,8 +40,9 @@ function printMultingualBook(book) {
     const books = book.getBooks();
 
     logger.info.ln(`${languages.size} languages`);
-
-    languages.forEach((lang) => {
+    const file = languages.getFile();
+    const list = languages.getList();
+    list.valueSeq().forEach((lang) => {
         logger.info.ln("Language:", lang.getTitle());
         printBook(books.get(lang.getID()));
         logger.info.ln("");
