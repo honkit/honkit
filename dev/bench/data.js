@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1654301066764,
+  "lastUpdate": 1655816436315,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8182,6 +8182,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.06,
             "range": "±0.92%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "83f7597688f549d7556f76d9883bc9b76dd5181a",
+          "message": "fix(honkit): make `honkit parse` work for multi lang book (#271)\n\n* fix(honkit): make `honkit parse` work for multi lang book\r\n\r\n* test: normalize path in windows",
+          "timestamp": "2022-06-21T21:57:33+09:00",
+          "tree_id": "bc94aed489e40144a5b5d0f2940a2100d0df1279",
+          "url": "https://github.com/honkit/honkit/commit/83f7597688f549d7556f76d9883bc9b76dd5181a"
+        },
+        "date": 1655816434419,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±1.99%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
