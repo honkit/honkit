@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.5](https://github.com/honkit/honkit/compare/v3.7.4...v3.7.5) (2022-07-14)
+
+
+### Bug Fixes
+
+* **honkit:** hokit server should not watch node_modules/** changes ([#277](https://github.com/honkit/honkit/issues/277)) ([982d649](https://github.com/honkit/honkit/commit/982d649e57bf2594a4272013d31743e6fc37de8a))
+
+
+
+
+
 ## [3.7.4](https://github.com/honkit/honkit/compare/v3.7.3...v3.7.4) (2022-06-21)
 
 
