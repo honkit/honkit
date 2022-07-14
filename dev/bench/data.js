@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657771608042,
+  "lastUpdate": 1657771667051,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8306,6 +8306,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.25%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "bed399da44ed469ec2c93282225bd43f2dd8e01f",
+          "message": "chore(deps): bump parse-url from 6.0.0 to 6.0.2 (#276)\n\nBumps [parse-url](https://github.com/IonicaBizau/parse-url) from 6.0.0 to 6.0.2.\r\n- [Release notes](https://github.com/IonicaBizau/parse-url/releases)\r\n- [Commits](https://github.com/IonicaBizau/parse-url/commits)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: parse-url\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2022-07-14T13:03:50+09:00",
+          "tree_id": "3963af106a5c831b1b6adefa3f2281aa85f236e8",
+          "url": "https://github.com/honkit/honkit/commit/bed399da44ed469ec2c93282225bd43f2dd8e01f"
+        },
+        "date": 1657771665730,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±1.15%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
