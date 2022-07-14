@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657770683986,
+  "lastUpdate": 1657771608042,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8275,6 +8275,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.06,
             "range": "±0.77%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b5a68f6d39640bb8cd5dae5c8f9f94e6f28803c9",
+          "message": "chore(deps): bump shell-quote from 1.7.2 to 1.7.3 (#274)\n\nBumps [shell-quote](https://github.com/substack/node-shell-quote) from 1.7.2 to 1.7.3.\r\n- [Release notes](https://github.com/substack/node-shell-quote/releases)\r\n- [Changelog](https://github.com/substack/node-shell-quote/blob/master/CHANGELOG.md)\r\n- [Commits](https://github.com/substack/node-shell-quote/compare/v1.7.2...1.7.3)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: shell-quote\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2022-07-14T13:03:39+09:00",
+          "tree_id": "fd8c2527b139c6022e2c28e67ee6eba79b585c9b",
+          "url": "https://github.com/honkit/honkit/commit/b5a68f6d39640bb8cd5dae5c8f9f94e6f28803c9"
+        },
+        "date": 1657771606971,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.25%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
