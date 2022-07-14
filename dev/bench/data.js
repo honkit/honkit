@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1655816568811,
+  "lastUpdate": 1657770683986,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8244,6 +8244,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.29%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "982d649e57bf2594a4272013d31743e6fc37de8a",
+          "message": "fix(honkit): hokit server should not watch node_modules/** changes (#277)",
+          "timestamp": "2022-07-14T12:47:03+09:00",
+          "tree_id": "eebf8dd09f720946a678606bb0d8ff9bd69d8601",
+          "url": "https://github.com/honkit/honkit/commit/982d649e57bf2594a4272013d31743e6fc37de8a"
+        },
+        "date": 1657770681756,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.06,
+            "range": "±0.77%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
