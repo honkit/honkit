@@ -1,14 +1,14 @@
 import _ from "lodash";
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 
 /**
     Parse an HTML string and return its content
 
-    @param {string}
-    @return {cheerio.DOM}
+    @param html {string}
+    @return {cheerio.Root}
 */
 export function parse(html: string) {
-    const $ = cheerio.load(html);
+    const $ = cheerio.load(html, { _useHtmlParser2: true });
     const $el = $("html, body").first();
 
     return $el.length > 0 ? $el : $;

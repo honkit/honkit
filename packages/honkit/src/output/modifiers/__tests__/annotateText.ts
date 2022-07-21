@@ -1,5 +1,5 @@
 import Immutable from "immutable";
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import GlossaryEntry from "../../../models/glossaryEntry";
 import annotateText from "../annotateText";
 
@@ -10,7 +10,7 @@ describe("annotateText", () => {
     ]);
 
     test("should annotate text", () => {
-        const $ = cheerio.load("<p>This is a word, and multiple words</p>");
+        const $ = cheerio.load("<p>This is a word, and multiple words</p>", { _useHtmlParser2: true });
 
         annotateText(entries, "GLOSSARY.md", $);
 
@@ -29,14 +29,14 @@ describe("annotateText", () => {
     });
 
     test("should not annotate scripts", () => {
-        const $ = cheerio.load("<script>This is a word, and multiple words</script>");
+        const $ = cheerio.load("<script>This is a word, and multiple words</script>", { _useHtmlParser2: true });
 
         annotateText(entries, "GLOSSARY.md", $);
         expect($("a").length).toBe(0);
     });
 
     test('should not annotate when has class "no-glossary"', () => {
-        const $ = cheerio.load('<p class="no-glossary">This is a word, and multiple words</p>');
+        const $ = cheerio.load('<p class="no-glossary">This is a word, and multiple words</p>', { _useHtmlParser2: true });
 
         annotateText(entries, "GLOSSARY.md", $);
         expect($("a").length).toBe(0);

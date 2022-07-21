@@ -35,7 +35,7 @@ function replaceText($, el, search, replace, text_only) {
                             $(node).before(new_val);
 
                             // Don't remove the node yet, or the loop will lose its place.
-                            remove.push(node);
+                            // remove.push(node);
                         } else {
                             // The new value contains no HTML, so it can be set in this
                             // very fast, simple way.
