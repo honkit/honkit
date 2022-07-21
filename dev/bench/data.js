@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657771972531,
+  "lastUpdate": 1658446502313,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8368,6 +8368,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.08%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "d295d20bce0334e35ca6ba53f4b3e13b0f7d0e7a",
+          "message": " docs: add GLOSSARY.md to HonKit documentation  (#282)\n\n* docs: add GLOSSARY.md to HonKit documentation\r\n\r\n* test(honkit): add GLOSSARY.md snapshot\r\n\r\n* test: increase timeout",
+          "timestamp": "2022-07-22T08:31:55+09:00",
+          "tree_id": "c9edb1fc7c4db8465c96dbe57e1bc2bc5d53f956",
+          "url": "https://github.com/honkit/honkit/commit/d295d20bce0334e35ca6ba53f4b3e13b0f7d0e7a"
+        },
+        "date": 1658446501171,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.43%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
