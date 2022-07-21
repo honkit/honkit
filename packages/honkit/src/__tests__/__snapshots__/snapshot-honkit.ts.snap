@@ -1,5 +1,794 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`HonKit snapshots: GLOSSARY.html 1`] = `
+Object {
+  "contents": "
+<!DOCTYPE HTML>
+<html lang=\\"\\" >
+    <head>
+        <meta charset=\\"UTF-8\\">
+        <title> · HonKit Documentation</title>
+        <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\" />
+        <meta name=\\"description\\" content=\\"\\">
+        
+        
+        
+        
+    
+    <link rel=\\"stylesheet\\" href=\\"gitbook/style.css\\">
+
+    
+            
+                
+                <link rel=\\"stylesheet\\" href=\\"gitbook/@honkit/honkit-plugin-highlight/website.css\\">
+                
+            
+                
+                <link rel=\\"stylesheet\\" href=\\"gitbook/gitbook-plugin-search/search.css\\">
+                
+            
+                
+                <link rel=\\"stylesheet\\" href=\\"gitbook/gitbook-plugin-fontsettings/website.css\\">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel=\\"stylesheet\\" href=\\"styles/website.css\\">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name=\\"HandheldFriendly\\" content=\\"true\\"/>
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1, user-scalable=no\\">
+    <meta name=\\"apple-mobile-web-app-capable\\" content=\\"yes\\">
+    <meta name=\\"apple-mobile-web-app-status-bar-style\\" content=\\"black\\">
+    <link rel=\\"apple-touch-icon-precomposed\\" sizes=\\"152x152\\" href=\\"gitbook/images/apple-touch-icon-precomposed-152.png\\">
+    <link rel=\\"shortcut icon\\" href=\\"gitbook/images/favicon.ico\\" type=\\"image/x-icon\\">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class=\\"book honkit-cloak\\">
+    <div class=\\"book-summary\\">
+        
+            
+<div id=\\"book-search-input\\" role=\\"search\\">
+    <input type=\\"text\\" placeholder=\\"Type to search\\" />
+</div>
+
+            
+                <nav role=\\"navigation\\">
+                
+
+
+<ul class=\\"summary\\">
+    
+    
+
+    
+
+    
+        
+        <li class=\\"header\\">Getting Started</li>
+        
+        
+    
+        <li class=\\"chapter \\" data-level=\\"1.1\\" data-path=\\"./\\">
+            
+                <a href=\\"./\\">
+            
+                    
+                    About this documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"1.2\\" data-path=\\"setup.html\\">
+            
+                <a href=\\"setup.html\\">
+            
+                    
+                    Installation and Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class=\\"header\\">Your Content</li>
+        
+        
+    
+        <li class=\\"chapter \\" data-level=\\"2.1\\" data-path=\\"structure.html\\">
+            
+                <a href=\\"structure.html\\">
+            
+                    
+                    Directory structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.2\\" data-path=\\"pages.html\\">
+            
+                <a href=\\"pages.html\\">
+            
+                    
+                    Pages and Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.3\\" data-path=\\"config.html\\">
+            
+                <a href=\\"config.html\\">
+            
+                    
+                    Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.4\\" data-path=\\"lexicon.html\\">
+            
+                <a href=\\"lexicon.html\\">
+            
+                    
+                    Glossary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.5\\" data-path=\\"languages.html\\">
+            
+                <a href=\\"languages.html\\">
+            
+                    
+                    Multi-Lingual
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html\\">
+            
+                    
+                    Markdown
+            
+                </a>
+            
+
+            
+            <ul class=\\"articles\\">
+                
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.1\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#headings\\">
+            
+                    
+                    Headings
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.2\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#paragraphs\\">
+            
+                    
+                    Paragraphs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.3\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#lists\\">
+            
+                    
+                    Lists
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.4\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#links\\">
+            
+                    
+                    Links
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.5\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#images\\">
+            
+                    
+                    Images
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.6\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#blockquotes\\">
+            
+                    
+                    Blockquotes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.7\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#tables\\">
+            
+                    
+                    Tables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.8\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#code\\">
+            
+                    
+                    Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.9\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#html\\">
+            
+                    
+                    HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.6.10\\" data-path=\\"syntax/markdown.html\\">
+            
+                <a href=\\"syntax/markdown.html#footnotes\\">
+            
+                    
+                    Footnotes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.7\\" data-path=\\"syntax/asciidoc.html\\">
+            
+                <a href=\\"syntax/asciidoc.html\\">
+            
+                    
+                    AsciiDoc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"2.8\\" data-path=\\"ebook.html\\">
+            
+                <a href=\\"ebook.html\\">
+            
+                    
+                    eBook and PDF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class=\\"header\\">Customization</li>
+        
+        
+    
+        <li class=\\"chapter \\" data-level=\\"3.1\\" data-path=\\"templating/\\">
+            
+                <a href=\\"templating/\\">
+            
+                    
+                    Templating
+            
+                </a>
+            
+
+            
+            <ul class=\\"articles\\">
+                
+    
+        <li class=\\"chapter \\" data-level=\\"3.1.1\\" data-path=\\"templating/conrefs.html\\">
+            
+                <a href=\\"templating/conrefs.html\\">
+            
+                    
+                    Content References
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"3.1.2\\" data-path=\\"templating/variables.html\\">
+            
+                <a href=\\"templating/variables.html\\">
+            
+                    
+                    Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"3.1.3\\" data-path=\\"templating/builtin.html\\">
+            
+                <a href=\\"templating/builtin.html\\">
+            
+                    
+                    Builtin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"3.2\\" data-path=\\"plugins/\\">
+            
+                <a href=\\"plugins/\\">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+            <ul class=\\"articles\\">
+                
+    
+        <li class=\\"chapter \\" data-level=\\"3.2.1\\" data-path=\\"plugins/create.html\\">
+            
+                <a href=\\"plugins/create.html\\">
+            
+                    
+                    Create a plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"3.2.2\\" data-path=\\"plugins/hooks.html\\">
+            
+                <a href=\\"plugins/hooks.html\\">
+            
+                    
+                    Hooks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"3.2.3\\" data-path=\\"plugins/blocks.html\\">
+            
+                <a href=\\"plugins/blocks.html\\">
+            
+                    
+                    Blocks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"3.2.4\\" data-path=\\"plugins/filters.html\\">
+            
+                <a href=\\"plugins/filters.html\\">
+            
+                    
+                    Filters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"3.2.5\\" data-path=\\"plugins/api.html\\">
+            
+                <a href=\\"plugins/api.html\\">
+            
+                    
+                    API & Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"3.2.6\\" data-path=\\"plugins/testing.html\\">
+            
+                <a href=\\"plugins/testing.html\\">
+            
+                    
+                    Test your plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"3.3\\" data-path=\\"themes/\\">
+            
+                <a href=\\"themes/\\">
+            
+                    
+                    Theming
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class=\\"divider\\"></li>
+        
+        
+    
+        <li class=\\"chapter \\" data-level=\\"4.1\\" data-path=\\"faq.html\\">
+            
+                <a href=\\"faq.html\\">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"4.2\\" data-path=\\"examples.md\\">
+            
+                <span>
+            
+                    
+                    Examples
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class=\\"chapter \\" data-level=\\"4.3\\" >
+            
+                <a target=\\"_blank\\" href=\\"https://github.com/honkit/honkit/blob/master/CHANGELOG.md\\">
+            
+                    
+                    Release notes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class=\\"divider\\"></li>
+        
+        
+    
+        <li class=\\"chapter \\" data-level=\\"5.1\\" data-path=\\"encoding.html\\">
+            
+                <a href=\\"encoding.html\\">
+            
+                    
+                    Encoding
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class=\\"divider\\"></li>
+
+    <li>
+        <a href=\\"https://github.com/honkit/honkit\\" target=\\"blank\\" class=\\"gitbook-link\\">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class=\\"book-body\\">
+        
+            <div class=\\"body-inner\\">
+                
+                    
+
+<div class=\\"book-header\\" role=\\"navigation\\">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class=\\"fa fa-circle-o-notch fa-spin\\"></i>
+        <a href=\\".\\" ></a>
+    </h1>
+</div>
+
+
+
+
+                    <div class=\\"page-wrapper\\" tabindex=\\"-1\\" role=\\"main\\">
+                        <div class=\\"page-inner\\">
+                            
+<div id=\\"book-search-results\\">
+    <div class=\\"search-noresults\\">
+    
+                                <section class=\\"normal markdown-section\\">
+                                
+
+                                <h2 id=\\"honkit\\">HonKit</h2>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">Honkit</a> is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).</p>
+<h2 id=\\"plugins\\">Plugins</h2>
+<p><a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">Plugins</a> are the best way to extend <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> functionalities (ebook and website).</p>
+<p>For more details, see <a href=\\"plugins/\\">Templating</a>.</p>
+<h2 id=\\"templating\\">Templating</h2>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> uses the <a href=\\"https://mozilla.github.io/nunjucks/\\" target=\\"_blank\\">Nunjucks templating language</a> to process pages and theme&apos;s templates.</p>
+<p>For more details, see <a href=\\"templating/\\">Templating</a>.</p>
+
+                                
+<hr>
+<div class=\\"btn-group btn-group-justified\\">
+    
+    
+</div>
+
+                                </section>
+                            
+    </div>
+    <div class=\\"search-results\\">
+        <div class=\\"has-results\\">
+            
+            <h1 class=\\"search-results-title\\"><span class='search-results-count'></span> results matching \\"<span class='search-query'></span>\\"</h1>
+            <ul class=\\"search-results-list\\"></ul>
+            
+        </div>
+        <div class=\\"no-results\\">
+            
+            <h1 class=\\"search-results-title\\">No results matching \\"<span class='search-query'></span>\\"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = \\"\\";
+            var key = baseKey + \\":sidebar\\";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia(\\"(max-width: 600px)\\").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(\\".book\\");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add(\\"without-animation\\", \\"with-summary\\");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(\\".book\\");
+            book.classList.remove(\\"honkit-cloak\\");
+        }
+    </script>
+    <script src=\\"gitbook/gitbook.js\\"></script>
+    <script src=\\"gitbook/theme.js\\"></script>
+    
+        
+        <script src=\\"gitbook/gitbook-plugin-search/search-engine.js\\"></script>
+        
+    
+        
+        <script src=\\"gitbook/gitbook-plugin-search/search.js\\"></script>
+        
+    
+        
+        <script src=\\"gitbook/gitbook-plugin-lunr/lunr.min.js\\"></script>
+        
+    
+        
+        <script src=\\"gitbook/gitbook-plugin-lunr/search-lunr.js\\"></script>
+        
+    
+        
+        <script src=\\"gitbook/gitbook-plugin-fontsettings/fontsettings.js\\"></script>
+        
+    
+
+    </body>
+</html>
+
+",
+  "filePath": "GLOSSARY.html",
+  "stats": Object {
+    "isDirectory": false,
+    "isFile": true,
+    "isSocket": false,
+    "isSymbolicLink": false,
+  },
+}
+`;
+
 exports[`HonKit snapshots: config.html 1`] = `
 Object {
   "contents": "
@@ -657,7 +1446,7 @@ Object {
                                 
 
                                 <h1 id=\\"configuration\\">Configuration</h1>
-<p>HonKit allows you to customize your book using a flexible configuration. These options are specified in a <code>book.json</code> file. For authors unfamiliar with the JSON syntax, you can validate the syntax using tools such as <a href=\\"http://jsonlint.com\\" target=\\"_blank\\">JSONlint</a>.</p>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> allows you to customize your book using a flexible configuration. These options are specified in a <code>book.json</code> file. For authors unfamiliar with the JSON syntax, you can validate the syntax using tools such as <a href=\\"http://jsonlint.com\\" target=\\"_blank\\">JSONlint</a>.</p>
 <h3 id=\\"general-settings\\">General Settings</h3>
 <table>
 <thead>
@@ -701,17 +1490,17 @@ Object {
 </tr>
 <tr>
 <td><code>gitbook</code></td>
-<td>Version of HonKit that should be used. Uses the <a href=\\"http://semver.org\\" target=\\"_blank\\">SemVer</a> specification and accepts conditions like <code>&quot;&gt;= 3.0.0&quot;</code></td>
+<td>Version of <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> that should be used. Uses the <a href=\\"http://semver.org\\" target=\\"_blank\\">SemVer</a> specification and accepts conditions like <code>&quot;&gt;= 3.0.0&quot;</code></td>
 </tr>
 <tr>
 <td><code>honkit</code></td>
-<td>Version of HonKit that should be used. Uses the <a href=\\"http://semver.org\\" target=\\"_blank\\">SemVer</a> specification and accepts conditions like <code>&quot;&gt;= 3.0.0&quot;</code></td>
+<td>Version of <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> that should be used. Uses the <a href=\\"http://semver.org\\" target=\\"_blank\\">SemVer</a> specification and accepts conditions like <code>&quot;&gt;= 3.0.0&quot;</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id=\\"plugins\\">Plugins</h3>
-<p>Plugins and their configurations are specified in the <code>book.json</code>. See <a href=\\"plugins/\\">the plugins section</a> for more details.</p>
-<p>Since version 3.0.0, HonKit can use themes. See <a href=\\"themes/\\">the theming section</a> for more details.</p>
+<p><a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">Plugins</a> and their configurations are specified in the <code>book.json</code>. See <a href=\\"plugins/\\">the plugins section</a> for more details.</p>
+<p>Since version 3.0.0, <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> can use themes. See <a href=\\"themes/\\">the theming section</a> for more details.</p>
 <table>
 <thead>
 <tr>
@@ -722,16 +1511,16 @@ Object {
 <tbody>
 <tr>
 <td><code>plugins</code></td>
-<td>List of plugins to load</td>
+<td>List of <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> to load</td>
 </tr>
 <tr>
 <td><code>pluginsConfig</code></td>
-<td>Configuration for plugins</td>
+<td>Configuration for <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a></td>
 </tr>
 </tbody>
 </table>
 <h3 id=\\"structure\\">Structure</h3>
-<p>In addition to the <code>root</code> variable, you can tell HonKit the name of the files for Readme, Summary, Glossary, Languages (instead of using the default names such as <code>README.md</code>).
+<p>In addition to the <code>root</code> variable, you can tell <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> the name of the files for Readme, Summary, Glossary, Languages (instead of using the default names such as <code>README.md</code>).
 These files must be at the root of your book (or the root of every language book). Paths such as <code>dir/MY_README.md</code> are not accepted.</p>
 <table>
 <thead>
@@ -1605,7 +2394,7 @@ Object {
                                 
 
                                 <h1 id=\\"generating-ebooks-and-pdfs\\">Generating eBooks and PDFs</h1>
-<p>HonKit can generates a website, but can also output content as ebook (ePub, Mobi, PDF).</p>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> can generates a website, but can also output content as ebook (ePub, Mobi, PDF).</p>
 <pre><code># Generate a PDF file
 $ honkit pdf ./ ./mybook.pdf
 
@@ -3244,37 +4033,37 @@ Object {
                                 
 
                                 <h1 id=\\"honkit-faq\\">HonKit FAQ</h1>
-<p>This page gathers common questions and answers concerning the HonKit format and toolchain.</p>
+<p>This page gathers common questions and answers concerning the <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> format and toolchain.</p>
 <h4 id=\\"how-can-i-hostpublish-my-book\\">How can I host/publish my book?</h4>
 <p>Publish to <a href=\\"https://pages.github.com/\\" target=\\"_blank\\">GitHub Pages</a> or <a href=\\"https://www.netlify.com/\\" target=\\"_blank\\">Netlify</a>, and more.</p>
 <h4 id=\\"does-not-reload-plugins\\">Does not reload plugins?</h4>
-<p>HonKit use file cache per text content file by default.</p>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> use file cache per text content file by default.</p>
 <p>This file cache check file changes and reload it automatically.
-In some case, HonKit cannot detect the changes of plugins.</p>
+In some case, <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> cannot detect the changes of <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a>.</p>
 <p>If you want to refresh force, please use <code>--reload</code> flag.</p>
 <pre><code>$ honkit build --reload
 </code></pre><h4 id=\\"does-honkit-supports-rtlbi-directional-text-\\">Does HonKit supports RTL/bi-directional text ?</h4>
-<p>The HonKit format supports right to left, and bi-directional writing. To enable it, you either need to specify a language (ex: <code>ar</code>), or force HonKit to use RTL in your <code>book.json</code>:</p>
+<p>The <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> format supports right to left, and bi-directional writing. To enable it, you either need to specify a language (ex: <code>ar</code>), or force <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> to use RTL in your <code>book.json</code>:</p>
 <pre><code class=\\"lang-json\\">{
     <span class=\\"hljs-string\\">&quot;language&quot;</span>: <span class=\\"hljs-string\\">&quot;ar&quot;</span>,
     <span class=\\"hljs-string\\">&quot;direction&quot;</span>: <span class=\\"hljs-string\\">&quot;rtl&quot;</span>
 }
 </code></pre>
-<p>With version 3.0 of HonKit, it&apos;s automatically detected according to the content.
+<p>With version 3.0 of <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a>, it&apos;s automatically detected according to the content.
 <em>Note that, while the output book will indeed respect RTL, the Editor doesn&apos;t support RTL writing yet</em>.</p>
 <h4 id=\\"should-i-use-an-html-or-md-extensions-in-my-links\\">Should I use an <code>.html</code> or <code>.md</code> extensions in my links?</h4>
-<p>You should always use paths and the <code>.md</code> extensions when linking to your files, HonKit will automatically replace these paths by the appropriate link when the pointing file is referenced in the Table of Contents.</p>
+<p>You should always use paths and the <code>.md</code> extensions when linking to your files, <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> will automatically replace these paths by the appropriate link when the pointing file is referenced in the Table of Contents.</p>
 <h4 id=\\"can-i-create-a-honkit-in-a-sub-directory-of-my-repository\\">Can I create a HonKit in a sub-directory of my repository?</h4>
 <p>Yes, HonKits can be created in <a href=\\"structure.html#subdirectory\\">sub-directories</a>. </p>
 <h4 id=\\"does-honkit-supports-rtl-languages\\">Does HonKit supports RTL languages?</h4>
-<p>Yes, HonKit automatically detect the direction in your pages (<code>rtl</code> or <code>ltr</code>) and adjust the layout accordingly. The direction can also be specified globally in the <a href=\\"config.html\\">book.json</a>.</p>
+<p>Yes, <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> automatically detect the direction in your pages (<code>rtl</code> or <code>ltr</code>) and adjust the layout accordingly. The direction can also be specified globally in the <a href=\\"config.html\\">book.json</a>.</p>
 <hr>
 <h4 id=\\"does-honkit-support-math-equations\\">Does HonKit support Math equations?</h4>
-<p>HonKit supports math equations and TeX thanks to plugins. There are currently 2 official plugins to display math: <a href=\\"https://plugins.honkit.com/plugin/mathjax\\" target=\\"_blank\\">mathjax</a> and <a href=\\"https://plugins.honkit.com/plugin/katex\\" target=\\"_blank\\">katex</a>.</p>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> supports math equations and TeX thanks to <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a>. There are currently 2 official <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> to display math: <a href=\\"https://plugins.honkit.com/plugin/mathjax\\" target=\\"_blank\\">mathjax</a> and <a href=\\"https://plugins.honkit.com/plugin/katex\\" target=\\"_blank\\">katex</a>.</p>
 <h4 id=\\"can-i-customizetheme-the-output\\">Can I customize/theme the output?</h4>
 <p>Yes, both the website and ebook outputs can be customized using <a href=\\"themes/\\">themes</a>.</p>
 <h4 id=\\"can-i-add-interactive-content-videos-etc\\">Can I add interactive content (videos, etc)?</h4>
-<p>HonKit is very <a href=\\"plugins/\\">extensible</a>. You can use <a href=\\"https://plugins.honkit.com\\" target=\\"_blank\\">existing plugins</a> or create your own!</p>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> is very <a href=\\"plugins/\\">extensible</a>. You can use <a href=\\"https://plugins.honkit.com\\" target=\\"_blank\\">existing plugins</a> or create your own!</p>
 
                                 
 <hr>
@@ -4071,7 +4860,7 @@ Object {
                                 
 
                                 <h1 id=\\"honkit-toolchain-documentation\\">HonKit Toolchain Documentation</h1>
-<p>This document aims to be a comprehensive guide to the HonKit command line tool.</p>
+<p>This document aims to be a comprehensive guide to the <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> command line tool.</p>
 <h3 id=\\"what-is-honkit\\">What is HonKit?</h3>
 <p><code>honkit</code> is a command line tool (and Node.js library) for building beautiful books using GitHub/Git and Markdown (or AsciiDoc). This documentation has been generated using <code>honkit</code>.</p>
 <p><code>honkit</code> can output your content as a website (<a href=\\"themes/\\">customizable</a> and <a href=\\"plugins/\\">extensibles</a>) or as an ebook (PDF, ePub or Mobi).</p>
@@ -4874,7 +5663,7 @@ Object {
                                 
 
                                 <h1 id=\\"multi-languages\\">Multi-Languages</h1>
-<p>HonKit supports building books written in multiple languages. Each language should be a sub-directory following the normal HonKit format, and a file named <code>LANGS.md</code> should be present at the root of the repository with the following format:</p>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> supports building books written in multiple languages. Each language should be a sub-directory following the normal <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> format, and a file named <code>LANGS.md</code> should be present at the root of the repository with the following format:</p>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\"># Languages</span>
 
 <span class=\\"hljs-bullet\\">*</span> [<span class=\\"hljs-string\\">English</span>](<span class=\\"hljs-link\\">en/</span>)
@@ -4883,7 +5672,7 @@ Object {
 </code></pre>
 <h3 id=\\"configuration-for-each-language\\">Configuration for each language</h3>
 <p>When a language book (ex: <code>en</code>) has a <code>book.json</code>, its configuration will extend the main configuration.</p>
-<p>The only exception is plugins, plugins are specified globally, and language specific plugins cannot be specified.</p>
+<p>The only exception is <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a>, <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> are specified globally, and language specific <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> cannot be specified.</p>
 
                                 
 <hr>
@@ -5682,7 +6471,7 @@ Object {
                                 
 
                                 <h1 id=\\"glossary\\">Glossary</h1>
-<p>Allows you to specify terms and their respective definitions to be displayed as annotations. Based on those terms, HonKit will automatically build an index and highlight those terms in pages.</p>
+<p>Allows you to specify terms and their respective definitions to be displayed as annotations. Based on those terms, <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> will automatically build an index and highlight those terms in pages.</p>
 <p>The <code>GLOSSARY.md</code> format is a list of <code>h2</code> headings, along with a description paragraph:</p>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\">## Term</span>
 Definition for this term
@@ -6490,7 +7279,7 @@ Object {
 
                                 <h1 id=\\"pages-and-summary\\">Pages and Summary</h1>
 <h3 id=\\"summary\\">Summary</h3>
-<p>HonKit uses a <code>SUMMARY.md</code> file to define the structure of chapters and subchapters of the book. The <code>SUMMARY.md</code> file is used to generate the book&apos;s table of contents.</p>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> uses a <code>SUMMARY.md</code> file to define the structure of chapters and subchapters of the book. The <code>SUMMARY.md</code> file is used to generate the book&apos;s table of contents.</p>
 <p>The format of <code>SUMMARY.md</code> is just a list of links. The link&apos;s title is used as the chapter&apos;s title, and the link&apos;s target is a path to that chapter&apos;s file.</p>
 <p>Adding a nested list to a parent chapter will create subchapters.</p>
 <h5 id=\\"simple-example\\">Simple example</h5>
@@ -6538,7 +7327,7 @@ Object {
 <p>Parts are just groups of chapters and do not have dedicated pages, but according to the theme, it will show in the navigation.</p>
 <h3 id=\\"pages\\">Pages</h3>
 <h4 id=\\"markdown-syntax\\">Markdown syntax</h4>
-<p>Most of the files for HonKit use the Markdown syntax by default. HonKit infers your pages&apos;s structure from it. The syntax used is similar to the <a href=\\"https://guides.github.com/features/mastering-markdown/\\" target=\\"_blank\\">GitHub Flavored Markdown syntax</a>. One can also opt for the <a href=\\"asciidoc.md\\">AsciiDoc syntax</a>.</p>
+<p>Most of the files for <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> use the Markdown syntax by default. <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> infers your pages&apos;s structure from it. The syntax used is similar to the <a href=\\"https://guides.github.com/features/mastering-markdown/\\" target=\\"_blank\\">GitHub Flavored Markdown syntax</a>. One can also opt for the <a href=\\"asciidoc.md\\">AsciiDoc syntax</a>.</p>
 <h5 id=\\"example-of-a-chapter-file\\">Example of a chapter file</h5>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\"># Title of the chapter</span>
 
@@ -6561,7 +7350,7 @@ Markdown will dictates <span class=\\"hljs-emphasis\\">_most_</span> of your <sp
 <span class=\\"hljs-comment\\"># The content of my page</span>
 <span class=\\"hljs-string\\">...</span>
 </code></pre>
-<p>The front matter can define variables of your own, they will be added to the <a href=\\"templating/variables.html\\">page variable</a> so you can use them in your templating.</p>
+<p>The front matter can define variables of your own, they will be added to the <a href=\\"templating/variables.html\\">page variable</a> so you can use them in your <a href=\\"GLOSSARY.html#templating\\" class=\\"glossary-term\\" title=\\"HonKit uses the Nunjucks templating language to process pages and theme&apos;s templates.\\">templating</a>.</p>
 
                                 
 <hr>
@@ -7360,9 +8149,9 @@ Object {
                                 
 
                                 <h1 id=\\"context-and-apis\\">Context and APIs</h1>
-<p>HonKits provides different APIs and contexts to plugins. These APIs can vary according to the HonKit version being used, your plugin should specify the <code>engines.gitbook</code> field in <code>package.json</code> accordingly.</p>
+<p>HonKits provides different APIs and contexts to <a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a>. These APIs can vary according to the <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> version being used, your plugin should specify the <code>engines.gitbook</code> field in <code>package.json</code> accordingly.</p>
 <h4 id=\\"book-instance\\">Book instance</h4>
-<p>The <code>Book</code> class is the central point of HonKit, it centralize all access read methods. This class is defined in <a href=\\"https://github.com/honkit/honkit/blob/master/lib/book.js\\" target=\\"_blank\\">book.js</a>.</p>
+<p>The <code>Book</code> class is the central point of <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a>, it centralize all access read methods. This class is defined in <a href=\\"https://github.com/honkit/honkit/blob/master/lib/book.js\\" target=\\"_blank\\">book.js</a>.</p>
 <pre><code class=\\"lang-js\\"><span class=\\"hljs-comment\\">// Read configuration from book.json</span>
 <span class=\\"hljs-keyword\\">var</span> value = book.config.get(<span class=\\"hljs-string\\">&apos;title&apos;</span>, <span class=\\"hljs-string\\">&apos;Default Value&apos;</span>);
 
@@ -8234,7 +9023,7 @@ Object {
                                 
 
                                 <h1 id=\\"extend-blocks\\">Extend Blocks</h1>
-<p>Extending templating blocks is the best way to provide extra functionalities to authors.</p>
+<p>Extending <a href=\\"../GLOSSARY.html#templating\\" class=\\"glossary-term\\" title=\\"HonKit uses the Nunjucks templating language to process pages and theme&apos;s templates.\\">templating</a> blocks is the best way to provide extra functionalities to authors.</p>
 <p>The most common usage is to process the content within some tags at runtime. It&apos;s like <a href=\\"filters.html\\">filters</a>, but on steroids because you aren&apos;t confined to a single expression.</p>
 <h3 id=\\"defining-a-new-block\\">Defining a new block</h3>
 <p>Blocks are defined by the plugin, blocks is a map of name associated with a block descriptor. The block descriptor needs to contain at least a <code>process</code> method.</p>
@@ -8248,7 +9037,7 @@ Object {
     }
 };
 </code></pre>
-<p>The <code>process</code> should return the html content that will replace the tag. Refer to <a href=\\"api.html\\">Context and APIs</a> to learn more about <code>this</code> and HonKit API.</p>
+<p>The <code>process</code> should return the html content that will replace the tag. Refer to <a href=\\"api.html\\">Context and APIs</a> to learn more about <code>this</code> and <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> API.</p>
 <h3 id=\\"handling-block-arguments\\">Handling block arguments</h3>
 <p>Arguments can be passed to blocks:</p>
 <pre><code>{% tag1 &quot;argument 1&quot;, &quot;argument 2&quot;, name=&quot;Test&quot; %}
@@ -9073,10 +9862,10 @@ Object {
                                 
 
                                 <h1 id=\\"create-and-publish-a-plugin\\">Create and publish a plugin</h1>
-<p>A HonKit plugin is a node package published on NPM that follow a defined convention.</p>
+<p>A <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> plugin is a node package published on NPM that follow a defined convention.</p>
 <h2 id=\\"structure\\">Structure</h2>
 <h4 id=\\"packagejson\\">package.json</h4>
-<p>The <code>package.json</code> is a manifest format for describing <strong>Node.js modules</strong>. HonKit plugins are built on top of Node modules. It declares dependencies, version, ownership, and other information required to run a plugin in HonKit. This document describes the schema in detail.</p>
+<p>The <code>package.json</code> is a manifest format for describing <strong>Node.js modules</strong>. <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> <a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> are built on top of Node modules. It declares dependencies, version, ownership, and other information required to run a plugin in <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a>. This document describes the schema in detail.</p>
 <p>A plugin manifest <code>package.json</code> can also contain details about the required configuration. The configuration schema is defined in the <code>honkit</code> field of the <code>package.json</code> (This field follow the <a href=\\"http://json-schema.org\\" target=\\"_blank\\">JSON-Schema</a> guidelines):</p>
 <pre><code class=\\"lang-js\\">{
     <span class=\\"hljs-string\\">&quot;name&quot;</span>: <span class=\\"hljs-string\\">&quot;honkit-plugin-mytest&quot;</span>,
@@ -9119,11 +9908,11 @@ Object {
 };
 </code></pre>
 <h2 id=\\"publish-your-plugin\\">Publish your plugin</h2>
-<p>HonKit plugins can be published on <a href=\\"https://www.npmjs.com\\" target=\\"_blank\\">NPM</a>.</p>
+<p><a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> <a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> can be published on <a href=\\"https://www.npmjs.com\\" target=\\"_blank\\">NPM</a>.</p>
 <p>To publish a new plugin, you need to create an account on <a href=\\"https://www.npmjs.com\\" target=\\"_blank\\">npmjs.com</a> then publish it from the command line:</p>
 <pre><code>$ npm publish
 </code></pre><h2 id=\\"private-plugins\\">Private plugins</h2>
-<p>Private plugins can be hosted on GitHub and included using <code>git</code> urls:</p>
+<p>Private <a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> can be hosted on GitHub and included using <code>git</code> urls:</p>
 <pre><code>{
     &quot;plugins&quot;: [
         &quot;myplugin@git+https://github.com/MyCompany/myhonkitplugin.git#1.0.0&quot;
@@ -9932,9 +10721,9 @@ Object {
 {{ foo | join(&quot;,&quot;) }}
 {{ foo | replace(&quot;foo&quot;, &quot;bar&quot;) | capitalize }}
 </code></pre><h3 id=\\"defining-a-new-filter\\">Defining a new filter</h3>
-<p>Plugins can extend filters by defining custom functions in their entry point under the <code>filters</code> scope.</p>
+<p><a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">Plugins</a> can extend filters by defining custom functions in their entry point under the <code>filters</code> scope.</p>
 <p>A filter function takes as first argument the content to filter, and should return the new content.
-Refer to <a href=\\"api.html\\">Context and APIs</a> to learn more about <code>this</code> and HonKit API.</p>
+Refer to <a href=\\"api.html\\">Context and APIs</a> to learn more about <code>this</code> and <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> API.</p>
 <pre><code class=\\"lang-js\\"><span class=\\"hljs-built_in\\">module</span>.exports = {
     <span class=\\"hljs-attr\\">filters</span>: {
         <span class=\\"hljs-attr\\">hello</span>: <span class=\\"hljs-function\\"><span class=\\"hljs-keyword\\">function</span>(<span class=\\"hljs-params\\">name</span>) </span>{
@@ -10804,7 +11593,7 @@ Object {
 <tbody>
 <tr>
 <td><code>page:before</code></td>
-<td>Called before running the templating engine on the page</td>
+<td>Called before running the <a href=\\"../GLOSSARY.html#templating\\" class=\\"glossary-term\\" title=\\"HonKit uses the Nunjucks templating language to process pages and theme&apos;s templates.\\">templating</a> engine on the page</td>
 <td>Page Object</td>
 </tr>
 <tr>
@@ -11663,18 +12452,18 @@ Object {
                                 
 
                                 <h1 id=\\"plugins\\">Plugins</h1>
-<p>Plugins are the best way to extend HonKit functionalities (ebook and website). There exist plugins to do a lot of things: bring math formulas display support, track visits using Google Analytic, etc.</p>
+<p><a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">Plugins</a> are the best way to extend <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> functionalities (ebook and website). There exist <a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> to do a lot of things: bring math formulas display support, track visits using Google Analytic, etc.</p>
 <h3 id=\\"how-to-find-plugins\\">How to find plugins?</h3>
-<p>Plugins can be easily searched on <a href=\\"https://plugins.gitbook.com\\" target=\\"_blank\\">plugins.gitbook.com</a>.</p>
+<p><a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">Plugins</a> can be easily searched on <a href=\\"https://plugins.gitbook.com\\" target=\\"_blank\\">plugins.gitbook.com</a>.</p>
 <p>Search on npm with keywords: <code>gitbook-plugin</code> or <code>honkit-plugin</code></p>
 <h3 id=\\"how-to-install-a-plugin\\">How to install a plugin?</h3>
 <p>Once you find a plugin that you want to install, you need to add it to your <code>book.json</code>:</p>
 <pre><code>{
     &quot;plugins&quot;: [&quot;myPlugin&quot;, &quot;anotherPlugin&quot;]
 }
-</code></pre><p>You can also specify a specific version using: <code>&quot;myPlugin@0.3.1&quot;</code>. By default HonKit will resolve the latest version of the plugin compatbile with the current HonKit version.</p>
+</code></pre><p>You can also specify a specific version using: <code>&quot;myPlugin@0.3.1&quot;</code>. By default <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> will resolve the latest version of the plugin compatbile with the current <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> version.</p>
 <h3 id=\\"configuring-plugins\\">Configuring plugins</h3>
-<p>Plugins specific configurations are stored in <code>pluginsConfig</code>. You have to refer to the documentation of the plugin itself for details about the available options.</p>
+<p><a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">Plugins</a> specific configurations are stored in <code>pluginsConfig</code>. You have to refer to the documentation of the plugin itself for details about the available options.</p>
 
                                 
 <hr>
@@ -12480,7 +13269,7 @@ Object {
 </code></pre><p>Then in your book&apos;s folder:</p>
 <pre><code>$ npm link honkit-plugin-&lt;plugin&apos;s name&gt;
 </code></pre><h3 id=\\"unit-testing-on-travis\\">Unit testing on Travis</h3>
-<p><a href=\\"https://github.com/todvora/gitbook-tester\\" target=\\"_blank\\">gitbook-tester</a> makes it easy to write <strong>Node.js/Mocha</strong> unit tests for your plugins. Using <a href=\\"https://travis.org\\" target=\\"_blank\\">Travis.org</a>, tests can be run on each commits/tags.</p>
+<p><a href=\\"https://github.com/todvora/gitbook-tester\\" target=\\"_blank\\">gitbook-tester</a> makes it easy to write <strong>Node.js/Mocha</strong> unit tests for your <a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a>. Using <a href=\\"https://travis.org\\" target=\\"_blank\\">Travis.org</a>, tests can be run on each commits/tags.</p>
 
                                 
 <hr>
@@ -13279,27 +14068,27 @@ Object {
                                 
 
                                 <h1 id=\\"setup-and-installation-of-honkit\\">Setup and Installation of HonKit</h1>
-<p>Getting HonKit installed and ready-to-go should only take a few minutes.</p>
+<p>Getting <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> installed and ready-to-go should only take a few minutes.</p>
 <h3 id=\\"local-installation\\">Local Installation</h3>
 <h5 id=\\"requirements\\">Requirements</h5>
-<p>Installing HonKit is easy and straightforward. Your system just needs to meet these two requirements:</p>
+<p>Installing <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> is easy and straightforward. Your system just needs to meet these two requirements:</p>
 <ul>
 <li>NodeJS (v10.0.0 and above is recommended)</li>
 <li>Windows, Linux, Unix, or Mac OS X</li>
 </ul>
 <h5 id=\\"install-with-npm\\">Install with NPM</h5>
-<p>The best way to install HonKit is via <strong>NPM</strong> or <strong>Yarn</strong> At the terminal prompt, simply run the following command to install HonKit:</p>
+<p>The best way to install <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> is via <strong>NPM</strong> or <strong>Yarn</strong> At the terminal prompt, simply run the following command to install <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a>:</p>
 <pre><code>$ npm install honkit --save-dev
 # or
 $ yarn add honkit --dev
 </code></pre><p>⚠️ Warning:</p>
 <ul>
-<li>If you have installed <code>honkit</code> globally(<code>--global</code>) you must install each plugins rule globally(<code>--global</code>) as well</li>
-<li>If you have installed <code>honkit</code> locally you must install each plugins locally as well</li>
+<li>If you have installed <code>honkit</code> globally(<code>--global</code>) you must install each <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> rule globally(<code>--global</code>) as well</li>
+<li>If you have installed <code>honkit</code> locally you must install each <a href=\\"GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> locally as well</li>
 </ul>
 <p>We recommend installing <code>honkit</code> locally.</p>
 <h5 id=\\"create-a-book\\">Create a book</h5>
-<p>HonKit can setup a boilerplate book:</p>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> can setup a boilerplate book:</p>
 <pre><code>$ npx honkit init
 </code></pre><p>If you wish to create the book into a new directory, you can do so by running <code>honkit init ./directory</code></p>
 <p>Preview and serve your book using:</p>
@@ -14118,8 +14907,8 @@ Object {
                                 
 
                                 <h1 id=\\"directory-structure\\">Directory Structure</h1>
-<p>HonKit uses a simple directory structure. All Markdown/Asciidoc files listed in the <a href=\\"pages.html\\">SUMMARY</a> will be transformed as HTML. Multi-Lingual books have a slightly <a href=\\"languages.html\\">different structure</a>.</p>
-<p>A basic HonKit usually looks something like this:</p>
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> uses a simple directory structure. All Markdown/Asciidoc files listed in the <a href=\\"pages.html\\">SUMMARY</a> will be transformed as HTML. Multi-Lingual books have a slightly <a href=\\"languages.html\\">different structure</a>.</p>
+<p>A basic <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> usually looks something like this:</p>
 <pre><code>.
 ├── book.json
 ├── README.md
@@ -14160,7 +14949,7 @@ Object {
 <h3 id=\\"static-files-and-images\\">Static files and Images</h3>
 <p>A static file is a file that is not listed in the <code>SUMMARY.md</code>. All static files, unless <a href=\\"#ignore\\">ignored</a>, are copied to the output.</p>
 <h3 id=\\"ignore\\">Ignoring files &amp; folders </h3>
-<p>HonKit will read the <code>.gitignore</code>, <code>.bookignore</code> and <code>.ignore</code> files to get a list of files and folders to skip.
+<p><a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> will read the <code>.gitignore</code>, <code>.bookignore</code> and <code>.ignore</code> files to get a list of files and folders to skip.
 The format inside those files, follows the same convention as <code>.gitignore</code>:</p>
 <pre><code># This is a comment
 
@@ -14170,7 +14959,7 @@ test.md
 # Ignore everything in the directory &quot;bin&quot;
 bin/*
 </code></pre><h3 id=\\"subdirectory\\">Project integration with subdirectory </h3>
-<p>For software projects, you can use a subdirectory (like <code>docs/</code>) to store the book for the project&apos;s documentation. You can configure the <a href=\\"config.html\\"><code>root</code> option</a> to indicate the folder where HonKit can find the book&apos;s files:</p>
+<p>For software projects, you can use a subdirectory (like <code>docs/</code>) to store the book for the project&apos;s documentation. You can configure the <a href=\\"config.html\\"><code>root</code> option</a> to indicate the folder where <a href=\\"GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> can find the book&apos;s files:</p>
 <pre><code>.
 ├── book.json
 └── docs/
@@ -14978,9 +15767,9 @@ Object {
                                 
 
                                 <h1 id=\\"asciidoc\\">AsciiDoc</h1>
-<p>Since version <code>2.0.0</code>, HonKit can also accept AsciiDoc as an input format.</p>
+<p>Since version <code>2.0.0</code>, <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> can also accept AsciiDoc as an input format.</p>
 <p>Please refer to the <a href=\\"http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/\\" target=\\"_blank\\">AsciiDoc Syntax Quick Reference</a> for more informations about the format.</p>
-<p>Just like for markdown, HonKit is using some special files to extract structures: <code>README.adoc</code>, <code>SUMMARY.adoc</code>, <code>LANGS.adoc</code> and <code>GLOSSARY.adoc</code>.</p>
+<p>Just like for markdown, <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> is using some special files to extract structures: <code>README.adoc</code>, <code>SUMMARY.adoc</code>, <code>LANGS.adoc</code> and <code>GLOSSARY.adoc</code>.</p>
 <h3 id=\\"readmeadoc\\">README.adoc</h3>
 <p>This is the main entry of your book: the introduction. This file is <strong>required</strong>.</p>
 <h3 id=\\"summaryadoc\\">SUMMARY.adoc</h3>
@@ -15820,15 +16609,15 @@ Object {
                                 
 
                                 <h1 id=\\"markdown\\">Markdown</h1>
-<p>Most of the examples from this documentation are in Markdown. Markdown is default parser for HonKit, but one can also opt for the <a href=\\"asciidoc.html\\">AsciiDoc syntax</a>.</p>
-<p>Here’s an overview of Markdown syntax that you can use with HonKit (same as GitHub with some additions).</p>
+<p>Most of the examples from this documentation are in Markdown. Markdown is default parser for <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a>, but one can also opt for the <a href=\\"asciidoc.html\\">AsciiDoc syntax</a>.</p>
+<p>Here’s an overview of Markdown syntax that you can use with <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> (same as GitHub with some additions).</p>
 <h3 id=\\"headings\\">Headings</h3>
 <p>To create a heading, add one to six <code>#</code> symbols before your heading text. The number of # you use will determine the size of the heading.</p>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\"># This is an <span class=\\"xml\\"><span class=\\"hljs-tag\\">&lt;<span class=\\"hljs-name\\">h1</span>&gt;</span></span> tag</span>
 <span class=\\"hljs-section\\">## This is an <span class=\\"xml\\"><span class=\\"hljs-tag\\">&lt;<span class=\\"hljs-name\\">h2</span>&gt;</span></span> tag</span>
 <span class=\\"hljs-section\\">###### This is an <span class=\\"xml\\"><span class=\\"hljs-tag\\">&lt;<span class=\\"hljs-name\\">h6</span>&gt;</span></span> tag</span>
 </code></pre>
-<p>HonKit supports a nice way for explicitly setting the header ID. If you follow the header text with an opening curly bracket (separated from the text with a least one space), a hash, the ID and a closing curly bracket, the ID is set on the header. If you use the trailing hash feature of atx style headers, the header ID has to go after the trailing hashes. For example:</p>
+<p><a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> supports a nice way for explicitly setting the header ID. If you follow the header text with an opening curly bracket (separated from the text with a least one space), a hash, the ID and a closing curly bracket, the ID is set on the header. If you use the trailing hash feature of atx style headers, the header ID has to go after the trailing hashes. For example:</p>
 <pre><code class=\\"lang-markdown\\"><span class=\\"hljs-section\\">Hello {#id}
 -----</span>
 
@@ -15929,13 +16718,13 @@ puts markdown.to_html
 <pre><code>Use \`honkit\` to convert the \`text\` in markdown
 syntax to HTML.
 </code></pre><h3 id=\\"footnotes\\">Footnotes</h3>
-<p>HonKit supports a simple syntax for such footnotes. Footnotes are relative to each pages.</p>
+<p><a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> supports a simple syntax for such footnotes. Footnotes are relative to each pages.</p>
 <pre><code class=\\"lang-markdown\\">Text prior to footnote reference.[^2]
 
 [<span class=\\"hljs-symbol\\">^2</span>]: <span class=\\"hljs-link\\">Comment to include in footnote.</span>
 </code></pre>
 <h3 id=\\"html\\">HTML</h3>
-<p>HonKit supports use of raw HTML in your text, Markdown syntax in HTML is not processed:</p>
+<p><a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> supports use of raw HTML in your text, Markdown syntax in HTML is not processed:</p>
 <pre><code>&lt;div&gt;
 Markdown here will not be **parsed**
 &lt;/div&gt;
@@ -15952,7 +16741,7 @@ Hyphens
 Asterisks
 </span></span></code></pre>
 <h3 id=\\"ignoring-markdown-formatting\\">Ignoring Markdown formatting</h3>
-<p>You can tell HonKit to ignore (or escape) Markdown formatting by using <code>\\\\</code> before the Markdown character.</p>
+<p>You can tell <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> to ignore (or escape) Markdown formatting by using <code>\\\\</code> before the Markdown character.</p>
 <pre><code>Let&apos;s rename \\\\*our-new-project\\\\* to \\\\*our-old-project\\\\*.
 </code></pre>
                                 
@@ -16752,7 +17541,7 @@ Object {
                                 
 
                                 <h1 id=\\"builtin-templating-helpers\\">Builtin Templating Helpers</h1>
-<p>HonKit provides a serie of builtin filters and blocks to help you write templates.</p>
+<p><a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> provides a serie of builtin filters and blocks to help you write templates.</p>
 <h3 id=\\"filters\\">Filters</h3>
 <p><code>value|default(default, [boolean])</code>If value is strictly undefined, return default, otherwise value. If boolean is true, any JavaScript falsy value will return default (false, &quot;&quot;, etc)</p>
 <p><code>arr|sort(reverse, caseSens, attr)</code>
@@ -17565,7 +18354,7 @@ Object {
 <p>Importing an other file&apos;s content is easy using the <code>include</code> tag:</p>
 <pre><code>{% include &quot;./test.md&quot; %}
 </code></pre><h3 id=\\"importing-file-from-another-book\\">Importing file from another book</h3>
-<p>HonKit can also resolve the include path by using git:</p>
+<p><a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> can also resolve the include path by using git:</p>
 <pre><code>{% include &quot;git+https://github.com/GitbookIO/documentation.git/README.md#0.0.1&quot; %}
 </code></pre><p>The format of git url is:</p>
 <pre><code>git+https://user@hostname/owner/project.git/file#commit-ish
@@ -18385,7 +19174,7 @@ Object {
                                 
 
                                 <h1 id=\\"templating\\">Templating</h1>
-<p>HonKit uses the <a href=\\"https://mozilla.github.io/nunjucks/\\" target=\\"_blank\\">Nunjucks templating language</a> to process pages and theme&apos;s templates.</p>
+<p><a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> uses the <a href=\\"https://mozilla.github.io/nunjucks/\\" target=\\"_blank\\">Nunjucks templating language</a> to process pages and theme&apos;s templates.</p>
 <p>The Nunjucks syntax is very similar to <strong>Jinja2</strong> or <strong>Liquid</strong>. Its syntax uses surrounding braces <code>{ }</code> to mark content that needs to be processed.</p>
 <h3 id=\\"variables\\">Variables</h3>
 <p>A variable looks up a value from the template context. If you wanted to simply display a variable, you would use the <code>{{ variable }}</code> syntax. For example :</p>
@@ -18396,7 +19185,7 @@ Object {
 </span><span class=\\"hljs-template-variable\\">{{ foo[&quot;bar&quot;] }}</span><span class=\\"xml\\">
 </span></code></pre>
 <p>If a value is undefined, nothing is displayed. The following all output nothing if foo is undefined: <code>{{ foo }}</code>, <code>{{ foo.bar }}</code>, <code>{{ foo.bar.baz }}</code>.</p>
-<p>HonKit provides a set of <a href=\\"variables.html\\">predefined  variables</a> from the context.</p>
+<p><a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> provides a set of <a href=\\"variables.html\\">predefined  variables</a> from the context.</p>
 <h3 id=\\"filters\\">Filters</h3>
 <p>Filters are essentially functions that can be applied to variables. They are called with a pipe operator (<code>|</code>) and can take arguments.</p>
 <pre><code class=\\"lang-twig\\"><span class=\\"hljs-template-variable\\">{{ foo | title }}</span><span class=\\"xml\\">
@@ -18439,7 +19228,7 @@ Current version is </span><span class=\\"hljs-template-variable\\">{{ softwareVe
 <h5 id=\\"include-and-block\\">include and block</h5>
 <p>Inclusion and inheritance is detailled in the <a href=\\"conrefs.html\\">Content References</a> section.</p>
 <h3 id=\\"escaping\\">Escaping</h3>
-<p>If you want HonKit to ignore any of the special templating tags, you can use raw and anything inside of it will be output as plain text.</p>
+<p>If you want <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> to ignore any of the special <a href=\\"../GLOSSARY.html#templating\\" class=\\"glossary-term\\" title=\\"HonKit uses the Nunjucks templating language to process pages and theme&apos;s templates.\\">templating</a> tags, you can use raw and anything inside of it will be output as plain text.</p>
 <pre><code class=\\"lang-twig\\"><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\">raw</span> %}</span><span class=\\"xml\\">
   this will </span><span class=\\"hljs-template-variable\\">{{ not be processed }}</span><span class=\\"xml\\">
 </span><span class=\\"hljs-template-tag\\">{% <span class=\\"hljs-name\\">endraw</span> %}</span><span class=\\"xml\\">
@@ -19258,7 +20047,7 @@ Object {
 </tr>
 <tr>
 <td><code>gitbook</code></td>
-<td>HonKit specific information</td>
+<td><a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> specific information</td>
 </tr>
 <tr>
 <td><code>page</code></td>
@@ -19329,7 +20118,7 @@ Object {
 </tr>
 <tr>
 <td><code>gitbook.version</code></td>
-<td>Version of HonKit used to generate the book</td>
+<td>Version of <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> used to generate the book</td>
 </tr>
 </tbody>
 </table>
@@ -20263,9 +21052,9 @@ Object {
                                 
 
                                 <h1 id=\\"theming\\">Theming</h1>
-<p>Since version 3.0.0, HonKit can be easily themed. Books use the <a href=\\"https://github.com/GitbookIO/theme-default\\" target=\\"_blank\\">theme-default</a> theme by default.</p>
+<p>Since version 3.0.0, <a href=\\"../GLOSSARY.html#honkit\\" class=\\"glossary-term\\" title=\\"Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).\\">HonKit</a> can be easily themed. Books use the <a href=\\"https://github.com/GitbookIO/theme-default\\" target=\\"_blank\\">theme-default</a> theme by default.</p>
 <blockquote>
-<p><strong>Caution</strong>: Custom theming can block some plugins from working correctly.</p>
+<p><strong>Caution</strong>: Custom theming can block some <a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> from working correctly.</p>
 </blockquote>
 <h3 id=\\"structure-of-a-theme\\">Structure of a theme</h3>
 <p>A theme is a plugin containing templates and assets. Overriding any individual template is optional, since themes always extend the default theme.</p>
@@ -20292,7 +21081,7 @@ Object {
 </tbody>
 </table>
 <h3 id=\\"extendcustomize-theme-in-a-book\\">Extend/Customize theme in a book</h3>
-<p>Authors can extend the templates of a theme directly from their book&apos;s source (without creating an external theme). Templates will be resolved in the <code>_layouts</code> folder of the book first, then in the installed plugins/themes.</p>
+<p>Authors can extend the templates of a theme directly from their book&apos;s source (without creating an external theme). Templates will be resolved in the <code>_layouts</code> folder of the book first, then in the installed <a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a>/themes.</p>
 <h3 id=\\"extend-instead-of-forking\\">Extend instead of Forking</h3>
 <p>When you want to make your theme changes available to multiple books, instead of forking the default theme, you can extend it using the <a href=\\"../templating/\\">templating syntax</a>:</p>
 <pre><code class=\\"lang-html\\">{% extends template.self %}
@@ -20304,7 +21093,7 @@ Object {
 </code></pre>
 <p>Take a look at the <a href=\\"https://github.com/GitbookIO/theme-api\\" target=\\"_blank\\">API</a> theme for a more complete example.</p>
 <h3 id=\\"publish-a-theme\\">Publish a theme</h3>
-<p>Themes are published as plugins (<a href=\\"../plugins/\\">see related docs</a>) with a <code>theme-</code> prefix. For example the theme <code>awesome</code> will be loaded from the <code>theme-awesome</code> plugin, and then from the <code>honkit-plugin-theme-awesome</code> NPM package.</p>
+<p>Themes are published as <a href=\\"../GLOSSARY.html#plugins\\" class=\\"glossary-term\\" title=\\"Plugins are the best way to extend HonKit functionalities (ebook and website).\\">plugins</a> (<a href=\\"../plugins/\\">see related docs</a>) with a <code>theme-</code> prefix. For example the theme <code>awesome</code> will be loaded from the <code>theme-awesome</code> plugin, and then from the <code>honkit-plugin-theme-awesome</code> NPM package.</p>
 
                                 
 <hr>
