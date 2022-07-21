@@ -12,8 +12,6 @@ function replaceText($, el, search, replace, text_only) {
         let node = this.firstChild,
             val,
             new_val;
-        // Elements to be removed at the end.
-        const remove = [];
 
         // Only continue if firstChild exists.
         if (node) {
@@ -32,10 +30,9 @@ function replaceText($, el, search, replace, text_only) {
                         if (!text_only && /</.test(new_val)) {
                             // The new value contains HTML, set it in a slower but far more
                             // robust way.
-                            $(node).before(new_val);
-
-                            // Don't remove the node yet, or the loop will lose its place.
-                            // remove.push(node);
+                            let text = $(this).html();
+                            text = text.replace(val, new_val);
+                            $(this).html(text);
                         } else {
                             // The new value contains no HTML, so it can be set in this
                             // very fast, simple way.
@@ -47,9 +44,6 @@ function replaceText($, el, search, replace, text_only) {
                 node = node.nextSibling;
             }
         }
-
-        // Time to remove those elements!
-        if (remove.length) $(remove).remove();
     });
 }
 
