@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1658446502313,
+  "lastUpdate": 1658448262704,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8399,6 +8399,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.43%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "andrew@furrypaws.ca",
+            "name": "Andrew Berry",
+            "username": "deviantintegral"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "749bff26a7695cac0c8eca795a30537267166b8d",
+          "message": "fix(honkit): Upgrade juice to 8.x (#283)",
+          "timestamp": "2022-07-22T09:00:32+09:00",
+          "tree_id": "5e338ee0a97129ac4365c748ccad3f8fba54788b",
+          "url": "https://github.com/honkit/honkit/commit/749bff26a7695cac0c8eca795a30537267166b8d"
+        },
+        "date": 1658448260084,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±1.35%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
