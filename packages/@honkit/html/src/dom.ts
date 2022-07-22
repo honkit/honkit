@@ -4,7 +4,7 @@ import * as cheerio from "cheerio";
 /**
     Parse an HTML string and return its content
 
-    @param html {string}
+    @param html
     @return {cheerio.Root}
 */
 export function parse(html: string) {
