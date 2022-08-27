@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:16
 
 LABEL maintainer="azu <azuciao@gmail.com>"
 LABEL Description="Docker Container for HonKit"
@@ -14,6 +14,7 @@ RUN apt-get update; \
     apt-get install --no-install-recommends --allow-unauthenticated -y \
     ca-certificates \
     libgl1 \
+    libxcomposite-dev \
     python3 \
     qt5-default \
     qt5-image-formats-plugins \
