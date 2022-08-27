@@ -10,7 +10,7 @@ on:
     types: [closed]
 env:
   DOCKER_HUB_BASE_NAME: honkit/honkit
-  NODE_VERSION_OF_LATEST: 12
+  NODE_VERSION_OF_LATEST: 16
 
 permissions: write-all
 jobs:
