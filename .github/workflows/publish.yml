@@ -112,25 +112,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Set Current Version
-        run: echo "CURRENT_VERSION=$(jq -r .version lerna.json)" >> $GITHUB_ENV
-      - name: Set package version
-        run: echo "PACKAGE_VERSION=${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
-      - name: Set version name
-        run: echo "VERSION_NAME=v${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
-      - name: Set node name
-        run: echo "NODE_NAME=node${{ matrix.version }}" >> $GITHUB_ENV
+      - name: Set Honkit package version
+        run: echo "PACKAGE_VERSION=$(jq -r .version lerna.json)" >> $GITHUB_ENV
+      - name: Set node version
+        run: echo "NODE_VERSION=node${{ matrix.version }}" >> $GITHUB_ENV
       - name: Build image
-        run: docker build . -t ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} -f node${{ matrix.version }}/Dockerfile --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
+        run: docker build . -t ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} -f ${NODE_VERSION}/Dockerfile --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
         working-directory: ./docker
-      - name: Set tag
-        run: docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} ${DOCKER_HUB_BASE_NAME}:${VERSION_NAME}-${NODE_NAME}
       - name: Print node version in container image
-        run: docker run --rm ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} --version
+        run: docker run --rm ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} --version
+      - name: Set tag
+        run: docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION}-${NODE_VERSION}
       - name: Set latest tag if default node version
         run: |
-          docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} ${DOCKER_HUB_BASE_NAME}:${VERSION_NAME}
-          docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} ${DOCKER_HUB_BASE_NAME}:latest
+          docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION}
+          docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} ${DOCKER_HUB_BASE_NAME}:latest
         if: matrix.version == env.NODE_VERSION_OF_LATEST
       - name: Login to Registries
         run: echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
