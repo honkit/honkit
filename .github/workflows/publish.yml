@@ -108,7 +108,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        version: [12, 14, 16, 18]
+        version: [12, 16]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
