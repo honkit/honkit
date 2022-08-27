@@ -112,14 +112,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: "Set TAG_NAME=tags"
-        run: |
-          echo "TAG_NAME=v${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
-          echo "PACKAGE_VERSION=${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
-      - name: Set HUB_TAG
-        run: |
-          echo "HUB_TAG=${DOCKER_HUB_BASE_NAME}:${TAG_NAME}" >> $GITHUB_ENV
-          echo "HUB_LATEST_TAG=${DOCKER_HUB_BASE_NAME}:latest" >> $GITHUB_ENV
+      - name: Set Current Version
+        run: echo "CURRENT_VERSION=$(jq -r .version lerna.json)" >> $GITHUB_ENV
+      - name: Set package version
+        run: echo "PACKAGE_VERSION=${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
+      - name: Set version name
+        run: echo "VERSION_NAME=v${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
+      - name: Set node name
+        run: echo "NODE_NAME=node${{ matrix.version }}" >> $GITHUB_ENV
       - name: Build image
         run: docker build . -t ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} -f node${{ matrix.version }}/Dockerfile --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
         working-directory: ./docker
