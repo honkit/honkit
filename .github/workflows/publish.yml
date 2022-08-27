@@ -112,12 +112,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ matrix.version }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-${{ matrix.version }}-
       - name: Set Honkit package version
         run: echo "PACKAGE_VERSION=$(jq -r .version lerna.json)" >> $GITHUB_ENV
       - name: Set node version
         run: echo "NODE_VERSION=node${{ matrix.version }}" >> $GITHUB_ENV
       - name: Build image
-        run: docker build . -t ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} -f ${NODE_VERSION}/Dockerfile --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
+        run: |
+          docker buildx build \
+            --file ${NODE_VERSION}/Dockerfile \
+            --build-arg PACKAGE_VERSION=${PACKAGE_VERSION} \
+            --tag ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} \
+            --cache-from type=local,src=/tmp/.buildx-cache \
+            --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max \
+            --load \
+            .
         working-directory: ./docker
       - name: Print node version in container image
         run: docker run --rm ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} --version
@@ -135,3 +152,7 @@ jobs:
           DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Push to Docker Hub
         run: docker push ${DOCKER_HUB_BASE_NAME} --all-tags
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
