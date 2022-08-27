@@ -15,6 +15,8 @@ permissions: write-all
 jobs:
   publish:
     runs-on: ubuntu-18.04
+    outputs:
+      exists_tag: ${{ steps.tag_check.outputs.exists_tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -98,38 +100,39 @@ jobs:
               repo: context.repo.repo,
               body: '🎉 Release https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }}'
             })
-      # Publish to Docker
+
+  push:
+    needs: publish
+    if: needs.publish.outputs.exists_tag == 'false'
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: "Set TAG_NAME=tags"
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
           echo "TAG_NAME=v${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
           echo "PACKAGE_VERSION=${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
       - name: Set HUB_TAG
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
           echo "HUB_TAG=${DOCKER_HUB_BASE_NAME}:${TAG_NAME}" >> $GITHUB_ENV
           echo "HUB_LATEST_TAG=${DOCKER_HUB_BASE_NAME}:latest" >> $GITHUB_ENV
       - name: Build image
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
           docker build . -t "${HUB_TAG}" --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
           docker tag "${HUB_TAG}" "${HUB_TAG}"
           docker tag "${HUB_TAG}" "${HUB_LATEST_TAG}"
         working-directory: ./docker
       - name: Print version
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
           docker run --rm ${HUB_TAG} --version
         working-directory: ./docker
       - name: Login to Registries
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
           echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
         env:
           DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
           DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Push to Docker Hub
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
           docker push "${HUB_TAG}"
           docker push "${HUB_LATEST_TAG}"
