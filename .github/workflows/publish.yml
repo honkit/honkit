@@ -10,6 +10,7 @@ on:
     types: [closed]
 env:
   DOCKER_HUB_BASE_NAME: honkit/honkit
+  NODE_VERSION_OF_LATEST: 12
 
 permissions: write-all
 jobs:
@@ -105,6 +106,9 @@ jobs:
     needs: publish
     if: needs.publish.outputs.exists_tag == 'false'
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        version: [12, 14, 16, 18]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -117,22 +121,21 @@ jobs:
           echo "HUB_TAG=${DOCKER_HUB_BASE_NAME}:${TAG_NAME}" >> $GITHUB_ENV
           echo "HUB_LATEST_TAG=${DOCKER_HUB_BASE_NAME}:latest" >> $GITHUB_ENV
       - name: Build image
-        run: |
-          docker build . -t "${HUB_TAG}" --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
-          docker tag "${HUB_TAG}" "${HUB_TAG}"
-          docker tag "${HUB_TAG}" "${HUB_LATEST_TAG}"
+        run: docker build . -t ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} -f node${{ matrix.version }}/Dockerfile --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
         working-directory: ./docker
-      - name: Print version
+      - name: Set tag
+        run: docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} ${DOCKER_HUB_BASE_NAME}:${VERSION_NAME}-${NODE_NAME}
+      - name: Print node version in container image
+        run: docker run --rm ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} --version
+      - name: Set latest tag if default node version
         run: |
-          docker run --rm ${HUB_TAG} --version
-        working-directory: ./docker
+          docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} ${DOCKER_HUB_BASE_NAME}:${VERSION_NAME}
+          docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_NAME} ${DOCKER_HUB_BASE_NAME}:latest
+        if: matrix.version == env.NODE_VERSION_OF_LATEST
       - name: Login to Registries
-        run: |
-          echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
+        run: echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
         env:
           DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
           DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Push to Docker Hub
-        run: |
-          docker push "${HUB_TAG}"
-          docker push "${HUB_LATEST_TAG}"
+        run: docker push ${DOCKER_HUB_BASE_NAME} --all-tags
