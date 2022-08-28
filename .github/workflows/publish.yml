@@ -105,7 +105,7 @@ jobs:
   push:
     needs: publish
     if: needs.publish.outputs.exists_tag == 'false'
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         version: [12, 16]
