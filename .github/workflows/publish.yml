@@ -10,7 +10,7 @@ on:
     types: [closed]
 env:
   DOCKER_HUB_BASE_NAME: honkit/honkit
-  NODE_VERSION_OF_LATEST: 16
+  NODE_VERSION: 16
 
 permissions: write-all
 jobs:
@@ -106,9 +106,6 @@ jobs:
     needs: publish
     if: needs.publish.outputs.exists_tag == 'false'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version: [12, 16]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -118,33 +115,25 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ matrix.version }}-${{ github.sha }}
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-buildx-${{ matrix.version }}-
+            ${{ runner.os }}-buildx-
       - name: Set Honkit package version
         run: echo "PACKAGE_VERSION=$(jq -r .version lerna.json)" >> $GITHUB_ENV
-      - name: Set node version
-        run: echo "NODE_VERSION=node${{ matrix.version }}" >> $GITHUB_ENV
       - name: Build image
         run: |
           docker buildx build \
-            --file ${NODE_VERSION}/Dockerfile \
             --build-arg PACKAGE_VERSION=${PACKAGE_VERSION} \
-            --tag ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} \
+            --tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} \
             --cache-from type=local,src=/tmp/.buildx-cache \
             --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max \
             --load \
             .
         working-directory: ./docker
       - name: Print node version in container image
-        run: docker run --rm ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} --version
-      - name: Set tag
-        run: docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION}-${NODE_VERSION}
-      - name: Set latest tag if default node version
-        run: |
-          docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION}
-          docker tag ${DOCKER_HUB_BASE_NAME}:${NODE_VERSION} ${DOCKER_HUB_BASE_NAME}:latest
-        if: matrix.version == env.NODE_VERSION_OF_LATEST
+        run: docker run --rm ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} --version
+      - name: Set latest tag
+        run: docker tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} ${DOCKER_HUB_BASE_NAME}:latest
       - name: Login to Registries
         run: echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
         env:
