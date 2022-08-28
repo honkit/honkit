@@ -135,6 +135,8 @@ jobs:
         run: docker run --rm ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} --version
       - name: Set latest tag
         run: docker tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} ${DOCKER_HUB_BASE_NAME}:latest
+      - name: Set mojor version tag
+        run: docker tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} ${DOCKER_HUB_BASE_NAME}:v$(echo $PACKAGE_VERSION | cut -f 1 -d . | tr -d "\n")
       - name: Login to Registries
         run: echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
         env:
