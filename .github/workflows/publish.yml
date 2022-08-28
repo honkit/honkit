@@ -15,7 +15,7 @@ env:
 permissions: write-all
 jobs:
   publish:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     outputs:
       exists_tag: ${{ steps.tag_check.outputs.exists_tag }}
     steps:
@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
       - name: Git Identity
         run: |
