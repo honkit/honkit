@@ -19,16 +19,6 @@
   },
   "license": "Apache-2.0",
   "author": "azu <azuciao@gmail.com>",
-  "contributors": [
-    {
-      "name": "Aaron O'Mullan",
-      "email": "aaron@gitbook.com"
-    },
-    {
-      "name": "Samy Pessé",
-      "email": "samy@gitbook.com"
-    }
-  ],
   "main": "lib/index.js",
   "browser": "./lib/browser.js",
   "bin": {
