@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1661695787852,
+  "lastUpdate": 1661697158737,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8461,6 +8461,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±1.02%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fc994708138068e88dedc46e8ad0e02692940982",
+          "message": "Drop to support Node.js 12 (#291)\n\nBREAKING CHANGE: drop to support Node.js 12\r\n\r\n- Node.js 12 is EOL https://nodejs.org/en/about/releases/ \r\n- Use Node.js 14, 16, 18 for CI\r\n\r\nProbably, Current HonKit still work on Node.js 12, but it will be broken in minor updates.\r\n\r\nfix #290 \r\ncloses #288",
+          "timestamp": "2022-08-28T23:28:55+09:00",
+          "tree_id": "ae55c5a942d71098043a30dbee235e7364372159",
+          "url": "https://github.com/honkit/honkit/commit/fc994708138068e88dedc46e8ad0e02692940982"
+        },
+        "date": 1661697157894,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.09,
+            "range": "±0.56%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
