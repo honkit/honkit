@@ -1,4 +1,5 @@
-FROM node:16
+ARG NODE_VERSION
+FROM node:$NODE_VERSION
 
 LABEL maintainer="azu <azuciao@gmail.com>"
 LABEL Description="Docker Container for HonKit"

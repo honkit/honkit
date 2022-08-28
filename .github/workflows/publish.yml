@@ -123,6 +123,7 @@ jobs:
       - name: Build image
         run: |
           docker buildx build \
+            --build-arg NODE_VERSION=${NODE_VERSION} \
             --build-arg PACKAGE_VERSION=${PACKAGE_VERSION} \
             --tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} \
             --cache-from type=local,src=/tmp/.buildx-cache \
