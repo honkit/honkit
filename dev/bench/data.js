@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1658448262704,
+  "lastUpdate": 1661695787852,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8430,6 +8430,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±1.35%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "takeda@youmind.jp",
+            "name": "KentarouTakeda",
+            "username": "KentarouTakeda"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "6995c1630bd31f9d0bbd75d31d6c60897cd9efc1",
+          "message": "feat(publish): multiple docker images per node.js version (#289)\n\n* feat(docker): make publish and push separate jobs\r\n\r\n* feat(docker): build multiple images\r\n\r\n* feat(docker): use jq instead of `node:require()`\r\n\r\n* feat(docker): organizing environment variables\r\n\r\n* feat(docker): adjust Dockerfile per node version\r\n\r\n* perf(docker): improve docker layer cache hit rate\r\n\r\n* feat(docker): remov support for node 14 and 18\r\n\r\n* feat(docker): change default node version to 16\r\n\r\n* fix(docker): use `ubuntu-latest`\r\n\r\n* fix(docker): provide only the single node version\r\n\r\n- discard multiple builds by `strategy.matrix`\r\n- discard matrix of tags used by `-nodeN`\r\n- change the variable name that specifies the node version\r\n  according to the meaning\r\n\r\n* fix(docker): base image version with variable\r\n\r\n* feat(docker): set major version tag\r\n\r\n* fix(publish): backport `push` fixes to `publish`\r\n\r\n- use `ubuntu-latest`\r\n- node version with variable",
+          "timestamp": "2022-08-28T23:06:07+09:00",
+          "tree_id": "8ad5f0bf1255a79a3433b106cd6dd0fad4d9dcba",
+          "url": "https://github.com/honkit/honkit/commit/6995c1630bd31f9d0bbd75d31d6c60897cd9efc1"
+        },
+        "date": 1661695786052,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±1.02%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
