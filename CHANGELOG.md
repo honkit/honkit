@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/honkit/honkit/compare/v3.7.5...v4.0.0) (2022-08-28)
+
+
+### Bug Fixes
+
+* **honkit:** Upgrade juice to 8.x ([#283](https://github.com/honkit/honkit/issues/283)) ([749bff2](https://github.com/honkit/honkit/commit/749bff26a7695cac0c8eca795a30537267166b8d))
+
+
+* Drop to support Node.js 12 (#291) ([fc99470](https://github.com/honkit/honkit/commit/fc994708138068e88dedc46e8ad0e02692940982)), closes [#291](https://github.com/honkit/honkit/issues/291) [#290](https://github.com/honkit/honkit/issues/290) [#288](https://github.com/honkit/honkit/issues/288)
+
+
+### Features
+
+* **publish:** multiple docker images per node.js version ([#289](https://github.com/honkit/honkit/issues/289)) ([6995c16](https://github.com/honkit/honkit/commit/6995c1630bd31f9d0bbd75d31d6c60897cd9efc1))
+
+
+### BREAKING CHANGES
+
+* drop to support Node.js 12
+
+- Node.js 12 is EOL https://nodejs.org/en/about/releases/ 
+- Use Node.js 14, 16, 18 for CI
+
+Probably, Current HonKit still work on Node.js 12, but it will be broken in minor updates.
+
+
+
+
+
 ## [3.7.5](https://github.com/honkit/honkit/compare/v3.7.4...v3.7.5) (2022-07-14)
 
 

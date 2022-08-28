@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/honkit/honkit/compare/v3.7.5...v4.0.0) (2022-08-28)
+
+**Note:** Version bump only for package @honkit/internal-test-utils
+
+
+
+
+
 ## [3.6.17](https://github.com/honkit/honkit/compare/v3.6.16...v3.6.17) (2021-02-15)
 
 **Note:** Version bump only for package @honkit/internal-test-utils
