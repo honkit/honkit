@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1661698096045,
+  "lastUpdate": 1661698392728,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8585,6 +8585,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±1.02%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "57f4fbbc1557a64a23cac6988d9dc0f35d790ea7",
+          "message": "chore(deps): bump node-fetch from 2.6.5 to 2.6.7 (#293)\n\nBumps [node-fetch](https://github.com/node-fetch/node-fetch) from 2.6.5 to 2.6.7.\r\n- [Release notes](https://github.com/node-fetch/node-fetch/releases)\r\n- [Commits](https://github.com/node-fetch/node-fetch/compare/v2.6.5...v2.6.7)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: node-fetch\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2022-08-28T23:49:25+09:00",
+          "tree_id": "97fbcf5f70b63600276252e3e53878ec48677472",
+          "url": "https://github.com/honkit/honkit/commit/57f4fbbc1557a64a23cac6988d9dc0f35d790ea7"
+        },
+        "date": 1661698391361,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±1.42%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
