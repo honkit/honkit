@@ -19,16 +19,6 @@
   },
   "license": "Apache-2.0",
   "author": "azu <azuciao@gmail.com>",
-  "contributors": [
-    {
-      "name": "Aaron O'Mullan",
-      "email": "aaron@gitbook.com"
-    },
-    {
-      "name": "Samy Pessé",
-      "email": "samy@gitbook.com"
-    }
-  ],
   "main": "lib/index.js",
   "browser": "./lib/browser.js",
   "bin": {
@@ -72,7 +62,6 @@
     "gitbook-plugin-lunr": "^1.2.0",
     "gitbook-plugin-search": "^2.2.1",
     "github-slugid": "^1.0.1",
-    "global-npm": "^0.4.0",
     "i18n-t": "^1.0.1",
     "ignore": "^5.1.8",
     "immutable": "^3.8.1",

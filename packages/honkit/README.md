@@ -8,3 +8,8 @@ HonKit documentation is built by HonKit!
 
 - <https://honkit.netlify.app/>
 
+## License
+
+Apache License
+
+HonKit includes GitBook v1 source code.
