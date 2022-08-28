@@ -35,5 +35,5 @@ FROM honkit/honkit:latest
 LABEL maintainer="your@example.com"
 
 # Install fonts
-COPY fonts/custom-fone /usr/share/fonts
+COPY fonts/custom-font /usr/share/fonts
 ```
