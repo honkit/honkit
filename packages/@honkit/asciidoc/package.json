@@ -41,7 +41,7 @@
     "lodash": "^4.13.1"
   },
   "devDependencies": {
-    "mocha": "^8.2.1"
+    "mocha": "^10.0.0"
   },
   "publishConfig": {
     "access": "public"
