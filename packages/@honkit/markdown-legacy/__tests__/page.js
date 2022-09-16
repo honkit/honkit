@@ -103,7 +103,7 @@ This is the default content
 
             # License
 
-            {% include \\"./LICENSE\\" %}
+            {% include "./LICENSE" %}
             \`\`\`
             {% endraw %}{% raw %}        {% endraw %}"
         `);
@@ -133,7 +133,7 @@ This is the default content
         expect(page.prepare(code)).toMatchInlineSnapshot(`
             "
             {% raw %}\`\`\`
-            {% extends \\"./mypage.md\\" %}
+            {% extends "./mypage.md" %}
 
             {% block pageContent %}
             # This is my page content
@@ -149,7 +149,7 @@ This is the default content
 
             # License
 
-            {% include \\"./LICENSE\\" %}
+            {% include "./LICENSE" %}
             \`\`\`
             {% endraw %}"
         `);

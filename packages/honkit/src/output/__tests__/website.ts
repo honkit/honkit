@@ -4,13 +4,12 @@ import WebsiteGenerator from "../website";
 
 const longTest = (name, fn) => test(name, fn, 1000 * 30);
 describe("WebsiteGenerator", () => {
-    jest.setTimeout(60 * 1000)
     test("should generate an index.html", async () => {
         const folder = await generateMock(WebsiteGenerator, {
             "README.md": "Hello World"
         });
         expect(folder).toHaveFile("index.html");
-    });
+    }, 60 * 1000);
 
     describe("Glossary", () => {
         let folder;
