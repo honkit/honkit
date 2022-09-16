@@ -15,7 +15,7 @@ describe("ConrefsLoader", () => {
         });
 
         test("should include content from git", () => {
-            jest.setTimeout(20 * 1000);
+            jest.setTimeout(60 * 1000);
 
             // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
             return renderTemplate(
@@ -28,7 +28,7 @@ describe("ConrefsLoader", () => {
         });
 
         test("should handle deep inclusion (1)", () => {
-            jest.setTimeout(20 * 1000);
+            jest.setTimeout(60 * 1000);
 
             // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
             return renderTemplate(
@@ -41,7 +41,7 @@ describe("ConrefsLoader", () => {
         });
 
         test("should handle deep inclusion (2)", () => {
-            jest.setTimeout(20 * 1000);
+            jest.setTimeout(60 * 1000);
 
             // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
             return renderTemplate(
