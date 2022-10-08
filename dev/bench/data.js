@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1663333481624,
+  "lastUpdate": 1665271832506,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8647,6 +8647,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±2.72%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "nomango@qq.com",
+            "name": "Haibo",
+            "username": "Nomango"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a26fb069894968256678f5ffae49bff933df6ef5",
+          "message": "fix: plugin error msg (#297)",
+          "timestamp": "2022-10-09T08:26:29+09:00",
+          "tree_id": "0a8987652f07723209ba12ebc4ba133acfcc9b21",
+          "url": "https://github.com/honkit/honkit/commit/a26fb069894968256678f5ffae49bff933df6ef5"
+        },
+        "date": 1665271830226,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±5.94%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
