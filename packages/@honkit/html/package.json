@@ -38,7 +38,7 @@
     "prepublish": "npm run --if-present build"
   },
   "dependencies": {
-    "cheerio": "^0.20.0",
+    "cheerio": "^1.0.0-rc.12",
     "lodash": "^4.13.1",
     "q": "^1.1.2"
   },

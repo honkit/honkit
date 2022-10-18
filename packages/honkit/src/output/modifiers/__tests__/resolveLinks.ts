@@ -1,5 +1,5 @@
 import path from "path";
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import resolveLinks from "../resolveLinks";
 
 describe("resolveLinks", () => {
@@ -19,7 +19,7 @@ describe("resolveLinks", () => {
         const TEST = "<p>This is a <a href=\"/test/cool.md\"></a></p>";
 
         test("should resolve path starting by \"/\" in root directory", () => {
-            const $ = cheerio.load(TEST);
+            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
 
             return resolveLinks("hello.md", resolveFileBasic, $).then(() => {
                 const link = $("a");
@@ -28,7 +28,7 @@ describe("resolveLinks", () => {
         });
 
         test("should resolve path starting by \"/\" in child directory", () => {
-            const $ = cheerio.load(TEST);
+            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
 
             return resolveLinks("afolder/hello.md", resolveFileBasic, $).then(() => {
                 const link = $("a");
@@ -40,7 +40,7 @@ describe("resolveLinks", () => {
     describe("Anchor", () => {
         test("should prevent anchors in resolution", () => {
             const TEST = "<p>This is a <a href=\"test/cool.md#an-anchor\"></a></p>";
-            const $ = cheerio.load(TEST);
+            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
 
             return resolveLinks("hello.md", resolveFileCustom, $).then(() => {
                 const link = $("a");
@@ -50,7 +50,7 @@ describe("resolveLinks", () => {
 
         test("should ignore pure anchor links", () => {
             const TEST = "<p>This is a <a href=\"#an-anchor\"></a></p>";
-            const $ = cheerio.load(TEST);
+            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
 
             return resolveLinks("hello.md", resolveFileCustom, $).then(() => {
                 const link = $("a");
@@ -63,7 +63,7 @@ describe("resolveLinks", () => {
         const TEST = "<p>This is a <a href=\"/test/cool.md\"></a> <a href=\"afile.png\"></a></p>";
 
         test("should resolve path correctly for absolute path", () => {
-            const $ = cheerio.load(TEST);
+            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
 
             return resolveLinks("hello.md", resolveFileCustom, $).then(() => {
                 const link = $("a").first();
@@ -72,7 +72,7 @@ describe("resolveLinks", () => {
         });
 
         test("should resolve path correctly for absolute path (2)", () => {
-            const $ = cheerio.load(TEST);
+            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
 
             return resolveLinks("afodler/hello.md", resolveFileCustom, $).then(() => {
                 const link = $("a").first();
@@ -85,7 +85,7 @@ describe("resolveLinks", () => {
         const TEST = "<p>This is a <a href=\"http://www.github.com\">external link</a></p>";
 
         test("should have target=\"_blank\" attribute", () => {
-            const $ = cheerio.load(TEST);
+            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
 
             return resolveLinks("hello.md", resolveFileBasic, $).then(() => {
                 const link = $("a");

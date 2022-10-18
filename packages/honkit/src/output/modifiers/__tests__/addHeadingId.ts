@@ -1,9 +1,9 @@
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import addHeadingId from "../addHeadingId";
 
 describe("addHeadingId", () => {
     test("should add an ID if none", () => {
-        const $ = cheerio.load("<h1>Hello World</h1><h2>Cool !!</h2>");
+        const $ = cheerio.load("<h1>Hello World</h1><h2>Cool !!</h2>", { _useHtmlParser2: true });
 
         return addHeadingId($).then(() => {
             const html = $.html();
@@ -12,7 +12,7 @@ describe("addHeadingId", () => {
     });
 
     test("should not change existing IDs", () => {
-        const $ = cheerio.load("<h1 id=\"awesome\">Hello World</h1>");
+        const $ = cheerio.load("<h1 id=\"awesome\">Hello World</h1>", { _useHtmlParser2: true });
 
         return addHeadingId($).then(() => {
             const html = $.html();

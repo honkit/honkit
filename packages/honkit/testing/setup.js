@@ -24,7 +24,7 @@ expect.extend({
      * @param {String} selector
      */
     toHaveDOMElement(html, selector) {
-        const $ = cheerio.load(html);
+        const $ = cheerio.load(html, { _useHtmlParser2: true });
         const $el = $(selector);
         const pass = $el.length > 0;
         const message = pass

@@ -42,7 +42,7 @@
     "@honkit/honkit-plugin-theme-default": "^4.0.0",
     "@honkit/markdown-legacy": "^4.0.0",
     "bash-color": "^0.0.4",
-    "cheerio": "^0.20.0",
+    "cheerio": "^1.0.0-rc.12",
     "chokidar": "^3.3.0",
     "commander": "^5.1.0",
     "cp": "^0.2.0",
