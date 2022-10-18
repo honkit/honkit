@@ -10,18 +10,21 @@ on:
     types: [closed]
 env:
   DOCKER_HUB_BASE_NAME: honkit/honkit
+  NODE_VERSION: 16
 
 permissions: write-all
 jobs:
   publish:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
+    outputs:
+      exists_tag: ${{ steps.tag_check.outputs.exists_tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Node ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
       - name: Git Identity
         run: |
@@ -98,38 +101,50 @@ jobs:
               repo: context.repo.repo,
               body: '🎉 Release https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }}'
             })
-      # Publish to Docker
-      - name: "Set TAG_NAME=tags"
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
-        run: |
-          echo "TAG_NAME=v${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
-          echo "PACKAGE_VERSION=${{ env.CURRENT_VERSION }}" >> $GITHUB_ENV
-      - name: Set HUB_TAG
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
-        run: |
-          echo "HUB_TAG=${DOCKER_HUB_BASE_NAME}:${TAG_NAME}" >> $GITHUB_ENV
-          echo "HUB_LATEST_TAG=${DOCKER_HUB_BASE_NAME}:latest" >> $GITHUB_ENV
+
+  push:
+    needs: publish
+    if: needs.publish.outputs.exists_tag == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+      - name: Set Honkit package version
+        run: echo "PACKAGE_VERSION=$(jq -r .version lerna.json)" >> $GITHUB_ENV
       - name: Build image
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
         run: |
-          docker build . -t "${HUB_TAG}" --build-arg PACKAGE_VERSION=${PACKAGE_VERSION}
-          docker tag "${HUB_TAG}" "${HUB_TAG}"
-          docker tag "${HUB_TAG}" "${HUB_LATEST_TAG}"
+          docker buildx build \
+            --build-arg NODE_VERSION=${NODE_VERSION} \
+            --build-arg PACKAGE_VERSION=${PACKAGE_VERSION} \
+            --tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} \
+            --cache-from type=local,src=/tmp/.buildx-cache \
+            --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max \
+            --load \
+            .
         working-directory: ./docker
-      - name: Print version
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
-        run: |
-          docker run --rm ${HUB_TAG} --version
-        working-directory: ./docker
+      - name: Print node version in container image
+        run: docker run --rm ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} --version
+      - name: Set latest tag
+        run: docker tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} ${DOCKER_HUB_BASE_NAME}:latest
+      - name: Set mojor version tag
+        run: docker tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} ${DOCKER_HUB_BASE_NAME}:v$(echo $PACKAGE_VERSION | cut -f 1 -d . | tr -d "\n")
       - name: Login to Registries
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
-        run: |
-          echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
+        run: echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
         env:
           DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
           DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Push to Docker Hub
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+        run: docker push ${DOCKER_HUB_BASE_NAME} --all-tags
+      - name: Move cache
         run: |
-          docker push "${HUB_TAG}"
-          docker push "${HUB_LATEST_TAG}"
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache

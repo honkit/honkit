@@ -10,10 +10,10 @@ permissions:
 jobs:
   benchmark:
     name: "Test on Node.js ${{ matrix.node-version }}"
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12]
+        node-version: [16]
     steps:
       - name: checkout
         uses: actions/checkout@v3

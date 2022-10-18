@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/honkit/honkit/compare/v3.7.5...v4.0.0) (2022-08-28)
+
+
+* Drop to support Node.js 12 (#291) ([fc99470](https://github.com/honkit/honkit/commit/fc994708138068e88dedc46e8ad0e02692940982)), closes [#291](https://github.com/honkit/honkit/issues/291) [#290](https://github.com/honkit/honkit/issues/290) [#288](https://github.com/honkit/honkit/issues/288)
+
+
+### BREAKING CHANGES
+
+* drop to support Node.js 12
+
+- Node.js 12 is EOL https://nodejs.org/en/about/releases/ 
+- Use Node.js 14, 16, 18 for CI
+
+Probably, Current HonKit still work on Node.js 12, but it will be broken in minor updates.
+
+
+
+
+
 ## [3.7.5](https://github.com/honkit/honkit/compare/v3.7.4...v3.7.5) (2022-07-14)
 
 **Note:** Version bump only for package @example/benchmark

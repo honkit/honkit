@@ -160,8 +160,7 @@ export default {
                 pageBreaksBefore: {
                     type: "string",
                     default: "/",
-                    title:
-                        'An XPath expression. Page breaks are inserted before the specified elements. To disable use the expression: "/"',
+                    title: 'An XPath expression. Page breaks are inserted before the specified elements. To disable use the expression: "/"',
                 },
                 margin: {
                     type: "object",

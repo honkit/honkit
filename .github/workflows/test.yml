@@ -10,14 +10,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [ 12, 14, 16 ]
-        os: [macos-latest, windows-latest, ubuntu-18.04]
+        node-version: [ 14, 16, 18 ]
+        os: [macos-latest, windows-latest, ubuntu-latest]
         exclude:
           # mac tests is expensive, limit to 1 instance
           - os: macos-latest
-            node-version: 10
+            node-version: 14
           - os: macos-latest
-            node-version: 12
+            node-version: 18
     steps:
       - name: checkout
         uses: actions/checkout@v3
