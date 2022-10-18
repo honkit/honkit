@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/honkit/honkit/compare/v4.0.0...v4.0.1) (2022-10-18)
+
+
+### Bug Fixes
+
+* **honkit:** fix annotateText ([6a1092b](https://github.com/honkit/honkit/commit/6a1092bbdab3d2ab08bfa47c7ed9320e53c7e44e))
+* plugin error msg ([#297](https://github.com/honkit/honkit/issues/297)) ([a26fb06](https://github.com/honkit/honkit/commit/a26fb069894968256678f5ffae49bff933df6ef5))
+
+
+
+
+
 # [4.0.0](https://github.com/honkit/honkit/compare/v3.7.5...v4.0.0) (2022-08-28)
 
 

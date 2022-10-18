@@ -1,6 +1,6 @@
 {
   "name": "@example/multiple-languages",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "private": true,
   "description": "",
   "keywords": [],
@@ -13,6 +13,6 @@
     "help": "honkit --help"
   },
   "devDependencies": {
-    "honkit": "^4.0.0"
+    "honkit": "^4.0.1"
   }
 }

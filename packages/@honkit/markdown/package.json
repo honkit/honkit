@@ -1,6 +1,6 @@
 {
   "name": "@honkit/markdown",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Parse markdown content for honkit",
   "homepage": "https://github.com/honkit/honkit",
   "bugs": {
@@ -38,8 +38,8 @@
     "prepublish": "npm run --if-present build"
   },
   "dependencies": {
-    "@honkit/html": "^4.0.0",
-    "@honkit/markup-it": "^4.0.0",
+    "@honkit/html": "^4.0.1",
+    "@honkit/markup-it": "^4.0.1",
     "markdown-escape": "^1.0.1"
   },
   "devDependencies": {
