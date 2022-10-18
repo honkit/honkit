@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1665271832506,
+  "lastUpdate": 1666105207858,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8678,6 +8678,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±5.94%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "baa65a7d4932cf17ce41081bde511959a0cf0f12",
+          "message": "Merge pull request #299 from honkit/cheerio\n\nfix(honkit): upgrading to cheerio 1.x",
+          "timestamp": "2022-10-18T23:56:18+09:00",
+          "tree_id": "c63c8498fde04ba7646d0c5cbd05bfe5c2c6d5eb",
+          "url": "https://github.com/honkit/honkit/commit/baa65a7d4932cf17ce41081bde511959a0cf0f12"
+        },
+        "date": 1666105202943,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±1.53%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
