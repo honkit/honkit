@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1666105207858,
+  "lastUpdate": 1666105328717,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8709,6 +8709,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.53%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "50a76059fce5d5b4fe921be9661ec3c726af5c9f",
+          "message": "Merge pull request #278 from honkit/dependabot/npm_and_yarn/moment-2.29.4\n\nchore(deps): bump moment from 2.29.2 to 2.29.4",
+          "timestamp": "2022-10-18T23:57:48+09:00",
+          "tree_id": "c63c8498fde04ba7646d0c5cbd05bfe5c2c6d5eb",
+          "url": "https://github.com/honkit/honkit/commit/50a76059fce5d5b4fe921be9661ec3c726af5c9f"
+        },
+        "date": 1666105327138,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±2.27%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
