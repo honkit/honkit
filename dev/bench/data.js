@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1666105596295,
+  "lastUpdate": 1666221562826,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8771,6 +8771,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±3.52%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "andrew@furrypaws.ca",
+            "name": "Andrew Berry",
+            "username": "deviantintegral"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "90edf03ec1bca9e0020d691653b1449f51603744",
+          "message": "fix(honkit): fix missing --flat for cpy 9+ (#301)\n\n* Fix missing --flat for cpy 9+\r\n\r\n* Also fix the favicon",
+          "timestamp": "2022-10-20T08:16:17+09:00",
+          "tree_id": "c5b8fda170d8594b5ffae46045eb90b79c641044",
+          "url": "https://github.com/honkit/honkit/commit/90edf03ec1bca9e0020d691653b1449f51603744"
+        },
+        "date": 1666221561855,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±0.60%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
