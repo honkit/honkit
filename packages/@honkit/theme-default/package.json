@@ -45,7 +45,7 @@
     "cp": "npm-run-all -p cp:*",
     "cp:favicon": "cpy logo/favicon.ico _assets/website/images/",
     "cp:font-awesome": "cpy font-awesome/fonts/ _assets/website/fonts/fontawesome/",
-    "cp:logo": "cpy logo/apple-touch-icon.png _assets/website/images/ --rename=apple-touch-icon-precomposed-152.png",
+    "cp:logo": "cpy --flat logo/apple-touch-icon.png _assets/website/images/ --rename=apple-touch-icon-precomposed-152.png",
     "prepublish": "npm run build"
   },
   "devDependencies": {
