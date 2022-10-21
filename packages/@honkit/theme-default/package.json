@@ -43,9 +43,9 @@
     "build:js:theme": "browserify src/js/theme/index.js | uglifyjs -mc > _assets/website/theme.js",
     "clean": "rimraf _assets && mkdirp _assets/ebook/ _assets/website/ _assets/website/fonts _assets/website/images",
     "cp": "npm-run-all -p cp:*",
-    "cp:favicon": "cpy --flat logo/favicon.ico _assets/website/images/",
+    "cp:favicon": "cpy logo/favicon.ico _assets/website/images/",
     "cp:font-awesome": "cpy font-awesome/fonts/ _assets/website/fonts/fontawesome/",
-    "cp:logo": "cpy --flat logo/apple-touch-icon.png _assets/website/images/ --rename=apple-touch-icon-precomposed-152.png",
+    "cp:logo": "cpy logo/apple-touch-icon.png _assets/website/images/ --rename=apple-touch-icon-precomposed-152.png",
     "prepublish": "npm run build"
   },
   "devDependencies": {
