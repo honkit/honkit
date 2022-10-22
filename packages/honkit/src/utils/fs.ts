@@ -93,7 +93,7 @@ function ensureFile(filename) {
 
 // Remove a folder
 function rmDir(base) {
-    return Promise.nfcall(fs.rmdir, base, {
+    return Promise.nfcall(fs.rm, base, {
         recursive: true,
     });
 }
