@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1666397830968,
+  "lastUpdate": 1666438879491,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8895,6 +8895,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.11,
             "range": "±0.42%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "waldyrious@gmail.com",
+            "name": "Waldir Pimenta",
+            "username": "waldyrious"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3996c8c0fcc59783031720e31177cac2827a12f1",
+          "message": "Replace deprecated `fs.rmdir` with `fs.rm` (#307)\n\nfix #285",
+          "timestamp": "2022-10-22T20:38:51+09:00",
+          "tree_id": "571a5597a73242ffb01bf7bd832143c20f96555d",
+          "url": "https://github.com/honkit/honkit/commit/3996c8c0fcc59783031720e31177cac2827a12f1"
+        },
+        "date": 1666438878591,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±0.65%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
