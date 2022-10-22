@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.3](https://github.com/honkit/honkit/compare/v4.0.2...v4.0.3) (2022-10-22)
+
+
+### Bug Fixes
+
+* **theme-default:** add --flat to fonts ([#305](https://github.com/honkit/honkit/issues/305)) ([c543b45](https://github.com/honkit/honkit/commit/c543b459618673ca525d4ea93e45975391961d12))
+
+
+
+
+
 ## [4.0.2](https://github.com/honkit/honkit/compare/v4.0.1...v4.0.2) (2022-10-19)
 
 
