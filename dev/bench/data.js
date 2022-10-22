@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1666222988751,
+  "lastUpdate": 1666397546997,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8833,6 +8833,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.40%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c543b459618673ca525d4ea93e45975391961d12",
+          "message": "fix(theme-default): add --flat to fonts (#305)",
+          "timestamp": "2022-10-22T09:09:52+09:00",
+          "tree_id": "80d2db65f133d36064c52c9a94b7fe6fba01d1d7",
+          "url": "https://github.com/honkit/honkit/commit/c543b459618673ca525d4ea93e45975391961d12"
+        },
+        "date": 1666397546061,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±0.36%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
