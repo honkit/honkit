@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1666440496275,
+  "lastUpdate": 1670848390392,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8957,6 +8957,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.39%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "samuel.mehrbrodt@allotropia.de",
+            "name": "Samuel Mehrbrodt",
+            "username": "smehrbrodt"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1420d9ca834b46260a1ea417e0812af724290c3c",
+          "message": "Fix link to LANGS.md (#317)",
+          "timestamp": "2022-12-12T21:30:17+09:00",
+          "tree_id": "756a97132e57461cf1ac6e1c3cb15069983f1961",
+          "url": "https://github.com/honkit/honkit/commit/1420d9ca834b46260a1ea417e0812af724290c3c"
+        },
+        "date": 1670848389269,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±1.29%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
