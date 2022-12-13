@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1670848390392,
+  "lastUpdate": 1670921576538,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -8988,6 +8988,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.11,
             "range": "±1.29%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "vowstar@users.noreply.github.com",
+            "name": "Huang Rui",
+            "username": "vowstar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "618b0fd2da0b27009d105e8d8d8cb8c37f496823",
+          "message": "docs/plugins/testing.md: bump honkit-tester supported node version (#318)\n\nBecause the test component is updated, the supported node version has changed",
+          "timestamp": "2022-12-13T17:49:29+09:00",
+          "tree_id": "7edc8da04c62c88506833b4d1af50fd15a172089",
+          "url": "https://github.com/honkit/honkit/commit/618b0fd2da0b27009d105e8d8d8cb8c37f496823"
+        },
+        "date": 1670921574873,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±1.83%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
