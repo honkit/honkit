@@ -12,7 +12,7 @@ Search on npm with keywords: `gitbook-plugin` or `honkit-plugin`
 
 Once you find a plugin that you want to install, you need to add it to your `book.json`:
 
-```
+```json
 {
     "plugins": ["myPlugin", "anotherPlugin"]
 }
