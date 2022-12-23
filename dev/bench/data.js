@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1670921576538,
+  "lastUpdate": 1671754075017,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9019,6 +9019,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.83%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "mstevens@mstevens.org",
+            "name": "Michael Stevens",
+            "username": "mstevens"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "07087f963f53df28d63328b819cc23d7fdb3726e",
+          "message": "improve spelling of compatible (#319)\n\n* improve spelling of compatible\r\n\r\n* mark some json as json",
+          "timestamp": "2022-12-23T09:04:32+09:00",
+          "tree_id": "d71a31a5731db1d34281a8e7886a9627f026fa13",
+          "url": "https://github.com/honkit/honkit/commit/07087f963f53df28d63328b819cc23d7fdb3726e"
+        },
+        "date": 1671754073716,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±1.14%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
