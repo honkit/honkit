@@ -12,13 +12,13 @@ Search on npm with keywords: `gitbook-plugin` or `honkit-plugin`
 
 Once you find a plugin that you want to install, you need to add it to your `book.json`:
 
-```
+```json
 {
     "plugins": ["myPlugin", "anotherPlugin"]
 }
 ```
 
-You can also specify a specific version using: `"myPlugin@0.3.1"`. By default HonKit will resolve the latest version of the plugin compatbile with the current HonKit version.
+You can also specify a specific version using: `"myPlugin@0.3.1"`. By default HonKit will resolve the latest version of the plugin compatible with the current HonKit version.
 
 ### Configuring plugins
 
