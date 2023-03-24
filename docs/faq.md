@@ -49,7 +49,10 @@ Yes, HonKit automatically detect the direction in your pages (`rtl` or `ltr`) an
 
 #### Does HonKit support Math equations?
 
-HonKit supports math equations and TeX thanks to plugins. There are currently 2 official plugins to display math: [mathjax](https://plugins.honkit.com/plugin/mathjax) and [katex](https://plugins.honkit.com/plugin/katex).
+See following issues.
+
+- [Mathjax plugin does not build · Issue #325 · honkit/honkit](https://github.com/honkit/honkit/issues/325)
+- [KaTeX plugin · Issue #217 · honkit/honkit](https://github.com/honkit/honkit/issues/217)
 
 #### Can I customize/theme the output?
 
