@@ -13,6 +13,7 @@ describe("fetchRemoteImages", () => {
     let dir;
     beforeEach(() => {
         dir = tmp.dirSync();
+        return fs.rm(dir.name, { recursive: true, force: true });
     });
     afterEach(() => {
         // remove tmp `dir`

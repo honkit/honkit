@@ -98,7 +98,7 @@ async function download(uri: string, destFilePath: string) {
             d.resolve();
         }
     });
-    return d.promis;
+    return d.promise;
 }
 
 // Find a filename available in a folder
