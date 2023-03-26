@@ -3,17 +3,13 @@ import crc from "crc";
 import editHTMLElement from "./editHTMLElement";
 import fs from "../../utils/fs";
 import LocationUtils from "../../utils/location";
+import type cheerio from "cheerio";
 
 /**
  Fetch all remote images
-
- @param {string} rootFolder
- @param {string} currentFile
- @param {HTMLDom} $
- @return {Promise}
  */
 
-function fetchRemoteImages(rootFolder, currentFile, $) {
+function fetchRemoteImages(rootFolder: string, currentFile: string, $: cheerio.Root): Promise<any> {
     const currentDirectory = path.dirname(currentFile);
 
     return editHTMLElement($, "img", ($img) => {
