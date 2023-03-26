@@ -1,6 +1,3 @@
-const ltrim = require("ltrim");
-const rtrim = require("rtrim");
-
 const reInline = require("./re/inline");
 const MarkupIt = require("../../");
 
@@ -18,16 +15,15 @@ function isInlineTex(content) {
  * @return {String}
  */
 function normalizeTeX(content, isInline) {
-    content = ltrim(content, "\n");
-    content = rtrim(content, "\n");
-
+    // trim new line at start and end, but preserve spaces
+    content = content.replace(/^\n+/, "").replace(/\n+$/, "");
+    
     if (!isInline) {
         content = `\n${content}\n`;
     }
 
     return content;
 }
-
 module.exports = MarkupIt.Rule(MarkupIt.ENTITIES.MATH)
     .regExp(reInline.math, (state, match) => {
         const text = match[1];
@@ -57,3 +53,4 @@ module.exports = MarkupIt.Rule(MarkupIt.ENTITIES.MATH)
 
         return output;
     });
+module.exports.normalizeTeX = normalizeTeX;
