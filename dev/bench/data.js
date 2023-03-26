@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1679816283394,
+  "lastUpdate": 1679818122764,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9236,6 +9236,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.09,
             "range": "±0.86%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "6aa10d423c2eef15c9d7fcaacd7367d600e5c584",
+          "message": " fix(deps): remove unused read-installed  (#334)\n\n* fix(deps): remove unused read-installed\r\n\r\n* Update yarn.lock",
+          "timestamp": "2023-03-26T17:05:06+09:00",
+          "tree_id": "2781b77d4f2614637499562abded71b07311a454",
+          "url": "https://github.com/honkit/honkit/commit/6aa10d423c2eef15c9d7fcaacd7367d600e5c584"
+        },
+        "date": 1679818120859,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±1.31%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
