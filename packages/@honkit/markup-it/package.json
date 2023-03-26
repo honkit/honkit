@@ -17,7 +17,7 @@
     "url": "git+https://github.com/GitbookIO/draft-markup.git"
   },
   "license": "Apache-2.0",
-  "author": "Samy Pesse <samy@gitbook.com>",
+  "author": "azu",
   "main": "lib/index.js",
   "files": [
     "lib",
