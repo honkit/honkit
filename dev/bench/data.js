@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1679666508780,
+  "lastUpdate": 1679812497302,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9112,6 +9112,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.11,
             "range": "±0.96%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "82ba754f18b5e5e7a53c5bbf041d92066943306d",
+          "message": " fix(deps): remove \"request\" package  (#329)\n\n* test: add tests for fetchRemoteImages\r\n\r\n* fix(deps): remove \"request\" package\r\n\r\n* fix",
+          "timestamp": "2023-03-26T15:31:25+09:00",
+          "tree_id": "24146da48074a3d2e6f15ff62f8ddefa4285383e",
+          "url": "https://github.com/honkit/honkit/commit/82ba754f18b5e5e7a53c5bbf041d92066943306d"
+        },
+        "date": 1679812496289,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±8.40%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
