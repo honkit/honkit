@@ -81,4 +81,4 @@ Apache-2.0
 
 It includes Samy Pesse and GitBook works.
 
-- [markup-it](https://github.com/GitbookIO/markup-it)
+- Samy Pesse <samy@gitbook.com> - [markup-it](https://github.com/GitbookIO/markup-it)
