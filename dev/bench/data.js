@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1679812630558,
+  "lastUpdate": 1679814653359,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9174,6 +9174,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±2.18%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "22913da37c761bec59459f40de055b1ab69d7f15",
+          "message": "refactor: remove ltrim and rtrim (#332)\n\n* refactor: remove ltrim and rtrim\r\n\r\n* chore: update current author",
+          "timestamp": "2023-03-26T16:08:16+09:00",
+          "tree_id": "b0f1088f065d7df5dae7f7e5221bbb3465448b50",
+          "url": "https://github.com/honkit/honkit/commit/22913da37c761bec59459f40de055b1ab69d7f15"
+        },
+        "date": 1679814652391,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±0.40%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
