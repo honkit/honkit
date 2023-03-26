@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1679818122764,
+  "lastUpdate": 1679818486241,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9267,6 +9267,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.31%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "cf5784b974d3fc8136c47914371b70935b7b751d",
+          "message": "CI: add .github/release.yml",
+          "timestamp": "2023-03-26T17:11:48+09:00",
+          "tree_id": "a2be94460c02230bce7a8a9ba2bc949744a1d7f7",
+          "url": "https://github.com/honkit/honkit/commit/cf5784b974d3fc8136c47914371b70935b7b751d"
+        },
+        "date": 1679818485310,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±0.69%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
