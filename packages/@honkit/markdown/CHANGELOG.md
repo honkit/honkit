@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.6](https://github.com/honkit/honkit/compare/v4.0.5...v4.0.6) (2023-03-26)
+
+**Note:** Version bump only for package @honkit/markdown
+
+
+
+
+
 ## [4.0.1](https://github.com/honkit/honkit/compare/v4.0.0...v4.0.1) (2022-10-18)
 
 **Note:** Version bump only for package @honkit/markdown
