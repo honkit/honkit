@@ -1,6 +1,6 @@
 {
-    "npmClient": "yarn",
-    "useWorkspaces": true,
-    "includeMergedTags": true,
-    "version": "4.0.6"
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "includeMergedTags": true,
+  "version": "4.0.7"
 }
