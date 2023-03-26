@@ -13,6 +13,8 @@ This documentation has been generated using `honkit`.
 or as an ebook (PDF, ePub or Mobi).
 
 `honkit` is a fork of [GitBook (Legacy)](https://github.com/GitbookIO/gitbook).
+You can read about compatibility, differences and migration from GitBook
+[here](https://github.com/honkit/honkit#fork-of-gitbook).
 
 ### Help and Support
 
