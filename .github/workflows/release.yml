@@ -1,31 +1,75 @@
-name: Publish
-
-# Publish npm and dockerhub when Release Pull Request is merged
+# This workflow often runs following steps when a PR is merged to main branch.
+# 1. jobs.check checks if we need to release
+# 2. jobs.release publish packages
 #
-# https://hub.docker.com/r/honkit/honkit
+# Note: Force publish
+# You can publish packages manually by running workflow dispatch
+# This workflow dispatch skip jobs.check process
+# 1. dispatch "release" workflow
+# 2. Open Release Page
+# 3. Generate Release Note
+name: Release
+
 on:
   pull_request:
     branches:
+      - main
       - master
-    types: [closed]
+    types: [ closed ]
+  workflow_dispatch: # force release
+
 env:
   DOCKER_HUB_BASE_NAME: honkit/honkit
   NODE_VERSION: 16
 
-permissions: write-all
 jobs:
-  publish:
+  check:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
+    # when release PR is merged or workflow_dispatch is triggered, run this job
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     outputs:
-      exists_tag: ${{ steps.tag_check.outputs.exists_tag }}
+      EXISTS_TAG: ${{ steps.tag_check.outputs.EXISTS_TAG }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup Node ${{ matrix.node-version }}
+      - name: Set PACKAGE_VERSION
+        run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
+      - name: Tag Check
+        id: tag_check
+        run: |
+          GET_API_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/git/ref/tags/${TAG_NAME}"
+          http_status_code=$(curl -LI $GET_API_URL -o /dev/null -w '%{http_code}\n' -s \
+            -H "Authorization: token ${GITHUB_TOKEN}")
+          if [ "$http_status_code" -ne "404" ] ; then
+            echo "EXISTS_TAG=true" >> $GITHUB_OUTPUT
+          else
+            echo "EXISTS_TAG=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          TAG_NAME: v${{ env.PACKAGE_VERSION }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  release:
+    runs-on: ubuntu-latest
+    needs: check
+    if: always() && (needs.check.outputs.EXISTS_TAG == 'false')
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'yarn'
+          node-version: 18
+#          registry-url: 'https://npm.pkg.github.com'
+          # for publishing packages to npm
+          registry-url: https://registry.npmjs.org
       - name: Git Identity
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -33,79 +77,54 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set PACKAGE_VERSION
+        run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
       - name: Install
         run: yarn install
-      # Define ${CURRENT_VERSION}
-      - name: Set Current Version
-        run: |
-          CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
-          echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
-      - name: Tag Check
-        id: tag_check
-        run: |
-          GET_API_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/git/ref/tags/v${CURRENT_VERSION}"
-          http_status_code=$(curl -LI $GET_API_URL -o /dev/null -w '%{http_code}\n' -s \
-            -H "Authorization: token ${GITHUB_TOKEN}")
-          if [ "$http_status_code" -ne "404" ] ; then
-            echo "::set-output name=exists_tag::true"
-          else
-            echo "::set-output name=exists_tag::false"
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # Publish to npm
       - name: Publish
-        if: steps.tag_check.outputs.exists_tag == 'false'
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-          yarn run release-ci
+        run: npm run ci:release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Create Git Tag
-        if: steps.tag_check.outputs.exists_tag == 'false'
         uses: pkgdeps/git-tag-action@v2
         with:
-          version: ${{ env.CURRENT_VERSION }}
+          version: ${{ env.PACKAGE_VERSION }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_repo: ${{ github.repository }}
           git_commit_sha: ${{ github.sha }}
           git_tag_prefix: "v"
       - name: Create Release
         id: create_release
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ env.CURRENT_VERSION }}
+          tag_name: v${{ env.PACKAGE_VERSION }}
           # Copy Pull Request's tile and body to Release Note
           release_name: ${{ github.event.pull_request.title }}
-          body: |
-            ${{ github.event.pull_request.body }}
-
-            ---
-
-            [Comments](${{ github.event.pull_request.html_url }})
+          body: ${{ github.event.pull_request.body }}
           draft: false
           prerelease: false
-      - uses: actions/github-script@0.8.0
-        if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+          generate_release_notes: ${{ !github.event.pull_request.body }}
+      - uses: actions/github-script@v6
+        if: github.event_name != 'workflow_dispatch'
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🎉 Release https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }}'
+              body: '🎉 Release https://github.com/${{ github.repository }}/releases/tag/v${{ env.PACKAGE_VERSION }}'
             })
-
   push:
-    needs: publish
-    if: needs.publish.outputs.exists_tag == 'false'
+    needs: release
+    if: always() && (needs.check.outputs.EXISTS_TAG == 'false')
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v3

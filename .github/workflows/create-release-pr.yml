@@ -1,42 +1,55 @@
 name: Create Release PR
 on:
   workflow_dispatch:
-
+    inputs:
+      semver:
+        description: 'New Version(semver)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 permissions:
   contents: write
   pull-requests: write
+
 jobs:
   create-release-pr:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: setup Node
-        uses: actions/setup-node@v3
-        with:
-          cache: 'yarn'
-          node-version: '16'
-      - name: Install
-        run: yarn install
       - name: Update Version
         run: |
           git config --global user.email "${GIT_AUTHOR_EMAIL}"
           git config --global user.name "${GIT_AUTHOR_NAME}"
-          yarn run versionup --yes
+          npm run ci:versionup:${SEMVER} --yes
         env:
+          SEMVER: ${{ github.event.inputs.semver }}
           GIT_AUTHOR_NAME: ${{ github.actor }}
           GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
-      - name: package-version
-        run: node -p -e '`PACKAGE_VERSION=${require("./lerna.json").version}`' >> $GITHUB_ENV
+      - name: Set PACKAGE_VERSION
+        run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
+      - name: Set GitHub Release Note
+        id: release_note
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const result = await exec.getExecOutput(`gh api "/repos/{owner}/{repo}/releases/generate-notes" -f tag_name="${process.env.PACKAGE_VERSION}" --jq .body`, [], {
+              ignoreReturnCode: true,
+            })
+            core.setOutput('stdout', result.stdout)
+        env:
+          PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: |
-            chore(release): ${{ env.PACKAGE_VERSION }}
+          commit-message: "chore(release): v${{ env.PACKAGE_VERSION }}"
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           assignees: ${{ github.actor }}
@@ -46,16 +59,8 @@ jobs:
           delete-branch: true
           title: 'v${{ env.PACKAGE_VERSION }}'
           body: |
-            @${{ github.actor }} Please write release note in the body
-
-            ## Breaking Changes
-
-            ## Features
-
-            ## Fixes
-
-          labels: |
-            Type: release
+            ${{ steps.release_note.outputs.stdout }}
+          labels: "Type: Release"
       - name: Check Pull Request
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
