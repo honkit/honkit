@@ -8,6 +8,9 @@ Real world examples of content published using HonKit.
 
 ## Who's using HonKit
 
+- Learn JavaScript
+    - [Website](https://javascript.sumankunwar.com.np/)
+    - [Source](https://github.com/sumn2u/learn-javascript)
 - JavaScript Primer
     - [Website](https://jsprimer.net/)
     - [Source](https://github.com/asciidwango/js-primer)
