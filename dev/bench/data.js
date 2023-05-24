@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1679841793223,
+  "lastUpdate": 1684966615981,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9391,6 +9391,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±1.92%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "sumn2u@hotmail.com",
+            "name": "Suman Kunwar",
+            "username": "sumn2u"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "aff818395e2c0d47eafce81d127491f695f97fce",
+          "message": "docs: add learn javascript book (#345)",
+          "timestamp": "2023-05-25T07:13:26+09:00",
+          "tree_id": "3558dc58e9d429704381e45b553e52453198184d",
+          "url": "https://github.com/honkit/honkit/commit/aff818395e2c0d47eafce81d127491f695f97fce"
+        },
+        "date": 1684966614317,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±2.46%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
