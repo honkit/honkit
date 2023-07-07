@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1688725487782,
+  "lastUpdate": 1688728775042,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9453,6 +9453,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±2.12%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "798b68107560891ae77614e22454856212534f36",
+          "message": "fix(honkit): fix TypeError: Cannot read properties of undefined (reading 'file') (#350)",
+          "timestamp": "2023-07-07T20:15:51+09:00",
+          "tree_id": "108bfde01c7c64e22eece91815f6e2af69cf3658",
+          "url": "https://github.com/honkit/honkit/commit/798b68107560891ae77614e22454856212534f36"
+        },
+        "date": 1688728773538,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±1.45%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
