@@ -47,7 +47,7 @@
     "@types/jest": "^26.0.0",
     "eslint": "^8.23.1",
     "husky": "^8.0.1",
-    "lerna": "^5.5.1",
+    "lerna": "^7.1.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "ts-jest": "^29.0.1",
