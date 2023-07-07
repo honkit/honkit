@@ -39,7 +39,7 @@ function parseConfig(book) {
         values = validateConfig(values);
 
         // Set the file
-        if (result.file) {
+        if (result && result.file) {
             config = config.setFile(result.file);
         }
 
