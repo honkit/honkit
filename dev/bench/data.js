@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1688728869996,
+  "lastUpdate": 1688729146137,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9515,6 +9515,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±1.53%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "f80222eddb6f6bb4b0d5c908f7dfa955f085818b",
+          "message": "fix(deps): update lerna",
+          "timestamp": "2023-07-07T20:21:12+09:00",
+          "tree_id": "4763da30e4ab4414229593e1dffd71da050bbec3",
+          "url": "https://github.com/honkit/honkit/commit/f80222eddb6f6bb4b0d5c908f7dfa955f085818b"
+        },
+        "date": 1688729144333,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.95%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
