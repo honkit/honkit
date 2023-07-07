@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1688728775042,
+  "lastUpdate": 1688728869996,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9484,6 +9484,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±1.45%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c6f744d863f1506d9a521406d0ecd9f3333b3366",
+          "message": "chore(deps): bump nunjucks from 3.2.3 to 3.2.4 (#338)\n\nBumps [nunjucks](https://github.com/mozilla/nunjucks) from 3.2.3 to 3.2.4.\r\n- [Release notes](https://github.com/mozilla/nunjucks/releases)\r\n- [Changelog](https://github.com/mozilla/nunjucks/blob/master/CHANGELOG.md)\r\n- [Commits](https://github.com/mozilla/nunjucks/compare/v3.2.3...v3.2.4)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: nunjucks\r\n  dependency-type: direct:production\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2023-07-07T20:18:21+09:00",
+          "tree_id": "4718df35df1c2620222f257901e7739097e733e3",
+          "url": "https://github.com/honkit/honkit/commit/c6f744d863f1506d9a521406d0ecd9f3333b3366"
+        },
+        "date": 1688728869370,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±1.53%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
