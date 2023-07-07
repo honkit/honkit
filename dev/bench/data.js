@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1688729787989,
+  "lastUpdate": 1688730645341,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9608,6 +9608,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.11,
             "range": "±1.01%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "4927543289442582a3e3cbbd332e4e6eda6e0e7b",
+          "message": "fix(honkit): fix nunjucks types",
+          "timestamp": "2023-07-07T20:47:33+09:00",
+          "tree_id": "3cbb220daa65f87a71a935d02e994c496292eecd",
+          "url": "https://github.com/honkit/honkit/commit/4927543289442582a3e3cbbd332e4e6eda6e0e7b"
+        },
+        "date": 1688730644232,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±1.27%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
