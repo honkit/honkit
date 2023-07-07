@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1688729608425,
+  "lastUpdate": 1688729787989,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9577,6 +9577,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.84%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "193298bc4b09697a74676707a070835e0b97aee4",
+          "message": "chore(deps): bump yaml from 2.2.1 to 2.3.1 (#352)\n\nBumps [yaml](https://github.com/eemeli/yaml) from 2.2.1 to 2.3.1.\r\n- [Release notes](https://github.com/eemeli/yaml/releases)\r\n- [Commits](https://github.com/eemeli/yaml/compare/v2.2.1...v2.3.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: yaml\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2023-07-07T20:33:37+09:00",
+          "tree_id": "3f82473f1dc7fbe7ab0089250a1ef84f174341a2",
+          "url": "https://github.com/honkit/honkit/commit/193298bc4b09697a74676707a070835e0b97aee4"
+        },
+        "date": 1688729786852,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±1.01%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
