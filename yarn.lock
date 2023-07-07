@@ -1165,7 +1165,7 @@
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz#d3357479a0fdfdd5907fe67e17e0a85c906e1301"
   integrity sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==
 
-"@types/nunjucks@^3.1.3":
+"@types/nunjucks@^3.2.2":
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/@types/nunjucks/-/nunjucks-3.2.3.tgz#994e68cb575c3ac1be27e6f99543183b3c3605aa"
   integrity sha512-+lFIql0nbWSftazQ27cOYvSLC92SsfjxrU0I/Iys7hoxrBkN8OF+wmxxzx3bLFyFrLgDZ9lUckGcwldE4SfDQA==
@@ -4655,11 +4655,6 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky@^8.0.1:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.3.tgz#4936d7212e46d1dea28fef29bb3a108872cd9184"
-  integrity sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==
-
 i18n-t@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/i18n-t/-/i18n-t-1.0.1.tgz#b7bf4b003e395dc747843e8fca5de477658b0b1c"
@@ -7584,10 +7579,15 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prettier@^2.2.1, prettier@^2.7.1:
+prettier@^2.2.1:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
+
+prettier@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.0.tgz#e7b19f691245a21d618c68bc54dc06122f6105ae"
+  integrity sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==
 
 pretty-format@^26.0.0, pretty-format@^26.6.2:
   version "26.6.2"

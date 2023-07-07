@@ -18,6 +18,7 @@ import PathUtils from "../utils/path";
 const ConrefsLoader = nunjucks.Loader.extend({
     async: true,
 
+    // @ts-expect-error types is wrong
     init: function (rootFolder, transformFn, logger) {
         this.rootFolder = rootFolder;
         this.transformFn = transformFn;
@@ -25,7 +26,6 @@ const ConrefsLoader = nunjucks.Loader.extend({
         this.git = new Git();
     },
 
-    // @ts-expect-error: Property 'extend' does not exist on type 'typeof Loader'.
     getSource: function (sourceURL, callback) {
         const that = this;
 
@@ -54,7 +54,7 @@ const ConrefsLoader = nunjucks.Loader.extend({
                     .then((source) => {
                         return {
                             src: source,
-                            path: filepath,
+                            path: filepath
                         };
                     });
             })
@@ -90,7 +90,7 @@ const ConrefsLoader = nunjucks.Loader.extend({
     // Handle all files as relative, so that nunjucks pass responsability to 'resolve'
     isRelative: function (filename) {
         return LocationUtils.isRelative(filename);
-    },
+    }
 });
 
 export default ConrefsLoader;
