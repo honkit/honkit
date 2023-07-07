@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1684966615981,
+  "lastUpdate": 1688725487782,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9422,6 +9422,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±2.46%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a419a674a7235a72838641ec71c36280862cd46e",
+          "message": "Merge pull request #349 from honkit/dependabot/npm_and_yarn/semver-7.5.2",
+          "timestamp": "2023-07-07T10:21:20Z",
+          "tree_id": "a3f831964391f78210aceb5b046e753e2b103527",
+          "url": "https://github.com/honkit/honkit/commit/a419a674a7235a72838641ec71c36280862cd46e"
+        },
+        "date": 1688725486175,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±2.12%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
