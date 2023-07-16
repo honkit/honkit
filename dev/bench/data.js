@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1688730914429,
+  "lastUpdate": 1689505034284,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9670,6 +9670,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.62%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "57d7c3c77e1c9c9bf7550edf0225b5c163af7072",
+          "message": "fix!(asciidoc): correct include::./relative/path/from/content (#357)\n\n* test: add failed test case\r\n\r\n* refactor all\r\n\r\n* fix!(asciidoc): correct include::./relative/path/from/content\r\n\r\n- Previous, the `include::` path is relative path from current directory\r\n- Now, the `include::` path is relative path from the content file path",
+          "timestamp": "2023-07-16T19:53:09+09:00",
+          "tree_id": "57c8ab70a822588f2d8d0d374bc97ef2e907a5a1",
+          "url": "https://github.com/honkit/honkit/commit/57d7c3c77e1c9c9bf7550edf0225b5c163af7072"
+        },
+        "date": 1689505032574,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±0.95%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
