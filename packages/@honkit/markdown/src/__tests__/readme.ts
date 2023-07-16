@@ -1,15 +1,15 @@
-const fs = require("fs");
-const path = require("path");
-const assert = require("assert");
+import path from "path";
+import assert from "assert";
+import markdown from "../";
 
-const readme = require("../").readme;
+import fs from "fs";
 
 describe("Readme parsing", () => {
     let LEXED;
 
     beforeAll(() => {
         const CONTENT = fs.readFileSync(path.join(__dirname, "./fixtures/README.md"), "utf8");
-        LEXED = readme(CONTENT);
+        LEXED = markdown.readme(CONTENT);
     });
 
     it("should contain a title", () => {

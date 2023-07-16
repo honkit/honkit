@@ -1,14 +1,13 @@
-var fs = require("fs");
-var path = require("path");
-var assert = require("assert");
-
-var summary = require("../").summary;
+import fs from "fs";
+import path from "path";
+import assert from "assert";
+import asciidoc from "../";
 
 var LEXED, PART;
 
 beforeAll(function () {
     var CONTENT = fs.readFileSync(path.join(__dirname, "./fixtures/SUMMARY.adoc"), "utf8");
-    LEXED = summary(CONTENT);
+    LEXED = asciidoc.summary(CONTENT);
     PART = LEXED.parts[0];
     // todo: add support for parts in asciidoc
 });
@@ -48,6 +47,6 @@ it("should normalize paths from .md", function () {
 });
 
 it("should correctly convert it to text", function () {
-    var text = summary.toText(LEXED);
-    assert.deepEqual(summary(text), LEXED);
+    var text = asciidoc.summary.toText(LEXED);
+    assert.deepEqual(asciidoc.summary(text), LEXED);
 });

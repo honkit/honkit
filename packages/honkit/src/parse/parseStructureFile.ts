@@ -1,6 +1,7 @@
 import Promise from "../utils/promise";
 import error from "../utils/error";
 import lookupStructureFile from "./lookupStructureFile";
+import path from "path";
 
 /**
  Parse a ParsableFile using a specific method
@@ -17,22 +18,23 @@ function parseFile(fs, file, type) {
     if (!parser) {
         return Promise.reject(
             error.FileNotParsableError({
-                filename: filepath,
+                filename: filepath
             })
         );
     }
 
+    const baseDirectory = path.dirname(filepath);
     return fs
         .readAsString(filepath)
         .then((content) => {
             if (type === "readme") {
-                return parser.parseReadme(content);
+                return parser.parseReadme(content, { baseDirectory });
             } else if (type === "glossary") {
-                return parser.parseGlossary(content);
+                return parser.parseGlossary(content, { baseDirectory });
             } else if (type === "summary") {
-                return parser.parseSummary(content);
+                return parser.parseSummary(content, { baseDirectory });
             } else if (type === "langs") {
-                return parser.parseLanguages(content);
+                return parser.parseLanguages(content, { baseDirectory });
             } else {
                 throw new Error(`Parsing invalid type "${type}"`);
             }

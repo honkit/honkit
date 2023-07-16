@@ -1,14 +1,13 @@
 import fs from "fs";
 import path from "path";
 import assert from "assert";
-
-const glossary = require("../").glossary;
+import asciidoc from "../";
 
 let LEXED;
 
 beforeAll(() => {
     const CONTENT = fs.readFileSync(path.join(__dirname, "fixtures/GLOSSARY.adoc"), "utf8");
-    LEXED = glossary(CONTENT);
+    LEXED = asciidoc.glossary(CONTENT);
 });
 
 it("should only get heading + paragraph pairs", () => {
@@ -25,6 +24,6 @@ it("should output simple name/description objects", () => {
 });
 
 it("should correctly convert it to text", () => {
-    const text = glossary.toText(LEXED);
-    assert.deepEqual(glossary(text), LEXED);
+    const text = asciidoc.glossary.toText(LEXED);
+    assert.deepEqual(asciidoc.glossary(text), LEXED);
 });

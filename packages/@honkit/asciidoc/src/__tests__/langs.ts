@@ -1,14 +1,13 @@
-var fs = require("fs");
-var path = require("path");
-var assert = require("assert");
-
-var langs = require("../").langs;
+import fs from "fs";
+import path from "path";
+import assert from "assert";
+import asciidoc from "../";
 
 var LEXED;
 
 beforeAll(function () {
     var CONTENT = fs.readFileSync(path.join(__dirname, "./fixtures/LANGS.adoc"), "utf8");
-    LEXED = langs(CONTENT);
+    LEXED = asciidoc.langs(CONTENT);
 });
 
 it("should detect paths and titles", function () {
@@ -20,6 +19,6 @@ it("should detect paths and titles", function () {
 });
 
 it("should correctly convert it to text", function () {
-    var text = langs.toText(LEXED);
-    assert.deepEqual(langs(text), LEXED);
+    var text = asciidoc.langs.toText(LEXED);
+    assert.deepEqual(asciidoc.langs(text), LEXED);
 });

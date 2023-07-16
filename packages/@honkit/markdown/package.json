@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "jest": "^29.0.3",
-    "ts-jest": "^29.0.1"
+    "ts-jest": "^29.1.1"
   },
   "publishConfig": {
     "access": "public"

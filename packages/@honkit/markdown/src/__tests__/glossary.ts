@@ -1,9 +1,9 @@
-const fs = require("fs");
-const path = require("path");
-const assert = require("assert");
+import assert from "assert";
+import path from "path";
+import fs from "fs";
+import markdown from "../";
 
-const glossary = require("../").glossary;
-
+const glossary = markdown.glossary;
 describe("Glossary parsing", () => {
     let LEXED;
 

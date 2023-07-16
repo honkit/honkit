@@ -1,10 +1,9 @@
-import HTMLParser from "@honkit/html";
-
+import { createParser } from "@honkit/html";
 import toHTML from "./toHTML";
 import toMarkdown from "./toMarkdown";
-import page from "./page";
+import { preparePage } from "./page";
 
-module.exports = HTMLParser.createParser(toHTML, toMarkdown);
-
+const markdownParser = createParser(toHTML, toMarkdown);
 // Add the custom page escaping
-module.exports.page.prepare = page.prepare;
+markdownParser.page.prepare = preparePage;
+export default markdownParser;

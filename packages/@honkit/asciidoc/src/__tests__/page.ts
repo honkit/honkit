@@ -1,17 +1,16 @@
-const fs = require("fs");
-const path = require("path");
-const assert = require("assert");
-
-const page = require("../").page;
+import path from "path";
+import fs from "fs";
+import assert from "assert";
+import asciidoc from "../";
 
 it("should gen content", function () {
     const CONTENT = fs.readFileSync(path.join(__dirname, "./fixtures/PAGE.adoc"), "utf8");
-    const LEXED = page(CONTENT);
+    const LEXED = asciidoc.page(CONTENT);
     assert(LEXED.content);
 });
 
 it("should include file", function () {
-    const result = page(`= GitBook User Manual
+    const result = asciidoc.page(`= GitBook User Manual
 
 == Usage
 
@@ -22,7 +21,7 @@ include::src/__tests__/fixtures/usage.adoc[]
 });
 
 it("should use font icons by default", function () {
-    const result = page(`= HonKit User Manual
+    const result = asciidoc.page(`= HonKit User Manual
 
 == Install
 
@@ -33,7 +32,7 @@ IMPORTANT: Do not forgot to install \`yarn\`
 });
 
 it("should allow users to override icons attribute", function () {
-    const result = page(`= HonKit User Manual
+    const result = asciidoc.page(`= HonKit User Manual
 // override icons attribute
 :icons:
 

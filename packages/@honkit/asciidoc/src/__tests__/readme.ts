@@ -1,14 +1,13 @@
-var fs = require("fs");
-var path = require("path");
-var assert = require("assert");
-
-var readme = require("../").readme;
+import fs from "fs";
+import path from "path";
+import assert from "assert";
+import asciidoc from "../";
 
 var LEXED;
 
 beforeAll(function () {
     var CONTENT = fs.readFileSync(path.join(__dirname, "./fixtures/README.adoc"), "utf8");
-    LEXED = readme(CONTENT);
+    LEXED = asciidoc.readme(CONTENT);
 });
 
 it("should contain a title", function () {

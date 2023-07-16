@@ -12,6 +12,8 @@ import encodeConfig from "./encodeConfig";
 import encodeSummary from "./encodeSummary";
 import encodeNavigation from "./encodeNavigation";
 import encodePage from "./encodePage";
+import { ToHTMLOptions } from "@honkit/html";
+import { ParserOptions } from "../models/parser";
 
 /**
  Encode a global context into a JS object
@@ -99,12 +101,13 @@ function encodeGlobal(output) {
 
          @param {string} type
          @param {string} text
+         @param options
          @return {Promise<String>}
          */
-        renderBlock: function (type, text) {
+        renderBlock: function (type: string, text: string, options: ParserOptions) {
             const parser = parsers.get(type);
 
-            return parser.parsePage(text).get("content");
+            return parser.parsePage(text, options).get("content");
         },
 
         /**
@@ -112,12 +115,13 @@ function encodeGlobal(output) {
 
          @param {string} type
          @param {string} text
+         @param options
          @return {Promise<String>}
          */
-        renderInline: function (type, text) {
+        renderInline: function (type: string, text: string, options: ParserOptions) {
             const parser = parsers.get(type);
 
-            return parser.parseInline(text).get("content");
+            return parser.parseInline(text, options).get("content");
         },
 
         template: {
@@ -132,7 +136,7 @@ function encodeGlobal(output) {
                 const block = blocks.get(name) || defaultBlocks.get(name);
 
                 return Promise(block.applyBlock(blockData, result));
-            },
+            }
         },
 
         output: {
@@ -220,15 +224,15 @@ function encodeGlobal(output) {
                         return fs.copy(inputFile, outputFilePath);
                     });
                 });
-            },
+            }
         },
 
         gitbook: {
-            version: honkit.version,
+            version: honkit.version
         },
         honkit: {
-            version: honkit.version,
-        },
+            version: honkit.version
+        }
     };
 
     // Deprecated properties

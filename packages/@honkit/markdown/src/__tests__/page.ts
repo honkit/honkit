@@ -1,8 +1,8 @@
-const fs = require("fs");
-const path = require("path");
-const assert = require("assert");
-
-const page = require("../").page;
+import path from "path";
+import fs from "fs";
+import assert from "assert";
+import markdown from "../";
+const page = markdown.page;
 
 describe("Page parsing", () => {
     let LEXED;

@@ -6,7 +6,7 @@ export default Immutable.Map({
         name: "html",
         process: function (blk) {
             return blk;
-        },
+        }
     }),
 
     code: new TemplateBlock({
@@ -14,18 +14,19 @@ export default Immutable.Map({
         process: function (blk) {
             return {
                 html: false,
-                body: blk.body,
+                body: blk.body
             };
-        },
+        }
     }),
 
     markdown: new TemplateBlock({
         name: "markdown",
         process: function (blk) {
+            console.log("blk", blk); // TODO::::::
             return this.book.renderInline("markdown", blk.body).then((out) => {
                 return { body: out };
             });
-        },
+        }
     }),
 
     asciidoc: new TemplateBlock({
@@ -34,7 +35,7 @@ export default Immutable.Map({
             return this.book.renderInline("asciidoc", blk.body).then((out) => {
                 return { body: out };
             });
-        },
+        }
     }),
 
     markup: new TemplateBlock({
@@ -43,6 +44,6 @@ export default Immutable.Map({
             return this.book.renderInline(this.ctx.file.type, blk.body).then((out) => {
                 return { body: out };
             });
-        },
-    }),
+        }
+    })
 });

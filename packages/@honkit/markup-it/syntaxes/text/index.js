@@ -1,4 +1,4 @@
-const MarkupIt = require("../../");
+const MarkupIt = require("../../").Markup;
 
 /*
     This syntax uses the default rules (UNSTYLED)
@@ -6,5 +6,5 @@ const MarkupIt = require("../../");
 */
 module.exports = MarkupIt.Syntax("markdown", {
     inline: [],
-    blocks: [MarkupIt.Rule(MarkupIt.BLOCKS.PARAGRAPH).toText("%s\n\n")],
+    blocks: [MarkupIt.Rule(MarkupIt.BLOCKS.PARAGRAPH).toText("%s\n\n")]
 });
