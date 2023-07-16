@@ -9,6 +9,8 @@ import * as constants from "constants";
 const URL =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png";
 
+// download image from remote server is flaky
+jest.retryTimes(3);
 describe("fetchRemoteImages", () => {
     let dir;
     beforeEach(() => {
