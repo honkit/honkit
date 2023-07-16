@@ -89,6 +89,7 @@
     "urijs": "^1.19.6"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.31",
     "@honkit/internal-test-utils": "^4.0.8",
     "@relmify/jest-serializer-strip-ansi": "^1.0.2",
     "@types/nunjucks": "^3.2.2",
