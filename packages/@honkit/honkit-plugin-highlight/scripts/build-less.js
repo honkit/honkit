@@ -3,8 +3,8 @@ const path = require("path");
 
 const highlightJs = require("highlight.js");
 
-const SOLARIZED_LIGHT_CSS = readCss("solarized-light.css");
-const TOMORROW_CSS = readCss("tomorrow.css");
+const SOLARIZED_LIGHT_CSS = readCss("base16/solarized-light.css");
+const TOMORROW_CSS = readCss("base16/tomorrow.css");
 const TOMORROW_NIGHT_BRIGHT_CSS = readCss("tomorrow-night-bright.css");
 
 writeLess(

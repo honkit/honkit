@@ -8153,58 +8153,58 @@ exports[`HonKit snapshots: plugins/api.html 1`] = `
 <h4 id="book-instance">Book instance</h4>
 <p>The <code>Book</code> class is the central point of <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a>, it centralize all access read methods. This class is defined in <a href="https://github.com/honkit/honkit/blob/master/lib/book.js" target="_blank">book.js</a>.</p>
 <pre><code class="lang-js"><span class="hljs-comment">// Read configuration from book.json</span>
-<span class="hljs-keyword">var</span> value = book.config.get(<span class="hljs-string">&apos;title&apos;</span>, <span class="hljs-string">&apos;Default Value&apos;</span>);
+<span class="hljs-keyword">var</span> value = book.<span class="hljs-property">config</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&apos;title&apos;</span>, <span class="hljs-string">&apos;Default Value&apos;</span>);
 
 <span class="hljs-comment">// Resolve a filename to an absolute path</span>
-<span class="hljs-keyword">var</span> filepath = book.resolve(<span class="hljs-string">&apos;README.md&apos;</span>);
+<span class="hljs-keyword">var</span> filepath = book.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&apos;README.md&apos;</span>);
 
 <span class="hljs-comment">// Render an inline markup string</span>
-book.renderInline(<span class="hljs-string">&apos;markdown&apos;</span>, <span class="hljs-string">&apos;This is **Markdown**&apos;</span>)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) </span>{ ... })
+book.<span class="hljs-title function_">renderInline</span>(<span class="hljs-string">&apos;markdown&apos;</span>, <span class="hljs-string">&apos;This is **Markdown**&apos;</span>)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) { ... })
 
 <span class="hljs-comment">// Render a markup string (block mode)</span>
-book.renderBlock(<span class="hljs-string">&apos;markdown&apos;</span>, <span class="hljs-string">&apos;* This is **Markdown**&apos;</span>)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) </span>{ ... })
+book.<span class="hljs-title function_">renderBlock</span>(<span class="hljs-string">&apos;markdown&apos;</span>, <span class="hljs-string">&apos;* This is **Markdown**&apos;</span>)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) { ... })
 </code></pre>
 <h4 id="output-instance">Output instance</h4>
 <p>The <code>Output</code> class represent the output/write process.</p>
 <pre><code class="lang-js"><span class="hljs-comment">// Return root folder for the output</span>
-<span class="hljs-keyword">var</span> root = output.root();
+<span class="hljs-keyword">var</span> root = output.<span class="hljs-title function_">root</span>();
 
 <span class="hljs-comment">// Resolve a file in the output folder</span>
-<span class="hljs-keyword">var</span> filepath = output.resolve(<span class="hljs-string">&apos;myimage.png&apos;</span>);
+<span class="hljs-keyword">var</span> filepath = output.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&apos;myimage.png&apos;</span>);
 
 <span class="hljs-comment">// Convert a filename to an URL (returns a path to an html file)</span>
-<span class="hljs-keyword">var</span> fileurl = output.toURL(<span class="hljs-string">&apos;mychapter/README.md&apos;</span>);
+<span class="hljs-keyword">var</span> fileurl = output.<span class="hljs-title function_">toURL</span>(<span class="hljs-string">&apos;mychapter/README.md&apos;</span>);
 
 <span class="hljs-comment">// Write a file in the output folder</span>
-output.writeFile(<span class="hljs-string">&apos;hello.txt&apos;</span>, <span class="hljs-string">&apos;Hello World&apos;</span>)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ ... });
+output.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">&apos;hello.txt&apos;</span>, <span class="hljs-string">&apos;Hello World&apos;</span>)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) { ... });
 
 <span class="hljs-comment">// Copy a file to the output folder</span>
-output.copyFile(<span class="hljs-string">&apos;./myfile.jpg&apos;</span>, <span class="hljs-string">&apos;cover.jpg&apos;</span>)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ ... });
+output.<span class="hljs-title function_">copyFile</span>(<span class="hljs-string">&apos;./myfile.jpg&apos;</span>, <span class="hljs-string">&apos;cover.jpg&apos;</span>)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) { ... });
 
 <span class="hljs-comment">// Verify that a file exists</span>
-output.hasFile(<span class="hljs-string">&apos;hello.txt&apos;</span>)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">exists</span>) </span>{ ... });
+output.<span class="hljs-title function_">hasFile</span>(<span class="hljs-string">&apos;hello.txt&apos;</span>)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">exists</span>) { ... });
 </code></pre>
 <h4 id="page-instance">Page instance</h4>
 <p>A page instance represent the current parsed page.</p>
 <pre><code class="lang-js"><span class="hljs-comment">// Title of the page (from SUMMARY)</span>
-page.title
+page.<span class="hljs-property">title</span>
 
 <span class="hljs-comment">// Content of the page (Markdown/Asciidoc/HTML according to the stage)</span>
-page.content
+page.<span class="hljs-property">content</span>
 
 <span class="hljs-comment">// Relative path in the book</span>
-page.path
+page.<span class="hljs-property">path</span>
 
 <span class="hljs-comment">// Absolute path to the file</span>
-page.rawPath
+page.<span class="hljs-property">rawPath</span>
 
 <span class="hljs-comment">// Type of parser used for this file</span>
-page.type (<span class="hljs-string">&apos;markdown&apos;</span> or <span class="hljs-string">&apos;asciidoc&apos;</span>)
+page.<span class="hljs-property">type</span> (<span class="hljs-string">&apos;markdown&apos;</span> or <span class="hljs-string">&apos;asciidoc&apos;</span>)
 </code></pre>
 <h4 id="context-for-blocks-and-filters">Context for Blocks and Filters</h4>
 <p>Blocks and filters have access to the same context, this context is bind to the template engine execution:</p>
@@ -8216,10 +8216,10 @@ page.type (<span class="hljs-string">&apos;markdown&apos;</span> or <span class=
     },
 
     <span class="hljs-comment">// Book instance</span>
-    <span class="hljs-string">&quot;book&quot;</span> &lt;Book&gt;,
+    <span class="hljs-string">&quot;book&quot;</span> &lt;<span class="hljs-title class_">Book</span>&gt;,
 
     <span class="hljs-comment">// Output instance</span>
-    <span class="hljs-string">&quot;output&quot;</span>: &lt;Output&gt;
+    <span class="hljs-string">&quot;output&quot;</span>: &lt;<span class="hljs-title class_">Output</span>&gt;
 }
 </code></pre>
 <p>For example a filter or block function can access the current book using: <code>this.book</code>.</p>
@@ -9027,11 +9027,11 @@ exports[`HonKit snapshots: plugins/blocks.html 1`] = `
 <p>The most common usage is to process the content within some tags at runtime. It&apos;s like <a href="filters.html">filters</a>, but on steroids because you aren&apos;t confined to a single expression.</p>
 <h3 id="defining-a-new-block">Defining a new block</h3>
 <p>Blocks are defined by the plugin, blocks is a map of name associated with a block descriptor. The block descriptor needs to contain at least a <code>process</code> method.</p>
-<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = {
+<pre><code class="lang-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
     <span class="hljs-attr">blocks</span>: {
         <span class="hljs-attr">tag1</span>: {
-            <span class="hljs-attr">process</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">block</span>) </span>{
-                <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello &quot;</span>+block.body+<span class="hljs-string">&quot;, How are you?&quot;</span>;
+            <span class="hljs-attr">process</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">block</span>) {
+                <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello &quot;</span>+block.<span class="hljs-property">body</span>+<span class="hljs-string">&quot;, How are you?&quot;</span>;
             }
         }
     }
@@ -9044,10 +9044,10 @@ exports[`HonKit snapshots: plugins/blocks.html 1`] = `
 This is the body of the block.
 {% endtag1 %}
 </code></pre><p>And arguments are easily accessible in the <code>process</code> method:</p>
-<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = {
+<pre><code class="lang-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
     <span class="hljs-attr">blocks</span>: {
         <span class="hljs-attr">tag1</span>: {
-            <span class="hljs-attr">process</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">block</span>) </span>{
+            <span class="hljs-attr">process</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">block</span>) {
                 <span class="hljs-comment">// block.args equals [&quot;argument 1&quot;, &quot;argument 2&quot;]</span>
                 <span class="hljs-comment">// block.kwargs equals { &quot;name&quot;: &quot;Test&quot; }</span>
             }
@@ -9896,7 +9896,7 @@ exports[`HonKit snapshots: plugins/create.html 1`] = `
 <p>Also, the <strong>package engines</strong> should contain <code>honkit</code> or <code>gitbook</code>.</p>
 <h4 id="indexjs">index.js</h4>
 <p>The <code>index.js</code> is main entry point of your plugin runtime:</p>
-<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = {
+<pre><code class="lang-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
     <span class="hljs-comment">// Map of hooks</span>
     <span class="hljs-attr">hooks</span>: {},
 
@@ -10724,9 +10724,9 @@ exports[`HonKit snapshots: plugins/filters.html 1`] = `
 <p><a href="../GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">Plugins</a> can extend filters by defining custom functions in their entry point under the <code>filters</code> scope.</p>
 <p>A filter function takes as first argument the content to filter, and should return the new content.
 Refer to <a href="api.html">Context and APIs</a> to learn more about <code>this</code> and <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> API.</p>
-<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = {
+<pre><code class="lang-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
     <span class="hljs-attr">filters</span>: {
-        <span class="hljs-attr">hello</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) </span>{
+        <span class="hljs-attr">hello</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;Hello &apos;</span>+name;
         }
     }
@@ -10738,12 +10738,12 @@ Refer to <a href="api.html">Context and APIs</a> to learn more about <code>this<
 <p>Arguments can be passed to filters:</p>
 <pre><code>Hello {{ &quot;Samy&quot;|fullName(&quot;Pesse&quot;, man=true}} }}
 </code></pre><p>Arguments are passed to the function, named-arguments are passed as a last argument (object).</p>
-<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = {
+<pre><code class="lang-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
     <span class="hljs-attr">filters</span>: {
-        <span class="hljs-attr">fullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">firstName, lastName, kwargs</span>) </span>{
+        <span class="hljs-attr">fullName</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">firstName, lastName, kwargs</span>) {
             <span class="hljs-keyword">var</span> name = firstName + <span class="hljs-string">&apos; &apos;</span> + lastName;
 
-            <span class="hljs-keyword">if</span> (kwargs.man) name = <span class="hljs-string">&quot;Mr&quot;</span> + name;
+            <span class="hljs-keyword">if</span> (kwargs.<span class="hljs-property">man</span>) name = <span class="hljs-string">&quot;Mr&quot;</span> + name;
             <span class="hljs-keyword">else</span> name = <span class="hljs-string">&quot;Mrs&quot;</span> + name;
 
             <span class="hljs-keyword">return</span> name;
@@ -11626,8 +11626,8 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
 <h5 id="example-to-add-a-title">Example to add a title</h5>
 <p>In the <code>page:before</code> hook, <code>page.content</code> is the markdown/asciidoc content.</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">&quot;page:before&quot;</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">page</span>) </span>{
-        page.content = <span class="hljs-string">&quot;# Title\\n&quot;</span> +page.content;
+    <span class="hljs-string">&quot;page:before&quot;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">page</span>) {
+        page.<span class="hljs-property">content</span> = <span class="hljs-string">&quot;# Title\\n&quot;</span> +page.<span class="hljs-property">content</span>;
         <span class="hljs-keyword">return</span> page;
     }
 }
@@ -11635,9 +11635,9 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
 <h5 id="example-to-replace-some-html">Example to replace some html</h5>
 <p>In the <code>page</code> hook, <code>page.content</code> is the HTML generated from the markdown/asciidoc conversion.</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">&quot;page&quot;</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">page</span>) </span>{
-        page.content = page.content.replace(<span class="hljs-string">&quot;&lt;b&gt;&quot;</span>, <span class="hljs-string">&quot;&lt;strong&gt;&quot;</span>)
-            .replace(<span class="hljs-string">&quot;&lt;/b&gt;&quot;</span>, <span class="hljs-string">&quot;&lt;/strong&gt;&quot;</span>);
+    <span class="hljs-string">&quot;page&quot;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">page</span>) {
+        page.<span class="hljs-property">content</span> = page.<span class="hljs-property">content</span>.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;&lt;b&gt;&quot;</span>, <span class="hljs-string">&quot;&lt;strong&gt;&quot;</span>)
+            .<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;&lt;/b&gt;&quot;</span>, <span class="hljs-string">&quot;&lt;/strong&gt;&quot;</span>);
         <span class="hljs-keyword">return</span> page;
     }
 }
@@ -11646,10 +11646,10 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
 <p>Hooks callbacks can be asynchronous and return promises.</p>
 <p>Example:</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">&quot;init&quot;</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">return</span> writeSomeFile()
-        .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-            <span class="hljs-keyword">return</span> writeAnotherFile();
+    <span class="hljs-string">&quot;init&quot;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title function_">writeSomeFile</span>()
+        .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">writeAnotherFile</span>();
         });
     }
 }
@@ -16613,9 +16613,9 @@ exports[`HonKit snapshots: syntax/markdown.html 1`] = `
 <p>Here’s an overview of Markdown syntax that you can use with <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> (same as GitHub with some additions).</p>
 <h3 id="headings">Headings</h3>
 <p>To create a heading, add one to six <code>#</code> symbols before your heading text. The number of # you use will determine the size of the heading.</p>
-<pre><code class="lang-markdown"><span class="hljs-section"># This is an <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span> tag</span>
-<span class="hljs-section">## This is an <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span></span> tag</span>
-<span class="hljs-section">###### This is an <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span></span> tag</span>
+<pre><code class="lang-markdown"><span class="hljs-section"># This is an <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span> tag</span>
+<span class="hljs-section">## This is an <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span></span> tag</span>
+<span class="hljs-section">###### This is an <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span></span> tag</span>
 </code></pre>
 <p><a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> supports a nice way for explicitly setting the header ID. If you follow the header text with an opening curly bracket (separated from the text with a least one space), a hash, the ID and a closing curly bracket, the ID is set on the header. If you use the trailing hash feature of atx style headers, the header ID has to go after the trailing hashes. For example:</p>
 <pre><code class="lang-markdown"><span class="hljs-section">Hello {#id}
@@ -16736,10 +16736,10 @@ Markdown here will not be **parsed**
 
 Hyphens
 
-<span class="hljs-strong">**<span class="hljs-emphasis">*
+<span class="hljs-strong">***
 
 Asterisks
-</span></span></code></pre>
+</span></code></pre>
 <h3 id="ignoring-markdown-formatting">Ignoring Markdown formatting</h3>
 <p>You can tell <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> to ignore (or escape) Markdown formatting by using <code>\\</code> before the Markdown character.</p>
 <pre><code>Let&apos;s rename \\*our-new-project\\* to \\*our-old-project\\*.
@@ -19178,60 +19178,60 @@ exports[`HonKit snapshots: templating/index.html 1`] = `
 <p>The Nunjucks syntax is very similar to <strong>Jinja2</strong> or <strong>Liquid</strong>. Its syntax uses surrounding braces <code>{ }</code> to mark content that needs to be processed.</p>
 <h3 id="variables">Variables</h3>
 <p>A variable looks up a value from the template context. If you wanted to simply display a variable, you would use the <code>{{ variable }}</code> syntax. For example :</p>
-<pre><code class="lang-twig"><span class="xml">My name is </span><span class="hljs-template-variable">{{ name }}</span><span class="xml">, nice to meet you
+<pre><code class="lang-twig"><span class="language-xml">My name is </span><span class="hljs-template-variable">{{ name }}</span><span class="language-xml">, nice to meet you
 </span></code></pre>
 <p>This looks up username from the context and displays it. Variable names can have dots in them which lookup properties, just like JavaScript. You can also use the square bracket syntax.</p>
-<pre><code class="lang-twig"><span class="hljs-template-variable">{{ foo.bar }}</span><span class="xml">
-</span><span class="hljs-template-variable">{{ foo[&quot;bar&quot;] }}</span><span class="xml">
+<pre><code class="lang-twig"><span class="hljs-template-variable">{{ foo.bar }}</span><span class="language-xml">
+</span><span class="hljs-template-variable">{{ foo[<span class="hljs-string">&quot;bar&quot;</span>] }}</span><span class="language-xml">
 </span></code></pre>
 <p>If a value is undefined, nothing is displayed. The following all output nothing if foo is undefined: <code>{{ foo }}</code>, <code>{{ foo.bar }}</code>, <code>{{ foo.bar.baz }}</code>.</p>
 <p><a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> provides a set of <a href="variables.html">predefined  variables</a> from the context.</p>
 <h3 id="filters">Filters</h3>
 <p>Filters are essentially functions that can be applied to variables. They are called with a pipe operator (<code>|</code>) and can take arguments.</p>
-<pre><code class="lang-twig"><span class="hljs-template-variable">{{ foo | title }}</span><span class="xml">
-</span><span class="hljs-template-variable">{{ foo | join(&quot;,&quot;) }}</span><span class="xml">
-</span><span class="hljs-template-variable">{{ foo | replace(&quot;foo&quot;, &quot;bar&quot;) | capitalize }}</span><span class="xml">
+<pre><code class="lang-twig"><span class="hljs-template-variable">{{ foo | title }}</span><span class="language-xml">
+</span><span class="hljs-template-variable">{{ foo | join(<span class="hljs-string">&quot;,&quot;</span>) }}</span><span class="language-xml">
+</span><span class="hljs-template-variable">{{ foo | replace(<span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-string">&quot;bar&quot;</span>) | capitalize }}</span><span class="language-xml">
 </span></code></pre>
 <p>The third example shows how you can chain filters. It would display &quot;Bar&quot;, by first replacing &quot;foo&quot; with &quot;bar&quot; and then capitalizing it.</p>
 <h3 id="tags">Tags</h3>
 <h5 id="if">if</h5>
 <p><code>if</code> tests a condition and lets you selectively display content. It behaves exactly as JavaScript&apos;s <code>if</code> behaves.</p>
-<pre><code class="lang-twig"><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">if</span></span> variable %}</span><span class="xml">
+<pre><code class="lang-twig"><span class="hljs-template-tag">{%</span> <span class="hljs-name">if</span> variable <span class="hljs-template-tag">%}</span><span class="language-xml">
   It is true
-</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endif</span></span> %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endif</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
 </span></code></pre>
 <p>If variable is defined and evaluates to true, &quot;It is true&quot; will be displayed. Otherwise, nothing will be.</p>
 <p>You can specify alternate conditions with <code>elif</code> and <code>else</code>:</p>
-<pre><code class="lang-twig"><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">if</span></span> hungry %}</span><span class="xml">
+<pre><code class="lang-twig"><span class="hljs-template-tag">{%</span> <span class="hljs-name">if</span> hungry <span class="hljs-template-tag">%}</span><span class="language-xml">
   I am hungry
-</span><span class="hljs-template-tag">{% <span class="hljs-name">elif</span> tired %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">elif</span> tired <span class="hljs-template-tag">%}</span><span class="language-xml">
   I am tired
-</span><span class="hljs-template-tag">{% <span class="hljs-name">else</span> %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">else</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
   I am good!
-</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endif</span></span> %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endif</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
 </span></code></pre>
 <h5 id="for">for</h5>
 <p><code>for</code> iterates over arrays and dictionaries.</p>
-<pre><code class="lang-twig"><span class="xml"># Chapters about HonKit
+<pre><code class="lang-twig"><span class="language-xml"># Chapters about HonKit
 
-</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">for</span></span> article in glossary.terms[&apos;gitbook&apos;].articles %}</span><span class="xml">
-* [</span><span class="hljs-template-variable">{{ article.title }}</span><span class="xml">](</span><span class="hljs-template-variable">{{ article.path }}</span><span class="xml">)
-</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endfor</span></span> %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">for</span> article <span class="hljs-keyword">in</span> glossary.terms[<span class="hljs-string">&apos;gitbook&apos;</span>].articles <span class="hljs-template-tag">%}</span><span class="language-xml">
+* [</span><span class="hljs-template-variable">{{ article.title }}</span><span class="language-xml">](</span><span class="hljs-template-variable">{{ article.path }}</span><span class="language-xml">)
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endfor</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
 </span></code></pre>
 <h5 id="set">set</h5>
 <p><code>set</code> lets you create/modify a variable.</p>
-<pre><code class="lang-twig"><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">set</span></span> softwareVersion = &quot;1.0.0&quot; %}</span><span class="xml">
+<pre><code class="lang-twig"><span class="hljs-template-tag">{%</span> <span class="hljs-name">set</span> softwareVersion = <span class="hljs-string">&quot;1.0.0&quot;</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
 
-Current version is </span><span class="hljs-template-variable">{{ softwareVersion }}</span><span class="xml">.
-[Download it](website.com/download/</span><span class="hljs-template-variable">{{ softwareVersion }}</span><span class="xml">)
+Current version is </span><span class="hljs-template-variable">{{ softwareVersion }}</span><span class="language-xml">.
+[Download it](website.com/download/</span><span class="hljs-template-variable">{{ softwareVersion }}</span><span class="language-xml">)
 </span></code></pre>
 <h5 id="include-and-block">include and block</h5>
 <p>Inclusion and inheritance is detailled in the <a href="conrefs.html">Content References</a> section.</p>
 <h3 id="escaping">Escaping</h3>
 <p>If you want <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> to ignore any of the special <a href="../GLOSSARY.html#templating" class="glossary-term" title="HonKit uses the Nunjucks templating language to process pages and theme&apos;s templates.">templating</a> tags, you can use raw and anything inside of it will be output as plain text.</p>
-<pre><code class="lang-twig"><span class="hljs-template-tag">{% <span class="hljs-name">raw</span> %}</span><span class="xml">
-  this will </span><span class="hljs-template-variable">{{ not be processed }}</span><span class="xml">
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endraw</span> %}</span><span class="xml">
+<pre><code class="lang-twig"><span class="hljs-template-tag">{%</span> <span class="hljs-name">raw</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+  this will </span><span class="hljs-template-variable">{{ not be processed }}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endraw</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
 </span></code></pre>
 
                                 
