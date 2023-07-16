@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1689507315855,
+  "lastUpdate": 1689508827627,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9763,6 +9763,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±1.24%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "6b8bca4a8bfe3811958634b53727dd8c299aef8a",
+          "message": "chore: add nx cache (#363)\n\n* chore: add nx cache\r\n\r\n* chore: remove deps from root\r\n\r\n* chore: move deps",
+          "timestamp": "2023-07-16T20:57:43+09:00",
+          "tree_id": "fb2ff154ddbb39cbe06383ace5241d3568b6fe7a",
+          "url": "https://github.com/honkit/honkit/commit/6b8bca4a8bfe3811958634b53727dd8c299aef8a"
+        },
+        "date": 1689508826542,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±0.56%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
