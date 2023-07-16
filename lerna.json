@@ -1,5 +1,5 @@
 {
   "npmClient": "yarn",
   "includeMergedTags": true,
-  "version": "4.0.8"
+  "version": "5.0.0"
 }
