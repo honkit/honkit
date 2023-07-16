@@ -9,6 +9,8 @@ import * as constants from "constants";
 const URL =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png";
 
+// download image from remote server is flaky
+jest.retryTimes(3);
 describe("fetchRemoteImages", () => {
     let dir;
     beforeEach(() => {
@@ -31,7 +33,7 @@ describe("fetchRemoteImages", () => {
         await assert.doesNotReject(() => {
             return fs.access(expected, constants.F_OK);
         });
-    });
+    }, 15 * 1000);
 
     it("should download image file and replace with relative path", async () => {
         const $ = cheerio.load(`<img src="${URL}" />`, { _useHtmlParser2: true });
@@ -44,5 +46,5 @@ describe("fetchRemoteImages", () => {
         await assert.doesNotReject(() => {
             return fs.access(expected, constants.F_OK);
         });
-    });
+    }, 15 * 1000);
 });
