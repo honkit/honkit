@@ -8,7 +8,7 @@ type Extensions = Immutable.Map<any, any>;
 class TemplateEngine extends Immutable.Record(
     {
         // Map of {TemplateBlock}
-        blocks: Immutable.Map(),
+        blocks: Immutable.Map<string, TemplateBlock>(),
 
         // Map of Extension
         extensions: Immutable.Map(),
@@ -23,11 +23,11 @@ class TemplateEngine extends Immutable.Record(
         context: Object(),
 
         // Nunjucks loader
-        loader: new nunjucks.FileSystemLoader("views"),
+        loader: new nunjucks.FileSystemLoader("views")
     },
     "TemplateEngine"
 ) {
-    getBlocks(): TemplateBlock {
+    getBlocks() {
         return this.get("blocks");
     }
 
@@ -90,8 +90,8 @@ class TemplateEngine extends Immutable.Record(
                 variableStart: "{{",
                 variableEnd: "}}",
                 commentStart: "{###",
-                commentEnd: "###}",
-            },
+                commentEnd: "###}"
+            }
         });
 
         // Add filters
@@ -133,7 +133,7 @@ class TemplateEngine extends Immutable.Record(
             filters: Immutable.Map(def.filters || {}),
             globals: Immutable.Map(def.globals || {}),
             context: def.context,
-            loader: def.loader,
+            loader: def.loader
         });
     }
 }

@@ -7,7 +7,7 @@ class TemplateOutput extends Immutable.Record(
         content: String(),
 
         // Map of blocks to replace / post process
-        blocks: Immutable.Map(),
+        blocks: Immutable.Map<string, TemplateBlock>()
     },
     "TemplateOutput"
 ) {
@@ -15,7 +15,7 @@ class TemplateOutput extends Immutable.Record(
         return this.get("content");
     }
 
-    getBlocks(): TemplateBlock {
+    getBlocks() {
         return this.get("blocks");
     }
 
@@ -33,7 +33,7 @@ class TemplateOutput extends Immutable.Record(
     static create(content: string, blocks: object): TemplateOutput {
         return new TemplateOutput({
             content: content,
-            blocks: Immutable.fromJS(blocks),
+            blocks: Immutable.fromJS(blocks)
         });
     }
 }

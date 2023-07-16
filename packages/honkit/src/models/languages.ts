@@ -4,7 +4,7 @@ import Language from "./language";
 
 class Languages extends Immutable.Record({
     file: new File(),
-    list: Immutable.OrderedMap(),
+    list: Immutable.OrderedMap<string, Language>()
 }) {
     getFile() {
         return this.get("file");
@@ -48,20 +48,20 @@ class Languages extends Immutable.Record({
      @return {Language}
      */
 
-    static createFromList(file: File, langs: Languages): Languages {
+    static createFromList(file: File, langs: Immutable.OrderedMap<string, Language>): Languages {
         let list = Immutable.OrderedMap();
 
         langs.forEach((lang) => {
             lang = new Language({
                 title: lang.title,
-                path: lang.ref,
+                path: lang.ref
             });
             list = list.set(lang.getID(), lang);
         });
 
         return new Languages({
             file: file,
-            list: list,
+            list: list
         });
     }
 }

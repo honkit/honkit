@@ -64,7 +64,7 @@
     "github-slugid": "^1.0.1",
     "i18n-t": "^1.0.1",
     "ignore": "^5.1.8",
-    "immutable": "^3.8.1",
+    "immutable": "^4.3.1",
     "is": "^3.1.0",
     "js-yaml": "^3.6.1",
     "json-schema-defaults": "^0.1.1",

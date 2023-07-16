@@ -1,6 +1,7 @@
 import path from "path";
 import Promise from "../utils/promise";
 import parsers from "../parsers";
+import Book from "../models/book";
 
 /**
  Find a file parsable (Markdown or AsciiDoc) in a book
@@ -10,7 +11,7 @@ import parsers from "../parsers";
  @return {Promise<File | Undefined>}
  */
 
-function findParsableFile(book, filename) {
+function findParsableFile(book: Book, filename: string) {
     const fs = book.getContentFS();
     const ext = path.extname(filename);
     const basename = path.basename(filename, ext);

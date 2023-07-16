@@ -1,6 +1,7 @@
 import Promise from "../utils/promise";
 import error from "../utils/error";
 import lookupStructureFile from "./lookupStructureFile";
+import Book from "../models/book";
 
 /**
  Parse a ParsableFile using a specific method
@@ -17,7 +18,7 @@ function parseFile(fs, file, type) {
     if (!parser) {
         return Promise.reject(
             error.FileNotParsableError({
-                filename: filepath,
+                filename: filepath
             })
         );
     }
@@ -51,7 +52,7 @@ function parseFile(fs, file, type) {
  @return {Promise<List|Map>}
  */
 
-function parseStructureFile(book, type) {
+function parseStructureFile(book: Book, type: string): Promise<[any, any]> {
     const fs = book.getContentFS();
 
     return lookupStructureFile(book, type).then((file) => {

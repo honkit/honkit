@@ -13,7 +13,7 @@ class Page extends Immutable.Record({
     content: String(),
 
     // Direction of the text
-    dir: String("ltr"),
+    dir: String("ltr")
 }) {
     getFile(): File {
         return this.get("file");
@@ -62,7 +62,7 @@ class Page extends Immutable.Record({
      */
     static createForFile(file: File): Page {
         return new Page({
-            file: file,
+            file: file
         });
     }
 
@@ -75,13 +75,13 @@ class Page extends Immutable.Record({
     static loadFile(file: File, content: string): Page {
         return new Page({
             file: file,
-            content: content,
+            content: content
         });
     }
 
     static fromJSON(json: {
         file: { [key: string]: any };
-        atributes: Immutable.Iterable.Keyed<unknown, unknown>;
+        atributes: Immutable.Collection.Keyed<unknown, unknown>;
         content: any;
         dir: any;
     }) {
@@ -92,7 +92,7 @@ class Page extends Immutable.Record({
             // Content of the page
             content: json.content,
             // Direction of the text
-            dir: json.dir,
+            dir: json.dir
         });
     }
 

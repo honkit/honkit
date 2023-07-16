@@ -15,7 +15,7 @@ if (process.env.DEBUG || process.env.CI) {
  * @return {Promise<Mixed>}
  */
 function reduce(arr, iter, base) {
-    arr = Immutable.Iterable.isIterable(arr) ? arr : Immutable.List(arr);
+    arr = Immutable.isCollection(arr) ? arr : Immutable.List(arr);
 
     return arr.reduce((prev, elem, key) => {
         return prev.then((val) => {
