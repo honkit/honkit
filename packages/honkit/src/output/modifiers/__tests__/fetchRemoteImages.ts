@@ -31,7 +31,7 @@ describe("fetchRemoteImages", () => {
         await assert.doesNotReject(() => {
             return fs.access(expected, constants.F_OK);
         });
-    });
+    }, 15 * 1000);
 
     it("should download image file and replace with relative path", async () => {
         const $ = cheerio.load(`<img src="${URL}" />`, { _useHtmlParser2: true });
@@ -44,5 +44,5 @@ describe("fetchRemoteImages", () => {
         await assert.doesNotReject(() => {
             return fs.access(expected, constants.F_OK);
         });
-    });
+    }, 15 * 1000);
 });
