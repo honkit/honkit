@@ -10,12 +10,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [ 14, 16, 18 ]
+        node-version: [ 16, 18, 20 ]
         os: [macos-latest, windows-latest, ubuntu-latest]
         exclude:
           # mac tests is expensive, limit to 1 instance
           - os: macos-latest
-            node-version: 14
+            node-version: 16
           - os: macos-latest
             node-version: 18
     steps:
