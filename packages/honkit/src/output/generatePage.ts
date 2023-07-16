@@ -33,7 +33,7 @@ function generatePage(output, page) {
             if (!parser) {
                 return Promise.reject(
                     error.FileNotParsableError({
-                        filename: filePath,
+                        filename: filePath
                     })
                 );
             }
@@ -56,13 +56,19 @@ function generatePage(output, page) {
                         const pageHash = page.hash();
                         const cachedPage = cache.getKey(pageHash);
                         if (cachedPage) {
-                            return Page.fromJSON(output);
+                            return {
+                                filePath: absoluteFilePath,
+                                output: Page.fromJSON(output)
+                            };
                         }
                         try {
                             const output = await Templating.render(engine, absoluteFilePath, content, context);
                             // update cache
                             cache.setKey(pageHash, Page.toJSON(output));
-                            return output;
+                            return {
+                                filePath: absoluteFilePath,
+                                output
+                            };
                         } catch (error) {
                             console.error("Template Rendering Error", error);
                             console.log("Template content", content);
@@ -70,11 +76,11 @@ function generatePage(output, page) {
                         }
                     })
 
-                    .then((output) => {
+                    .then(({ filePath, output }) => {
                         // console.log("page:render", Date.now() - start);
                         const content = output.getContent();
-
-                        return parser.parsePage(content).then((result) => {
+                        const baseDirectory = path.dirname(filePath);
+                        return parser.parsePage(content, { baseDirectory }).then((result) => {
                             return output.setContent(result.content);
                         });
                     })

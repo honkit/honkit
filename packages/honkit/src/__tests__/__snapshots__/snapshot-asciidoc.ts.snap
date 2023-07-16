@@ -179,7 +179,7 @@ exports[`asciidoc snapshot: chapter-1/content1.html 1`] = `
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>Unresolved directive in &lt;stdin&gt; - include::./resources/included1.txt[]</pre>
+<pre>This is the included text1 !</pre>
 </div>
 </div>
 </div>
@@ -189,7 +189,7 @@ exports[`asciidoc snapshot: chapter-1/content1.html 1`] = `
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>Unresolved directive in &lt;stdin&gt; - include::./resources/included2.txt[]</pre>
+<pre>This is the included text2 !!</pre>
 </div>
 </div>
 </div>
@@ -199,7 +199,7 @@ exports[`asciidoc snapshot: chapter-1/content1.html 1`] = `
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>Unresolved directive in &lt;stdin&gt; - include::./resources/included3.txt[]</pre>
+<pre>This is the included text3 !!!</pre>
 </div>
 </div>
 </div>
