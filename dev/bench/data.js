@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1689506083162,
+  "lastUpdate": 1689507315855,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9732,6 +9732,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.82%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b450890eb175da24f41577f1d56a063fb651e75f",
+          "message": "feat!(docker): Update to Node.js 18 (#362)\n\n* CI!: Drop Node.js 14 support\r\n\r\n* feat!(docker): Update to Node.js 18\r\n\r\n* test: increase timeout\r\n\r\n* test: add retry",
+          "timestamp": "2023-07-16T20:31:02+09:00",
+          "tree_id": "0d993bd9925ceb9275549accb1be52fde3b3eb06",
+          "url": "https://github.com/honkit/honkit/commit/b450890eb175da24f41577f1d56a063fb651e75f"
+        },
+        "date": 1689507314088,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.07,
+            "range": "±1.24%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
