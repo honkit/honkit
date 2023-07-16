@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1689505034284,
+  "lastUpdate": 1689506083162,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9701,6 +9701,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±0.95%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c904bf30bddf18273c2224123b7f818e931becbf",
+          "message": "chore(deps): update to highlight.js 11 (#358)\n\n* chore(deps): update to highlight.js 11\r\n\r\n* test: update snapshot",
+          "timestamp": "2023-07-16T20:11:55+09:00",
+          "tree_id": "7f05c4a476d2d27f9820d47d49416d9b548e0f1b",
+          "url": "https://github.com/honkit/honkit/commit/c904bf30bddf18273c2224123b7f818e931becbf"
+        },
+        "date": 1689506082352,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±0.82%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
