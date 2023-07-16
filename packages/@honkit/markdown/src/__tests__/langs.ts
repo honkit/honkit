@@ -1,9 +1,8 @@
-const fs = require("fs");
-const path = require("path");
-const assert = require("assert");
-
-const langs = require("../").langs;
-
+import markdown from "../";
+import assert from "assert";
+import path from "path";
+import fs from "fs";
+const langs = markdown.langs;
 describe("Languages parsing", () => {
     let LEXED;
 

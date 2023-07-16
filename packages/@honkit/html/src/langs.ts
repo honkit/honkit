@@ -6,7 +6,7 @@ import parseSummary from "./summary";
     @param {string} html
     @return {Array}
 */
-function parseLangs(content) {
+function parseLangs(content: string) {
     const parts = parseSummary(content).parts;
     if (parts.length > 0) {
         return parts[0].articles;

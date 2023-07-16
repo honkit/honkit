@@ -1,15 +1,14 @@
-const fs = require('fs');
-const path = require('path');
-const assert = require('assert');
-
-const langs = require('../').langs;
+import html from "../";
+import fs from "fs";
+import path from "path";
+import assert from "assert";
 
 describe('Languages parsing', () => {
     let LEXED;
 
     before(() => {
         const CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/LANGS.html'), 'utf8');
-        LEXED = langs(CONTENT);
+        LEXED = html.langs(CONTENT);
     });
 
     it('should detect paths and titles', () => {
@@ -21,7 +20,7 @@ describe('Languages parsing', () => {
     });
 
     it('should correctly convert it to text', () => {
-        const text = langs.toText(LEXED);
-        assertObjectsEqual(langs(text), LEXED);
+        const text = html.langs.toText(LEXED);
+        assertObjectsEqual(html.langs(text), LEXED);
     });
 });

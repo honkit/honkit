@@ -3,7 +3,7 @@ const path = require("path");
 const JSDOM = require("jsdom").JSDOM;
 const assert = require("assert");
 
-const MarkupIt = require("../../..");
+const MarkupIt = require("../../..").Markup;
 const markdownSyntax = require("../");
 const htmlSyntax = require("../../html");
 

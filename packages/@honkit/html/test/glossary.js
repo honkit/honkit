@@ -1,15 +1,13 @@
-const fs = require('fs');
-const path = require('path');
-const assert = require('assert');
-
-const glossary = require('../').glossary;
-
+import fs from "fs";
+import path from "path";
+import assert from "assert";
+import html from "../";
 describe('Glossary parsing', () => {
     let LEXED;
 
     before(() => {
         const CONTENT = fs.readFileSync(path.join(__dirname, './fixtures/GLOSSARY.html'), 'utf8');
-        LEXED = glossary(CONTENT);
+        LEXED = html.glossary(CONTENT);
     });
 
     it('should only get heading + paragraph pairs', () => {
@@ -23,7 +21,7 @@ describe('Glossary parsing', () => {
     });
 
     it('should correctly convert it to text', () => {
-        const text = glossary.toText(LEXED);
-        assertObjectsEqual(glossary(text), LEXED);
+        const text = html.glossary.toText(LEXED);
+        assertObjectsEqual(html.glossary(text), LEXED);
     });
 });

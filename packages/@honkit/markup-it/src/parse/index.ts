@@ -8,7 +8,7 @@ import matchRule from "./matchRule";
  * @param  {string} text
  * @return {Content}
  */
-function parse(syntax, text, options) {
+function parse(syntax, text, options?: {}) {
     const entryRule = syntax.getEntryRule();
     // @ts-ignore
     const state = new ParsingState(syntax, options);
@@ -23,7 +23,7 @@ function parse(syntax, text, options) {
  * @param  {string} text
  * @return {List<Token>}
  */
-function parseAsInline(syntax, text, options) {
+function parseAsInline(syntax, text, options?: {}) {
     // @ts-ignore
     const state = new ParsingState(syntax, options);
     return state.parseAsInline(text);

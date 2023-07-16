@@ -1,9 +1,9 @@
-import MarkupIt from "@honkit/markup-it";
+import { Markup } from "@honkit/markup-it";
 import markdownSyntax from "@honkit/markup-it/syntaxes/markdown";
 import htmlSyntax from "@honkit/markup-it/syntaxes/html";
 
-const markdown = new MarkupIt(markdownSyntax);
-const html = new MarkupIt(htmlSyntax);
+const markdown = new Markup(markdownSyntax);
+const html = new Markup(htmlSyntax);
 
 /**
  * Convert Markdown block to HTML
@@ -33,5 +33,5 @@ function convertMdToHTMLInline(src) {
 
 export default {
     block: convertMdToHTMLBlock,
-    inline: convertMdToHTMLInline,
+    inline: convertMdToHTMLInline
 };

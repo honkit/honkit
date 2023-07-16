@@ -9,7 +9,7 @@ class File extends Immutable.Record({
     path: String(),
 
     // Time when file data last modified
-    mtime: Date(),
+    mtime: Date()
 }) {
     getPath(): string {
         return this.get("path");
@@ -55,10 +55,18 @@ class File extends Immutable.Record({
     /**
      Return parser for this file
 
-     @return {Parser}
+     @return {Parsers}
      */
     getParser(): Parser {
         return parsers.getByExt(this.getExtension());
+    }
+
+    /**
+     Return basedirectory of this file
+     @return {string}
+     */
+    getBaseDirectory(): string {
+        return path.dirname(this.getPath());
     }
 
     /**
@@ -71,7 +79,7 @@ class File extends Immutable.Record({
     static createFromStat(filepath: string, stat: fs.Stats): File {
         return new File({
             path: filepath,
-            mtime: stat.mtime,
+            mtime: stat.mtime
         });
     }
 
@@ -82,7 +90,7 @@ class File extends Immutable.Record({
      */
     static createWithFilepath(filepath: string): File {
         return new File({
-            path: filepath,
+            path: filepath
         });
     }
 }

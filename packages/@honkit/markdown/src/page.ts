@@ -1,9 +1,10 @@
-const MarkupIt = require("@honkit/markup-it");
+import * as MarkupIt from "@honkit/markup-it";
+
 const gitbookSyntax = require("@honkit/markup-it/syntaxes/markdown");
 
 const RAW_START = "{% raw %}";
 const RAW_END = "{% endraw %}";
-const markdown = new MarkupIt(gitbookSyntax);
+const markdown = new MarkupIt.default(gitbookSyntax);
 
 /**
  * Escape a code block's content using raw blocks
@@ -22,11 +23,11 @@ function escape(str: string) {
  * @param {string} src
  * @return {string}
  */
-function preparePage(src) {
+export function preparePage(src: string) {
     let levelRaw = 0;
     const content = markdown.toContent(src, {
         math: true,
-        template: true,
+        template: true
     });
 
     const textMarkdown = markdown.toText(content, {
@@ -51,12 +52,8 @@ function preparePage(src) {
             }
 
             return raw;
-        },
+        }
     });
 
     return textMarkdown;
 }
-
-export default {
-    prepare: preparePage,
-};

@@ -1,6 +1,9 @@
 import Immutable from "immutable";
 import Promise from "../utils/promise";
-
+import { Parsers } from "@honkit/html";
+export type ParserOptions = {
+    baseDirectory: string;
+};
 class Parser extends Immutable.Record({
     name: String(),
 
@@ -8,12 +11,12 @@ class Parser extends Immutable.Record({
     extensions: Immutable.List(),
 
     // Parsing functions
-    readme: Function(),
-    langs: Function(),
-    summary: Function(),
-    glossary: Function(),
-    page: Function(),
-    inline: Function(),
+    readme: Function() as Parsers["readme"],
+    langs: Function() as Parsers["langs"],
+    summary: Function() as Parsers["summary"],
+    glossary: Function() as Parsers["glossary"],
+    page: Function() as Parsers["page"],
+    inline: Function() as Parsers["inline"]
 }) {
     getName(): string {
         return this.get("name");
@@ -25,25 +28,25 @@ class Parser extends Immutable.Record({
 
     // PARSE
 
-    parseReadme(content: any) {
+    parseReadme(content: string, options: ParserOptions) {
         const readme = this.get("readme");
 
-        return Promise(readme(content));
+        return Promise(readme(content, options));
     }
 
-    parseSummary(content: any) {
+    parseSummary(content: string, options: ParserOptions) {
         const summary = this.get("summary");
 
         return Promise(summary(content));
     }
 
-    parseGlossary(content: any) {
+    parseGlossary(content: string, options: ParserOptions) {
         const glossary = this.get("glossary");
 
-        return Promise(glossary(content));
+        return Promise(glossary(content, options));
     }
 
-    preparePage(content: any) {
+    preparePage(content: string) {
         const page = this.get("page");
         if (!page.prepare) {
             return Promise(content);
@@ -52,22 +55,22 @@ class Parser extends Immutable.Record({
         return Promise(page.prepare(content));
     }
 
-    parsePage(content: any) {
+    parsePage(content: string, options: ParserOptions) {
         const page = this.get("page");
 
-        return Promise(page(content));
+        return Promise(page(content, options));
     }
 
-    parseInline(content: any) {
+    parseInline(content: string, options: ParserOptions) {
         const inline = this.get("inline");
 
-        return Promise(inline(content));
+        return Promise(inline(content, options));
     }
 
-    parseLanguages(content: any) {
+    parseLanguages(content: string, options: ParserOptions) {
         const langs = this.get("langs");
 
-        return Promise(langs(content));
+        return Promise(langs(content, options));
     }
 
     // TO TEXT
@@ -107,7 +110,7 @@ class Parser extends Immutable.Record({
      @param {string} name
      @param {Array<String>} extensions
      @param {Object} module
-     @return {Parser}
+     @return {Parsers}
      */
     static create(
         name: string,
@@ -122,7 +125,7 @@ class Parser extends Immutable.Record({
             summary: module.summary,
             glossary: module.glossary,
             page: module.page,
-            inline: module.inline,
+            inline: module.inline
         });
     }
 }

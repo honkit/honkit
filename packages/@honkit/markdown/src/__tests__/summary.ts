@@ -1,15 +1,14 @@
-const fs = require("fs");
-const path = require("path");
-const assert = require("assert");
-
-const summary = require("../").summary;
+import path from "path";
+import assert from "assert";
+import fs from "fs";
+import markdown from "../";
 
 function lex(fixtureFile) {
-    return summary(fs.readFileSync(path.join(__dirname, "fixtures", fixtureFile), "utf8"));
+    return markdown.summary(fs.readFileSync(path.join(__dirname, "fixtures", fixtureFile), "utf8"));
 }
 
 describe("Summary parsing", () => {
-    let LEXED;
+    let LEXED, PART;
 
     beforeAll(() => {
         LEXED = lex("SUMMARY.md");
@@ -62,7 +61,7 @@ describe("Summary parsing", () => {
     });
 
     it("should correctly convert it to text", () => {
-        const text = summary.toText(LEXED);
-        assert.deepEqual(summary(text), LEXED);
+        const text = markdown.summary.toText(LEXED);
+        assert.deepEqual(markdown.summary(text), LEXED);
     });
 });

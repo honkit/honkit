@@ -18,25 +18,26 @@ import JSONUtils from "./json";
 import genKey from "./utils/genKey";
 import transform from "./utils/transform";
 
-module.exports = Markup;
+export default Markup;
+export { Markup };
 
 // Method
-module.exports.parse = parse;
-module.exports.render = render;
+export { parse };
+export { render };
 
 // Models
-module.exports.Content = Content;
-module.exports.Token = Token;
-module.exports.Syntax = Syntax;
-module.exports.Rule = Rule;
-module.exports.RulesSet = RulesSet;
+export { Content };
+export { Token };
+export { Syntax };
+export { Rule };
+export { RulesSet };
 
 // Utils
-module.exports.JSONUtils = JSONUtils;
-module.exports.genKey = genKey;
-module.exports.transform = transform;
+export { JSONUtils };
+export { genKey };
+export { transform };
 
 // Constants
-module.exports.STYLES = STYLES;
-module.exports.ENTITIES = ENTITIES;
-module.exports.BLOCKS = BLOCKS;
+export { STYLES };
+export { ENTITIES };
+export { BLOCKS };

@@ -1,5 +1,5 @@
 // @ts-ignore
-import MarkupIt from "..";
+import * as MarkupIt from "..";
 
 describe("Custom Syntax", () => {
     const syntax = MarkupIt.Syntax("mysyntax", {
@@ -13,7 +13,7 @@ describe("Custom Syntax", () => {
                 .toText("**%s**"),
         ],
     });
-    const markup = new MarkupIt(syntax);
+    const markup = new MarkupIt.Markup(syntax);
 
     describe(".toContent", () => {
         it("should return correct syntax name", () => {

@@ -1,9 +1,10 @@
 import path from "path";
 import { iterateDirectoryContents } from "@honkit/internal-test-utils";
 import * as bin from "../bin";
-it("HonKit snapshots", async () => {
-    const bookDir = path.join(__dirname, "__fixtures__/honkit");
-    const outputDir = path.join(__dirname, "__fixtures__/honkit/_book");
+
+it("asciidoc snapshot", async () => {
+    const bookDir = path.join(__dirname, "__fixtures__/asciidoc");
+    const outputDir = path.join(__dirname, "__fixtures__/asciidoc/_book");
     await bin.run([process.argv[0], ".", "build", bookDir, "--reload"]);
     const maskContent = (content) => {
         return content

@@ -5,11 +5,11 @@ const SELECTOR_LINK = "> a, p > a";
 const SELECTOR_PART = "h2, h3, h4";
 
 /**
-    Find a list
+ Find a list
 
-    @param {cheerio.Node}
-    @return {cheerio.Node}
-*/
+ @param {cheerio.Node}
+ @return {cheerio.Node}
+ */
 function findList($parent) {
     const $container = $parent.children(".olist");
     if ($container.length > 0) $parent = $container.first();
@@ -18,12 +18,12 @@ function findList($parent) {
 }
 
 /**
-    Parse a ul list and return list of chapters recursvely
+ Parse a ul list and return list of chapters recursvely
 
-    @param {cheerio.Node}
-    @param {cheerio.DOM}
-    @return {Array}
-*/
+ @param {cheerio.Node}
+ @param {cheerio.DOM}
+ @return {Array}
+ */
 function parseList($ul, $) {
     const articles = [];
 
@@ -54,11 +54,11 @@ function parseList($ul, $) {
 }
 
 /**
-     Find all parts and their corresponding lists
+ Find all parts and their corresponding lists
 
-     @param {cheerio.Node}
-     @param {cheerio.DOM}
-     @return {Array<{title: String, list: cheerio.Node}>}
+ @param {cheerio.Node}
+ @param {cheerio.DOM}
+ @return {Array<{title: String, list: cheerio.Node}>}
  */
 function findParts($parent, $) {
     // Find parts and lists
@@ -77,7 +77,7 @@ function findParts($parent, $) {
             }
             previousPart = {
                 title: getPartTitle(el, $),
-                list: null,
+                list: null
             };
         } else {
             // It is a list
@@ -86,7 +86,7 @@ function findParts($parent, $) {
             } else {
                 previousPart = {
                     title: "",
-                    list: el,
+                    list: el
                 };
             }
             parts.push(previousPart);
@@ -103,33 +103,38 @@ function findParts($parent, $) {
 }
 
 /**
-    True if the element is a part
+ True if the element is a part
 
-    @param el
-    @return {boolean}
+ @param el
+ @return {boolean}
  */
 function isPartNode(el) {
     return SELECTOR_PART.indexOf(el.name) !== -1;
 }
 
 /**
-    Parse the title of a part element
+ Parse the title of a part element
 
-    @param el
-    @param {cheerio.DOM} $
-    @return {string}
+ @param el
+ @param {cheerio.DOM} $
+ @return {string}
  */
 function getPartTitle(el, $) {
     return $(el).text().trim();
 }
 
-/**
-    Parse an HTML content into a tree of articles/parts
+export type SummaryPart = {
+    title: string;
+    articles: any[]; // TODO: correct type
+};
 
-    @param {string} html
-    @return {Object}
-*/
-function parseSummary(html: string) {
+/**
+ Parse an HTML content into a tree of articles/parts
+
+ @param {string} html
+ @return {Object}
+ */
+function parseSummary(html: string): { parts: SummaryPart[] } {
     const $: any = dom.parse(html);
     const $root = dom.cleanup(dom.root($), $);
 
@@ -142,12 +147,12 @@ function parseSummary(html: string) {
         part = parts[i];
         parsedParts.push({
             title: part.title,
-            articles: parseList($(part.list), $),
+            articles: parseList($(part.list), $)
         });
     }
 
     return {
-        parts: parsedParts,
+        parts: parsedParts
     };
 }
 

@@ -10,14 +10,14 @@ import Parser from "./models/parser";
 const parsers = Immutable.List([
     Parser.create("markdown", EXTENSIONS_MARKDOWN, markdownParser),
 
-    Parser.create("asciidoc", EXTENSIONS_ASCIIDOC, asciidocParser),
+    Parser.create("asciidoc", EXTENSIONS_ASCIIDOC, asciidocParser)
 ]);
 
 /**
  * Return a specific parser by its name
  *
  * @param {string} name
- * @return {Parser|undefined}
+ * @return {Parsers|undefined}
  */
 function getParser(name) {
     return parsers.find((parser) => {
@@ -29,7 +29,7 @@ function getParser(name) {
  * Return a specific parser according to an extension
  *
  * @param {string} ext
- * @return {Parser|undefined}
+ * @return {Parsers|undefined}
  */
 function getParserByExt(ext) {
     return parsers.find((parser) => {
@@ -41,7 +41,7 @@ function getParserByExt(ext) {
  * Return parser for a file
  *
  * @param {string} ext
- * @return {Parser|undefined}
+ * @return {Parsers|undefined}
  */
 function getParserForFile(filename) {
     return getParserByExt(path.extname(filename));
@@ -58,5 +58,5 @@ export default {
     extensions: extensions,
     get: getParser,
     getByExt: getParserByExt,
-    getForFile: getParserForFile,
+    getForFile: getParserForFile
 };

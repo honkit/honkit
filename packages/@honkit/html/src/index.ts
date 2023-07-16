@@ -1,7 +1,7 @@
 import _ from "lodash";
 import ToText from "./totext";
 // import
-import summary from "./summary";
+import summary, { SummaryPart } from "./summary";
 import glossary from "./glossary";
 import langs from "./langs";
 import readme from "./readme";
@@ -12,25 +12,77 @@ const htmlParser = {
     glossary,
     langs,
     readme,
-    page,
+    page
+};
+
+export type ToHTMLOptions = {
+    baseDirectory: string;
+};
+export type ToHTMLFunction = (content: string, options?: ToHTMLOptions) => string;
+// TODO: content is a parts of ???
+export type ToTextFunction = (content: any) => string;
+export type { SummaryPart };
+export type ParserSummary = ((
+    content: string,
+    options?: ToHTMLOptions
+) => {
+    parts: SummaryPart[];
+}) & {
+    toText: ToTextFunction;
+};
+export type ParserGlossary = ((content: string, options?: ToHTMLOptions) => string[]) & {
+    toText: ToTextFunction;
+};
+export type ParserLangs = ((content: string, options?: ToHTMLOptions) => string[]) & {
+    toText: ToTextFunction;
+};
+export type ParserREADME = (
+    content: string,
+    options?: ToHTMLOptions
+) => {
+    title: string;
+    description: string;
+};
+export type ParserPage = ((
+    content: string,
+    options?: ToHTMLOptions
+) => {
+    content: string;
+}) & {
+    // markdown parser has a preparePage function
+    // it is custom page escaping function
+    prepare?: (content: string, options?: ToHTMLOptions) => string;
+};
+export type ParserInline = (
+    content: string,
+    options?: ToHTMLOptions
+) => {
+    content: string;
+};
+export type Parsers = {
+    summary: ParserSummary;
+    glossary: ParserGlossary;
+    langs: ParserLangs;
+    readme: ParserREADME;
+    page: ParserPage;
+    inline: ParserInline;
 };
 
 // Compose a function with a transform function for the first argument only
 function compose(toHTML, fn) {
-    return function () {
-        const args = _.toArray(arguments);
-        args[0] = toHTML(args[0]);
-
-        return fn.apply(null, args);
+    return function (content: string, options: ToHTMLOptions) {
+        // e.g. convert asciidoc to html
+        const html = toHTML(content, options);
+        return fn.call(this, html);
     };
 }
 
 // Create a HonKit parser from an HTML converter
-function createParser(toHTML, toText = undefined) {
-    if (_.isFunction(toHTML)) {
+function createParser(toHTML, toText = undefined): Parsers {
+    if (typeof toHTML === "function") {
         toHTML = {
             inline: toHTML,
-            block: toHTML,
+            block: toHTML
         };
     }
 
@@ -40,7 +92,7 @@ function createParser(toHTML, toText = undefined) {
         langs: compose(toHTML.block, htmlParser.langs),
         readme: compose(toHTML.block, htmlParser.readme),
         page: compose(toHTML.block, htmlParser.page),
-        inline: compose(toHTML.inline, htmlParser.page),
+        inline: compose(toHTML.inline, htmlParser.page)
     };
 
     // @ts-expect-error
@@ -52,5 +104,5 @@ function createParser(toHTML, toText = undefined) {
     return parser;
 }
 
-module.exports = createParser(_.identity);
-module.exports.createParser = createParser;
+const defaultParser = createParser(_.identity);
+export { defaultParser as default, createParser };

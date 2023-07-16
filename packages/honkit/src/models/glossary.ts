@@ -6,7 +6,7 @@ import parsers from "../parsers";
 
 class Glossary extends Immutable.Record({
     file: new File(),
-    entries: Immutable.OrderedMap(),
+    entries: Immutable.OrderedMap()
 }) {
     getFile() {
         return this.get("file");
@@ -36,12 +36,11 @@ class Glossary extends Immutable.Record({
     toText(parser) {
         const file = this.getFile();
         const entries = this.getEntries();
-
         parser = parser ? parsers.getByExt(parser) : file.getParser();
 
         if (!parser) {
             throw error.FileNotParsableError({
-                filename: file.getPath(),
+                filename: file.getPath()
             });
         }
 
@@ -69,7 +68,7 @@ class Glossary extends Immutable.Record({
     static addEntryByName(glossary: Glossary, name: string, description: string): Glossary {
         const entry = new GlossaryEntry({
             name: name,
-            description: description,
+            description: description
         });
         return Glossary.addEntry(glossary, entry);
     }
@@ -92,7 +91,7 @@ class Glossary extends Immutable.Record({
 
         return new Glossary({
             file: file,
-            entries: Immutable.OrderedMap(entries),
+            entries: Immutable.OrderedMap(entries)
         });
     }
 }

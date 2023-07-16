@@ -1,0 +1,14 @@
+== Include Test1
+----
+include::./resources/included1.txt[]
+----
+
+== Include Test2
+----
+include::./resources/included2.txt[]
+----
+
+== Include Test3
+----
+include::./resources/included3.txt[]
+----

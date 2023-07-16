@@ -15,7 +15,7 @@ class TemplateShortcut extends Immutable.Record(
         end: String(),
 
         startTag: String(),
-        endTag: String(),
+        endTag: String()
     },
     "TemplateShortcut"
 ) {
@@ -42,7 +42,7 @@ class TemplateShortcut extends Immutable.Record(
     /**
      Test if this shortcut accept a parser
 
-     @param {Parser|String} parser
+     @param {Parsers|String} parser
      @return {boolean}
      */
     acceptParser(parser: Parser | string) {
@@ -69,7 +69,7 @@ class TemplateShortcut extends Immutable.Record(
             start: details.get("start"),
             end: details.get("end"),
             startTag: block.getName(),
-            endTag: block.getEndTag(),
+            endTag: block.getEndTag()
         });
     }
 }
