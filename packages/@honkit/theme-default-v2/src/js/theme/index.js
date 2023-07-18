@@ -1,7 +1,8 @@
 import { initKeyBoard } from "./keyboard";
-import { scrollIntoActiveSummaryItem } from "./sidebar.js";
+import { initSidebar, scrollIntoActiveSummaryItem } from "./sidebar.js";
 function init() {
     initKeyBoard();
+    initSidebar();
     scrollIntoActiveSummaryItem();
 }
 

@@ -1,4 +1,4 @@
-function toggleSidebar(_state, animation) {
+function toggleSidebar(animation) {
     if (animation == null) animation = true;
     const book = document.querySelector(".book");
     book.classList.toggle("without-animation", !animation);
@@ -22,4 +22,19 @@ export function scrollIntoActiveSummaryItem() {
     });
 }
 
+export function initSidebar() {
+    const toggleButton = document.querySelector("#honkit-sidebar-toggle-button");
+    if (!toggleButton) {
+        return;
+    }
+    toggleButton.addEventListener(
+        "click",
+        function () {
+            toggleSidebar(true);
+        },
+        {
+            passive: true
+        }
+    );
+}
 export { isOpen, toggleSidebar };
