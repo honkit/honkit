@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block javascript %}
-<script src="{{ "theme.js"|resolveAsset }}"></script>
+<script src="{{ 'theme.js'|resolveAsset }}"></script>
 {% for resource in plugins.resources.js %}
 {% if resource.url %}
 <script src="{{ resource.url }}"></script>
