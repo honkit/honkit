@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1689509114684,
+  "lastUpdate": 1689809268962,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9825,6 +9825,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.42%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "93e9278c6b3ddead14f98e66dcd51a3d5af5bbd2",
+          "message": "Update BugReport.md (#366)\n\n* Update BugReport.md\r\n\r\n* Update BugReport.md",
+          "timestamp": "2023-07-20T08:25:07+09:00",
+          "tree_id": "8f4f65fc349977c86423c72a78cd1ea855c9ad46",
+          "url": "https://github.com/honkit/honkit/commit/93e9278c6b3ddead14f98e66dcd51a3d5af5bbd2"
+        },
+        "date": 1689809267643,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±1.44%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
