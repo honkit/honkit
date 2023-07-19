@@ -1,10 +1,47 @@
 /**
+  Layout
+
   PC:
-  | toolbar | title |
-               ^ center
+  | header-start | book-header | header-end |
  Mobile
-  | toolbar         |
+  | header-start | header-end  |
+  | book-header  |
  */
+
+.book-header {
+  display: flex;
+
+  .header-start {
+    width: 20%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .book-header {
+    width: 60%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-end {
+    width: 20%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.sidebar-toggle-button {
+  border: none;
+  background: none;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+  outline: none;
+}
+
 .book-header {
   font-family: @font-family-sans;
 
@@ -16,27 +53,6 @@
   font-size: 0.85em;
   color: @header-color;
   background: @header-background;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  .toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex: 1;
-    height: @header-height;
-    padding: 0px 15px;
-    border-bottom: none;
-    color: @header-button-color;
-    text-transform: uppercase;
-    line-height: @header-height;
-    .box-shadow(none) !important;
-    position: relative;
-    font-size: @font-size-base;
-      
-  }
 
   .btn {
     display: block;
