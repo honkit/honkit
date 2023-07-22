@@ -9,35 +9,53 @@
  */
 
 .book-header {
-  display: flex;
+  height: @header-height;
+  display: grid;
+  align-items: center;
+  grid-template:
+    "toolbar-start title toolbar-end" auto /
+    1fr auto 1fr;
 
   .header-start {
-    width: 20%;
+    grid-area: toolbar-start;
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
   }
 
   .book-header {
-    width: 60%;
+    grid-area: title;
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
   .header-end {
-    width: 20%;
+    grid-area: toolbar-end;
     display: inline-flex;
     align-items: center;
     justify-content: flex-end;
+  }
+
+  button {
+    padding: 16px;
+    height: @header-height;
+  }
+  button:hover {
+    color: @header-button-hover-color;
+    background: @header-button-hover-background;
+    fill: @header-button-hover-color;
+  }
+  button:focus {
+    outline: #00b3ee;
   }
 }
 
 .sidebar-toggle-button {
   border: none;
   background: none;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
   outline: none;
 }
@@ -47,7 +65,6 @@
 
   overflow: visible;
   height: @header-height;
-  padding: 0px 8px;
   z-index: 2;
 
   font-size: 0.85em;
