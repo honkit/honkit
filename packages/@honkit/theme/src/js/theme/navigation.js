@@ -1,18 +1,13 @@
-function handleNavigation(relativeUrl, push) {
+function handleNavigation(relativeUrl) {
     location.href = relativeUrl;
 }
 
-function goNext() {
+export function goNext() {
     const url = document.querySelector(".navigation-next")?.getAttribute?.("href");
-    if (url) handleNavigation(url, true);
+    if (url) handleNavigation(url);
 }
 
-function goPrev() {
+export function goPrev() {
     const url = document.querySelector(".navigation-prev")?.getAttribute?.("href");
-    if (url) handleNavigation(url, true);
+    if (url) handleNavigation(url);
 }
-
-module.exports = {
-    goNext: goNext,
-    goPrev: goPrev
-};
