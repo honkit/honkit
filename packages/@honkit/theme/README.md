@@ -18,6 +18,7 @@ It can be used as a template for theming books or can be extended.
 - Drop unnecessary javascript
 - Drop pjax - link is just a link
 - Incompatible old plugins
+- Add `window.honkit.metadata` 
 
 ```json
 {
