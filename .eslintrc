@@ -25,7 +25,7 @@
     "node": true,
     "jest": true,
     "mocha": true,
-    "es6": true
+    "es6": true,
   },
   "globals": {
     "expect": true
