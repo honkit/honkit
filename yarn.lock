@@ -4192,6 +4192,11 @@ gitbook-markdown-css@1.0.1:
   resolved "https://registry.yarnpkg.com/gitbook-markdown-css/-/gitbook-markdown-css-1.0.1.tgz#d8fe2ed198a997403e85273816ddc61c02bb2730"
   integrity sha512-2jdIH3uxaU0zEraFH/aN0j7vKOo9j/83MeD9XqQdaf7OhWCZv3KK18r6QITNRcuCuttVUP/1+YIQkOIlNp7Hig==
 
+gitbook-markdown-css@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gitbook-markdown-css/-/gitbook-markdown-css-1.1.0.tgz#8bb0c7a775bbcd75d9d750f7e12950b709751dc4"
+  integrity sha512-LIVvzVaKOlki3aG97sJoAnjnNYUlo6Y9g+JpJ3z4msUh/eX1O5MRAsjkejAxVMv8oalE/lueZhvUZtVpSIkdmA==
+
 gitbook-plugin-anchors@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/gitbook-plugin-anchors/-/gitbook-plugin-anchors-0.7.1.tgz#8f585b99ab1a602ea714342258c957238e36ec82"
