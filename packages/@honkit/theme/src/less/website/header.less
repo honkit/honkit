@@ -16,21 +16,21 @@
     "toolbar-start title toolbar-end" auto /
     1fr auto 1fr;
 
-  .header-start {
+  .book-header-start {
     grid-area: toolbar-start;
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
   }
 
-  .book-header {
+  .book-header-title {
     grid-area: title;
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
-  .header-end {
+  .book-header-end {
     grid-area: toolbar-end;
     display: inline-flex;
     align-items: center;
@@ -41,11 +41,13 @@
     padding: 16px;
     height: @header-height;
   }
+
   button:hover {
     color: @header-button-hover-color;
     background: @header-button-hover-background;
     fill: @header-button-hover-color;
   }
+
   button:focus {
     outline: #00b3ee;
   }
@@ -95,19 +97,12 @@
     }
   }
 
-  h1 {
-    margin: 0px;
+  .book-header-title {
+    margin: 0;
     font-size: 20px;
     font-weight: 200;
     text-align: center;
     line-height: @header-height;
-    opacity: 0;
-    .transition(opacity ease 0.4s);
-
-    padding-left: 200px;
-    padding-right: 200px;
-    .transition(opacity 0.2s ease);
-
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -120,17 +115,8 @@
     @media screen and (max-width: 1000px) {
       display: none;
     }
-
-    i {
-      display: none;
-    }
   }
 
-  &:hover {
-    h1 {
-      opacity: 1;
-    }
-  }
 }
 
 .book {

@@ -1,5 +1,5 @@
 {
-  "name": "@honkit/honkit-plugin-theme-default-v2",
+  "name": "@honkit/honkit-plugin-theme",
   "version": "5.0.0",
   "description": "Default theme for HonKit",
   "bugs": {
@@ -11,16 +11,6 @@
   },
   "license": "Apache-2.0",
   "author": "azu <azuciao@gmail.com>",
-  "contributors": [
-    {
-      "name": "FriendCode Inc.",
-      "email": "contact@gitbook.com"
-    },
-    {
-      "name": "Samy Pessé",
-      "email": "samy@gitbook.com"
-    }
-  ],
   "main": "./index.js",
   "files": [
     "index.js",
@@ -48,12 +38,10 @@
   "devDependencies": {
     "esbuild": "^0.18.13",
     "cpy-cli": "^4.2.0",
-    "eslint": "8.23.1",
     "gitbook-markdown-css": "1.0.1",
     "less": "2.7.1",
     "less-plugin-clean-css": "1.5.1",
     "mkdirp": "^1.0.4",
-    "mousetrap": "1.6.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2"
   },
