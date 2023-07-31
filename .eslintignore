@@ -5,6 +5,7 @@ packages/@honkit/*/test
 packages/@honkit/*/__tests__
 examples/**
 theme-default/
+theme/
 packages/**/lib
 packages/**/__tests__
 __fixtures__

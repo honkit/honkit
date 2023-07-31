@@ -1,0 +1,93 @@
+{
+  "name": "@honkit/honkit-plugin-theme",
+  "version": "5.0.0",
+  "description": "Default theme for HonKit",
+  "bugs": {
+    "url": "https://github.com/honkit/honkit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/honkit/honkit.git"
+  },
+  "license": "Apache-2.0",
+  "author": "azu <azuciao@gmail.com>",
+  "main": "./index.js",
+  "files": [
+    "index.js",
+    "_assets",
+    "_i18n",
+    "_layouts",
+    "!__tests__"
+  ],
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "npm-run-all build:js build:css cp",
+    "build:css": "npm-run-all -p build:css:*",
+    "build:css:ebook": "lessc -clean-css src/less/ebook.less _assets/ebook/ebook.css",
+    "build:css:epub": "lessc -clean-css src/less/epub.less _assets/ebook/epub.css",
+    "build:css:mobi": "lessc -clean-css src/less/mobi.less _assets/ebook/mobi.css",
+    "build:css:pdf": "lessc -clean-css src/less/pdf.less _assets/ebook/pdf.css",
+    "build:css:website": "lessc -clean-css src/less/website.less _assets/website/style.css",
+    "build:js": "esbuild src/js/theme/index.js --bundle --minify --outfile=_assets/website/theme.js",
+    "clean": "rimraf _assets && mkdirp _assets/ebook/ _assets/website/ _assets/website/fonts _assets/website/images",
+    "cp": "npm-run-all -p cp:*",
+    "cp:favicon": "cpy --flat logo/favicon.ico _assets/website/images/",
+    "cp:logo": "cpy --flat logo/apple-touch-icon.png _assets/website/images/ --rename=apple-touch-icon-precomposed-152.png",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.18.13",
+    "cpy-cli": "^4.2.0",
+    "gitbook-markdown-css": "^1.1.0",
+    "less": "2.7.1",
+    "less-plugin-clean-css": "1.5.1",
+    "mkdirp": "^1.0.4",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "gitbook": ">=3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitbook": {
+    "properties": {
+      "styles": {
+        "type": "object",
+        "title": "Custom Stylesheets",
+        "properties": {
+          "website": {
+            "title": "Stylesheet for website output",
+            "default": "styles/website.css"
+          },
+          "pdf": {
+            "title": "Stylesheet for PDF output",
+            "default": "styles/pdf.css"
+          },
+          "epub": {
+            "title": "Stylesheet for ePub output",
+            "default": "styles/epub.css"
+          },
+          "mobi": {
+            "title": "Stylesheet for Mobi output",
+            "default": "styles/mobi.css"
+          },
+          "ebook": {
+            "title": "Stylesheet for ebook outputs (PDF, ePub, Mobi)",
+            "default": "styles/ebook.css"
+          },
+          "print": {
+            "title": "Stylesheet to replace default ebook css",
+            "default": "styles/print.css"
+          }
+        }
+      },
+      "showLevel": {
+        "type": "boolean",
+        "title": "Show level indicator in TOC",
+        "default": false
+      }
+    }
+  }
+}

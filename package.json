@@ -38,7 +38,7 @@
     "release": "lerna publish from-package",
     "ci:release": "lerna publish from-package --yes",
     "release-ci": "yarn run build && lerna publish from-package --yes --no-verify-access",
-    "honkit:build": "honkit build",
+    "honkit:build": "npm run build && honkit build",
     "honkit:serve": "honkit serve",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
     "prepare": "git config --local core.hooksPath .githooks"

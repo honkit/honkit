@@ -1,0 +1,32 @@
+.bottom-navigation {
+  margin-top: 3rem;
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.bottom-navigation---prev-link, .bottom-navigation---next-link {
+  border: 1px solid @navigation-color;
+  border-radius: 4px;
+  display: block;
+  height: 100%;
+  line-height: 1.5;
+  padding: 1em;
+  color: @navigation-link-color;
+  background: @navigation-link-background;
+}
+
+.bottom-navigation---prev-link:hover, .bottom-navigation---next-link:hover {
+  color: @navigation-link-hover-color;
+}
+
+.bottom-navigation--prev-label, .bottom-navigation--next-label {
+  font-size: @font-size-base;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.bottom-navigation---next-link {
+  grid-column: ~"2/3";
+  text-align: right;
+}
