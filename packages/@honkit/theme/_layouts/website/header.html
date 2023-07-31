@@ -2,7 +2,9 @@
 <div class="book-header" role="navigation">
     <div class="book-header-start toolbar">
         {% if glossary.path %}
-        <a href="{{ ('/' + glossary.path)|resolveFile }}" class="btn pull-left" aria-label="{{ 'GLOSSARY_OPEN'|t }}">
+        <a href="{{ ('/' + glossary.path)|resolveFile }}"
+           class="btn pull-left"
+           aria-label="{{ 'GLOSSARY_OPEN'|t }}">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
                 <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                 <path

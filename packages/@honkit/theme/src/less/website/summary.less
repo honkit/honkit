@@ -91,13 +91,19 @@
         }
     }
 
+    // Show summary on mobile by default
     @media screen and (max-width: @sidebar-breakpoint) {
         width: calc(~"100% - 60px");
         bottom: 0px;
         left: -100%;
     }
 }
-
+// Hide show summary button on PC by default
+@media screen and (min-width: @sidebar-breakpoint) {
+    .sidebar-toggle-button {
+        display: none;
+    }
+}
 .book {
     &.with-summary {
         .book-summary {
