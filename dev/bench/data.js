@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1689809268962,
+  "lastUpdate": 1690808143735,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9856,6 +9856,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.11,
             "range": "±1.44%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fc6092da24f848fe03befe06f03e5c8cc5fc6910",
+          "message": "feat: add @honkit/honkit-plugin-theme experimetal (#365)\n\n* feat: theme-v2\r\n\r\n* fix\r\n\r\n* Update packages/@honkit/theme-default-v2/_layouts/website/page.html\r\n\r\n* remove hr\r\n\r\n* remove arrow navigation\r\n\r\n* Update packages/@honkit/theme-default-v2/_layouts/website/header.html+1\r\n\r\n* use grid\r\n\r\n* v1\r\n\r\n* increment font-size\r\n\r\nfont-setting m1 size\r\n\r\n* update\r\n\r\n* add `window.honkit.metadata`\r\n\r\n* add `window.honkit.metadata`\r\n\r\n* add noopenper\r\n\r\n* add rel=\"noopener\"\r\n\r\n* add rel=\"noopener\"\r\n\r\n* fix",
+          "timestamp": "2023-07-31T21:52:10+09:00",
+          "tree_id": "912023a66535e79a53fc84fe2108fbbd5ff66fa7",
+          "url": "https://github.com/honkit/honkit/commit/fc6092da24f848fe03befe06f03e5c8cc5fc6910"
+        },
+        "date": 1690808142113,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±0.54%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
