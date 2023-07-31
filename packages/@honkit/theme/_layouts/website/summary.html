@@ -4,7 +4,7 @@
             {% if article.path and getPageByPath(article.path) %}
                 <a href="{{ article.path|resolveFile }}{{ article.anchor }}">
             {% elif article.url %}
-                <a target="_blank" href="{{ article.url }}">
+                <a href="{{ article.url }}" target="_blank" rel="noopener">
             {% else %}
                 <span>
             {% endif %}
