@@ -1,6 +1,6 @@
 {
   "name": "@honkit/honkit-plugin-theme",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Default theme for HonKit",
   "bugs": {
     "url": "https://github.com/honkit/honkit/issues"
@@ -36,8 +36,8 @@
     "prepublish": "npm run build"
   },
   "devDependencies": {
-    "esbuild": "^0.18.13",
     "cpy-cli": "^4.2.0",
+    "esbuild": "^0.18.13",
     "gitbook-markdown-css": "^1.1.0",
     "less": "2.7.1",
     "less-plugin-clean-css": "1.5.1",
