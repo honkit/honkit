@@ -12,9 +12,11 @@ import getOutputFolder from "./getOutputFolder";
 import Server from "./server";
 import watch from "./watch";
 import { clearCache } from "../output/page-cache";
+import differentialUpdate from "../output/json/differentialUpdate";
+import fs from "../utils/fs";
 
 let server, lrServer, lrPath;
-
+let modifiedPaths = [];
 function waitForCtrlC() {
     const d = Promise.defer();
 
@@ -26,6 +28,9 @@ function waitForCtrlC() {
 }
 
 function startServer(args, kwargs) {
+    // init .notConvertedPaths
+    differentialUpdate.writeData(modifiedPaths);
+
     const outputFolder = getOutputFolder(args);
     const port = kwargs.port;
     const browser = kwargs["browser"];
@@ -44,11 +49,11 @@ function startServer(args, kwargs) {
             outputFolder,
             hasLiveReloading,
             Generator,
-            reload,
+            reload
         }).then((output) => {
             lastOutput = output;
             return output;
-        }),
+        })
     ])
         .then(() => {
             console.log(`Serving book on http://localhost:${port}`);
@@ -66,39 +71,58 @@ function startServer(args, kwargs) {
                     console.error(error);
                     return;
                 }
-                // set livereload path
-                lrPath = filepath;
-                // TODO: use parse extension
-                // Incremental update for pages
-                if (lastOutput && filepath.endsWith(".md")) {
-                    console.log("Reload after change in file", filepath);
-                    const changedOutput = lastOutput.reloadPage(lastOutput.book.getContentRoot(), filepath).merge({
-                        incrementalChangeFileSet: Immutable.Set([filepath]),
-                    });
-                    return incrementalBuild({
-                        output: changedOutput,
-                        Generator,
-                    }).then(() => {
-                        if (lrPath && hasLiveReloading) {
-                            // trigger livereload
-                            lrServer.changed({
-                                body: {
-                                    files: [lrPath],
-                                },
+
+                let cb = (error, stats) => {
+                    if (error) {
+                        // remove file OR fs.stat error
+                        console.log("remove file OR fs.stat error", filepath);
+                        return;
+                    } else {
+                        modifiedPaths.push(filepath);
+                        differentialUpdate.writeData(modifiedPaths);
+
+                        // set livereload path
+                        lrPath = filepath;
+
+                        // TODO: use parse extension
+                        // Incremental update for pages
+                        if (lastOutput && filepath.endsWith(".md")) {
+                            console.log("Reload after change in file", filepath);
+                            const changedOutput = lastOutput
+                                .reloadPage(lastOutput.book.getContentRoot(), filepath)
+                                .merge({
+                                    incrementalChangeFileSet: Immutable.Set([filepath])
+                                });
+                            return incrementalBuild({
+                                output: changedOutput,
+                                Generator
+                            }).then(() => {
+                                if (lrPath && hasLiveReloading) {
+                                    // trigger livereload
+                                    lrServer.changed({
+                                        body: {
+                                            files: [lrPath]
+                                        }
+                                    });
+                                }
                             });
                         }
-                    });
-                }
-                console.log("Rebuild after change in file", filepath);
-                return generateBook({
-                    book,
-                    outputFolder,
-                    hasLiveReloading,
-                    Generator,
-                    reload,
-                }).then((output) => {
-                    lastOutput = output;
-                });
+                        console.log("Rebuild after change in file", filepath);
+
+                        return generateBook({
+                            book,
+                            outputFolder,
+                            hasLiveReloading,
+                            Generator,
+                            reload
+                        }).then((output) => {
+                            lastOutput = output;
+                        });
+                    }
+                };
+
+                // If the file registered in SUMMARY.md is deleted
+                fs.stat(filepath, cb);
             });
         });
 }
@@ -120,7 +144,7 @@ function generateBook({ book, outputFolder, hasLiveReloading, Generator, reload 
         }
 
         return Output.generate(Generator, resultBook, {
-            root: outputFolder,
+            root: outputFolder
         });
     });
 }
@@ -136,36 +160,36 @@ export default {
         {
             name: "port",
             description: "Port for server to listen on",
-            defaults: 4000,
+            defaults: 4000
         },
         {
             name: "lrport",
             description: "Port for livereload server to listen on",
-            defaults: 35729,
+            defaults: 35729
         },
         {
             name: "watch",
             description: "Enable file watcher and live reloading",
-            defaults: true,
+            defaults: true
         },
         {
             name: "live",
             description: "Enable live reloading",
-            defaults: true,
+            defaults: true
         },
         {
             name: "open",
             description: "Enable opening book in browser",
-            defaults: false,
+            defaults: false
         },
         {
             name: "browser",
             description: "Specify browser for opening book",
-            defaults: "",
+            defaults: ""
         },
         options.log,
         options.format,
-        options.reload,
+        options.reload
     ],
     exec: function (args, kwargs) {
         server = new Server();
@@ -189,5 +213,5 @@ export default {
             .then(() => {
                 return startServer(args, kwargs);
             });
-    },
+    }
 };
