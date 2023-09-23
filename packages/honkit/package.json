@@ -1,6 +1,6 @@
 {
   "name": "honkit",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "HonKit is building beautiful books using Markdown.",
   "keywords": [
     "git",
@@ -37,10 +37,10 @@
     "updateSnapshot": "jest src -u"
   },
   "dependencies": {
-    "@honkit/asciidoc": "^5.1.0",
-    "@honkit/honkit-plugin-highlight": "^5.1.0",
-    "@honkit/honkit-plugin-theme-default": "^5.1.0",
-    "@honkit/markdown-legacy": "^5.1.0",
+    "@honkit/asciidoc": "^5.1.1",
+    "@honkit/honkit-plugin-highlight": "^5.1.1",
+    "@honkit/honkit-plugin-theme-default": "^5.1.1",
+    "@honkit/markdown-legacy": "^5.1.1",
     "bash-color": "^0.0.4",
     "cheerio": "^1.0.0-rc.12",
     "chokidar": "^3.3.0",
@@ -89,7 +89,7 @@
     "urijs": "^1.19.6"
   },
   "devDependencies": {
-    "@honkit/internal-test-utils": "^5.1.0",
+    "@honkit/internal-test-utils": "^5.1.1",
     "@relmify/jest-serializer-strip-ansi": "^1.0.2",
     "@types/cheerio": "^0.22.31",
     "@types/nunjucks": "^3.2.2",
