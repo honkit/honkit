@@ -8,7 +8,7 @@ const RuleRecord = Immutable.Record({
     type: new String(),
 
     // Listener / Handlers {Map(<String,List<Function>)}
-    listeners: Immutable.Map(),
+    listeners: Immutable.Map()
 });
 
 function Rule(type?) {
@@ -18,7 +18,7 @@ function Rule(type?) {
     }
 
     RuleRecord.call(this, {
-        type: type,
+        type: type
     });
 }
 inherits(Rule, RuleRecord);

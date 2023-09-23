@@ -10,7 +10,7 @@ type Articles = Immutable.List<any>;
 class SummaryPart extends Immutable.Record({
     level: String(),
     title: String(),
-    articles: Immutable.List(),
+    articles: Immutable.List()
 }) {
     getLevel(): string {
         return this.get("level");
@@ -55,7 +55,7 @@ class SummaryPart extends Immutable.Record({
         return new SummaryPart({
             level: String(level),
             title: def.title,
-            articles: Immutable.List(articles),
+            articles: Immutable.List(articles)
         });
     }
 }

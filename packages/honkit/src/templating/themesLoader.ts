@@ -34,7 +34,7 @@ const ThemesLoader = nunjucks.Loader.extend({
         return {
             src: src,
             path: fullpath,
-            noCache: true,
+            noCache: true
         };
     },
 
@@ -104,7 +104,7 @@ const ThemesLoader = nunjucks.Loader.extend({
         });
         if (!resultFolder) return null;
         return path.resolve(resultFolder, to);
-    },
+    }
 });
 
 export default ThemesLoader;

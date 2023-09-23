@@ -42,5 +42,5 @@ const cellRule = MarkupIt.Rule(MarkupIt.BLOCKS.TABLE_CELL).toText((state, token)
 module.exports = {
     block: blockRule,
     row: rowRule,
-    cell: cellRule,
+    cell: cellRule
 };

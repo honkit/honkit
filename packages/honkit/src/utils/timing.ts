@@ -17,7 +17,7 @@ function measure(type, p) {
         count: 0,
         total: 0,
         min: undefined,
-        max: 0,
+        max: 0
     };
 
     const start = Date.now();
@@ -99,5 +99,5 @@ function dump(logger) {
 
 export default {
     measure: measure,
-    dump: dump,
+    dump: dump
 };

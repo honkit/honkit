@@ -21,8 +21,8 @@ const block = {
         bullet_ul: /(?:\d+\.)/,
         bullet_ol: /(?:[*+-])/,
 
-        bulletAndSpaces: /^ *([*+-]|\d+\.) +/,
-    },
+        bulletAndSpaces: /^ *([*+-]|\d+\.) +/
+    }
 };
 
 const _tag =

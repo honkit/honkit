@@ -15,7 +15,7 @@ const DEFAULT_IGNORES = [
     "_book",
 
     // Ignore files in the templates folder
-    "_layouts",
+    "_layouts"
 ];
 
 /**

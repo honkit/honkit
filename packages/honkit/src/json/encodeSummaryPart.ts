@@ -10,7 +10,7 @@ import encodeSummaryArticle from "./encodeSummaryArticle";
 function encodeSummaryPart(part) {
     return {
         title: part.getTitle(),
-        articles: part.getArticles().map(encodeSummaryArticle).toJS(),
+        articles: part.getArticles().map(encodeSummaryArticle).toJS()
     };
 }
 

@@ -6,7 +6,7 @@ const heading = {
     line: /^([^\n]+)\n *(=|-){2,} *(?:\n|$)/,
 
     // ID in heading
-    id: /({#)(.+)(})/g,
+    id: /({#)(.+)(})/g
 };
 
 module.exports = heading;

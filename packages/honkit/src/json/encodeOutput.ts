@@ -15,7 +15,7 @@ function encodeOutputToJson(output) {
 
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'output' does not exist on type '{ summar... Remove this comment to see the full error message
     result.output = {
-        name: generator,
+        name: generator
     };
 
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'options' does not exist on type '{ summa... Remove this comment to see the full error message

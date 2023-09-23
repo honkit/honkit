@@ -19,5 +19,5 @@ export default {
     editArticleRef: editArticleRef0,
     insertPart: insertPart0,
     removePart: removePart0,
-    editPartTitle: editPartTitle0,
+    editPartTitle: editPartTitle0
 };

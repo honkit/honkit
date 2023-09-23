@@ -23,7 +23,7 @@ function encodeTokenToJSON(token) {
         type: token.getType(),
         text: token.getText(),
         data: encodeDataToJSON(token.getData()),
-        tokens: encodeTokensToJSON(token.getTokens()),
+        tokens: encodeTokensToJSON(token.getTokens())
     };
 }
 
@@ -46,7 +46,7 @@ function encodeTokensToJSON(tokens) {
 function encodeContentToJSON(content) {
     return {
         syntax: content.getSyntax(),
-        token: encodeTokenToJSON(content.getToken()),
+        token: encodeTokenToJSON(content.getToken())
     };
 }
 

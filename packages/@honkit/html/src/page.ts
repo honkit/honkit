@@ -6,7 +6,7 @@
 */
 function parsePage(html) {
     return {
-        content: html,
+        content: html
     };
 }
 export default parsePage;

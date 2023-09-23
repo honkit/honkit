@@ -8,31 +8,31 @@ const logOptions = {
             return s.toLowerCase();
         })
         .toJS(),
-    defaults: "info",
+    defaults: "info"
 };
 
 const formatOption = {
     name: "format",
     description: "Format to build to",
     values: ["website", "json", "ebook"],
-    defaults: "website",
+    defaults: "website"
 };
 
 const timingOption = {
     name: "timing",
     description: "Print timing debug information",
-    defaults: false,
+    defaults: false
 };
 
 const reloadOption = {
     name: "reload",
     description: "Prune cache. Remove file cache",
-    defaults: false,
+    defaults: false
 };
 
 export default {
     log: logOptions,
     format: formatOption,
     timing: timingOption,
-    reload: reloadOption,
+    reload: reloadOption
 };

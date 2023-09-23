@@ -8,14 +8,14 @@ const LEVELS = Immutable.Map({
     INFO: 1,
     WARN: 2,
     ERROR: 3,
-    DISABLED: 10,
+    DISABLED: 10
 });
 
 const COLORS = Immutable.Map({
     DEBUG: color.purple,
     INFO: color.cyan,
     WARN: color.yellow,
-    ERROR: color.red,
+    ERROR: color.red
 });
 
 function Logger(write, logLevel) {

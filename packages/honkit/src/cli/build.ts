@@ -21,11 +21,11 @@ export default {
         return Parse.parseBook(book)
             .then((resultBook) => {
                 return Output.generate(Generator, resultBook, {
-                    root: outputFolder,
+                    root: outputFolder
                 });
             })
             .fin(() => {
                 if (kwargs.timing) timing.dump(book.getLogger());
             });
-    },
+    }
 };

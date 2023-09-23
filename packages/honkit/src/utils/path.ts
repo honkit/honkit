@@ -36,7 +36,7 @@ function resolveInRoot(root) {
     if (!isInRoot(root, result)) {
         throw new error.FileOutOfScopeError({
             filename: result,
-            root: root,
+            root: root
         });
     }
 
@@ -63,5 +63,5 @@ export default {
     resolveInRoot: resolveInRoot,
     normalize: normalizePath,
     setExtension: setExtension,
-    isPureRelative: isPureRelative,
+    isPureRelative: isPureRelative
 };

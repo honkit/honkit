@@ -10,7 +10,7 @@ export default extend(
         initBook: init,
         createNodeFS: fs,
         Output: output,
-        commands: cli,
+        commands: cli
     },
     common
 );

@@ -16,5 +16,5 @@ function convertInlinePNG(source, dest) {
 }
 
 export default {
-    convertInlinePNG: convertInlinePNG,
+    convertInlinePNG: convertInlinePNG
 };

@@ -21,8 +21,8 @@ function parseHeadingText(state, text) {
     return {
         tokens: state.parseAsInline(text),
         data: {
-            id: id,
-        },
+            id: id
+        }
     };
 }
 

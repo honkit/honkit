@@ -12,7 +12,7 @@ type Parts = Immutable.List<any>;
 class Summary extends Immutable.Record(
     {
         file: new File(),
-        parts: Immutable.List(),
+        parts: Immutable.List()
     },
     "Summary"
 ) {
@@ -168,12 +168,12 @@ class Summary extends Immutable.Record(
 
         if (!parser) {
             throw error.FileNotParsableError({
-                filename: file.getPath(),
+                filename: file.getPath()
             });
         }
 
         return parser.renderSummary({
-            parts: parts.toJS(),
+            parts: parts.toJS()
         });
     }
 
@@ -210,7 +210,7 @@ class Summary extends Immutable.Record(
             file: file,
 
             // @ts-expect-error ts-migrate(2350) FIXME: Only a void function can be called with the 'new' ... Remove this comment to see the full error message
-            parts: new Immutable.List(parts),
+            parts: new Immutable.List(parts)
         });
     }
 }

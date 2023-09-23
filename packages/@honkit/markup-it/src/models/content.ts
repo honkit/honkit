@@ -8,7 +8,7 @@ const Content: any = Immutable.Record({
 
     // Entry token
     // @ts-ignore
-    token: Token.create(BLOCKS.DOCUMENT),
+    token: Token.create(BLOCKS.DOCUMENT)
 });
 
 // ---- GETTERS ----
@@ -32,7 +32,7 @@ Content.prototype.getToken = function () {
 Content.createFromToken = function (syntax, token) {
     return new Content({
         syntax: syntax,
-        token: token,
+        token: token
     });
 };
 

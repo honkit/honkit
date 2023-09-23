@@ -3,7 +3,7 @@ import Immutable from "immutable";
 
 class Language extends Immutable.Record({
     title: String(),
-    path: String(),
+    path: String()
 }) {
     getTitle(): string {
         return this.get("title");

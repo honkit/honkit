@@ -7,5 +7,5 @@ export default {
     encodePage: encodePage0,
     decodePage: decodePage0,
     encodeGlobal: encodeGlobal0,
-    decodeGlobal: decodeGlobal,
+    decodeGlobal: decodeGlobal
 };

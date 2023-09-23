@@ -57,7 +57,7 @@ function runEbookConvert(output) {
                 "ebook-convert",
                 path.resolve(outputFolder, SUMMARY_FILE),
                 path.resolve(outputFolder, `index.${format}`),
-                command.optionsToShellArgs(options),
+                command.optionsToShellArgs(options)
             ].join(" ");
 
             return (
@@ -72,7 +72,7 @@ function runEbookConvert(output) {
                         if (err.code == 127) {
                             throw error.RequireInstallError({
                                 cmd: "ebook-convert",
-                                install: "Install it from Calibre: https://calibre-ebook.com",
+                                install: "Install it from Calibre: https://calibre-ebook.com"
                             });
                         }
 

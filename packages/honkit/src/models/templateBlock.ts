@@ -23,7 +23,7 @@ class TemplateBlock extends Immutable.Record(
         blocks: Immutable.List(),
 
         // List of shortcuts to replace with this block
-        shortcuts: Immutable.Map(),
+        shortcuts: Immutable.Map()
     },
     "TemplateBlock"
 ) {
@@ -160,7 +160,7 @@ class TemplateBlock extends Immutable.Record(
                         name: name,
                         body: blockBody(),
                         args: blockArgs,
-                        kwargs: blockKwargs,
+                        kwargs: blockKwargs
                     });
                 });
 
@@ -171,7 +171,7 @@ class TemplateBlock extends Immutable.Record(
                     .then(() => {
                         const ctx = extend(
                             {
-                                ctx: context,
+                                ctx: context
                             },
                             mainContext || {}
                         );
@@ -260,7 +260,7 @@ class TemplateBlock extends Immutable.Record(
         if (is.fn(block)) {
             // @ts-expect-error ts-migrate(2350) FIXME: Only a void function can be called with the 'new' ... Remove this comment to see the full error message
             block = new Immutable.Map({
-                process: block,
+                process: block
             });
         }
 

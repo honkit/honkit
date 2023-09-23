@@ -11,5 +11,5 @@ export default Immutable.Map({
     // Relative Time
     dateFromNow: function (time) {
         return moment(time).fromNow();
-    },
+    }
 });

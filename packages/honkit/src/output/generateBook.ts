@@ -53,7 +53,7 @@ const generateMultipleLanguages = (generator: Generator, output: Output) => {
             options: langOptions,
             state: state,
             generator: generator.name,
-            plugins: plugins,
+            plugins: plugins
         });
 
         logger.info.ln("");
@@ -168,7 +168,7 @@ function generateBook(generator, book, options = {}) {
                 book: book,
                 options: options,
                 state: state,
-                generator: generator.name,
+                generator: generator.name
             })
         )
             // Cleanup output folder

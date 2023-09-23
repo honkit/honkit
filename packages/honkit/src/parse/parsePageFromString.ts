@@ -17,7 +17,7 @@ function parsePageFromString(page, content) {
     return page.merge({
         content: parsed.body,
         attributes: Immutable.fromJS(parsed.attributes),
-        dir: direction(parsed.body),
+        dir: direction(parsed.body)
     });
 }
 

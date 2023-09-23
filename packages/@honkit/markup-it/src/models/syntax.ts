@@ -11,7 +11,7 @@ const SyntaxSetRecord = Immutable.Record({
     // @ts-ignore
     inline: new RulesSet([]),
     // @ts-ignore
-    blocks: new RulesSet([]),
+    blocks: new RulesSet([])
 });
 
 function SyntaxSet(name, def) {
@@ -26,7 +26,7 @@ function SyntaxSet(name, def) {
         // @ts-ignore
         inline: new RulesSet(def.inline),
         // @ts-ignore
-        blocks: new RulesSet(def.blocks),
+        blocks: new RulesSet(def.blocks)
     });
 }
 inherits(SyntaxSet, SyntaxSetRecord);

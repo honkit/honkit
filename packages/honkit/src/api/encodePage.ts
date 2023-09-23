@@ -49,8 +49,8 @@ function encodePage(output: Output, page: Page): EncodedPageWithAttributes {
         [
             {
                 content: result.content,
-                type: "normal",
-            },
+                type: "normal"
+            }
         ],
         '"sections" property is deprecated, use page.content instead'
     );

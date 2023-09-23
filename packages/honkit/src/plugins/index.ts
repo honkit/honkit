@@ -8,5 +8,5 @@ export default {
     validateConfig: validateConfig0,
     listResources: listResources0,
     listBlocks: listBlocks0,
-    listFilters: listFilters0,
+    listFilters: listFilters0
 };

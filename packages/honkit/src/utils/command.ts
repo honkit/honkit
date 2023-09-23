@@ -77,5 +77,5 @@ function optionsToShellArgs(options) {
 
 export default {
     exec: exec,
-    optionsToShellArgs: optionsToShellArgs,
+    optionsToShellArgs: optionsToShellArgs
 };

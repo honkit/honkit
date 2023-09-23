@@ -10,7 +10,7 @@ import mergeAtLevel from "./mergeAtLevel";
  */
 function editArticleTitle(summary, level, newTitle) {
     return mergeAtLevel(summary, level, {
-        title: newTitle,
+        title: newTitle
     });
 }
 

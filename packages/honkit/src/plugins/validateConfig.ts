@@ -30,7 +30,7 @@ function validatePluginConfig(book, plugin) {
     // Validate and throw if invalid
     const v = new jsonschema.Validator();
     const result = v.validate(pluginConfig, schema, {
-        propertyName: configKey,
+        propertyName: configKey
     });
 
     // Throw error

@@ -37,6 +37,6 @@ export default function createNodeFS(root) {
         fsStatFile: fs.stat,
         fsReadDir: fsReadDir,
         fsLoadObject: fsLoadObject,
-        fsReadAsStream: fs.readStream,
+        fsReadAsStream: fs.readStream
     });
 }

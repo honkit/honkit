@@ -45,7 +45,7 @@ function createMockFS(files) {
         const file = getFile(filePath);
         if (!is.string(file)) {
             throw error.FileNotFoundError({
-                filename: filePath,
+                filename: filePath
             });
         }
 
@@ -56,12 +56,12 @@ function createMockFS(files) {
         const file = getFile(filePath);
         if (!file) {
             throw error.FileNotFoundError({
-                filename: filePath,
+                filename: filePath
             });
         }
 
         return {
-            mtime: mtime,
+            mtime: mtime
         };
     }
 
@@ -69,7 +69,7 @@ function createMockFS(files) {
         const dir = getFile(filePath);
         if (!dir || is.string(dir)) {
             throw error.FileNotFoundError({
-                filename: filePath,
+                filename: filePath
             });
         }
 
@@ -89,7 +89,7 @@ function createMockFS(files) {
         fsExists: fsExists,
         fsReadFile: fsReadFile,
         fsStatFile: fsStatFile,
-        fsReadDir: fsReadDir,
+        fsReadDir: fsReadDir
     });
 }
 

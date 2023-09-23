@@ -21,5 +21,5 @@ function unescape(str) {
 
 module.exports = {
     escape: escape,
-    unescape: unescape,
+    unescape: unescape
 };

@@ -6,7 +6,7 @@ type Resources = Immutable.Map<any, any>;
 class GeneratorState extends Immutable.Record({
     i18n: I18n(),
     // List of plugins' resources
-    resources: Immutable.Map(),
+    resources: Immutable.Map()
 }) {
     getI18n(): I18n {
         return this.get("i18n");

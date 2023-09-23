@@ -135,5 +135,5 @@ export default {
     toAbsolute: toAbsolute,
     relative: relative,
     relativeForFile: relativeForFile,
-    flatten: flatten,
+    flatten: flatten
 };

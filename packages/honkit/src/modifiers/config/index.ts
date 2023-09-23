@@ -12,5 +12,5 @@ export default {
     editPlugin: editPlugin0,
     hasPlugin: hasPlugin0,
     getPluginConfig: getPluginConfig0,
-    isDefaultPlugin: isDefaultPlugin0,
+    isDefaultPlugin: isDefaultPlugin0
 };

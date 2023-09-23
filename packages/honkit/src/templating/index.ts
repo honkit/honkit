@@ -12,5 +12,5 @@ export default {
     replaceShortcuts: replaceShortcuts0,
 
     ConrefsLoader: conrefsLoader,
-    ThemesLoader: themesLoader,
+    ThemesLoader: themesLoader
 };

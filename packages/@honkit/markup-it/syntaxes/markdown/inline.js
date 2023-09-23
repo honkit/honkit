@@ -12,7 +12,7 @@ const inlineRules = MarkupIt.RulesSet([
     MarkupIt.Rule(MarkupIt.ENTITIES.FOOTNOTE_REF)
         .regExp(reInline.reffn, (state, match) => {
             return {
-                text: match[1],
+                text: match[1]
             };
         })
         .toText((state, token) => {
@@ -29,7 +29,7 @@ const inlineRules = MarkupIt.RulesSet([
 
             const imgData = {
                 alt: match[1],
-                src: match[2],
+                src: match[2]
             };
 
             const title = match[3];
@@ -38,7 +38,7 @@ const inlineRules = MarkupIt.RulesSet([
             }
 
             return {
-                data: imgData,
+                data: imgData
             };
         })
         .toText((state, token) => {
@@ -61,8 +61,8 @@ const inlineRules = MarkupIt.RulesSet([
                     tokens: state.parseAsInline(match[1]),
                     data: {
                         href: match[2],
-                        title: match[3],
-                    },
+                        title: match[3]
+                    }
                 };
             });
         })
@@ -71,8 +71,8 @@ const inlineRules = MarkupIt.RulesSet([
                 return {
                     tokens: state.parseAsInline(match[1]),
                     data: {
-                        href: match[1],
-                    },
+                        href: match[1]
+                    }
                 };
             });
         })
@@ -84,9 +84,9 @@ const inlineRules = MarkupIt.RulesSet([
 
             return {
                 data: {
-                    href: uri,
+                    href: uri
                 },
-                tokens: [MarkupIt.Token.createText(uri)],
+                tokens: [MarkupIt.Token.createText(uri)]
             };
         })
         .regExp(reInline.reflink, (state, match) => {
@@ -97,9 +97,9 @@ const inlineRules = MarkupIt.RulesSet([
                 return {
                     type: MarkupIt.ENTITIES.LINK,
                     data: {
-                        ref: refId,
+                        ref: refId
                     },
-                    tokens: [MarkupIt.Token.createText(innerText)],
+                    tokens: [MarkupIt.Token.createText(innerText)]
                 };
             });
         })
@@ -111,8 +111,8 @@ const inlineRules = MarkupIt.RulesSet([
                     type: MarkupIt.ENTITIES.LINK,
                     tokens: state.parseAsInline(match[1]),
                     data: {
-                        ref: refId,
-                    },
+                        ref: refId
+                    }
                 };
             });
         })
@@ -123,8 +123,8 @@ const inlineRules = MarkupIt.RulesSet([
                 return {
                     tokens: state.parseAsInline(match[1]),
                     data: {
-                        ref: refId,
-                    },
+                        ref: refId
+                    }
                 };
             });
         })
@@ -142,7 +142,7 @@ const inlineRules = MarkupIt.RulesSet([
     MarkupIt.Rule(MarkupIt.STYLES.CODE)
         .regExp(reInline.code, (state, match) => {
             return {
-                tokens: [MarkupIt.Token.createText(match[2])],
+                tokens: [MarkupIt.Token.createText(match[2])]
             };
         })
         .toText((state, token) => {
@@ -161,7 +161,7 @@ const inlineRules = MarkupIt.RulesSet([
     MarkupIt.Rule(MarkupIt.STYLES.BOLD)
         .regExp(reInline.strong, (state, match) => {
             return {
-                tokens: state.parseAsInline(match[2] || match[1]),
+                tokens: state.parseAsInline(match[2] || match[1])
             };
         })
         .toText("**%s**"),
@@ -170,7 +170,7 @@ const inlineRules = MarkupIt.RulesSet([
     MarkupIt.Rule(MarkupIt.STYLES.ITALIC)
         .regExp(reInline.em, (state, match) => {
             return {
-                tokens: state.parseAsInline(match[2] || match[1]),
+                tokens: state.parseAsInline(match[2] || match[1])
             };
         })
         .toText("_%s_"),
@@ -179,7 +179,7 @@ const inlineRules = MarkupIt.RulesSet([
     MarkupIt.Rule(MarkupIt.STYLES.STRIKETHROUGH)
         .regExp(reInline.del, (state, match) => {
             return {
-                tokens: state.parseAsInline(match[1]),
+                tokens: state.parseAsInline(match[1])
             };
         })
         .toText("~~%s~~"),
@@ -212,15 +212,15 @@ const inlineRules = MarkupIt.RulesSet([
                     {
                         type: MarkupIt.STYLES.HTML,
                         text: innerText,
-                        raw: innerText,
-                    },
+                        raw: innerText
+                    }
                 ];
             }
 
             let result = Immutable.List().push({
                 type: MarkupIt.STYLES.HTML,
                 text: startTag,
-                raw: startTag,
+                raw: startTag
             });
 
             result = result.concat(innerTokens);
@@ -229,7 +229,7 @@ const inlineRules = MarkupIt.RulesSet([
                 result = result.push({
                     type: MarkupIt.STYLES.HTML,
                     text: endTag,
-                    raw: endTag,
+                    raw: endTag
                 });
             }
 
@@ -258,9 +258,9 @@ const inlineRules = MarkupIt.RulesSet([
             return {
                 text: "",
                 data: {
-                    type: type,
+                    type: type
                 },
-                tokens: [MarkupIt.Token.createText(text)],
+                tokens: [MarkupIt.Token.createText(text)]
             };
         })
         .toText((state, token) => {
@@ -279,18 +279,18 @@ const inlineRules = MarkupIt.RulesSet([
     MarkupIt.Rule(MarkupIt.STYLES.TEXT)
         .regExp(reInline.escape, (state, match) => {
             return {
-                text: match[1],
+                text: match[1]
             };
         })
         .regExp(reInline.text, (state, match) => {
             return {
-                text: utils.unescape(match[0]),
+                text: utils.unescape(match[0])
             };
         })
         .toText((state, token) => {
             const text = token.getAsPlainText();
             return utils.escape(text, false);
-        }),
+        })
 ]);
 
 module.exports = inlineRules;

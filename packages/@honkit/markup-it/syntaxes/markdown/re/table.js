@@ -27,7 +27,7 @@ const table = {
     // Alignements
     alignRight: /^ *-+: *$/,
     alignCenter: /^ *:-+: *$/,
-    alignLeft: /^ *:-+ *$/,
+    alignLeft: /^ *:-+ *$/
 };
 
 table.cellSeparation = replace(table.cellSeparation)(/pipe/g, pipe)();

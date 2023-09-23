@@ -15,7 +15,7 @@ import mergeDefaults from "../utils/mergeDefaults";
 function validateConfig(bookJson) {
     const v = new jsonschema.Validator();
     const result = v.validate(bookJson, schema, {
-        propertyName: "config",
+        propertyName: "config"
     });
 
     // Throw error

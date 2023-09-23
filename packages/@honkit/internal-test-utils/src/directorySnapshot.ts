@@ -14,7 +14,7 @@ async function* getFiles(dir: string): AsyncIterable<{ dirent: Dirent; filePath:
         } else {
             yield {
                 dirent,
-                filePath,
+                filePath
             };
         }
     }
@@ -36,7 +36,7 @@ const defaultMask = (s: string) => s;
 export async function* iterateDirectoryContents({
     baseDir,
     allowExtensions,
-    maskContent = defaultMask,
+    maskContent = defaultMask
 }: {
     baseDir: string;
     allowExtensions: string[];
@@ -54,11 +54,11 @@ export async function* iterateDirectoryContents({
                 isDirectory: dirent.isDirectory(),
                 isFile: isFile,
                 isSymbolicLink: dirent.isSymbolicLink(),
-                isSocket: dirent.isSocket(),
+                isSocket: dirent.isSocket()
             },
             // normalize file path
             filePath: path.relative(baseDir, filePath).split(path.sep).join("/"),
-            contents,
+            contents
         };
     }
 }

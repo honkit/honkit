@@ -30,14 +30,15 @@
     "watch": "tsc -p . --watch"
   },
   "prettier": {
-    "printWidth": 120,
     "singleQuote": false,
-    "tabWidth": 4
+    "printWidth": 120,
+    "tabWidth": 4,
+    "trailingComma": "none"
   },
   "devDependencies": {
     "@types/node": "^14.0.14",
     "cross-env": "^7.0.3",
-    "prettier": "^2.2.1",
+    "prettier": "^3.0.3",
     "rimraf": "^3.0.2",
     "typescript": "^4.1.3"
   },

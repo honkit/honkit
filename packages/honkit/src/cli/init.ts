@@ -10,5 +10,5 @@ export default {
         const bookRoot = path.resolve(process.cwd(), args[0] || "./");
 
         return initBook(bookRoot);
-    },
+    }
 };

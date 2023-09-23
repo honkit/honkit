@@ -51,5 +51,5 @@ export default {
 
     onHR: function () {
         return "-----";
-    },
+    }
 };

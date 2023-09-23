@@ -18,7 +18,7 @@ function indexPartLevels(part, index) {
 
     return part.merge({
         level: baseLevel,
-        articles: articles,
+        articles: articles
     });
 }
 

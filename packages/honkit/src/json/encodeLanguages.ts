@@ -18,10 +18,10 @@ function encodeLanguages(languages) {
             .map((lang) => {
                 return {
                     id: lang.getID(),
-                    title: lang.getTitle(),
+                    title: lang.getTitle()
                 };
             })
-            .toJS(),
+            .toJS()
     };
 }
 

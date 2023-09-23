@@ -58,5 +58,5 @@ module.exports = [
         }
 
         return `<pre><code${attr}>${utils.escape(text)}</code></pre>\n`;
-    }),
+    })
 ];

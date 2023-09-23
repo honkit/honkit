@@ -42,7 +42,7 @@ function getConvertOptions(output) {
             "--max-levels": "1",
             "--no-chapters-in-toc": true,
             "--breadth-first": true,
-            "--dont-split-on-page-breaks": format === "epub" ? true : undefined,
+            "--dont-split-on-page-breaks": format === "epub" ? true : undefined
         };
 
         if (format !== "pdf") {
@@ -67,7 +67,7 @@ function getConvertOptions(output) {
                     "--pdf-sans-family": String(pdfOptions.fontFamily),
                     "--pdf-header-template": headerTpl,
                     "--pdf-footer-template": footerTpl,
-                    "--embed-all-fonts": Boolean(pdfOptions.embedFonts),
+                    "--embed-all-fonts": Boolean(pdfOptions.embedFonts)
                 }));
             }
         );

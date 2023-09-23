@@ -23,5 +23,5 @@ export default {
     OL_LIST: "ordered_list",
     UL_LIST: "unordered_list",
 
-    LIST_ITEM: "list_item",
+    LIST_ITEM: "list_item"
 };

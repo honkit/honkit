@@ -66,8 +66,8 @@ function listRule(type) {
                         raw: rawItem,
                         tokens: state.parseAsBlock(textItem),
                         data: {
-                            loose: loose,
-                        },
+                            loose: loose
+                        }
                     });
                 };
 
@@ -75,7 +75,7 @@ function listRule(type) {
             }
 
             return {
-                tokens: result,
+                tokens: result
             };
         })
         .toText((state, token) => {
@@ -109,5 +109,5 @@ function listRule(type) {
 
 module.exports = {
     ul: listRule(MarkupIt.BLOCKS.UL_LIST),
-    ol: listRule(MarkupIt.BLOCKS.OL_LIST),
+    ol: listRule(MarkupIt.BLOCKS.OL_LIST)
 };

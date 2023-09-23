@@ -129,7 +129,7 @@ Git.parseUrl = function (giturl) {
     return {
         host: uri.toString(),
         ref: ref,
-        filepath: filepath,
+        filepath: filepath
     };
 };
 

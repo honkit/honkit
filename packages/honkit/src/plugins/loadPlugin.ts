@@ -65,7 +65,7 @@ function loadPlugin(book, plugin) {
                     content = require(packageMain);
                 } catch (err) {
                     throw new error.PluginError(err, {
-                        plugin: name,
+                        plugin: name
                     });
                 }
             }
@@ -77,7 +77,7 @@ function loadPlugin(book, plugin) {
                 version: packageContent.version || "*",
                 path: pkgPath,
                 package: Immutable.fromJS(packageContent),
-                content: Immutable.fromJS(content || {}),
+                content: Immutable.fromJS(content || {})
             });
         })
         .then((plugin) => validatePlugin(plugin))

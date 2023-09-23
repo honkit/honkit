@@ -9,7 +9,7 @@ function pregQuote(str) {
 }
 
 function replaceText($: cheerio.Root, el, search, replace, text_only) {
-    return $(el).each(function() {
+    return $(el).each(function () {
         let node = this.firstChild;
         let val;
         let new_val;
@@ -68,7 +68,7 @@ function annotateText(entries, glossaryFilePath, $) {
         const description = entry.getDescription();
         const searchRegex = new RegExp(`\\b(${pregQuote(name.toLowerCase())})\\b`, "gi");
 
-        $("*").each(function() {
+        $("*").each(function () {
             const $this = $(this);
 
             if ($this.is(ANNOTATION_IGNORE) || $this.parents(ANNOTATION_IGNORE).length > 0) return;

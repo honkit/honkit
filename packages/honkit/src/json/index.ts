@@ -19,5 +19,5 @@ export default {
     encodeSummary: encodeSummary0,
     encodeSummaryArticle: encodeSummaryArticle0,
     encodeReadme: encodeReadme0,
-    encodeLanguages: encodeLanguages0,
+    encodeLanguages: encodeLanguages0
 };

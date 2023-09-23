@@ -11,7 +11,7 @@ function encodeReadme(readme) {
     const file = readme.getFile();
 
     return {
-        file: encodeFile(file),
+        file: encodeFile(file)
     };
 }
 

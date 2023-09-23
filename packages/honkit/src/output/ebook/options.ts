@@ -11,7 +11,7 @@ const Options = Immutable.Record({
     format: String(),
 
     // Force use of absolute urls ("index.html" instead of "/")
-    directoryIndex: Boolean(false),
+    directoryIndex: Boolean(false)
 });
 
 export default Options;

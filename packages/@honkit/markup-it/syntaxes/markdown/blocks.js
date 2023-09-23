@@ -19,8 +19,8 @@ module.exports = MarkupIt.RulesSet([
             return {
                 tokens: state.parseAsInline(text),
                 data: {
-                    id: match[1],
-                },
+                    id: match[1]
+                }
             };
         })
         .toText((state, token) => {
@@ -58,7 +58,7 @@ module.exports = MarkupIt.RulesSet([
 
             return state.toggle("blockquote", () => {
                 return {
-                    tokens: state.parseAsBlock(inner),
+                    tokens: state.parseAsBlock(inner)
                 };
             });
         })
@@ -82,7 +82,7 @@ module.exports = MarkupIt.RulesSet([
     MarkupIt.Rule(MarkupIt.BLOCKS.HTML)
         .regExp(reBlock.html, (state, match) => {
             return {
-                text: match[0],
+                text: match[0]
             };
         })
         .toText("%s"),
@@ -100,11 +100,11 @@ module.exports = MarkupIt.RulesSet([
         state.refs = state.refs || {};
         state.refs[id] = {
             href: href,
-            title: title,
+            title: title
         };
 
         return {
-            type: "definition",
+            type: "definition"
         };
     }),
 
@@ -121,10 +121,10 @@ module.exports = MarkupIt.RulesSet([
                 tokens: [
                     MarkupIt.Token.create(MarkupIt.ENTITIES.MATH, {
                         data: {
-                            tex: text,
-                        },
-                    }),
-                ],
+                            tex: text
+                        }
+                    })
+                ]
             };
         })
         .regExp(reBlock.paragraph, (state, match) => {
@@ -138,7 +138,7 @@ module.exports = MarkupIt.RulesSet([
             const text = match[1].trim();
 
             return {
-                tokens: state.parseAsInline(text),
+                tokens: state.parseAsInline(text)
             };
         })
         .toText("%s\n\n"),
@@ -150,8 +150,8 @@ module.exports = MarkupIt.RulesSet([
             const text = match[0];
 
             return {
-                tokens: state.parseAsInline(text),
+                tokens: state.parseAsInline(text)
             };
         })
-        .toText("%s\n"),
+        .toText("%s\n")
 ]);

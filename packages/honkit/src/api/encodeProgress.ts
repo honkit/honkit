@@ -79,7 +79,7 @@ function encodeProgress(output: Output, page: Page): EncodeProgress {
         chapters: chapters,
 
         // Current chapter
-        current: currentChapter,
+        current: currentChapter
     };
 }
 

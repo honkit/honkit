@@ -22,7 +22,7 @@ function loadForBook(book) {
     const installedPlugins = requirements.map((dep) => {
         const name = dep.getName();
         return dep.merge({
-            path: pluginResolver.resolvePluginPackageName(name),
+            path: pluginResolver.resolvePluginPackageName(name)
         });
     });
 
