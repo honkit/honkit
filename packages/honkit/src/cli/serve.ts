@@ -12,6 +12,7 @@ import getOutputFolder from "./getOutputFolder";
 import Server from "./server";
 import watch from "./watch";
 import { clearCache } from "../output/page-cache";
+import fs from "fs";
 
 let server, lrServer, lrPath;
 
@@ -44,11 +45,11 @@ function startServer(args, kwargs) {
             outputFolder,
             hasLiveReloading,
             Generator,
-            reload,
+            reload
         }).then((output) => {
             lastOutput = output;
             return output;
-        }),
+        })
     ])
         .then(() => {
             console.log(`Serving book on http://localhost:${port}`);
@@ -66,36 +67,44 @@ function startServer(args, kwargs) {
                     console.error(error);
                     return;
                 }
+                // If the file does not exist in file system, show a warning and skip
+                // Probably, the file has been deleted
+                if (!fs.existsSync(filepath)) {
+                    console.warn(`${filepath} does not exist in file system.`);
+                    return;
+                }
                 // set livereload path
                 lrPath = filepath;
                 // TODO: use parse extension
                 // Incremental update for pages
+                const logger = book.getLogger();
                 if (lastOutput && filepath.endsWith(".md")) {
-                    console.log("Reload after change in file", filepath);
+                    logger.info.ok("Rebuild " + filepath);
                     const changedOutput = lastOutput.reloadPage(lastOutput.book.getContentRoot(), filepath).merge({
-                        incrementalChangeFileSet: Immutable.Set([filepath]),
+                        incrementalChangeFileSet: Immutable.Set([filepath])
                     });
                     return incrementalBuild({
                         output: changedOutput,
-                        Generator,
+                        Generator
                     }).then(() => {
                         if (lrPath && hasLiveReloading) {
                             // trigger livereload
                             lrServer.changed({
                                 body: {
-                                    files: [lrPath],
-                                },
+                                    files: [lrPath]
+                                }
                             });
                         }
                     });
                 }
-                console.log("Rebuild after change in file", filepath);
+                // Asciidoc files are not supported for incremental build
+                logger.info.ok("Rebuild " + filepath);
                 return generateBook({
                     book,
                     outputFolder,
                     hasLiveReloading,
                     Generator,
-                    reload,
+                    reload
                 }).then((output) => {
                     lastOutput = output;
                 });
@@ -120,7 +129,7 @@ function generateBook({ book, outputFolder, hasLiveReloading, Generator, reload 
         }
 
         return Output.generate(Generator, resultBook, {
-            root: outputFolder,
+            root: outputFolder
         });
     });
 }
@@ -136,36 +145,36 @@ export default {
         {
             name: "port",
             description: "Port for server to listen on",
-            defaults: 4000,
+            defaults: 4000
         },
         {
             name: "lrport",
             description: "Port for livereload server to listen on",
-            defaults: 35729,
+            defaults: 35729
         },
         {
             name: "watch",
             description: "Enable file watcher and live reloading",
-            defaults: true,
+            defaults: true
         },
         {
             name: "live",
             description: "Enable live reloading",
-            defaults: true,
+            defaults: true
         },
         {
             name: "open",
             description: "Enable opening book in browser",
-            defaults: false,
+            defaults: false
         },
         {
             name: "browser",
             description: "Specify browser for opening book",
-            defaults: "",
+            defaults: ""
         },
         options.log,
         options.format,
-        options.reload,
+        options.reload
     ],
     exec: function (args, kwargs) {
         server = new Server();
@@ -189,5 +198,5 @@ export default {
             .then(() => {
                 return startServer(args, kwargs);
             });
-    },
+    }
 };
