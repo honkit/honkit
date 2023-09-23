@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1693264528446,
+  "lastUpdate": 1695449400548,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9949,6 +9949,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±1.22%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1d7427b61b3d69e033cea4eb4f41fccc0e0455de",
+          "message": "fix(honkit): honkit serve should not exit when watched file is deleted (#373)\n\n* fix(honkit): `honkit serve` should not exit when watched file is deleted\r\n\r\nshow warning message instead of process exiting.\r\n\r\n* fix to use warn",
+          "timestamp": "2023-09-23T15:07:09+09:00",
+          "tree_id": "5b97a0a89522260ca6c0482bf83d9e49783a21ad",
+          "url": "https://github.com/honkit/honkit/commit/1d7427b61b3d69e033cea4eb4f41fccc0e0455de"
+        },
+        "date": 1695449399141,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±0.75%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
