@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1695449400548,
+  "lastUpdate": 1695450749118,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -9980,6 +9980,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.11,
             "range": "±0.75%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "be489bc25ac48ef0b1490b962aebcb17989ee181",
+          "message": "style: format by prettier (#374)\n\n* style: format by prettier\r\n\r\n* Update packages/@honkit/internal-test-utils/package.json+1\r\n\r\n* fix\r\n\r\n* Update packages/@honkit/internal-test-utils/src/directorySnapshot.ts\r\n\r\n* Update package.json+1",
+          "timestamp": "2023-09-23T15:29:42+09:00",
+          "tree_id": "8e18876ccceeb01585180b98a8be18806e8ac8f8",
+          "url": "https://github.com/honkit/honkit/commit/be489bc25ac48ef0b1490b962aebcb17989ee181"
+        },
+        "date": 1695450748131,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.11,
+            "range": "±0.89%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
