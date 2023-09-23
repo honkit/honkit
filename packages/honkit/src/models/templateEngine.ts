@@ -23,7 +23,7 @@ class TemplateEngine extends Immutable.Record(
         context: Object(),
 
         // Nunjucks loader
-        loader: new nunjucks.FileSystemLoader("views"),
+        loader: new nunjucks.FileSystemLoader("views")
     },
     "TemplateEngine"
 ) {
@@ -90,8 +90,8 @@ class TemplateEngine extends Immutable.Record(
                 variableStart: "{{",
                 variableEnd: "}}",
                 commentStart: "{###",
-                commentEnd: "###}",
-            },
+                commentEnd: "###}"
+            }
         });
 
         // Add filters
@@ -133,7 +133,7 @@ class TemplateEngine extends Immutable.Record(
             filters: Immutable.Map(def.filters || {}),
             globals: Immutable.Map(def.globals || {}),
             context: def.context,
-            loader: def.loader,
+            loader: def.loader
         });
     }
 }

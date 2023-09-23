@@ -64,7 +64,7 @@ const htmlBlocks = Immutable.List([
     "title",
     "tr",
     "track",
-    "ul",
+    "ul"
 ]);
 
 /**

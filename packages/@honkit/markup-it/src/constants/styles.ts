@@ -4,5 +4,5 @@ export default {
     ITALIC: "ITALIC",
     CODE: "CODE",
     STRIKETHROUGH: "STRIKETHROUGH",
-    HTML: "HTML",
+    HTML: "HTML"
 };

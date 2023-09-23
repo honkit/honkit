@@ -14,7 +14,7 @@ function encodeSummary(summary) {
 
     return {
         file: encodeFile(file),
-        parts: parts.map(encodeSummaryPart).toJS(),
+        parts: parts.map(encodeSummaryPart).toJS()
     };
 }
 

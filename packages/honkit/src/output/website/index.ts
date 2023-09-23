@@ -14,5 +14,5 @@ export default {
     onFinish: onFinish,
     onPage: onPage,
     onAsset: onAsset0,
-    createTemplateEngine: createTemplateEngine0,
+    createTemplateEngine: createTemplateEngine0
 };

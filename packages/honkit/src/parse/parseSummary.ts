@@ -33,7 +33,7 @@ function parseSummary(book) {
         if (readmeFile.exists() && !readmeArticle) {
             summary = SummaryModifier.unshiftArticle(summary, {
                 title: "Introduction",
-                ref: readmeFile.getPath(),
+                ref: readmeFile.getPath()
             });
         }
 

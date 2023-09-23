@@ -5,5 +5,5 @@ export default {
 
     // HonKit specifics
     MATH: "math",
-    TEMPLATE: "template",
+    TEMPLATE: "template"
 };

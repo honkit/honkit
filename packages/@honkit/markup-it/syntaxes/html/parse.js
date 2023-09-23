@@ -28,12 +28,12 @@ const TAGS_TO_TYPE = {
     b: MarkupIt.STYLES.BOLD,
     strike: MarkupIt.STYLES.STRIKETHROUGH,
     em: MarkupIt.STYLES.ITALIC,
-    code: MarkupIt.STYLES.CODE,
+    code: MarkupIt.STYLES.CODE
 };
 
 function resolveHeadingAttrs(attribs) {
     return {
-        id: attribs.id,
+        id: attribs.id
     };
 }
 
@@ -41,13 +41,13 @@ const TAGS_TO_DATA = {
     a: function (attribs) {
         return {
             href: attribs.href,
-            title: attribs.alt || "",
+            title: attribs.alt || ""
         };
     },
     img: function (attribs) {
         return {
             src: attribs.src,
-            title: attribs.alt || "",
+            title: attribs.alt || ""
         };
     },
     h1: resolveHeadingAttrs,
@@ -55,7 +55,7 @@ const TAGS_TO_DATA = {
     h3: resolveHeadingAttrs,
     h4: resolveHeadingAttrs,
     h5: resolveHeadingAttrs,
-    h6: resolveHeadingAttrs,
+    h6: resolveHeadingAttrs
 };
 
 /**
@@ -86,7 +86,7 @@ function htmlToTokens(str) {
                 }
 
                 const token = MarkupIt.Token.create(type, {
-                    data: dataResolver ? dataResolver(attribs) : {},
+                    data: dataResolver ? dataResolver(attribs) : {}
                 });
 
                 stack.push(token);
@@ -107,10 +107,10 @@ function htmlToTokens(str) {
 
                 const lastToken = stack.pop();
                 pushToLast(lastToken);
-            },
+            }
         },
         {
-            decodeEntities: true,
+            decodeEntities: true
         }
     );
 

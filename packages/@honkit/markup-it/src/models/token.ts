@@ -22,7 +22,7 @@ const TokenRecord = Immutable.Record({
     raw: String(),
 
     // List of children tokens (for block tokens)
-    tokens: Immutable.List(),
+    tokens: Immutable.List()
 });
 
 function Token(def) {
@@ -36,7 +36,7 @@ function Token(def) {
         data: Immutable.Map(def.data),
         text: def.text,
         raw: def.raw,
-        tokens: Immutable.List(def.tokens),
+        tokens: Immutable.List(def.tokens)
     });
 }
 inherits(Token, TokenRecord);
@@ -105,7 +105,7 @@ Token.prototype.mergeWith = function (token) {
         text: this.getText() + token.getText(),
         raw: this.getRaw() + token.getRaw(),
         data: this.getData().merge(token.getData()),
-        tokens: this.getTokens().concat(token.getTokens()),
+        tokens: this.getTokens().concat(token.getTokens())
     });
 };
 
@@ -116,7 +116,7 @@ Token.prototype.mergeWith = function (token) {
  */
 Token.prototype.pushToken = function (token) {
     return this.merge({
-        tokens: this.getTokens().push(token),
+        tokens: this.getTokens().push(token)
     });
 };
 
@@ -169,7 +169,7 @@ Token.create = function (type, tok) {
         text: text,
         raw: tok.raw || "",
         tokens: tokens,
-        data: data,
+        data: data
     });
 };
 
@@ -181,7 +181,7 @@ Token.create = function (type, tok) {
 Token.createText = function (text) {
     return Token.create(STYLES.TEXT, {
         text: text,
-        raw: text,
+        raw: text
     });
 };
 

@@ -25,5 +25,5 @@ const ruleUL = MarkupIt.Rule(MarkupIt.BLOCKS.UL_LIST).toText(renderListItem);
 
 module.exports = {
     ol: ruleOL,
-    ul: ruleUL,
+    ul: ruleUL
 };

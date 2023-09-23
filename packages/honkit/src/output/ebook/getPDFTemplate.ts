@@ -22,7 +22,7 @@ function getPDFTemplate(output, type) {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'page' does not exist on type '{ summary:... Remove this comment to see the full error message
     context.page = {
         num: "_PAGENUM_",
-        title: "_SECTION_",
+        title: "_SECTION_"
     };
 
     // Render the theme
@@ -33,8 +33,8 @@ function getPDFTemplate(output, type) {
             .then((tplOut) => {
                 return Promise.nfcall(juice.juiceResources, tplOut.getContent(), {
                     webResources: {
-                        relativeTo: outputRoot,
-                    },
+                        relativeTo: outputRoot
+                    }
                 });
             })
             .then((tplOut) => tplOut.replace(/\n/g, " ")) // PDF templates need to be on one line for inclusion in spawned command

@@ -103,7 +103,7 @@ function createTemplateEngine(output: Output, currentFile: string): TemplateEngi
         globals: {
             getArticleByPath: memoizeOne(getArticleByPath),
             getPageByPath: memoizeOne(getPageByPath),
-            fileExists: fileExists,
+            fileExists: fileExists
         },
 
         filters: defaultFilters.merge({
@@ -152,12 +152,12 @@ function createTemplateEngine(output: Output, currentFile: string): TemplateEngi
 
             contentURL: function (filePath) {
                 return fileToURL(output, filePath);
-            },
+            }
         }),
 
         extensions: {
-            DoExtension: new DoExtension(),
-        },
+            DoExtension: new DoExtension()
+        }
     });
 }
 

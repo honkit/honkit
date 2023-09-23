@@ -41,7 +41,7 @@ function onPage(output, page) {
         const context = JSONUtils.encodeOutputWithPage(output, resultPage);
         // @ts-expect-error ts-migrate(2339) FIXME: Property 'plugins' does not exist on type '{ summa... Remove this comment to see the full error message
         context.plugins = {
-            resources: Plugins.listResources(plugins, resources).toJS(),
+            resources: Plugins.listResources(plugins, resources).toJS()
         };
 
         // @ts-expect-error ts-migrate(2339) FIXME: Property 'template' does not exist on type '{ summ... Remove this comment to see the full error message
@@ -56,10 +56,10 @@ function onPage(output, page) {
                     gitbook: context.gitbook,
                     basePath: basePath,
                     book: {
-                        language: book.getLanguage(),
-                    },
+                        language: book.getLanguage()
+                    }
                 };
-            },
+            }
         };
 
         // We should probabbly move it to "template" or a "site" namespace

@@ -5,7 +5,7 @@ const MAP = {
     js: "javascript",
     json: "javascript",
     rb: "ruby",
-    csharp: "cs",
+    csharp: "cs"
 };
 
 function normalize(lang) {
@@ -26,7 +26,7 @@ function highlight(lang, code) {
     if (!lang)
         return {
             body: code,
-            html: false,
+            html: false
         };
 
     // Normalize lang
@@ -34,7 +34,7 @@ function highlight(lang, code) {
 
     try {
         return hljs.highlight(code, {
-            language: lang,
+            language: lang
         }).value;
     } catch (e) {
         console.error(e);
@@ -42,22 +42,22 @@ function highlight(lang, code) {
 
     return {
         body: code,
-        html: false,
+        html: false
     };
 }
 
 module.exports = {
     book: {
         assets: "./css",
-        css: ["website.css"],
+        css: ["website.css"]
     },
     ebook: {
         assets: "./css",
-        css: ["ebook.css"],
+        css: ["ebook.css"]
     },
     blocks: {
         code: function (block) {
             return highlight(block.kwargs.language, block.body);
-        },
-    },
+        }
+    }
 };

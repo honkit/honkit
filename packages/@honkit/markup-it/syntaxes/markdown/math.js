@@ -17,7 +17,7 @@ function isInlineTex(content) {
 function normalizeTeX(content, isInline) {
     // trim new line at start and end, but preserve spaces
     content = content.replace(/^\n+/, "").replace(/\n+$/, "");
-    
+
     if (!isInline) {
         content = `\n${content}\n`;
     }
@@ -34,8 +34,8 @@ module.exports = MarkupIt.Rule(MarkupIt.ENTITIES.MATH)
 
         return {
             data: {
-                tex: text,
-            },
+                tex: text
+            }
         };
     })
     .toText((state, token) => {

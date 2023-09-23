@@ -25,7 +25,7 @@ function encodeSummaryArticle(article: SummaryArticle, recursive?: boolean) {
         url: article.getUrl(),
         path: article.getPath(),
         ref: article.getRef(),
-        articles: articles,
+        articles: articles
     };
 }
 

@@ -15,7 +15,7 @@ class SummaryArticle extends Immutable.Record(
         level: String(),
         title: String(),
         ref: String(),
-        articles: Immutable.List(),
+        articles: Immutable.List()
     },
     "SummaryArticle"
 ) {
@@ -165,7 +165,7 @@ class SummaryArticle extends Immutable.Record(
             level: level,
             title: def.title,
             ref: def.ref || def.path || "",
-            articles: Immutable.List(articles),
+            articles: Immutable.List(articles)
         });
     }
 

@@ -7,7 +7,7 @@ const tableRow = require("./tableRow");
 const ALIGN = {
     LEFT: "left",
     RIGHT: "right",
-    CENTER: "center",
+    CENTER: "center"
 };
 
 /**
@@ -27,9 +27,9 @@ function Table(state, header, align, rows) {
 
     return {
         data: {
-            align: align,
+            align: align
         },
-        tokens: Immutable.List([headerRow]).concat(rowTokens),
+        tokens: Immutable.List([headerRow]).concat(rowTokens)
     };
 }
 
@@ -135,5 +135,5 @@ const cellRule = MarkupIt.Rule(MarkupIt.BLOCKS.TABLE_CELL).toText((state, token)
 module.exports = {
     block: blockRule,
     cell: cellRule,
-    row: rowRule,
+    row: rowRule
 };

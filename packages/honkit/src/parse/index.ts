@@ -23,5 +23,5 @@ export default {
     parseLanguages: parseLanguages0,
     parsePage: parsePage0,
     parsePageFromString: parsePageFromString0,
-    lookupStructureFile: lookupStructureFile0,
+    lookupStructureFile: lookupStructureFile0
 };

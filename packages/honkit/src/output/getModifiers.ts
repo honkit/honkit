@@ -55,8 +55,8 @@ function getModifiers(output, page) {
                     {
                         body: source,
                         kwargs: {
-                            language: lang,
-                        },
+                            language: lang
+                        }
                     },
                     context
                 )
@@ -67,7 +67,7 @@ function getModifiers(output, page) {
                     return { html: result.body };
                 }
             });
-        }),
+        })
     ];
 }
 

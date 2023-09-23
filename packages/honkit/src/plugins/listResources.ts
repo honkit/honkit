@@ -22,11 +22,11 @@ function listResources(plugins: Plugin[], resources) {
             assets = assets.map((assetFile) => {
                 if (LocationUtils.isExternal(assetFile)) {
                     return {
-                        url: assetFile,
+                        url: assetFile
                     };
                 } else {
                     return {
-                        path: LocationUtils.normalize(path.join(npmId, assetFile)),
+                        path: LocationUtils.normalize(path.join(npmId, assetFile))
                     };
                 }
             });

@@ -12,8 +12,8 @@ const blockRule = MarkupIt.Rule(MarkupIt.BLOCKS.CODE)
             tokens: [MarkupIt.Token.createText(inner)],
             data: {
                 syntax: match[2],
-                type: "fences", // https://spec.commonmark.org/0.29/#fenced-code-blocks
-            },
+                type: "fences" // https://spec.commonmark.org/0.29/#fenced-code-blocks
+            }
         };
     })
 
@@ -28,8 +28,8 @@ const blockRule = MarkupIt.Rule(MarkupIt.BLOCKS.CODE)
             tokens: [MarkupIt.Token.createText(inner)],
             data: {
                 syntax: undefined,
-                type: "indented", // https://spec.commonmark.org/0.29/#indented-code-blocks
-            },
+                type: "indented" // https://spec.commonmark.org/0.29/#indented-code-blocks
+            }
         };
     })
 
@@ -60,5 +60,5 @@ const blockRule = MarkupIt.Rule(MarkupIt.BLOCKS.CODE)
     });
 
 module.exports = {
-    block: blockRule,
+    block: blockRule
 };

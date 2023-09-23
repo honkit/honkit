@@ -13,7 +13,7 @@ const rowRules = inlineRules
     .unshift(
         MarkupIt.Rule(CELL_SEPARATOR).regExp(reTable.cellSeparation, (match) => {
             return {
-                raw: match[0],
+                raw: match[0]
             };
         })
     )
@@ -48,7 +48,7 @@ function parseRow(state, text) {
         }
 
         const cell = MarkupIt.Token.create(MarkupIt.BLOCKS.TABLE_CELL, {
-            tokens: accu,
+            tokens: accu
         });
 
         cells.push(cell);
@@ -65,10 +65,10 @@ function parseRow(state, text) {
     pushCell();
 
     return MarkupIt.Token.create(MarkupIt.BLOCKS.TABLE_ROW, {
-        tokens: cells,
+        tokens: cells
     });
 }
 
 module.exports = {
-    parse: parseRow,
+    parse: parseRow
 };

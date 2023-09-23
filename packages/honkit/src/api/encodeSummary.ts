@@ -45,7 +45,7 @@ function encodeSummary(output, summary) {
             const article = summary.getByPath(level);
 
             return article ? encodeSummaryArticle(article) : undefined;
-        },
+        }
     };
 
     return result;

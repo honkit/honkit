@@ -8,5 +8,5 @@ export default extend({}, WebsiteGenerator, {
     name: "ebook",
     Options: options,
     onPage: onPage0,
-    onFinish: onFinish0,
+    onFinish: onFinish0
 });

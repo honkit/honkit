@@ -91,7 +91,7 @@ class Server extends events.EventEmitter {
 
                 // Send file
                 send(req, url.parse(req.url).pathname, {
-                    root: dir,
+                    root: dir
                 })
                     .on("error", error)
                     .on("directory", redirect)

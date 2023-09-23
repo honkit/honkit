@@ -27,7 +27,7 @@ function preparePlugins(output) {
                 return Plugins.validateConfig(book, plugins).then((newBook) => {
                     return output.merge({
                         book: newBook,
-                        plugins: plugins,
+                        plugins: plugins
                     });
                 });
             })

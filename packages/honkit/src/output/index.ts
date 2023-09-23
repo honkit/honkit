@@ -19,5 +19,5 @@ function getGenerator(name: string) {
 export default {
     generate: generateBook,
     incrementalBuild,
-    getGenerator: getGenerator,
+    getGenerator: getGenerator
 };

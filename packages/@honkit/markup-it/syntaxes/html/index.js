@@ -4,7 +4,7 @@ const htmlToTokens = require("./parse");
 const documentRule = MarkupIt.Rule(MarkupIt.BLOCKS.DOCUMENT)
     .match((state, text) => {
         return {
-            tokens: htmlToTokens(text),
+            tokens: htmlToTokens(text)
         };
     })
     .toText((state, token) => {
@@ -18,5 +18,5 @@ module.exports = MarkupIt.Syntax("html", {
     inline: require("./inline"),
 
     // List of rules for parsing inline styles/entities
-    blocks: require("./blocks"),
+    blocks: require("./blocks")
 });

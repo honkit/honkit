@@ -7,7 +7,7 @@ import reducedObject from "../utils/reducedObject";
 class Config extends Immutable.Record(
     {
         file: new File(),
-        values: configDefault,
+        values: configDefault
     },
     "Config"
 ) {
@@ -146,7 +146,7 @@ class Config extends Immutable.Record(
     static create(file, values) {
         return new Config({
             file: file,
-            values: Immutable.fromJS(values),
+            values: Immutable.fromJS(values)
         });
     }
 
@@ -157,7 +157,7 @@ class Config extends Immutable.Record(
      */
     static createWithValues(values) {
         return new Config({
-            values: Immutable.fromJS(values),
+            values: Immutable.fromJS(values)
         });
     }
 

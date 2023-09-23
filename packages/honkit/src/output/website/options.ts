@@ -8,7 +8,7 @@ const Options = Immutable.Record({
     prefix: String("website"),
 
     // Use directory index url instead of "index.html"
-    directoryIndex: Boolean(true),
+    directoryIndex: Boolean(true)
 });
 
 export default Options;

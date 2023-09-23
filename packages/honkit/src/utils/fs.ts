@@ -14,7 +14,7 @@ function writeStream(filename, st) {
     const d = Promise.defer();
 
     const wstream = fs.createWriteStream(filename);
-    const cleanup = function() {
+    const cleanup = function () {
         destroy(wstream);
         wstream.removeAllListeners();
     };
@@ -80,7 +80,8 @@ const downloadStream = (url: string, dest: string, cb: (error: Error | null) => 
     request.on("error", (err) => {
         fs.unlink(dest, () => cb(err)); // delete the (partial) file and then return the error
     });
-    file.on("error", (err) => { // Handle errors
+    file.on("error", (err) => {
+        // Handle errors
         fs.unlink(dest, () => cb(err)); // delete the (partial) file and then return the error
     });
 };

@@ -9,7 +9,7 @@ function encodeGlossaryEntry(entry) {
     return {
         id: entry.getID(),
         name: entry.getName(),
-        description: entry.getDescription(),
+        description: entry.getDescription()
     };
 }
 

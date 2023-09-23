@@ -75,7 +75,7 @@ function deprecateField(book, key, instance, property, value, msg) {
         get: getter,
         set: setter,
         enumerable: true,
-        configurable: true,
+        configurable: true
     });
 }
 
@@ -118,5 +118,5 @@ export default {
     renamedMethod: deprecateRenamedMethod,
     field: deprecateField,
     enable: enableDeprecation,
-    disable: disableDeprecation,
+    disable: disableDeprecation
 };

@@ -11,7 +11,7 @@ function parseReadme(html) {
 
     return {
         title: $("h1:first-child").text().trim(),
-        description: $("div.paragraph,p").first().text().trim(),
+        description: $("div.paragraph,p").first().text().trim()
     };
 }
 

@@ -33,7 +33,7 @@ class Output extends Immutable.Record({
 
     // incrementalChangeFileSet for incremental building
     // If it is empty, should build all
-    incrementalChangeFileSet: Immutable.Set(),
+    incrementalChangeFileSet: Immutable.Set()
 }) {
     getBook(): Book {
         return this.get("book");
@@ -85,7 +85,7 @@ class Output extends Immutable.Record({
         }
         const newPage = parsePageFromString(page, fs.readFileSync(filePath, "utf-8"));
         return this.merge({
-            pages: pages.set(relativePath, newPage),
+            pages: pages.set(relativePath, newPage)
         });
     }
 

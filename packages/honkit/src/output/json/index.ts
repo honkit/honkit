@@ -6,5 +6,5 @@ export default {
     name: "json",
     Options: options,
     onPage: onPage,
-    onFinish: onFinish,
+    onFinish: onFinish
 };

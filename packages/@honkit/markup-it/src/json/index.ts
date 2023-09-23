@@ -3,5 +3,5 @@ import decode from "./decode";
 
 export default {
     encode,
-    decode,
+    decode
 };

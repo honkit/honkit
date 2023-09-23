@@ -27,18 +27,18 @@ function encodeBookToJson(book) {
 
         gitbook: {
             version: honkit.version,
-            time: honkit.START_TIME,
+            time: honkit.START_TIME
         },
         honkit: {
             version: honkit.version,
-            time: honkit.START_TIME,
+            time: honkit.START_TIME
         },
         book: extend(
             {
-                language: language ? language : undefined,
+                language: language ? language : undefined
             },
             variables.toJS()
-        ),
+        )
     };
 }
 

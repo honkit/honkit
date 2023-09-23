@@ -17,7 +17,7 @@ function decodeTokenFromJSON(json) {
         text: json.text,
         raw: json.raw,
         data: json.data,
-        tokens: decodeTokensFromJSON(json.tokens || []),
+        tokens: decodeTokensFromJSON(json.tokens || [])
     });
 }
 

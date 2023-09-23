@@ -3,7 +3,7 @@ import is from "is";
 import Rule from "./rule";
 const inherits = require("util").inherits;
 const RulesSetRecord = Immutable.Record({
-    rules: Immutable.List(),
+    rules: Immutable.List()
 });
 
 function RulesSet(rules) {
@@ -16,7 +16,7 @@ function RulesSet(rules) {
     rules = new RulesList(rules);
 
     RulesSetRecord.call(this, {
-        rules: rules,
+        rules: rules
     });
 }
 inherits(RulesSet, RulesSetRecord);

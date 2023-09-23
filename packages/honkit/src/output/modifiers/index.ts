@@ -18,5 +18,5 @@ export default {
     resolveLinks: resolveLinks0,
     resolveImages: resolveImages0,
     annotateText: annotateText0,
-    highlightCode: highlightCode0,
+    highlightCode: highlightCode0
 };

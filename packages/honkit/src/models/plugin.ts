@@ -28,7 +28,7 @@ class Plugin extends Immutable.Record(
         package: Immutable.Map(),
 
         // Content of the package itself
-        content: Immutable.Map(),
+        content: Immutable.Map()
     },
     "Plugin"
 ) {
@@ -161,7 +161,7 @@ class Plugin extends Immutable.Record(
 
         return new Plugin({
             name: name,
-            version: version || DEFAULT_VERSION,
+            version: version || DEFAULT_VERSION
         });
     }
 
@@ -173,7 +173,7 @@ class Plugin extends Immutable.Record(
     static createFromDep(dep: PluginDependency) {
         return new Plugin({
             name: dep.getName(),
-            version: dep.getVersion(),
+            version: dep.getVersion()
         });
     }
 }

@@ -6,7 +6,7 @@ import STYLES from "./styles";
 const defaultDocumentRule = Rule(BLOCKS.DOCUMENT)
     .match((state, text) => {
         return {
-            tokens: state.parseAsBlock(text),
+            tokens: state.parseAsBlock(text)
         };
     })
     .toText((state, token) => {
@@ -16,7 +16,7 @@ const defaultDocumentRule = Rule(BLOCKS.DOCUMENT)
 const defaultBlockRule = Rule(BLOCKS.TEXT)
     .match((state, text) => {
         return {
-            tokens: state.parseAsInline(text),
+            tokens: state.parseAsInline(text)
         };
     })
     .toText("%s\n");
@@ -24,7 +24,7 @@ const defaultBlockRule = Rule(BLOCKS.TEXT)
 const defaultInlineRule = Rule(STYLES.TEXT)
     .match((state, text) => {
         return {
-            text: text,
+            text: text
         };
     })
     .toText("%s");
@@ -32,5 +32,5 @@ const defaultInlineRule = Rule(STYLES.TEXT)
 export default {
     documentRule: defaultDocumentRule,
     blockRule: defaultBlockRule,
-    inlineRule: defaultInlineRule,
+    inlineRule: defaultInlineRule
 };

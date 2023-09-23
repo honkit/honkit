@@ -4,7 +4,7 @@ import File from "./file";
 class Readme extends Immutable.Record({
     file: new File(),
     title: String(),
-    description: String(),
+    description: String()
 }) {
     getFile(): File {
         return this.get("file");
@@ -31,7 +31,7 @@ class Readme extends Immutable.Record({
         return new Readme({
             file: file,
             title: def.title || "",
-            description: def.description || "",
+            description: def.description || ""
         });
     }
 }

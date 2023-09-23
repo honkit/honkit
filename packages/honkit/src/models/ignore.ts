@@ -6,7 +6,7 @@ import createIgnore from "ignore";
 */
 class Ignore extends Immutable.Record(
     {
-        ignore: createIgnore(),
+        ignore: createIgnore()
     },
     "Ignore"
 ) {

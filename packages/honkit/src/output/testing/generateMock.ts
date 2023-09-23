@@ -26,14 +26,14 @@ export function generateMockBook(Generator, files) {
     return parseBook(book)
         .then((resultBook) => {
             return generateBook(Generator, resultBook, {
-                root: dir.name,
+                root: dir.name
             });
         })
         .then((output) => {
             return {
                 book,
                 output,
-                dir: dir.name,
+                dir: dir.name
             };
         });
 }

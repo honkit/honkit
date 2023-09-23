@@ -64,7 +64,7 @@ const documentRule = MarkupIt.Rule(MarkupIt.BLOCKS.DOCUMENT)
         text = cleanupText(text);
 
         const token = MarkupIt.Token.create(MarkupIt.BLOCKS.DOCUMENT, {
-            tokens: state.parseAsBlock(text),
+            tokens: state.parseAsBlock(text)
         });
 
         return MarkupIt.transform(token, resolveLink.bind(null, state));

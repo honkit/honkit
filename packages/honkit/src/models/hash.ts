@@ -150,7 +150,7 @@ function hashJSObj(obj) {
             enumerable: false,
             configurable: false,
             writable: false,
-            value: hashed,
+            value: hashed
         });
     } else if (
         obj.propertyIsEnumerable !== undefined &&

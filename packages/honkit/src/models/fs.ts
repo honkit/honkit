@@ -16,7 +16,7 @@ class FS extends Immutable.Record({
     fsReadDir: Function(),
 
     fsLoadObject: null,
-    fsReadAsStream: null,
+    fsReadAsStream: null
 }) {
     /**
      Return path to the root
@@ -52,7 +52,7 @@ class FS extends Immutable.Record({
         if (!this.isInScope(filename)) {
             throw error.FileOutOfScopeError({
                 filename: filename,
-                root: rootPath,
+                root: rootPath
             });
         }
 

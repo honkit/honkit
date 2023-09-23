@@ -33,7 +33,7 @@ export default function (format) {
                     .then((resultBook) => {
                         return Output.generate(Generator, resultBook, {
                             root: outputFolder,
-                            format: format,
+                            format: format
                         });
                     })
 
@@ -66,6 +66,6 @@ export default function (format) {
                         return logger.debug.promise(fs.rmDir(outputFolder));
                     })
             );
-        },
+        }
     };
 }

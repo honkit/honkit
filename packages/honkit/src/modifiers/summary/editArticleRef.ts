@@ -10,7 +10,7 @@ import mergeAtLevel from "./mergeAtLevel";
  */
 function editArticleRef(summary, level, newRef) {
     return mergeAtLevel(summary, level, {
-        ref: newRef,
+        ref: newRef
     });
 }
 

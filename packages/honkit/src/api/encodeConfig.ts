@@ -17,7 +17,7 @@ function encodeConfig(output: Output, config: Config) {
 
         set: function (key, value) {
             return objectPath.set(result.values, key, value);
-        },
+        }
     };
 
     deprecate.field(

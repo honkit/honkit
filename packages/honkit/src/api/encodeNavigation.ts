@@ -15,7 +15,7 @@ function encodeArticle(pages: Immutable.OrderedMap<string, Page>, article: Summa
         title: article.getTitle(),
         level: article.getLevel(),
         exists: articlePath && pages.has(articlePath),
-        external: article.isExternal(),
+        external: article.isExternal()
     };
 }
 
@@ -60,8 +60,8 @@ function encodeNavigation(output: Output): EncodedNavigation {
                     introduction: i === 0,
                     prev: prev ? encodeArticle(pages, prev) : undefined,
                     next: next ? encodeArticle(pages, next) : undefined,
-                    level: article.getLevel(),
-                },
+                    level: article.getLevel()
+                }
             ];
         })
         .filter((e) => {

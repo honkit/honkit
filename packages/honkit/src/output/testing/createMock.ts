@@ -31,7 +31,7 @@ function createMockOutput(generator, files, options) {
                 book: resultBook,
                 options: options,
                 state: state,
-                generator: generator.name,
+                generator: generator.name
             });
         })
         .then(preparePlugins);

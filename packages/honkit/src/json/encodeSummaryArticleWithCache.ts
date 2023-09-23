@@ -43,7 +43,7 @@ function encodeSummaryArticleWithCache(article: SummaryArticle, recursive?: bool
         url: article.getUrl(),
         path: article.getPath(),
         ref: article.getRef(),
-        articles: articles,
+        articles: articles
     };
     articleCacheMap.set(article, encodedArticle);
 

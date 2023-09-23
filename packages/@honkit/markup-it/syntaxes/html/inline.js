@@ -30,7 +30,7 @@ module.exports = [
     HTMLRule(markup.ENTITIES.LINK, "a", (data) => {
         return {
             title: data.title ? utils.escape(data.title) : undefined,
-            href: utils.escape(data.href || ""),
+            href: utils.escape(data.href || "")
         };
     }),
 
@@ -43,5 +43,5 @@ module.exports = [
     // ---- HTML ----
     markup.Rule(markup.STYLES.HTML).toText((state, token) => {
         return token.getAsPlainText();
-    }),
+    })
 ];

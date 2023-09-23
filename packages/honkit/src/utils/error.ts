@@ -13,25 +13,25 @@ function enforce(err) {
 // Random error wrappers during parsing/generation
 const ParsingError = WrappedError({
     message: "Parsing Error: {origMessage}",
-    type: "parse",
+    type: "parse"
 });
 const OutputError = WrappedError({
     message: "Output Error: {origMessage}",
-    type: "generate",
+    type: "generate"
 });
 
 // A file does not exists
 const FileNotFoundError = TypedError({
     type: "file.not-found",
     message: 'No "{filename}" file (or is ignored)',
-    filename: null,
+    filename: null
 });
 
 // A file cannot be parsed
 const FileNotParsableError = TypedError({
     type: "file.not-parsable",
     message: '"{filename}" file cannot be parsed',
-    filename: null,
+    filename: null
 });
 
 // A file is outside the scope
@@ -40,7 +40,7 @@ const FileOutOfScopeError = TypedError({
     message: '"{filename}" not in "{root}"',
     filename: null,
     root: null,
-    code: "EACCESS",
+    code: "EACCESS"
 });
 
 // A file is outside the scope
@@ -49,34 +49,34 @@ const RequireInstallError = TypedError({
     message: '"{cmd}" is not installed.\n{install}',
     cmd: null,
     code: "ENOENT",
-    install: "",
+    install: ""
 });
 
 // Error for nunjucks templates
 const TemplateError = WrappedError({
     message: 'Error compiling template "{filename}": {origMessage}',
     type: "template",
-    filename: null,
+    filename: null
 });
 
 // Error for nunjucks templates
 const PluginError = WrappedError({
     message: 'Error with plugin "{plugin}": {origMessage}',
     type: "plugin",
-    plugin: null,
+    plugin: null
 });
 
 // Error with the book's configuration
 const ConfigurationError = WrappedError({
     message: "Error with book's configuration: {origMessage}",
-    type: "configuration",
+    type: "configuration"
 });
 
 // Error during ebook generation
 const EbookError = WrappedError({
     message: "Error during ebook generation: {origMessage}\n{stdout}",
     type: "ebook",
-    stdout: "",
+    stdout: ""
 });
 
 export default {
@@ -93,5 +93,5 @@ export default {
     TemplateError: TemplateError,
     PluginError: PluginError,
     ConfigurationError: ConfigurationError,
-    EbookError: EbookError,
+    EbookError: EbookError
 };

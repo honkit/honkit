@@ -7,7 +7,7 @@ import slug from "github-slugid";
 
 class GlossaryEntry extends Immutable.Record({
     name: String(),
-    description: String(),
+    description: String()
 }) {
     getName(): string {
         return this.get("name");

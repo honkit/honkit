@@ -15,7 +15,7 @@ expect.extend({
             : () => `expected directory ${dirPath} to contain a file named ${fileName}`;
         return {
             pass: pass,
-            message: message,
+            message: message
         };
     },
     /**
@@ -32,7 +32,7 @@ expect.extend({
             : () => `expected HTML to contain an element at ${selector}`;
         return {
             pass: pass,
-            message: message,
+            message: message
         };
-    },
+    }
 });

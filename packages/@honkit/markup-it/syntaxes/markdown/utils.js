@@ -18,7 +18,7 @@ const replacements = [
     ["<", "&lt;"],
     [">", "&gt;"],
     ["_", "\\_"],
-    ["|", "\\|"],
+    ["|", "\\|"]
 ];
 
 // Split a text into lines
@@ -105,5 +105,5 @@ module.exports = {
     escape: escapeMarkdown,
     unescape: unescapeMarkdown,
     replace: replace,
-    indent: indent,
+    indent: indent
 };
