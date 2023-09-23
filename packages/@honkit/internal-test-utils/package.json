@@ -30,9 +30,10 @@
     "watch": "tsc -p . --watch"
   },
   "prettier": {
-    "printWidth": 120,
     "singleQuote": false,
-    "tabWidth": 4
+    "printWidth": 120,
+    "tabWidth": 4,
+    "trailingComma": "none"
   },
   "devDependencies": {
     "@types/node": "^14.0.14",
