@@ -10,7 +10,7 @@ import Languages from "./languages";
 import Ignore from "./ignore";
 
 class Book extends Immutable.Record({
-    // Logger for outptu message
+    // Logger for outptut message
 
     // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 0.
     logger: Logger(),
@@ -32,7 +32,7 @@ class Book extends Immutable.Record({
     language: String(),
 
     // List of children, if multilingual (String -> Book)
-    books: Immutable.OrderedMap(),
+    books: Immutable.OrderedMap()
 }) {
     getLogger() {
         return this.get("logger");
@@ -248,7 +248,7 @@ class Book extends Immutable.Record({
      */
     static createForFS(fs) {
         return new Book({
-            fs: fs,
+            fs: fs
         });
     }
 
@@ -346,7 +346,7 @@ class Book extends Immutable.Record({
 
             language: language,
 
-            fs: FS.reduceScope(parent.getContentFS(), language),
+            fs: FS.reduceScope(parent.getContentFS(), language)
         });
     }
 }

@@ -36,7 +36,8 @@ function startServer(args, kwargs) {
     const hasLiveReloading = kwargs["live"];
     const reload = kwargs["reload"];
     const Generator = Output.getGenerator(kwargs.format);
-    console.log("Starting server ...");
+    const logger = book.getLogger();
+    logger.info.ok("Starting server ...");
     let lastOutput = null;
     return Promise.all([
         server.start(outputFolder, port),
@@ -70,16 +71,15 @@ function startServer(args, kwargs) {
                 // If the file does not exist in file system, show a warning and skip
                 // Probably, the file has been deleted
                 if (!fs.existsSync(filepath)) {
-                    console.warn(`${filepath} does not exist in file system.`);
+                    logger.warn.ok(`${filepath} does not exist in file system.`);
                     return;
                 }
                 // set livereload path
                 lrPath = filepath;
                 // TODO: use parse extension
                 // Incremental update for pages
-                const logger = book.getLogger();
                 if (lastOutput && filepath.endsWith(".md")) {
-                    logger.info.ok("Rebuild " + filepath);
+                    logger.warn.ok("Rebuild " + filepath);
                     const changedOutput = lastOutput.reloadPage(lastOutput.book.getContentRoot(), filepath).merge({
                         incrementalChangeFileSet: Immutable.Set([filepath])
                     });
