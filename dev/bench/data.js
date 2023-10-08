@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1695450963271,
+  "lastUpdate": 1696805797502,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10042,6 +10042,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.07,
             "range": "±4.47%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "max@bilov.de",
+            "name": "Max B",
+            "username": "b-lov"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "de9a57eea843ccc4be7e24ad796e0ae5616c4ddc",
+          "message": "Update ebook.md (#376)\n\nfixed typo on ln 3",
+          "timestamp": "2023-10-09T07:53:35+09:00",
+          "tree_id": "171e085fe91fd753c9b61c6fbb46a91be864c596",
+          "url": "https://github.com/honkit/honkit/commit/de9a57eea843ccc4be7e24ad796e0ae5616c4ddc"
+        },
+        "date": 1696805796476,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±0.87%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
