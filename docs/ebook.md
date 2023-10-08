@@ -1,6 +1,6 @@
 # Generating eBooks and PDFs
 
-HonKit can generates a website, but can also output content as ebook (ePub, Mobi, PDF).
+HonKit can generate a website, but can also output content as ebook (ePub, Mobi, PDF).
 
 ```
 # Generate a PDF file
