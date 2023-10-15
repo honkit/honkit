@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1696805797502,
+  "lastUpdate": 1697376353748,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10073,6 +10073,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.87%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3226ba98c1c3d835eff164b1ba2c9ea284072c6e",
+          "message": "docs(api): fix link (#378)\n\n* docs(api): fix link\r\n\r\n* Update api.md",
+          "timestamp": "2023-10-15T22:22:57+09:00",
+          "tree_id": "d9c471ab61da94948984e9d4d01bb68a082c1298",
+          "url": "https://github.com/honkit/honkit/commit/3226ba98c1c3d835eff164b1ba2c9ea284072c6e"
+        },
+        "date": 1697376352451,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.1,
+            "range": "±0.58%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
