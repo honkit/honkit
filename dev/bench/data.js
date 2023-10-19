@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1697376353748,
+  "lastUpdate": 1697729404598,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10104,6 +10104,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.1,
             "range": "±0.58%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "29b5ac8701b0dd509ef5a94cb0462fb682561fe2",
+          "message": "Merge pull request #379 from honkit/dependabot/npm_and_yarn/babel/traverse-7.23.2",
+          "timestamp": "2023-10-19T15:26:33Z",
+          "tree_id": "50ae437f65eed537b76d4920f1d871a949696d1e",
+          "url": "https://github.com/honkit/honkit/commit/29b5ac8701b0dd509ef5a94cb0462fb682561fe2"
+        },
+        "date": 1697729401997,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.08,
+            "range": "±0.73%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
