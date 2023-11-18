@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1697729404598,
+  "lastUpdate": 1700346606485,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10135,6 +10135,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.08,
             "range": "±0.73%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "yuta.tzk@gmail.com",
+            "name": "Yuta Tezuka",
+            "username": "tez3998"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3dc8a7d361554b380eb0f3e97cbd01ae8687ae56",
+          "message": "docs(api.md): fix typo (#383)\n\nThe display is corrupted due to incorrect markdown and unnecessary characters.",
+          "timestamp": "2023-11-19T07:27:49+09:00",
+          "tree_id": "25f010d9d7b4521ed558a8c1cb5769f6507b31ec",
+          "url": "https://github.com/honkit/honkit/commit/3dc8a7d361554b380eb0f3e97cbd01ae8687ae56"
+        },
+        "date": 1700346605429,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.13,
+            "range": "±0.42%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
