@@ -4,7 +4,7 @@ HonKits provides different APIs and contexts to plugins. These APIs can vary acc
 
 #### Book instance
 
-The `Book` class is the central point of HonKit, it centralize all access read methods. This class is defined in [book.ts][(https://github.com/honkit/honkit/blob/master/lib/book.js](https://github.com/honkit/honkit/blob/master/packages/honkit/src/models/book.ts)).
+The `Book` class is the central point of HonKit, it centralize all access read methods. This class is defined in [book.ts](https://github.com/honkit/honkit/blob/master/packages/honkit/src/models/book.ts).
 
 ```js
 // Read configuration from book.json
