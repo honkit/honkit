@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1700346606485,
+  "lastUpdate": 1702003085550,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10166,6 +10166,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.13,
             "range": "±0.42%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "joelhy@gmail.com",
+            "name": "joelhy",
+            "username": "joelhy"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f73f7f98a9515811a5a4c3594aee1288c886f303",
+          "message": "fix: nodejs release link (#385)\n\nCo-authored-by: 黄景祥 <jingxiang.huang@baishancloud.com>",
+          "timestamp": "2023-12-08T11:35:49+09:00",
+          "tree_id": "cadc73fafb039cef65fc9b68698cfbc11479464b",
+          "url": "https://github.com/honkit/honkit/commit/f73f7f98a9515811a5a4c3594aee1288c886f303"
+        },
+        "date": 1702003084050,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.14,
+            "range": "±0.59%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
