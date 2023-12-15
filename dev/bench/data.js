@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1702003085550,
+  "lastUpdate": 1702600466928,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10197,6 +10197,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.14,
             "range": "±0.59%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "22adb62ffee6644d48e6e9bf077cede8d699ed53",
+          "message": "chore(deps): bump browserify-sign from 4.2.1 to 4.2.2 (#380)\n\nBumps [browserify-sign](https://github.com/crypto-browserify/browserify-sign) from 4.2.1 to 4.2.2.\r\n- [Changelog](https://github.com/browserify/browserify-sign/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/crypto-browserify/browserify-sign/compare/v4.2.1...v4.2.2)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: browserify-sign\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2023-12-15T09:32:10+09:00",
+          "tree_id": "22d5c1ae8cbf9cc24a5bc82fc258d79282730f21",
+          "url": "https://github.com/honkit/honkit/commit/22adb62ffee6644d48e6e9bf077cede8d699ed53"
+        },
+        "date": 1702600466165,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.14,
+            "range": "±0.69%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
