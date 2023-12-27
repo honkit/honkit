@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1703663558131,
+  "lastUpdate": 1703665159803,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10253,6 +10253,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/honkit/honkit/commit/4367b7fdb1a903961e3d175c07c2cfb731fcf62d"
         },
         "date": 1703663557131,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.14,
+            "range": "±0.81%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "takeda@youmind.jp",
+            "name": "KentarouTakeda",
+            "username": "KentarouTakeda"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a3b49dbfd0902d149cbdb9293d1c7e04ebc1ef8b",
+          "message": "Fixed calibre crash when using Docker Image (#388)\n\n* CI(docker): add docker image test\r\n\r\n* fix(docker): update dependencies",
+          "timestamp": "2023-12-27T17:17:04+09:00",
+          "tree_id": "054016ef58db487f2c6b0fe17291bbae91abc820",
+          "url": "https://github.com/honkit/honkit/commit/a3b49dbfd0902d149cbdb9293d1c7e04ebc1ef8b"
+        },
+        "date": 1703665159169,
         "tool": "benchmarkjs",
         "benches": [
           {
