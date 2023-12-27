@@ -2,6 +2,7 @@ name: test
 on: [push, pull_request]
 env:
   CI: true
+  NODE_VERSION: 18
 permissions:
   contents: read
 jobs:
@@ -35,3 +36,14 @@ jobs:
       - name: Run E2E
         run: yarn run build
         working-directory: examples/benchmark
+
+  docker-image:
+    name: "Build docker image and generate pdf"
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Build docker image
+        run: docker buildx build -t testing --build-arg NODE_VERSION=${NODE_VERSION} ./docker
+      - name: Generate pdf
+        run: docker run -v `pwd`/examples/book:/work -w /work --rm testing honkit pdf
