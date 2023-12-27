@@ -6,20 +6,17 @@ LABEL Description="Docker Container for HonKit"
 
 COPY calibre-tarball.3.48.0.txz calibre-tarball.txz
 # Calibre dependencies
-RUN apt-get update; \
-    apt-get install --no-install-recommends --allow-unauthenticated -y \
+RUN apt-get update \
+ && apt-get install --no-install-recommends --allow-unauthenticated -y \
     ca-certificates \
     libgl1 \
-    libxcomposite-dev \
+    libxcomposite1 \
     python3 \
-    qt5-default \
-    qt5-image-formats-plugins \
     wget \
     xdg-utils \
     xz-utils \
-    ; \
-    apt-get clean; \
-    rm -rf /var/tmp/* /tmp/* /var/lib/apt/lists/*
+ && apt-get clean \
+ && rm -rf /var/tmp/* /tmp/* /var/lib/apt/lists/*
 RUN mkdir -p /usr/local/calibre \
     && tar xvf ./calibre-tarball.txz -C /usr/local/calibre \
     && /usr/local/calibre/calibre_postinstall
