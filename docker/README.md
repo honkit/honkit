@@ -28,7 +28,7 @@ Serve on port 4000
 
 ### Custom Font
 
-You can create new image includes custom font based on honkig image.
+You can create new image includes custom font based on honkit image.
 
 ```
 FROM honkit/honkit:latest
