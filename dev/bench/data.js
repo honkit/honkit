@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1703666295922,
+  "lastUpdate": 1703738881626,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10352,6 +10352,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.14,
             "range": "±0.38%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cfd3ef314a9510c9446f25313bd8ddfd65b20cb6",
+          "message": "chore(deps): bump axios from 1.4.0 to 1.6.1 (#382)\n\nBumps [axios](https://github.com/axios/axios) from 1.4.0 to 1.6.1.\r\n- [Release notes](https://github.com/axios/axios/releases)\r\n- [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)\r\n- [Commits](https://github.com/axios/axios/compare/v1.4.0...v1.6.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: axios\r\n  dependency-type: indirect\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2023-12-28T13:45:47+09:00",
+          "tree_id": "db1d29ca6ef2df5aab98db70a91d55e4881b9499",
+          "url": "https://github.com/honkit/honkit/commit/cfd3ef314a9510c9446f25313bd8ddfd65b20cb6"
+        },
+        "date": 1703738880848,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.14,
+            "range": "±0.64%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
