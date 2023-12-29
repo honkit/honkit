@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1703738881626,
+  "lastUpdate": 1703887203223,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10383,6 +10383,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.14,
             "range": "±0.64%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "39899689+hotoolong@users.noreply.github.com",
+            "name": "hotoolong",
+            "username": "hotoolong"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f03b9dec668e37c17cda6b5d8e7da64e91730b3e",
+          "message": "Add v to tag_name (#393)\n\nThe v was missing from the Full Changelog in the release information.",
+          "timestamp": "2023-12-30T06:57:56+09:00",
+          "tree_id": "7fd26689148507b3de03b10ade7be406b568657e",
+          "url": "https://github.com/honkit/honkit/commit/f03b9dec668e37c17cda6b5d8e7da64e91730b3e"
+        },
+        "date": 1703887202316,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.13,
+            "range": "±0.69%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
