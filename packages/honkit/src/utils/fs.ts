@@ -58,7 +58,11 @@ function genTmpFile(opts) {
     return Promise.nfcall(tmp.file, opts).get(0);
 }
 
-// Generate temporary dir
+/**
+ * Generate temporary dir
+ * @deprecated use tmpdir.ts
+ * @param opts
+ */
 function genTmpDir(opts) {
     return Promise.nfcall(tmp.dir, opts).get(0);
 }
@@ -211,6 +215,9 @@ export default {
 
     copyDir: Promise.nfbind(cpr),
     tmpFile: genTmpFile,
+    /**
+     * @deprecated use tmpdir.ts
+     */
     tmpDir: genTmpDir,
     download: download,
     uniqueFilename: uniqueFilename,
