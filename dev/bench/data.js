@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1703887203223,
+  "lastUpdate": 1704418772845,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10414,6 +10414,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.13,
             "range": "±0.69%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e23e43741fa424372a40c2d3282ee9e37a9b6b7f",
+          "message": "fix(honkit): use real path for tmp dir (#395)\n\nebook-convert can not resolve symlink path.",
+          "timestamp": "2024-01-05T10:37:29+09:00",
+          "tree_id": "3c312e30dd4d31a24ef7a1a725d15c7744d629ba",
+          "url": "https://github.com/honkit/honkit/commit/e23e43741fa424372a40c2d3282ee9e37a9b6b7f"
+        },
+        "date": 1704418772060,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.14,
+            "range": "±0.87%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
