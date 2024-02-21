@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1704418975118,
+  "lastUpdate": 1708486134118,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10476,6 +10476,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.14,
             "range": "±0.95%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "528aa68dba986b25a8318582f43691498a2609ca",
+          "message": "Merge pull request #400 from honkit/dependabot/npm_and_yarn/ip-2.0.1",
+          "timestamp": "2024-02-21T03:26:33Z",
+          "tree_id": "36ab0d430103ec55ed84de373ca6b4170b6e820f",
+          "url": "https://github.com/honkit/honkit/commit/528aa68dba986b25a8318582f43691498a2609ca"
+        },
+        "date": 1708486133124,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.13,
+            "range": "±0.38%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
