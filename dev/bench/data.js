@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727847481104,
+  "lastUpdate": 1727882927288,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10569,6 +10569,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.13,
             "range": "±0.45%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cacbf85eef2cc6dedb38c7da0350e92eda53c23e",
+          "message": "Merge pull request #428 from honkit/dependabot/npm_and_yarn/elliptic-6.5.7",
+          "timestamp": "2024-10-02T15:26:32Z",
+          "tree_id": "a825b2d2388ca871dc3317c229fd04c13d191741",
+          "url": "https://github.com/honkit/honkit/commit/cacbf85eef2cc6dedb38c7da0350e92eda53c23e"
+        },
+        "date": 1727882926568,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.14,
+            "range": "±0.38%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
