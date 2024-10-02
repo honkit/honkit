@@ -13,7 +13,7 @@ function cleanupText(src) {
         .replace(/\t/g, "    ")
         .replace(/\u00a0/g, " ")
         .replace(/\u2424/g, "\n")
-        .replace(/  \n/g, "<br>")
+        .replace(/ +\n/g, "<br>")
         .replace(/^ +$/gm, "");
 }
 
