@@ -19,6 +19,11 @@ jobs:
             node-version: 16
           - os: macos-latest
             node-version: 18
+          # Tests appear to be failing for connectivity reasons
+          - os: windows-latest
+            node-version: 16
+          - os: windows-latest
+            node-version: 18
     steps:
       - name: checkout
         uses: actions/checkout@v3
