@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727847012023,
+  "lastUpdate": 1727847481104,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10538,6 +10538,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.14,
             "range": "±0.56%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fc8f3f64558b08f872d8106b235f8e4e4e8e5dda",
+          "message": "chore(test): disable Node 16/18 tests on Windows (#423)\n\nDisable these tests due to apparent networking issues in the tests.",
+          "timestamp": "2024-10-02T14:35:55+09:00",
+          "tree_id": "bbb45523e9a0f072e2a51cce5c967029fe9a142d",
+          "url": "https://github.com/honkit/honkit/commit/fc8f3f64558b08f872d8106b235f8e4e4e8e5dda"
+        },
+        "date": 1727847480356,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.13,
+            "range": "±0.45%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
