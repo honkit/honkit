@@ -1,6 +1,6 @@
-# `@honkit/markdow`
+# `@honkit/markdown`
 
-This node module uses `@honkit/markup-i`t to parse markdown for gitbook (SUMMARY.md, README.md).
+This node module uses `@honkit/markup-it` to parse markdown for gitbook (SUMMARY.md, README.md).
 
 ## Note
 
