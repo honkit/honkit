@@ -1,6 +1,6 @@
 {
   "name": "@honkit/asciidoc",
-  "version": "5.1.4",
+  "version": "5.1.5",
   "description": "Parse AsciiDoc content for gitbook",
   "homepage": "https://github.com/honkit/honkit",
   "bugs": {
@@ -36,7 +36,7 @@
     "prepublish": "npm run --if-present build"
   },
   "dependencies": {
-    "@honkit/html": "^5.1.4",
+    "@honkit/html": "^5.1.5",
     "asciidoctor": "^2.2.0",
     "lodash": "^4.13.1"
   },
