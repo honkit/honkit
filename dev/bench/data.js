@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727966908154,
+  "lastUpdate": 1727997216125,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10786,6 +10786,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.55%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cc92276b20c75d4bfa4c1e3ab1a3ea5225bcd17c",
+          "message": "chore(docs): update pnpm link and cleanup (#435)\n\nUpon following the instructions to download pnpm, the page only\r\nhad a link to redirect to the new page.\r\n\r\nAdditionally I changed some dashes from longer dashes to\r\nsimple hyphens and removed hyphen from housekeeping.",
+          "timestamp": "2024-10-04T08:11:44+09:00",
+          "tree_id": "73253207ade4fdec5a833194131013bd561b5122",
+          "url": "https://github.com/honkit/honkit/commit/cc92276b20c75d4bfa4c1e3ab1a3ea5225bcd17c"
+        },
+        "date": 1727997215514,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.36%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
