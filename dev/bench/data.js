@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727965577112,
+  "lastUpdate": 1727966095811,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10724,6 +10724,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.86%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "d598878e446370c5b02708d5353e7c19cd3918e9",
+          "message": "Update pnpm-lock.yaml",
+          "timestamp": "2024-10-03T23:32:59+09:00",
+          "tree_id": "c0b820c5b2ff4bc0e383c24c14531e08068dc814",
+          "url": "https://github.com/honkit/honkit/commit/d598878e446370c5b02708d5353e7c19cd3918e9"
+        },
+        "date": 1727966095175,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.30%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
