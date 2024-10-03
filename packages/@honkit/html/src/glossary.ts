@@ -8,7 +8,7 @@ import * as dom from "./dom";
     @return {Array}
 */
 function parseGlossary(html: string) {
-    const $: any = dom.parse(html);
+    const $ = dom.parse(html);
 
     const entries: Array<{ name: string; description: any }> = [];
 

@@ -7,7 +7,7 @@ import * as dom from "./dom";
     @return {Object}
 */
 function parseReadme(html) {
-    const $: any = dom.parse(html);
+    const $ = dom.parse(html);
 
     return {
         title: $("h1:first-child").text().trim(),
