@@ -21,6 +21,10 @@ describe("Page parsing", () => {
         assert.equal(page("# Hello {#test}").content, '<h1 id="test">Hello</h1>');
     });
 
+    it("should handle line breaks appropriately", () => {
+        assert.equal(page("Line one.  \nLine two.").content, "<p>Line one.<br>Line two.</p>");
+    });
+
     it("should escape codeblocks in preparation (1)", () => {
         assert.equal(page.prepare("Hello `world`"), "Hello {% raw %}`world`{% endraw %}\n\n");
         assert.equal(page.prepare("Hello `world test`"), "Hello {% raw %}`world test`{% endraw %}\n\n");

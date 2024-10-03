@@ -53,3 +53,6 @@ And an image ![alt](src).
 
     Code goes here.
     Lots of it...
+
+Here is a place where we want to intentionally add a line break.  
+As such, I have ended the previous line with two spaces.
