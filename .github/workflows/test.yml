@@ -30,16 +30,16 @@ jobs:
       - name: setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          cache: 'yarn'
+          cache: 'pnpm'
           node-version: ${{ matrix.node-version }}
       - name: Install
-        run: yarn install
+        run: pnpm install
       - name: Build
-        run: yarn run build
+        run: pnpm run build
       - name: Test
-        run: yarn run lint && yarn test
+        run: pnpm run lint && pnpm test
       - name: Run E2E
-        run: yarn run build
+        run: pnpm run build
         working-directory: examples/benchmark
 
   docker-image:
