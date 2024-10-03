@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
     @param html
     @return {cheerio.Root}
 */
-export function parse(html: string) {
+export function parse(html: string): cheerio.Root | cheerio.Cheerio {
     const $ = cheerio.load(html, { _useHtmlParser2: true });
     const $el = $("html, body").first();
 
