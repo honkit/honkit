@@ -37,12 +37,12 @@
   },
   "dependencies": {
     "@honkit/html": "^5.1.5",
-    "asciidoctor": "^2.2.0",
-    "lodash": "^4.13.1"
+    "asciidoctor": "^2.2.8",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "jest": "^29.0.3",
-    "ts-jest": "^29.1.1"
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
   },
   "publishConfig": {
     "access": "public"
