@@ -1,4 +1,4 @@
-import * as cheerio from "cheerio";
+import { loadHtml } from '@honkit/html';
 import tmp from "tmp";
 import path from "path";
 import fetchRemoteImages from "../fetchRemoteImages";
@@ -23,7 +23,7 @@ describe("fetchRemoteImages", () => {
     });
 
     it("should download image file", async () => {
-        const $ = cheerio.load(`<img src="${URL}" />`, { _useHtmlParser2: true });
+        const $ = loadHtml(`<img src="${URL}" />`);
 
         await fetchRemoteImages(dir.name, "index.html", $);
         const $img = $("img");
@@ -36,7 +36,7 @@ describe("fetchRemoteImages", () => {
     }, 15 * 1000);
 
     it("should download image file and replace with relative path", async () => {
-        const $ = cheerio.load(`<img src="${URL}" />`, { _useHtmlParser2: true });
+        const $ = loadHtml(`<img src="${URL}" />`);
 
         await fetchRemoteImages(dir.name, "test/index.html", $);
         const $img = $("img");

@@ -135,7 +135,7 @@ export type SummaryPart = {
  @return {Object}
  */
 function parseSummary(html: string): { parts: SummaryPart[] } {
-    const $: any = dom.parse(html);
+    const $ = dom.parse(html);
     const $root = dom.cleanup(dom.root($), $);
 
     const parts = findParts($root, $);

@@ -1,4 +1,4 @@
-import * as cheerio from "cheerio";
+import { loadHtml } from '@honkit/html';
 import Promise from "../../../utils/promise";
 import highlightCode from "../highlightCode";
 
@@ -16,7 +16,7 @@ describe("highlightCode", () => {
     }
 
     test("should call it for normal code element", () => {
-        const $ = cheerio.load("<p>This is a <code>test</code></p>", { _useHtmlParser2: true });
+        const $ = loadHtml("<p>This is a <code>test</code></p>");
 
         return highlightCode(doHighlight, $).then(() => {
             const $code = $("code");
@@ -25,7 +25,7 @@ describe("highlightCode", () => {
     });
 
     test("should call it for markdown code block", () => {
-        const $ = cheerio.load("<pre><code class=\"lang-js\">test</code></pre>", { _useHtmlParser2: true });
+        const $ = loadHtml("<pre><code class=\"lang-js\">test</code></pre>");
 
         return highlightCode(doHighlight, $).then(() => {
             const $code = $("code");
@@ -34,7 +34,7 @@ describe("highlightCode", () => {
     });
 
     test("should call it for asciidoc code block", () => {
-        const $ = cheerio.load("<pre><code class=\"language-python\">test</code></pre>", { _useHtmlParser2: true });
+        const $ = loadHtml("<pre><code class=\"language-python\">test</code></pre>");
 
         return highlightCode(doHighlight, $).then(() => {
             const $code = $("code");
@@ -43,7 +43,7 @@ describe("highlightCode", () => {
     });
 
     test("should accept async highlighter", () => {
-        const $ = cheerio.load("<pre><code class=\"language-python\">test</code></pre>", { _useHtmlParser2: true });
+        const $ = loadHtml("<pre><code class=\"language-python\">test</code></pre>");
 
         return highlightCode(doHighlightAsync, $).then(() => {
             const $code = $("code");

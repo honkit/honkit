@@ -2,7 +2,7 @@ name: test
 on: [push, pull_request]
 env:
   CI: true
-  NODE_VERSION: 18
+  NODE_VERSION: 22
 permissions:
   contents: read
 jobs:
@@ -11,35 +11,36 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [ 16, 18, 20 ]
+        node-version: [ 18, 20, 22 ]
         os: [macos-latest, windows-latest, ubuntu-latest]
         exclude:
           # mac tests is expensive, limit to 1 instance
           - os: macos-latest
-            node-version: 16
-          - os: macos-latest
             node-version: 18
           # Tests appear to be failing for connectivity reasons
           - os: windows-latest
-            node-version: 16
-          - os: windows-latest
             node-version: 18
+          # Regression bug in Node.js 22
+          # https://github.com/nodejs/node/issues/51766
+          - os: windows-latest
+            node-version: 22
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - name: setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          cache: 'yarn'
+          cache: 'pnpm'
           node-version: ${{ matrix.node-version }}
       - name: Install
-        run: yarn install
+        run: pnpm install
       - name: Build
-        run: yarn run build
+        run: pnpm run build
       - name: Test
-        run: yarn run lint && yarn test
+        run: pnpm run lint && pnpm test
       - name: Run E2E
-        run: yarn run build
+        run: pnpm run build
         working-directory: examples/benchmark
 
   docker-image:
@@ -47,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Build docker image
         run: docker buildx build -t testing --build-arg NODE_VERSION=${NODE_VERSION} ./docker
       - name: Generate pdf

@@ -13,19 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [22]
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - name: setup Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          cache: 'yarn'
+          cache: 'pnpm'
           node-version: ${{ matrix.node-version }}
       - name: Install
-        run: yarn install
+        run: pnpm install
       - name: Build
-        run: yarn run build
+        run: pnpm run build
       - name: Run Benchmark
         run: cd examples/benchmark && node benchmark.js | tee output.txt
       - name: Store benchmark result

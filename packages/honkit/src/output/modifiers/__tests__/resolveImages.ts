@@ -1,5 +1,5 @@
 import path from "path";
-import * as cheerio from "cheerio";
+import { loadHtml } from '@honkit/html';
 import resolveImages from "../resolveImages";
 
 describe("resolveImages", () => {
@@ -7,7 +7,7 @@ describe("resolveImages", () => {
         const TEST = "<img src=\"http://www.github.com\">";
 
         test("no error occurs and return undefined", () => {
-            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
+            const $ = loadHtml(TEST);
 
             return resolveImages("hello.md", $).then(() => {
                 const src = $("img").attr("src");
@@ -19,7 +19,7 @@ describe("resolveImages", () => {
         const TEST = "<img \nsrc=\"http://www.github.com\">";
 
         test("no error occurs and return undefined", () => {
-            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
+            const $ = loadHtml(TEST);
             return resolveImages("hello.md", $).then(() => {
                 const src = $("img").attr("src");
                 expect(src).toBe("http://www.github.com");
@@ -30,7 +30,7 @@ describe("resolveImages", () => {
         const TEST = "<img +src=\"http://www.github.com\">";
 
         test("no error occurs and return undefined", () => {
-            const $ = cheerio.load(TEST, {_useHtmlParser2: true});
+            const $ = loadHtml(TEST);
 
             return resolveImages("hello.md", $).then(() => {
                 const src = $("img").attr("src");

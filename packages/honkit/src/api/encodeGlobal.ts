@@ -12,7 +12,6 @@ import encodeConfig from "./encodeConfig";
 import encodeSummary from "./encodeSummary";
 import encodeNavigation from "./encodeNavigation";
 import encodePage from "./encodePage";
-import { ToHTMLOptions } from "@honkit/html";
 import { ParserOptions } from "../models/parser";
 
 /**
