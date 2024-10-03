@@ -1,6 +1,6 @@
 {
   "name": "@example/benchmark",
-  "version": "5.1.5",
+  "version": "6.0.0",
   "private": true,
   "description": "benchmark book",
   "license": "MIT",
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@honkit/internal-test-utils": "workspace:*",
+    "@types/jest": "^29.5.13",
     "benchmark": "^2.1.4",
     "gitbook-plugin-anchors": "^0.7.1",
     "gitbook-plugin-canonical-link": "^2.0.3",
@@ -28,7 +29,6 @@
     "gitbook-plugin-page-toc-button": "^0.1.1",
     "honkit": "workspace:*",
     "jest": "^29.7.0",
-    "@types/jest": "^29.5.13",
     "ts-jest": "^29.2.5"
   }
 }
