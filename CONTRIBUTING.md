@@ -78,7 +78,7 @@ This repository uses [Prettier](https://prettier.io/) for code formatter. We use
 - Run Prettier to reformat code:
 
     ```sh
-    $ pnpm prettier
+    $ pnpm format
     ```
 
 ##### Commit Message Format
