@@ -2,7 +2,7 @@ name: test
 on: [push, pull_request]
 env:
   CI: true
-  NODE_VERSION: 18
+  NODE_VERSION: 22
 permissions:
   contents: read
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [ 18, 20 ]
+        node-version: [ 18, 20, 22 ]
         os: [macos-latest, windows-latest, ubuntu-latest]
         exclude:
           # mac tests is expensive, limit to 1 instance
