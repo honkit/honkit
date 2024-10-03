@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ast-grep/ast-grep/main/schemas/rule.json
+id: fix-import-cheerio
+language: TypeScript
+severity: error
+# import * as cheerio from "cheerio"; -> import { loadHtml } from '@honkit/html';
+rule:
+  pattern: |-
+    import * as cheerio from "cheerio";
+fix: |-
+  import { loadHtml } from '@honkit/html';
+files:
+  - "**/__tests__/**/*.ts"
+
+---
+
+id: fix-cheerio-load
+language: TypeScript
+severity: error
+# cheerio.load(html) -> loadHtml(html)
+rule:
+  pattern: "cheerio.load($HTML, { _useHtmlParser2:true })"
+fix: |-
+  loadHtml($HTML)
+files:
+  - "**/__tests__/**/*.ts"

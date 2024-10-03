@@ -5,7 +5,6 @@ import File from "./file";
 import Promise from "../utils/promise";
 import error from "../utils/error";
 import PathUtil from "../utils/path";
-import { root } from "@honkit/html/lib/dom";
 
 class FS extends Immutable.Record({
     root: String(),

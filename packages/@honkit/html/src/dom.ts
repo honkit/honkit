@@ -1,5 +1,15 @@
 import _ from "lodash";
 import * as cheerio from "cheerio";
+
+/**
+ * Load an HTML string and return a cheerio instance
+ * @param html
+ */
+export function loadHtml(html: string): cheerio.CheerioAPI {
+    // https://github.com/cheeriojs/cheerio/issues/1260
+    // @ts-expect-error -- _useHtmlParser2 is not in the types
+    return cheerio.load(html, { _useHtmlParser2: true });
+}
 /**
  Parse an HTML string and return its content
 

@@ -1,7 +1,6 @@
 import * as cheerio from "cheerio";
 import tmp from "tmp";
 import inlinePng from "../inlinePng";
-
 describe("inlinePng", () => {
     let dir;
 
