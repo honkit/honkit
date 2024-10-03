@@ -20,6 +20,10 @@ jobs:
           # Tests appear to be failing for connectivity reasons
           - os: windows-latest
             node-version: 18
+          # Regression bug in Node.js 22
+          # https://github.com/nodejs/node/issues/51766
+          - os: windows-latest
+            node-version: 22
     steps:
       - name: checkout
         uses: actions/checkout@v4
