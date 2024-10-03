@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727931259187,
+  "lastUpdate": 1727965308283,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10662,6 +10662,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.13,
             "range": "±0.31%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "16cd0efd9b61b38df599555fd0f43d645aaabff1",
+          "message": "BREAKING CHANGE: Dop Node.js 16 support (#433)\n\n* chore: use pnpm instead of yarn\r\n\r\n* chore(dep): update minor version\r\n\r\n* CI: use pnpm\r\n\r\n* chore: remove yarnrc\r\n\r\n* CI: use setup-pnpm\r\n\r\n* CI: comment\r\n\r\n* fix(markup-it): fix devDeps\r\n\r\n* CI: use Node.js 22\r\n\r\n* fix: remove unused @types/cheerio\r\n\r\n* update lock\r\n\r\n* fix types\r\n\r\n* cast type\r\n\r\n* fix(@honkit/html): remove any\r\n\r\n* use pnpm\r\n\r\n* chore: update to Node.js v22.7.0\r\n\r\n* chore: remove unused\r\n\r\n* fix jest global\r\n\r\n* fix cheerio.loadHtml usage\r\n\r\n* test: update snapshots &apos; -> ''\r\n\r\n* fix command\r\n\r\n* chore!(deps): update TypeScript and require ES2023\r\n\r\n* fix tsconfig\r\n\r\n* CI: skip Windows x Node.js 22\r\n\r\n* CI: use 22",
+          "timestamp": "2024-10-03T23:19:54+09:00",
+          "tree_id": "7b31090ec0839304157221bf1bea78e891206522",
+          "url": "https://github.com/honkit/honkit/commit/16cd0efd9b61b38df599555fd0f43d645aaabff1"
+        },
+        "date": 1727965307381,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.82%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
