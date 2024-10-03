@@ -1,13 +1,15 @@
 import _ from "lodash";
 import * as cheerio from "cheerio";
-
+import type { Element } from "domhandler";
 /**
-    Parse an HTML string and return its content
+ Parse an HTML string and return its content
 
-    @param html
-    @return {cheerio.Root}
-*/
-export function parse(html: string): cheerio.Root | cheerio.Cheerio {
+ @param html
+ @return {cheerio.Root}
+ */
+export function parse(html: string): cheerio.CheerioAPI | cheerio.Cheerio<Element> {
+    // https://github.com/cheeriojs/cheerio/issues/1260
+    // @ts-expect-error -- _useHtmlParser2 is not in the types
     const $ = cheerio.load(html, { _useHtmlParser2: true });
     const $el = $("html, body").first();
 
@@ -15,22 +17,22 @@ export function parse(html: string): cheerio.Root | cheerio.Cheerio {
 }
 
 /**
-    Return main element for a DOM
+ Return main element for a DOM
 
-    @param {cheerio.DOM}
-    @return {cheerio.Node}
-*/
+ @param {cheerio.DOM}
+ @return {cheerio.Node}
+ */
 export function root($) {
     const $el = $("html, body, > div").first();
     return $el.length > 0 ? $el : $.root();
 }
 
 /**
-    Return text node of an element
+ Return text node of an element
 
-    @param {cheerio.Node}
-    @return {string}
-*/
+ @param {cheerio.Node}
+ @return {string}
+ */
 export function textNode($el) {
     return _.reduce(
         $el.children,
@@ -43,12 +45,12 @@ export function textNode($el) {
 }
 
 /**
-    Cleanup a DOM by removing all useless divs
+ Cleanup a DOM by removing all useless divs
 
-    @param {cheerio.Node}
-    @param {cheerio.DOM}
-    @return {cheerio.Node}
-*/
+ @param {cheerio.Node}
+ @param {cheerio.DOM}
+ @return {cheerio.Node}
+ */
 export function cleanup($el, $) {
     $el.find("div").each(function () {
         const $div = $(this);
