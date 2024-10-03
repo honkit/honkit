@@ -658,7 +658,7 @@ exports[`HonKit snapshots: GLOSSARY.html 1`] = `
 <p><a href="GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">Plugins</a> are the best way to extend <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> functionalities (ebook and website).</p>
 <p>For more details, see <a href="plugins/">Templating</a>.</p>
 <h2 id="templating">Templating</h2>
-<p><a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> uses the <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks templating language</a> to process pages and theme&apos;s templates.</p>
+<p><a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> uses the <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks templating language</a> to process pages and theme's templates.</p>
 <p>For more details, see <a href="templating/">Templating</a>.</p>
 
                                 
@@ -1458,7 +1458,7 @@ exports[`HonKit snapshots: config.html 1`] = `
 <tbody>
 <tr>
 <td><code>root</code></td>
-<td>Path to the root folder containing all the book&apos;s files, except <code>book.json</code></td>
+<td>Path to the root folder containing all the book's files, except <code>book.json</code></td>
 </tr>
 <tr>
 <td><code>structure</code></td>
@@ -1482,19 +1482,19 @@ exports[`HonKit snapshots: config.html 1`] = `
 </tr>
 <tr>
 <td><code>language</code></td>
-<td><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">ISO code</a> of the book&apos;s language, default value is <code>en</code></td>
+<td><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">ISO code</a> of the book's language, default value is <code>en</code></td>
 </tr>
 <tr>
 <td><code>direction</code></td>
-<td>Text&apos;s direction. Can be <code>rtl</code> or <code>ltr</code>, the default value depends on the value of <code>language</code></td>
+<td>Text's direction. Can be <code>rtl</code> or <code>ltr</code>, the default value depends on the value of <code>language</code></td>
 </tr>
 <tr>
 <td><code>gitbook</code></td>
-<td>Version of <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> that should be used. Uses the <a href="http://semver.org" target="_blank">SemVer</a> specification and accepts conditions like <code>&quot;&gt;= 3.0.0&quot;</code></td>
+<td>Version of <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> that should be used. Uses the <a href="http://semver.org" target="_blank">SemVer</a> specification and accepts conditions like <code>"&gt;= 3.0.0"</code></td>
 </tr>
 <tr>
 <td><code>honkit</code></td>
-<td>Version of <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> that should be used. Uses the <a href="http://semver.org" target="_blank">SemVer</a> specification and accepts conditions like <code>&quot;&gt;= 3.0.0&quot;</code></td>
+<td>Version of <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> that should be used. Uses the <a href="http://semver.org" target="_blank">SemVer</a> specification and accepts conditions like <code>"&gt;= 3.0.0"</code></td>
 </tr>
 </tbody>
 </table>
@@ -1572,7 +1572,7 @@ These files must be at the root of your book (or the root of every language book
 </tr>
 <tr>
 <td><code>pdf.paperSize</code></td>
-<td>Paper size, options are <code>&apos;a0&apos;, &apos;a1&apos;, &apos;a2&apos;, &apos;a3&apos;, &apos;a4&apos;, &apos;a5&apos;, &apos;a6&apos;, &apos;b0&apos;, &apos;b1&apos;, &apos;b2&apos;, &apos;b3&apos;, &apos;b4&apos;, &apos;b5&apos;, &apos;b6&apos;, &apos;legal&apos;, &apos;letter&apos;</code> (default is <code>a4</code>)</td>
+<td>Paper size, options are <code>'a0', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'legal', 'letter'</code> (default is <code>a4</code>)</td>
 </tr>
 <tr>
 <td><code>pdf.margin.top</code></td>
@@ -4045,19 +4045,19 @@ In some case, <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit
 </code></pre><h4 id="does-honkit-supports-rtlbi-directional-text-">Does HonKit supports RTL/bi-directional text ?</h4>
 <p>The <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> format supports right to left, and bi-directional writing. To enable it, you either need to specify a language (ex: <code>ar</code>), or force <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> to use RTL in your <code>book.json</code>:</p>
 <pre><code class="lang-json">{
-    <span class="hljs-string">&quot;language&quot;</span>: <span class="hljs-string">&quot;ar&quot;</span>,
-    <span class="hljs-string">&quot;direction&quot;</span>: <span class="hljs-string">&quot;rtl&quot;</span>
+    <span class="hljs-string">"language"</span>: <span class="hljs-string">"ar"</span>,
+    <span class="hljs-string">"direction"</span>: <span class="hljs-string">"rtl"</span>
 }
 </code></pre>
-<p>With version 3.0 of <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a>, it&apos;s automatically detected according to the content.
-<em>Note that, while the output book will indeed respect RTL, the Editor doesn&apos;t support RTL writing yet</em>.</p>
+<p>With version 3.0 of <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a>, it's automatically detected according to the content.
+<em>Note that, while the output book will indeed respect RTL, the Editor doesn't support RTL writing yet</em>.</p>
 <h4 id="should-i-use-an-html-or-md-extensions-in-my-links">Should I use an <code>.html</code> or <code>.md</code> extensions in my links?</h4>
 <p>You should always use paths and the <code>.md</code> extensions when linking to your files, <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> will automatically replace these paths by the appropriate link when the pointing file is referenced in the Table of Contents.</p>
 <h4 id="can-i-create-a-honkit-in-a-sub-directory-of-my-repository">Can I create a HonKit in a sub-directory of my repository?</h4>
 <p>Yes, HonKits can be created in <a href="structure.html#subdirectory">sub-directories</a>. </p>
 <h4 id="does-honkit-supports-rtl-languages">Does HonKit supports RTL languages?</h4>
 <p>Yes, <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> automatically detect the direction in your pages (<code>rtl</code> or <code>ltr</code>) and adjust the layout accordingly. The direction can also be specified globally in the <a href="config.html">book.json</a>.</p>
-<hr>
+<hr></hr>
 <h4 id="does-honkit-support-math-equations">Does HonKit support Math equations?</h4>
 <p><a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> supports math equations and TeX thanks to <a href="GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">plugins</a>. There are currently 2 official <a href="GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">plugins</a> to display math: <a href="https://plugins.honkit.com/plugin/mathjax" target="_blank">mathjax</a> and <a href="https://plugins.honkit.com/plugin/katex" target="_blank">katex</a>.</p>
 <h4 id="can-i-customizetheme-the-output">Can I customize/theme the output?</h4>
@@ -6477,7 +6477,7 @@ exports[`HonKit snapshots: lexicon.html 1`] = `
 Definition for this term
 
 <span class="hljs-section">## Another term</span>
-With it&apos;s definition, this can contain bold text
+With it's definition, this can contain bold text
 and all other kinds of inline markup ...
 </code></pre>
 
@@ -7279,8 +7279,8 @@ exports[`HonKit snapshots: pages.html 1`] = `
 
                                 <h1 id="pages-and-summary">Pages and Summary</h1>
 <h3 id="summary">Summary</h3>
-<p><a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> uses a <code>SUMMARY.md</code> file to define the structure of chapters and subchapters of the book. The <code>SUMMARY.md</code> file is used to generate the book&apos;s table of contents.</p>
-<p>The format of <code>SUMMARY.md</code> is just a list of links. The link&apos;s title is used as the chapter&apos;s title, and the link&apos;s target is a path to that chapter&apos;s file.</p>
+<p><a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> uses a <code>SUMMARY.md</code> file to define the structure of chapters and subchapters of the book. The <code>SUMMARY.md</code> file is used to generate the book's table of contents.</p>
+<p>The format of <code>SUMMARY.md</code> is just a list of links. The link's title is used as the chapter's title, and the link's target is a path to that chapter's file.</p>
 <p>Adding a nested list to a parent chapter will create subchapters.</p>
 <h5 id="simple-example">Simple example</h5>
 <pre><code class="lang-markdown"><span class="hljs-section"># Summary</span>
@@ -7327,7 +7327,7 @@ exports[`HonKit snapshots: pages.html 1`] = `
 <p>Parts are just groups of chapters and do not have dedicated pages, but according to the theme, it will show in the navigation.</p>
 <h3 id="pages">Pages</h3>
 <h4 id="markdown-syntax">Markdown syntax</h4>
-<p>Most of the files for <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> use the Markdown syntax by default. <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> infers your pages&apos;s structure from it. The syntax used is similar to the <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">GitHub Flavored Markdown syntax</a>. One can also opt for the <a href="asciidoc.md">AsciiDoc syntax</a>.</p>
+<p>Most of the files for <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> use the Markdown syntax by default. <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> infers your pages's structure from it. The syntax used is similar to the <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">GitHub Flavored Markdown syntax</a>. One can also opt for the <a href="asciidoc.md">AsciiDoc syntax</a>.</p>
 <h5 id="example-of-a-chapter-file">Example of a chapter file</h5>
 <pre><code class="lang-markdown"><span class="hljs-section"># Title of the chapter</span>
 
@@ -7335,14 +7335,14 @@ This is a great introduction.
 
 <span class="hljs-section">## Section 1</span>
 
-Markdown will dictates <span class="hljs-emphasis">_most_</span> of your <span class="hljs-strong">**book&apos;s structure**</span>
+Markdown will dictates <span class="hljs-emphasis">_most_</span> of your <span class="hljs-strong">**book's structure**</span>
 
 <span class="hljs-section">## Section 2</span>
 
 ...
 </code></pre>
 <h4 id="front-matter">Front Matter</h4>
-<p>Pages can contain an optional front matter. It can be used to define the page&apos;s description. The front matter must be the first thing in the file and must take the form of valid YAML set between triple-dashed lines. Here is a basic example:</p>
+<p>Pages can contain an optional front matter. It can be used to define the page's description. The front matter must be the first thing in the file and must take the form of valid YAML set between triple-dashed lines. Here is a basic example:</p>
 <pre><code class="lang-yaml"><span class="hljs-meta">---</span>
 <span class="hljs-attr">description:</span> <span class="hljs-string">This</span> <span class="hljs-string">is</span> <span class="hljs-string">a</span> <span class="hljs-string">short</span> <span class="hljs-string">description</span> <span class="hljs-string">of</span> <span class="hljs-string">my</span> <span class="hljs-string">page</span>
 <span class="hljs-meta">---
@@ -7350,7 +7350,7 @@ Markdown will dictates <span class="hljs-emphasis">_most_</span> of your <span c
 <span class="hljs-comment"># The content of my page</span>
 <span class="hljs-string">...</span>
 </code></pre>
-<p>The front matter can define variables of your own, they will be added to the <a href="templating/variables.html">page variable</a> so you can use them in your <a href="GLOSSARY.html#templating" class="glossary-term" title="HonKit uses the Nunjucks templating language to process pages and theme&apos;s templates.">templating</a>.</p>
+<p>The front matter can define variables of your own, they will be added to the <a href="templating/variables.html">page variable</a> so you can use them in your <a href="GLOSSARY.html#templating" class="glossary-term" title="HonKit uses the Nunjucks templating language to process pages and theme's templates.">templating</a>.</p>
 
                                 
 <hr>
@@ -8153,17 +8153,17 @@ exports[`HonKit snapshots: plugins/api.html 1`] = `
 <h4 id="book-instance">Book instance</h4>
 <p>The <code>Book</code> class is the central point of <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a>, it centralize all access read methods. This class is defined in <a href="https://github.com/honkit/honkit/blob/master/lib/book.js" target="_blank">book.js</a>.</p>
 <pre><code class="lang-js"><span class="hljs-comment">// Read configuration from book.json</span>
-<span class="hljs-keyword">var</span> value = book.<span class="hljs-property">config</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&apos;title&apos;</span>, <span class="hljs-string">&apos;Default Value&apos;</span>);
+<span class="hljs-keyword">var</span> value = book.<span class="hljs-property">config</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">'title'</span>, <span class="hljs-string">'Default Value'</span>);
 
 <span class="hljs-comment">// Resolve a filename to an absolute path</span>
-<span class="hljs-keyword">var</span> filepath = book.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&apos;README.md&apos;</span>);
+<span class="hljs-keyword">var</span> filepath = book.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">'README.md'</span>);
 
 <span class="hljs-comment">// Render an inline markup string</span>
-book.<span class="hljs-title function_">renderInline</span>(<span class="hljs-string">&apos;markdown&apos;</span>, <span class="hljs-string">&apos;This is **Markdown**&apos;</span>)
+book.<span class="hljs-title function_">renderInline</span>(<span class="hljs-string">'markdown'</span>, <span class="hljs-string">'This is **Markdown**'</span>)
     .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) { ... })
 
 <span class="hljs-comment">// Render a markup string (block mode)</span>
-book.<span class="hljs-title function_">renderBlock</span>(<span class="hljs-string">&apos;markdown&apos;</span>, <span class="hljs-string">&apos;* This is **Markdown**&apos;</span>)
+book.<span class="hljs-title function_">renderBlock</span>(<span class="hljs-string">'markdown'</span>, <span class="hljs-string">'* This is **Markdown**'</span>)
     .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) { ... })
 </code></pre>
 <h4 id="output-instance">Output instance</h4>
@@ -8172,21 +8172,21 @@ book.<span class="hljs-title function_">renderBlock</span>(<span class="hljs-str
 <span class="hljs-keyword">var</span> root = output.<span class="hljs-title function_">root</span>();
 
 <span class="hljs-comment">// Resolve a file in the output folder</span>
-<span class="hljs-keyword">var</span> filepath = output.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&apos;myimage.png&apos;</span>);
+<span class="hljs-keyword">var</span> filepath = output.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">'myimage.png'</span>);
 
 <span class="hljs-comment">// Convert a filename to an URL (returns a path to an html file)</span>
-<span class="hljs-keyword">var</span> fileurl = output.<span class="hljs-title function_">toURL</span>(<span class="hljs-string">&apos;mychapter/README.md&apos;</span>);
+<span class="hljs-keyword">var</span> fileurl = output.<span class="hljs-title function_">toURL</span>(<span class="hljs-string">'mychapter/README.md'</span>);
 
 <span class="hljs-comment">// Write a file in the output folder</span>
-output.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">&apos;hello.txt&apos;</span>, <span class="hljs-string">&apos;Hello World&apos;</span>)
+output.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">'hello.txt'</span>, <span class="hljs-string">'Hello World'</span>)
     .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) { ... });
 
 <span class="hljs-comment">// Copy a file to the output folder</span>
-output.<span class="hljs-title function_">copyFile</span>(<span class="hljs-string">&apos;./myfile.jpg&apos;</span>, <span class="hljs-string">&apos;cover.jpg&apos;</span>)
+output.<span class="hljs-title function_">copyFile</span>(<span class="hljs-string">'./myfile.jpg'</span>, <span class="hljs-string">'cover.jpg'</span>)
     .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) { ... });
 
 <span class="hljs-comment">// Verify that a file exists</span>
-output.<span class="hljs-title function_">hasFile</span>(<span class="hljs-string">&apos;hello.txt&apos;</span>)
+output.<span class="hljs-title function_">hasFile</span>(<span class="hljs-string">'hello.txt'</span>)
     .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">exists</span>) { ... });
 </code></pre>
 <h4 id="page-instance">Page instance</h4>
@@ -8204,22 +8204,22 @@ page.<span class="hljs-property">path</span>
 page.<span class="hljs-property">rawPath</span>
 
 <span class="hljs-comment">// Type of parser used for this file</span>
-page.<span class="hljs-property">type</span> (<span class="hljs-string">&apos;markdown&apos;</span> or <span class="hljs-string">&apos;asciidoc&apos;</span>)
+page.<span class="hljs-property">type</span> (<span class="hljs-string">'markdown'</span> or <span class="hljs-string">'asciidoc'</span>)
 </code></pre>
 <h4 id="context-for-blocks-and-filters">Context for Blocks and Filters</h4>
 <p>Blocks and filters have access to the same context, this context is bind to the template engine execution:</p>
 <pre><code class="lang-js">{
     <span class="hljs-comment">// Current templating syntax</span>
-    <span class="hljs-string">&quot;ctx&quot;</span>: {
-        <span class="hljs-comment">// For example, after a {% set message = &quot;hello&quot; %}</span>
-        <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;hello&quot;</span>
+    <span class="hljs-string">"ctx"</span>: {
+        <span class="hljs-comment">// For example, after a {% set message = "hello" %}</span>
+        <span class="hljs-string">"message"</span>: <span class="hljs-string">"hello"</span>
     },
 
     <span class="hljs-comment">// Book instance</span>
-    <span class="hljs-string">&quot;book&quot;</span> &lt;<span class="hljs-title class_">Book</span>&gt;,
+    <span class="hljs-string">"book"</span> &lt;<span class="hljs-title class_">Book</span>&gt;,
 
     <span class="hljs-comment">// Output instance</span>
-    <span class="hljs-string">&quot;output&quot;</span>: &lt;<span class="hljs-title class_">Output</span>&gt;
+    <span class="hljs-string">"output"</span>: &lt;<span class="hljs-title class_">Output</span>&gt;
 }
 </code></pre>
 <p>For example a filter or block function can access the current book using: <code>this.book</code>.</p>
@@ -9023,15 +9023,15 @@ exports[`HonKit snapshots: plugins/blocks.html 1`] = `
                                 
 
                                 <h1 id="extend-blocks">Extend Blocks</h1>
-<p>Extending <a href="../GLOSSARY.html#templating" class="glossary-term" title="HonKit uses the Nunjucks templating language to process pages and theme&apos;s templates.">templating</a> blocks is the best way to provide extra functionalities to authors.</p>
-<p>The most common usage is to process the content within some tags at runtime. It&apos;s like <a href="filters.html">filters</a>, but on steroids because you aren&apos;t confined to a single expression.</p>
+<p>Extending <a href="../GLOSSARY.html#templating" class="glossary-term" title="HonKit uses the Nunjucks templating language to process pages and theme's templates.">templating</a> blocks is the best way to provide extra functionalities to authors.</p>
+<p>The most common usage is to process the content within some tags at runtime. It's like <a href="filters.html">filters</a>, but on steroids because you aren't confined to a single expression.</p>
 <h3 id="defining-a-new-block">Defining a new block</h3>
 <p>Blocks are defined by the plugin, blocks is a map of name associated with a block descriptor. The block descriptor needs to contain at least a <code>process</code> method.</p>
 <pre><code class="lang-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
     <span class="hljs-attr">blocks</span>: {
         <span class="hljs-attr">tag1</span>: {
             <span class="hljs-attr">process</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">block</span>) {
-                <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello &quot;</span>+block.<span class="hljs-property">body</span>+<span class="hljs-string">&quot;, How are you?&quot;</span>;
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello "</span>+block.<span class="hljs-property">body</span>+<span class="hljs-string">", How are you?"</span>;
             }
         }
     }
@@ -9040,7 +9040,7 @@ exports[`HonKit snapshots: plugins/blocks.html 1`] = `
 <p>The <code>process</code> should return the html content that will replace the tag. Refer to <a href="api.html">Context and APIs</a> to learn more about <code>this</code> and <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> API.</p>
 <h3 id="handling-block-arguments">Handling block arguments</h3>
 <p>Arguments can be passed to blocks:</p>
-<pre><code>{% tag1 &quot;argument 1&quot;, &quot;argument 2&quot;, name=&quot;Test&quot; %}
+<pre><code>{% tag1 "argument 1", "argument 2", name="Test" %}
 This is the body of the block.
 {% endtag1 %}
 </code></pre><p>And arguments are easily accessible in the <code>process</code> method:</p>
@@ -9048,15 +9048,15 @@ This is the body of the block.
     <span class="hljs-attr">blocks</span>: {
         <span class="hljs-attr">tag1</span>: {
             <span class="hljs-attr">process</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">block</span>) {
-                <span class="hljs-comment">// block.args equals [&quot;argument 1&quot;, &quot;argument 2&quot;]</span>
-                <span class="hljs-comment">// block.kwargs equals { &quot;name&quot;: &quot;Test&quot; }</span>
+                <span class="hljs-comment">// block.args equals ["argument 1", "argument 2"]</span>
+                <span class="hljs-comment">// block.kwargs equals { "name": "Test" }</span>
             }
         }
     }
 };
 </code></pre>
 <h3 id="handling-sub-blocks">Handling sub-blocks</h3>
-<p>A defined block can be parsed into different sub-blocks, for example let&apos;s consider the source:</p>
+<p>A defined block can be parsed into different sub-blocks, for example let's consider the source:</p>
 <pre><code>{% myTag %}
     Main body
     {% subblock1 %}
@@ -9868,18 +9868,18 @@ exports[`HonKit snapshots: plugins/create.html 1`] = `
 <p>The <code>package.json</code> is a manifest format for describing <strong>Node.js modules</strong>. <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> <a href="../GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">plugins</a> are built on top of Node modules. It declares dependencies, version, ownership, and other information required to run a plugin in <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a>. This document describes the schema in detail.</p>
 <p>A plugin manifest <code>package.json</code> can also contain details about the required configuration. The configuration schema is defined in the <code>honkit</code> field of the <code>package.json</code> (This field follow the <a href="http://json-schema.org" target="_blank">JSON-Schema</a> guidelines):</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;honkit-plugin-mytest&quot;</span>,
-    <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.0.1&quot;</span>,
-    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;This is my first HonKit plugin&quot;</span>,
-    <span class="hljs-string">&quot;engines&quot;</span>: {
-        <span class="hljs-string">&quot;honkit&quot;</span>: <span class="hljs-string">&quot;&gt;1.x.x&quot;</span>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"honkit-plugin-mytest"</span>,
+    <span class="hljs-string">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+    <span class="hljs-string">"description"</span>: <span class="hljs-string">"This is my first HonKit plugin"</span>,
+    <span class="hljs-string">"engines"</span>: {
+        <span class="hljs-string">"honkit"</span>: <span class="hljs-string">"&gt;1.x.x"</span>
     },
-    <span class="hljs-string">&quot;honkit&quot;</span>: {
-        <span class="hljs-string">&quot;properties&quot;</span>: {
-            <span class="hljs-string">&quot;myConfigKey&quot;</span>: {
-                <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-                <span class="hljs-string">&quot;default&quot;</span>: <span class="hljs-string">&quot;it&apos;s the default value&quot;</span>,
-                <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;It defines my awesome config!&quot;</span>
+    <span class="hljs-string">"honkit"</span>: {
+        <span class="hljs-string">"properties"</span>: {
+            <span class="hljs-string">"myConfigKey"</span>: {
+                <span class="hljs-string">"type"</span>: <span class="hljs-string">"string"</span>,
+                <span class="hljs-string">"default"</span>: <span class="hljs-string">"it's the default value"</span>,
+                <span class="hljs-string">"description"</span>: <span class="hljs-string">"It defines my awesome config!"</span>
             }
         }
     }
@@ -9914,8 +9914,8 @@ exports[`HonKit snapshots: plugins/create.html 1`] = `
 </code></pre><h2 id="private-plugins">Private plugins</h2>
 <p>Private <a href="../GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">plugins</a> can be hosted on GitHub and included using <code>git</code> urls:</p>
 <pre><code>{
-    &quot;plugins&quot;: [
-        &quot;myplugin@git+https://github.com/MyCompany/myhonkitplugin.git#1.0.0&quot;
+    "plugins": [
+        "myplugin@git+https://github.com/MyCompany/myhonkitplugin.git#1.0.0"
     ]
 }
 </code></pre>
@@ -10718,8 +10718,8 @@ exports[`HonKit snapshots: plugins/filters.html 1`] = `
                                 <h1 id="extend-filters">Extend Filters</h1>
 <p>Filters are essentially functions that can be applied to variables. They are called with a pipe operator (<code>|</code>) and can take arguments.</p>
 <pre><code>{{ foo | title }}
-{{ foo | join(&quot;,&quot;) }}
-{{ foo | replace(&quot;foo&quot;, &quot;bar&quot;) | capitalize }}
+{{ foo | join(",") }}
+{{ foo | replace("foo", "bar") | capitalize }}
 </code></pre><h3 id="defining-a-new-filter">Defining a new filter</h3>
 <p><a href="../GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">Plugins</a> can extend filters by defining custom functions in their entry point under the <code>filters</code> scope.</p>
 <p>A filter function takes as first argument the content to filter, and should return the new content.
@@ -10727,24 +10727,24 @@ Refer to <a href="api.html">Context and APIs</a> to learn more about <code>this<
 <pre><code class="lang-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
     <span class="hljs-attr">filters</span>: {
         <span class="hljs-attr">hello</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;Hello &apos;</span>+name;
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'Hello '</span>+name;
         }
     }
 };
 </code></pre>
 <p>The filter <code>hello</code> can then be used in the book:</p>
-<pre><code>{{ &quot;Aaron&quot;|hello }}, how are you?
+<pre><code>{{ "Aaron"|hello }}, how are you?
 </code></pre><h3 id="handling-block-arguments">Handling block arguments</h3>
 <p>Arguments can be passed to filters:</p>
-<pre><code>Hello {{ &quot;Samy&quot;|fullName(&quot;Pesse&quot;, man=true}} }}
+<pre><code>Hello {{ "Samy"|fullName("Pesse", man=true}} }}
 </code></pre><p>Arguments are passed to the function, named-arguments are passed as a last argument (object).</p>
 <pre><code class="lang-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
     <span class="hljs-attr">filters</span>: {
         <span class="hljs-attr">fullName</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">firstName, lastName, kwargs</span>) {
-            <span class="hljs-keyword">var</span> name = firstName + <span class="hljs-string">&apos; &apos;</span> + lastName;
+            <span class="hljs-keyword">var</span> name = firstName + <span class="hljs-string">' '</span> + lastName;
 
-            <span class="hljs-keyword">if</span> (kwargs.<span class="hljs-property">man</span>) name = <span class="hljs-string">&quot;Mr&quot;</span> + name;
-            <span class="hljs-keyword">else</span> name = <span class="hljs-string">&quot;Mrs&quot;</span> + name;
+            <span class="hljs-keyword">if</span> (kwargs.<span class="hljs-property">man</span>) name = <span class="hljs-string">"Mr"</span> + name;
+            <span class="hljs-keyword">else</span> name = <span class="hljs-string">"Mrs"</span> + name;
 
             <span class="hljs-keyword">return</span> name;
         }
@@ -11593,7 +11593,7 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
 <tbody>
 <tr>
 <td><code>page:before</code></td>
-<td>Called before running the <a href="../GLOSSARY.html#templating" class="glossary-term" title="HonKit uses the Nunjucks templating language to process pages and theme&apos;s templates.">templating</a> engine on the page</td>
+<td>Called before running the <a href="../GLOSSARY.html#templating" class="glossary-term" title="HonKit uses the Nunjucks templating language to process pages and theme's templates.">templating</a> engine on the page</td>
 <td>Page Object</td>
 </tr>
 <tr>
@@ -11606,28 +11606,28 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
 <h5 id="page-object">Page Object</h5>
 <pre><code class="lang-js">{
     <span class="hljs-comment">// Parser named</span>
-    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;markdown&quot;</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"markdown"</span>,
 
     <span class="hljs-comment">// File Path relative to book root</span>
-    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;page.md&quot;</span>,
+    <span class="hljs-string">"path"</span>: <span class="hljs-string">"page.md"</span>,
 
     <span class="hljs-comment">// Absolute file path</span>
-    <span class="hljs-string">&quot;rawpath&quot;</span>: <span class="hljs-string">&quot;/usr/...&quot;</span>,
+    <span class="hljs-string">"rawpath"</span>: <span class="hljs-string">"/usr/..."</span>,
 
     <span class="hljs-comment">// Title of the page in the SUMMARY</span>
-    <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+    <span class="hljs-string">"title"</span>: <span class="hljs-string">""</span>,
 
     <span class="hljs-comment">// Content of the page</span>
-    <span class="hljs-comment">// Markdown/Asciidoc in &quot;page:before&quot;</span>
-    <span class="hljs-comment">// HTML in &quot;page&quot;</span>
-    <span class="hljs-string">&quot;content&quot;</span>: <span class="hljs-string">&quot;# Hello&quot;</span>
+    <span class="hljs-comment">// Markdown/Asciidoc in "page:before"</span>
+    <span class="hljs-comment">// HTML in "page"</span>
+    <span class="hljs-string">"content"</span>: <span class="hljs-string">"# Hello"</span>
 }
 </code></pre>
 <h5 id="example-to-add-a-title">Example to add a title</h5>
 <p>In the <code>page:before</code> hook, <code>page.content</code> is the markdown/asciidoc content.</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">&quot;page:before&quot;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">page</span>) {
-        page.<span class="hljs-property">content</span> = <span class="hljs-string">&quot;# Title\\n&quot;</span> +page.<span class="hljs-property">content</span>;
+    <span class="hljs-string">"page:before"</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">page</span>) {
+        page.<span class="hljs-property">content</span> = <span class="hljs-string">"# Title\\n"</span> +page.<span class="hljs-property">content</span>;
         <span class="hljs-keyword">return</span> page;
     }
 }
@@ -11635,9 +11635,9 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
 <h5 id="example-to-replace-some-html">Example to replace some html</h5>
 <p>In the <code>page</code> hook, <code>page.content</code> is the HTML generated from the markdown/asciidoc conversion.</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">&quot;page&quot;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">page</span>) {
-        page.<span class="hljs-property">content</span> = page.<span class="hljs-property">content</span>.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;&lt;b&gt;&quot;</span>, <span class="hljs-string">&quot;&lt;strong&gt;&quot;</span>)
-            .<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;&lt;/b&gt;&quot;</span>, <span class="hljs-string">&quot;&lt;/strong&gt;&quot;</span>);
+    <span class="hljs-string">"page"</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">page</span>) {
+        page.<span class="hljs-property">content</span> = page.<span class="hljs-property">content</span>.<span class="hljs-title function_">replace</span>(<span class="hljs-string">"&lt;b&gt;"</span>, <span class="hljs-string">"&lt;strong&gt;"</span>)
+            .<span class="hljs-title function_">replace</span>(<span class="hljs-string">"&lt;/b&gt;"</span>, <span class="hljs-string">"&lt;/strong&gt;"</span>);
         <span class="hljs-keyword">return</span> page;
     }
 }
@@ -11646,7 +11646,7 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
 <p>Hooks callbacks can be asynchronous and return promises.</p>
 <p>Example:</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">&quot;init&quot;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-string">"init"</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> <span class="hljs-title function_">writeSomeFile</span>()
         .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title function_">writeAnotherFile</span>();
@@ -12459,9 +12459,9 @@ exports[`HonKit snapshots: plugins/index.html 1`] = `
 <h3 id="how-to-install-a-plugin">How to install a plugin?</h3>
 <p>Once you find a plugin that you want to install, you need to add it to your <code>book.json</code>:</p>
 <pre><code>{
-    &quot;plugins&quot;: [&quot;myPlugin&quot;, &quot;anotherPlugin&quot;]
+    "plugins": ["myPlugin", "anotherPlugin"]
 }
-</code></pre><p>You can also specify a specific version using: <code>&quot;myPlugin@0.3.1&quot;</code>. By default <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> will resolve the latest version of the plugin compatbile with the current <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> version.</p>
+</code></pre><p>You can also specify a specific version using: <code>"myPlugin@0.3.1"</code>. By default <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> will resolve the latest version of the plugin compatbile with the current <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> version.</p>
 <h3 id="configuring-plugins">Configuring plugins</h3>
 <p><a href="../GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">Plugins</a> specific configurations are stored in <code>pluginsConfig</code>. You have to refer to the documentation of the plugin itself for details about the available options.</p>
 
@@ -13264,10 +13264,10 @@ exports[`HonKit snapshots: plugins/testing.html 1`] = `
                                 <h1 id="testing-your-plugin">Testing your plugin</h1>
 <h3 id="testing-your-plugin-locally">Testing your plugin locally</h3>
 <p>Testing your plugin on your book before publishing it is possible using <a href="https://docs.npmjs.com/cli/link" target="_blank">npm link</a>.</p>
-<p>In the plugin&apos;s folder, run:</p>
+<p>In the plugin's folder, run:</p>
 <pre><code>$ npm link
-</code></pre><p>Then in your book&apos;s folder:</p>
-<pre><code>$ npm link honkit-plugin-&lt;plugin&apos;s name&gt;
+</code></pre><p>Then in your book's folder:</p>
+<pre><code>$ npm link honkit-plugin-&lt;plugin's name&gt;
 </code></pre><h3 id="unit-testing-on-travis">Unit testing on Travis</h3>
 <p><a href="https://github.com/todvora/gitbook-tester" target="_blank">gitbook-tester</a> makes it easy to write <strong>Node.js/Mocha</strong> unit tests for your <a href="../GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">plugins</a>. Using <a href="https://travis.org" target="_blank">Travis.org</a>, tests can be run on each commits/tags.</p>
 
@@ -14096,9 +14096,9 @@ $ yarn add honkit --dev
 </code></pre><p>Or build the static website using:</p>
 <pre><code>$ npx honkit build
 </code></pre><p>You can also define <code>build</code> and <code>serve</code> command in <code>package.json</code> as <a href="https://docs.npmjs.com/cli/run-script" target="_blank">npm-run-scripts</a>.</p>
-<pre><code class="lang-diff">  &quot;scripts&quot;: {
-    &quot;build&quot;: &quot;honkit build&quot;,
-    &quot;serve&quot;: &quot;honkit serve&quot;
+<pre><code class="lang-diff">  "scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve"
   },
 </code></pre>
 <p>After this configuration, you can use <code>npm run</code> command.</p>
@@ -14956,10 +14956,10 @@ The format inside those files, follows the same convention as <code>.gitignore</
 # Ignore the file test.md
 test.md
 
-# Ignore everything in the directory &quot;bin&quot;
+# Ignore everything in the directory "bin"
 bin/*
 </code></pre><h3 id="subdirectory">Project integration with subdirectory </h3>
-<p>For software projects, you can use a subdirectory (like <code>docs/</code>) to store the book for the project&apos;s documentation. You can configure the <a href="config.html"><code>root</code> option</a> to indicate the folder where <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> can find the book&apos;s files:</p>
+<p>For software projects, you can use a subdirectory (like <code>docs/</code>) to store the book for the project's documentation. You can configure the <a href="config.html"><code>root</code> option</a> to indicate the folder where <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> can find the book's files:</p>
 <pre><code>.
 ├── book.json
 └── docs/
@@ -14967,7 +14967,7 @@ bin/*
     └── SUMMARY.md
 </code></pre><p>With <code>book.json</code> containing:</p>
 <pre><code>{
-    &quot;root&quot;: &quot;./docs&quot;
+    "root": "./docs"
 }
 </code></pre>
                                 
@@ -15773,7 +15773,7 @@ exports[`HonKit snapshots: syntax/asciidoc.html 1`] = `
 <h3 id="readmeadoc">README.adoc</h3>
 <p>This is the main entry of your book: the introduction. This file is <strong>required</strong>.</p>
 <h3 id="summaryadoc">SUMMARY.adoc</h3>
-<p>This file defines the list of chapters and subchapters. Just like  in Markdown, the <code>SUMMARY.adoc</code>&apos;s format is simply a list of links, the name of the link is used as the chapter&apos;s name, and the target is a path to that chapter&apos;s file.</p>
+<p>This file defines the list of chapters and subchapters. Just like  in Markdown, the <code>SUMMARY.adoc</code>'s format is simply a list of links, the name of the link is used as the chapter's name, and the target is a path to that chapter's file.</p>
 <p>Subchapters are defined simply by adding a nested list to a parent chapter.</p>
 <pre><code class="lang-asciidoc"><span class="hljs-section">= Summary</span>
 
@@ -15808,8 +15808,8 @@ observer producing a sense of wonder.
 
 A popular web programming language, used by many large websites such
 as Facebook. Rasmus Lerdorf originally created PHP in 1994 to power
-his personal homepage (PHP originally stood for &quot;Personal Home Page&quot;
-but now stands for &quot;PHP: Hypertext Preprocessor&quot;).
+his personal homepage (PHP originally stood for "Personal Home Page"
+but now stands for "PHP: Hypertext Preprocessor").
 </code></pre>
 
                                 
@@ -16627,7 +16627,7 @@ exports[`HonKit snapshots: syntax/markdown.html 1`] = `
 </code></pre>
 <h3 id="paragraphs">Paragraphs and Line Breaks </h3>
 <p>A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line — a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.</p>
-<pre><code>Here&apos;s a line for us to start with.
+<pre><code>Here's a line for us to start with.
 
 This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
 </code></pre><h3 id="emphasis">Emphasis </h3>
@@ -16661,7 +16661,7 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 <h3 id="links">Links </h3>
 <p>Markdown supports two style of links: inline and reference.</p>
 <p>A simple link can be created by surrounding the text with square brackets and the link URL with parentheses:</p>
-<pre><code class="lang-markdown">This is [<span class="hljs-string">an example</span>](<span class="hljs-link">http://example.com/ &quot;Title&quot;</span>) inline link with a title.
+<pre><code class="lang-markdown">This is [<span class="hljs-string">an example</span>](<span class="hljs-link">http://example.com/ "Title"</span>) inline link with a title.
 
 [<span class="hljs-string">This link</span>](<span class="hljs-link">http://example.net/</span>) has no title attribute.
 </code></pre>
@@ -16671,7 +16671,7 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 <pre><code class="lang-markdown">This is [<span class="hljs-string">an example</span>][<span class="hljs-symbol">id</span>] reference-style link.
 </code></pre>
 <p>Then, anywhere in the document, you define your link label like this, on a line by itself:</p>
-<pre><code class="lang-markdown">[<span class="hljs-symbol">id</span>]: <span class="hljs-link">http://example.com/  &quot;Optional Title Here&quot;</span>
+<pre><code class="lang-markdown">[<span class="hljs-symbol">id</span>]: <span class="hljs-link">http://example.com/  "Optional Title Here"</span>
 </code></pre>
 <h3 id="images">Images </h3>
 <p>Images can be created in a similar way than links: just use an exclamation mark before the square brackets. The link text will become the alternative text of the image and the link URL specifies the image source:</p>
@@ -16681,7 +16681,7 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 <p>A blockquote is started using the <code>&gt;</code> marker followed by an optional space; all following lines that are also started with the blockquote marker belong to the blockquote. You can use any block-level elements inside a blockquote:</p>
 <pre><code class="lang-markdown">As Kanye West said:
 
-<span class="hljs-quote">&gt; We&apos;re living the future so</span>
+<span class="hljs-quote">&gt; We're living the future so</span>
 <span class="hljs-quote">&gt; the present is our past.</span>
 </code></pre>
 <h3 id="tables">Tables </h3>
@@ -16702,15 +16702,15 @@ This line is separated from the one above by two newlines, so it will be a *sepa
 <p>You can create fenced code blocks by placing triple backticks <code>\`\`\` </code> before and after the code block. We recommend placing a blank line before and after code blocks to make the raw formatting easier to read.</p>
 <pre><code>\`\`\`
 function test() {
-  console.log(&quot;notice the blank line before this function?&quot;);
+  console.log("notice the blank line before this function?");
 }
 \`\`\`
 </code></pre><h5 id="syntax-highlighting">Syntax highlighting</h5>
 <p>You can add an optional language identifier to enable syntax highlighting in your fenced code block.</p>
 <p>For example, to syntax highlight Ruby code:</p>
 <pre><code>\`\`\`ruby
-require &apos;redcarpet&apos;
-markdown = Redcarpet.new(&quot;Hello World!&quot;)
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
 puts markdown.to_html
 \`\`\`
 </code></pre><h5 id="inline-code">Inline code</h5>
@@ -16742,7 +16742,7 @@ Asterisks
 </span></code></pre>
 <h3 id="ignoring-markdown-formatting">Ignoring Markdown formatting</h3>
 <p>You can tell <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> to ignore (or escape) Markdown formatting by using <code>\\</code> before the Markdown character.</p>
-<pre><code>Let&apos;s rename \\*our-new-project\\* to \\*our-old-project\\*.
+<pre><code>Let's rename \\*our-new-project\\* to \\*our-old-project\\*.
 </code></pre>
                                 
 <hr>
@@ -17543,9 +17543,9 @@ exports[`HonKit snapshots: templating/builtin.html 1`] = `
                                 <h1 id="builtin-templating-helpers">Builtin Templating Helpers</h1>
 <p><a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> provides a serie of builtin filters and blocks to help you write templates.</p>
 <h3 id="filters">Filters</h3>
-<p><code>value|default(default, [boolean])</code>If value is strictly undefined, return default, otherwise value. If boolean is true, any JavaScript falsy value will return default (false, &quot;&quot;, etc)</p>
+<p><code>value|default(default, [boolean])</code>If value is strictly undefined, return default, otherwise value. If boolean is true, any JavaScript falsy value will return default (false, "", etc)</p>
 <p><code>arr|sort(reverse, caseSens, attr)</code>
-Sort arr with JavaScript&apos;s arr.sort function. If reverse is true, result will be reversed. Sort is case-insensitive by default, but setting caseSens to true makes it case-sensitive. If attr is passed, will compare attr from each item.</p>
+Sort arr with JavaScript's arr.sort function. If reverse is true, result will be reversed. Sort is case-insensitive by default, but setting caseSens to true makes it case-sensitive. If attr is passed, will compare attr from each item.</p>
 <h3 id="blocks">Blocks</h3>
 <p><code>{% markdown %}Markdown string{% endmarkdown %}</code>
 Render inline markdown</p>
@@ -18351,19 +18351,19 @@ exports[`HonKit snapshots: templating/conrefs.html 1`] = `
                                 <h1 id="content-references">Content References</h1>
 <p>Content referencing (conref) is a convenient mechanism to reuse content from other files or books.</p>
 <h3 id="importing-local-files">Importing local files</h3>
-<p>Importing an other file&apos;s content is easy using the <code>include</code> tag:</p>
-<pre><code>{% include &quot;./test.md&quot; %}
+<p>Importing an other file's content is easy using the <code>include</code> tag:</p>
+<pre><code>{% include "./test.md" %}
 </code></pre><h3 id="importing-file-from-another-book">Importing file from another book</h3>
 <p><a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> can also resolve the include path by using git:</p>
-<pre><code>{% include &quot;git+https://github.com/GitbookIO/documentation.git/README.md#0.0.1&quot; %}
+<pre><code>{% include "git+https://github.com/GitbookIO/documentation.git/README.md#0.0.1" %}
 </code></pre><p>The format of git url is:</p>
 <pre><code>git+https://user@hostname/owner/project.git/file#commit-ish
 </code></pre><p>The real git url part should finish with <code>.git</code>, the filename to import is extracted after the <code>.git</code> till the fragment of the url.</p>
 <p>The <code>commit-ish</code> can be any tag, sha, or branch which can be supplied as an argument to <code>git checkout</code>. The default is <code>master</code>.</p>
 <h3 id="inheritance">Inheritance</h3>
-<p>Template inheritance is a way to make it easy to reuse templates. When writing a template, you can define &quot;blocks&quot; that child templates can override. The inheritance chain can be as long as you like.</p>
+<p>Template inheritance is a way to make it easy to reuse templates. When writing a template, you can define "blocks" that child templates can override. The inheritance chain can be as long as you like.</p>
 <p><code>block</code> defines a section on the template and identifies it with a name. Base templates can specify blocks and child templates can override them with new content.</p>
-<pre><code>{% extends &quot;./mypage.md&quot; %}
+<pre><code>{% extends "./mypage.md" %}
 
 {% block pageContent %}
 # This is my page content
@@ -18375,7 +18375,7 @@ This is the default content
 
 # License
 
-{% include &quot;./LICENSE&quot; %}
+{% include "./LICENSE" %}
 </code></pre>
                                 
 <hr>
@@ -19174,7 +19174,7 @@ exports[`HonKit snapshots: templating/index.html 1`] = `
                                 
 
                                 <h1 id="templating">Templating</h1>
-<p><a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> uses the <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks templating language</a> to process pages and theme&apos;s templates.</p>
+<p><a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> uses the <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks templating language</a> to process pages and theme's templates.</p>
 <p>The Nunjucks syntax is very similar to <strong>Jinja2</strong> or <strong>Liquid</strong>. Its syntax uses surrounding braces <code>{ }</code> to mark content that needs to be processed.</p>
 <h3 id="variables">Variables</h3>
 <p>A variable looks up a value from the template context. If you wanted to simply display a variable, you would use the <code>{{ variable }}</code> syntax. For example :</p>
@@ -19182,25 +19182,25 @@ exports[`HonKit snapshots: templating/index.html 1`] = `
 </span></code></pre>
 <p>This looks up username from the context and displays it. Variable names can have dots in them which lookup properties, just like JavaScript. You can also use the square bracket syntax.</p>
 <pre><code class="lang-twig"><span class="hljs-template-variable">{{ foo.bar }}</span><span class="language-xml">
-</span><span class="hljs-template-variable">{{ foo[<span class="hljs-string">&quot;bar&quot;</span>] }}</span><span class="language-xml">
+</span><span class="hljs-template-variable">{{ foo[<span class="hljs-string">"bar"</span>] }}</span><span class="language-xml">
 </span></code></pre>
 <p>If a value is undefined, nothing is displayed. The following all output nothing if foo is undefined: <code>{{ foo }}</code>, <code>{{ foo.bar }}</code>, <code>{{ foo.bar.baz }}</code>.</p>
 <p><a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> provides a set of <a href="variables.html">predefined  variables</a> from the context.</p>
 <h3 id="filters">Filters</h3>
 <p>Filters are essentially functions that can be applied to variables. They are called with a pipe operator (<code>|</code>) and can take arguments.</p>
 <pre><code class="lang-twig"><span class="hljs-template-variable">{{ foo | title }}</span><span class="language-xml">
-</span><span class="hljs-template-variable">{{ foo | join(<span class="hljs-string">&quot;,&quot;</span>) }}</span><span class="language-xml">
-</span><span class="hljs-template-variable">{{ foo | replace(<span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-string">&quot;bar&quot;</span>) | capitalize }}</span><span class="language-xml">
+</span><span class="hljs-template-variable">{{ foo | join(<span class="hljs-string">","</span>) }}</span><span class="language-xml">
+</span><span class="hljs-template-variable">{{ foo | replace(<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>) | capitalize }}</span><span class="language-xml">
 </span></code></pre>
-<p>The third example shows how you can chain filters. It would display &quot;Bar&quot;, by first replacing &quot;foo&quot; with &quot;bar&quot; and then capitalizing it.</p>
+<p>The third example shows how you can chain filters. It would display "Bar", by first replacing "foo" with "bar" and then capitalizing it.</p>
 <h3 id="tags">Tags</h3>
 <h5 id="if">if</h5>
-<p><code>if</code> tests a condition and lets you selectively display content. It behaves exactly as JavaScript&apos;s <code>if</code> behaves.</p>
+<p><code>if</code> tests a condition and lets you selectively display content. It behaves exactly as JavaScript's <code>if</code> behaves.</p>
 <pre><code class="lang-twig"><span class="hljs-template-tag">{%</span> <span class="hljs-name">if</span> variable <span class="hljs-template-tag">%}</span><span class="language-xml">
   It is true
 </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endif</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
 </span></code></pre>
-<p>If variable is defined and evaluates to true, &quot;It is true&quot; will be displayed. Otherwise, nothing will be.</p>
+<p>If variable is defined and evaluates to true, "It is true" will be displayed. Otherwise, nothing will be.</p>
 <p>You can specify alternate conditions with <code>elif</code> and <code>else</code>:</p>
 <pre><code class="lang-twig"><span class="hljs-template-tag">{%</span> <span class="hljs-name">if</span> hungry <span class="hljs-template-tag">%}</span><span class="language-xml">
   I am hungry
@@ -19214,13 +19214,13 @@ exports[`HonKit snapshots: templating/index.html 1`] = `
 <p><code>for</code> iterates over arrays and dictionaries.</p>
 <pre><code class="lang-twig"><span class="language-xml"># Chapters about HonKit
 
-</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">for</span> article <span class="hljs-keyword">in</span> glossary.terms[<span class="hljs-string">&apos;gitbook&apos;</span>].articles <span class="hljs-template-tag">%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%</span> <span class="hljs-name">for</span> article <span class="hljs-keyword">in</span> glossary.terms[<span class="hljs-string">'gitbook'</span>].articles <span class="hljs-template-tag">%}</span><span class="language-xml">
 * [</span><span class="hljs-template-variable">{{ article.title }}</span><span class="language-xml">](</span><span class="hljs-template-variable">{{ article.path }}</span><span class="language-xml">)
 </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endfor</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
 </span></code></pre>
 <h5 id="set">set</h5>
 <p><code>set</code> lets you create/modify a variable.</p>
-<pre><code class="lang-twig"><span class="hljs-template-tag">{%</span> <span class="hljs-name">set</span> softwareVersion = <span class="hljs-string">&quot;1.0.0&quot;</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
+<pre><code class="lang-twig"><span class="hljs-template-tag">{%</span> <span class="hljs-name">set</span> softwareVersion = <span class="hljs-string">"1.0.0"</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
 
 Current version is </span><span class="hljs-template-variable">{{ softwareVersion }}</span><span class="language-xml">.
 [Download it](website.com/download/</span><span class="hljs-template-variable">{{ softwareVersion }}</span><span class="language-xml">)
@@ -19228,7 +19228,7 @@ Current version is </span><span class="hljs-template-variable">{{ softwareVersio
 <h5 id="include-and-block">include and block</h5>
 <p>Inclusion and inheritance is detailled in the <a href="conrefs.html">Content References</a> section.</p>
 <h3 id="escaping">Escaping</h3>
-<p>If you want <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> to ignore any of the special <a href="../GLOSSARY.html#templating" class="glossary-term" title="HonKit uses the Nunjucks templating language to process pages and theme&apos;s templates.">templating</a> tags, you can use raw and anything inside of it will be output as plain text.</p>
+<p>If you want <a href="../GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> to ignore any of the special <a href="../GLOSSARY.html#templating" class="glossary-term" title="HonKit uses the Nunjucks templating language to process pages and theme's templates.">templating</a> tags, you can use raw and anything inside of it will be output as plain text.</p>
 <pre><code class="lang-twig"><span class="hljs-template-tag">{%</span> <span class="hljs-name">raw</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
   this will </span><span class="hljs-template-variable">{{ not be processed }}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%</span> <span class="hljs-name">endraw</span> <span class="hljs-template-tag">%}</span><span class="language-xml">
@@ -20031,7 +20031,7 @@ exports[`HonKit snapshots: templating/variables.html 1`] = `
                                 
 
                                 <h1 id="variables">Variables</h1>
-<p>The following is a reference of the available data during book&apos;s parsing and theme generation.</p>
+<p>The following is a reference of the available data during book's parsing and theme generation.</p>
 <h3 id="global-variables">Global Variables</h3>
 <table>
 <thead>
@@ -20204,7 +20204,7 @@ exports[`HonKit snapshots: templating/variables.html 1`] = `
 </tr>
 </tbody>
 </table>
-<p>Languages are defined by <code>{ id: &apos;en&apos;, title: &apos;English&apos; }</code>.</p>
+<p>Languages are defined by <code>{ id: 'en', title: 'English' }</code>.</p>
 <h3 id="output-variables">Output Variables</h3>
 <table>
 <thead>
@@ -20220,7 +20220,7 @@ exports[`HonKit snapshots: templating/variables.html 1`] = `
 </tr>
 <tr>
 <td><code>output.format</code></td>
-<td>When <code>output.name == &quot;ebook&quot;</code>, <code>format</code> defines the ebook format that will be generated, possible values are <code>pdf</code>, <code>epub</code> or <code>mobi</code></td>
+<td>When <code>output.name == "ebook"</code>, <code>format</code> defines the ebook format that will be generated, possible values are <code>pdf</code>, <code>epub</code> or <code>mobi</code></td>
 </tr>
 </tbody>
 </table>
@@ -21081,14 +21081,14 @@ exports[`HonKit snapshots: themes/index.html 1`] = `
 </tbody>
 </table>
 <h3 id="extendcustomize-theme-in-a-book">Extend/Customize theme in a book</h3>
-<p>Authors can extend the templates of a theme directly from their book&apos;s source (without creating an external theme). Templates will be resolved in the <code>_layouts</code> folder of the book first, then in the installed <a href="../GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">plugins</a>/themes.</p>
+<p>Authors can extend the templates of a theme directly from their book's source (without creating an external theme). Templates will be resolved in the <code>_layouts</code> folder of the book first, then in the installed <a href="../GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">plugins</a>/themes.</p>
 <h3 id="extend-instead-of-forking">Extend instead of Forking</h3>
 <p>When you want to make your theme changes available to multiple books, instead of forking the default theme, you can extend it using the <a href="../templating/">templating syntax</a>:</p>
 <pre><code class="lang-html">{% extends template.self %}
 
 {% block body %}
     {{ super() }}
-    ... This will be added to the &quot;body&quot; block
+    ... This will be added to the "body" block
 {% endblock %}
 </code></pre>
 <p>Take a look at the <a href="https://github.com/GitbookIO/theme-api" target="_blank">API</a> theme for a more complete example.</p>
