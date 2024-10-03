@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727882927288,
+  "lastUpdate": 1727931084713,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10600,6 +10600,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.14,
             "range": "±0.38%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b2190136c59fb6b51a4868431cc1b135fbfee114",
+          "message": "fix(markdown): convert trailing spaces to <br> (#426)\n\n* fix(markdown): convert trailing spaces to <br>\r\n\r\nThe markup-it syntax parser for markdown now coerces a trailing\r\ndouble space to a <br> tag to provide the expected line break\r\nbehavior. Tests have been added as well.\r\n\r\nCloses #420\r\n\r\n* fix(markdown): change line break regex for linter",
+          "timestamp": "2024-10-03T13:49:21+09:00",
+          "tree_id": "37b79d9b26ba9cca6fe1e903c79ea17d9bdd60dd",
+          "url": "https://github.com/honkit/honkit/commit/b2190136c59fb6b51a4868431cc1b135fbfee114"
+        },
+        "date": 1727931084073,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.14,
+            "range": "±0.52%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
