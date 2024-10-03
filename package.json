@@ -19,11 +19,6 @@
   "authors": [
     "azu. <azuciao@gmail.com>"
   ],
-  "workspaces": [
-    "packages/*",
-    "packages/@honkit/*",
-    "examples/*"
-  ],
   "scripts": {
     "lint": "eslint .",
     "build": "lerna run build --ignore \"@example/*\"",
@@ -44,11 +39,11 @@
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "devDependencies": {
-    "eslint": "^8.23.1",
-    "lerna": "^7.1.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^3.0.3",
-    "typescript": "^4.8.3"
+    "eslint": "^8.57.1",
+    "lerna": "^7.4.2",
+    "lint-staged": "^13.3.0",
+    "prettier": "^3.3.3",
+    "typescript": "^4.9.5"
   },
   "prettier": {
     "singleQuote": false,
@@ -61,5 +56,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@1.22.4"
+  "packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca"
 }
