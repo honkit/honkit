@@ -26,6 +26,7 @@ function inlineSvg(rootFolder, currentFile, $) {
         const inputPath = path.join(rootFolder, src);
 
         return fs.readFile(inputPath).then((svgContext) => {
+            // @ts-expect-error
             const $ = cheerio.load(svgContext, { _useHtmlParser2: true, xmlMode: true });
             const $svg = $("svg");
             if ($svg.attr("style")) {

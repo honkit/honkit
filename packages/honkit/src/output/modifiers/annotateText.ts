@@ -8,7 +8,7 @@ function pregQuote(str) {
     return `${str}`.replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
 }
 
-function replaceText($: cheerio.Root, el, search, replace, text_only) {
+function replaceText($: cheerio.CheerioAPI, el, search, replace, text_only) {
     return $(el).each(function () {
         let node = this.firstChild;
         let val;

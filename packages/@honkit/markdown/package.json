@@ -38,8 +38,8 @@
     "prepublish": "npm run --if-present build"
   },
   "dependencies": {
-    "@honkit/html": "^5.1.5",
-    "@honkit/markup-it": "^5.1.5",
+    "@honkit/html": "workspace:*",
+    "@honkit/markup-it": "workspace:*",
     "markdown-escape": "^1.1.0"
   },
   "devDependencies": {

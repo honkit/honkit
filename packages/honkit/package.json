@@ -37,11 +37,11 @@
     "updateSnapshot": "jest src -u"
   },
   "dependencies": {
-    "@honkit/asciidoc": "^5.1.5",
-    "@honkit/html": "^5.1.5",
-    "@honkit/honkit-plugin-highlight": "^5.1.5",
-    "@honkit/honkit-plugin-theme-default": "^5.1.5",
-    "@honkit/markdown-legacy": "^5.1.5",
+    "@honkit/asciidoc": "workspace:*",
+    "@honkit/html": "workspace:*",
+    "@honkit/honkit-plugin-highlight": "workspace:*",
+    "@honkit/honkit-plugin-theme-default": "workspace:*",
+    "@honkit/markdown-legacy": "workspace:*",
     "bash-color": "^0.0.4",
     "cheerio": "^1.0.0",
     "chokidar": "^3.6.0",
@@ -90,7 +90,7 @@
     "urijs": "^1.19.11"
   },
   "devDependencies": {
-    "@honkit/internal-test-utils": "^5.1.5",
+    "@honkit/internal-test-utils": "workspace:*",
     "@relmify/jest-serializer-strip-ansi": "^1.0.2",
     "@types/nunjucks": "^3.2.6",
     "@types/node": "^22.7.4",

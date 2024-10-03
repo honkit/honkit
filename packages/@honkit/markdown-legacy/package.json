@@ -36,7 +36,7 @@
     "updateSnapshot": "jest -u"
   },
   "dependencies": {
-    "@honkit/html": "^5.1.5",
+    "@honkit/html": "workspace:*",
     "kramed": "0.5.6",
     "lodash": "^4.17.21"
   },

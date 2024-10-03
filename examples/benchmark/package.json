@@ -16,7 +16,7 @@
     "updateSnapshot": "jest -u"
   },
   "devDependencies": {
-    "@honkit/internal-test-utils": "^5.1.5",
+    "@honkit/internal-test-utils": "workspace:*",
     "benchmark": "^2.1.4",
     "gitbook-plugin-anchors": "^0.7.1",
     "gitbook-plugin-canonical-link": "^2.0.3",
@@ -26,7 +26,7 @@
     "gitbook-plugin-include-codeblock": "^3.2.3",
     "gitbook-plugin-js-console": "^2.0.5",
     "gitbook-plugin-page-toc-button": "^0.1.1",
-    "honkit": "^5.1.5",
+    "honkit": "workspace:*",
     "jest": "^29.7.0",
     "@types/jest": "^29.5.13",
     "ts-jest": "^29.2.5"

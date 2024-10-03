@@ -9,7 +9,7 @@ import type cheerio from "cheerio";
  Fetch all remote images
  */
 
-function fetchRemoteImages(rootFolder: string, currentFile: string, $: cheerio.Root): Promise<any> {
+function fetchRemoteImages(rootFolder: string, currentFile: string, $: cheerio.CheerioAPI): Promise<any> {
     const currentDirectory = path.dirname(currentFile);
 
     return editHTMLElement($, "img", ($img) => {
