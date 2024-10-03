@@ -20,7 +20,7 @@ on:
 
 env:
   DOCKER_HUB_BASE_NAME: honkit/honkit
-  NODE_VERSION: 18
+  NODE_VERSION: 20
 
 jobs:
   check:
@@ -62,11 +62,12 @@ jobs:
       packages: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 #          registry-url: 'https://npm.pkg.github.com'
           # for publishing packages to npm
           registry-url: https://registry.npmjs.org

@@ -11,24 +11,21 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [ 16, 18, 20 ]
+        node-version: [ 18, 20 ]
         os: [macos-latest, windows-latest, ubuntu-latest]
         exclude:
           # mac tests is expensive, limit to 1 instance
           - os: macos-latest
-            node-version: 16
-          - os: macos-latest
             node-version: 18
           # Tests appear to be failing for connectivity reasons
-          - os: windows-latest
-            node-version: 16
           - os: windows-latest
             node-version: 18
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - name: setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           cache: 'pnpm'
           node-version: ${{ matrix.node-version }}
@@ -47,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Build docker image
         run: docker buildx build -t testing --build-arg NODE_VERSION=${NODE_VERSION} ./docker
       - name: Generate pdf
