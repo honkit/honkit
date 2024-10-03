@@ -11,6 +11,9 @@ importers:
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
+      honkit:
+        specifier: workspace:*
+        version: link:packages/honkit
       lerna:
         specifier: ^7.4.2
         version: 7.4.2(encoding@0.1.13)

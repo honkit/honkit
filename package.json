@@ -39,6 +39,7 @@
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "devDependencies": {
+    "honkit": "workspace:*",
     "eslint": "^8.57.1",
     "lerna": "^7.4.2",
     "lint-staged": "^13.3.0",
