@@ -1,6 +1,5 @@
 import _ from "lodash";
 import * as cheerio from "cheerio";
-import type { Element } from "domhandler";
 /**
  Parse an HTML string and return its content
 
