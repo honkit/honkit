@@ -465,9 +465,6 @@ importers:
       '@relmify/jest-serializer-strip-ansi':
         specifier: ^1.0.2
         version: 1.0.2
-      '@types/cheerio':
-        specifier: ^0.22.35
-        version: 0.22.35
       '@types/nunjucks':
         specifier: ^3.2.6
         version: 3.2.6
@@ -1254,9 +1251,6 @@ packages:
 
   '@types/babel__traverse@7.20.6':
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
-
-  '@types/cheerio@0.22.35':
-    resolution: {integrity: sha512-yD57BchKRvTV+JD53UZ6PD8KWY5g5rvvMLRnZR3EQBCZXiDT/HR+pKpMzFGlWNhFrXlo7VPZXtKvIEwZkAWOIA==}
 
   '@types/graceful-fs@4.1.9':
     resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
@@ -6743,10 +6737,6 @@ snapshots:
   '@types/babel__traverse@7.20.6':
     dependencies:
       '@babel/types': 7.25.7
-
-  '@types/cheerio@0.22.35':
-    dependencies:
-      '@types/node': 22.7.4
 
   '@types/graceful-fs@4.1.9':
     dependencies:
