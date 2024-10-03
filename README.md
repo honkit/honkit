@@ -115,7 +115,7 @@ HonKit aims to smooth the migration from GitBook (Legacy) to HonKit.
 - Remove `install` command
     - Instead of it, just use `npm install` or `yarn install`
 - Remove `global-npm` dependency
-    - You can use HonKit with another npm package manager like `yarn`
+    - You can use HonKit with another npm package manager like `npm` or `yarn`
 - Update dependencies
     - Upgrade to nunjucks@2, highlight.js etc...
     - It will reduce bugs
