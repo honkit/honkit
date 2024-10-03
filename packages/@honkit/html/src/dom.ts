@@ -7,13 +7,13 @@ import type { Element } from "domhandler";
  @param html
  @return {cheerio.Root}
  */
-export function parse(html: string): cheerio.CheerioAPI | cheerio.Cheerio<Element> {
+export function parse(html: string): cheerio.CheerioAPI {
     // https://github.com/cheeriojs/cheerio/issues/1260
     // @ts-expect-error -- _useHtmlParser2 is not in the types
     const $ = cheerio.load(html, { _useHtmlParser2: true });
     const $el = $("html, body").first();
 
-    return $el.length > 0 ? $el : $;
+    return ($el.length > 0 ? $el : $) as cheerio.CheerioAPI;
 }
 
 /**
