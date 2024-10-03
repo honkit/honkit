@@ -165,8 +165,8 @@ importers:
         specifier: ^10.7.3
         version: 10.7.3
       rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^5.0.10
+        version: 5.0.10
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.7.4)(typescript@5.6.2)
@@ -186,8 +186,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^5.0.10
+        version: 5.0.10
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -276,8 +276,8 @@ importers:
         specifier: ^20.0.3
         version: 20.0.3
       rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^5.0.10
+        version: 5.0.10
       should:
         specifier: ^13.2.3
         version: 13.2.3
@@ -309,8 +309,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^5.0.10
+        version: 5.0.10
 
   packages/@honkit/theme-default:
     devDependencies:
@@ -351,8 +351,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^5.0.10
+        version: 5.0.10
       uglify-js:
         specifier: ^3.19.3
         version: 3.19.3
@@ -541,8 +541,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(jest@29.7.0(@types/node@22.7.4)(ts-node@10.9.2(@types/node@22.7.4)(typescript@5.6.2)))
       rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^5.0.10
+        version: 5.0.10
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -4803,6 +4803,10 @@ packages:
   rimraf@4.4.1:
     resolution: {integrity: sha512-Gk8NlF062+T9CqNGn6h4tls3k6T1+/nXdOcSZVikNVtlRdYpA7wRJJMoXmuvOnLW844rPjdQ7JgXCYM6PPC/og==}
     engines: {node: '>=14'}
+    hasBin: true
+
+  rimraf@5.0.10:
+    resolution: {integrity: sha512-l0OE8wL34P4nJH/H2ffoaniAokM2qSmrtXHmlpvYr5AVVX8msAyW0l8NVJFDxlSK4u3Uh/f41cQheDVdnYijwQ==}
     hasBin: true
 
   ripemd160@2.0.2:
@@ -10955,6 +10959,10 @@ snapshots:
   rimraf@4.4.1:
     dependencies:
       glob: 9.3.5
+
+  rimraf@5.0.10:
+    dependencies:
+      glob: 10.4.5
 
   ripemd160@2.0.2:
     dependencies:

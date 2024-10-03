@@ -43,7 +43,7 @@
     "less-plugin-clean-css": "1.5.1",
     "mkdirp": "^3.0.1",
     "npm-run-all": "^4.1.5",
-    "rimraf": "^3.0.2"
+    "rimraf": "^5.0.10"
   },
   "engines": {
     "gitbook": ">=3.0.0"
