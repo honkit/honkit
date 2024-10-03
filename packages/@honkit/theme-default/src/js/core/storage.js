@@ -14,7 +14,7 @@ module.exports = {
 
         try {
             localStorage[key] = JSON.stringify(value);
-        } catch (e) {} // eslint-disable-line no-empty
+        } catch (e) {} // eslint-disable-line no-empty, no-unused-vars
     },
 
     // Read a value from localstorage
@@ -25,14 +25,14 @@ module.exports = {
         // inaccessible when browser cookies are disabled.
         try {
             value = localStorage[key];
-        } catch (e) {} // eslint-disable-line no-empty
+        } catch (e) {} // eslint-disable-line no-empty, no-unused-vars
 
         if (value === undefined) return def;
 
         try {
             var parsed = JSON.parse(value);
             return parsed == null ? def : parsed;
-        } catch (err) {
+        } catch (err) { // eslint-disable-line no-unused-vars
             return value || def;
         }
     },
@@ -42,6 +42,6 @@ module.exports = {
         key = baseKey + ":" + key;
         try {
             localStorage.removeItem(key);
-        } catch (e) {} // eslint-disable-line no-empty
+        } catch (e) {} // eslint-disable-line no-empty, no-unused-vars
     },
 };
