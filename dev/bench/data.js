@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1727997216125,
+  "lastUpdate": 1728009199633,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10817,6 +10817,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.36%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "50b698f25cf272549fdd6d42cf2a8a24aef49f56",
+          "message": "Eslint update (#436)\n\n* chore(deps): update to eslint 9\r\n\r\nUpdate to eslint 9.1.1 and migrate configurations. In the\r\nprocess, there were some minor code fixes and ignore comments\r\nadded to achieve a passing lint run.\r\n\r\n* fix(docs): correct format command in CONTRIBUTING.md",
+          "timestamp": "2024-10-04T11:31:23+09:00",
+          "tree_id": "9ceb071543203f778035397458094d042c4a453d",
+          "url": "https://github.com/honkit/honkit/commit/50b698f25cf272549fdd6d42cf2a8a24aef49f56"
+        },
+        "date": 1728009199012,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.25%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
