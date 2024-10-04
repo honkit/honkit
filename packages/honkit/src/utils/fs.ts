@@ -1,5 +1,5 @@
 import fs from "fs";
-import mkdirp from "mkdirp";
+import { mkdirp } from "mkdirp";
 import destroy from "destroy";
 import tmp from "tmp";
 import path from "path";
