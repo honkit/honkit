@@ -129,7 +129,7 @@ function setChapterActive($chapter, hash) {
     }
 
     // If hash is provided, set as active chapter
-    if (!!hash) {
+    if (hash) {
         // Multiple chapters for this file
         if ($chapters.length > 1) {
             $chapter = $chapters
@@ -174,7 +174,7 @@ function getChapterHash($chapter) {
         hash = $link.attr("href").split("#")[1];
 
     if (hash) hash = "#" + hash;
-    return !!hash ? hash : "";
+    return hash || "";
 }
 
 // Handle user scrolling
@@ -343,7 +343,7 @@ function handleNavigation(relativeUrl, push) {
 
     return loading.show(
         promise.fail(function (e) {
-            console.log(e); // eslint-disable-line no-console
+            console.log(e);
             // location.href = relativeUrl;
         })
     );
