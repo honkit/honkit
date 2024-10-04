@@ -34,10 +34,9 @@
   "dependencies": {
     "escape-string-regexp": "^4.0.0",
     "html-entities": "^1.4.0",
-    "htmlparser2": "^4.1.0",
+    "htmlparser2": "^6.0.0",
     "immutable": "^3.8.2",
     "is": "^3.3.0",
-    "object-values": "^2.0.0",
     "range-utils": "^1.1.0"
   },
   "devDependencies": {
