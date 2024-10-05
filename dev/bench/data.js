@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728009199633,
+  "lastUpdate": 1728091466145,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10848,6 +10848,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.25%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "azuciao@gmail.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "distinct": true,
+          "id": "8b414065a9dfd3eb96bc93999a1ca3e675af41f5",
+          "message": "fix: fix CheerioOptions",
+          "timestamp": "2024-10-05T10:22:33+09:00",
+          "tree_id": "dd0bd2951ca0b107258a362f9ace63aa3bdf8ce9",
+          "url": "https://github.com/honkit/honkit/commit/8b414065a9dfd3eb96bc93999a1ca3e675af41f5"
+        },
+        "date": 1728091465418,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.50%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
