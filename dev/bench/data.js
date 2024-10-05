@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728091466145,
+  "lastUpdate": 1728091860193,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10879,6 +10879,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.50%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "883db43ab1d0a03ace955443b91be8f95fccc3fd",
+          "message": "CI: Switch to codeql action v2 (#437)\n\nCI failing in other PRs due to v1 deprecation.\r\n\r\nCo-authored-by: azu <azu@users.noreply.github.com>",
+          "timestamp": "2024-10-05T10:29:03+09:00",
+          "tree_id": "ec525702896b908684479b4172b64cc7a921d57c",
+          "url": "https://github.com/honkit/honkit/commit/883db43ab1d0a03ace955443b91be8f95fccc3fd"
+        },
+        "date": 1728091858869,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.79%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
