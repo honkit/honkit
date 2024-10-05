@@ -7,7 +7,7 @@ Please install following development prerequisites. You also need a [GitHub](htt
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/en/)
-- [pnpm](https://pnpm.js.org/)
+- [pnpm](https://pnpm.io/)
 
 
 ### Cloning Copy of HonKit
@@ -15,7 +15,7 @@ Please install following development prerequisites. You also need a [GitHub](htt
 Forking a repository allows you to work with HonKit codebase without special permission to the HonKit repository itself.
 
 1. Navigate to [HonKit](https://github.com/honkit/honkit/) repository
-2. In the top–right corner of the page, click **Fork** button
+2. In the top-right corner of the page, click **Fork** button
 3. Create a clone of the fork locally in your terminal:
 
     ```sh
@@ -78,14 +78,14 @@ This repository uses [Prettier](https://prettier.io/) for code formatter. We use
 - Run Prettier to reformat code:
 
     ```sh
-    $ pnpm prettier
+    $ pnpm format
     ```
 
 ##### Commit Message Format
 
 We use [Angular Convention](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular) for commit message.
 
-In order to make repository history clean, please use the following guideline as possible as you can. It also enables us creating comprehensive changelog semi–automatically.
+In order to make repository history clean, please use the following guideline as possible as you can. It also enables us creating comprehensive changelog semi-automatically.
 
 ```
                       component        commit title
@@ -108,7 +108,7 @@ issues          Ref. #8454
     - `style`: change formatting
     - `perf`: performance related change
     - `test`: update on tests
-    - `chore`: house–keeping
+    - `chore`: housekeeping
     - `refactor`: refactoring related change
 - component: package or file name
 - commit title:
