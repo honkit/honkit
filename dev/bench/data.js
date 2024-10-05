@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728091860193,
+  "lastUpdate": 1728092578690,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10910,6 +10910,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.79%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f927d605d16a51b5a01d5f90a3ec56511e2bda3e",
+          "message": "CI(netlify): add NX_SKIP_NX_CACHE=true (#441)\n\n* CI: add pnpm install\r\n\r\n* CI: disable NX cache\r\n\r\nhttps://answers.netlify.com/t/support-guide-nx-monorepo-site-does-not-reflect-changes-after-build/73657\r\n\r\n* add install again\r\n\r\n* CI: clean install",
+          "timestamp": "2024-10-05T10:41:01+09:00",
+          "tree_id": "06ce106da309d385942c3224b0a9b0e72b741008",
+          "url": "https://github.com/honkit/honkit/commit/f927d605d16a51b5a01d5f90a3ec56511e2bda3e"
+        },
+        "date": 1728092577367,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.60%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
