@@ -21,6 +21,7 @@
   ],
   "scripts": {
     "lint": "eslint .",
+    "lint-all": "lerna run lint --ignore \"@example/*\"",
     "build": "lerna run build --ignore \"@example/*\"",
     "clean": "lerna run clean --ignore \"@example/*\"",
     "test": "lerna run test --ignore \"@example/*\"",
@@ -39,10 +40,8 @@
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "devDependencies": {
-		"@eslint/js": "^9.1.1",
-    "@stylistic/eslint-plugin-js": "^2.8.0",
-    "eslint": "^9.1.1",
-		"globals": "^15.0.0",
+    "@honkit/cleaning-tools": "workspace:*",
+    "eslint": "^9.12.0",
     "honkit": "workspace:*",
     "lerna": "^8.1.8",
     "lint-staged": "^13.3.0",
