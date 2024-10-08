@@ -36,7 +36,7 @@
     "release-ci": "yarn run build && lerna publish from-package --yes --no-verify-access",
     "honkit:build": "npm run build && honkit build",
     "honkit:serve": "honkit serve",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "format": "prettier --write \"**/*.{mjs,js,jsx,ts,tsx,css}\"",
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "devDependencies": {
@@ -48,14 +48,8 @@
     "prettier": "^3.3.3",
     "typescript": "^5.6.2"
   },
-  "prettier": {
-    "singleQuote": false,
-    "printWidth": 120,
-    "tabWidth": 4,
-    "trailingComma": "none"
-  },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css}": [
+    "*.{mjs,js,jsx,ts,tsx,css}": [
       "prettier --write"
     ]
   },
