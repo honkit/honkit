@@ -1,14 +1,14 @@
-require(["gitbook", "jquery"], function (gitbook, $) {
+require(["gitbook", "jquery"], (gitbook, $) => {
     // Configuration
-    var MAX_SIZE = 4,
-        MIN_SIZE = 0,
-        BUTTON_ID;
+    const MAX_SIZE = 4;
+    const MIN_SIZE = 0;
+    let BUTTON_ID;
 
     // Current fontsettings state
-    var fontState;
+    let fontState;
 
     // Default themes
-    var THEMES = [
+    let THEMES = [
         {
             config: "white",
             text: "White",
@@ -27,7 +27,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
     ];
 
     // Default font families
-    var FAMILIES = [
+    let FAMILIES = [
         {
             config: "serif",
             text: "Serif",
@@ -92,7 +92,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
             e.preventDefault();
         }
 
-        var familyId = getFontFamilyId(configName);
+        const familyId = getFontFamilyId(configName);
         fontState.family = familyId;
         saveFontSettings();
     }
@@ -103,15 +103,15 @@ require(["gitbook", "jquery"], function (gitbook, $) {
             e.preventDefault();
         }
 
-        var $book = gitbook.state.$book;
+        const $book = gitbook.state.$book;
 
         // Remove currently applied color theme
-        if (fontState.theme !== 0) $book.removeClass("color-theme-" + fontState.theme);
+        if (fontState.theme !== 0) $book.removeClass(`color-theme-${fontState.theme}`);
 
         // Set new color theme
-        var themeId = getThemeId(configName);
+        const themeId = getThemeId(configName);
         fontState.theme = themeId;
-        if (fontState.theme !== 0) $book.addClass("color-theme-" + fontState.theme);
+        if (fontState.theme !== 0) $book.addClass(`color-theme-${fontState.theme}`);
 
         saveFontSettings();
     }
@@ -120,44 +120,46 @@ require(["gitbook", "jquery"], function (gitbook, $) {
     // Default to first font-family
     function getFontFamilyId(configName) {
         // Search for plugin configured font family
-        var configFamily = $.grep(FAMILIES, function (family) {
+        const configFamily = $.grep(FAMILIES, (family) => {
             return family.config == configName;
         })[0];
+
         // Fallback to default font family
-        return !!configFamily ? configFamily.id : 0;
+        return (configFamily && configFamily.id) || 0;
     }
 
     // Return the correct id for a theme config key
     // Default to first theme
     function getThemeId(configName) {
         // Search for plugin configured theme
-        var configTheme = $.grep(THEMES, function (theme) {
+        const configTheme = $.grep(THEMES, (theme) => {
             return theme.config == configName;
         })[0];
+
         // Fallback to default theme
-        return !!configTheme ? configTheme.id : 0;
+        return (configTheme && configTheme.id) || 0;
     }
 
     function update() {
-        var $book = gitbook.state.$book;
+        const $book = gitbook.state.$book;
 
         $(".font-settings .font-family-list li").removeClass("active");
-        $(".font-settings .font-family-list li:nth-child(" + (fontState.family + 1) + ")").addClass("active");
+        $(`.font-settings .font-family-list li:nth-child(${fontState.family + 1})`).addClass("active");
 
         $book[0].className = $book[0].className.replace(/\bfont-\S+/g, "");
-        $book.addClass("font-size-" + fontState.size);
-        $book.addClass("font-family-" + fontState.family);
+        $book.addClass(`font-size-${fontState.size}`);
+        $book.addClass(`font-family-${fontState.family}`);
 
         if (fontState.theme !== 0) {
             $book[0].className = $book[0].className.replace(/\bcolor-theme-\S+/g, "");
-            $book.addClass("color-theme-" + fontState.theme);
+            $book.addClass(`color-theme-${fontState.theme}`);
         }
     }
 
     function init(config) {
         // Search for plugin configured font family
-        var configFamily = getFontFamilyId(config.family),
-            configTheme = getThemeId(config.theme);
+        const configFamily = getFontFamilyId(config.family);
+        const configTheme = getThemeId(config.theme);
 
         // Instantiate font state object
         fontState = gitbook.storage.get("fontState", {
@@ -171,7 +173,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
 
     function updateButtons() {
         // Remove existing fontsettings buttons
-        if (!!BUTTON_ID) {
+        if (BUTTON_ID) {
             gitbook.toolbar.removeButton(BUTTON_ID);
         }
 
@@ -193,14 +195,14 @@ require(["gitbook", "jquery"], function (gitbook, $) {
                         onClick: enlargeFontSize
                     }
                 ],
-                $.map(FAMILIES, function (family) {
+                $.map(FAMILIES, (family) => {
                     family.onClick = function (e) {
                         return changeFontFamily(family.config, e);
                     };
 
                     return family;
                 }),
-                $.map(THEMES, function (theme) {
+                $.map(THEMES, (theme) => {
                     theme.onClick = function (e) {
                         return changeColorTheme(theme.config, e);
                     };
@@ -212,8 +214,8 @@ require(["gitbook", "jquery"], function (gitbook, $) {
     }
 
     // Init configuration at start
-    gitbook.events.bind("start", function (e, config) {
-        var opts = config.fontsettings;
+    gitbook.events.bind("start", (e, config) => {
+        const opts = config.fontsettings;
 
         // Generate buttons at start
         updateButtons();

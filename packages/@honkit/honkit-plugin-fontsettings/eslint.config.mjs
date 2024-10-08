@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
 import { FlatCompat } from '@eslint/eslintrc';
+import stylisticJs from '@stylistic/eslint-plugin-js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,6 +14,9 @@ const compat = new FlatCompat({
 });
 
 export default [...compat.extends('eslint:recommended'), {
+    plugins: {
+        '@stylistic/js': stylisticJs,
+    },
     languageOptions: {
         globals: {
             ...globals.node,
@@ -22,9 +26,8 @@ export default [...compat.extends('eslint:recommended'), {
     },
 
     rules: {
-        'no-extra-boolean-cast': [0],
-        indent: [2, 4],
-        quotes: [2, 'single'],
+        '@stylistic/js/indent': [2, 4],
+        '@stylistic/js/quotes': [2, 'single'],
         'linebreak-style': [2, 'unix'],
         semi: [2, 'always'],
 
@@ -34,5 +37,9 @@ export default [...compat.extends('eslint:recommended'), {
         }],
 
         'spaced-comment': [2, 'always'],
+        'no-var': 'error',
+        'prefer-arrow-callback': 'error',
+        'prefer-const': 'error',
+        'prefer-template': 'error',
     },
 }];
