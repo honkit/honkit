@@ -28,7 +28,7 @@ exports[`HonKit snapshots: GLOSSARY.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -771,7 +771,7 @@ exports[`HonKit snapshots: GLOSSARY.html 1`] = `
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -817,7 +817,7 @@ exports[`HonKit snapshots: config.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -1719,7 +1719,7 @@ These files must be at the root of your book (or the root of every language book
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -1765,7 +1765,7 @@ exports[`HonKit snapshots: ebook.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -2542,7 +2542,7 @@ $ honkit mobi ./ ./mybook.mobi
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -2588,7 +2588,7 @@ exports[`HonKit snapshots: encoding.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -3358,7 +3358,7 @@ exports[`HonKit snapshots: encoding.html 1`] = `
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -3404,7 +3404,7 @@ exports[`HonKit snapshots: faq.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -4187,7 +4187,7 @@ In some case, <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -4233,7 +4233,7 @@ exports[`HonKit snapshots: index.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -4988,7 +4988,7 @@ exports[`HonKit snapshots: index.html 1`] = `
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -5034,7 +5034,7 @@ exports[`HonKit snapshots: languages.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -5796,7 +5796,7 @@ exports[`HonKit snapshots: languages.html 1`] = `
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -5842,7 +5842,7 @@ exports[`HonKit snapshots: lexicon.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -6603,7 +6603,7 @@ and all other kinds of inline markup ...
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -6649,7 +6649,7 @@ exports[`HonKit snapshots: pages.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -7474,7 +7474,7 @@ Markdown will dictates <span class="hljs-emphasis">_most_</span> of your <span c
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -7520,7 +7520,7 @@ exports[`HonKit snapshots: plugins/api.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -8348,7 +8348,7 @@ page.<span class="hljs-property">type</span> (<span class="hljs-string">'markdow
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -8394,7 +8394,7 @@ exports[`HonKit snapshots: plugins/blocks.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -9187,7 +9187,7 @@ This is the body of the block.
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -9233,7 +9233,7 @@ exports[`HonKit snapshots: plugins/create.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -10041,7 +10041,7 @@ exports[`HonKit snapshots: plugins/create.html 1`] = `
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -10087,7 +10087,7 @@ exports[`HonKit snapshots: plugins/filters.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -10874,7 +10874,7 @@ Refer to <a href="api.html">Context and APIs</a> to learn more about <code>this<
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -10920,7 +10920,7 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -11777,7 +11777,7 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -11823,7 +11823,7 @@ exports[`HonKit snapshots: plugins/index.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -12587,7 +12587,7 @@ exports[`HonKit snapshots: plugins/index.html 1`] = `
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -12633,7 +12633,7 @@ exports[`HonKit snapshots: plugins/testing.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -13393,7 +13393,7 @@ exports[`HonKit snapshots: plugins/testing.html 1`] = `
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -13439,7 +13439,7 @@ exports[`HonKit snapshots: setup.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -14232,7 +14232,7 @@ npm run serve
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -14278,7 +14278,7 @@ exports[`HonKit snapshots: structure.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -15092,7 +15092,7 @@ bin/*
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -15138,7 +15138,7 @@ exports[`HonKit snapshots: syntax/asciidoc.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -15934,7 +15934,7 @@ but now stands for "PHP: Hypertext Preprocessor").
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -15980,7 +15980,7 @@ exports[`HonKit snapshots: syntax/markdown.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -16866,7 +16866,7 @@ Asterisks
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -16912,7 +16912,7 @@ exports[`HonKit snapshots: templating/builtin.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -17674,7 +17674,7 @@ Render inline asciidoc</p>
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -17720,7 +17720,7 @@ exports[`HonKit snapshots: templating/conrefs.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -18499,7 +18499,7 @@ This is the default content
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -18545,7 +18545,7 @@ exports[`HonKit snapshots: templating/index.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -19356,7 +19356,7 @@ Current version is </span><span class="hljs-template-variable">{{ softwareVersio
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -19402,7 +19402,7 @@ exports[`HonKit snapshots: templating/variables.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -20377,7 +20377,7 @@ exports[`HonKit snapshots: templating/variables.html 1`] = `
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -20423,7 +20423,7 @@ exports[`HonKit snapshots: themes/index.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -21217,7 +21217,7 @@ exports[`HonKit snapshots: themes/index.html 1`] = `
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

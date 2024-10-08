@@ -8,5 +8,5 @@ module.exports = {
     variables: {
         version: pkg.version
     },
-    plugins: ["-theme-default", "-search", "-lunr", "-fontsettings", "@honkit/honkit-plugin-theme"]
+    plugins: ["-theme-default", "-search", "-lunr", "@honkit/honkit-plugin-fontsettings", "@honkit/honkit-plugin-theme"]
 };

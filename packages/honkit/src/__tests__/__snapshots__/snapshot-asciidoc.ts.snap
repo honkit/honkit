@@ -28,7 +28,7 @@ exports[`asciidoc snapshot: chapter-1/content1.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -312,7 +312,7 @@ exports[`asciidoc snapshot: chapter-1/content1.html 1`] = `
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -358,7 +358,7 @@ exports[`asciidoc snapshot: chapter-1/index.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -620,7 +620,7 @@ exports[`asciidoc snapshot: chapter-1/index.html 1`] = `
         
     
         
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
@@ -666,7 +666,7 @@ exports[`asciidoc snapshot: index.html 1`] = `
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -922,7 +922,7 @@ exports[`asciidoc snapshot: index.html 1`] = `
         
     
         
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
