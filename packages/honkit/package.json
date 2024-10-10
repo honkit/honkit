@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@honkit/asciidoc": "workspace:*",
+    "@honkit/honkit-plugin-fontsettings": "workspace:*",
     "@honkit/honkit-plugin-highlight": "workspace:*",
     "@honkit/honkit-plugin-theme-default": "workspace:*",
     "@honkit/html": "workspace:*",
@@ -58,7 +59,6 @@
     "extend": "^3.0.2",
     "flat-cache": "^2.0.1",
     "front-matter": "^2.3.0",
-    "gitbook-plugin-fontsettings": "^2.0.0",
     "gitbook-plugin-livereload": "^0.0.1",
     "gitbook-plugin-lunr": "^1.2.0",
     "gitbook-plugin-search": "^2.2.1",

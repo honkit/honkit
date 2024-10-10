@@ -1,0 +1,61 @@
+{
+  "name": "@honkit/honkit-plugin-fontsettings",
+  "description": "Fonts and colors themes settings the website for a better reading experience",
+  "main": "index.js",
+  "version": "6.0.0",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/honkit/honkit",
+  "engines": {
+    "gitbook": ">=2.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/honkit/honkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/honkit/honkit/issues"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.12.0",
+    "eslint": "^9.12.0",
+    "globals": "^15.0.0",
+    "less": "^4.2.0"
+  },
+  "scripts": {
+    "build": "npm run build:css --scripts-prepend-node-path",
+    "build:css": "lessc ./less/website.less ./assets/website.css",
+    "prepublish": "npm run build",
+    "lint": "eslint ."
+  },
+  "gitbook": {
+    "properties": {
+      "theme": {
+        "type": "string",
+        "default": "white",
+        "title": "Default theme",
+        "enum": [
+          "white",
+          "sepia",
+          "night"
+        ]
+      },
+      "family": {
+        "type": "string",
+        "default": "sans",
+        "title": "Default font family",
+        "enum": [
+          "sans",
+          "serif"
+        ]
+      },
+      "size": {
+        "type": "number",
+        "default": 2,
+        "title": "Default font size",
+        "min": 1,
+        "max": 4
+      }
+    }
+  }
+}
