@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728092578690,
+  "lastUpdate": 1728563448781,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10941,6 +10941,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.60%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a7eaeaac2910877bbdb592de0f3ae3732af47db8",
+          "message": "Dark search results (#442)\n\n* chore(deps): fork fontsettings plugin\r\n\r\nThe plugin will require modification to resolve a theme and search\r\nplugin conflict making text hard to read.\r\n\r\n* chore(deps): update eslint for fontsettings\r\n\r\n* chore(deps): update less to v4 in fontsettings\r\n\r\n* chore(deps): configure honkit to use forked fontsettings\r\n\r\n* fix(fontsettings): theme search box and results\r\n\r\nResolves #429\r\n\r\n* chore(lint): config & lint fontsettings\r\n\r\nLinted fontsettings with the top-level lint config\r\nand modified the plugin lint config to match.",
+          "timestamp": "2024-10-10T21:28:57+09:00",
+          "tree_id": "a1ddeaefcc7eae26b5b3fc5e227415eab8ec5c84",
+          "url": "https://github.com/honkit/honkit/commit/a7eaeaac2910877bbdb592de0f3ae3732af47db8"
+        },
+        "date": 1728563448141,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.28%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
