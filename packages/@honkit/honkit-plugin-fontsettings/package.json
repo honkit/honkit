@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/honkit/honkit/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.12.0",
