@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728563448781,
+  "lastUpdate": 1728563840395,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -10972,6 +10972,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.28%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1987ce8e671493d4171ab0fa8fa4622062978845",
+          "message": "docs: use legacy theme for testing (#444)\n\n* chore(deps): fork fontsettings plugin\r\n\r\nThe plugin will require modification to resolve a theme and search\r\nplugin conflict making text hard to read.\r\n\r\n* chore(deps): update eslint for fontsettings\r\n\r\n* chore(deps): update less to v4 in fontsettings\r\n\r\n* chore(deps): configure honkit to use forked fontsettings\r\n\r\n* fix(fontsettings): theme search box and results\r\n\r\nResolves #429\r\n\r\n* chore(lint): config & lint fontsettings\r\n\r\nLinted fontsettings with the top-level lint config\r\nand modified the plugin lint config to match.\r\n\r\n* chore(website): disable new theme\r\n\r\n* chore(fontsettings):: add publishConfig\r\n\r\n---------\r\n\r\nCo-authored-by: David Millar <dave@davegoesthedistance.com>",
+          "timestamp": "2024-10-10T21:35:29+09:00",
+          "tree_id": "a166b0227b40416e0139ba1b44b105df8391bb39",
+          "url": "https://github.com/honkit/honkit/commit/1987ce8e671493d4171ab0fa8fa4622062978845"
+        },
+        "date": 1728563839712,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±0.94%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
