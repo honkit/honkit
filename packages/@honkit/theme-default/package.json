@@ -1,6 +1,6 @@
 {
   "name": "@honkit/honkit-plugin-theme-default",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Default theme for HonKit",
   "bugs": {
     "url": "https://github.com/honkit/honkit/issues"
@@ -49,14 +49,14 @@
     "prepublish": "npm run build"
   },
   "devDependencies": {
-		"@eslint/js": "^9.1.1",
+    "@eslint/js": "^9.1.1",
     "@stylistic/eslint-plugin-js": "^2.8.0",
     "browserify": "17.0.0",
     "cpy-cli": "^4.2.0",
     "eslint": "^9.1.1",
     "font-awesome": "4.6.3",
     "gitbook-markdown-css": "1.0.1",
-		"globals": "^15.0.0",
+    "globals": "^15.0.0",
     "jquery": "3.5.1",
     "less": "2.7.1",
     "less-plugin-clean-css": "1.5.1",
