@@ -7,6 +7,7 @@ module.exports = {
     gitbook: "3.1.1",
     variables: {
         version: pkg.version
-    },
-    plugins: ["-theme-default", "-search", "-lunr", "@honkit/honkit-plugin-fontsettings", "@honkit/honkit-plugin-theme"]
+    }
+    // If enable new theme
+    // plugins: ["-theme-default", "-search", "-lunr", "@honkit/honkit-plugin-fontsettings", "@honkit/honkit-plugin-theme"]
 };
