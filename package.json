@@ -24,6 +24,7 @@
     "lint-all": "lerna run lint --ignore \"@example/*\"",
     "build": "lerna run build --ignore \"@example/*\"",
     "clean": "lerna run clean --ignore \"@example/*\"",
+    "clean-deps": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
     "test": "lerna run test --ignore \"@example/*\"",
     "updateSnapshot": "lerna run updateSnapshot --ignore \"@example/*\"",
     "versionup": "lerna version",
