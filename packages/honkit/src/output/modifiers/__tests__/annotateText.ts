@@ -8,6 +8,7 @@ describe("annotateText", () => {
         new GlossaryEntry({ name: "Word" }),
         new GlossaryEntry({ name: "Multiple Words" }),
         new GlossaryEntry({ name: ".MD files" }),
+        new GlossaryEntry({ name: "Brancaleone von Andalò" }),
     ]);
 
     test("should annotate text", () => {
@@ -64,6 +65,13 @@ describe("annotateText", () => {
 
     test('should annotate terms with starting dots', () => {
         const $ = loadHtml('<p>I write in .MD files when documenting.</p>');
+
+        annotateText(entries, "GLOSSARY.md", $);
+        expect($("a").length).toBe(1);
+    });
+
+    test('should annotate terms with starting non-English chars', () => {
+        const $ = loadHtml('<p>Der Papst gehört nicht nach Anagni oder Lyon, nicht nach Perugia oder Assisi, sondern nach Rom.« Ein kraftvoller Mann gab den Römern diese Sprache ein, Brancaleone von Andalò, ihr damaliger Senator.</p>');
 
         annotateText(entries, "GLOSSARY.md", $);
         expect($("a").length).toBe(1);

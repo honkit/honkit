@@ -17,3 +17,7 @@ For more details, see [Templating](./templating/README.md).
 ## .MD files
 
 This is a test that the glossary term **.MD files** will parse as expected.
+
+## Brancaleone von Andalò
+
+An Italian Senator? He's the subject of the bug report at <https://github.com/honkit/honkit/issues/312>.

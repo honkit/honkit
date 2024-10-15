@@ -21,3 +21,7 @@ Some questions are frequently asked. If you have a problem you should  [check th
 ### Contribute to this documentation
 
 You can contribute to improve this documentation on [GitHub](https://github.com/honkit/honkit) by signaling issues or proposing changes.
+
+### Additional test case
+
+Der Papst gehört nicht nach Anagni oder Lyon, nicht nach Perugia oder Assisi, sondern nach Rom.« Ein kraftvoller Mann gab den Römern diese Sprache ein, Brancaleone von Andalò, ihr damaliger Senator.
