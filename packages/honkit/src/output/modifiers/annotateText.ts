@@ -28,7 +28,8 @@ function replaceText($: cheerio.CheerioAPI, el, search, replace, text_only) {
                     // Only replace text if the new value is actually different!
                     if (new_val !== val) {
                         if (!text_only && /</.test(new_val)) {
-                            // The new value contains HTML, set it in a slower but far more                              // robust way.
+                            // The new value contains HTML, set it in a slower but far more
+                            // robust way.
                             // Don't remove the node yet, or the loop will lose its place.
                             const currentTextNode = $(node);
                             const newHTML = val.replace(val, new_val);
