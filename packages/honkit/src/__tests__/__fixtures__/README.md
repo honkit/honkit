@@ -10,4 +10,6 @@ It works as integration tests.
 
 If you need to update the snapshots, please run following command:
 
-    yarn run updateSnapshot
+```sh
+pnpm run updateSnapshot
+```
