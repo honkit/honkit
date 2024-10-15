@@ -19,7 +19,7 @@ function replaceText($: cheerio.CheerioAPI, el, search, replace, text_only) {
             // Loop over all childNodes.
             while (node) {
                 // Only process text nodes.
-                if (node.nodeType === 3) {
+                if (node.nodeType === 3 && node.nodeValue) {
                     // The original node value.
                     val = node.nodeValue;
 
