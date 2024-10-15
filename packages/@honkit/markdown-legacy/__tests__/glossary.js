@@ -13,7 +13,7 @@ describe("Glossary parsing", function () {
     });
 
     it("should only get heading + paragraph pairs", function () {
-        assert.equal(LEXED.length, 4);
+        assert.equal(LEXED.length, 5);
     });
 
     it("should output simple name/description objects", function () {
@@ -28,5 +28,9 @@ describe("Glossary parsing", function () {
     it("should correctly convert it to text", function () {
         var text = glossary.toText(LEXED);
         assert.deepStrictEqual(glossary(text), LEXED);
+    });
+
+    it("should correctly handle dots at the start of terms", function () {
+        assert.equal(LEXED[4].name, ".MD file");
     });
 });
