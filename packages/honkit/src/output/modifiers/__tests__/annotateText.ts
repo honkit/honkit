@@ -7,6 +7,7 @@ describe("annotateText", () => {
     const entries = Immutable.List([
         new GlossaryEntry({ name: "Word" }),
         new GlossaryEntry({ name: "Multiple Words" }),
+        new GlossaryEntry({ name: ".MD files" }),
     ]);
 
     test("should annotate text", () => {
@@ -59,5 +60,12 @@ describe("annotateText", () => {
 
         annotateText(entries, "GLOSSARY.md", $);
         expect($("a").length).toBe(0);
+    });
+
+    test('should annotate terms with starting dots', () => {
+        const $ = loadHtml('<p>I write in .MD files when documenting.</p>');
+
+        annotateText(entries, "GLOSSARY.md", $);
+        expect($("a").length).toBe(1);
     });
 });

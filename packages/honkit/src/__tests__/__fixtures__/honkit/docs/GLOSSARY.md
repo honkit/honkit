@@ -14,3 +14,6 @@ HonKit uses the [Nunjucks templating language](https://mozilla.github.io/nunjuck
 
 For more details, see [Templating](./templating/README.md).
 
+## .MD files
+
+This is a test that the glossary term **.MD files** will parse as expected.

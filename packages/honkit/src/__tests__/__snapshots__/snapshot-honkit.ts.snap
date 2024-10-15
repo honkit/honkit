@@ -660,6 +660,8 @@ exports[`HonKit snapshots: GLOSSARY.html 1`] = `
 <h2 id="templating">Templating</h2>
 <p><a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> uses the <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks templating language</a> to process pages and theme's templates.</p>
 <p>For more details, see <a href="templating/">Templating</a>.</p>
+<h2 id="md-files">.MD files</h2>
+<p>This is a test that the glossary term <strong><a href="GLOSSARY.html#md-files" class="glossary-term" title="This is a test that the glossary term .MD files will parse as expected.">.MD files</a></strong> will parse as expected.</p>
 
                                 
 <hr>
@@ -4862,7 +4864,7 @@ exports[`HonKit snapshots: index.html 1`] = `
                                 <h1 id="honkit-toolchain-documentation">HonKit Toolchain Documentation</h1>
 <p>This document aims to be a comprehensive guide to the <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> command line tool.</p>
 <h3 id="what-is-honkit">What is HonKit?</h3>
-<p><code>honkit</code> is a command line tool (and Node.js library) for building beautiful books using GitHub/Git and Markdown (or AsciiDoc). This documentation has been generated using <code>honkit</code>.</p>
+<p><code>honkit</code> is a command line tool (and Node.js library) for building beautiful books using GitHub/Git and Markdown with <strong><a href="GLOSSARY.html#md-files" class="glossary-term" title="This is a test that the glossary term .MD files will parse as expected.">.MD files</a></strong> (or AsciiDoc). This documentation has been generated using <code>honkit</code>.</p>
 <p><code>honkit</code> can output your content as a website (<a href="themes/">customizable</a> and <a href="plugins/">extensibles</a>) or as an ebook (PDF, ePub or Mobi).</p>
 <p><code>honkit</code> is a fork of <a href="https://github.com/GitbookIO/gitbook" target="_blank">GitBook (Legacy)</a>.</p>
 <h3 id="help-and-support">Help and Support</h3>

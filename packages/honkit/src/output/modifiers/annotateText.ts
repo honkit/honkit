@@ -66,8 +66,15 @@ function annotateText(entries, glossaryFilePath, $) {
     entries.forEach((entry) => {
         const entryId = entry.getID();
         const name = entry.getName();
+        const nameLowerCase = `${name}`.toLowerCase();
+        const quotedName = pregQuote(nameLowerCase);
+        const nameCleaned = nameLowerCase.replace(/[^\w\s]/, "");
+        const searchRegex =
+            nameLowerCase === nameCleaned
+                ? new RegExp(`\\b(${quotedName})\\b`, "gi")
+                : new RegExp(`(?:\\s*)(${quotedName})(?:\\s*)`, "gi");
+
         const description = entry.getDescription();
-        const searchRegex = new RegExp(`\\b(${pregQuote(name.toLowerCase())})\\b`, "gi");
 
         $("*").each(function () {
             const $this = $(this);
@@ -75,10 +82,10 @@ function annotateText(entries, glossaryFilePath, $) {
             if ($this.is(ANNOTATION_IGNORE) || $this.parents(ANNOTATION_IGNORE).length > 0) return;
 
             // @ts-expect-error ts-migrate(2554) FIXME: Expected 5 arguments, but got 4.
-            replaceText($, this, searchRegex, (match) => {
+            replaceText($, this, searchRegex, (match, matchedTerm) => {
                 return (
                     `<a href="/${glossaryFilePath}#${entryId}" ` +
-                    `class="glossary-term" title="${escape(description)}">${match}</a>`
+                    `class="glossary-term" title="${escape(description)}">${matchedTerm}</a>`
                 );
             });
         });
