@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1729041695997,
+  "lastUpdate": 1729042029989,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11065,6 +11065,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.17,
             "range": "±0.29%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "df699107ecdc654c09bf647a362fd350abb7aa75",
+          "message": "fix: Dot start Glossary (#446)\n\n* chore(tests): glossary term with starting dot\r\n\r\nTest case added for parsing issue in #233 which appears to not be an issue at this\r\nlevel in the code base.\r\n\r\n* chore(docs): update fixture snapshot command\r\n\r\n* refactor(annotations): skip empty nodes\r\n\r\n* chore(annotations): fix comment formatting\r\n\r\n* fix(annotation): fix glossary terms with special chars\r\n\r\nSwaps out the regex used if a glossary term uses characters outside of\r\nsimple word characters and whitespace.\r\n\r\nResolves #233.\r\n\r\n* test(annotations): add non-English test case\r\n\r\nUsed the text provided on <https://github.com/honkit/honkit/issues/312> to\r\ncreate test cases. The previous commit also fixes this issue.\r\n\r\nResolves #312\r\n\r\n* test(annotation): additional test case from #312",
+          "timestamp": "2024-10-16T10:25:17+09:00",
+          "tree_id": "4bff447998575bf5a50c785af28982b3bcb99c2e",
+          "url": "https://github.com/honkit/honkit/commit/df699107ecdc654c09bf647a362fd350abb7aa75"
+        },
+        "date": 1729042029314,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±0.35%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
