@@ -25,3 +25,7 @@ print(f(9))
 ## Gitbook
 
 Awesome project. Really amazing, I'm really at a loss for words ...
+
+## .MD file
+
+Common file extension for Markdown files. Everyone knows it's the greatest!

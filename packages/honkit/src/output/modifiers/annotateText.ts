@@ -19,7 +19,7 @@ function replaceText($: cheerio.CheerioAPI, el, search, replace, text_only) {
             // Loop over all childNodes.
             while (node) {
                 // Only process text nodes.
-                if (node.nodeType === 3) {
+                if (node.nodeType === 3 && node.nodeValue) {
                     // The original node value.
                     val = node.nodeValue;
 
@@ -28,7 +28,8 @@ function replaceText($: cheerio.CheerioAPI, el, search, replace, text_only) {
                     // Only replace text if the new value is actually different!
                     if (new_val !== val) {
                         if (!text_only && /</.test(new_val)) {
-                            // The new value contains HTML, set it in a slower but far more                              // robust way.
+                            // The new value contains HTML, set it in a slower but far more
+                            // robust way.
                             // Don't remove the node yet, or the loop will lose its place.
                             const currentTextNode = $(node);
                             const newHTML = val.replace(val, new_val);
@@ -65,8 +66,15 @@ function annotateText(entries, glossaryFilePath, $) {
     entries.forEach((entry) => {
         const entryId = entry.getID();
         const name = entry.getName();
+        const nameLowerCase = `${name}`.toLowerCase();
+        const quotedName = pregQuote(nameLowerCase);
+        const nameCleaned = nameLowerCase.replace(/[^\w\s]/, "");
+        const searchRegex =
+            nameLowerCase === nameCleaned
+                ? new RegExp(`\\b(${quotedName})\\b`, "gi")
+                : new RegExp(`(?:\\s*)(${quotedName})(?:\\s*)`, "gi");
+
         const description = entry.getDescription();
-        const searchRegex = new RegExp(`\\b(${pregQuote(name.toLowerCase())})\\b`, "gi");
 
         $("*").each(function () {
             const $this = $(this);
@@ -74,10 +82,10 @@ function annotateText(entries, glossaryFilePath, $) {
             if ($this.is(ANNOTATION_IGNORE) || $this.parents(ANNOTATION_IGNORE).length > 0) return;
 
             // @ts-expect-error ts-migrate(2554) FIXME: Expected 5 arguments, but got 4.
-            replaceText($, this, searchRegex, (match) => {
+            replaceText($, this, searchRegex, (match, matchedTerm) => {
                 return (
                     `<a href="/${glossaryFilePath}#${entryId}" ` +
-                    `class="glossary-term" title="${escape(description)}">${match}</a>`
+                    `class="glossary-term" title="${escape(description)}">${matchedTerm}</a>`
                 );
             });
         });

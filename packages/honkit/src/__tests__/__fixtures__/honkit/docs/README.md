@@ -4,7 +4,7 @@ This document aims to be a comprehensive guide to the HonKit command line tool.
 
 ### What is HonKit?
 
-`honkit` is a command line tool (and Node.js library) for building beautiful books using GitHub/Git and Markdown (or AsciiDoc). This documentation has been generated using `honkit`.
+`honkit` is a command line tool (and Node.js library) for building beautiful books using GitHub/Git and Markdown with **.MD files** (or AsciiDoc). This documentation has been generated using `honkit`.
 
 `honkit` can output your content as a website ([customizable](themes/README.md) and [extensibles](plugins/README.md)) or as an ebook (PDF, ePub or Mobi).
 
@@ -21,3 +21,7 @@ Some questions are frequently asked. If you have a problem you should  [check th
 ### Contribute to this documentation
 
 You can contribute to improve this documentation on [GitHub](https://github.com/honkit/honkit) by signaling issues or proposing changes.
+
+### Additional test case
+
+Der Papst gehört nicht nach Anagni oder Lyon, nicht nach Perugia oder Assisi, sondern nach Rom.« Ein kraftvoller Mann gab den Römern diese Sprache ein, Brancaleone von Andalò, ihr damaliger Senator.
