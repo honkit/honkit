@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1728563958566,
+  "lastUpdate": 1729041695997,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11034,6 +11034,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.08%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2c09f5faffbb336b6a1761f04adfc32a897b875a",
+          "message": "Lint format simplify (#443)\n\n* refactor(linting): centralized eslint configs\r\n\r\nCreated a new package that contains a shared config for eslint.\r\n\r\nInspired by https://medium.com/reactbrasil/reuse-your-eslint-prettier-config-in-a-monorepo-with-lerna-54c1800cacdc\r\nbut had trouble centralizing the Prettier config without making a second package.\r\n\r\n* chore(lint): updated prettier config\r\n\r\nMoved configs to editorconfig where appropriate to reduce chance of\r\nconflicting or duplicate configs. Moved remaining prettier config to\r\nflat file. Previous eslint cleanup also removed things that Prettier\r\nand editorconfig define and enforce.\r\n\r\n* feat(dev): add clean-deps script\r\n\r\nConvenience method for clearing node modules.\r\n\r\n* chore(deps): make eslint a peerDep of lint tools",
+          "timestamp": "2024-10-16T10:19:42+09:00",
+          "tree_id": "bfd47ec710023abadbd6d20ef8bec21a3c71d0f7",
+          "url": "https://github.com/honkit/honkit/commit/2c09f5faffbb336b6a1761f04adfc32a897b875a"
+        },
+        "date": 1729041695117,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±0.29%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
