@@ -21,8 +21,10 @@
   ],
   "scripts": {
     "lint": "eslint .",
+    "lint-all": "lerna run lint --ignore \"@example/*\"",
     "build": "lerna run build --ignore \"@example/*\"",
     "clean": "lerna run clean --ignore \"@example/*\"",
+    "clean-deps": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
     "test": "lerna run test --ignore \"@example/*\"",
     "updateSnapshot": "lerna run updateSnapshot --ignore \"@example/*\"",
     "versionup": "lerna version",
@@ -35,28 +37,20 @@
     "release-ci": "yarn run build && lerna publish from-package --yes --no-verify-access",
     "honkit:build": "npm run build && honkit build",
     "honkit:serve": "honkit serve",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "format": "prettier --write \"**/*.{mjs,js,jsx,ts,tsx,css}\"",
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "devDependencies": {
-		"@eslint/js": "^9.1.1",
-    "@stylistic/eslint-plugin-js": "^2.8.0",
-    "eslint": "^9.1.1",
-		"globals": "^15.0.0",
+    "@honkit/cleaning-tools": "workspace:*",
+    "eslint": "^9.12.0",
     "honkit": "workspace:*",
     "lerna": "^8.1.8",
     "lint-staged": "^13.3.0",
     "prettier": "^3.3.3",
     "typescript": "^5.6.2"
   },
-  "prettier": {
-    "singleQuote": false,
-    "printWidth": 120,
-    "tabWidth": 4,
-    "trailingComma": "none"
-  },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css}": [
+    "*.{mjs,js,jsx,ts,tsx,css}": [
       "prettier --write"
     ]
   },

@@ -5,20 +5,31 @@ root = true
 
 # Unix-style newlines with a newline ending every file
 [*]
-end_of_line = lf
+# Not used by Prettier
 insert_final_newline = true
+# Used by Prettier
+end_of_line = lf
 
 # Matches multiple files with brace expansion notation
 # Set default charset
 [*.{js,py}]
+# Not used by Prettier
 charset = utf-8
+# Used by Prettier
 indent_size = 4
 
 # Tab indentation (no size specified)
 [Makefile]
+# Used by Prettier
 indent_style = tab
 
 [package.json]
+# Used by Prettier
 indent_style = space
 indent_size = 2
 
+[*.{mjs,js,jsx,ts,tsx,css}]
+# Used by Prettier
+indent_size = 4
+tab_width = 4
+max_line_length = 120
