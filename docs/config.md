@@ -61,3 +61,16 @@ PDF Output can be customized using a set of options in the `book.json`:
 | `pdf.margin.right` | Right margin (default is `62`) |
 | `pdf.margin.left` | Left margin (default is `62`) |
 | `pdf.embedFonts` | Embed all fonts into the PDF (default is `false`) |
+
+### Styles
+
+The default theme allows additional stylesheets to be specified in the `book.json`. The file paths should be specified relative to the `root` path if provided. When provided, `ebook` applies to `epub`, `mobi`, and `pdf` output unless those are provided individually as well.
+
+| Variable | Description |
+| -------- | ----------- |
+| `styles.ebook` | Location of stylesheet specific to ebook output |
+| `styles.epub` | Location of stylesheet specific to epub output |
+| `styles.mobi` | Location of stylesheet specific to mobi output |
+| `styles.pdf` | Location of stylesheet specific to PDF output |
+| `styles.print` | Location of stylesheet specific to print formatting |
+| `styles.website` | Location of stylesheet specific to the website output |
