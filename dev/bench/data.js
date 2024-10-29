@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1729042250373,
+  "lastUpdate": 1730178988644,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11127,6 +11127,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.13%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "df9784078ae79502b961d089294db8f97932dbbd",
+          "message": "docs(styles): add style config docs (#448)",
+          "timestamp": "2024-10-29T14:14:32+09:00",
+          "tree_id": "b1abcf50c536e021ae44d8aac3ee9f9a8adc2f56",
+          "url": "https://github.com/honkit/honkit/commit/df9784078ae79502b961d089294db8f97932dbbd"
+        },
+        "date": 1730178987770,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.06%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
