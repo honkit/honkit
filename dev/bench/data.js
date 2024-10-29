@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1730178988644,
+  "lastUpdate": 1730245033841,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11158,6 +11158,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.06%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dave@davegoesthedistance.com",
+            "name": "David Millar",
+            "username": "davmillar"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fa0068c0e8014adf15bdda6c425b0a26913ecbf2",
+          "message": "docs(changelog): point to releases for changelog (#450)\n\nPoints the documentation link to the GitHub releases page\r\nand adds a deprecation notice and link to the top of the old\r\nchangelog file as it is out of date and a duplicate effort.",
+          "timestamp": "2024-10-30T08:35:21+09:00",
+          "tree_id": "5c43ee43fa6752fbd43762ab72161a5010b181ad",
+          "url": "https://github.com/honkit/honkit/commit/fa0068c0e8014adf15bdda6c425b0a26913ecbf2"
+        },
+        "date": 1730245033120,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.28%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
