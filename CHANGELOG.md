@@ -1,6 +1,7 @@
-# Change Log
+# Change Log (Deprecated)
 
-All notable changes to this project will be documented in this file.
+See [Releases on GitHub](https://github.com/honkit/honkit/releases) for the newest releases with notable changes provided.
+
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [4.0.6](https://github.com/honkit/honkit/compare/v4.0.5...v4.0.6) (2023-03-26)
