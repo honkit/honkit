@@ -16,10 +16,10 @@ jobs:
         node-version: [22]
     steps:
       - name: checkout
-        uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
       - name: setup Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           cache: 'pnpm'
           node-version: ${{ matrix.node-version }}
@@ -30,7 +30,7 @@ jobs:
       - name: Run Benchmark
         run: cd examples/benchmark && node benchmark.js | tee output.txt
       - name: Store benchmark result
-        uses: rhysd/github-action-benchmark@v1
+        uses: rhysd/github-action-benchmark@d48d326b4ca9ba73ca0cd0d59f108f9e02a381c7 # v1.20.4
         with:
           name: HonKit benchmark
           tool: 'benchmarkjs'
