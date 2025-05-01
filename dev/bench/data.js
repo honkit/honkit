@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1742082139675,
+  "lastUpdate": 1746074049154,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11220,6 +11220,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.76%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "arukimedesu1166777@gmail.com",
+            "name": "Noritaka Kobayashi",
+            "username": "noritaka1166"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c49e53d28b617733689d3b027afe2d9155610293",
+          "message": "refactor: remove try-resolve dependency and implement custom path utility (#458)\n\n- Remove deprecated try-resolve\n- Implement custom path utility\n\nCloses #457.",
+          "timestamp": "2025-05-01T13:32:18+09:00",
+          "tree_id": "f5dded624a907710e1328626800f1192c0ba03ae",
+          "url": "https://github.com/honkit/honkit/commit/c49e53d28b617733689d3b027afe2d9155610293"
+        },
+        "date": 1746074048439,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.92%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
