@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746074138842,
+  "lastUpdate": 1746109529694,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11282,6 +11282,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.17,
             "range": "±0.89%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "arukimedesu1166777@gmail.com",
+            "name": "Noritaka Kobayashi",
+            "username": "noritaka1166"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a44b0f97ba43cea651c43b28191eb5a495e71454",
+          "message": "chore: correct typos in documentation files (#460)",
+          "timestamp": "2025-05-01T23:23:42+09:00",
+          "tree_id": "875311499c7521e20a27a53a6b41d6b3a06d29fc",
+          "url": "https://github.com/honkit/honkit/commit/a44b0f97ba43cea651c43b28191eb5a495e71454"
+        },
+        "date": 1746109528817,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.68%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
