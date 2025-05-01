@@ -43,7 +43,7 @@ function resolveInRoot(root) {
     return result;
 }
 
-// Chnage extension of a file
+// Change extension of a file
 function setExtension(filename, ext) {
     return path.join(path.dirname(filename), path.basename(filename, path.extname(filename)) + ext);
 }
@@ -58,10 +58,24 @@ function isPureRelative(filename) {
     return filename.indexOf("./") === 0 || filename.indexOf("../") === 0;
 }
 
+/**
+ * Try to resolve package name
+ * if `packageName` is found, return resolved absolute path.
+ * if `packageName` is not found, return `undefined`
+ **/
+function tryResolve(packageName: string): string | undefined {
+    try {
+        return require.resolve(packageName);
+    } catch {
+        return undefined;
+    }
+}
+
 export default {
     isInRoot: isInRoot,
     resolveInRoot: resolveInRoot,
     normalize: normalizePath,
     setExtension: setExtension,
-    isPureRelative: isPureRelative
+    isPureRelative: isPureRelative,
+    tryResolve: tryResolve
 };
