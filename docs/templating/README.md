@@ -86,7 +86,7 @@ Current version is {{ softwareVersion }}.
 
 ##### include and block
 
-Inclusion and inheritance is detailled in the [Content References](conrefs.md) section.
+Inclusion and inheritance is detailed in the [Content References](conrefs.md) section.
 
 ### Escaping
 

@@ -201,9 +201,9 @@ git checkout -b "release/$(date '+%Y-%m-%d')"
 `npm run versionup:*` script update version and generate CHANGELOG.md
 
 ```
-# bump vesrion and update changelog
+# bump version and update changelog
 npm run versionup
-## Also, availble npm run versionup:{patch,minor,major}
+## Also, available npm run versionup:{patch,minor,major}
 # push the changes to release branch
 git push origin HEAD -u
 ```
