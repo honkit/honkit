@@ -86,7 +86,6 @@
     "send": "^0.17.2",
     "tiny-lr": "^1.1.1",
     "tmp": "0.0.28",
-    "try-resolve": "^1.0.1",
     "urijs": "^1.19.11"
   },
   "devDependencies": {

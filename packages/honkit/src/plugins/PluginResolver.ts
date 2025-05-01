@@ -3,7 +3,7 @@
 
 import path from "path";
 import * as util from "./package-name-util";
-import tryResolve from "try-resolve";
+import PathUtils from "../utils/path";
 
 const SPECIAL_PACKAGE_NAME = [
     "fontsettings", // → @honkit/honkit-plugin-fontsettings
@@ -50,11 +50,11 @@ export class PluginResolver {
         const honkitScopePackageName = `@honkit/${honkitFullPackageName}`;
         // In sometimes, HonKit package has not main field - so search package.json
         const pkgPath =
-            tryResolve(path.join(baseDir, honkitFullPackageName, "/package.json")) ||
-            tryResolve(path.join(baseDir, gitbookFullPackageName, "/package.json")) ||
-            tryResolve(path.join(baseDir, packageName, "/package.json")) ||
+            PathUtils.tryResolve(path.join(baseDir, honkitFullPackageName, "/package.json")) ||
+            PathUtils.tryResolve(path.join(baseDir, gitbookFullPackageName, "/package.json")) ||
+            PathUtils.tryResolve(path.join(baseDir, packageName, "/package.json")) ||
             (SPECIAL_PACKAGE_NAME.includes(packageName) &&
-                tryResolve(path.join(baseDir, honkitScopePackageName, "/package.json")));
+                PathUtils.tryResolve(path.join(baseDir, honkitScopePackageName, "/package.json")));
         if (!pkgPath) {
             throw new ReferenceError(`Failed to load HonKit's plugin module: "${packageName}" is not found.
 
