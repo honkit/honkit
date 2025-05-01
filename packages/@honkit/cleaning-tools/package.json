@@ -1,6 +1,6 @@
 {
   "name": "@honkit/cleaning-tools",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "type": "module",
   "description": "Shared eslint and prettier configs for HonKit packages.",
   "private": true,
