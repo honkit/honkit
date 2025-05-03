@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746109529694,
+  "lastUpdate": 1746283862067,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11313,6 +11313,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.68%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "arukimedesu1166777@gmail.com",
+            "name": "Noritaka Kobayashi",
+            "username": "noritaka1166"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b8174a4c17b0a2f58c9b164b807c1905ac87d7d6",
+          "message": "chore: update rimraf dependency to version 6 (#461)",
+          "timestamp": "2025-05-03T23:49:11+09:00",
+          "tree_id": "5f0dbcfbe64b4019e5f6ee0a1b473efefe6b93fa",
+          "url": "https://github.com/honkit/honkit/commit/b8174a4c17b0a2f58c9b164b807c1905ac87d7d6"
+        },
+        "date": 1746283860747,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.55%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
