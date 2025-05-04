@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746283862067,
+  "lastUpdate": 1746331403936,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11344,6 +11344,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.55%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "arukimedesu1166777@gmail.com",
+            "name": "Noritaka Kobayashi",
+            "username": "noritaka1166"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9705340e43ebe918cd0b31dc4259db862339c179",
+          "message": "chore: remove cross-env dependency (#462)",
+          "timestamp": "2025-05-04T13:01:35+09:00",
+          "tree_id": "5ecf8064437ef01a975c78f61b8d8e59210371ed",
+          "url": "https://github.com/honkit/honkit/commit/9705340e43ebe918cd0b31dc4259db862339c179"
+        },
+        "date": 1746331403402,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.58%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
