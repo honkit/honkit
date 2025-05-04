@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746331403936,
+  "lastUpdate": 1746339030521,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11375,6 +11375,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.58%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "arukimedesu1166777@gmail.com",
+            "name": "Noritaka Kobayashi",
+            "username": "noritaka1166"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5a4c37790a454c5bd005e309f06ccf901cc756d2",
+          "message": "refactor: update lodash imports to specific functions for reduce import costs (#463)\n\n* refactor: simplify lodash usage by importing specific functions\n\n* refactor: update lodash imports to specific functions for reduce import costs",
+          "timestamp": "2025-05-04T15:08:28+09:00",
+          "tree_id": "f8fb0e40e379a4e9e6e12ea245930274c1728361",
+          "url": "https://github.com/honkit/honkit/commit/5a4c37790a454c5bd005e309f06ccf901cc756d2"
+        },
+        "date": 1746339029064,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.46%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
