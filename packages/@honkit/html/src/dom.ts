@@ -1,4 +1,4 @@
-import { reduce } from "lodash";
+import reduce from "lodash/reduce";
 import * as cheerio from "cheerio";
 
 type CheerioOptions = cheerio.CheerioOptions & {

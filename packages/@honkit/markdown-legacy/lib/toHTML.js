@@ -1,4 +1,4 @@
-var { extend } = require("lodash");
+var extend = require("lodash/extend");
 var kramed = require("kramed");
 
 /**

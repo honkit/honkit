@@ -1,4 +1,4 @@
-import { identity } from "lodash";
+import identity from "lodash/identity";
 import ToText from "./totext";
 // import
 import summary, { SummaryPart } from "./summary";

@@ -1,4 +1,7 @@
-import { extend, bindAll, functionsIn, each } from "lodash";
+import extend from "lodash/extend";
+import bindAll from "lodash/bindAll";
+import functionsIn from "lodash/functionsIn";
+import each from "lodash/each";
 
 /*
     This class is extended by gitbook-markdown and gitbook-asciidoc

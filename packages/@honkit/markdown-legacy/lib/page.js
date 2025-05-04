@@ -1,4 +1,4 @@
-var { map } = require("lodash");
+var map = require("lodash/map");
 var annotate = require("kramed/lib/annotate/");
 
 var RAW_START = "{% raw %}";
