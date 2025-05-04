@@ -37,8 +37,7 @@
   },
   "dependencies": {
     "@honkit/html": "workspace:*",
-    "asciidoctor": "^2.2.8",
-    "lodash": "^4.17.21"
+    "asciidoctor": "^2.2.8"
   },
   "devDependencies": {
     "@types/jest": "^29.5.13",

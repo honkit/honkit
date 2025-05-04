@@ -1,5 +1,4 @@
-var _ = require("lodash");
-var kramed = require("kramed");
+var map = require("lodash/map");
 var annotate = require("kramed/lib/annotate/");
 
 var RAW_START = "{% raw %}";
@@ -22,7 +21,7 @@ function escape(str) {
     @return {String}
 */
 function combine(nodes) {
-    return _.map(nodes, "raw").join("");
+    return map(nodes, "raw").join("");
 }
 
 /**
@@ -55,7 +54,7 @@ function preparePage(src) {
         return el;
     }
 
-    var escaped = _.map(lexed, function (el) {
+    var escaped = map(lexed, function (el) {
         // Only escape paragraphs and headings
         if (el.type == "paragraph" || el.type == "heading") {
             var line = annotate.inline(el.raw);
