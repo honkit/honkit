@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { extend, bindAll, functionsIn, each } from "lodash";
 
 /*
     This class is extended by gitbook-markdown and gitbook-asciidoc
@@ -11,8 +11,8 @@ function ToText(markup) {
         return new ToText(markup);
     }
 
-    _.extend(this, markup || {});
-    _.bindAll(this, _.functionsIn(this));
+    extend(this, markup || {});
+    bindAll(this, functionsIn(this));
 }
 
 // Break line
@@ -92,7 +92,7 @@ ToText.prototype.glossary = function (glossary) {
     content += that.onTitleStart(1) + that.onText("Glossary") + that.onTitleEnd(1);
     content += that.onSection();
 
-    _.each(glossary, (entry) => {
+    each(glossary, (entry) => {
         content += that.onTitleStart(2) + that.onText(entry.name) + that.onTitleEnd(2);
         content += that.onParagraphStart();
         content += that.onText(entry.description);
@@ -130,7 +130,7 @@ ToText.prototype._summaryArticles = function (articles, level) {
     level = level || 0;
 
     content += that.onListStart(level);
-    _.each(articles, (article) => {
+    each(articles, (article) => {
         content += that._summaryArticle(article, level);
     });
     content += that.onListEnd(level);
@@ -154,7 +154,7 @@ ToText.prototype.summary = function (summary) {
     content += that.onTitleStart(1) + that.onText("Summary") + that.onTitleEnd(1);
     content += that.onSection();
 
-    _.each(summary.parts, (part, i) => {
+    each(summary.parts, (part, i) => {
         const next = summary.parts[i + 1];
 
         content += that._summaryPart(part);

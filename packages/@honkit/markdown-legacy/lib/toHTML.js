@@ -1,4 +1,4 @@
-var _ = require("lodash");
+var { extend } = require("lodash");
 var kramed = require("kramed");
 
 /**
@@ -22,7 +22,7 @@ function getRenderer() {
     @return {Object}
 */
 function getOption() {
-    return _.extend({}, kramed.defaults, {
+    return extend({}, kramed.defaults, {
         mathjax: false,
     });
 }
@@ -34,7 +34,7 @@ function getOption() {
     @return {String} (html)
 */
 function convertMdToHTMLBlock(src) {
-    var options = _.extend(getOption(), {
+    var options = extend(getOption(), {
         renderer: getRenderer(),
     });
 

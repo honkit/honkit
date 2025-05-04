@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { reduce } from "lodash";
 import * as cheerio from "cheerio";
 
 type CheerioOptions = cheerio.CheerioOptions & {
@@ -44,7 +44,7 @@ export function root($) {
  @return {string}
  */
 export function textNode($el) {
-    return _.reduce(
+    return reduce(
         $el.children,
         (text, e) => {
             if (e.type == "text") text += e.data;
