@@ -142,9 +142,7 @@ function parseSummary(html: string): { parts: SummaryPart[] } {
 
     // Parse each list
     const parsedParts = [];
-    let part;
-    for (let i = 0; i < parts.length; ++i) {
-        part = parts[i];
+    for (const part of parts) {
         parsedParts.push({
             title: part.title,
             articles: parseList($(part.list), $)

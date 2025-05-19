@@ -2,8 +2,7 @@
  * Remove `prefix` from `text`.
  */
 const removePrefixFromPackageName = (prefixList, packageName) => {
-    for (let i = 0; i < prefixList.length; i++) {
-        const prefix = prefixList[i];
+    for (const prefix of prefixList) {
         // @scope/name -> @scope/name
         // @scope/textlint-rule-name -> @scope/name
         if (packageName.charAt(0) === "@") {
