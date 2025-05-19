@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1746339030521,
+  "lastUpdate": 1747655021651,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11406,6 +11406,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.46%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "arukimedesu1166777@gmail.com",
+            "name": "Noritaka Kobayashi",
+            "username": "noritaka1166"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1566b408074f488cd0010b10c208116de97e2543",
+          "message": "chore: update lint-staged from v13 to v16 (#465)",
+          "timestamp": "2025-05-19T20:41:52+09:00",
+          "tree_id": "6e5e81580f1f490aa23b64e3e708747e1f956064",
+          "url": "https://github.com/honkit/honkit/commit/1566b408074f488cd0010b10c208116de97e2543"
+        },
+        "date": 1747655020933,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.88%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
