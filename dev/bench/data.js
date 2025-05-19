@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747655021651,
+  "lastUpdate": 1747655060815,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11437,6 +11437,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.88%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "arukimedesu1166777@gmail.com",
+            "name": "Noritaka Kobayashi",
+            "username": "noritaka1166"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c3deb87dd854cd03cd96029fdee5e758291d4a18",
+          "message": "refactor: simplify for loop syntax to use for...of for better readability (#464)",
+          "timestamp": "2025-05-19T20:42:27+09:00",
+          "tree_id": "fcf7ba4cb7f31b4018cb12ade35877597131539c",
+          "url": "https://github.com/honkit/honkit/commit/c3deb87dd854cd03cd96029fdee5e758291d4a18"
+        },
+        "date": 1747655060070,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.35%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
