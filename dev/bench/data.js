@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747655060815,
+  "lastUpdate": 1747999012500,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11468,6 +11468,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.35%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "arukimedesu1166777@gmail.com",
+            "name": "Noritaka Kobayashi",
+            "username": "noritaka1166"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "348c0df656651bfd8a97cb04647f92053f370e28",
+          "message": "chore: remove unused 'q' dependency (#466)",
+          "timestamp": "2025-05-23T20:14:58+09:00",
+          "tree_id": "0c2eaa0f63b8b4925f54efc8d021f73dd30bbd94",
+          "url": "https://github.com/honkit/honkit/commit/348c0df656651bfd8a97cb04647f92053f370e28"
+        },
+        "date": 1747999011069,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.30%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
