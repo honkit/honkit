@@ -2,7 +2,6 @@ import path from "path";
 import Promise from "../utils/promise";
 import generatePage from "./generatePage";
 import { getCache } from "./page-cache";
-import Page from "../models/page";
 
 /**
  Output all pages using a generator
