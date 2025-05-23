@@ -154,9 +154,6 @@ importers:
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
-      q:
-        specifier: ^1.5.1
-        version: 1.5.1
     devDependencies:
       mocha:
         specifier: ^10.7.3
