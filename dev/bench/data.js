@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747999012500,
+  "lastUpdate": 1748091163466,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11499,6 +11499,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.30%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "arukimedesu1166777@gmail.com",
+            "name": "Noritaka Kobayashi",
+            "username": "noritaka1166"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "34fef467d537b296b550256b445785acdc17ea59",
+          "message": "refactor: remove unused imports (#467)",
+          "timestamp": "2025-05-24T21:50:44+09:00",
+          "tree_id": "77a2217ecc0ebe772888f5929f5bb32d3f1d948b",
+          "url": "https://github.com/honkit/honkit/commit/34fef467d537b296b550256b445785acdc17ea59"
+        },
+        "date": 1748091162449,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.55%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
