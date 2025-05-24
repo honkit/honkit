@@ -1,7 +1,6 @@
 import events from "events";
 import http from "http";
 import send from "send";
-import util from "util";
 import url from "url";
 import Promise from "../utils/promise";
 

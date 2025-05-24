@@ -1,7 +1,6 @@
 import is from "is";
 import semver from "semver";
 import Immutable from "immutable";
-import PREFIX from "../constants/pluginPrefix";
 
 const DEFAULT_VERSION = "*";
 

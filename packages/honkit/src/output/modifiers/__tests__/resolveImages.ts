@@ -1,4 +1,3 @@
-import path from "path";
 import { loadHtml } from '@honkit/html';
 import resolveImages from "../resolveImages";
 
