@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1748091163466,
+  "lastUpdate": 1754537299523,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11530,6 +11530,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.55%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2c06aa19d179a5ea960dff415f790c5e66dbc66f",
+          "message": "Merge pull request #468 from honkit/dependabot/npm_and_yarn/tmp-0.2.4",
+          "timestamp": "2025-08-07T03:26:33Z",
+          "tree_id": "bda1c6ff3fa4e1010f7347467e5a895f727be815",
+          "url": "https://github.com/honkit/honkit/commit/2c06aa19d179a5ea960dff415f790c5e66dbc66f"
+        },
+        "date": 1754537298796,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±0.72%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
