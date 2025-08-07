@@ -85,7 +85,7 @@
     "semver": "^7.6.3",
     "send": "^0.17.2",
     "tiny-lr": "^1.1.1",
-    "tmp": "0.0.28",
+    "tmp": "0.2.4",
     "urijs": "^1.19.11"
   },
   "devDependencies": {

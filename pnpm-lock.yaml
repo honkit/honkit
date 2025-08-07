@@ -495,8 +495,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
       tmp:
-        specifier: 0.0.28
-        version: 0.0.28
+        specifier: 0.2.4
+        version: 0.2.4
       urijs:
         specifier: ^1.19.11
         version: 1.19.11
@@ -5220,16 +5220,12 @@ packages:
   tiny-lr@1.1.1:
     resolution: {integrity: sha512-44yhA3tsaRoMOjQQ+5v5mVdqef+kH6Qze9jTpqtVufgYjYt08zyZAwNwwVBj3i1rJMnR52IxOW0LK0vBzgAkuA==}
 
-  tmp@0.0.28:
-    resolution: {integrity: sha512-c2mmfiBmND6SOVxzogm1oda0OJ1HZVIk/5n26N59dDTh80MUeavpiCls4PGAdkX1PFkKokLpcf7prSjCeXLsJg==}
-    engines: {node: '>=0.4.0'}
-
   tmp@0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}
     engines: {node: '>=0.6.0'}
 
-  tmp@0.2.3:
-    resolution: {integrity: sha512-nZD7m9iCPC5g0pYmcaxogYKggSfLsdxl8of3Q/oIbqCqLLIO9IAF0GWjX1z9NZRHPiXv8Wex4yDCaZsgEw0Y8w==}
+  tmp@0.2.4:
+    resolution: {integrity: sha512-UdiSoX6ypifLmrfQ/XfiawN6hkjSBpCjhKxxZcWlUUmoXLaCKQU0bx4HF/tdDK2uzRuchf1txGvrWBzYREssoQ==}
     engines: {node: '>=14.14'}
 
   tmpl@1.0.5:
@@ -6558,7 +6554,7 @@ snapshots:
       minimatch: 9.0.3
       nx: 19.8.3
       semver: 7.6.3
-      tmp: 0.2.3
+      tmp: 0.2.4
       tslib: 2.7.0
       yargs-parser: 21.1.1
 
@@ -10367,7 +10363,7 @@ snapshots:
       string-width: 4.2.3
       strong-log-transformer: 2.1.0
       tar-stream: 2.2.0
-      tmp: 0.2.3
+      tmp: 0.2.4
       tsconfig-paths: 4.2.0
       tslib: 2.7.0
       yargs: 17.7.2
@@ -11505,15 +11501,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  tmp@0.0.28:
-    dependencies:
-      os-tmpdir: 1.0.2
-
   tmp@0.0.33:
     dependencies:
       os-tmpdir: 1.0.2
 
-  tmp@0.2.3: {}
+  tmp@0.2.4: {}
 
   tmpl@1.0.5: {}
 
