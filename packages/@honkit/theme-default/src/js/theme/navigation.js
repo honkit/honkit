@@ -171,7 +171,8 @@ function setChapterActive($chapter, hash) {
 // Return the hash of link for a chapter
 function getChapterHash($chapter) {
     var $link = $chapter.children("a"),
-        hash = $link.attr("href").split("#")[1];
+        href = $link.attr("href"),
+        hash = href ? href.split("#")[1] : null;
 
     if (hash) hash = "#" + hash;
     return hash || "";
@@ -395,7 +396,12 @@ function preparePage(resetScroll) {
         if (!$link.length) {
             return false;
         } else {
-            href = $link.attr("href").split("#")[0];
+            var linkHref = $link.attr("href");
+            href = linkHref ? linkHref.split("#")[0] : null;
+        }
+
+        if (!href) {
+            return false;
         }
 
         var resolvedRef = url.resolve(window.location.pathname, href);
