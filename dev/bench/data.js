@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757262889341,
+  "lastUpdate": 1757263052916,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11592,6 +11592,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.17,
             "range": "±0.66%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "198982749+Copilot@users.noreply.github.com",
+            "name": "Copilot",
+            "username": "Copilot"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "bacf09784cdbd1480d3660cca1f0dd7da0c07684",
+          "message": "Fix navigation failure due to JavaScript error when href attributes are undefined (#470)\n\n* Initial plan\n\n* Fix navigation failure due to JavaScript error - add null checks for href attributes\n\nCo-authored-by: azu <19714+azu@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: azu <19714+azu@users.noreply.github.com>",
+          "timestamp": "2025-09-08T01:35:40+09:00",
+          "tree_id": "f5ae382d162804be68412904f9c4170945384d40",
+          "url": "https://github.com/honkit/honkit/commit/bacf09784cdbd1480d3660cca1f0dd7da0c07684"
+        },
+        "date": 1757263051944,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±2.24%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
