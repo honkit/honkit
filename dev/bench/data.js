@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1754537299523,
+  "lastUpdate": 1757262889341,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11561,6 +11561,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.17,
             "range": "±0.72%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "198982749+Copilot@users.noreply.github.com",
+            "name": "Copilot",
+            "username": "Copilot"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4948e5eabcdf33cb9d2c238953f8d9055c7ecb01",
+          "message": "✨ Set up Copilot instructions for AI development guidelines (#472)\n\n* Initial plan\n\n* feat: Add Copilot instructions for AI development guidelines\n\nCo-authored-by: azu <19714+azu@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: azu <19714+azu@users.noreply.github.com>",
+          "timestamp": "2025-09-08T01:32:36+09:00",
+          "tree_id": "9adc240a547c8ce39ba4c418636713aceffa711b",
+          "url": "https://github.com/honkit/honkit/commit/4948e5eabcdf33cb9d2c238953f8d9055c7ecb01"
+        },
+        "date": 1757262888644,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±0.66%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
