@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757263189788,
+  "lastUpdate": 1757336213791,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11654,6 +11654,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.34%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "811beca14272e547acddd1136ee88747f5c6c6db",
+          "message": "feat: migrate to npm trusted publishing with OIDC (#474)\n\n* feat: migrate to npm trusted publishing with OIDC\n\n- Replace NPM_TOKEN with OIDC authentication\n- Add id-token permission for GitHub Actions\n- Enable npm provenance for published packages\n- Add workflow to check package provenance status\n- Fix template injection vulnerabilities\n\n* Refactor code structure for improved readability and maintainability\n\n* ci: disable credential persistence for checkout actions\n\n* fix: change prepublish to prepublishOnly to prevent lib cleanup during install\n\nThe prepublish script was running during pnpm install and cleaning the lib directory,\ncausing \"Cannot find module '../lib/bin.js'\" error in CI.\n\nChanged to prepublishOnly so it only runs during actual npm publish.\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* fix: use double quotes for pnpm filter to support Windows\n\nThe single quotes in pnpm filter commands were not working on Windows PowerShell,\ncausing \"No projects matched the filters\" error in CI.\n\nChanged to escaped double quotes for cross-platform compatibility.\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n* chore: remove unused commit-version script\n\nRemoved commit-version script as it's no longer needed with the new CI workflow.\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-09-08T21:55:05+09:00",
+          "tree_id": "de07e0a9dab1a121f08e98a1a04bb2123cd41694",
+          "url": "https://github.com/honkit/honkit/commit/811beca14272e547acddd1136ee88747f5c6c6db"
+        },
+        "date": 1757336212369,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.23%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
