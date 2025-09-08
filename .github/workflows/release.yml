@@ -75,7 +75,9 @@ jobs:
       
       - name: Build and Publish to npm with provenance
         if: steps.tag-check.outputs.exists == 'false'
-        run: npm run ci:release
+        run: |
+          npm run build
+          npm -r publish --access public
         env:
           NPM_CONFIG_PROVENANCE: true
       
