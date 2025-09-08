@@ -8,13 +8,13 @@
     "asciidoc",
     "gitbook"
   ],
-  "homepage": "https://github.com/GitbookIO/markup-it#readme",
+  "homepage": "https://github.com/honkit/honkit#readme",
   "bugs": {
-    "url": "https://github.com/GitbookIO/markup-it/issues"
+    "url": "https://github.com/honkit/honkit/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GitbookIO/draft-markup.git"
+    "url": "https://github.com/honkit/honkit.git"
   },
   "license": "Apache-2.0",
   "author": "azu",
