@@ -24,6 +24,7 @@ jobs:
       github.event.pull_request.merged == true &&
       contains(github.event.pull_request.labels.*.name, 'Type: Release')
     runs-on: ubuntu-latest
+    environment: npm
     permissions:
       contents: write
       id-token: write  # Required for OIDC npm authentication
@@ -73,9 +74,13 @@ jobs:
         if: steps.tag-check.outputs.exists == 'false'
         run: pnpm install --frozen-lockfile
       
-      - name: Build and Publish to npm with provenance
+      - name: Build packages
         if: steps.tag-check.outputs.exists == 'false'
-        run: pnpm run ci:release
+        run: npm run build
+      
+      - name: Publish to npm with provenance
+        if: steps.tag-check.outputs.exists == 'false'
+        run: npm -r publish --access public
         env:
           NPM_CONFIG_PROVENANCE: true
       
