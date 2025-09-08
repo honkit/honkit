@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757336497679,
+  "lastUpdate": 1757337996662,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11747,6 +11747,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.94%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c43f51715f0736079ba4abe5739f2458486c6a69",
+          "message": "fix: update release workflow for npm OIDC publishing (#478)\n\n- Add npm environment to release job for OIDC authentication\n- Separate build and publish steps in release workflow\n- Remove unused release script from package.json\n- Use npm commands directly for publishing with provenance\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-09-08T22:24:51+09:00",
+          "tree_id": "d005853ecdba441d08c0359aacc6db9f50109282",
+          "url": "https://github.com/honkit/honkit/commit/c43f51715f0736079ba4abe5739f2458486c6a69"
+        },
+        "date": 1757337995104,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.10%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
