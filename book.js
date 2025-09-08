@@ -1,4 +1,4 @@
-const pkg = require("./lerna.json");
+const pkg = require("./package.json");
 
 module.exports = {
     root: "./docs",

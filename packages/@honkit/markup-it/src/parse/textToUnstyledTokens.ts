@@ -45,7 +45,6 @@ function textToUnstyledTokens(state, isInline, text) {
     }
 
     for (const c of text) {
-
         if (c !== "\n" && wasNewLine) {
             pushAccu();
         }

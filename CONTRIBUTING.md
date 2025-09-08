@@ -46,13 +46,13 @@ After getting your clone, you can start playing with HonKit.
     $ pnpm run build
     ```
 
-Under the hood, HonKit uses [Lerna](https://lerna.js.org/) to manage multiple packages:
+Under the hood, HonKit uses [pnpm workspaces](https://pnpm.io/workspaces) to manage multiple packages:
 
 - `packages/*`
 - `packages/@honkit/*`
 - `examples/*`
 
-If you are new to Lerna, it seems to add another layer of complexity, but it's simpler than you think; you can edit codes, run tests, commit changes, etc. as usual in most cases.
+If you are new to pnpm workspaces, it seems to add another layer of complexity, but it's simpler than you think; you can edit codes, run tests, commit changes, etc. as usual in most cases.
 
 Note that `pnpm install` also builds a codebase, you can manually build by running `pnpm run build`.
 
