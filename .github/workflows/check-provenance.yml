@@ -1,0 +1,204 @@
+name: Check NPM Provenance
+
+on:
+  pull_request:
+    paths:
+      - '**/package.json'
+      - 'lerna.json'
+      - '.github/workflows/check-provenance.yml'
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - '**/package.json'
+      - 'lerna.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  check-provenance:
+    name: Check Package Provenance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Check npm provenance
+        id: check
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const { execSync } = require('child_process');
+            
+            // Get workspace packages using lerna
+            function getWorkspacePackages() {
+              try {
+                // Use lerna to list all workspace packages
+                const output = execSync('npx lerna list --json --all', {
+                  encoding: 'utf-8',
+                  stdio: ['pipe', 'pipe', 'pipe']
+                });
+                
+                const packages = JSON.parse(output);
+                // Filter out private packages and return package info
+                return packages
+                  .filter(pkg => !pkg.private)
+                  .map(pkg => ({
+                    name: pkg.name,
+                    version: pkg.version,
+                    private: pkg.private || false
+                  }));
+              } catch (error) {
+                console.error('Error getting workspace packages:', error);
+                return [];
+              }
+            }
+            
+            // Check if package has provenance
+            function checkPackageProvenance(packageName) {
+              try {
+                const output = execSync(`npm view ${packageName} dist.attestations --json`, {
+                  encoding: 'utf-8',
+                  stdio: ['pipe', 'pipe', 'pipe']
+                });
+                return output && output.trim() !== 'null' && output.trim() !== '';
+              } catch (error) {
+                return false;
+              }
+            }
+            
+            // Check if package is published
+            function isPackagePublished(packageName) {
+              try {
+                const output = execSync(`npm view ${packageName} version`, {
+                  encoding: 'utf-8',
+                  stdio: ['pipe', 'pipe', 'pipe']
+                }).trim();
+                return !!output;
+              } catch (error) {
+                return false;
+              }
+            }
+            
+            console.log('🔍 Checking npm provenance for public packages...\n');
+            
+            // Get all public packages from workspace
+            const publicPackages = getWorkspacePackages();
+            
+            const results = {
+              withProvenance: [],
+              withoutProvenance: [],
+              notPublished: []
+            };
+            
+            for (const pkg of publicPackages) {
+              if (!isPackagePublished(pkg.name)) {
+                results.notPublished.push(pkg.name);
+                console.log(`⏭️  ${pkg.name}: Not published yet`);
+              } else if (checkPackageProvenance(pkg.name)) {
+                results.withProvenance.push(pkg.name);
+                console.log(`✅ ${pkg.name}: Has provenance`);
+              } else {
+                results.withoutProvenance.push(pkg.name);
+                console.log(`❌ ${pkg.name}: Missing provenance`);
+              }
+            }
+            
+            // Summary
+            console.log('\n📊 Summary:');
+            console.log(`  Total public packages: ${publicPackages.length}`);
+            console.log(`  With provenance: ${results.withProvenance.length}`);
+            console.log(`  Without provenance: ${results.withoutProvenance.length}`);
+            console.log(`  Not published: ${results.notPublished.length}`);
+            
+            // Save results for next steps
+            fs.writeFileSync('provenance-results.json', JSON.stringify(results, null, 2));
+            
+            // Set outputs
+            core.setOutput('has_missing', results.withoutProvenance.length > 0);
+            core.setOutput('has_unpublished', results.notPublished.length > 0);
+            core.setOutput('missing_packages', results.withoutProvenance);
+            core.setOutput('unpublished_packages', results.notPublished);
+
+      - name: Comment on PR
+        if: (steps.check.outputs.has_missing == 'true' || steps.check.outputs.has_unpublished == 'true') && github.event_name == 'pull_request'
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('provenance-results.json', 'utf8'));
+            
+            let comment = '## 📦 NPM Package Status\n\n';
+            
+            if (results.notPublished.length > 0) {
+              comment += '### New Packages (Not Published Yet)\n\n';
+              comment += 'Run the following commands to set up OIDC and publish:\n\n';
+              results.notPublished.forEach(pkg => {
+                comment += `- [ ] \`npx setup-npm-trusted-publish ${pkg}\`\n`;
+              });
+              comment += '\n';
+            }
+            
+            if (results.withoutProvenance.length > 0) {
+              comment += '### Published Packages Missing OIDC Configuration\n\n';
+              comment += 'Configure OIDC for these packages:\n\n';
+              results.withoutProvenance.forEach(pkg => {
+                comment += `- [ ] [${pkg}](https://www.npmjs.com/package/${pkg}/access)\n`;
+              });
+              comment += '\n**Setup Instructions:**\n';
+              comment += '1. Click each package link above\n';
+              comment += '2. Click "Add trusted publisher"\n';
+              comment += '3. Configure with:\n';
+              comment += '   - Repository: `honkit/honkit`\n';
+              comment += '   - Workflow: `.github/workflows/release.yml`\n';
+              comment += '   - Environment: (leave empty)\n';
+            }
+            
+            // Find existing comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('NPM Package Status')
+            );
+            
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: comment
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment
+              });
+            }
