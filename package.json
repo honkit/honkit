@@ -29,7 +29,6 @@
     "test": "pnpm -r --filter \"!@example/*\" run test",
     "updateSnapshot": "pnpm -r --filter \"!@example/*\" run updateSnapshot",
     "versionup": "echo 'Error: Please use CI for versioning. Run gh workflow run create-release-pr instead.' && exit 1",
-    "release": "echo 'Error: Please use CI for releases. Merge a Release PR instead.' && exit 1",
     "honkit:build": "npm run build && honkit build",
     "honkit:serve": "honkit serve",
     "format": "prettier --write \"**/*.{mjs,js,jsx,ts,tsx,css}\"",
