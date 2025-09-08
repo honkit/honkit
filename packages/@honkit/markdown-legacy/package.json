@@ -1,6 +1,6 @@
 {
   "name": "@honkit/markdown-legacy",
-  "version": "6.0.2",
+  "version": "6.0.4",
   "description": "Parse markdown content for HonKit",
   "homepage": "https://github.com/honkit/honkit",
   "bugs": {
@@ -41,7 +41,6 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "jest": "^29.7.0"
   },
   "publishConfig": {

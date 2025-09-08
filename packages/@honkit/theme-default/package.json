@@ -1,6 +1,6 @@
 {
   "name": "@honkit/honkit-plugin-theme-default",
-  "version": "6.0.2",
+  "version": "6.0.4",
   "description": "Default theme for HonKit",
   "bugs": {
     "url": "https://github.com/honkit/honkit/issues"
@@ -62,7 +62,7 @@
     "mkdirp": "^1.0.4",
     "mousetrap": "1.6.0",
     "npm-run-all": "^4.1.5",
-    "rimraf": "^3.0.2",
+    "rimraf": "^6.0.1",
     "uglify-js": "3.17.0"
   },
   "engines": {

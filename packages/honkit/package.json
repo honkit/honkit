@@ -1,6 +1,6 @@
 {
   "name": "honkit",
-  "version": "6.0.2",
+  "version": "6.0.4",
   "description": "HonKit is building beautiful books using Markdown.",
   "keywords": [
     "git",
@@ -85,8 +85,7 @@
     "semver": "^7.6.3",
     "send": "^0.17.2",
     "tiny-lr": "^1.1.1",
-    "tmp": "0.0.28",
-    "try-resolve": "^1.0.1",
+    "tmp": "0.2.4",
     "urijs": "^1.19.11"
   },
   "devDependencies": {
@@ -95,10 +94,9 @@
     "@types/jest": "^29.5.13",
     "@types/node": "^22.7.4",
     "@types/nunjucks": "^3.2.6",
-    "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "jest-mock-process": "^2.0.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^6.0.1",
     "typescript": "^5.6.2"
   }
 }

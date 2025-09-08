@@ -1,4 +1,4 @@
-import _ from "lodash";
+import identity from "lodash/identity";
 import ToText from "./totext";
 // import
 import summary, { SummaryPart } from "./summary";
@@ -108,5 +108,5 @@ function createParser(toHTML, toText = undefined): Parsers {
     return parser;
 }
 
-const defaultParser = createParser(_.identity);
+const defaultParser = createParser(identity);
 export { defaultParser as default, createParser };
