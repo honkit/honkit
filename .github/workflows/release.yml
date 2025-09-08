@@ -80,7 +80,7 @@ jobs:
       
       - name: Publish to npm with provenance
         if: steps.tag-check.outputs.exists == 'false'
-        run: npm -r publish --access public
+        run: pnpm -r publish --access public --no-git-checks
         env:
           NPM_CONFIG_PROVENANCE: true
       
