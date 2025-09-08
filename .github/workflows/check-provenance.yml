@@ -4,7 +4,6 @@ on:
   pull_request:
     paths:
       - '**/package.json'
-      - 'lerna.json'
       - '.github/workflows/check-provenance.yml'
   push:
     branches:
@@ -12,7 +11,6 @@ on:
       - main
     paths:
       - '**/package.json'
-      - 'lerna.json'
   workflow_dispatch:
 
 permissions:
@@ -50,11 +48,11 @@ jobs:
             const path = require('path');
             const { execSync } = require('child_process');
             
-            // Get workspace packages using lerna
+            // Get workspace packages using pnpm
             function getWorkspacePackages() {
               try {
-                // Use lerna to list all workspace packages
-                const output = execSync('npx lerna list --json --all', {
+                // Use pnpm to list all workspace packages
+                const output = execSync('pnpm list -r --json --depth -1', {
                   encoding: 'utf-8',
                   stdio: ['pipe', 'pipe', 'pipe']
                 });
@@ -62,7 +60,7 @@ jobs:
                 const packages = JSON.parse(output);
                 // Filter out private packages and return package info
                 return packages
-                  .filter(pkg => !pkg.private)
+                  .filter(pkg => pkg.name && !pkg.private)
                   .map(pkg => ({
                     name: pkg.name,
                     version: pkg.version,

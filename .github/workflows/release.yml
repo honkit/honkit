@@ -1,13 +1,4 @@
-# This workflow often runs following steps when a PR is merged to main branch.
-# 1. jobs.check checks if we need to release
-# 2. jobs.release publish packages
-#
-# Note: Force publish
-# You can publish packages manually by running workflow dispatch
-# This workflow dispatch skip jobs.check process
-# 1. dispatch "release" workflow
-# 2. Open Release Page
-# 3. Generate Release Note
+# This workflow runs when a Release PR is merged to publish packages
 #
 # OIDC Configuration:
 # This workflow uses OpenID Connect (OIDC) for npm authentication
@@ -18,110 +9,109 @@ name: Release
 on:
   pull_request:
     branches:
-      - main
       - master
-    types: [ closed ]
-  workflow_dispatch: # force release
+      - main
+    types:
+      - closed
 
 env:
   DOCKER_HUB_BASE_NAME: honkit/honkit
   NODE_VERSION: 22
 
 jobs:
-  check:
-    permissions:
-      contents: read
-    runs-on: ubuntu-latest
-    # when release PR is merged or workflow_dispatch is triggered, run this job
-    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
-    outputs:
-      EXISTS_TAG: ${{ steps.tag_check.outputs.EXISTS_TAG }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          persist-credentials: false
-      - name: Set PACKAGE_VERSION
-        run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
-      - name: Tag Check
-        id: tag_check
-        run: |
-          GET_API_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/git/ref/tags/${TAG_NAME}"
-          http_status_code=$(curl -LI $GET_API_URL -o /dev/null -w '%{http_code}\n' -s \
-            -H "Authorization: token ${GITHUB_TOKEN}")
-          if [ "$http_status_code" -ne "404" ] ; then
-            echo "EXISTS_TAG=true" >> $GITHUB_OUTPUT
-          else
-            echo "EXISTS_TAG=false" >> $GITHUB_OUTPUT
-          fi
-        env:
-          TAG_NAME: v${{ env.PACKAGE_VERSION }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   release:
+    if: |
+      github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.labels.*.name, 'Type: Release')
     runs-on: ubuntu-latest
-    needs: check
-    if: always() && (needs.check.outputs.EXISTS_TAG == 'false')
     permissions:
       contents: write
-      issues: write
+      id-token: write  # Required for OIDC npm authentication
       pull-requests: write
-      packages: write
-      id-token: write # Required for OIDC npm authentication
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
-      - name: Setup Node
+      
+      - name: Get package info
+        id: package
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+      
+      - name: Check if tag exists
+        id: tag-check
+        run: |
+          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          VERSION: ${{ steps.package.outputs.version }}
+      
+      - name: Setup pnpm
+        if: steps.tag-check.outputs.exists == 'false'
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+      
+      - name: Setup Node.js
+        if: steps.tag-check.outputs.exists == 'false'
         uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
-          node-version: 22
-          registry-url: https://registry.npmjs.org
-      - name: Git Identity
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Install latest npm
+        if: steps.tag-check.outputs.exists == 'false'
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+          echo "Current npm version: $(npm -v)"
+          npm install -g npm@latest
+          echo "Updated npm version: $(npm -v)"
+      
+      - name: Install dependencies
+        if: steps.tag-check.outputs.exists == 'false'
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build and Publish to npm with provenance
+        if: steps.tag-check.outputs.exists == 'false'
+        run: pnpm run ci:release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set PACKAGE_VERSION
-        run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
-      - name: Install
-        run: pnpm install
-      - name: Build packages
-        run: npm run build
-      - name: Publish packages with provenance
-        run: npm run ci:release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
+      
       - name: Create Git Tag
+        if: steps.tag-check.outputs.exists == 'false'
         uses: pkgdeps/git-tag-action@ef111413f44ebe5cc05994e7f5b5b9edaaada08d # v3.0.0
         with:
-          version: ${{ env.PACKAGE_VERSION }}
+          version: ${{ steps.package.outputs.version }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_repo: ${{ github.repository }}
           git_commit_sha: ${{ github.sha }}
           git_tag_prefix: "v"
-      - name: Create Release
-        id: create_release
+      
+      - name: Create GitHub Release
+        id: create-release
+        if: steps.tag-check.outputs.exists == 'false'
         uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ env.PACKAGE_VERSION }}
-          # Copy Pull Request's tile and body to Release Note
-          release_name: ${{ github.event.pull_request.title }}
+          tag_name: v${{ steps.package.outputs.version }}
+          name: ${{ github.event.pull_request.title }}
           body: ${{ github.event.pull_request.body }}
           draft: false
           prerelease: false
           generate_release_notes: ${{ !github.event.pull_request.body }}
-      - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
-        if: github.event_name != 'workflow_dispatch'
+      
+      - name: Comment on PR - Success
+        if: |
+          always() && 
+          github.event_name == 'pull_request' && 
+          steps.tag-check.outputs.exists == 'false' &&
+          success()
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         env:
-          PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}
+          PACKAGE_VERSION: ${{ steps.package.outputs.version }}
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -132,9 +122,12 @@ jobs:
               repo: context.repo.repo,
               body: `🎉 Release https://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/v${packageVersion}`
             })
+  
   push:
     needs: release
-    if: always() && (needs.check.outputs.EXISTS_TAG == 'false')
+    if: |
+      github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.labels.*.name, 'Type: Release')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -153,7 +146,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
       - name: Set Honkit package version
-        run: echo "PACKAGE_VERSION=$(jq -r .version lerna.json)" >> $GITHUB_ENV
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
       - name: Build image
         run: |
           docker buildx build \
@@ -169,7 +162,7 @@ jobs:
         run: docker run --rm ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} --version
       - name: Set latest tag
         run: docker tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} ${DOCKER_HUB_BASE_NAME}:latest
-      - name: Set mojor version tag
+      - name: Set major version tag
         run: docker tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} ${DOCKER_HUB_BASE_NAME}:v$(echo $PACKAGE_VERSION | cut -f 1 -d . | tr -d "\n")
       - name: Login to Registries
         run: echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin

@@ -1,75 +1,115 @@
 name: Create Release PR
+
 on:
   workflow_dispatch:
     inputs:
-      semver:
-        description: 'New Version(semver)'
+      version:
+        description: 'Version type'
         required: true
-        default: 'patch'
         type: choice
         options:
           - patch
           - minor
           - major
-permissions:
-  contents: write
-  pull-requests: write
 
 jobs:
   create-release-pr:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
-      - name: Setup Node
+        with:
+          persist-credentials: false
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+      
+      - name: Setup Node.js
         uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
-          cache: 'pnpm'
-          node-version: 22
-      - name: Install
-        run: pnpm install
-      - name: Update Version
+          node-version: 'lts/*'
+      
+      - name: Version bump
+        id: version
         run: |
-          git config --global user.email "${GIT_AUTHOR_EMAIL}"
-          git config --global user.name "${GIT_AUTHOR_NAME}"
-          npm run ci:versionup:${SEMVER} --yes
+          # Use pnpm to bump version in root package.json
+          pnpm version ${GITHUB_EVENT_INPUTS_VERSION} --no-git-tag-version
+          
+          # Get the new version
+          NEW_VERSION=$(jq -r '.version' package.json)
+          echo "New version: $NEW_VERSION"
+          
+          # Update all workspace package.json files to match
+          pnpm --recursive exec pnpm pkg set version="$NEW_VERSION"
+          
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
         env:
-          SEMVER: ${{ github.event.inputs.semver }}
-          GIT_AUTHOR_NAME: ${{ github.actor }}
-          GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
-      - name: Set PACKAGE_VERSION
-        run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
-      - name: Set GitHub Release Note
-        id: release_note
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
-        with:
-          script: |
-            const result = await exec.getExecOutput(`gh api "/repos/{owner}/{repo}/releases/generate-notes" -f tag_name="v${process.env.PACKAGE_VERSION}" --jq .body`, [], {
-              ignoreReturnCode: true,
-            })
-            core.setOutput('stdout', result.stdout)
+          GITHUB_EVENT_INPUTS_VERSION: ${{ github.event.inputs.version }}
+      
+      - name: Get release notes
+        id: release-notes
+        run: |
+          VERSION="${STEPS_VERSION_OUTPUTS_VERSION}"
+          
+          # Get the default branch
+          DEFAULT_BRANCH=$(gh api "repos/$GITHUB_REPOSITORY" --jq '.default_branch')
+          
+          # Get the latest release tag
+          if LAST_TAG=$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq '.tag_name' 2>/dev/null); then
+            echo "Previous release found: $LAST_TAG"
+          else
+            LAST_TAG=""
+            echo "No previous releases found - this will be the first release"
+          fi
+          
+          # Generate release notes
+          echo "Generating release notes for tag: v$VERSION"
+          if [ -n "$LAST_TAG" ]; then
+            RELEASE_NOTES=$(gh api \
+              --method POST \
+              -H "Accept: application/vnd.github+json" \
+              "/repos/$GITHUB_REPOSITORY/releases/generate-notes" \
+              -f "tag_name=v$VERSION" \
+              -f "target_commitish=$DEFAULT_BRANCH" \
+              -f "previous_tag_name=$LAST_TAG" \
+              --jq '.body')
+          else
+            RELEASE_NOTES=$(gh api \
+              --method POST \
+              -H "Accept: application/vnd.github+json" \
+              "/repos/$GITHUB_REPOSITORY/releases/generate-notes" \
+              -f "tag_name=v$VERSION" \
+              -f "target_commitish=$DEFAULT_BRANCH" \
+              --jq '.body')
+          fi
+          
+          # Set release notes as environment variable
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          echo "$RELEASE_NOTES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
         env:
-          PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          STEPS_VERSION_OUTPUTS_VERSION: ${{ steps.version.outputs.version }}
+
       - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
+        uses: peter-evans/create-pull-request@5e914681df9dc83aa4e4905692ca88beb2f9e91f # v7.0.5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore(release): v${{ env.PACKAGE_VERSION }}"
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          assignees: ${{ github.actor }}
-          signoff: false
-          branch: release/${{ env.PACKAGE_VERSION }}
-          branch-suffix: timestamp
+          branch: release/v${{ steps.version.outputs.version }}
           delete-branch: true
-          title: 'v${{ env.PACKAGE_VERSION }}'
+          title: "Release v${{ steps.version.outputs.version }}"
           body: |
-            ${{ steps.release_note.outputs.stdout }}
-          labels: "Type: Release"
-      - name: Check Pull Request
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+            ${{ env.RELEASE_NOTES }}
+          commit-message: "chore: release v${{ steps.version.outputs.version }}"
+          labels: |
+            Type: Release
+          assignees: ${{ github.actor }}
+          draft: true
