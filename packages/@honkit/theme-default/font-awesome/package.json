@@ -4,9 +4,9 @@
   "version": "4.6.3",
   "style": "css/font-awesome.css",
   "keywords": ["font", "awesome", "fontawesome", "icon", "font", "bootstrap"],
-  "homepage": "http://fontawesome.io/",
+  "homepage": "https://github.com/honkit/honkit#readme",
   "bugs": {
-    "url" : "http://github.com/FortAwesome/Font-Awesome/issues"
+    "url" : "https://github.com/honkit/honkit/issues"
   },
   "author": {
     "name": "Dave Gandy",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/FortAwesome/Font-Awesome.git"
+    "url": "https://github.com/honkit/honkit.git"
   },
   "contributors": [
     {
