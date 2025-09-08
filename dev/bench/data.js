@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757338143671,
+  "lastUpdate": 1757338555826,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11809,6 +11809,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±1.37%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "912e57fe6ea08214becb5eeaa3e41595b4138797",
+          "message": "fix: use pnpm for npm publish in release workflow (#480)\n\n- Switch from npm to pnpm for consistent package manager usage\n- Add --no-git-checks flag for CI environment\n- Properly handle private packages in workspace\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-09-08T22:34:09+09:00",
+          "tree_id": "74fd942891d716f86b809baaae5dc590a8dc1b40",
+          "url": "https://github.com/honkit/honkit/commit/912e57fe6ea08214becb5eeaa3e41595b4138797"
+        },
+        "date": 1757338554986,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.02%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
