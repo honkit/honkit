@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757339032022,
+  "lastUpdate": 1757340039023,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11902,6 +11902,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.66%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c34a28032ab0ca6036866ff291a1ad230b151bc7",
+          "message": "fix: Update repository URLs for npm OIDC publishing (#483)\n\n- Update @honkit/markup-it package.json repository URL from GitbookIO to honkit/honkit\n- Update font-awesome package.json for consistency (not published to npm)\n- Fixes npm publish error: repository.url must match GitHub Actions environment",
+          "timestamp": "2025-09-08T22:59:00+09:00",
+          "tree_id": "a30e4995d5e739e3a3b0655af21e1fc072d3c31a",
+          "url": "https://github.com/honkit/honkit/commit/c34a28032ab0ca6036866ff291a1ad230b151bc7"
+        },
+        "date": 1757340038228,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±1.26%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
