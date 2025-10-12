@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1757340383646,
+  "lastUpdate": 1760230813185,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11964,6 +11964,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.17,
             "range": "±0.88%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "789a6497a8df2138dd543c9cddd0f00d3dbada70",
+          "message": "CI: improve check-provenance.yml (#485)",
+          "timestamp": "2025-10-12T09:58:18+09:00",
+          "tree_id": "bd6020e253edfa2e8b8d4cc27e95a99dd874d499",
+          "url": "https://github.com/honkit/honkit/commit/789a6497a8df2138dd543c9cddd0f00d3dbada70"
+        },
+        "date": 1760230812274,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.47%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
