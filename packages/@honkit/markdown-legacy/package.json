@@ -38,7 +38,7 @@
   "dependencies": {
     "@honkit/html": "workspace:*",
     "kramed": "0.5.6",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.23"
   },
   "devDependencies": {
     "jest": "^29.7.0"
