@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760230813185,
+  "lastUpdate": 1769052495959,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -11995,6 +11995,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.47%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2e3ab9f467ee56432ca8500d9a4275402ee1914d",
+          "message": "Merge pull request #490 from honkit/dependabot/npm_and_yarn/lodash-4.17.23",
+          "timestamp": "2026-01-22T03:26:33Z",
+          "tree_id": "1ea416a076cf1ab7c2a1d91ec99221317f3ea2ec",
+          "url": "https://github.com/honkit/honkit/commit/2e3ab9f467ee56432ca8500d9a4275402ee1914d"
+        },
+        "date": 1769052494694,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±1.04%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
