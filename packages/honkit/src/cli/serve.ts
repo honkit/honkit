@@ -63,52 +63,58 @@ function startServer(args, kwargs) {
                 return waitForCtrlC();
             }
             // update book immutably. does not use book again
-            return watch(book.getRoot(), (error, filepath) => {
-                if (error) {
-                    console.error(error);
-                    return;
-                }
-                // If the file does not exist in file system, show a warning and skip
-                // Probably, the file has been deleted
-                if (!fs.existsSync(filepath)) {
-                    logger.warn.ok(`${filepath} does not exist in file system.`);
-                    return;
-                }
-                // set livereload path
-                lrPath = filepath;
-                // TODO: use parse extension
-                // Incremental update for pages
-                if (lastOutput && filepath.endsWith(".md")) {
-                    logger.warn.ok("Rebuild " + filepath);
-                    const changedOutput = lastOutput.reloadPage(lastOutput.book.getContentRoot(), filepath).merge({
-                        incrementalChangeFileSet: Immutable.Set([filepath])
+            // Pass outputFolder to watch to prevent infinite rebuild loops
+            // https://github.com/honkit/honkit/issues/491
+            watch(
+                book.getRoot(),
+                (error, filepath) => {
+                    if (error) {
+                        console.error(error);
+                        return;
+                    }
+                    // If the file does not exist in file system, show a warning and skip
+                    // Probably, the file has been deleted
+                    if (!fs.existsSync(filepath)) {
+                        logger.warn.ok(`${filepath} does not exist in file system.`);
+                        return;
+                    }
+                    // set livereload path
+                    lrPath = filepath;
+                    // TODO: use parse extension
+                    // Incremental update for pages
+                    if (lastOutput && filepath.endsWith(".md")) {
+                        logger.warn.ok("Rebuild " + filepath);
+                        const changedOutput = lastOutput.reloadPage(lastOutput.book.getContentRoot(), filepath).merge({
+                            incrementalChangeFileSet: Immutable.Set([filepath])
+                        });
+                        return incrementalBuild({
+                            output: changedOutput,
+                            Generator
+                        }).then(() => {
+                            if (lrPath && hasLiveReloading) {
+                                // trigger livereload
+                                lrServer.changed({
+                                    body: {
+                                        files: [lrPath]
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    // Asciidoc files are not supported for incremental build
+                    logger.info.ok("Rebuild " + filepath);
+                    return generateBook({
+                        book,
+                        outputFolder,
+                        hasLiveReloading,
+                        Generator,
+                        reload
+                    }).then((output) => {
+                        lastOutput = output;
                     });
-                    return incrementalBuild({
-                        output: changedOutput,
-                        Generator
-                    }).then(() => {
-                        if (lrPath && hasLiveReloading) {
-                            // trigger livereload
-                            lrServer.changed({
-                                body: {
-                                    files: [lrPath]
-                                }
-                            });
-                        }
-                    });
-                }
-                // Asciidoc files are not supported for incremental build
-                logger.info.ok("Rebuild " + filepath);
-                return generateBook({
-                    book,
-                    outputFolder,
-                    hasLiveReloading,
-                    Generator,
-                    reload
-                }).then((output) => {
-                    lastOutput = output;
-                });
-            });
+                },
+                { outputFolder }
+            );
         });
 }
 

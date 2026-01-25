@@ -1,16 +1,30 @@
 import path from "path";
-import chokidar from "chokidar";
+import chokidar, { FSWatcher } from "chokidar";
 import parsers from "../parsers";
+
+export interface WatchOptions {
+    /**
+     * Output folder to ignore (in addition to _book and node_modules)
+     * This prevents infinite rebuild loops when using custom output folders
+     * @see https://github.com/honkit/honkit/issues/491
+     */
+    outputFolder?: string;
+}
 
 /**
  Watch a folder and resolve promise once a file is modified
 
  @param {string} dir
  @param callback
- @return {Promise}
+ @param {WatchOptions} options
+ @return {FSWatcher} The chokidar watcher instance
  */
 
-function watch(dir, callback) {
+function watch(
+    dir: string,
+    callback: (error: Error | null, filepath?: string) => void,
+    options: WatchOptions = {}
+): FSWatcher {
     dir = path.resolve(dir);
 
     const toWatch = ["book.json", "book.js", "_layouts/**"];
@@ -20,11 +34,25 @@ function watch(dir, callback) {
         toWatch.push(`**/*${ext}`);
     });
 
+    // Build ignored patterns
+    // Always ignore _book and node_modules
+    // https://github.com/honkit/honkit/issues/269
+    const ignored: string[] = ["_book/**", "node_modules/**"];
+
+    // If a custom output folder is specified, ignore it too
+    // This prevents infinite rebuild loops when output folder is inside the watched directory
+    // https://github.com/honkit/honkit/issues/491
+    if (options.outputFolder) {
+        const outputRelative = path.relative(dir, path.resolve(dir, options.outputFolder));
+        // Only add to ignored if the output folder is inside the watched directory
+        if (outputRelative && !outputRelative.startsWith("..") && !path.isAbsolute(outputRelative)) {
+            ignored.push(`${outputRelative}/**`);
+        }
+    }
+
     const watcher = chokidar.watch(toWatch, {
         cwd: dir,
-        // prevent infinity loop
-        // https://github.com/honkit/honkit/issues/269
-        ignored: ["_book/**", "node_modules/**"],
+        ignored: ignored,
         ignoreInitial: true
     });
 
@@ -34,6 +62,8 @@ function watch(dir, callback) {
     watcher.on("error", (err) => {
         callback(err);
     });
+
+    return watcher;
 }
 
 export default watch;
