@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1769052495959,
+  "lastUpdate": 1769344722349,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12026,6 +12026,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.17,
             "range": "±1.04%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4cc4615861018b364c994153dc03efd0215d1153",
+          "message": "fix: prevent infinite rebuild loops with custom output folders (#492)\n\n* fix: prevent infinite rebuild loops with custom output folders\n\nWhen using `honkit serve` with a custom output folder (not `_book`),\nfiles copied to the output folder were being detected by the watcher,\ncausing a rebuild, which would copy files again, triggering another\nrebuild in an infinite loop.\n\nThe fix passes the output folder to the watch function, which adds it\nto the ignored patterns list. This ensures that file changes in the\noutput folder don't trigger unnecessary rebuilds.\n\nFixes #491\n\n* fix: convert backslashes to forward slashes in glob pattern for Windows\n\nOn Windows, path.relative() returns paths with backslashes, but glob\npatterns require forward slashes. This ensures the output folder is\ncorrectly ignored on Windows.\n\n* test: remove setTimeout from watch tests\n\nUse chokidar's ready event and Promise-based waitForChange helper\ninstead of arbitrary setTimeout delays. This makes tests faster and\nmore reliable.\n\n* refactor: use object argument for watch function\n\n- Change watch() to accept a single options object instead of positional args\n- Rename 'dir' to 'watchDir' for clarity\n- Fix test flakiness by adding stabilization delay after ready event\n- Convert Windows backslashes to forward slashes in glob patterns\n\n* test: improve watch tests for Windows compatibility\n\n- Add normalizePath helper to handle path separator differences\n- Increase timeouts for Windows file system operations\n- Remove non-null assertions for type safety\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2026-01-25T21:37:01+09:00",
+          "tree_id": "2acdbe7392760c5f5f809555999c4e35e69c7385",
+          "url": "https://github.com/honkit/honkit/commit/4cc4615861018b364c994153dc03efd0215d1153"
+        },
+        "date": 1769344721662,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±1.51%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
