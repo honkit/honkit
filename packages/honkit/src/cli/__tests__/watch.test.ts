@@ -5,6 +5,9 @@ import watch from "../watch";
 import type { FSWatcher } from "chokidar";
 
 describe("watch", () => {
+    // Increase timeout for file system operations
+    jest.setTimeout(15000);
+
     let tempDir: string;
     let watchers: FSWatcher[] = [];
 
@@ -40,12 +43,14 @@ describe("watch", () => {
     }
 
     /**
-     * Wait for watcher to be ready
+     * Wait for watcher to be ready and stable
      */
-    function waitForReady(watcher: FSWatcher): Promise<void> {
-        return new Promise((resolve) => {
+    async function waitForReady(watcher: FSWatcher): Promise<void> {
+        await new Promise<void>((resolve) => {
             watcher.on("ready", resolve);
         });
+        // Give the watcher a moment to stabilize after ready event
+        await new Promise((resolve) => setTimeout(resolve, 100));
     }
 
     /**
@@ -54,7 +59,7 @@ describe("watch", () => {
     function waitForChange(
         watcher: FSWatcher,
         predicate: (filepath: string) => boolean,
-        timeoutMs: number = 5000
+        timeoutMs: number = 10000
     ): Promise<string> {
         return new Promise((resolve, reject) => {
             const timeout = setTimeout(() => {
@@ -81,9 +86,12 @@ describe("watch", () => {
             const detectedFiles: string[] = [];
 
             // Start watching WITHOUT specifying output folder
-            const watcher = watch(tempDir, (error, filepath) => {
-                if (error) return;
-                detectedFiles.push(filepath!);
+            const watcher = watch({
+                watchDir: tempDir,
+                callback: (error, filepath) => {
+                    if (error) return;
+                    detectedFiles.push(filepath!);
+                }
             });
             watchers.push(watcher);
 
@@ -103,14 +111,14 @@ describe("watch", () => {
             const detectedFiles: string[] = [];
 
             // Start watching WITH output folder specified - it should be ignored
-            const watcher = watch(
-                tempDir,
-                (error, filepath) => {
+            const watcher = watch({
+                watchDir: tempDir,
+                outputFolder: "output",
+                callback: (error, filepath) => {
                     if (error) return;
                     detectedFiles.push(filepath!);
-                },
-                { outputFolder: "output" }
-            );
+                }
+            });
             watchers.push(watcher);
 
             await waitForReady(watcher);
@@ -134,14 +142,14 @@ describe("watch", () => {
             const detectedFiles: string[] = [];
             const absoluteOutputPath = path.join(tempDir, "docs-output");
 
-            const watcher = watch(
-                tempDir,
-                (error, filepath) => {
+            const watcher = watch({
+                watchDir: tempDir,
+                outputFolder: absoluteOutputPath,
+                callback: (error, filepath) => {
                     if (error) return;
                     detectedFiles.push(filepath!);
-                },
-                { outputFolder: absoluteOutputPath }
-            );
+                }
+            });
             watchers.push(watcher);
 
             await waitForReady(watcher);
@@ -161,25 +169,33 @@ describe("watch", () => {
 
     describe("default _book folder", () => {
         it("should NOT detect changes in _book folder", async () => {
-            createFile("README.md", "# README");
+            createFile("file1.md", "# File 1");
+            createFile("file2.md", "# File 2");
             createFile("_book/output.md", "# Output");
 
             const detectedFiles: string[] = [];
 
-            const watcher = watch(tempDir, (error, filepath) => {
-                if (error) return;
-                detectedFiles.push(filepath!);
+            const watcher = watch({
+                watchDir: tempDir,
+                callback: (error, filepath) => {
+                    if (error) return;
+                    detectedFiles.push(filepath!);
+                }
             });
             watchers.push(watcher);
 
             await waitForReady(watcher);
 
-            // Modify both files
-            modifyFile("_book/output.md", "# Modified");
-            modifyFile("README.md", "# Modified README");
+            // First modify file1 to ensure watcher is working
+            modifyFile("file1.md", "# Modified File 1");
+            await waitForChange(watcher, (f) => f.includes("file1.md"));
 
-            // Wait for README change
-            await waitForChange(watcher, (f) => f.includes("README.md"));
+            // Now modify _book file (should be ignored)
+            modifyFile("_book/output.md", "# Modified");
+
+            // Modify file2 to confirm watcher still works
+            modifyFile("file2.md", "# Modified File 2");
+            await waitForChange(watcher, (f) => f.includes("file2.md"));
 
             // Verify _book was NOT detected
             const bookChanges = detectedFiles.filter((f) => f.includes("_book"));
@@ -192,7 +208,10 @@ describe("watch", () => {
             createFile("README.md", "# README");
             createFile("orphan.md", "# Orphan - not in SUMMARY");
 
-            const watcher = watch(tempDir, () => {});
+            const watcher = watch({
+                watchDir: tempDir,
+                callback: () => {}
+            });
             watchers.push(watcher);
 
             await waitForReady(watcher);

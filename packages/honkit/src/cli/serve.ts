@@ -65,9 +65,10 @@ function startServer(args, kwargs) {
             // update book immutably. does not use book again
             // Pass outputFolder to watch to prevent infinite rebuild loops
             // https://github.com/honkit/honkit/issues/491
-            watch(
-                book.getRoot(),
-                (error, filepath) => {
+            watch({
+                watchDir: book.getRoot(),
+                outputFolder,
+                callback: (error, filepath) => {
                     if (error) {
                         console.error(error);
                         return;
@@ -112,9 +113,8 @@ function startServer(args, kwargs) {
                     }).then((output) => {
                         lastOutput = output;
                     });
-                },
-                { outputFolder }
-            );
+                }
+            });
         });
 }
 
