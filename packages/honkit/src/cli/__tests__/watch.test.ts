@@ -4,9 +4,16 @@ import os from "os";
 import watch from "../watch";
 import type { FSWatcher } from "chokidar";
 
+/**
+ * Normalize path separators to forward slashes for cross-platform comparison
+ */
+function normalizePath(filepath: string): string {
+    return filepath.replace(/\\/g, "/");
+}
+
 describe("watch", () => {
-    // Increase timeout for file system operations
-    jest.setTimeout(15000);
+    // Increase timeout for file system operations (Windows may need more time)
+    jest.setTimeout(30000);
 
     let tempDir: string;
     let watchers: FSWatcher[] = [];
@@ -50,16 +57,18 @@ describe("watch", () => {
             watcher.on("ready", resolve);
         });
         // Give the watcher a moment to stabilize after ready event
-        await new Promise((resolve) => setTimeout(resolve, 100));
+        // Windows needs more time for file system operations
+        await new Promise((resolve) => setTimeout(resolve, 500));
     }
 
     /**
      * Wait for a file change to be detected that matches the predicate
+     * Paths are normalized to forward slashes for cross-platform compatibility
      */
     function waitForChange(
         watcher: FSWatcher,
         predicate: (filepath: string) => boolean,
-        timeoutMs: number = 10000
+        timeoutMs: number = 20000
     ): Promise<string> {
         return new Promise((resolve, reject) => {
             const timeout = setTimeout(() => {
@@ -67,7 +76,7 @@ describe("watch", () => {
             }, timeoutMs);
 
             const handler = (_event: string, filepath: string) => {
-                const fullPath = path.resolve(tempDir, filepath);
+                const fullPath = normalizePath(path.resolve(tempDir, filepath));
                 if (predicate(fullPath)) {
                     clearTimeout(timeout);
                     watcher.off("all", handler);
@@ -89,8 +98,8 @@ describe("watch", () => {
             const watcher = watch({
                 watchDir: tempDir,
                 callback: (error, filepath) => {
-                    if (error) return;
-                    detectedFiles.push(filepath!);
+                    if (error || !filepath) return;
+                    detectedFiles.push(normalizePath(filepath));
                 }
             });
             watchers.push(watcher);
@@ -115,8 +124,8 @@ describe("watch", () => {
                 watchDir: tempDir,
                 outputFolder: "output",
                 callback: (error, filepath) => {
-                    if (error) return;
-                    detectedFiles.push(filepath!);
+                    if (error || !filepath) return;
+                    detectedFiles.push(normalizePath(filepath));
                 }
             });
             watchers.push(watcher);
@@ -146,8 +155,8 @@ describe("watch", () => {
                 watchDir: tempDir,
                 outputFolder: absoluteOutputPath,
                 callback: (error, filepath) => {
-                    if (error) return;
-                    detectedFiles.push(filepath!);
+                    if (error || !filepath) return;
+                    detectedFiles.push(normalizePath(filepath));
                 }
             });
             watchers.push(watcher);
@@ -178,8 +187,8 @@ describe("watch", () => {
             const watcher = watch({
                 watchDir: tempDir,
                 callback: (error, filepath) => {
-                    if (error) return;
-                    detectedFiles.push(filepath!);
+                    if (error || !filepath) return;
+                    detectedFiles.push(normalizePath(filepath));
                 }
             });
             watchers.push(watcher);
