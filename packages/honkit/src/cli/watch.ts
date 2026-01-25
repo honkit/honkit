@@ -43,7 +43,8 @@ function watch(
     // This prevents infinite rebuild loops when output folder is inside the watched directory
     // https://github.com/honkit/honkit/issues/491
     if (options.outputFolder) {
-        const outputRelative = path.relative(dir, path.resolve(dir, options.outputFolder));
+        // Convert to forward slashes for glob pattern (Windows compatibility)
+        const outputRelative = path.relative(dir, path.resolve(dir, options.outputFolder)).replace(/\\/g, "/");
         // Only add to ignored if the output folder is inside the watched directory
         if (outputRelative && !outputRelative.startsWith("..") && !path.isAbsolute(outputRelative)) {
             ignored.push(`${outputRelative}/**`);
