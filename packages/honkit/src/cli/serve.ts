@@ -86,7 +86,7 @@ function startServer(args, kwargs) {
                     // Full rebuild is required for:
                     // 1. Structure files (SUMMARY.md, GLOSSARY.md, book.json, book.js)
                     // 2. New file additions (to update asset list and page structure)
-                    const needsFullRebuild = shouldFullRebuild(filepath) || eventType === "add";
+                    const needsFullRebuild = shouldFullRebuild(filepath, eventType);
 
                     // Incremental update for existing pages (only for .md files that don't require full rebuild)
                     if (lastOutput && filepath.endsWith(".md") && !needsFullRebuild) {
