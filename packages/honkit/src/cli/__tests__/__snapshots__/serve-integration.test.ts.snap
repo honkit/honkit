@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`serve rebuild logic build output should match expected output structure: output-structure 1`] = `
-[
-  "chapter1.html",
-  "index.html",
-]
-`;
