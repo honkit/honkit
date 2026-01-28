@@ -27,15 +27,15 @@ export function isStructureFile(filepath: string): boolean {
  *
  * Full rebuild is needed when:
  * - Structure files are changed (SUMMARY.md, GLOSSARY.md, book.json, book.js)
- * - New files are added (to update asset list and page structure)
+ * - Files are added or removed (to update asset list and page structure)
  *
  * @param filepath - The absolute path of the changed file
  * @param eventType - The type of file change event
  * @returns true if full rebuild is needed, false for incremental build
  */
 export function shouldFullRebuild(filepath: string, eventType?: WatchEventType): boolean {
-    // New file additions always require full rebuild
-    if (eventType === "add") {
+    // File additions or deletions always require full rebuild
+    if (eventType === "add" || eventType === "unlink") {
         return true;
     }
 

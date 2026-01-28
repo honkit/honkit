@@ -35,6 +35,17 @@ describe("shouldFullRebuild", () => {
         });
     });
 
+    describe("file deletions (unlink event)", () => {
+        it("should return true for any deleted file", () => {
+            expect(shouldFullRebuild("/path/to/book/deleted.md", "unlink")).toBe(true);
+            expect(shouldFullRebuild("/path/to/book/image.png", "unlink")).toBe(true);
+        });
+
+        it("should return true for deleted structure files", () => {
+            expect(shouldFullRebuild("/path/to/book/SUMMARY.md", "unlink")).toBe(true);
+        });
+    });
+
     describe("content files (change event)", () => {
         it("should return false for regular markdown file changes", () => {
             expect(shouldFullRebuild("/path/to/book/README.md", "change")).toBe(false);

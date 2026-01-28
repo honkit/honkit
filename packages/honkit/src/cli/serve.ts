@@ -10,12 +10,22 @@ import options from "./options";
 import getBook from "./getBook";
 import getOutputFolder from "./getOutputFolder";
 import Server from "./server";
-import watch, { WatchEventType } from "./watch";
+import watch from "./watch";
 import { shouldFullRebuild } from "./shouldFullRebuild";
 import { clearCache } from "../output/page-cache";
 import fs from "fs";
 
 let server, lrServer, lrPath;
+
+function triggerLiveReload(hasLiveReloading: boolean) {
+    if (lrPath && hasLiveReloading) {
+        lrServer.changed({
+            body: {
+                files: [lrPath]
+            }
+        });
+    }
+}
 
 function waitForCtrlC() {
     const d = Promise.defer();
@@ -98,14 +108,7 @@ function startServer(args, kwargs) {
                             output: changedOutput,
                             Generator
                         }).then(() => {
-                            if (lrPath && hasLiveReloading) {
-                                // trigger livereload
-                                lrServer.changed({
-                                    body: {
-                                        files: [lrPath]
-                                    }
-                                });
-                            }
+                            triggerLiveReload(hasLiveReloading);
                         });
                     }
 
@@ -120,14 +123,7 @@ function startServer(args, kwargs) {
                         reload
                     }).then((output) => {
                         lastOutput = output;
-                        if (lrPath && hasLiveReloading) {
-                            // trigger livereload
-                            lrServer.changed({
-                                body: {
-                                    files: [lrPath]
-                                }
-                            });
-                        }
+                        triggerLiveReload(hasLiveReloading);
                     });
                 }
             });
