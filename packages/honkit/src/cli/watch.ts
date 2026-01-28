@@ -2,6 +2,8 @@ import path from "path";
 import chokidar, { FSWatcher } from "chokidar";
 import parsers from "../parsers";
 
+export type WatchEventType = "add" | "addDir" | "change" | "unlink" | "unlinkDir";
+
 export interface WatchOptions {
     /**
      * Directory to watch
@@ -9,8 +11,11 @@ export interface WatchOptions {
     watchDir: string;
     /**
      * Callback when a file is modified
+     * @param error - Error if any
+     * @param filepath - Absolute path of the changed file
+     * @param eventType - Type of change: "add", "change", "unlink", etc.
      */
-    callback: (error: Error | null, filepath?: string) => void;
+    callback: (error: Error | null, filepath?: string, eventType?: WatchEventType) => void;
     /**
      * Output folder to ignore (in addition to _book and node_modules)
      * This prevents infinite rebuild loops when using custom output folders
@@ -59,8 +64,8 @@ function watch(options: WatchOptions): FSWatcher {
         ignoreInitial: true
     });
 
-    watcher.on("all", (e, filepath) => {
-        callback(null, path.resolve(dir, filepath));
+    watcher.on("all", (eventType: WatchEventType, filepath) => {
+        callback(null, path.resolve(dir, filepath), eventType);
     });
     watcher.on("error", (err) => {
         callback(err);

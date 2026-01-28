@@ -11,10 +11,21 @@ import getBook from "./getBook";
 import getOutputFolder from "./getOutputFolder";
 import Server from "./server";
 import watch from "./watch";
+import { shouldFullRebuild } from "./shouldFullRebuild";
 import { clearCache } from "../output/page-cache";
 import fs from "fs";
 
 let server, lrServer, lrPath;
+
+function triggerLiveReload() {
+    if (lrPath) {
+        lrServer.changed({
+            body: {
+                files: [lrPath]
+            }
+        });
+    }
+}
 
 function waitForCtrlC() {
     const d = Promise.defer();
@@ -68,7 +79,7 @@ function startServer(args, kwargs) {
             watch({
                 watchDir: book.getRoot(),
                 outputFolder,
-                callback: (error, filepath) => {
+                callback: (error, filepath, eventType) => {
                     if (error) {
                         console.error(error);
                         return;
@@ -81,9 +92,14 @@ function startServer(args, kwargs) {
                     }
                     // set livereload path
                     lrPath = filepath;
-                    // TODO: use parse extension
-                    // Incremental update for pages
-                    if (lastOutput && filepath.endsWith(".md")) {
+
+                    // Full rebuild is required for:
+                    // 1. Structure files (SUMMARY.md, GLOSSARY.md, book.json, book.js)
+                    // 2. New file additions (to update asset list and page structure)
+                    const needsFullRebuild = shouldFullRebuild(filepath, eventType);
+
+                    // Incremental update for existing pages (only for .md files that don't require full rebuild)
+                    if (lastOutput && filepath.endsWith(".md") && !needsFullRebuild) {
                         logger.warn.ok("Rebuild " + filepath);
                         const changedOutput = lastOutput.reloadPage(lastOutput.book.getContentRoot(), filepath).merge({
                             incrementalChangeFileSet: Immutable.Set([filepath])
@@ -92,18 +108,13 @@ function startServer(args, kwargs) {
                             output: changedOutput,
                             Generator
                         }).then(() => {
-                            if (lrPath && hasLiveReloading) {
-                                // trigger livereload
-                                lrServer.changed({
-                                    body: {
-                                        files: [lrPath]
-                                    }
-                                });
-                            }
+                            if (hasLiveReloading) triggerLiveReload();
                         });
                     }
-                    // Asciidoc files are not supported for incremental build
-                    logger.info.ok("Rebuild " + filepath);
+
+                    // Full rebuild for structure changes, new files, or non-markdown files
+                    const reason = needsFullRebuild ? " (full rebuild)" : "";
+                    logger.info.ok("Rebuild " + filepath + reason);
                     return generateBook({
                         book,
                         outputFolder,
@@ -112,6 +123,7 @@ function startServer(args, kwargs) {
                         reload
                     }).then((output) => {
                         lastOutput = output;
+                        if (hasLiveReloading) triggerLiveReload();
                     });
                 }
             });
