@@ -1,6 +1,6 @@
 {
   "name": "@honkit/html",
-  "version": "6.1.5",
+  "version": "6.1.6",
   "description": "Parse HTML content for gitbook",
   "homepage": "https://github.com/honkit/honkit",
   "bugs": {
