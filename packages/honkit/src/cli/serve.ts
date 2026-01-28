@@ -17,8 +17,8 @@ import fs from "fs";
 
 let server, lrServer, lrPath;
 
-function triggerLiveReload(hasLiveReloading: boolean) {
-    if (lrPath && hasLiveReloading) {
+function triggerLiveReload() {
+    if (lrPath) {
         lrServer.changed({
             body: {
                 files: [lrPath]
@@ -108,7 +108,7 @@ function startServer(args, kwargs) {
                             output: changedOutput,
                             Generator
                         }).then(() => {
-                            triggerLiveReload(hasLiveReloading);
+                            if (hasLiveReloading) triggerLiveReload();
                         });
                     }
 
@@ -123,7 +123,7 @@ function startServer(args, kwargs) {
                         reload
                     }).then((output) => {
                         lastOutput = output;
-                        triggerLiveReload(hasLiveReloading);
+                        if (hasLiveReloading) triggerLiveReload();
                     });
                 }
             });
