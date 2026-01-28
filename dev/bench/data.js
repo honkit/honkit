@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1769344886455,
+  "lastUpdate": 1769643541736,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12088,6 +12088,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.90%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e028912af5372c9b6a7b10c2cb5b9aa0c2a9cb5a",
+          "message": "fix: resolve output folder relative to book root instead of cwd (#494)\n\n* fix: resolve output folder relative to book root instead of cwd\n\nWhen running `honkit serve` from a parent directory (e.g.,\n`cd /parent && honkit serve ./mybook ./output`), the output folder\nwas being resolved relative to process.cwd() instead of the book root.\n\nThis caused the output folder to be outside the watch directory,\nmaking it impossible for the file watcher to correctly ignore it,\nresulting in infinite rebuild loops.\n\nThe fix ensures the output folder is always resolved relative to\nthe book root, so it can be properly added to the watcher's ignore list.\n\nFixes #491\n\n* fix: trigger full rebuild for SUMMARY.md changes and new file additions\n\nWhen running `honkit serve`, the following changes now trigger a full\nrebuild instead of an incremental build:\n\n1. SUMMARY.md changes - Book structure has changed, need to regenerate\n   all pages to reflect new navigation\n2. GLOSSARY.md changes - Glossary definitions affect all pages\n3. book.json/book.js changes - Configuration affects entire book\n4. New file additions - New assets or pages need to be recognized\n\nThis fixes the issue where:\n- Files added to SUMMARY.md during serve were not generated\n- New files (assets) added during serve were not copied to output\n\nThe watch callback now receives the event type (\"add\", \"change\", etc.)\nto distinguish between file modifications and new file creations.\n\nRelated to #491\n\n* test: add integration tests for serve rebuild logic\n\n- Refactor shouldFullRebuild to accept eventType parameter\n- Add isStructureFile helper for cleaner separation\n- Add integration tests for:\n  - SUMMARY.md change triggering full rebuild\n  - New file addition triggering full rebuild\n  - Regular file change triggering incremental build\n  - Build output verification with snapshots\n  - Watch event detection\n\nThe tests verify that the actual shouldFullRebuild function behaves\ncorrectly, not a duplicate of the logic in test code.\n\n* refactor: rename serve-integration to build-integration test\n\n- Rename test file to better reflect its purpose (tests build output)\n- Remove shouldFullRebuild tests (already in shouldFullRebuild.test.ts)\n- Remove watch event tests (already in watch.test.ts)\n- Keep only black-box integration tests using bin.run\n\nThe integration tests now focus on CLI input/output verification:\n- Files added to SUMMARY.md are generated correctly\n- Assets not in SUMMARY.md are copied\n- Output structure matches expected snapshot\n\n* test: add integration tests for serve rebuild logic\n\nTests that serve correctly:\n- Generates new pages when SUMMARY.md is updated during serve\n- Copies new asset files when added during serve\n\nUses subprocess with port 0 (OS-assigned) to avoid port conflicts.\n\n* fix: address PR review comments for issue #491\n\n- getOutputFolder: explicitly handle absolute paths with path.isAbsolute()\n- getOutputFolder: add unit tests for relative, absolute, and default paths\n- serve: remove unused WatchEventType import\n- serve: extract triggerLiveReload helper to reduce code duplication\n- shouldFullRebuild: handle unlink events for file deletions\n- shouldFullRebuild: add tests for unlink event handling\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\n\n* refactor: remove unnecessary boolean parameter from triggerLiveReload\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\n\n* fix: use platform-appropriate paths in getOutputFolder tests\n\nUse path.resolve() to generate absolute paths that work on both\nUnix and Windows platforms.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2026-01-29T08:37:27+09:00",
+          "tree_id": "e21c3ea84cf7df2b0420e21c96d061ded77e8db5",
+          "url": "https://github.com/honkit/honkit/commit/e028912af5372c9b6a7b10c2cb5b9aa0c2a9cb5a"
+        },
+        "date": 1769643540837,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±0.48%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
