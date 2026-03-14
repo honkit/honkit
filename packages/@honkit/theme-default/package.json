@@ -53,7 +53,7 @@
     "@honkit/cleaning-tools": "workspace:*",
     "browserify": "17.0.0",
     "cpy-cli": "^4.2.0",
-    "eslint": "^9.12.0",
+    "eslint": "^9.39.4",
     "font-awesome": "4.6.3",
     "gitbook-markdown-css": "1.0.1",
     "jquery": "3.5.1",
