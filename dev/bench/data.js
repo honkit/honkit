@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1769643712352,
+  "lastUpdate": 1773895848038,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12150,6 +12150,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.17,
             "range": "±1.05%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29788154+chadlwilson@users.noreply.github.com",
+            "name": "Chad Wilson",
+            "username": "chadlwilson"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "d2720c2cacf32755841d3b86a0851201fd4c88ce",
+          "message": "chore(deps): bump flat-cache from v2 to v4 (and minor transitive/dev bumps) (#502)\n\n* chore(deps): bump flat-cache & transitive production dependencies to non-vulnerable versions\n\n* chore(dev-deps): bump dev dependencies to non-vulnerable versions\n\nJust did the ones that are relatively trivial to reduce noise.",
+          "timestamp": "2026-03-19T13:49:03+09:00",
+          "tree_id": "b31477f75ca966bb840cdba35d12accb82e5bf1d",
+          "url": "https://github.com/honkit/honkit/commit/d2720c2cacf32755841d3b86a0851201fd4c88ce"
+        },
+        "date": 1773895847104,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.16,
+            "range": "±0.68%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
