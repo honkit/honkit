@@ -1,5 +1,10 @@
 name: test
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
 env:
   CI: true
   NODE_VERSION: 24
