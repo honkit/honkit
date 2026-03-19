@@ -16,7 +16,7 @@ on:
 
 env:
   DOCKER_HUB_BASE_NAME: honkit/honkit
-  NODE_VERSION: 22
+  NODE_VERSION: 24
 
 jobs:
   release:
