@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773896034063,
+  "lastUpdate": 1774186459111,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12212,6 +12212,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.16,
             "range": "±0.80%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29788154+chadlwilson@users.noreply.github.com",
+            "name": "Chad Wilson",
+            "username": "chadlwilson"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8ff3f5ea20d4bdc1914f945cf75beb931d079d55",
+          "message": "ci: run test/release with Node 24 (#505)\n\n* chore: test/release against Node 24\n\n- unlocks cheerio dependency allowing new releases on newer Node; and older releases on Node 18\n- unlocks dev dependencies for consistency\n\n* chore(dev-deps): bump esbuild to 0.27.4\n\n* ci: avoid double-running tests\n\nAvoids running for pushes to branches other than master/main, and branches without a PR\n\n* ci: upgrade actions to resolve Node 20 deprecation warnings\n\n* chore(dev-deps): bump minor/patch versions\n\nOnly for dependencies with reported vulns.",
+          "timestamp": "2026-03-22T22:32:40+09:00",
+          "tree_id": "118562476d748fcb5c67f4e01a19aa992f924d0e",
+          "url": "https://github.com/honkit/honkit/commit/8ff3f5ea20d4bdc1914f945cf75beb931d079d55"
+        },
+        "date": 1774186458436,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±0.39%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
