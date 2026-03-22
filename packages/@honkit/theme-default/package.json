@@ -51,19 +51,19 @@
   },
   "devDependencies": {
     "@honkit/cleaning-tools": "workspace:*",
-    "browserify": "17.0.0",
+    "browserify": "^17.0.0",
     "cpy-cli": "^4.2.0",
     "eslint": "^9.39.4",
-    "font-awesome": "4.6.3",
-    "gitbook-markdown-css": "1.0.1",
-    "jquery": "3.5.1",
-    "less": "2.7.1",
-    "less-plugin-clean-css": "1.5.1",
+    "font-awesome": "^4.6.3",
+    "gitbook-markdown-css": "^1.0.1",
+    "jquery": "^3.5.1",
+    "less": "^2.7.1",
+    "less-plugin-clean-css": "^1.6.0",
     "mkdirp": "^1.0.4",
-    "mousetrap": "1.6.0",
+    "mousetrap": "^1.6.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^6.0.1",
-    "uglify-js": "3.17.0"
+    "uglify-js": "^3.17.0"
   },
   "engines": {
     "gitbook": ">=3.0.0"
