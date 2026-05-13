@@ -34,6 +34,7 @@
     "build": "tsc -p .",
     "clean": "rimraf lib/",
     "test": "jest src",
+    "test:contract": "jest --config jest.contract.config.js --coverage src/utils/__tests__/promise.contract.test.ts src/utils/__tests__/promise.env-load.test.ts src/utils/__tests__/objectPath.contract.test.ts",
     "updateSnapshot": "jest src -u"
   },
   "dependencies": {
