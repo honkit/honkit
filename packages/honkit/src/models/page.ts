@@ -43,7 +43,7 @@ class Page extends Immutable.Record({
             return content;
         }
 
-        const frontMatter = `---\n${yaml.safeDump(attrs.toJS(), { skipInvalid: true })}---\n\n`;
+        const frontMatter = `---\n${yaml.dump(attrs.toJS(), { skipInvalid: true })}---\n\n`;
         return frontMatter + (content || "");
     }
 

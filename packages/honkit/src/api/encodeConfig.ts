@@ -1,4 +1,4 @@
-import objectPath from "object-path";
+import { getAtPath, setAtPath } from "../utils/safeObjectPath";
 import deprecate from "./deprecate";
 import Output from "../models/output";
 import Config from "../models/config";
@@ -12,11 +12,11 @@ function encodeConfig(output: Output, config: Config) {
         values: config.getValues().toJS(),
 
         get: function (key, defaultValue) {
-            return objectPath.get(result.values, key, defaultValue);
+            return getAtPath(result.values, key, defaultValue);
         },
 
         set: function (key, value) {
-            return objectPath.set(result.values, key, value);
+            return setAtPath(result.values, key, value);
         }
     };
 

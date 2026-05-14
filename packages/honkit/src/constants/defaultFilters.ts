@@ -1,15 +1,18 @@
 import Immutable from "immutable";
-import moment from "moment";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 export default Immutable.Map({
     // Format a date
     // ex: 'MMMM Do YYYY, h:mm:ss a
     date: function (time, format) {
-        return moment(time).format(format);
+        return dayjs(time).format(format);
     },
 
     // Relative Time
     dateFromNow: function (time) {
-        return moment(time).fromNow();
+        return dayjs(time).fromNow();
     }
 });

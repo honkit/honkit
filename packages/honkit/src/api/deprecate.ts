@@ -1,5 +1,5 @@
 import is from "is";
-import objectPath from "object-path";
+import { getAtPath } from "../utils/safeObjectPath";
 
 const logged = {};
 const disabled = {};
@@ -108,7 +108,7 @@ function disableDeprecation(key) {
  */
 function deprecateRenamedMethod(book, key, instance, oldName, newName, msg) {
     msg = msg || `"${oldName}" is deprecated, use "${newName}()" instead`;
-    const fn = objectPath.get(instance, newName);
+    const fn = getAtPath(instance as Record<string, unknown>, newName) as (...args: unknown[]) => unknown;
 
     instance[oldName] = deprecateMethod(book, key, fn, msg);
 }

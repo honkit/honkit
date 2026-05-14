@@ -96,7 +96,7 @@ class FS extends Immutable.Record({
      Read a file as a string (utf-8)
      @return {Promise<String>}
      */
-    readAsString(filename: string, encoding: string = "utf8"): Promise<string> {
+    readAsString(filename: string, encoding: BufferEncoding = "utf8"): Promise<string> {
         return this.read(filename).then((buf) => {
             return buf.toString(encoding);
         });

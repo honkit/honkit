@@ -34,7 +34,7 @@
     "build": "tsc -p .",
     "clean": "rimraf lib/",
     "test": "jest src",
-    "test:contract": "jest --config jest.contract.config.js --coverage src/utils/__tests__/promise.contract.test.ts src/utils/__tests__/promise.env-load.test.ts src/utils/__tests__/objectPath.contract.test.ts",
+    "test:contract": "jest --config jest.contract.config.js --coverage src/utils/__tests__/promise.contract.test.ts src/utils/__tests__/objectPath.contract.test.ts",
     "updateSnapshot": "jest src -u"
   },
   "dependencies": {
@@ -68,26 +68,23 @@
     "ignore": "^5.3.2",
     "immutable": "^3.8.3",
     "is": "^3.3.0",
-    "js-yaml": "^3.14.2",
+    "js-yaml": "^4.1.0",
     "json-schema-defaults": "^0.1.1",
     "jsonschema": "1.1.0",
     "juice": "^8.1.0",
     "lru_map": "^0.4.1",
     "memoize-one": "^5.2.1",
     "mkdirp": "^1.0.4",
-    "moment": "^2.30.1",
+    "dayjs": "^1.11.13",
     "nunjucks": "^3.2.4",
     "nunjucks-do": "^1.0.0",
-    "object-path": "^0.11.8",
     "omit-keys": "^0.1.0",
     "open": "^7.4.2",
-    "q": "^1.5.1",
     "resolve": "^1.22.8",
     "semver": "^7.6.3",
     "send": "^0.19.2",
     "tiny-lr": "^1.1.1",
-    "tmp": "0.2.4",
-    "urijs": "^1.19.11"
+    "tmp": "0.2.4"
   },
   "devDependencies": {
     "@honkit/internal-test-utils": "workspace:*",
@@ -97,6 +94,7 @@
     "@types/nunjucks": "^3.2.6",
     "jest": "^29.7.0",
     "jest-mock-process": "^2.0.0",
+    "object-path": "^0.11.8",
     "rimraf": "^6.0.1",
     "typescript": "^5.6.2"
   }

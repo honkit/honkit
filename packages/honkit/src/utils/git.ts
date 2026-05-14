@@ -1,7 +1,6 @@
 import is from "is";
 import path from "path";
 import crc from "crc";
-import URI from "urijs";
 import pathUtil from "./path";
 import Promise from "./promise";
 import command from "./command";
@@ -107,29 +106,35 @@ Git.isUrl = function (giturl) {
     return giturl.indexOf(GIT_PREFIX) === 0;
 };
 
-// Parse and extract infos
+// Parse and extract infos (git+https://... and git+git@host:path/repo.git/... — no URI.js)
 Git.parseUrl = function (giturl) {
     if (!Git.isUrl(giturl)) return null;
     giturl = giturl.slice(GIT_PREFIX.length);
 
-    const uri = new URI(giturl);
-    const ref = uri.fragment() || null;
-    uri.fragment(null);
+    let ref: string | null = null;
+    const hashIdx = giturl.indexOf("#");
+    if (hashIdx >= 0) {
+        ref = giturl.slice(hashIdx + 1) || null;
+        giturl = giturl.slice(0, hashIdx);
+    }
 
-    // Extract file inside the repo (after the .git)
-    const fileParts = uri.path().split(".git");
-    let filepath = fileParts.length > 1 ? fileParts.slice(1).join(".git") : "";
-    if (filepath[0] == "/") {
+    // Match a real repository ".git" suffix (not e.g. "gist.github.com" where ".git" appears inside the hostname)
+    const gitSuffix = /\.git(\/|$)/;
+    const m = gitSuffix.exec(giturl);
+    if (!m) {
+        return null;
+    }
+
+    const host = giturl.slice(0, m.index + 4);
+    let filepath = giturl.slice(m.index + 4);
+    if (filepath.startsWith("/")) {
         filepath = filepath.slice(1);
     }
 
-    // Recreate pathname without the real filename
-    uri.path(`${fileParts[0]}.git`);
-
     return {
-        host: uri.toString(),
-        ref: ref,
-        filepath: filepath
+        host,
+        ref,
+        filepath
     };
 };
 
