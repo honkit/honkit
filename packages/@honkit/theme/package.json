@@ -1,6 +1,6 @@
 {
   "name": "@honkit/honkit-plugin-theme",
-  "version": "6.1.7",
+  "version": "6.1.8",
   "description": "Default theme for HonKit",
   "bugs": {
     "url": "https://github.com/honkit/honkit/issues"
