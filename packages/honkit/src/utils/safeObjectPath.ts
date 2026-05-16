@@ -16,12 +16,17 @@
 const UNSAFE = new Set(["__proto__", "constructor", "prototype"]);
 
 function toSegments(path: string | string[]): string[] | null {
-    const raw = Array.isArray(path)
-        ? path.map((s) => String(s))
-        : String(path)
-              .split(".")
-              .map((s) => s.trim());
-    const parts = raw.filter((s) => s.length > 0);
+    let parts: string[];
+    if (Array.isArray(path)) {
+        // Array paths are caller-supplied keys — empty string is a valid property name
+        parts = path.map((s) => String(s));
+    } else {
+        // String paths are dot-delimited; trim whitespace and drop empty split artifacts
+        parts = String(path)
+            .split(".")
+            .map((s) => s.trim())
+            .filter((s) => s.length > 0);
+    }
     if (parts.length === 0) {
         return null;
     }

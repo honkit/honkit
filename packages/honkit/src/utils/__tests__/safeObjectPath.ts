@@ -17,6 +17,12 @@ describe("safeObjectPath", () => {
             expect(getAtPath(obj, ["structure", "readme"])).toBe("README.md");
         });
 
+        test("array path preserves empty-string segments as literal keys", () => {
+            const obj = { "": { key: 1 }, a: { "": 2 } };
+            expect(getAtPath(obj, ["", "key"], "d")).toBe(1);
+            expect(getAtPath(obj, ["a", ""], "d")).toBe(2);
+        });
+
         test("returns default when path missing", () => {
             const obj = { a: 1 };
             expect(getAtPath(obj, "b", "fallback")).toBe("fallback");
@@ -80,6 +86,12 @@ describe("safeObjectPath", () => {
             const obj: Record<string, unknown> = {};
             setAtPath(obj, ["structure", "readme"], "INTRO.md");
             expect(obj).toEqual({ structure: { readme: "INTRO.md" } });
+        });
+
+        test("array path preserves empty-string segments when writing", () => {
+            const obj: Record<string, unknown> = {};
+            setAtPath(obj, ["", "key"], "v");
+            expect(obj).toEqual({ "": { key: "v" } });
         });
 
         test("overwrites existing nested value", () => {
