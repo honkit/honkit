@@ -15,7 +15,7 @@ on:
       - closed
 
 env:
-  DOCKER_HUB_BASE_NAME: honkit/honkit
+  IMAGE_NAME: ghcr.io/honkit/honkit
   NODE_VERSION: 24
 
 jobs:
@@ -136,6 +136,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: write
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -157,25 +158,24 @@ jobs:
           docker buildx build \
             --build-arg NODE_VERSION=${NODE_VERSION} \
             --build-arg PACKAGE_VERSION=${PACKAGE_VERSION} \
-            --tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} \
+            --tag ${IMAGE_NAME}:v${PACKAGE_VERSION} \
             --cache-from type=local,src=/tmp/.buildx-cache \
             --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max \
             --load \
             .
         working-directory: ./docker
       - name: Print node version in container image
-        run: docker run --rm ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} --version
+        run: docker run --rm ${IMAGE_NAME}:v${PACKAGE_VERSION} --version
       - name: Set latest tag
-        run: docker tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} ${DOCKER_HUB_BASE_NAME}:latest
+        run: docker tag ${IMAGE_NAME}:v${PACKAGE_VERSION} ${IMAGE_NAME}:latest
       - name: Set major version tag
-        run: docker tag ${DOCKER_HUB_BASE_NAME}:v${PACKAGE_VERSION} ${DOCKER_HUB_BASE_NAME}:v$(echo $PACKAGE_VERSION | cut -f 1 -d . | tr -d "\n")
-      - name: Login to Registries
-        run: echo "${DOCKER_HUB_TOKEN}" | docker login -u ${DOCKER_HUB_USER} --password-stdin
+        run: docker tag ${IMAGE_NAME}:v${PACKAGE_VERSION} ${IMAGE_NAME}:v$(echo $PACKAGE_VERSION | cut -f 1 -d . | tr -d "\n")
+      - name: Login to GitHub Container Registry
+        run: echo "${GITHUB_TOKEN}" | docker login ghcr.io -u ${GITHUB_ACTOR} --password-stdin
         env:
-          DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
-          DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
-      - name: Push to Docker Hub
-        run: docker push ${DOCKER_HUB_BASE_NAME} --all-tags
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push to GitHub Container Registry
+        run: docker push ${IMAGE_NAME} --all-tags
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache

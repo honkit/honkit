@@ -58,14 +58,14 @@ For more details, see [HonKit's documentation](https://honkit.netlify.app/).
 
 ## Docker support
 
-Honkit provide docker image at [honkit/honkit](https://hub.docker.com/r/honkit/honkit).
+Honkit provide docker image at [ghcr.io/honkit/honkit](https://github.com/honkit/honkit/pkgs/container/honkit).
 
 This docker image includes built-in dependencies for PDF/epub.
 
 ```
-docker pull honkit/honkit
-docker run -v `pwd`:`pwd` -w `pwd` --rm -it honkit/honkit honkit build
-docker run -v `pwd`:`pwd` -w `pwd` --rm -it honkit/honkit honkit pdf
+docker pull ghcr.io/honkit/honkit
+docker run -v `pwd`:`pwd` -w `pwd` --rm -it ghcr.io/honkit/honkit honkit build
+docker run -v `pwd`:`pwd` -w `pwd` --rm -it ghcr.io/honkit/honkit honkit pdf
 ```
 
 For more details, see [docker/](./docker/).

@@ -1,28 +1,28 @@
 # Docker Container
 
-- https://hub.docker.com/r/honkit/honkit
+- https://github.com/honkit/honkit/pkgs/container/honkit
 
 ## Installation
 
-    docker pull honkit/honkit
+    docker pull ghcr.io/honkit/honkit
 
 ## Usage
 
 Show help 
 
-    $ docker run -v `pwd`:`pwd` -w `pwd` --rm -it honkit/honkit honkit --help
+    $ docker run -v `pwd`:`pwd` -w `pwd` --rm -it ghcr.io/honkit/honkit honkit --help
 
 Build
 
-    $ docker run -v `pwd`:`pwd` -w `pwd` --rm -it honkit/honkit honkit build
+    $ docker run -v `pwd`:`pwd` -w `pwd` --rm -it ghcr.io/honkit/honkit honkit build
 
 PDF build
 
-    $ docker run -v `pwd`:`pwd` -w `pwd` --rm -it honkit/honkit honkit pdf
+    $ docker run -v `pwd`:`pwd` -w `pwd` --rm -it ghcr.io/honkit/honkit honkit pdf
 
 Serve on port 4000
 
-    $ docker run -it --init -p 4000:4000  -v `pwd`:`pwd` -w `pwd` --rm  honkit/honkit honkit serve
+    $ docker run -it --init -p 4000:4000  -v `pwd`:`pwd` -w `pwd` --rm  ghcr.io/honkit/honkit honkit serve
 
 ## Tips
 
@@ -31,7 +31,7 @@ Serve on port 4000
 You can create new image includes custom font based on honkit image.
 
 ```
-FROM honkit/honkit:latest
+FROM ghcr.io/honkit/honkit:latest
 LABEL maintainer="your@example.com"
 
 # Install fonts
