@@ -4,10 +4,13 @@
  *
  * Behavior is kept compatible with the previous object-path wrapper:
  *  - get / set accept `string | string[]`
- *  - set throws when an intermediate value is a non-object scalar
+ *  - lookups only descend through own properties (matches object-path)
+ *  - set throws when an intermediate value is a non-object scalar (string,
+ *    number, boolean, null) — null follows from native JS, the others match
+ *    object-path's check
  *  - set returns undefined
- *  - paths containing __proto__ / constructor / prototype are rejected as a whole
- *  - lookups only descend through own enumerable properties
+ *  - paths containing __proto__ / constructor / prototype are rejected as a
+ *    whole, so e.g. "__proto__.polluted" does not collapse to "polluted"
  */
 
 const UNSAFE = new Set(["__proto__", "constructor", "prototype"]);
@@ -30,8 +33,8 @@ function toSegments(path: string | string[]): string[] | null {
     return parts;
 }
 
-function hasOwnEnumerable(obj: object, key: string): boolean {
-    return Object.prototype.propertyIsEnumerable.call(obj, key);
+function hasOwn(obj: object, key: string): boolean {
+    return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
 export function getAtPath(
@@ -51,7 +54,7 @@ export function getAtPath(
         if (cur == null || typeof cur !== "object") {
             return defaultValue;
         }
-        if (!hasOwnEnumerable(cur as object, key)) {
+        if (!hasOwn(cur as object, key)) {
             return defaultValue;
         }
         cur = (cur as Record<string, unknown>)[key];
@@ -74,15 +77,15 @@ export function setAtPath(
     let cur: Record<string, unknown> = obj;
     for (let i = 0; i < parts.length - 1; i++) {
         const key = parts[i];
-        const ownNext = hasOwnEnumerable(cur, key) ? cur[key] : undefined;
-        if (ownNext === undefined || ownNext === null) {
+        if (!hasOwn(cur, key) || cur[key] === undefined) {
             const nextKey = parts[i + 1];
             const created: Record<string, unknown> | unknown[] = /^\d+$/.test(nextKey) ? [] : {};
             cur[key] = created;
             cur = created as Record<string, unknown>;
             continue;
         }
-        if (typeof ownNext !== "object") {
+        const ownNext = cur[key];
+        if (ownNext === null || typeof ownNext !== "object") {
             throw new Error(
                 `safeObjectPath.setAtPath: cannot set "${parts.join(".")}" because intermediate "${parts
                     .slice(0, i + 1)

@@ -1,7 +1,7 @@
 /**
  * Direct unit tests for {@link ../safeObjectPath} — mirrors {@link ./objectPath.contract.test.ts}
  * to keep object-path compatibility. Documents intentional differences (empty path, trimmed
- * segments, unsafe segment handling, own-property descent).
+ * segments, unsafe segment handling).
  */
 import { getAtPath, setAtPath } from "../safeObjectPath";
 
@@ -49,17 +49,11 @@ describe("safeObjectPath", () => {
             expect(getAtPath({ a: {} }, "a.missing", "d")).toBe("d");
         });
 
-        test("does not read inherited prototype properties", () => {
+        test("does not read inherited prototype properties (matches object-path)", () => {
             const obj: Record<string, unknown> = Object.create({ inherited: 1 });
             obj.own = 2;
             expect(getAtPath(obj, "inherited", "d")).toBe("d");
             expect(getAtPath(obj, "own", "d")).toBe(2);
-        });
-
-        test("does not read non-enumerable own properties", () => {
-            const obj: Record<string, unknown> = {};
-            Object.defineProperty(obj, "hidden", { value: "secret", enumerable: false });
-            expect(getAtPath(obj, "hidden", "d")).toBe("d");
         });
 
         test("rejects whole path containing unsafe segments", () => {
@@ -105,26 +99,25 @@ describe("safeObjectPath", () => {
             expect(() => setAtPath(obj, "a.b", 1)).toThrow();
         });
 
+        test("throws when intermediate is null (matches object-path / native JS)", () => {
+            const obj: Record<string, unknown> = { a: null };
+            expect(() => setAtPath(obj, "a.b", 1)).toThrow();
+            // original null is left untouched
+            expect(obj.a).toBeNull();
+        });
+
+        test("creates missing intermediate when the existing key is undefined", () => {
+            const obj: Record<string, unknown> = {};
+            setAtPath(obj, "a.b", 1);
+            expect(obj).toEqual({ a: { b: 1 } });
+        });
+
         test("set on path containing __proto__ is a no-op (does not write top-level)", () => {
             const obj: Record<string, unknown> = { ok: true };
             expect(setAtPath(obj, "__proto__", "ignored")).toBeUndefined();
             expect(setAtPath(obj, "__proto__.polluted", "ignored")).toBeUndefined();
             expect(obj).toEqual({ ok: true });
             expect((obj as { polluted?: unknown }).polluted).toBeUndefined();
-        });
-
-        test("does not descend into non-enumerable own object when setting", () => {
-            const original: Record<string, unknown> = { existing: 1 };
-            const obj: Record<string, unknown> = { ok: true };
-            Object.defineProperty(obj, "hidden", {
-                value: original,
-                enumerable: false,
-                writable: true,
-                configurable: true
-            });
-            setAtPath(obj, "hidden.added", 2);
-            // the original non-enumerable object must not be mutated
-            expect(original).toEqual({ existing: 1 });
         });
 
         test("does not descend into inherited objects when setting", () => {

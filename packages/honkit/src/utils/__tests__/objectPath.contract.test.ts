@@ -84,6 +84,12 @@ describe("object-path baseline (pre safeObjectPath)", () => {
             expect(() => objectPath.set(obj, "a.b", 1)).toThrow();
         });
 
+        test("throws when intermediate is null (object-path / native JS)", () => {
+            const obj: Record<string, unknown> = { a: null };
+            expect(() => objectPath.set(obj, "a.b", 1)).toThrow();
+            expect(obj.a).toBeNull();
+        });
+
         test("uses array index segments like object-path", () => {
             const obj: Record<string, unknown> = {};
             objectPath.set(obj, "items.0.name", "first");
