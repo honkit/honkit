@@ -30,8 +30,8 @@ function toSegments(path: string | string[]): string[] | null {
     return parts;
 }
 
-function hasOwn(obj: object, key: string): boolean {
-    return Object.prototype.hasOwnProperty.call(obj, key);
+function hasOwnEnumerable(obj: object, key: string): boolean {
+    return Object.prototype.propertyIsEnumerable.call(obj, key);
 }
 
 export function getAtPath(
@@ -51,7 +51,7 @@ export function getAtPath(
         if (cur == null || typeof cur !== "object") {
             return defaultValue;
         }
-        if (!hasOwn(cur as object, key)) {
+        if (!hasOwnEnumerable(cur as object, key)) {
             return defaultValue;
         }
         cur = (cur as Record<string, unknown>)[key];
@@ -74,7 +74,7 @@ export function setAtPath(
     let cur: Record<string, unknown> = obj;
     for (let i = 0; i < parts.length - 1; i++) {
         const key = parts[i];
-        const ownNext = hasOwn(cur, key) ? cur[key] : undefined;
+        const ownNext = hasOwnEnumerable(cur, key) ? cur[key] : undefined;
         if (ownNext === undefined || ownNext === null) {
             const nextKey = parts[i + 1];
             const created: Record<string, unknown> | unknown[] = /^\d+$/.test(nextKey) ? [] : {};

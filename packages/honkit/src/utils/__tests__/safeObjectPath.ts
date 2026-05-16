@@ -56,6 +56,12 @@ describe("safeObjectPath", () => {
             expect(getAtPath(obj, "own", "d")).toBe(2);
         });
 
+        test("does not read non-enumerable own properties", () => {
+            const obj: Record<string, unknown> = {};
+            Object.defineProperty(obj, "hidden", { value: "secret", enumerable: false });
+            expect(getAtPath(obj, "hidden", "d")).toBe("d");
+        });
+
         test("rejects whole path containing unsafe segments", () => {
             const obj: Record<string, unknown> = { safe: 1, polluted: "real-value" };
             expect(getAtPath(obj, "__proto__.polluted", "d")).toBe("d");
@@ -105,6 +111,20 @@ describe("safeObjectPath", () => {
             expect(setAtPath(obj, "__proto__.polluted", "ignored")).toBeUndefined();
             expect(obj).toEqual({ ok: true });
             expect((obj as { polluted?: unknown }).polluted).toBeUndefined();
+        });
+
+        test("does not descend into non-enumerable own object when setting", () => {
+            const original: Record<string, unknown> = { existing: 1 };
+            const obj: Record<string, unknown> = { ok: true };
+            Object.defineProperty(obj, "hidden", {
+                value: original,
+                enumerable: false,
+                writable: true,
+                configurable: true
+            });
+            setAtPath(obj, "hidden.added", 2);
+            // the original non-enumerable object must not be mutated
+            expect(original).toEqual({ existing: 1 });
         });
 
         test("does not descend into inherited objects when setting", () => {
