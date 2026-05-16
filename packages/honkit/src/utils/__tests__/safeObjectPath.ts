@@ -1,7 +1,7 @@
 /**
- * Direct unit tests for {@link ../safeObjectPath} — scenarios aligned with
- * {@link ./objectPath.contract.test.ts} where semantics match; otherwise documents
- * intentional differences (empty path, trimmed segments, set on unsafe keys).
+ * Direct unit tests for {@link ../safeObjectPath} — mirrors {@link ./objectPath.contract.test.ts}
+ * to keep object-path compatibility. Documents intentional differences (empty path, trimmed
+ * segments, unsafe segment handling, own-property descent).
  */
 import { getAtPath, setAtPath } from "../safeObjectPath";
 
@@ -12,6 +12,11 @@ describe("safeObjectPath", () => {
             expect(getAtPath(obj, "structure.readme")).toBe("README.md");
         });
 
+        test("accepts array path", () => {
+            const obj = { structure: { readme: "README.md" } };
+            expect(getAtPath(obj, ["structure", "readme"])).toBe("README.md");
+        });
+
         test("returns default when path missing", () => {
             const obj = { a: 1 };
             expect(getAtPath(obj, "b", "fallback")).toBe("fallback");
@@ -19,12 +24,13 @@ describe("safeObjectPath", () => {
         });
 
         test("returns default for null / undefined root", () => {
-            expect(getAtPath(null as unknown as Record<string, unknown>, "a", "d")).toBe("d");
-            expect(getAtPath(undefined as unknown as Record<string, unknown>, "a", "d")).toBe("d");
+            expect(getAtPath(null, "a", "d")).toBe("d");
+            expect(getAtPath(undefined, "a", "d")).toBe("d");
         });
 
         test("empty path returns default (unlike object-path empty-path root)", () => {
             expect(getAtPath({ a: 1 }, "", "d")).toBe("d");
+            expect(getAtPath({ a: 1 }, [], "d")).toBe("d");
         });
 
         test("returns null when key exists with null value", () => {
@@ -43,14 +49,22 @@ describe("safeObjectPath", () => {
             expect(getAtPath({ a: {} }, "a.missing", "d")).toBe("d");
         });
 
-        test("unsafe path segments are ignored (prototype pollution guard)", () => {
-            const obj: Record<string, unknown> = { safe: 1 };
-            expect(getAtPath(obj, "__proto__.polluted", "d")).toBe("d");
-            expect(getAtPath(obj, "constructor.prototype.polluted", "d")).toBe("d");
-            expect((obj as { polluted?: unknown }).polluted).toBeUndefined();
+        test("does not read inherited prototype properties", () => {
+            const obj: Record<string, unknown> = Object.create({ inherited: 1 });
+            obj.own = 2;
+            expect(getAtPath(obj, "inherited", "d")).toBe("d");
+            expect(getAtPath(obj, "own", "d")).toBe(2);
         });
 
-        test("trims segment whitespace (differs from object-path)", () => {
+        test("rejects whole path containing unsafe segments", () => {
+            const obj: Record<string, unknown> = { safe: 1, polluted: "real-value" };
+            expect(getAtPath(obj, "__proto__.polluted", "d")).toBe("d");
+            expect(getAtPath(obj, "constructor.prototype.polluted", "d")).toBe("d");
+            // path is not rewritten to "polluted" by stripping __proto__
+            expect(getAtPath(obj, "__proto__", "d")).toBe("d");
+        });
+
+        test("trims segment whitespace for string paths (differs from object-path)", () => {
             expect(getAtPath({ a: { b: 2 } }, " a . b ", "d")).toBe(2);
         });
     });
@@ -59,6 +73,12 @@ describe("safeObjectPath", () => {
         test("sets nested value by dot path", () => {
             const obj: Record<string, unknown> = {};
             setAtPath(obj, "structure.readme", "INTRO.md");
+            expect(obj).toEqual({ structure: { readme: "INTRO.md" } });
+        });
+
+        test("accepts array path", () => {
+            const obj: Record<string, unknown> = {};
+            setAtPath(obj, ["structure", "readme"], "INTRO.md");
             expect(obj).toEqual({ structure: { readme: "INTRO.md" } });
         });
 
@@ -74,22 +94,33 @@ describe("safeObjectPath", () => {
             expect(obj.items).toEqual([{ name: "first" }]);
         });
 
-        test("set on __proto__ path does not mutate object (segments filtered)", () => {
-            const obj: Record<string, unknown> = { ok: true };
-            expect(setAtPath(obj, "__proto__", "ignored")).toBe("ignored");
-            expect(obj).toEqual({ ok: true });
-        });
-
-        test("returns the assigned value", () => {
-            const obj: Record<string, unknown> = {};
-            expect(setAtPath(obj, "x", 42)).toBe(42);
-            expect(obj.x).toBe(42);
-        });
-
-        test("replaces string intermediate with object when deepening path", () => {
+        test("throws when intermediate is a non-object scalar (matches object-path)", () => {
             const obj: Record<string, unknown> = { a: "was-string" };
-            setAtPath(obj, "a.b", 1);
-            expect(obj.a).toEqual({ b: 1 });
+            expect(() => setAtPath(obj, "a.b", 1)).toThrow();
+        });
+
+        test("set on path containing __proto__ is a no-op (does not write top-level)", () => {
+            const obj: Record<string, unknown> = { ok: true };
+            expect(setAtPath(obj, "__proto__", "ignored")).toBeUndefined();
+            expect(setAtPath(obj, "__proto__.polluted", "ignored")).toBeUndefined();
+            expect(obj).toEqual({ ok: true });
+            expect((obj as { polluted?: unknown }).polluted).toBeUndefined();
+        });
+
+        test("does not descend into inherited objects when setting", () => {
+            const proto: Record<string, unknown> = { nested: { shared: 1 } };
+            const obj: Record<string, unknown> = Object.create(proto);
+            setAtPath(obj, "nested.shared", 2);
+            // own "nested" was created on obj, not mutated on proto
+            expect(Object.prototype.hasOwnProperty.call(obj, "nested")).toBe(true);
+            expect(proto.nested).toEqual({ shared: 1 });
+            expect((obj.nested as Record<string, unknown>).shared).toBe(2);
+        });
+
+        test("returns undefined (matches object-path)", () => {
+            const obj: Record<string, unknown> = {};
+            expect(setAtPath(obj, "x", 42)).toBeUndefined();
+            expect(obj.x).toBe(42);
         });
     });
 });

@@ -106,7 +106,7 @@ Git.isUrl = function (giturl) {
     return giturl.indexOf(GIT_PREFIX) === 0;
 };
 
-// Parse and extract infos (git+https://... and git+git@host:path/repo.git/... — no URI.js)
+// Parse and extract information (git+https://... and git+git@host:path/repo.git/... — no URI.js)
 Git.parseUrl = function (giturl) {
     if (!Git.isUrl(giturl)) return null;
     giturl = giturl.slice(GIT_PREFIX.length);

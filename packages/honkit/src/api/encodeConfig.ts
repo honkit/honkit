@@ -16,7 +16,7 @@ function encodeConfig(output: Output, config: Config) {
         },
 
         set: function (key, value) {
-            return setAtPath(result.values, key, value);
+            setAtPath(result.values, key, value);
         }
     };
 

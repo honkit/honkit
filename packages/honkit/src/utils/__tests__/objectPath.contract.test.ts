@@ -12,6 +12,11 @@ describe("object-path baseline (pre safeObjectPath)", () => {
             expect(objectPath.get(obj, "structure.readme")).toBe("README.md");
         });
 
+        test("accepts array path", () => {
+            const obj = { structure: { readme: "README.md" } };
+            expect(objectPath.get(obj, ["structure", "readme"])).toBe("README.md");
+        });
+
         test("returns default when path missing", () => {
             const obj = { a: 1 };
             expect(objectPath.get(obj, "b", "fallback")).toBe("fallback");
@@ -59,6 +64,12 @@ describe("object-path baseline (pre safeObjectPath)", () => {
         test("sets nested value by dot path", () => {
             const obj: Record<string, unknown> = {};
             objectPath.set(obj, "structure.readme", "INTRO.md");
+            expect(obj).toEqual({ structure: { readme: "INTRO.md" } });
+        });
+
+        test("accepts array path", () => {
+            const obj: Record<string, unknown> = {};
+            objectPath.set(obj, ["structure", "readme"], "INTRO.md");
             expect(obj).toEqual({ structure: { readme: "INTRO.md" } });
         });
 
