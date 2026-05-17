@@ -13,6 +13,15 @@ type CheerioOptions = cheerio.CheerioOptions & {
 export function loadHtml(html: string): cheerio.CheerioAPI {
     return cheerio.load(html, { _useHtmlParser2: true } as CheerioOptions);
 }
+
+/**
+ * Load an XML/SVG fragment (e.g. for inline SVG).
+ */
+export function loadXml(html: string): cheerio.CheerioAPI {
+    return cheerio.load(html, { _useHtmlParser2: true, xmlMode: true } as CheerioOptions);
+}
+
+export type { CheerioAPI as HtmlDom } from "cheerio";
 /**
  Parse an HTML string and return its content
 

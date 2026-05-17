@@ -1,5 +1,4 @@
 # Reports
-
 Generated quality and install reports for the Honkit monorepo.
 
 | Report | Command |

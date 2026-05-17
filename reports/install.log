@@ -1,46 +1,10 @@
-$ pnpm install
+$ pnpm install --frozen-lockfile
 Scope: all 16 workspace projects
-(node:78110) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(node:45087) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-Progress: resolved 1, reused 0, downloaded 0, added 0
-Progress: resolved 16, reused 16, downloaded 0, added 0
-Progress: resolved 44, reused 44, downloaded 0, added 0
-Progress: resolved 70, reused 70, downloaded 0, added 0
-Progress: resolved 89, reused 89, downloaded 0, added 0
-Progress: resolved 90, reused 90, downloaded 0, added 0
-Progress: resolved 128, reused 128, downloaded 0, added 0
-Progress: resolved 164, reused 164, downloaded 0, added 0
-Progress: resolved 267, reused 242, downloaded 0, added 0
-Progress: resolved 345, reused 320, downloaded 0, added 0
-Progress: resolved 415, reused 389, downloaded 0, added 0
-Progress: resolved 438, reused 413, downloaded 0, added 0
-Progress: resolved 447, reused 422, downloaded 0, added 0
-Progress: resolved 473, reused 448, downloaded 0, added 0
-Progress: resolved 579, reused 554, downloaded 0, added 0
-Progress: resolved 688, reused 663, downloaded 0, added 0
-Progress: resolved 716, reused 690, downloaded 0, added 0
-Progress: resolved 820, reused 795, downloaded 0, added 0
-Progress: resolved 917, reused 892, downloaded 0, added 0
-Progress: resolved 1030, reused 1005, downloaded 0, added 0
-Progress: resolved 1071, reused 1046, downloaded 0, added 0
-Progress: resolved 1072, reused 1046, downloaded 0, added 0
- WARN  17 deprecated subdependencies found: abab@2.0.6, boom@2.10.1, cryptiles@2.0.5, domexception@4.0.0, glob@7.2.3, glob@8.1.0, har-validator@4.2.1, hawk@3.1.3, hoek@2.16.3, inflight@1.0.6, markdown-to-ast@4.0.0, request@2.81.0, sntp@1.0.9, trim@0.0.1, uuid@3.4.0, whatwg-encoding@2.0.0, whatwg-encoding@3.1.1
-Packages: +1047
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Progress: resolved 1072, reused 1047, downloaded 0, added 489
-Progress: resolved 1072, reused 1047, downloaded 0, added 845
-Progress: resolved 1072, reused 1047, downloaded 0, added 1047, done
-.../esbuild@0.27.7/node_modules/esbuild postinstall$ node install.js
-.../esbuild@0.27.7/node_modules/esbuild postinstall: Done
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
 . prepare$ git config --local core.hooksPath .githooks
 . prepare: Done
-
-devDependencies:
-+ @honkit/cleaning-tools 6.2.0 <- packages/@honkit/cleaning-tools
-+ eslint 9.39.4 (10.4.0 is available)
-+ honkit 6.2.0 <- packages/honkit
-+ lint-staged 16.4.0 (17.0.5 is available)
-+ prettier 3.8.3
-+ typescript 5.9.3 (6.0.3 is available)
-
-Done in 25.8s
+Done in 852ms

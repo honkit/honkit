@@ -2,7 +2,7 @@ import path from "path";
 import fs from "../../utils/fs";
 import LocationUtils from "../../utils/location";
 import editHTMLElement from "./editHTMLElement";
-import * as cheerio from "cheerio";
+import { loadXml } from "@honkit/html";
 
 /**
  Inline SVG images as needed
@@ -26,8 +26,7 @@ function inlineSvg(rootFolder, currentFile, $) {
         const inputPath = path.join(rootFolder, src);
 
         return fs.readFile(inputPath).then((svgContext) => {
-            // @ts-expect-error
-            const $ = cheerio.load(svgContext, { _useHtmlParser2: true, xmlMode: true });
+            const $ = loadXml(svgContext);
             const $svg = $("svg");
             if ($svg.attr("style")) {
                 return;

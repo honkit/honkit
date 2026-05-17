@@ -18,7 +18,7 @@ const htmlParser = {
 /**
  * Utility for loading HTML content
  */
-export { loadHtml } from "./dom";
+export { loadHtml, loadXml, type HtmlDom } from "./dom";
 export type ToHTMLOptions = {
     baseDirectory: string;
 };
