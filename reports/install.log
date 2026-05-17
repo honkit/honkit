@@ -1,0 +1,68 @@
+$ pnpm install
+Scope: all 16 workspace projects
+(node:45558) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 20, reused 13, downloaded 3, added 0
+Progress: resolved 31, reused 20, downloaded 6, added 0
+Progress: resolved 42, reused 29, downloaded 7, added 0
+Progress: resolved 48, reused 32, downloaded 8, added 0
+Progress: resolved 51, reused 33, downloaded 10, added 0
+Progress: resolved 55, reused 36, downloaded 10, added 0
+Progress: resolved 68, reused 48, downloaded 17, added 0
+Progress: resolved 89, reused 68, downloaded 19, added 0
+Progress: resolved 89, reused 68, downloaded 20, added 0
+Progress: resolved 90, reused 68, downloaded 20, added 0
+Progress: resolved 91, reused 68, downloaded 20, added 0
+Progress: resolved 108, reused 80, downloaded 22, added 0
+Progress: resolved 134, reused 101, downloaded 28, added 0
+Progress: resolved 152, reused 117, downloaded 29, added 0
+Progress: resolved 184, reused 144, downloaded 33, added 0
+Progress: resolved 210, reused 165, downloaded 36, added 0
+Progress: resolved 260, reused 188, downloaded 39, added 0
+Progress: resolved 295, reused 220, downloaded 44, added 0
+Progress: resolved 353, reused 275, downloaded 47, added 0
+Progress: resolved 410, reused 328, downloaded 51, added 0
+Progress: resolved 428, reused 346, downloaded 51, added 0
+Progress: resolved 434, reused 351, downloaded 51, added 0
+Progress: resolved 440, reused 357, downloaded 53, added 0
+Progress: resolved 456, reused 370, downloaded 54, added 0
+Progress: resolved 486, reused 395, downloaded 58, added 0
+Progress: resolved 513, reused 418, downloaded 61, added 0
+Progress: resolved 539, reused 432, downloaded 65, added 0
+Progress: resolved 559, reused 443, downloaded 81, added 0
+Progress: resolved 596, reused 473, downloaded 87, added 0
+Progress: resolved 665, reused 536, downloaded 93, added 0
+Progress: resolved 692, reused 557, downloaded 101, added 0
+Progress: resolved 703, reused 567, downloaded 103, added 0
+Progress: resolved 713, reused 576, downloaded 104, added 0
+Progress: resolved 747, reused 606, downloaded 106, added 0
+Progress: resolved 772, reused 622, downloaded 110, added 0
+Progress: resolved 803, reused 636, downloaded 125, added 0
+Progress: resolved 857, reused 674, downloaded 148, added 0
+Progress: resolved 919, reused 729, downloaded 155, added 0
+Progress: resolved 981, reused 774, downloaded 164, added 0
+Progress: resolved 1061, reused 834, downloaded 186, added 0
+Progress: resolved 1070, reused 837, downloaded 206, added 0
+Progress: resolved 1071, reused 837, downloaded 209, added 0
+ WARN  17 deprecated subdependencies found: abab@2.0.6, boom@2.10.1, cryptiles@2.0.5, domexception@4.0.0, glob@7.2.3, glob@8.1.0, har-validator@4.2.1, hawk@3.1.3, hoek@2.16.3, inflight@1.0.6, markdown-to-ast@4.0.0, request@2.81.0, sntp@1.0.9, trim@0.0.1, uuid@3.4.0, whatwg-encoding@2.0.0, whatwg-encoding@3.1.1
+Packages: +1047
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 1072, reused 837, downloaded 209, added 0
+Progress: resolved 1072, reused 837, downloaded 210, added 347
+Progress: resolved 1072, reused 837, downloaded 210, added 662
+Progress: resolved 1072, reused 837, downloaded 210, added 1047, done
+.../esbuild@0.27.7/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.27.7/node_modules/esbuild postinstall: Done
+. prepare$ git config --local core.hooksPath .githooks
+. prepare: Done
+
+devDependencies:
++ @honkit/cleaning-tools 6.2.0 <- packages/@honkit/cleaning-tools
++ eslint 9.39.4 (10.4.0 is available)
++ honkit 6.2.0 <- packages/honkit
++ lint-staged 16.4.0 (17.0.5 is available)
++ prettier 3.8.3
++ typescript 5.9.3 (6.0.3 is available)
+
+Done in 48.5s

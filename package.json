@@ -26,6 +26,8 @@
     "build": "pnpm -r --filter \"!@example/*\" run build",
     "clean": "pnpm -r --filter \"!@example/*\" run clean",
     "clean-deps": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
+    "report:install": "pnpm run clean-deps && rm -f pnpm-lock.yaml && mkdir -p reports && echo \"$ pnpm install\" > reports/install.log && pnpm install >> reports/install.log 2>&1",
+    "report:install-ci": "bash scripts/report-install-ci.sh",
     "test": "pnpm -r --filter \"!@example/*\" run test",
     "updateSnapshot": "pnpm -r --filter \"!@example/*\" run updateSnapshot",
     "versionup": "echo 'Error: Please use CI for versioning. Run gh workflow run create-release-pr instead.' && exit 1",
