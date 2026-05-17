@@ -1,4 +1,4 @@
-import tinylr from "tiny-lr";
+import livereload from "livereload";
 import open from "open";
 import Immutable from "immutable";
 import Parse from "../parse";
@@ -18,12 +18,8 @@ import fs from "fs";
 let server, lrServer, lrPath;
 
 function triggerLiveReload() {
-    if (lrPath) {
-        lrServer.changed({
-            body: {
-                files: [lrPath]
-            }
-        });
+    if (lrPath && lrServer) {
+        lrServer.refresh(lrPath);
     }
 }
 
@@ -201,17 +197,18 @@ export default {
 
         return Promise()
             .then(() => {
-                if (!hasWatch || !hasLiveReloading) {
+                if (!hasWatch || !hasLiveReloading || kwargs.lrport === 0) {
                     return;
                 }
 
-                lrServer = tinylr({});
-
-                return Promise.nfcall(lrServer.listen.bind(lrServer), kwargs.lrport).then(() => {
-                    console.log("Live reload server started on port:", kwargs.lrport);
-                    console.log("Press CTRL+C to quit ...");
-                    console.log("");
+                lrServer = livereload.createServer({
+                    port: kwargs.lrport
                 });
+
+                console.log("Live reload server started on port:", kwargs.lrport);
+                console.log("Press CTRL+C to quit ...");
+                console.log("");
+                return Promise();
             })
             .then(() => {
                 return startServer(args, kwargs);

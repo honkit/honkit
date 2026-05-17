@@ -3,8 +3,6 @@ import mkdirp from "mkdirp";
 import destroy from "destroy";
 import tmp from "tmp";
 import path from "path";
-import cp from "cp";
-import cpr from "cpr";
 import Promise from "./promise";
 import http from "http";
 import https from "https";
@@ -184,6 +182,41 @@ function ensureFolder(rootFolder) {
         });
 }
 
+function copyFile(src, dest) {
+    const d = Promise.defer();
+    fs.promises
+        .copyFile(src, dest)
+        .then(() => d.resolve())
+        .catch((err) => d.reject(err));
+    return d.promise;
+}
+
+async function copyDirRecursive(src, dest, opts) {
+    if (opts.deleteFirst) {
+        await fs.promises.rm(dest, { recursive: true, force: true }).catch(() => undefined);
+    }
+    await fs.promises.mkdir(dest, { recursive: true });
+    const entries = await fs.promises.readdir(src, { withFileTypes: true });
+    for (const entry of entries) {
+        const from = path.join(src, entry.name);
+        const to = path.join(dest, entry.name);
+        if (entry.isDirectory()) {
+            await copyDirRecursive(from, to, { ...opts, deleteFirst: false });
+        } else {
+            await fs.promises.copyFile(from, to);
+        }
+    }
+}
+
+function copyDir(src, dest, options) {
+    const d = Promise.defer();
+    const opts = options || {};
+    copyDirRecursive(src, dest, opts)
+        .then(() => d.resolve())
+        .catch((err) => d.reject(err));
+    return d.promise;
+}
+
 export default {
     exists: fileExists,
     existsSync: fs.existsSync,
@@ -211,9 +244,9 @@ export default {
     writeStream: writeStream,
     readStream: fs.createReadStream,
 
-    copy: Promise.nfbind(cp),
+    copy: copyFile,
 
-    copyDir: Promise.nfbind(cpr),
+    copyDir: copyDir,
     tmpFile: genTmpFile,
     /**
      * @deprecated use tmpdir.ts
