@@ -17,6 +17,14 @@ import fs from "fs";
 
 let server, lrServer, lrPath;
 
+function startLiveReloadServer(port: number) {
+    const d = Promise.defer();
+    lrServer = livereload.createServer({ port, noListen: true });
+    lrServer.once("error", (err: Error) => d.reject(err));
+    lrServer.listen(() => d.resolve());
+    return d.promise;
+}
+
 function triggerLiveReload() {
     if (lrPath && lrServer) {
         lrServer.refresh(lrPath);
@@ -197,18 +205,16 @@ export default {
 
         return Promise()
             .then(() => {
-                if (!hasWatch || !hasLiveReloading || kwargs.lrport === 0) {
+                if (!hasWatch || !hasLiveReloading || Number(kwargs.lrport) === 0) {
                     return;
                 }
 
-                lrServer = livereload.createServer({
-                    port: kwargs.lrport
+                const lrport = Number(kwargs.lrport);
+                return startLiveReloadServer(lrport).then(() => {
+                    console.log("Live reload server started on port:", lrport);
+                    console.log("Press CTRL+C to quit ...");
+                    console.log("");
                 });
-
-                console.log("Live reload server started on port:", kwargs.lrport);
-                console.log("Press CTRL+C to quit ...");
-                console.log("");
-                return Promise();
             })
             .then(() => {
                 return startServer(args, kwargs);
