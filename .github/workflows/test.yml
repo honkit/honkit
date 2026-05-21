@@ -39,6 +39,23 @@ jobs:
         run: pnpm run build
         working-directory: examples/benchmark
 
+  trace-install-deprecations:
+    name: "Trace install deprecations"
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+      - name: setup Node.js
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
+        with:
+          cache: 'pnpm'
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Trace deprecation warnings during install
+        run: NODE_OPTIONS=--trace-deprecation pnpm install --frozen-lockfile
+
   docker-image:
     name: "Build docker image and generate pdf"
     runs-on: ubuntu-latest

@@ -184,8 +184,10 @@ function ensureFolder(rootFolder) {
 
 function copyFile(src, dest) {
     const d = Promise.defer();
+    const destDir = path.dirname(dest);
     fs.promises
-        .copyFile(src, dest)
+        .mkdir(destDir, { recursive: true })
+        .then(() => fs.promises.copyFile(src, dest))
         .then(() => d.resolve())
         .catch((err) => d.reject(err));
     return d.promise;
