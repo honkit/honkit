@@ -44,11 +44,12 @@ function waitForCtrlC() {
 function startServer(args, kwargs) {
     const outputFolder = getOutputFolder(args);
     const port = kwargs.port;
+    const lrport = Number(kwargs.lrport);
     const browser = kwargs["browser"];
     const book = getBook(args, kwargs);
     const hasWatch = kwargs["watch"];
     const hasOpen = kwargs["open"];
-    const hasLiveReloading = kwargs["live"];
+    const hasLiveReloading = kwargs["live"] && lrport !== 0;
     const reload = kwargs["reload"];
     const Generator = Output.getGenerator(kwargs.format);
     const logger = book.getLogger();
@@ -200,16 +201,16 @@ export default {
     ],
     exec: function (args, kwargs) {
         server = new Server();
+        const lrport = Number(kwargs.lrport);
         const hasWatch = kwargs["watch"];
-        const hasLiveReloading = kwargs["live"];
+        const hasLiveReloading = kwargs["live"] && lrport !== 0;
 
         return Promise()
             .then(() => {
-                if (!hasWatch || !hasLiveReloading || Number(kwargs.lrport) === 0) {
+                if (!hasWatch || !hasLiveReloading) {
                     return;
                 }
 
-                const lrport = Number(kwargs.lrport);
                 return startLiveReloadServer(lrport).then(() => {
                     console.log("Live reload server started on port:", lrport);
                     console.log("Press CTRL+C to quit ...");
