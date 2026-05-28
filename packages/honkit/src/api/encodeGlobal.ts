@@ -106,7 +106,7 @@ function encodeGlobal(output) {
         renderBlock: function (type: string, text: string, options: ParserOptions) {
             const parser = parsers.get(type);
 
-            return parser.parsePage(text, options).get("content");
+            return parser.parsePage(text, options).then((result) => result.content);
         },
 
         /**
@@ -120,7 +120,7 @@ function encodeGlobal(output) {
         renderInline: function (type: string, text: string, options: ParserOptions) {
             const parser = parsers.get(type);
 
-            return parser.parseInline(text, options).get("content");
+            return parser.parseInline(text, options).then((result) => result.content);
         },
 
         template: {
