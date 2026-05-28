@@ -84,7 +84,7 @@
     "semver": "^7.6.3",
     "send": "^0.19.2",
     "tiny-lr": "^1.1.1",
-    "tmp": "0.2.4"
+    "tmp": "0.2.6"
   },
   "devDependencies": {
     "@honkit/internal-test-utils": "workspace:*",
