@@ -1,0 +1,27 @@
+$ pnpm install
+Scope: all 16 workspace projects
+(node:67416) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 125, reused 124, downloaded 0, added 0
+Progress: resolved 415, reused 389, downloaded 0, added 0
+Progress: resolved 739, reused 714, downloaded 0, added 0
+ WARN  1 deprecated subdependencies found: whatwg-encoding@3.1.1
+Packages: +816
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 841, reused 816, downloaded 0, added 39
+Progress: resolved 841, reused 816, downloaded 0, added 489
+Progress: resolved 841, reused 816, downloaded 0, added 815
+Progress: resolved 841, reused 816, downloaded 0, added 816, done
+. prepare$ git config --local core.hooksPath .githooks
+. prepare: Done
+
+devDependencies:
++ @honkit/cleaning-tools 6.2.1 <- packages/@honkit/cleaning-tools
++ eslint 9.39.4 (10.4.0 is available)
++ honkit 6.2.1 <- packages/honkit
++ lint-staged 16.4.0 (17.0.5 is available)
++ prettier 3.8.3
++ typescript 5.9.3 (6.0.3 is available)
+
+Done in 7.2s

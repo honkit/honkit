@@ -39,8 +39,8 @@
     "build:css:pdf": "lessc -clean-css src/less/pdf.less _assets/ebook/pdf.css",
     "build:css:website": "lessc -clean-css src/less/website.less _assets/website/style.css",
     "build:js": "npm-run-all -p build:js:*",
-    "build:js:gitbook": "browserify src/js/core/index.js | uglifyjs -mc > _assets/website/gitbook.js",
-    "build:js:theme": "browserify src/js/theme/index.js | uglifyjs -mc > _assets/website/theme.js",
+    "build:js:gitbook": "esbuild src/js/core/index.js --bundle --minify --platform=browser --alias:path=path-browserify --alias:url=url/ --outfile=_assets/website/gitbook.js",
+    "build:js:theme": "esbuild src/js/theme/index.js --bundle --minify --platform=browser --outfile=_assets/website/theme.js",
     "clean": "rimraf _assets && mkdirp _assets/ebook/ _assets/website/ _assets/website/fonts _assets/website/images",
     "cp": "npm-run-all -p cp:*",
     "cp:favicon": "cpy --flat logo/favicon.ico _assets/website/images/",
@@ -51,19 +51,20 @@
   },
   "devDependencies": {
     "@honkit/cleaning-tools": "workspace:*",
-    "browserify": "^17.0.0",
     "cpy-cli": "^4.2.0",
+    "esbuild": "^0.27.4",
     "eslint": "^9.39.4",
     "font-awesome": "^4.6.3",
     "gitbook-markdown-css": "^1.0.1",
     "jquery": "^3.5.1",
-    "less": "^2.7.1",
+    "less": "^4.2.0",
     "less-plugin-clean-css": "^1.6.0",
     "mkdirp": "^1.0.4",
     "mousetrap": "^1.6.0",
     "npm-run-all": "^4.1.5",
+    "path-browserify": "^1.0.1",
     "rimraf": "^6.0.1",
-    "uglify-js": "^3.17.0"
+    "url": "^0.11.4"
   },
   "engines": {
     "gitbook": ">=3.0.0"

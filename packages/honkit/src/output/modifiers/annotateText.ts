@@ -1,5 +1,5 @@
 import escape from "escape-html";
-import * as cheerio from "cheerio";
+import type { HtmlDom } from "@honkit/html";
 
 // Selector to ignore
 const ANNOTATION_IGNORE = ".no-glossary,code,pre,a,script,h1,h2,h3,h4,h5,h6";
@@ -8,7 +8,7 @@ function pregQuote(str) {
     return `${str}`.replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
 }
 
-function replaceText($: cheerio.CheerioAPI, el, search, replace, text_only) {
+function replaceText($: HtmlDom, el, search, replace, text_only) {
     return $(el).each(function () {
         let node = this.firstChild;
         let val;

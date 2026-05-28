@@ -1,4 +1,4 @@
-import tinylr from "tiny-lr";
+import livereload from "livereload";
 import open from "open";
 import Immutable from "immutable";
 import Parse from "../parse";
@@ -17,13 +17,17 @@ import fs from "fs";
 
 let server, lrServer, lrPath;
 
+function startLiveReloadServer(port: number) {
+    const d = Promise.defer();
+    lrServer = livereload.createServer({ port, noListen: true });
+    lrServer.once("error", (err: Error) => d.reject(err));
+    lrServer.listen(() => d.resolve());
+    return d.promise;
+}
+
 function triggerLiveReload() {
-    if (lrPath) {
-        lrServer.changed({
-            body: {
-                files: [lrPath]
-            }
-        });
+    if (lrPath && lrServer) {
+        lrServer.refresh(lrPath);
     }
 }
 
@@ -40,11 +44,12 @@ function waitForCtrlC() {
 function startServer(args, kwargs) {
     const outputFolder = getOutputFolder(args);
     const port = kwargs.port;
+    const lrport = Number(kwargs.lrport);
     const browser = kwargs["browser"];
     const book = getBook(args, kwargs);
     const hasWatch = kwargs["watch"];
     const hasOpen = kwargs["open"];
-    const hasLiveReloading = kwargs["live"];
+    const hasLiveReloading = kwargs["live"] && lrport !== 0;
     const reload = kwargs["reload"];
     const Generator = Output.getGenerator(kwargs.format);
     const logger = book.getLogger();
@@ -196,8 +201,9 @@ export default {
     ],
     exec: function (args, kwargs) {
         server = new Server();
+        const lrport = Number(kwargs.lrport);
         const hasWatch = kwargs["watch"];
-        const hasLiveReloading = kwargs["live"];
+        const hasLiveReloading = kwargs["live"] && lrport !== 0;
 
         return Promise()
             .then(() => {
@@ -205,10 +211,8 @@ export default {
                     return;
                 }
 
-                lrServer = tinylr({});
-
-                return Promise.nfcall(lrServer.listen.bind(lrServer), kwargs.lrport).then(() => {
-                    console.log("Live reload server started on port:", kwargs.lrport);
+                return startLiveReloadServer(lrport).then(() => {
+                    console.log("Live reload server started on port:", lrport);
                     console.log("Press CTRL+C to quit ...");
                     console.log("");
                 });

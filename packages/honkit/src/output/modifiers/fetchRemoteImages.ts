@@ -3,13 +3,13 @@ import crc from "crc";
 import editHTMLElement from "./editHTMLElement";
 import fs from "../../utils/fs";
 import LocationUtils from "../../utils/location";
-import type cheerio from "cheerio";
+import type { HtmlDom } from "@honkit/html";
 
 /**
  Fetch all remote images
  */
 
-function fetchRemoteImages(rootFolder: string, currentFile: string, $: cheerio.CheerioAPI): Promise<any> {
+function fetchRemoteImages(rootFolder: string, currentFile: string, $: HtmlDom): Promise<any> {
     const currentDirectory = path.dirname(currentFile);
 
     return editHTMLElement($, "img", ($img) => {

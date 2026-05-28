@@ -1,4 +1,4 @@
-import * as cheerio from "cheerio";
+import { loadHtml } from "@honkit/html";
 import Promise from "../../utils/promise";
 
 /**
@@ -11,8 +11,7 @@ import Promise from "../../utils/promise";
  */
 function modifyHTML(page, operations) {
     const html = page.getContent();
-    // @ts-expect-error
-    const $ = cheerio.load(html, { _useHtmlParser2: true });
+    const $ = loadHtml(html);
 
     return Promise.forEach(operations, (op) => {
         return op($);
