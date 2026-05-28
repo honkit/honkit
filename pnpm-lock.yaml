@@ -486,8 +486,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
       tmp:
-        specifier: 0.2.4
-        version: 0.2.4
+        specifier: 0.2.6
+        version: 0.2.6
     devDependencies:
       '@honkit/internal-test-utils':
         specifier: workspace:*
@@ -4217,8 +4217,8 @@ packages:
   tiny-lr@1.1.1:
     resolution: {integrity: sha512-44yhA3tsaRoMOjQQ+5v5mVdqef+kH6Qze9jTpqtVufgYjYt08zyZAwNwwVBj3i1rJMnR52IxOW0LK0vBzgAkuA==}
 
-  tmp@0.2.4:
-    resolution: {integrity: sha512-UdiSoX6ypifLmrfQ/XfiawN6hkjSBpCjhKxxZcWlUUmoXLaCKQU0bx4HF/tdDK2uzRuchf1txGvrWBzYREssoQ==}
+  tmp@0.2.6:
+    resolution: {integrity: sha512-5sJPdPjfI5Kx+qbrDesxkglRBxW//g7hCsqspEjwkewGvBMGIKMOTKzLt1hFVJzyadba3lDUN20O9qhvbQUSTA==}
     engines: {node: '>=14.14'}
 
   tmpl@1.0.5:
@@ -9041,7 +9041,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  tmp@0.2.4: {}
+  tmp@0.2.6: {}
 
   tmpl@1.0.5: {}
 
