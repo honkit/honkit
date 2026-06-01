@@ -26,10 +26,12 @@ function resolveLinks(currentFile, resolveFile, $) {
             return;
         }
 
-        // Split anchor
+        // Split query string and anchor
+        const queryIndex = href.indexOf("?");
         const hashIndex = href.indexOf("#");
+        const splitIndex = queryIndex >= 0 && (hashIndex < 0 || queryIndex < hashIndex) ? queryIndex : hashIndex;
         const hash = hashIndex >= 0 ? href.slice(hashIndex) : "";
-        href = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
+        href = splitIndex >= 0 ? href.slice(0, splitIndex) : href;
 
         if (href) {
             // Calcul absolute path for this

@@ -59,6 +59,28 @@ describe("resolveLinks", () => {
         });
     });
 
+    describe("Query string", () => {
+        test("should strip query string before resolution", () => {
+            const TEST = "<p>This is a <a href=\"test/cool.md?q=1\"></a></p>";
+            const $ = loadHtml(TEST);
+
+            return resolveLinks("hello.md", resolveFileCustom, $).then(() => {
+                const link = $("a");
+                expect(link.attr("href")).toBe("test/cool.html");
+            });
+        });
+
+        test("should strip query string and preserve anchor", () => {
+            const TEST = "<p>This is a <a href=\"test/cool.md?q=1#an-anchor\"></a></p>";
+            const $ = loadHtml(TEST);
+
+            return resolveLinks("hello.md", resolveFileCustom, $).then(() => {
+                const link = $("a");
+                expect(link.attr("href")).toBe("test/cool.html#an-anchor");
+            });
+        });
+    });
+
     describe("Custom Resolver", () => {
         const TEST = "<p>This is a <a href=\"/test/cool.md\"></a> <a href=\"afile.png\"></a></p>";
 
