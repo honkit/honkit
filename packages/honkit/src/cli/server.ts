@@ -1,7 +1,6 @@
 import events from "events";
 import http from "http";
 import send from "send";
-import url from "url";
 import Promise from "../utils/promise";
 
 class Server extends events.EventEmitter {
@@ -89,7 +88,7 @@ class Server extends events.EventEmitter {
                 res.setHeader("X-Current-Location", req.url);
 
                 // Send file
-                send(req, url.parse(req.url).pathname, {
+                send(req, new URL(req.url, "http://localhost").pathname, {
                     root: dir
                 })
                     .on("error", error)
@@ -126,7 +125,9 @@ class Server extends events.EventEmitter {
  @return {string}
  */
 function urlTransform(uri, fn) {
-    return url.format(fn(url.parse(uri)));
+    const parsed = new URL(uri, "http://localhost");
+    const result = fn(parsed);
+    return result.pathname + result.search + result.hash;
 }
 
 export default Server;
