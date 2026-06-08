@@ -75,10 +75,7 @@ class Server extends events.EventEmitter {
 
                 // Redirect to directory's index.html
                 function redirect() {
-                    const resultURL = urlTransform(req.url, (parsed) => {
-                        parsed.pathname += "/";
-                        return parsed;
-                    });
+                    const resultURL = addSlashToPathname(req.url);
 
                     res.statusCode = 301;
                     res.setHeader("Location", resultURL);
@@ -117,17 +114,15 @@ class Server extends events.EventEmitter {
 }
 
 /**
- urlTransform is a helper function that allows a function to transform
- a url string in it's parsed form and returns the new url as a string
-
- @param {string} uri
- @param {Function} fn
- @return {string}
+ * Appends a trailing slash to the pathname of a path-only URI string.
+ *
+ * @param uri - Path-only string without a trailing slash (e.g. "/foo?q=1"), not a full URL.
+ * @returns The same path with a trailing slash appended to the pathname.
  */
-function urlTransform(uri, fn) {
+export function addSlashToPathname(uri: string): string {
     const parsed = new URL(uri, "http://localhost");
-    const result = fn(parsed);
-    return result.pathname + result.search + result.hash;
+    parsed.pathname += "/";
+    return parsed.pathname + parsed.search + parsed.hash;
 }
 
 export default Server;
