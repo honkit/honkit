@@ -1,16 +1,16 @@
 import { loadHtml } from '@honkit/html';
-import tmp from "tmp";
 import path from "path";
 import fs from "fs";
+import { createTmpDirWithRealPath } from "../../../fs/tmpdir";
 
 import inlineSvg from "../inlineSvg";
 
 describe("inlineSvg", () => {
-    let dir;
+    let dir: string;
     let svgPath;
     beforeEach(() => {
-        dir = tmp.dirSync();
-        svgPath = path.join(dir.name, "test.svg");
+        dir = createTmpDirWithRealPath("honkit-inline-svg-test-");
+        svgPath = path.join(dir, "test.svg");
     });
 
     test("should inline svg icons", () => {
@@ -20,7 +20,7 @@ describe("inlineSvg", () => {
         return fs.promises
             .writeFile(svgPath, svg)
             .then(() => {
-                return inlineSvg(dir.name, "index.html", $);
+                return inlineSvg(dir, "index.html", $);
             })
             .then(() => {
                 expect($("svg").attr("fill")).toBe("currentColor");
@@ -34,7 +34,7 @@ describe("inlineSvg", () => {
         return fs.promises
             .writeFile(svgPath, svg)
             .then(() => {
-                return inlineSvg(dir.name, "index.html", $);
+                return inlineSvg(dir, "index.html", $);
             })
             .then(() => {
                 expect($("svg").length).toBe(0);

@@ -1,17 +1,17 @@
-import tmp from "tmp";
+import { createTmpDirWithRealPath } from "../fs/tmpdir";
 import initBook from "../init";
 
 describe("initBook", () => {
-    let dir;
+    let dir: string;
 
     beforeEach(() => {
-        dir = tmp.dirSync();
+        dir = createTmpDirWithRealPath("honkit-init-test-");
     });
 
     test("should create a README and SUMMARY for empty book", () => {
-        return initBook(dir.name).then(() => {
-            expect(dir.name).toHaveFile("README.md");
-            expect(dir.name).toHaveFile("SUMMARY.md");
+        return initBook(dir).then(() => {
+            expect(dir).toHaveFile("README.md");
+            expect(dir).toHaveFile("SUMMARY.md");
         });
     });
 });

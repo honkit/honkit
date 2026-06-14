@@ -1,13 +1,21 @@
 import fs from "fs";
 import mkdirp from "mkdirp";
 import destroy from "destroy";
-import tmp from "tmp";
 import path from "path";
+import os from "os";
+import crypto from "crypto";
 import cp from "cp";
 import cpr from "cpr";
 import Promise from "./promise";
 import http from "http";
 import https from "https";
+
+type TmpOptions = {
+    dir?: string;
+    prefix?: string;
+    postfix?: string;
+    mode?: number;
+};
 
 // Write a stream to a file
 function writeStream(filename, st) {
@@ -54,8 +62,38 @@ function fileExists(filename) {
 }
 
 // Generate temporary file
-function genTmpFile(opts) {
-    return Promise.nfcall(tmp.file, opts).get(0);
+function genTmpFile(opts: TmpOptions = {}) {
+    const tmpDir = opts.dir || os.tmpdir();
+    const prefix = opts.prefix || "tmp-";
+    const postfix = opts.postfix || "";
+    const mode = opts.mode || 0o600;
+
+    return Promise(
+        (async () => {
+            for (let i = 0; i < 10; i++) {
+                const name = `${prefix}${process.pid}-${Date.now()}-${crypto.randomBytes(6).toString("hex")}${postfix}`;
+                const filePath = path.join(tmpDir, name);
+                let handle: fs.promises.FileHandle | undefined;
+
+                try {
+                    handle = await fs.promises.open(
+                        filePath,
+                        fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_RDWR,
+                        mode
+                    );
+                    return filePath;
+                } catch (error) {
+                    if ((error as NodeJS.ErrnoException).code !== "EEXIST") {
+                        throw error;
+                    }
+                } finally {
+                    await handle?.close();
+                }
+            }
+
+            throw new Error("Could not create a unique temporary file");
+        })()
+    );
 }
 
 /**
@@ -63,8 +101,10 @@ function genTmpFile(opts) {
  * @deprecated use tmpdir.ts
  * @param opts
  */
-function genTmpDir(opts) {
-    return Promise.nfcall(tmp.dir, opts).get(0);
+function genTmpDir(opts: TmpOptions = {}) {
+    const tmpDir = opts.dir || os.tmpdir();
+    const prefix = opts.prefix || "tmp-";
+    return Promise(fs.promises.mkdtemp(path.join(tmpDir, prefix)));
 }
 
 // https://stackoverflow.com/questions/11944932/how-to-download-a-file-with-node-js-without-using-third-party-libraries

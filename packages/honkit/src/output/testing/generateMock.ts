@@ -1,6 +1,6 @@
 import createMockFS from "../../fs/mock";
 
-import tmp from "tmp";
+import { createTmpDirWithRealPath } from "../../fs/tmpdir";
 import Book from "../../models/book";
 import parseBook from "../../parse/parseBook";
 import { generateBook } from "../generateBook";
@@ -19,21 +19,21 @@ export function generateMockBook(Generator, files) {
     const fs = createMockFS(files);
 
     let book = Book.createForFS(fs);
-    const dir = tmp.dirSync();
+    const dir = createTmpDirWithRealPath("honkit-generate-test-");
 
     book = book.setLogLevel("disabled");
 
     return parseBook(book)
         .then((resultBook) => {
             return generateBook(Generator, resultBook, {
-                root: dir.name
+                root: dir
             });
         })
         .then((output) => {
             return {
                 book,
                 output,
-                dir: dir.name
+                dir
             };
         });
 }

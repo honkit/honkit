@@ -24,7 +24,6 @@ Git.prototype.allocateDir = function () {
 
     if (this.tmpDir) return Promise();
 
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 0.
     return fs.tmpDir().then((dir) => {
         that.tmpDir = dir;
     });

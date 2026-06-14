@@ -1,6 +1,6 @@
 import { loadHtml } from '@honkit/html';
-import tmp from "tmp";
 import path from "path";
+import { createTmpDirWithRealPath } from "../../../fs/tmpdir";
 import fetchRemoteImages from "../fetchRemoteImages";
 import fs from "fs/promises";
 import assert from "assert";
@@ -12,24 +12,24 @@ const URL =
 // download image from remote server is flaky
 jest.retryTimes(3);
 describe("fetchRemoteImages", () => {
-    let dir;
+    let dir: string;
     beforeEach(() => {
-        dir = tmp.dirSync();
-        return fs.rm(dir.name, { recursive: true, force: true });
+        dir = createTmpDirWithRealPath("honkit-fetch-remote-images-test-");
+        return fs.rm(dir, { recursive: true, force: true });
     });
     afterEach(() => {
-        // remove tmp `dir`
-        return fs.rm(dir.name, { recursive: true, force: true });
+        // remove temporary directory
+        return fs.rm(dir, { recursive: true, force: true });
     });
 
     it("should download image file", async () => {
         const $ = loadHtml(`<img src="${URL}" />`);
 
-        await fetchRemoteImages(dir.name, "index.html", $);
+        await fetchRemoteImages(dir, "index.html", $);
         const $img = $("img");
         const src = $img.attr("src");
 
-        const expected = path.join(dir.name, src);
+        const expected = path.join(dir, src);
         await assert.doesNotReject(() => {
             return fs.access(expected, constants.F_OK);
         });
@@ -38,11 +38,11 @@ describe("fetchRemoteImages", () => {
     it("should download image file and replace with relative path", async () => {
         const $ = loadHtml(`<img src="${URL}" />`);
 
-        await fetchRemoteImages(dir.name, "test/index.html", $);
+        await fetchRemoteImages(dir, "test/index.html", $);
         const $img = $("img");
         const src = $img.attr("src");
 
-        const expected = path.join(dir.name, "test/" + src);
+        const expected = path.join(dir, "test/" + src);
         await assert.doesNotReject(() => {
             return fs.access(expected, constants.F_OK);
         });
