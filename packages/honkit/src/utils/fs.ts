@@ -54,13 +54,22 @@ function fileExists(filename) {
     return d.promise;
 }
 
+function getTmpDir() {
+    try {
+        return fs.realpathSync.native(os.tmpdir());
+    } catch {
+        return os.tmpdir();
+    }
+}
+
 // Generate temporary file
 function genTmpFile() {
     return Promise(
         (async () => {
+            const tmpDir = getTmpDir();
             for (let i = 0; i < 10; i++) {
                 const name = `honkit-${process.pid}-${Date.now()}-${crypto.randomBytes(6).toString("hex")}`;
-                const filePath = path.join(os.tmpdir(), name);
+                const filePath = path.join(tmpDir, name);
                 let handle: fs.promises.FileHandle | undefined;
 
                 try {
@@ -89,7 +98,7 @@ function genTmpFile() {
  * @deprecated use tmpdir.ts
  */
 function genTmpDir() {
-    return Promise(fs.promises.mkdtemp(path.join(os.tmpdir(), "honkit-")));
+    return Promise(fs.promises.mkdtemp(path.join(getTmpDir(), "honkit-")));
 }
 
 // https://stackoverflow.com/questions/11944932/how-to-download-a-file-with-node-js-without-using-third-party-libraries

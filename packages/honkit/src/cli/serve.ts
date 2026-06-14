@@ -62,78 +62,72 @@ function startServer(args, kwargs) {
             lastOutput = output;
             return output;
         })
-    ]).then(() => {
-        if (!hasWatch) {
+    ])
+        .then(() => {
             console.log(`Serving book on http://localhost:${port}`);
             if (hasOpen) {
                 open(`http://localhost:${port}`, { app: browser });
             }
-            return waitForCtrlC();
-        }
-        // update book immutably. does not use book again
-        // Pass outputFolder to watch to prevent infinite rebuild loops
-        // https://github.com/honkit/honkit/issues/491
-        const watcher = watch({
-            watchDir: book.getRoot(),
-            outputFolder,
-            callback: (error, filepath, eventType) => {
-                if (error) {
-                    console.error(error);
-                    return;
-                }
-                // If the file does not exist in file system, show a warning and skip
-                // Probably, the file has been deleted
-                if (!fs.existsSync(filepath)) {
-                    logger.warn.ok(`${filepath} does not exist in file system.`);
-                    return;
-                }
-                // set livereload path
-                lrPath = filepath;
+        })
+        .then(() => {
+            if (!hasWatch) {
+                return waitForCtrlC();
+            }
+            // update book immutably. does not use book again
+            // Pass outputFolder to watch to prevent infinite rebuild loops
+            // https://github.com/honkit/honkit/issues/491
+            watch({
+                watchDir: book.getRoot(),
+                outputFolder,
+                callback: (error, filepath, eventType) => {
+                    if (error) {
+                        console.error(error);
+                        return;
+                    }
+                    // If the file does not exist in file system, show a warning and skip
+                    // Probably, the file has been deleted
+                    if (!fs.existsSync(filepath)) {
+                        logger.warn.ok(`${filepath} does not exist in file system.`);
+                        return;
+                    }
+                    // set livereload path
+                    lrPath = filepath;
 
-                // Full rebuild is required for:
-                // 1. Structure files (SUMMARY.md, GLOSSARY.md, book.json, book.js)
-                // 2. New file additions (to update asset list and page structure)
-                const needsFullRebuild = shouldFullRebuild(filepath, eventType);
+                    // Full rebuild is required for:
+                    // 1. Structure files (SUMMARY.md, GLOSSARY.md, book.json, book.js)
+                    // 2. New file additions (to update asset list and page structure)
+                    const needsFullRebuild = shouldFullRebuild(filepath, eventType);
 
-                // Incremental update for existing pages (only for .md files that don't require full rebuild)
-                if (lastOutput && filepath.endsWith(".md") && !needsFullRebuild) {
-                    logger.warn.ok("Rebuild " + filepath);
-                    const changedOutput = lastOutput.reloadPage(lastOutput.book.getContentRoot(), filepath).merge({
-                        incrementalChangeFileSet: Immutable.Set([filepath])
-                    });
-                    return incrementalBuild({
-                        output: changedOutput,
-                        Generator
-                    }).then(() => {
+                    // Incremental update for existing pages (only for .md files that don't require full rebuild)
+                    if (lastOutput && filepath.endsWith(".md") && !needsFullRebuild) {
+                        logger.warn.ok("Rebuild " + filepath);
+                        const changedOutput = lastOutput.reloadPage(lastOutput.book.getContentRoot(), filepath).merge({
+                            incrementalChangeFileSet: Immutable.Set([filepath])
+                        });
+                        return incrementalBuild({
+                            output: changedOutput,
+                            Generator
+                        }).then(() => {
+                            if (hasLiveReloading) triggerLiveReload();
+                        });
+                    }
+
+                    // Full rebuild for structure changes, new files, or non-markdown files
+                    const reason = needsFullRebuild ? " (full rebuild)" : "";
+                    logger.info.ok("Rebuild " + filepath + reason);
+                    return generateBook({
+                        book,
+                        outputFolder,
+                        hasLiveReloading,
+                        Generator,
+                        reload
+                    }).then((output) => {
+                        lastOutput = output;
                         if (hasLiveReloading) triggerLiveReload();
                     });
                 }
-
-                // Full rebuild for structure changes, new files, or non-markdown files
-                const reason = needsFullRebuild ? " (full rebuild)" : "";
-                logger.info.ok("Rebuild " + filepath + reason);
-                return generateBook({
-                    book,
-                    outputFolder,
-                    hasLiveReloading,
-                    Generator,
-                    reload
-                }).then((output) => {
-                    lastOutput = output;
-                    if (hasLiveReloading) triggerLiveReload();
-                });
-            }
+            });
         });
-        const d = Promise.defer();
-        watcher.on("ready", () => {
-            console.log(`Serving book on http://localhost:${port}`);
-            if (hasOpen) {
-                open(`http://localhost:${port}`, { app: browser });
-            }
-            d.resolve();
-        });
-        return d.promise;
-    });
 }
 
 function generateBook({ book, outputFolder, hasLiveReloading, Generator, reload }) {
