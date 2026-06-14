@@ -1,8 +1,8 @@
 import path from "path";
 import fs from "fs";
-import os from "os";
 import watch from "../watch";
 import type { FSWatcher } from "chokidar";
+import { createTmpDirWithRealPath } from "../../fs/tmpdir";
 
 /**
  * Normalize path separators to forward slashes for cross-platform comparison
@@ -19,7 +19,7 @@ describe("watch", () => {
     let watchers: FSWatcher[] = [];
 
     beforeEach(() => {
-        tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "honkit-watch-test-"));
+        tempDir = createTmpDirWithRealPath("honkit-watch-test-");
     });
 
     afterEach(async () => {

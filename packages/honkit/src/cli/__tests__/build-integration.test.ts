@@ -1,8 +1,8 @@
 import path from "path";
 import fs from "fs";
-import os from "os";
 import { run } from "../../bin";
 import { iterateDirectoryContents } from "@honkit/internal-test-utils";
+import { createTmpDirWithRealPath } from "../../fs/tmpdir";
 
 /**
  * Integration tests for honkit build output
@@ -22,7 +22,7 @@ describe("build integration", () => {
     let outputDir: string;
 
     beforeEach(() => {
-        tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "honkit-build-test-"));
+        tempDir = createTmpDirWithRealPath("honkit-build-test-");
         outputDir = path.join(tempDir, "_book");
     });
 

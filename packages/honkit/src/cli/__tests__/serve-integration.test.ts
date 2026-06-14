@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
-import os from "os";
 import { spawn, ChildProcess } from "child_process";
+import { createTmpDirWithRealPath } from "../../fs/tmpdir";
 
 /**
  * Integration tests for honkit serve rebuild behavior
@@ -21,7 +21,7 @@ describe("serve integration", () => {
     let serveProcess: ChildProcess | null = null;
 
     beforeEach(() => {
-        tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "honkit-serve-test-"));
+        tempDir = createTmpDirWithRealPath("honkit-serve-test-");
         outputDir = path.join(tempDir, "_book");
     });
 
