@@ -61,7 +61,8 @@ function watch(options: WatchOptions): FSWatcher {
     const watcher = chokidar.watch(toWatch, {
         cwd: dir,
         ignored: ignored,
-        ignoreInitial: true
+        ignoreInitial: true,
+        usePolling: process.platform === "win32"
     });
 
     watcher.on("all", (eventType: WatchEventType, filepath) => {

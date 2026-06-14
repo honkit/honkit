@@ -10,13 +10,6 @@ import Promise from "./promise";
 import http from "http";
 import https from "https";
 
-type TmpOptions = {
-    dir?: string;
-    prefix?: string;
-    postfix?: string;
-    mode?: number;
-};
-
 // Write a stream to a file
 function writeStream(filename, st) {
     const d = Promise.defer();
@@ -62,24 +55,19 @@ function fileExists(filename) {
 }
 
 // Generate temporary file
-function genTmpFile(opts: TmpOptions = {}) {
-    const tmpDir = opts.dir || os.tmpdir();
-    const prefix = opts.prefix || "tmp-";
-    const postfix = opts.postfix || "";
-    const mode = opts.mode || 0o600;
-
+function genTmpFile() {
     return Promise(
         (async () => {
             for (let i = 0; i < 10; i++) {
-                const name = `${prefix}${process.pid}-${Date.now()}-${crypto.randomBytes(6).toString("hex")}${postfix}`;
-                const filePath = path.join(tmpDir, name);
+                const name = `honkit-${process.pid}-${Date.now()}-${crypto.randomBytes(6).toString("hex")}`;
+                const filePath = path.join(os.tmpdir(), name);
                 let handle: fs.promises.FileHandle | undefined;
 
                 try {
                     handle = await fs.promises.open(
                         filePath,
                         fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_RDWR,
-                        mode
+                        0o600
                     );
                     return filePath;
                 } catch (error) {
@@ -99,12 +87,9 @@ function genTmpFile(opts: TmpOptions = {}) {
 /**
  * Generate temporary dir
  * @deprecated use tmpdir.ts
- * @param opts
  */
-function genTmpDir(opts: TmpOptions = {}) {
-    const tmpDir = opts.dir || os.tmpdir();
-    const prefix = opts.prefix || "tmp-";
-    return Promise(fs.promises.mkdtemp(path.join(tmpDir, prefix)));
+function genTmpDir() {
+    return Promise(fs.promises.mkdtemp(path.join(os.tmpdir(), "honkit-")));
 }
 
 // https://stackoverflow.com/questions/11944932/how-to-download-a-file-with-node-js-without-using-third-party-libraries
