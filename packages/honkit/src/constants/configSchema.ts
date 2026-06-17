@@ -107,6 +107,11 @@ export default {
             },
             additionalProperties: false
         },
+        prettyUrls: {
+            type: "boolean",
+            default: false,
+            title: "Generate clean URLs (page/ instead of page.html)"
+        },
         pdf: {
             type: "object",
             title: "PDF specific configurations",
