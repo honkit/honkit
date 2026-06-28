@@ -169,7 +169,7 @@ GitBook is licensed under the Apache License, Version 2.0.
 
 Also, HonKit includes [bignerdranch/gitbook](https://github.com/bignerdranch/gitbook) works.
 
-## Sponsors
+## Thanks
 
 <a href="https://www.netlify.com">
 <img src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg" alt="Deploys by Netlify" />
