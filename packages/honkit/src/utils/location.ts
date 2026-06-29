@@ -1,19 +1,14 @@
-import url from "url";
 import path from "path";
 
 // Is the url an external url
 function isExternal(href) {
-    try {
-        return Boolean(url.parse(href).protocol) && !isDataURI(href);
-    } catch (err) {
-        return false;
-    }
+    return URL.canParse(href) && !isDataURI(href);
 }
 
 // Is the url an iniline data-uri
 function isDataURI(href) {
     try {
-        return Boolean(url.parse(href).protocol) && url.parse(href).protocol === "data:";
+        return new URL(href).protocol === "data:";
     } catch (err) {
         return false;
     }
@@ -26,12 +21,7 @@ function isRelative(href) {
 
 // Return true if the link is an achor
 function isAnchor(href) {
-    try {
-        const parsed = url.parse(href);
-        return !!(!parsed.protocol && !parsed.path && parsed.hash);
-    } catch (err) {
-        return false;
-    }
+    return /^\s*#/.test(href);
 }
 
 // Normalize a path to be a link
