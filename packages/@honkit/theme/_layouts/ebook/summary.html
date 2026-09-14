@@ -6,6 +6,10 @@
     {% for article in _articles %}
         <li>
             <span class="inner">
+                {% if pdfToc and pdfToc[article.level] %}
+                    {% set slot = pdfToc[article.level] %}
+                    <span class="page pdf-toc-number">{{ slot.pageNumber or "&#160;" }}{% if slot.probeURL %}<a class="pdf-toc-probe" href="{{ slot.probeURL }}">.</a><a class="pdf-toc-probe" href="{{ article.path|contentURL }}{{ article.anchor }}">.</a>{% endif %}</span>
+                {% endif %}
                 {% if article.path or article.url %}
                     {% if article.path %}
                         <a href="{{ article.path|contentURL }}{{ article.anchor }}">{{ article.title }}</a>
@@ -15,7 +19,7 @@
                 {% else %}
                     <span>{{ article.title }}</span>
                 {% endif %}
-                {% if 1 %}
+                {% if not pdfToc %}
                 <span class="page">{{ article.level }}</span>
                 {% endif %}
             </span>

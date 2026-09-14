@@ -53,6 +53,7 @@ PDF Output can be customized using a set of options in the `book.json`:
 | Variable | Description |
 | -------- | ----------- |
 | `pdf.pageNumbers` | Add page numbers to the bottom of every page (default is `true`) |
+| `pdf.tocPageNumbers` | Show physical target page numbers in the front PDF table of contents, including cover/TOC pages in the count (default is `false`; requires multiple Calibre passes, see [eBook documentation](ebook.md#page-numbers-in-the-pdf-table-of-contents)) |
 | `pdf.fontSize` | Base font size (default is `12`) |
 | `pdf.fontFamily` | Base font family (default is `Arial`) |
 | `pdf.paperSize` | Paper size, options are `'a0', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'legal', 'letter'` (default is `a4`) |
