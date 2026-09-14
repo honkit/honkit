@@ -58,3 +58,38 @@
         }
     }
 }
+
+// Opt-in PDF TOC: numbers and probes must never change the space available
+// to a title between pagination passes (including the clean final pass).
+.section.toc li .inner {
+    .pdf-toc-number {
+        position: relative;
+        display: block;
+        box-sizing: content-box;
+        width: 6em; // Fallback for renderers without ch units
+        width: 6ch;
+        height: 1.6em;
+        line-height: 1.6em;
+        font-family: monospace;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    // Identical overlapping annotation rectangles pair an ID with a target.
+    // Absolute positioning makes removal layout-neutral. These anchors are
+    // emitted only in temporary PDFs, never in the published PDF.
+    .pdf-toc-probe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font: 1px/1px serif;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        text-decoration: none;
+    }
+}
+
+.dir-rtl .section.toc li .inner .pdf-toc-number {
+    text-align: left;
+}
