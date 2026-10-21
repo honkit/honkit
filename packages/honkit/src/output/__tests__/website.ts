@@ -11,6 +11,26 @@ describe("WebsiteGenerator", () => {
         expect(folder).toHaveFile("index.html");
     }, 60 * 1000);
 
+    longTest("should use structure.readme for index.html even if README.md exists", () => {
+        return generateMock(WebsiteGenerator, {
+            "book.json": "{ \"structure\": { \"readme\": \"README.other.md\" } }",
+            "SUMMARY.md": "# Summary\n\n* [Default README](README.md)",
+            "README.md": "default readme content",
+            "README.other.md": "custom readme content"
+        }).then((folder) => {
+            expect(folder).toHaveFile("index.html");
+            expect(folder).toHaveFile("README.html");
+
+            const index = fs.readFileSync(`${folder}/index.html`, "utf8");
+            expect(index).toContain("custom readme content");
+            expect(index).not.toContain("default readme content");
+            expect(index).toHaveDOMElement(".book-summary a[href=\"README.html\"]");
+
+            const readme = fs.readFileSync(`${folder}/README.html`, "utf8");
+            expect(readme).toContain("default readme content");
+        });
+    });
+
     describe("Glossary", () => {
         let folder;
 

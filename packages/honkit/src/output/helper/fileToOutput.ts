@@ -16,11 +16,14 @@ function fileToOutput(output, filePath) {
     const book = output.getBook();
     const readme = book.getReadme();
     const fileReadme = readme.getFile();
+    const isBookReadme = fileReadme.exists() && filePath == fileReadme.getPath();
+    // Other README files become the index of their directory too,
+    // except where the book readme (structure.readme) already uses that index
+    const isDirectoryReadme =
+        path.basename(filePath, path.extname(filePath)) == "README" &&
+        !(fileReadme.exists() && path.dirname(filePath) == path.dirname(fileReadme.getPath()));
 
-    if (
-        path.basename(filePath, path.extname(filePath)) == "README" ||
-        (fileReadme.exists() && filePath == fileReadme.getPath())
-    ) {
+    if (isBookReadme || isDirectoryReadme) {
         filePath = path.join(path.dirname(filePath), `index${OUTPUT_EXTENSION}`);
     } else {
         filePath = PathUtils.setExtension(filePath, OUTPUT_EXTENSION);
