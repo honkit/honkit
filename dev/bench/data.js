@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781406860702,
+  "lastUpdate": 1792593630979,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12584,6 +12584,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.21,
             "range": "±0.63%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "b84330808@gmail.com",
+            "name": "Wei-Lun Li",
+            "username": "b84330808"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7071708bf652d3d9e4b48eb30e9b1bd2661d547d",
+          "message": "fix: use structure.readme as index.html when README.md also exists (#535)\n\nFixes #287\n\n## Summary\n\nWhen `structure.readme` points to a different file (e.g.\n`README.other.md`) and a `README.md` page also exists in the same\ndirectory (for example because SUMMARY.md still links to it, as the\n`honkit init` template does), both pages are written to `index.html`.\nWhich one ends up there depends on which page is written last, so the\nresult can change between builds, and both sidebar entries link to `./`.\n\nThe cause is `fileToOutput()`: it sends every file named `README.*` to\nits directory's `index.html`, in addition to the configured book readme.\n\n## Changes\n\n- `fileToOutput()` now treats a `README.*` file as its directory's index\nonly when the book readme doesn't already use that directory's\n`index.html`. Otherwise the page is written to `README.html` like any\nother page.\n- Default books are unaffected: `README.md` is the book readme, and\n`sub/README.md` still becomes `sub/index.html` (so the `fileToOutput`\ntests in #499 still hold).\n- Added a website generator test for this case.\n\n## Breaking Changes\n\nNone for default setups. In the setup above, `README.md` is now emitted\nas `README.html` (and links to it resolve there) instead of overwriting\nthe configured readme's `index.html`.\n\nThe JSON generator has a similar collision on `README.json`. I left it\nout of this PR because `json/onFinish.ts` relies on that file name.\n\n## Test Plan\n\n- The new test in `src/output/__tests__/website.ts` fails without the\nchange (no `README.html` is generated) and passes with it, along with\nthe rest of `npx jest src` in `packages/honkit`.\n- Built a small book with `README.md`, `README.other.md`, `book.json`\n(`\"structure\": { \"readme\": \"README.other.md\" }`) and `*\n[Introduction](README.md)` in SUMMARY.md. `index.html` now always has\nthe `README.other.md` content and `README.html` has the `README.md`\ncontent.\n\nI used Claude Code to write this change.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-10-21T23:38:43+09:00",
+          "tree_id": "2413a0ddca3f6cef8afb22da27ae2488c158af16",
+          "url": "https://github.com/honkit/honkit/commit/7071708bf652d3d9e4b48eb30e9b1bd2661d547d"
+        },
+        "date": 1792593629429,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.17,
+            "range": "±3.43%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
