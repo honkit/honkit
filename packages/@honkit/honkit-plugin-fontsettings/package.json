@@ -24,7 +24,7 @@
     "less": "^4.2.0"
   },
   "scripts": {
-    "build": "npm run build:css --scripts-prepend-node-path",
+    "build": "npm run build:css",
     "build:css": "lessc ./less/website.less ./assets/website.css",
     "prepublish": "npm run build",
     "lint": "eslint ."
