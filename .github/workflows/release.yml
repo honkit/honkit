@@ -63,13 +63,6 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
       
-      - name: Install latest npm
-        if: steps.tag-check.outputs.exists == 'false'
-        run: |
-          echo "Current npm version: $(npm -v)"
-          npm install -g npm@latest
-          echo "Updated npm version: $(npm -v)"
-      
       - name: Install dependencies
         if: steps.tag-check.outputs.exists == 'false'
         run: pnpm install --frozen-lockfile
