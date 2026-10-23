@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792753529589,
+  "lastUpdate": 1792756290493,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12739,6 +12739,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.19,
             "range": "±1.36%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "3d51246ec21f5793f0b49d316f65b6facf5feb56",
+          "message": "Release v6.2.5 (#541)\n\n<!-- Release notes generated using configuration in .github/release.yml\nat master -->\n\n## What's Changed\n### Other Changes\n* ci: wait for the published version before building the Docker image by\n@azu in https://github.com/honkit/honkit/pull/540\n\n\n**Full Changelog**:\nhttps://github.com/honkit/honkit/compare/v6.2.4...v6.2.5\n\nCo-authored-by: azu <19714+azu@users.noreply.github.com>",
+          "timestamp": "2026-10-23T20:50:01+09:00",
+          "tree_id": "d55de609b8e6d54a03fea530c29b341373dbb75f",
+          "url": "https://github.com/honkit/honkit/commit/3d51246ec21f5793f0b49d316f65b6facf5feb56"
+        },
+        "date": 1792756289661,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.2,
+            "range": "±0.47%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
