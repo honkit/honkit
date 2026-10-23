@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792593746694,
+  "lastUpdate": 1792752396838,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12646,6 +12646,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.19,
             "range": "±0.85%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b126021a27eb7983ee5326550ff29b78b7a3646a",
+          "message": "fix: remove --scripts-prepend-node-path flag for npm 12 (#537)\n\n## Summary\n\nThe v6.2.3 release run failed during `npm run build`:\nhttps://github.com/honkit/honkit/actions/runs/39618818997\n\nThe release workflow runs `npm install -g npm@latest`, which now\ninstalls npm 12. npm 12 throws on unknown CLI flags instead of warning\n([v12.0.0 release\nnotes](https://github.com/npm/cli/releases/tag/v12.0.0)), so\n`@honkit/honkit-plugin-highlight` failed:\n\n```\nnpm error code EUNKNOWNCONFIG\nnpm error Unknown cli flag:\nnpm error   - --scripts-prepend-node-path\n```\n\nThis PR:\n\n- Removes `--scripts-prepend-node-path` from the `build` scripts of\n`@honkit/honkit-plugin-highlight` and\n`@honkit/honkit-plugin-fontsettings`. npm already puts the running node\non `PATH` for scripts, so dropping the flag does not change the build\noutput. Contributors who use npm 12 locally would otherwise hit the same\nerror.\n- Removes the `Install latest npm` step from `release.yml`. It was there\nfor OIDC trusted publishing, but the npm bundled with Node.js 24\n(11.19.x) already meets the requirement of npm >= 11.5.1 and Node.js >=\n22.14.0 ([docs](https://docs.npmjs.com/trusted-publishers)). The release\nnow builds with the same npm as the test matrix.\n\nBecause the run stopped before publishing, 6.2.3 is not on npm and the\n`v6.2.3` tag does not exist. After this is merged, run \"Create Release\nPR\" again to release.\n\n## Test plan\n\n- [x] With npm 12.2.1, ran `npm run build` in\n`packages/@honkit/honkit-plugin-highlight` before the fix and got the\nsame `EUNKNOWNCONFIG` error as CI\n- [x] With npm 12.2.1, the root `npm run build` succeeds after the fix\n- [ ] Publishing with the bundled npm (OIDC + provenance) could not be\ntested locally; it will be checked on the next release run\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nhttps://claude.ai/code/session_01MAFLFcgpaxFnKTBcESUBhq\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2026-10-23T19:45:31+09:00",
+          "tree_id": "81c7aef96d5bc901be885b7d5071a507f516563d",
+          "url": "https://github.com/honkit/honkit/commit/b126021a27eb7983ee5326550ff29b78b7a3646a"
+        },
+        "date": 1792752395479,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.34,
+            "range": "±0.95%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
