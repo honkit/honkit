@@ -146,6 +146,19 @@ jobs:
             ${{ runner.os }}-buildx-
       - name: Set Honkit package version
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+      # A just-published version can take a while to be installable from the registry
+      - name: Wait for package to be available on npm
+        run: |
+          for i in $(seq 1 30); do
+            if [ "$(npm view "honkit@${PACKAGE_VERSION}" version --prefer-online 2>/dev/null)" = "${PACKAGE_VERSION}" ]; then
+              echo "honkit@${PACKAGE_VERSION} is available"
+              exit 0
+            fi
+            echo "Waiting for honkit@${PACKAGE_VERSION} to be available on npm ($i/30)"
+            sleep 10
+          done
+          echo "honkit@${PACKAGE_VERSION} is not available on npm after 5 minutes"
+          exit 1
       - name: Build image
         run: |
           docker buildx build \
