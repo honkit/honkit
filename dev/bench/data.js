@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792752396838,
+  "lastUpdate": 1792752885676,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12677,6 +12677,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.34,
             "range": "±0.95%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a82dc0bcb531c161351db9d7319238196659a032",
+          "message": "Release v6.2.4 (#539)\n\n<!-- Release notes generated using configuration in .github/release.yml\nat master -->\n\n## What's Changed\n### Bug Fixes\n* fix: use structure.readme as index.html when README.md also exists by\n@b84330808 in https://github.com/honkit/honkit/pull/535\n### CI\n* fix: remove --scripts-prepend-node-path flag for npm 12 by @azu in\nhttps://github.com/honkit/honkit/pull/537\n\n## New Contributors\n* @b84330808 made their first contribution in\nhttps://github.com/honkit/honkit/pull/535\n\n**Full Changelog**:\nhttps://github.com/honkit/honkit/compare/v6.2.2...v6.2.4\n\nCo-authored-by: azu <19714+azu@users.noreply.github.com>",
+          "timestamp": "2026-10-23T19:53:29+09:00",
+          "tree_id": "1a3748716d0a556e27ece401cdb763c36df903e6",
+          "url": "https://github.com/honkit/honkit/commit/a82dc0bcb531c161351db9d7319238196659a032"
+        },
+        "date": 1792752884310,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.25,
+            "range": "±1.77%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
