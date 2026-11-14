@@ -1,0 +1,52 @@
+{
+  "name": "@honkit/honkit-plugin-lunr",
+  "description": "Index book in a lunr index accessible from the search plugin",
+  "main": "index.js",
+  "version": "6.2.5",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/honkit/honkit",
+  "engines": {
+    "gitbook": ">=3.0.0-pre.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/honkit/honkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/honkit/honkit/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "index.js",
+    "assets"
+  ],
+  "dependencies": {
+    "html-entities": "1.2.0",
+    "lunr": "0.5.12"
+  },
+  "devDependencies": {
+    "@honkit/cleaning-tools": "workspace:*",
+    "eslint": "^9.39.4"
+  },
+  "scripts": {
+    "build": "node -e \"require('fs').copyFileSync(require.resolve('lunr/lunr.min.js'), 'assets/lunr.min.js')\"",
+    "prepublish": "npm run build",
+    "lint": "eslint ."
+  },
+  "gitbook": {
+    "properties": {
+      "maxIndexSize": {
+        "type": "number",
+        "title": "Limit size for the index",
+        "default": 1000000
+      },
+      "ignoreSpecialCharacters": {
+        "type": "boolean",
+        "title": "Ignore special characters in words",
+        "default": false
+      }
+    }
+  }
+}

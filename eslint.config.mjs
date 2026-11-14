@@ -18,7 +18,8 @@ export default [
             "__snapshots__",
             ".yarn",
             ".nx/",
-            "**/_assets/"
+            "**/_assets/",
+            "packages/@honkit/honkit-plugin-lunr/assets/lunr.min.js"
         ]
     },
     ...eslintConfig

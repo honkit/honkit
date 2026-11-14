@@ -10,3 +10,4 @@ packages/**/__tests__
 __fixtures__
 __snapshots__
 .yarn
+packages/@honkit/honkit-plugin-lunr/assets/lunr.min.js
