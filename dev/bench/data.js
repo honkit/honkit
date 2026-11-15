@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792756290493,
+  "lastUpdate": 1794707141451,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12770,6 +12770,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.2,
             "range": "±0.47%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "mokevnin@gmail.com",
+            "name": "Kirill Mokevnin",
+            "username": "mokevnin"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "530e35320e7cb0d4c26d7cb39e1d282a60303767",
+          "message": "fix: keep a separate search index for each language (#542)\n\n## Problem\n\nIn a multilingual book (`LANGS.md`), each language gets its own\n`search_index.json`, but each one holds the pages and words of every\nlanguage. A search on the English site matches French text, and results\ncan point to pages of another language.\n\nHonKit generates the language books concurrently in one process and\nreuses each plugin module for all of them. `gitbook-plugin-lunr` keeps\nits index, document store and size budget in module-level variables. All\nlanguages therefore write into one index. Page URLs are relative to the\nlanguage root (`./`, `chapter.html`), so store entries also overwrite\neach other between languages.\n\nReproduction with honkit 6.2.5 from npm:\n\n```\nbook/LANGS.md       * [English](en/)  * [Francais](fr/)\nbook/en/README.md   # Hello    englishonly\nbook/fr/README.md   # Bonjour  frenchonly\n```\n\n```\n$ npx honkit build book \"$PWD/out\"\nen/search_index.json  store: [\"Bonjour\\nfrenchonly\"]  index has: englishonly, frenchonly\nfr/search_index.json  store: [\"Bonjour\\nfrenchonly\"]  index has: englishonly, frenchonly\n```\n\nThe size budget (`maxIndexSize`) is shared too, so a large first\nlanguage can disable indexing for the other languages.\n\n## Fix\n\n`GitbookIO/plugin-lunr` is archived, so this forks it as\n`@honkit/honkit-plugin-lunr`, as was done for `fontsettings` and\n`highlight`.\n\n- The first commit copies `gitbook-plugin-lunr@1.2.0` unchanged except\nfor Prettier formatting. `lunr.min.js` is copied from the `lunr` package\nat build time, as the original did on `prepublish`, so ESLint and\nPrettier ignore it.\n- The second commit keeps the plugin state per output root (one per\nlanguage) and resets it on `init`, so rebuilds in `honkit serve` start\nclean. It also makes `lunr` resolve to the fork by default.\n- `PluginResolver` now tries the `@honkit/` package of a default plugin\nbefore the bare package name. Without this, `\"lunr\"` resolves to the\n`lunr` library itself, which npm hoists to the top of `node_modules` as\na dependency of the plugin. `honkit-plugin-*` and `gitbook-plugin-*`\npackages still come first, so a user-installed `gitbook-plugin-lunr`\nkeeps working as before.\n\nThe only snapshot changes are the lunr script paths,\n`gitbook/gitbook-plugin-lunr/…` →\n`gitbook/@honkit/honkit-plugin-lunr/…`.\n\n## Testing\n\n- New test in `output/__tests__/website.ts`, \"should write a separate\nsearch index for each language\". It fails without the plugin change and\npasses with it.\n- `pnpm run lint`, `pnpm run lint-all` and `pnpm test` pass on Node 24.\n- Packed `honkit` and `@honkit/honkit-plugin-lunr` with `pnpm pack`,\ninstalled both tarballs with npm (flat `node_modules` with `lunr`\nhoisted) into an empty project and built the book above.\n`en/search_index.json` now has only the English page and `fr/` only the\nFrench one. The lunr script tags point to files that exist, and\n`\"plugins\": [\"-lunr\"]` still disables the plugin.\n\n## Note for release\n\n`@honkit/honkit-plugin-lunr` is a new package name on npm. If the\nrelease workflow publishes through npm trusted publishing, the package\nprobably needs a first manual publish, or its trusted publisher\nconfigured, before `pnpm -r publish` can release it.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\n---------\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-15T10:44:26+09:00",
+          "tree_id": "8996eeb6837d4e3b6434cb12f395c4f669e17b5d",
+          "url": "https://github.com/honkit/honkit/commit/530e35320e7cb0d4c26d7cb39e1d282a60303767"
+        },
+        "date": 1794707140476,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.26,
+            "range": "±1.63%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
