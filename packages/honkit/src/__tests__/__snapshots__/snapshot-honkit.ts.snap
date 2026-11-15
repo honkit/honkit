@@ -27,10 +27,6 @@ exports[`HonKit snapshots: GLOSSARY.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -67,7 +63,7 @@ exports[`HonKit snapshots: GLOSSARY.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -732,10 +728,6 @@ exports[`HonKit snapshots: GLOSSARY.html 1`] = `
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -778,10 +770,6 @@ exports[`HonKit snapshots: config.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -822,7 +810,7 @@ exports[`HonKit snapshots: config.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -1638,10 +1626,6 @@ These files must be at the root of your book (or the root of every language book
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -1684,10 +1668,6 @@ exports[`HonKit snapshots: ebook.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -1728,7 +1708,7 @@ exports[`HonKit snapshots: ebook.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -2419,10 +2399,6 @@ $ honkit mobi ./ ./mybook.mobi
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -2465,10 +2441,6 @@ exports[`HonKit snapshots: encoding.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -2507,7 +2479,7 @@ exports[`HonKit snapshots: encoding.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -3201,10 +3173,6 @@ exports[`HonKit snapshots: encoding.html 1`] = `
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -3247,10 +3215,6 @@ exports[`HonKit snapshots: faq.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -3291,7 +3255,7 @@ exports[`HonKit snapshots: faq.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -3988,10 +3952,6 @@ In some case, <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -4034,10 +3994,6 @@ exports[`HonKit snapshots: index.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -4076,7 +4032,7 @@ exports[`HonKit snapshots: index.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -4749,10 +4705,6 @@ exports[`HonKit snapshots: index.html 1`] = `
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -4795,10 +4747,6 @@ exports[`HonKit snapshots: languages.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -4839,7 +4787,7 @@ exports[`HonKit snapshots: languages.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -5515,10 +5463,6 @@ exports[`HonKit snapshots: languages.html 1`] = `
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -5561,10 +5505,6 @@ exports[`HonKit snapshots: lexicon.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -5605,7 +5545,7 @@ exports[`HonKit snapshots: lexicon.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -6280,10 +6220,6 @@ and all other kinds of inline markup ...
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -6326,10 +6262,6 @@ exports[`HonKit snapshots: pages.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -6370,7 +6302,7 @@ exports[`HonKit snapshots: pages.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -7109,10 +7041,6 @@ Markdown will dictates <span class="hljs-emphasis">_most_</span> of your <span c
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -7155,10 +7083,6 @@ exports[`HonKit snapshots: plugins/api.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -7199,7 +7123,7 @@ exports[`HonKit snapshots: plugins/api.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -7941,10 +7865,6 @@ page.<span class="hljs-property">type</span> (<span class="hljs-string">'markdow
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -7987,10 +7907,6 @@ exports[`HonKit snapshots: plugins/blocks.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -8031,7 +7947,7 @@ exports[`HonKit snapshots: plugins/blocks.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -8738,10 +8654,6 @@ This is the body of the block.
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -8784,10 +8696,6 @@ exports[`HonKit snapshots: plugins/create.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -8828,7 +8736,7 @@ exports[`HonKit snapshots: plugins/create.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -9550,10 +9458,6 @@ exports[`HonKit snapshots: plugins/create.html 1`] = `
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -9596,10 +9500,6 @@ exports[`HonKit snapshots: plugins/filters.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -9640,7 +9540,7 @@ exports[`HonKit snapshots: plugins/filters.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -10341,10 +10241,6 @@ Refer to <a href="api.html">Context and APIs</a> to learn more about <code>this<
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -10387,10 +10283,6 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -10431,7 +10323,7 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -11202,10 +11094,6 @@ exports[`HonKit snapshots: plugins/hooks.html 1`] = `
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -11248,10 +11136,6 @@ exports[`HonKit snapshots: plugins/index.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -11292,7 +11176,7 @@ exports[`HonKit snapshots: plugins/index.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -11970,10 +11854,6 @@ exports[`HonKit snapshots: plugins/index.html 1`] = `
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -12016,10 +11896,6 @@ exports[`HonKit snapshots: plugins/testing.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -12060,7 +11936,7 @@ exports[`HonKit snapshots: plugins/testing.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -12734,10 +12610,6 @@ exports[`HonKit snapshots: plugins/testing.html 1`] = `
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -12780,10 +12652,6 @@ exports[`HonKit snapshots: setup.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -12824,7 +12692,7 @@ exports[`HonKit snapshots: setup.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -13531,10 +13399,6 @@ npm run serve
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -13577,10 +13441,6 @@ exports[`HonKit snapshots: structure.html 1`] = `
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -13621,7 +13481,7 @@ exports[`HonKit snapshots: structure.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -14349,10 +14209,6 @@ bin/*
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -14395,10 +14251,6 @@ exports[`HonKit snapshots: syntax/asciidoc.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -14439,7 +14291,7 @@ exports[`HonKit snapshots: syntax/asciidoc.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -15149,10 +15001,6 @@ but now stands for "PHP: Hypertext Preprocessor").
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -15195,10 +15043,6 @@ exports[`HonKit snapshots: syntax/markdown.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -15239,7 +15083,7 @@ exports[`HonKit snapshots: syntax/markdown.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -16039,10 +15883,6 @@ Asterisks
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -16085,10 +15925,6 @@ exports[`HonKit snapshots: templating/builtin.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -16129,7 +15965,7 @@ exports[`HonKit snapshots: templating/builtin.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -16805,10 +16641,6 @@ Render inline asciidoc</p>
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -16851,10 +16683,6 @@ exports[`HonKit snapshots: templating/conrefs.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -16895,7 +16723,7 @@ exports[`HonKit snapshots: templating/conrefs.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -17588,10 +17416,6 @@ This is the default content
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -17634,10 +17458,6 @@ exports[`HonKit snapshots: templating/index.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -17678,7 +17498,7 @@ exports[`HonKit snapshots: templating/index.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -18403,10 +18223,6 @@ Current version is </span><span class="hljs-template-variable">{{ softwareVersio
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -18449,10 +18265,6 @@ exports[`HonKit snapshots: templating/variables.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -18493,7 +18305,7 @@ exports[`HonKit snapshots: templating/variables.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -19382,10 +19194,6 @@ exports[`HonKit snapshots: templating/variables.html 1`] = `
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -19428,10 +19236,6 @@ exports[`HonKit snapshots: themes/index.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -19472,7 +19276,7 @@ exports[`HonKit snapshots: themes/index.html 1`] = `
     </head>
     <body>
         
-<div class="book honkit-cloak">
+<div class="book honkit-cloak font-size-2 font-family-1">
     <div class="book-summary">
         
             
@@ -20178,10 +19982,6 @@ exports[`HonKit snapshots: themes/index.html 1`] = `
     
         
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
-        
-    
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
         
     
 

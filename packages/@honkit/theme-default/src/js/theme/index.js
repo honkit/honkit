@@ -1,4 +1,5 @@
 const dropdown = require("./dropdown");
+const fontsettings = require("./fontsettings");
 const keyboard = require("./keyboard");
 const navigation = require("./navigation");
 const sidebar = require("./sidebar");
@@ -26,11 +27,14 @@ function init() {
         onClick: function (e) {
             e.preventDefault();
             sidebar.toggle();
-        },
+        }
     });
 }
 
 gitbook.events.on("start", init);
+
+// Font settings (enabled by honkit-plugin-fontsettings). Its button is added after the sidebar button
+fontsettings.init();
 
 gitbook.keyboard = keyboard;
 gitbook.navigation = navigation;

@@ -20,13 +20,9 @@
   },
   "devDependencies": {
     "@honkit/cleaning-tools": "workspace:*",
-    "eslint": "^9.39.4",
-    "less": "^4.2.0"
+    "eslint": "^9.39.4"
   },
   "scripts": {
-    "build": "npm run build:css",
-    "build:css": "lessc ./less/website.less ./assets/website.css",
-    "prepublish": "npm run build",
     "lint": "eslint ."
   },
   "gitbook": {

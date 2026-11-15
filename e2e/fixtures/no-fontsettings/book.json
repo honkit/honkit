@@ -1,0 +1,5 @@
+{
+  "title": "No Font Settings Fixture",
+  "language": "en",
+  "plugins": ["-fontsettings"]
+}
