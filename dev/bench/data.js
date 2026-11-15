@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794715484339,
+  "lastUpdate": 1794718259095,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12894,6 +12894,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.19,
             "range": "±1.44%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "2aa5a4cc1375c5ec0bb54ae7ef5885cf4a3ca8e3",
+          "message": "test(e2e): add Playwright E2E tests (default theme) (#546)\n\n<!-- claude-projects-attribution: {\"github_login\":\"azu\"} -->\n_Requested by **azu** · [project\nthread](https://claude.ai/code/project/chan_01FvVoMEtg1FrLMj68qGru4t?thread=cmsg_01FvVoMEtg1FrLMj68qGru4t8o85F2FLCPCy2QQRf6ANip)_\n\n## What\n\nAdds a top-level private workspace package `e2e/` (`@honkit/e2e`) for\nHonKit-wide end-to-end tests: it builds books with `honkit build` and\nchecks the output in a browser with Playwright Test.\n\nThe first suite, `e2e/tests/theme-default/`, pins down the **current**\nbehavior of `@honkit/honkit-plugin-theme-default`, so that the following\nrefactorings (dropping jQuery from the theme internals, replacing\nbrowserify/uglify/less 2/mousetrap, fixing theme issues) can be verified\nagainst it.\n\nThis is the first PR of a stack. It changes no runtime code.\n\n## How it works\n\n- `e2e/fixtures/book` and `e2e/fixtures/multilingual` are small books\nthat cover: nested chapters, a chapter without a link (#314 shape), a\npage whose headings are listed in `SUMMARY.md`, in-page / cross-page\nanchors, glossary, sidebar `links`, `styles.website`, code highlighting,\nand `LANGS.md`.\n- `scripts/build-fixtures.mjs` builds them with the workspace `honkit\nbuild`; `scripts/serve-static.mjs` serves the output like plain static\nhosting. Tests run against the deployed output, not `honkit serve`.\n- `tests/helpers.ts` blocks requests to other hosts and fails a test on\nuncaught exceptions, `console.error`, or 4xx/5xx responses. `checkPage`\nchecks horizontal overflow and broken images.\n- Projects: `desktop` (1280x800) and `mobile` (Pixel 7,\n`*.mobile.play.ts` + `pages.play.ts`).\n\n## What is covered (78 tests)\n\n- Every page renders without errors / overflow / broken images (desktop\n+ mobile), language index\n- Table of contents: show/hide toggle, state kept across reload and\nnavigation, scroll position kept, mobile behavior (hidden by default,\ncloses after choosing a chapter)\n- Navigation without full reload: TOC links, prev/next links, content\nlinks, cross-page and same-page anchors, `<head>` prev/next `<link>`\nupdate, back/forward, active chapter highlight (also on scroll)\n- Keyboard shortcuts: `←` `→` `s`, ignored inside the search box\n- Plugin API: `window.gitbook === window.honkit`,\n`require([\"gitbook\",\"honkit\",\"jquery\"])`, `gitbook.state` (incl.\nmultilingual `root`/`bookRoot`), `push` before/after ready, `start` /\n`page.change` events, `storage`, `keyboard.bind`,\n`navigation.goNext/goPrev`, `sidebar.toggle/isOpen/filter`,\n`toolbar.createButton/removeButton(s)` incl. dropdowns and `index`\n- Bundled plugins: search (lunr) incl. `?q=`, font settings (theme /\nsize persisted), highlight\n- No-JavaScript rendering (`honkit-cloak` noscript fallback)\n\nSome locators use CSS/XPath because the current markup has no accessible\nname (e.g. the sidebar toggle button, the TOC `<nav>`); each one has a\ncomment with the reason, and they can switch to `getByRole` once the\nmarkup gets labels.\n\n## CI\n\nNew `e2e` job in `test.yml` (ubuntu, Node 24): install, build,\n`playwright install --with-deps chromium`, type check, `pnpm run\ntest:e2e`. The Playwright report is uploaded on failure. It is not part\nof `pnpm test`, so the existing OS/Node matrix is unchanged.\n\n## Verification\n\n- `pnpm run test:e2e`: 78 passed locally; `--repeat-each 3` passed with\nno flaky test\n- Sanity check: replacing `theme.js` with an empty file makes the suite\nfail\n- `pnpm --filter @honkit/e2e run typecheck`, `eslint .`, `prettier\n--check` pass\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nhttps://claude.ai/code/session_01TSdrAGybFcaDEi2SPWhbZF\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2026-11-15T13:49:43+09:00",
+          "tree_id": "7822144a09aacf1449eed3b55dab24ae97586956",
+          "url": "https://github.com/honkit/honkit/commit/2aa5a4cc1375c5ec0bb54ae7ef5885cf4a3ca8e3"
+        },
+        "date": 1794718257581,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.25,
+            "range": "±1.37%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
