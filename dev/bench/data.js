@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794722947431,
+  "lastUpdate": 1794751702551,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -13018,6 +13018,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.29,
             "range": "±4.77%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5c8a849ba26847a05b434cb9fed5616aa67e1ce8",
+          "message": "fix(theme-default): apply font settings before the first paint, and move them into the theme (#554)\n\n## What\n\nThe font settings (font size, font family, color theme) are now part of\nthe default theme, and they are applied before the page is shown.\n\n- **Theme**: the JavaScript and CSS of `honkit-plugin-fontsettings`\nmoved into `theme.js` and `style.css` (`src/js/theme/fontsettings.js`,\n`src/css/website/fontsettings.css`).\n- **page.html**: the classes for the config\n(`pluginsConfig.fontsettings`) are rendered on `.book` when the book is\nbuilt.\n- **boot.js**: when the reader saved a choice in localStorage\n(`:fontState`), it replaces those classes before `.book` is shown.\n- **Plugin**: `@honkit/honkit-plugin-fontsettings` only enables the\nfeature and defines its options. It has no assets anymore.\n\n## Why\n\nThe font settings change the size of the text, so they affect the first\npaint. A plugin can only add `defer` scripts, which run after it. On\nmaster, `fontsettings.js` adds `font-size-2` after the first paint, and\nthe body text grows from 14px to 16px:\n\n- On mobile, the layout shift (CLS) is 0.09 to 0.29.\n- Readers who chose the sepia or night theme see the white theme first.\n\nPlaywright with 4G throttling on master showed first paint at 732ms and\nthe class change at 1034ms (layout shift 0.25). The shift also happened\nin 6.2.6.\n\n## Compatibility\n\nUnchanged:\n\n- `gitbook.fontsettings` API (same functions; it exists only when the\nplugin is enabled).\n- `pluginsConfig.fontsettings` options and the saved `fontState`.\n- `plugins: [\"-fontsettings\"]` disables the feature: no button, no\nclasses, no API.\n- The font settings button is still added after the toolbar buttons of\nother plugins.\n- The rendered pages: 24 screenshots (3 pages, white/sepia/night,\ndesktop/mobile, dropdown open) are pixel-identical before and after the\nmove. One dropdown screenshot first differed only in the header title's\nhover fade; it is identical once the fade ends.\n- 19 real plugins (the compatibility check from #549) show no difference\nfrom 6.2.6.\n\nChanged:\n\n- `gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js` and\n`website.css` are no longer in the output.\n- A custom theme that ships its own `_assets/website/theme.js` replaces\nthe default `gitbook/theme.js`, so a book with such a theme has no font\nsettings. See the review thread on\n`honkit-plugin-fontsettings/index.js`.\n\n## Lighthouse (median of 5, gzip, local static server, DevTools\nthrottling)\n\n| Page (mobile) | Score before → after | CLS before → after | LCP before\n→ after | Requests before → after |\n|---|---|---|---|---|\n| /docs/ | 96 → 100 | 0.112 → 0 | 1468 → 1474ms | 15 → 13 |\n| /docs/plugins/ | 85 → 100 | 0.286 → 0 | 1456 → 1509ms | 15 → 13 |\n| /book/long.html | 98 → 100 | 0.091 → 0 | 1395 → 1439ms | 16 → 14 |\n\nOn desktop, CLS goes from 0.031–0.181 to 0, and the score for\n/docs/plugins/ goes from 92 to 100.\n\nLCP does not improve: the differences are within the noise of this\nmeasurement. With simulated throttling, mobile LCP is 1962–1971ms before\nand 1810–1964ms after.\n\n## Investigation: render-blocking CSS\n\nI first tried to cut the render-blocking plugin CSS (highlight, search,\nfontsettings). As an upper bound, I measured a build with all three\nremoved: mobile LCP on /docs/ was 1447ms with them and 1459ms without.\nLCP is set by the HTML round trip plus the `style.css` round trip, not\nby the plugin CSS. Preloading the Font Awesome font made LCP about 100ms\nslower, so I dropped it.\n\n## Tests\n\n`e2e/tests/theme-default/fontsettings.play.ts`, with `theme.js` held\nback for 1 second:\n\n- The classes of the plugin config are on `.book` before `theme.js`\nruns.\n- The classes of a saved reader state (night theme, size 4) replace them\nbefore `theme.js` runs.\n- The layout shift is 0 when `theme.js` runs.\n\nAlso new:\n\n- The font settings button comes after a toolbar button that a plugin\nadds at \"start\".\n- A book with `-fontsettings` (new fixture `no-fontsettings`) has no\nbutton, no classes and no API.\n\nE2E: 101 passed. In `packages/honkit`, 30 jest snapshots were updated\n(the `.book` class attribute, and the removed `fontsettings.js` /\n`website.css` tags). Jest still fails 2 tests in `fetchRemoteImages`,\nwhich need network access; they fail on master too.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nhttps://claude.ai/code/session_01TSdrAGybFcaDEi2SPWhbZF\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2026-11-15T23:07:09+09:00",
+          "tree_id": "826e4d3bc6ad1cda45eeda1b4aed24e81d78a887",
+          "url": "https://github.com/honkit/honkit/commit/5c8a849ba26847a05b434cb9fed5616aa67e1ce8"
+        },
+        "date": 1794751701263,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.25,
+            "range": "±1.02%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
