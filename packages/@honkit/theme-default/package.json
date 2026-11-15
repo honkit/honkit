@@ -1,6 +1,6 @@
 {
   "name": "@honkit/honkit-plugin-theme-default",
-  "version": "6.2.6",
+  "version": "6.3.0",
   "description": "Default theme for HonKit",
   "bugs": {
     "url": "https://github.com/honkit/honkit/issues"
@@ -17,7 +17,7 @@
       "email": "contact@gitbook.com"
     },
     {
-      "name": "Samy Pess\u00e9",
+      "name": "Samy Pessé",
       "email": "samy@gitbook.com"
     }
   ],
