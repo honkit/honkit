@@ -62,7 +62,7 @@ const main = async () => {
     await Promise.all([
         buildJs("src/js/core/index.js", "website/gitbook.js"),
         buildJs("src/js/theme/index.js", "website/theme.js"),
-        buildJs("src/js/sidebar-state.js", "website/sidebar-state.js"),
+        buildJs("src/js/boot.js", "website/boot.js"),
         buildCss("src/less/website.less", "website/style.css"),
         buildCss("src/less/ebook.less", "ebook/ebook.css"),
         buildCss("src/less/epub.less", "ebook/epub.css"),

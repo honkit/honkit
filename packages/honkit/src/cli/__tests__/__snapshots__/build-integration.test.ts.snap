@@ -208,28 +208,29 @@ exports[`build integration build output with bin.run should generate correct HTM
         <link rel="stylesheet" href="gitbook/noscript.css">
     </noscript>
     
-    <script src="gitbook/sidebar-state.js"></script>
-    <script src="gitbook/gitbook.js"></script>
-    <script src="gitbook/theme.js"></script>
+    <script src="gitbook/boot.js"></script>
+    
+    <script src="gitbook/gitbook.js" defer></script>
+    <script src="gitbook/theme.js" defer></script>
     
         
-        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        <script src="gitbook/gitbook-plugin-search/search-engine.js" defer></script>
         
     
         
-        <script src="gitbook/@honkit/honkit-plugin-lunr/lunr.min.js"></script>
+        <script src="gitbook/gitbook-plugin-search/search.js" defer></script>
         
     
         
-        <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-lunr/lunr.min.js" defer></script>
         
     
         
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
+        
+    
+        
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
         
     
 
@@ -455,28 +456,29 @@ exports[`build integration build output with bin.run should generate correct HTM
         <link rel="stylesheet" href="gitbook/noscript.css">
     </noscript>
     
-    <script src="gitbook/sidebar-state.js"></script>
-    <script src="gitbook/gitbook.js"></script>
-    <script src="gitbook/theme.js"></script>
+    <script src="gitbook/boot.js"></script>
+    
+    <script src="gitbook/gitbook.js" defer></script>
+    <script src="gitbook/theme.js" defer></script>
     
         
-        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        <script src="gitbook/gitbook-plugin-search/search-engine.js" defer></script>
         
     
         
-        <script src="gitbook/@honkit/honkit-plugin-lunr/lunr.min.js"></script>
+        <script src="gitbook/gitbook-plugin-search/search.js" defer></script>
         
     
         
-        <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-lunr/lunr.min.js" defer></script>
         
     
         
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
+        
+    
+        
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
         
     
 
