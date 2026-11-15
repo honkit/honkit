@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794708185370,
+  "lastUpdate": 1794714259047,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12832,6 +12832,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.36,
             "range": "±0.58%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0e332af0b59b3a53777f8a1f5173bebeff4c216f",
+          "message": "Release v6.2.6 (#544)\n\n<!-- Release notes generated using configuration in .github/release.yml\nat master -->\n\n## What's Changed\n### Bug Fixes\n* fix: keep a separate search index for each language by @mokevnin in\nhttps://github.com/honkit/honkit/pull/542\n### Refactoring\n* test(lunr): add tests for the lunr plugin and PluginResolver by @azu\nin https://github.com/honkit/honkit/pull/543\n\n## New Contributors\n* @mokevnin made their first contribution in\nhttps://github.com/honkit/honkit/pull/542\n\n**Full Changelog**:\nhttps://github.com/honkit/honkit/compare/v6.2.5...v6.2.6\n\nCo-authored-by: azu <19714+azu@users.noreply.github.com>",
+          "timestamp": "2026-11-15T12:43:21+09:00",
+          "tree_id": "f891a127cb29e0a512adba89f5bc9afc96473bb6",
+          "url": "https://github.com/honkit/honkit/commit/0e332af0b59b3a53777f8a1f5173bebeff4c216f"
+        },
+        "date": 1794714258095,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.34,
+            "range": "±3.47%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
