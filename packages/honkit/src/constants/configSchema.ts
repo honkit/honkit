@@ -116,6 +116,11 @@ export default {
                     default: true,
                     title: "Add page numbers to the bottom of every page"
                 },
+                tocPageNumbers: {
+                    type: "boolean",
+                    default: false,
+                    title: "Show physical target page numbers in the front PDF table of contents"
+                },
                 fontSize: {
                     type: "integer",
                     minimum: 8,
