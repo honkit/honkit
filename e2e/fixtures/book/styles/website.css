@@ -1,0 +1,4 @@
+/* Custom website stylesheet loaded via config.styles.website */
+.markdown-section h1 {
+    letter-spacing: 1px;
+}

@@ -1,0 +1,10 @@
+{
+    "title": "Theme Default Fixture",
+    "description": "Fixture book for theme-default E2E tests",
+    "language": "en",
+    "links": {
+        "sidebar": {
+            "External Sidebar Link": "https://example.com/"
+        }
+    }
+}

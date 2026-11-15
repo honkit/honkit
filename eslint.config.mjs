@@ -18,7 +18,10 @@ export default [
             "__snapshots__",
             ".yarn",
             ".nx/",
-            "**/_assets/"
+            "**/_assets/",
+            "e2e/dist/",
+            "**/playwright-report/",
+            "**/test-results/"
         ]
     },
     ...eslintConfig
