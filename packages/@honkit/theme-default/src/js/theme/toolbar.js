@@ -88,7 +88,7 @@ function createDropdownMenu(dropdown) {
                     class: "button " + sizeClass + " " + btn.className,
                     text: btn.text
                 });
-                btnElement.addEventListener("click", btn.onClick);
+                btnElement.addEventListener("click", jQueryStyleHandler(btn.onClick));
 
                 groupElement.appendChild(btnElement);
             });
@@ -149,6 +149,21 @@ function addClasses(element, classNames) {
         });
 }
 
+/*
+    Call a plugin's click handler like jQuery did:
+    `this` is the element, and returning false prevents the default action and stops propagation.
+*/
+function jQueryStyleHandler(fn) {
+    return function (e) {
+        var result = fn.call(this, e);
+        if (result === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        return result;
+    };
+}
+
 // Update a button
 function updateButton(opts) {
     var result;
@@ -168,7 +183,7 @@ function updateButton(opts) {
     });
 
     // Bind click
-    btn.addEventListener("click", opts.onClick);
+    btn.addEventListener("click", jQueryStyleHandler(opts.onClick));
 
     // Prepend icon
     if (opts.icon) {

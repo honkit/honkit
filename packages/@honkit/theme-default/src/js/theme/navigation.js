@@ -259,24 +259,40 @@ function bindScrolling(scroller) {
 }
 
 /*
-    Run the scripts of inserted content, like jQuery's DOM insertion did.
+    Run the scripts of inserted content in document order, like jQuery's DOM insertion did.
+    An external script is loaded before the scripts after it run,
+    so an inline script can use what a preceding external script defines.
     The page content contains an inline script that calls `gitbook.page.hasChanged()`.
 */
 function runScripts(container) {
-    container.querySelectorAll("script").forEach(function (oldScript) {
-        var type = oldScript.getAttribute("type");
-        if (type && !/^(text|application)\/(javascript|ecmascript)$|^module$/i.test(type)) {
-            return;
-        }
-        var newScript = document.createElement("script");
-        Array.prototype.forEach.call(oldScript.attributes, function (attribute) {
-            newScript.setAttribute(attribute.name, attribute.value);
+    var scripts = Array.prototype.slice.call(container.querySelectorAll("script"));
+    return scripts.reduce(function (previous, oldScript) {
+        return previous.then(function () {
+            return runScript(oldScript);
         });
-        if (oldScript.src) {
-            newScript.async = false;
-        } else {
-            newScript.textContent = oldScript.textContent;
-        }
+    }, Promise.resolve());
+}
+
+function runScript(oldScript) {
+    var type = oldScript.getAttribute("type");
+    if (type && !/^(text|application)\/(javascript|ecmascript)$|^module$/i.test(type)) {
+        return;
+    }
+    var newScript = document.createElement("script");
+    Array.prototype.forEach.call(oldScript.attributes, function (attribute) {
+        newScript.setAttribute(attribute.name, attribute.value);
+    });
+    if (!oldScript.src) {
+        // An inline script runs when it is inserted
+        newScript.textContent = oldScript.textContent;
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+        return;
+    }
+    return new Promise(function (resolve) {
+        newScript.async = false;
+        // Continue with the next scripts even if this one fails to load
+        newScript.addEventListener("load", resolve);
+        newScript.addEventListener("error", resolve);
         oldScript.parentNode.replaceChild(newScript, oldScript);
     });
 }
@@ -295,8 +311,9 @@ function handleNavigation(relativeUrl, push) {
     // Is it the same url (just hash changed?)
     var pathHasChanged = uriParsed.pathname !== prevUriParsed.pathname;
 
-    // Is it an url of another site
-    var isAbsolute = uriParsed.origin !== location.origin;
+    // Is it an absolute url (with a scheme or "//")? Load it normally, even on the same origin,
+    // because it can be another book that needs its own scripts and styles.
+    var isAbsolute = /^([a-z][a-z0-9+.-]*:|\/\/)/i.test(relativeUrl) || uriParsed.origin !== location.origin;
 
     if (!usePushState || isAbsolute) {
         // Refresh the page to the new URL if pushState not supported
@@ -371,19 +388,20 @@ function handleNavigation(relativeUrl, push) {
             newBook.classList.toggle("with-summary", currentBook.classList.contains("with-summary"));
 
             currentBook.parentNode.replaceChild(newBook, currentBook);
-            runScripts(newBook);
-            newBook.setAttribute("class", bodyClass);
-            var newSummary = document.querySelector(".book-summary");
-            if (newSummary) newSummary.scrollTop = scrollPosition;
+            return runScripts(newBook).then(function () {
+                newBook.setAttribute("class", bodyClass);
+                var newSummary = document.querySelector(".book-summary");
+                if (newSummary) newSummary.scrollTop = scrollPosition;
 
-            // Update state
-            gitbook.state.$book = dom.toJQuery(newBook);
-            preparePage(!hash);
+                // Update state
+                gitbook.state.$book = dom.toJQuery(newBook);
+                preparePage(!hash);
 
-            // Scroll to hashtag position
-            if (hash) {
-                scrollToHash(hash);
-            }
+                // Scroll to hashtag position
+                if (hash) {
+                    scrollToHash(hash);
+                }
+            });
         });
 
     return loading.show(
@@ -494,7 +512,7 @@ function goPrev() {
 
 function init() {
     // Recreate first page when the page loads.
-    history.replaceState({ path: window.location.href }, "");
+    history.replaceState({ path: location.pathname + location.search + location.hash }, "");
 
     // Back Button Hijacking :(
     window.onpopstate = function (event) {
