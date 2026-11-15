@@ -16,49 +16,12 @@
 
 {% block javascript %}
     <noscript>
-        <style>
-            .honkit-cloak {
-                display: block !important;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ "noscript.css"|resolveAsset }}">
     </noscript>
-    <script>
-        // Restore sidebar state as critical path for prevent layout shift
-        function __init__getSidebarState(defaultValue){
-            var baseKey = "";
-            var key = baseKey + ":sidebar";
-            try {
-                var value = localStorage[key];
-                if (value === undefined) {
-                    return defaultValue;
-                }
-                var parsed = JSON.parse(value);
-                return parsed == null ? defaultValue : parsed;
-            } catch (e) {
-                return defaultValue;
-            }
-        }
-        function __init__restoreLastSidebarState() {
-            var isMobile = window.matchMedia("(max-width: 600px)").matches;
-            if (isMobile) {
-                // Init last state if not mobile
-                return;
-            }
-            var sidebarState = __init__getSidebarState(true);
-            var book = document.querySelector(".book");
-            // Show sidebar if it enabled
-            if (sidebarState && book) {
-                book.classList.add("without-animation", "with-summary");
-            }
-        }
-
-        try {
-            __init__restoreLastSidebarState();
-        } finally {
-            var book = document.querySelector(".book");
-            book.classList.remove("honkit-cloak");
-        }
-    </script>
+    {### Restore the sidebar state before the page is shown, to prevent a layout shift.
+         It is an external script so that the page works with a Content-Security-Policy without 'unsafe-inline'
+         https://github.com/honkit/honkit/issues/487 ###}
+    <script src="{{ "sidebar-state.js"|resolveAsset }}"></script>
     <script src="{{ "gitbook.js"|resolveAsset }}"></script>
     <script src="{{ "theme.js"|resolveAsset }}"></script>
     {% for resource in plugins.resources.js %}
@@ -118,11 +81,7 @@
         {% endblock %}
     </div>
 
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({{ template.getJSContext()|dump|safe }});
-        });
-    </script>
+    {### The page context is read by gitbook.js. A JSON data block is not blocked by a Content-Security-Policy ###}
+    <script type="application/json" id="honkit-page-context">{{ template.getJSContext()|dump|replace("<", "\\u003c")|safe }}</script>
 </div>
 {% endblock %}

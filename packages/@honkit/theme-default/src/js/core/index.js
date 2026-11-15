@@ -52,6 +52,18 @@ window.require = function (mods, fn) {
     fn.apply(null, mods);
 };
 
+// The layout (_layouts/website/page.html) embeds the page context as
+// `<script type="application/json" id="honkit-page-context">` before this script.
+// It is queued at the same position as the inline `gitbook.push(...)` of older layouts,
+// so the order of the functions pushed by plugins does not change.
+var pageContextElement = document.querySelector("script#honkit-page-context");
+if (pageContextElement) {
+    var pageContext = JSON.parse(pageContextElement.textContent);
+    onLoad.push(function () {
+        page.hasChanged(pageContext);
+    });
+}
+
 function onReady() {
     isPageReady = true;
 

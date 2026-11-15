@@ -262,7 +262,8 @@ function bindScrolling(scroller) {
     Run the scripts of inserted content in document order, like jQuery's DOM insertion did.
     An external script is loaded before the scripts after it run,
     so an inline script can use what a preceding external script defines.
-    The page content contains an inline script that calls `gitbook.page.hasChanged()`.
+    The page content has the page context as a JSON data block (or, in older layouts,
+    an inline script that calls `gitbook.page.hasChanged()`).
 */
 function runScripts(container) {
     var scripts = Array.prototype.slice.call(container.querySelectorAll("script"));
@@ -274,6 +275,11 @@ function runScripts(container) {
 }
 
 function runScript(oldScript) {
+    // The page context of the new page (see _layouts/website/page.html)
+    if (oldScript.id === "honkit-page-context") {
+        gitbook.page.hasChanged(JSON.parse(oldScript.textContent));
+        return;
+    }
     var type = oldScript.getAttribute("type");
     if (type && !/^(text|application)\/(javascript|ecmascript)$|^module$/i.test(type)) {
         return;
@@ -306,7 +312,35 @@ function runScript(oldScript) {
 */
 var prevUri = location.href;
 
-function handleNavigation(relativeUrl, push) {
+/*
+    Remember the scroll position of the current history entry,
+    so that going back to it restores the position
+    https://github.com/honkit/honkit/issues/339
+*/
+function saveScrollPosition() {
+    var scroller = getScroller();
+    if (!scroller) return;
+    var state = history.state && typeof history.state === "object" ? history.state : {};
+    var newState = {};
+    Object.keys(state).forEach(function (key) {
+        newState[key] = state[key];
+    });
+    newState.path = state.path || location.href;
+    newState.scrollTop = scroller.scrollTop;
+    history.replaceState(newState, "");
+}
+
+function isSearchOpen() {
+    // The search plugin shows its results in place of the page content
+    return document.body.classList.contains("with-search");
+}
+
+function restoreScrollTop(scrollTop) {
+    var scroller = getScroller();
+    if (scroller) scroller.scrollTop = scrollTop;
+}
+
+function handleNavigation(relativeUrl, push, scrollTop) {
     var prevUriParsed = new URL(prevUri, location.href);
     var uriParsed = new URL(relativeUrl, location.href);
     var uri = uriParsed.pathname + uriParsed.search + uriParsed.hash;
@@ -325,9 +359,20 @@ function handleNavigation(relativeUrl, push) {
         return;
     }
 
-    // Don't fetch same page
-    if (!pathHasChanged) {
+    var hasScrollTop = typeof scrollTop === "number";
+
+    if (push) {
+        saveScrollPosition();
+    }
+
+    // Don't fetch same page, except when a link to the page itself is clicked or the search results are shown:
+    // the page content is loaded again to show it
+    // https://github.com/honkit/honkit/issues/488
+    if (!pathHasChanged && (hash || !push) && !isSearchOpen()) {
         if (push) history.pushState({ path: uri }, null, uri);
+        if (hasScrollTop) {
+            return restoreScrollTop(scrollTop);
+        }
         return scrollToHash(hash);
     }
 
@@ -399,10 +444,13 @@ function handleNavigation(relativeUrl, push) {
 
                 // Update state
                 gitbook.state.$book = dom.toJQuery(newBook);
-                preparePage(!hash);
+                preparePage(!hash && !hasScrollTop, true);
 
-                // Scroll to hashtag position
-                if (hash) {
+                if (hasScrollTop) {
+                    // Back/forward: restore the scroll position of the history entry
+                    restoreScrollTop(scrollTop);
+                } else if (hash) {
+                    // Scroll to hashtag position
                     scrollToHash(hash);
                 }
             });
@@ -433,14 +481,16 @@ function updateNavigationPosition() {
     bindScrolling(getScroller());
 }
 
-function preparePage(resetScroll) {
+function preparePage(resetScroll, focusContent) {
     var pageWrapper = document.querySelector(".book-body .body-inner .page-wrapper");
 
     // Update navigation position
     updateNavigationPosition();
 
-    // Focus on content
-    if (pageWrapper) {
+    // Focus on content after moving to another page, so that keyboard and screen reader users start from it.
+    // The initial page load does not move the focus: it would take the focus from an embedding page
+    // https://github.com/honkit/honkit/issues/367
+    if (focusContent && pageWrapper) {
         // use Native focus
         // https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus
         pageWrapper.focus({ preventScroll: true });
@@ -524,7 +574,7 @@ function init() {
             return;
         }
 
-        return handleNavigation(event.state.path, false);
+        return handleNavigation(event.state.path, false, event.state.scrollTop);
     };
 
     dom.delegate("click", ".navigation-prev", handleLinkClick);

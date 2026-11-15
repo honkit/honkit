@@ -62,11 +62,13 @@ const main = async () => {
     await Promise.all([
         buildJs("src/js/core/index.js", "website/gitbook.js"),
         buildJs("src/js/theme/index.js", "website/theme.js"),
+        buildJs("src/js/sidebar-state.js", "website/sidebar-state.js"),
         buildCss("src/less/website.less", "website/style.css"),
         buildCss("src/less/ebook.less", "ebook/ebook.css"),
         buildCss("src/less/epub.less", "ebook/epub.css"),
         buildCss("src/less/mobi.less", "ebook/mobi.css"),
         buildCss("src/less/pdf.less", "ebook/pdf.css"),
+        copy("src/css/noscript.css", "website/noscript.css"),
         copy("logo/favicon.ico", "website/images/favicon.ico"),
         copy("logo/apple-touch-icon.png", "website/images/apple-touch-icon-precomposed-152.png"),
         copy("font-awesome/fonts/fontawesome-webfont.woff2", "website/fonts/fontawesome/fontawesome-webfont.woff2"),

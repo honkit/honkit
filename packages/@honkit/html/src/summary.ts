@@ -1,7 +1,8 @@
 import * as dom from "./dom";
 
 const SELECTOR_LIST = "ol, ul";
-const SELECTOR_LINK = "> a, p > a";
+// Only the link of the entry itself, not the links of nested entries (loose lists wrap them in <p>)
+const SELECTOR_LINK = "> a, > p > a";
 const SELECTOR_PART = "h2, h3, h4";
 
 /**
