@@ -96,25 +96,33 @@ if (!isDocumentLoaded) {
 // Registered first, so it runs before the ready callbacks of plugins, like before
 $(onReady);
 
-// Queued `$(fn)` calls register their ready callbacks after HonKit's
-bootQueue.forEach(function (call) {
-    if (call.type === "ready") {
-        $(call.fn);
-    }
-});
-
 var released = false;
 function release() {
     if (released) return;
     released = true;
-    // Queued `require()` calls come from inline scripts after the plugin scripts: run them after the plugins
-    bootQueue.forEach(function (call) {
-        if (call.type === "require") {
-            window.require(call.modules, call.fn);
+    try {
+        bootQueue.forEach(function (call) {
+            try {
+                if (call.type === "require") {
+                    // Queued `require()` calls come from inline scripts after the plugin scripts:
+                    // run them after the plugins, like before
+                    window.require(call.modules, call.fn);
+                } else if (call.type === "ready") {
+                    // Queued `$(fn)` calls come from inline scripts after the plugin scripts:
+                    // register their ready callbacks after the ones of HonKit and the plugins, like before
+                    $(call.fn);
+                }
+            } catch (error) {
+                // An error of an inline script does not stop HonKit and the other scripts, like before
+                setTimeout(function () {
+                    throw error;
+                });
+            }
+        });
+    } finally {
+        if (!isDocumentLoaded) {
+            $.holdReady(false);
         }
-    });
-    if (!isDocumentLoaded) {
-        $.holdReady(false);
     }
 }
 if (document.readyState === "loading" || (document.readyState === "interactive" && !isDocumentLoaded)) {

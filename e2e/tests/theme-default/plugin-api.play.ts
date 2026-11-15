@@ -339,3 +339,71 @@ test("inline scripts placed after the theme scripts can use require(), $(fn) and
         .poll(() => page.evaluate(() => (window as unknown as { __calls: string[] }).__calls))
         .toEqual(["require:function:string", "page.change", "push:Section 1.1", "ready:object"]);
 });
+
+test("an inline $(fn) placed after the plugin scripts runs after the ready callbacks of the plugins", async ({
+    page,
+    baseURL
+}) => {
+    // A plugin script that registers a ready callback, like many GitBook plugins do
+    await page.route(`${baseURL}book/gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js`, async (route) => {
+        const response = await route.fetch();
+        const body = (await response.text()) + "\n$(function () { window.__pluginReady = true; });";
+        await route.fulfill({ response, body });
+    });
+    await page.route(`${baseURL}book/chapter1/section1.html`, async (route) => {
+        const response = await route.fetch();
+        const html = (await response.text()).replace(
+            "</body>",
+            `<script>
+                $(function () {
+                    window.__inlineReadySawPlugin = window.__pluginReady === true;
+                });
+            </script></body>`
+        );
+        await route.fulfill({ response, body: html });
+    });
+
+    await page.goto("book/chapter1/section1.html");
+    await waitForThemeReady(page);
+
+    await expect
+        .poll(() =>
+            page.evaluate(() => (window as unknown as { __inlineReadySawPlugin?: boolean }).__inlineReadySawPlugin)
+        )
+        .toBe(true);
+});
+
+test("when an inline require() callback throws, the book and the other inline scripts still work", async ({
+    page,
+    baseURL,
+    pageProblems
+}) => {
+    await page.route(`${baseURL}book/chapter1/section1.html`, async (route) => {
+        const response = await route.fetch();
+        const html = (await response.text()).replace(
+            "</body>",
+            `<script>
+                require(["gitbook"], function () {
+                    throw new Error("broken inline script");
+                });
+                $(function () {
+                    window.__afterBroken = true;
+                });
+            </script></body>`
+        );
+        await route.fulfill({ response, body: html });
+    });
+
+    await page.goto("book/chapter1/section1.html");
+    await waitForThemeReady(page);
+
+    await expect
+        .poll(() => page.evaluate(() => (window as unknown as { __afterBroken?: boolean }).__afterBroken))
+        .toBe(true);
+    await getSummary(page).getByRole("link", { name: "Section 1.2" }).click();
+    await expect(getPageHeading(page)).toHaveText("Section 1.2");
+
+    // The error of the inline script is still reported
+    expect(pageProblems.pageErrors).toEqual(["broken inline script"]);
+    pageProblems.pageErrors.length = 0;
+});
