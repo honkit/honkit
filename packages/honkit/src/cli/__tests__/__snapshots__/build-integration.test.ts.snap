@@ -27,10 +27,6 @@ exports[`build integration build output with bin.run should generate correct HTM
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -229,10 +225,6 @@ exports[`build integration build output with bin.run should generate correct HTM
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -273,10 +265,6 @@ exports[`build integration build output with bin.run should generate correct HTM
             
                 
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -475,10 +463,6 @@ exports[`build integration build output with bin.run should generate correct HTM
     
         
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
-        
-    
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
         
     
 

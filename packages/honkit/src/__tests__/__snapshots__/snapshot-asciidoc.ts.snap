@@ -27,10 +27,6 @@ exports[`asciidoc snapshot: chapter-1/content1.html 1`] = `
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
-                
-            
         
 
     
@@ -269,10 +265,6 @@ exports[`asciidoc snapshot: chapter-1/content1.html 1`] = `
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -313,10 +305,6 @@ exports[`asciidoc snapshot: chapter-1/index.html 1`] = `
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -535,10 +523,6 @@ exports[`asciidoc snapshot: chapter-1/index.html 1`] = `
         <script src="../gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
         
     
-        
-        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
-        
-    
 
     </body>
 </html>
@@ -579,10 +563,6 @@ exports[`asciidoc snapshot: index.html 1`] = `
             
                 
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -793,10 +773,6 @@ exports[`asciidoc snapshot: index.html 1`] = `
     
         
         <script src="gitbook/@honkit/honkit-plugin-lunr/search-lunr.js" defer></script>
-        
-    
-        
-        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js" defer></script>
         
     
 

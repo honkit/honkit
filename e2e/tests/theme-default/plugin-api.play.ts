@@ -345,7 +345,7 @@ test("an inline $(fn) placed after the plugin scripts runs after the ready callb
     baseURL
 }) => {
     // A plugin script that registers a ready callback, like many GitBook plugins do
-    await page.route(`${baseURL}book/gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js`, async (route) => {
+    await page.route(`${baseURL}book/gitbook/@honkit/honkit-plugin-lunr/search-lunr.js`, async (route) => {
         const response = await route.fetch();
         const body = (await response.text()) + "\n$(function () { window.__pluginReady = true; });";
         await route.fulfill({ response, body });

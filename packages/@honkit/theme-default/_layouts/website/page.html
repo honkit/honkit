@@ -36,7 +36,7 @@
 {% endblock %}
 
 {% block body %}
-{###- The classes of honkit-plugin-fontsettings for its config. boot.js replaces them with the reader's saved choice -###}
+{###- The classes of the font settings for the config of honkit-plugin-fontsettings (it has no config when the plugin is disabled). boot.js replaces them with the reader's saved choice -###}
 {%- set fontsettings = config.pluginsConfig.fontsettings %}
 <div class="book honkit-cloak{% if fontsettings %} font-size-{{ fontsettings.size or 2 }} font-family-{{ {"serif": 0, "sans": 1}[fontsettings.family] or 0 }}{% set fontTheme = {"white": 0, "sepia": 1, "night": 2}[fontsettings.theme] or 0 %}{% if fontTheme %} color-theme-{{ fontTheme }}{% endif %}{% endif %}">
     <div class="book-summary">

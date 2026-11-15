@@ -4,6 +4,9 @@
 
 This plugin adds font settings button in the HonKit website.
 
+The feature itself (JavaScript and CSS) is part of the default theme, so that the font settings are applied before the page is shown.
+This plugin enables it and defines its configuration.
+
 ### Disable this plugin
 
 This is a default plugin and it can be disabled using a `book.json` configuration:

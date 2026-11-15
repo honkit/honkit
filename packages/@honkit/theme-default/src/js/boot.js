@@ -63,11 +63,11 @@
     }
 
     /*
-        Apply the font settings that the reader saved with honkit-plugin-fontsettings before the page is shown.
-        The classes of the plugin config are rendered in page.html, and only the reader's choice is in localStorage.
-        fontsettings.js is loaded with `defer` and runs after the first paint: without this,
+        Apply the font settings that the reader saved (src/js/theme/fontsettings.js) before the page is shown.
+        The classes of the config are rendered in page.html, and only the reader's choice is in localStorage.
+        theme.js is loaded with `defer` and runs after the first paint: without this,
         the text changes its size (layout shift) and a night theme reader sees the white theme first.
-        fontsettings.js applies the same classes again when it runs.
+        theme.js applies the same classes again when it runs.
     */
     function restoreFontSettings(book) {
         const fontState = getStorageValue(":fontState", null);

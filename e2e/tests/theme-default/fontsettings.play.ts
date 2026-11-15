@@ -39,7 +39,7 @@ const hasFontSettingsApi = () => {
     return Boolean(gitbook && gitbook.fontsettings);
 };
 
-// The classes of `.book` right after the page is shown, while fontsettings.js is still held
+// The classes of `.book` right after the page is shown, while theme.js is still held
 const getClassesBeforeFontSettings = async (page: import("@playwright/test").Page) => {
     await expect(getBook(page)).not.toHaveClass(/\bhonkit-cloak\b/);
     const { classes, hasApi } = await page.evaluate(() => ({
@@ -50,11 +50,11 @@ const getClassesBeforeFontSettings = async (page: import("@playwright/test").Pag
     return classes;
 };
 
-// boot.js applies the font settings before the first paint, because fontsettings.js is loaded with `defer`
-test.describe("before fontsettings.js runs", () => {
+// boot.js applies the font settings before the first paint, because theme.js is loaded with `defer`
+test.describe("before theme.js runs", () => {
     test.beforeEach(async ({ page, baseURL }) => {
-        // Hold fontsettings.js, so that the page is painted before the plugin script runs
-        await page.route(`${baseURL}book/gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js`, async (route) => {
+        // Hold theme.js, so that the page is painted before the font settings script runs
+        await page.route(`${baseURL}book/gitbook/theme.js`, async (route) => {
             await new Promise((resolve) => setTimeout(resolve, 1000));
             await route.continue();
         });
@@ -79,7 +79,7 @@ test.describe("before fontsettings.js runs", () => {
         expect(classes).not.toContain("font-family-1");
     });
 
-    test("the text does not move when fontsettings.js runs", async ({ page }) => {
+    test("the text does not move when theme.js runs", async ({ page }) => {
         await page.addInitScript(() => {
             const w = window as unknown as { __layoutShift: number };
             w.__layoutShift = 0;
@@ -97,4 +97,38 @@ test.describe("before fontsettings.js runs", () => {
         const layoutShift = await page.evaluate(() => (window as unknown as { __layoutShift: number }).__layoutShift);
         expect(layoutShift).toBe(0);
     });
+});
+
+test("the font settings button is added after the toolbar buttons of the plugins", async ({ page, baseURL }) => {
+    // A plugin script that adds a toolbar button at "start", like the sharing plugins do
+    await page.route(`${baseURL}book/gitbook/gitbook-plugin-search/search.js`, async (route) => {
+        const response = await route.fetch();
+        const body =
+            (await response.text()) +
+            `\nrequire(["gitbook"], function (gitbook) {
+                gitbook.events.bind("start", function () {
+                    gitbook.toolbar.createButton({ icon: "fa fa-star", label: "Plugin Button" });
+                });
+            });`;
+        await route.fulfill({ response, body });
+    });
+    await page.reload();
+    await waitForThemeReady(page);
+
+    // The toolbar buttons have no role that tells their order, so the labels are read from the header
+    const labels = await page
+        .locator(".book-header > a.btn, .book-header > .dropdown > a.btn")
+        .evaluateAll((buttons) => buttons.map((button) => button.getAttribute("aria-label")));
+    expect(labels.indexOf("Plugin Button")).toBeGreaterThanOrEqual(0);
+    expect(labels.indexOf("Font Settings")).toBeGreaterThan(labels.indexOf("Plugin Button"));
+});
+
+test("when the fontsettings plugin is disabled, the book has no font settings", async ({ page }) => {
+    await page.goto("no-fontsettings/");
+    await waitForThemeReady(page);
+
+    await expect(getPageHeading(page)).toHaveText("Without Font Settings");
+    await expect(page.getByRole("link", { name: "Font Settings" })).toHaveCount(0);
+    await expect(getBook(page)).not.toHaveClass(/\b(font-size|font-family|color-theme)-/);
+    expect(await page.evaluate(hasFontSettingsApi)).toBe(false);
 });
