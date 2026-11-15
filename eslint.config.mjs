@@ -18,7 +18,10 @@ export default [
             "__snapshots__",
             ".yarn",
             ".nx/",
-            "**/_assets/"
+            "**/_assets/",
+            "packages/@honkit/theme-default-e2e/dist/",
+            "**/playwright-report/",
+            "**/test-results/"
         ]
     },
     ...eslintConfig

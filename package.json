@@ -27,6 +27,7 @@
     "clean": "pnpm -r --filter \"!@example/*\" run clean",
     "clean-deps": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
     "test": "pnpm -r --filter \"!@example/*\" run test",
+    "test:e2e": "pnpm --filter @honkit/theme-default-e2e run test:e2e",
     "updateSnapshot": "pnpm -r --filter \"!@example/*\" run updateSnapshot",
     "versionup": "echo 'Error: Please use CI for versioning. Run gh workflow run create-release-pr instead.' && exit 1",
     "honkit:build": "npm run build && honkit build",
