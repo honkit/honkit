@@ -22,7 +22,7 @@ var honkit = {
     push: function (fn) {
         if (!isPageReady) onLoad.push(fn);
         else fn();
-    },
+    }
 };
 
 // Define `gitbook` as alias
@@ -32,7 +32,7 @@ var gitbook = honkit;
 var MODULES = {
     gitbook: gitbook,
     honkit: honkit,
-    jquery: $,
+    jquery: $
 };
 
 window.gitbook = gitbook;
@@ -52,11 +52,18 @@ window.require = function (mods, fn) {
     fn.apply(null, mods);
 };
 
-$(document).ready(function () {
+function onReady() {
     isPageReady = true;
 
     // Call pile of function once HonKit is ready
-    $.each(onLoad, function (i, fn) {
+    onLoad.forEach(function (fn) {
         fn();
     });
-});
+}
+
+// Same timing as jQuery's `$(document).ready()`: after all synchronous scripts ran
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onReady);
+} else {
+    setTimeout(onReady);
+}

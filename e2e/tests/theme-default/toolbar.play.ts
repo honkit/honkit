@@ -41,6 +41,28 @@ test("a button created with toolbar.createButton is shown in the header and call
     expect(await page.evaluate(() => (window as unknown as TestWindow).__clicks)).toEqual(["star"]);
 });
 
+test("when onClick returns false, the click does not follow the button link and does not bubble", async ({ page }) => {
+    await page.evaluate(() => {
+        const w = window as unknown as TestWindow;
+        w.gitbook.toolbar.createButton({
+            icon: "fa fa-star",
+            label: "Star this book",
+            position: "right",
+            onClick: function (this: HTMLElement) {
+                w.__clicks.push(this.getAttribute("aria-label") ?? "");
+                return false;
+            }
+        });
+        document.querySelector(".book-header")?.addEventListener("click", () => w.__clicks.push("bubbled"));
+    });
+    const urlBefore = page.url();
+
+    await getHeader(page).getByRole("link", { name: "Star this book" }).click();
+
+    expect(await page.evaluate(() => (window as unknown as TestWindow).__clicks)).toEqual(["Star this book"]);
+    expect(page.url()).toBe(urlBefore);
+});
+
 test("a button with text shows the text", async ({ page }) => {
     await page.evaluate(() => {
         (window as unknown as TestWindow).gitbook.toolbar.createButton({ text: "Edit", label: "Edit page" });

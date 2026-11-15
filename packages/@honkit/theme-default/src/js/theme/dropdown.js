@@ -1,26 +1,28 @@
-var $ = require("jquery");
-
-function toggleDropdown(e) {
-    var $dropdown = $(e.currentTarget).parent().find(".dropdown-menu");
-
-    $dropdown.toggleClass("open");
-    e.stopPropagation();
-    e.preventDefault();
-}
-
-function closeDropdown(e) {
-    $(".dropdown-menu").removeClass("open");
+function closeDropdowns() {
+    document.querySelectorAll(".dropdown-menu.open").forEach(function (menu) {
+        menu.classList.remove("open");
+    });
 }
 
 // Bind all dropdown
 function init() {
-    $(document).on("click", ".toggle-dropdown", toggleDropdown);
-    $(document).on("click", ".dropdown-menu", function (e) {
-        e.stopPropagation();
+    document.addEventListener("click", function (e) {
+        var target = e.target instanceof Element ? e.target : null;
+        var toggle = target && target.closest(".toggle-dropdown");
+        if (toggle) {
+            e.preventDefault();
+            var menu = toggle.parentElement && toggle.parentElement.querySelector(".dropdown-menu");
+            if (menu) menu.classList.toggle("open");
+            return;
+        }
+        // Clicking inside a menu keeps it open
+        if (target && target.closest(".dropdown-menu")) {
+            return;
+        }
+        closeDropdowns();
     });
-    $(document).on("click", closeDropdown);
 }
 
 module.exports = {
-    init: init,
+    init: init
 };

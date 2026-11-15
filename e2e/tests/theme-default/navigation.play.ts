@@ -85,6 +85,48 @@ test("updates the prev/next <link> tags in <head> after navigation", async ({ pa
     await expect(page.locator('head link[rel="prev"]')).toHaveAttribute("href", "./");
 });
 
+test("after navigating, an inline page script runs after the external page script before it", async ({ page }) => {
+    await getSummary(page).getByRole("link", { name: "Section 1.2" }).click();
+    await expect(getPageHeading(page)).toHaveText("Section 1.2");
+
+    await expect.poll(() => page.evaluate(() => (window as unknown as { __pageWidget?: string }).__pageWidget)).toBe(
+        "rendered"
+    );
+});
+
+test("after navigating to a page with a nomodule script, the page is shown and the page state is updated", async ({
+    page
+}) => {
+    await getSummary(page).getByRole("link", { name: "Section 1.2" }).click();
+
+    await expect(getPageHeading(page)).toBeVisible();
+    await expect
+        .poll(() =>
+            page.evaluate(
+                () => (window as unknown as { gitbook: { state: { file: { path: string } } } }).gitbook.state.file.path
+            )
+        )
+        .toBe("chapter1/section2.md");
+});
+
+test("clicking an absolute URL of the same origin loads the page normally", async ({ page }) => {
+    await page.evaluate(() => {
+        const link = document.createElement("a");
+        link.href = new URL("last.html", location.href).href;
+        link.textContent = "Absolute link";
+        document.querySelector(".markdown-section")?.appendChild(link);
+        (window as unknown as { __sameDocument?: boolean }).__sameDocument = true;
+    });
+
+    await page.getByRole("link", { name: "Absolute link" }).click();
+    // Wait for the full page load: until the stylesheets apply, hidden search result headings are in the accessibility tree
+    await page.waitForURL(/\/book\/last\.html$/, { waitUntil: "load" });
+    await waitForThemeReady(page);
+
+    await expect(getPageHeading(page)).toHaveText("Last Page");
+    expect(await page.evaluate(() => (window as unknown as { __sameDocument?: boolean }).__sameDocument)).toBeUndefined();
+});
+
 test("clicking a link in the page content navigates to the linked page", async ({ page }) => {
     await markWindow(page);
 

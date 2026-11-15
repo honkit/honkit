@@ -256,6 +256,24 @@ test("gitbook.keyboard.bind registers a keyboard shortcut", async ({ page }) => 
     await expect.poll(() => page.evaluate(() => (window as unknown as TestWindow).__events)).toEqual(["k"]);
 });
 
+test("gitbook.keyboard.bind supports modifier keys and the latest binding of a key wins", async ({ page }) => {
+    await page.evaluate(() => {
+        const w = window as unknown as TestWindow;
+        w.__events = [];
+        w.gitbook.keyboard.bind(["ctrl+k"], () => {
+            w.__events?.push("first ctrl+k");
+        });
+        w.gitbook.keyboard.bind(["ctrl+k"], () => {
+            w.__events?.push("second ctrl+k");
+        });
+    });
+
+    await page.keyboard.press("k");
+    await page.keyboard.press("Control+k");
+
+    await expect.poll(() => page.evaluate(() => (window as unknown as TestWindow).__events)).toEqual(["second ctrl+k"]);
+});
+
 test("gitbook.navigation.goNext and goPrev move to the next and previous pages", async ({ page }) => {
     await page.evaluate(() => (window as unknown as TestWindow).gitbook.navigation.goNext());
     await expect(getPageHeading(page)).toHaveText("Section 1.2");

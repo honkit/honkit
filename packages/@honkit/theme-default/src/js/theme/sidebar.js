@@ -1,23 +1,30 @@
-var $ = require("jquery");
-
+var dom = require("./dom");
 var platform = require("./platform");
 
 var gitbook = window.gitbook;
 
-// Toggle sidebar with or withour animation
-function toggleSidebar(_state, animation) {
-    if (gitbook.state != null && isOpen() == _state) return;
-    if (animation == null) animation = true;
-
-    gitbook.state.$book.toggleClass("without-animation", !animation);
-    gitbook.state.$book.toggleClass("with-summary", _state);
-
-    gitbook.storage.set("sidebar", isOpen());
+function getBook() {
+    return document.querySelector(".book");
 }
 
 // Return true if sidebar is open
 function isOpen() {
-    return gitbook.state.$book.hasClass("with-summary");
+    var book = getBook();
+    return book ? book.classList.contains("with-summary") : false;
+}
+
+// Toggle sidebar with or withour animation
+function toggleSidebar(_state, animation) {
+    var book = getBook();
+    if (!book) return;
+    if (gitbook.state != null && isOpen() == _state) return;
+    if (animation == null) animation = true;
+    if (_state == null) _state = !isOpen();
+
+    book.classList.toggle("without-animation", !animation);
+    book.classList.toggle("with-summary", Boolean(_state));
+
+    gitbook.storage.set("sidebar", isOpen());
 }
 
 // Prepare sidebar: state and toggle button
@@ -28,21 +35,32 @@ function init() {
     // https://web.dev/optimize-cls/
 
     // Close sidebar after clicking a link on mobile
-    $(document).on("click", ".book-summary li.chapter a", function (e) {
+    dom.delegate("click", ".book-summary li.chapter a", function () {
         if (platform.isMobile()) toggleSidebar(false, false);
     });
 }
 
+function setVisible(element, visible) {
+    element.style.display = visible ? "" : "none";
+}
+
 // Filter summary with a list of path
 function filterSummary(paths) {
-    var $summary = $(".book-summary");
+    var summary = document.querySelector(".book-summary");
+    if (!summary) return;
 
-    $summary.find("li").each(function () {
-        var path = $(this).data("path");
+    summary.querySelectorAll("li").forEach(function (li) {
+        var path = li.getAttribute("data-path");
         var st = paths == null || paths.indexOf(path) !== -1;
 
-        $(this).toggle(st);
-        if (st) $(this).parents("li").show();
+        setVisible(li, st);
+        if (st) {
+            var parent = li.parentElement && li.parentElement.closest("li");
+            while (parent && summary.contains(parent)) {
+                setVisible(parent, true);
+                parent = parent.parentElement && parent.parentElement.closest("li");
+            }
+        }
     });
 }
 
@@ -50,5 +68,5 @@ module.exports = {
     init: init,
     isOpen: isOpen,
     toggle: toggleSidebar,
-    filter: filterSummary,
+    filter: filterSummary
 };

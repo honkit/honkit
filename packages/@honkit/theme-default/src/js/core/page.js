@@ -1,6 +1,4 @@
 var $ = require("jquery");
-var url = require("url");
-var path = require("path");
 var events = require("./events");
 
 var started = false;
@@ -50,15 +48,11 @@ function setState(newState) {
     state.innerLanguage = state.book.language || "";
 
     // Absolute url to the root of the book (inner book)
-    state.root = url
-        .resolve(
-            location.protocol + "//" + location.host,
-            path.dirname(path.resolve(location.pathname.replace(/\/$/, "/index.html"), state.basePath))
-        )
-        .replace(/\/?$/, "/");
+    var pageUrl = location.protocol + "//" + location.host + location.pathname;
+    state.root = new URL(String(state.basePath).replace(/\/?$/, "/"), pageUrl).href;
 
     // Absolute root to the language (for multilingual book)
-    state.bookRoot = state.innerLanguage ? url.resolve(state.root, "..") : state.root;
+    state.bookRoot = state.innerLanguage ? new URL("..", state.root).href : state.root;
 }
 
 /*
@@ -71,5 +65,5 @@ function getState() {
 module.exports = {
     hasChanged: hasChanged,
     setState: setState,
-    getState: getState,
+    getState: getState
 };
