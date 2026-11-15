@@ -303,3 +303,39 @@ test("gitbook.sidebar.filter shows only the chapters of the given paths and thei
     await page.evaluate(() => (window as unknown as TestWindow).gitbook.sidebar.filter(null));
     await expect(summary.getByRole("link", { name: "Last Page" })).toBeVisible();
 });
+
+test("inline scripts placed after the theme scripts can use require(), $(fn) and gitbook.push()", async ({
+    page,
+    baseURL
+}) => {
+    // Custom themes extend the `javascript` block and add inline scripts after the theme and plugin scripts.
+    await page.route(`${baseURL}book/chapter1/section1.html`, async (route) => {
+        const response = await route.fetch();
+        const html = (await response.text()).replace(
+            "</body>",
+            `<script>
+                window.__calls = [];
+                require(["gitbook", "jquery"], function (gitbook, $) {
+                    window.__calls.push("require:" + (typeof gitbook.events.bind) + ":" + (typeof $.fn.jquery));
+                    gitbook.events.bind("page.change", function () {
+                        window.__calls.push("page.change");
+                    });
+                });
+                $(function () {
+                    window.__calls.push("ready:" + (typeof window.gitbook.state.page));
+                });
+                gitbook.push(function () {
+                    window.__calls.push("push:" + window.gitbook.state.page.title);
+                });
+            </script></body>`
+        );
+        await route.fulfill({ response, body: html });
+    });
+
+    await page.goto("book/chapter1/section1.html");
+    await waitForThemeReady(page);
+
+    await expect
+        .poll(() => page.evaluate(() => (window as unknown as { __calls: string[] }).__calls))
+        .toEqual(["require:function:string", "page.change", "push:Section 1.1", "ready:object"]);
+});

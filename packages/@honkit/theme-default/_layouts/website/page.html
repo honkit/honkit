@@ -18,17 +18,19 @@
     <noscript>
         <link rel="stylesheet" href="{{ "noscript.css"|resolveAsset }}">
     </noscript>
-    {### Restore the sidebar state before the page is shown, to prevent a layout shift.
-         It is an external script so that the page works with a Content-Security-Policy without 'unsafe-inline'
+    {### boot.js restores the sidebar state before the page is shown (no layout shift), and queues
+         `gitbook.push()`, `require()` and `$(fn)` calls until the deferred scripts run.
+         Every script is an external file, so that the page works with a Content-Security-Policy without 'unsafe-inline'
          https://github.com/honkit/honkit/issues/487 ###}
-    <script src="{{ "sidebar-state.js"|resolveAsset }}"></script>
-    <script src="{{ "gitbook.js"|resolveAsset }}"></script>
-    <script src="{{ "theme.js"|resolveAsset }}"></script>
+    <script src="{{ "boot.js"|resolveAsset }}"></script>
+    {### `defer` scripts do not block rendering. They run in this order before DOMContentLoaded ###}
+    <script src="{{ "gitbook.js"|resolveAsset }}" defer></script>
+    <script src="{{ "theme.js"|resolveAsset }}" defer></script>
     {% for resource in plugins.resources.js %}
         {% if resource.url %}
-        <script src="{{ resource.url }}"></script>
+        <script src="{{ resource.url }}" defer></script>
         {% else %}
-        <script src="{{ resource.path|resolveAsset }}"></script>
+        <script src="{{ resource.path|resolveAsset }}" defer></script>
         {% endif %}
     {% endfor %}
 {% endblock %}

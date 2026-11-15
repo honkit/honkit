@@ -5,7 +5,11 @@ var storage = require("./storage");
 var page = require("./page");
 
 var isPageReady = false;
-var onLoad = window.gitbook || [];
+var onLoad = Array.isArray(window.gitbook) ? window.gitbook : [];
+
+// Calls queued by boot.js while this script was loading with `defer`
+var bootQueue = Array.isArray(window.__honkitBootQueue) ? window.__honkitBootQueue : [];
+delete window.__honkitBootQueue;
 
 // Export APIs for plugins
 var honkit = {
@@ -54,12 +58,15 @@ window.require = function (mods, fn) {
 
 // The layout (_layouts/website/page.html) embeds the page context as
 // `<script type="application/json" id="honkit-page-context">` before this script.
-// It is queued at the same position as the inline `gitbook.push(...)` of older layouts,
-// so the order of the functions pushed by plugins does not change.
+// It is queued at the same position as the inline `gitbook.push(...)` of older layouts (recorded by boot.js),
+// so the order of the functions pushed by plugins and inline scripts does not change.
 var pageContextElement = document.querySelector("script#honkit-page-context");
 if (pageContextElement) {
     var pageContext = JSON.parse(pageContextElement.textContent);
-    onLoad.push(function () {
+    var pageContextIndex =
+        typeof window.__honkitPageContextIndex === "number" ? window.__honkitPageContextIndex : onLoad.length;
+    delete window.__honkitPageContextIndex;
+    onLoad.splice(pageContextIndex, 0, function () {
         page.hasChanged(pageContext);
     });
 }
@@ -73,9 +80,47 @@ function onReady() {
     });
 }
 
-// Same timing as jQuery's `$(document).ready()`: after all synchronous scripts ran
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", onReady);
+/*
+    Ready timing
+
+    The scripts of the theme and plugins are loaded with `defer`: they run in order after the HTML is parsed
+    and before DOMContentLoaded. jQuery's ready would fire right after this script when the document is
+    already "interactive", before the following plugin scripts run. So the ready is held until
+    DOMContentLoaded, which is the same timing as when the scripts were loaded synchronously.
+*/
+var isDocumentLoaded = document.readyState === "complete";
+if (!isDocumentLoaded) {
+    $.holdReady(true);
+}
+
+// Registered first, so it runs before the ready callbacks of plugins, like before
+$(onReady);
+
+// Queued `$(fn)` calls register their ready callbacks after HonKit's
+bootQueue.forEach(function (call) {
+    if (call.type === "ready") {
+        $(call.fn);
+    }
+});
+
+var released = false;
+function release() {
+    if (released) return;
+    released = true;
+    // Queued `require()` calls come from inline scripts after the plugin scripts: run them after the plugins
+    bootQueue.forEach(function (call) {
+        if (call.type === "require") {
+            window.require(call.modules, call.fn);
+        }
+    });
+    if (!isDocumentLoaded) {
+        $.holdReady(false);
+    }
+}
+if (document.readyState === "loading" || (document.readyState === "interactive" && !isDocumentLoaded)) {
+    document.addEventListener("DOMContentLoaded", release);
+    // Fallback when this script was added after DOMContentLoaded
+    window.addEventListener("load", release);
 } else {
-    setTimeout(onReady);
+    release();
 }
