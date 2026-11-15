@@ -1,0 +1,106 @@
+.book-summary {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    top: 0px;
+    left: -300px;
+    bottom: 0px;
+    z-index: 1;
+    overflow-y: auto;
+    width: 300px;
+    color: hsl(207, 15%, 25%);
+    background: #fafafa;
+    border-right: 1px solid rgba(0, 0, 0, 0.07);
+    -webkit-transition: left 250ms ease;
+    -moz-transition: left 250ms ease;
+    -o-transition: left 250ms ease;
+    transition: left 250ms ease;
+}
+.book-summary ul.summary {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    -webkit-transition: top 0.5s ease;
+    -moz-transition: top 0.5s ease;
+    -o-transition: top 0.5s ease;
+    transition: top 0.5s ease;
+}
+.book-summary ul.summary li {
+    list-style: none;
+}
+.book-summary ul.summary li.header {
+    padding: 10px 15px;
+    padding-top: 20px;
+    text-transform: uppercase;
+    color: #939da3;
+}
+.book-summary ul.summary li.divider {
+    height: 1px;
+    margin: 7px 0;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.07);
+}
+.book-summary ul.summary li i.fa-check {
+    display: none;
+    position: absolute;
+    right: 9px;
+    top: 16px;
+    font-size: 9px;
+    color: hsl(120, 60%, 50%);
+}
+.book-summary ul.summary li.done > a {
+    color: hsl(207, 15%, 25%);
+    font-weight: normal;
+}
+.book-summary ul.summary li.done > a i {
+    display: inline;
+}
+.book-summary ul.summary li a,
+.book-summary ul.summary li span {
+    display: block;
+    padding: 10px 15px;
+    border-bottom: none;
+    color: hsl(207, 15%, 25%);
+    background: transparent;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.book-summary ul.summary li a:hover {
+    text-decoration: underline;
+}
+.book-summary ul.summary li a:focus {
+    outline: none;
+}
+.book-summary ul.summary li.active > a {
+    color: hsl(207, 100%, 50%);
+    background: transparent;
+    text-decoration: none;
+}
+.book-summary ul.summary li ul {
+    padding-left: 20px;
+}
+@media screen and (max-width: 600px) {
+    .book-summary {
+        width: calc(100% - 60px);
+        bottom: 0px;
+        left: -100%;
+    }
+}
+.book.with-summary .book-summary {
+    left: 0px;
+}
+.book.without-animation .book-summary {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+@media print {
+    .book-summary {
+        display: none;
+    }
+    .book-body {
+        left: 0;
+    }
+}

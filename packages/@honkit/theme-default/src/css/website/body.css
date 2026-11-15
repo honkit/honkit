@@ -1,0 +1,78 @@
+.book {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+@media screen and (min-width: 600px) {
+    .book.with-summary .book-body {
+        left: 300px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .book.with-summary {
+        overflow: hidden;
+    }
+    .book.with-summary .book-body {
+        -webkit-transform: translate(calc(100% - 60px), 0px);
+        -moz-transform: translate(calc(100% - 60px), 0px);
+        -ms-transform: translate(calc(100% - 60px), 0px);
+        -o-transform: translate(calc(100% - 60px), 0px);
+        transform: translate(calc(100% - 60px), 0px);
+    }
+}
+.book.without-animation .book-body {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+.book-body {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    overflow-y: auto;
+    color: black;
+    background: white;
+    -webkit-transition: left 250ms ease;
+    -moz-transition: left 250ms ease;
+    -o-transition: left 250ms ease;
+    transition: left 250ms ease;
+}
+.book-body .body-inner {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    overflow-y: auto;
+}
+@media screen and (max-width: 1240px) {
+    .book-body {
+        -webkit-transition: -webkit-transform 250ms ease;
+        -moz-transition: -moz-transform 250ms ease;
+        -o-transition: -o-transform 250ms ease;
+        transition: transform 250ms ease;
+        padding-bottom: 20px;
+    }
+    .book-body .body-inner {
+        position: static;
+        min-height: calc(100% - 50px);
+    }
+}
+/* Hidden until the critical styles are applied. Without JavaScript, noscript.css shows it */
+.honkit-cloak {
+    display: none;
+}
+@media print {
+    .book {
+        position: static;
+    }
+    .book-body {
+        position: static;
+    }
+    .book-body .body-inner {
+        position: static;
+    }
+}

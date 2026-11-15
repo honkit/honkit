@@ -1,0 +1,6 @@
+/* Stylesheet of the EPUB output */
+@import "./ebook.css";
+
+body {
+    font-family: serif;
+}

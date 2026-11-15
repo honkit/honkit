@@ -1,0 +1,35 @@
+.buttons {
+}
+.buttons:before,
+.buttons:after {
+    content: " ";
+    display: table;
+    line-height: 0;
+}
+.buttons:after {
+    clear: both;
+}
+.button {
+    border: 0;
+    background-color: transparent;
+    background: #eee;
+    color: #666;
+    width: 100%;
+    text-align: center;
+    float: left;
+    line-height: 1.42857143;
+    padding: 8px 4px;
+}
+.button:hover {
+    color: #444;
+}
+.button:focus,
+.button:hover {
+    outline: none;
+}
+.button.size-2 {
+    width: 50%;
+}
+.button.size-3 {
+    width: 33%;
+}
