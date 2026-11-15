@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794751702551,
+  "lastUpdate": 1794753141151,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -13049,6 +13049,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.25,
             "range": "±1.02%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "099914344906b2a1b0a6ef54f1e8fa83408cf954",
+          "message": "Release v7.0.0 (#556)\n\n<!-- Release notes generated using configuration in .github/release.yml\nat master -->\n\n## Breaking Changes\n\n- **Supported browsers**: the default theme now targets Chrome / Edge /\nFirefox 100+ and Safari 15+. Older browsers may not run the scripts of\nthe theme.\n- **Font settings moved into the default theme** (#554): the text no\nlonger moves after the page is shown (CLS 0). `gitbook.fontsettings`,\n`pluginsConfig.fontsettings` and `plugins: [\"-fontsettings\"]` work as\nbefore.\n- `gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js` and\n`website.css` are no longer in the output.\n- A custom theme that ships its own `_assets/website/theme.js` has no\nfont settings.\n- **`@honkit/honkit-plugin-theme` is no longer published** (#553). Use\nthe default theme (`@honkit/honkit-plugin-theme-default`).\n\n## Notable changes\n\n- **Scripts are loaded with `defer`** (#549): the theme and plugin\nscripts no longer block rendering. Inline scripts that use\n`gitbook.push()`, `require()` or `$(fn)` keep working.\n\n## What's Changed\n### Security Fixes\n* fix(theme-default): CSP support, focus, scroll restoration, navigation\noverlap and linkless TOC entries by @azu in\nhttps://github.com/honkit/honkit/pull/548\n### Bug Fixes\n* fix(theme-default): apply font settings before the first paint, and\nmove them into the theme by @azu in\nhttps://github.com/honkit/honkit/pull/554\n### Refactoring\n* refactor(theme-default): drop jQuery from the theme scripts and\nmodernize the build by @azu in https://github.com/honkit/honkit/pull/547\n* refactor(theme-default): replace LESS with plain CSS by @azu in\nhttps://github.com/honkit/honkit/pull/551\n* refactor(theme-default): use const and let instead of var by @azu in\nhttps://github.com/honkit/honkit/pull/552\n### Testing\n* test(e2e): add Playwright E2E tests (default theme) by @azu in\nhttps://github.com/honkit/honkit/pull/546\n### Maintenance\n* chore: remove the unused new theme package\n(@honkit/honkit-plugin-theme) by @azu in\nhttps://github.com/honkit/honkit/pull/553\n### CI\n* ci: wait until honkit is installable from npm before building the\nDocker image by @azu in https://github.com/honkit/honkit/pull/545\n### Other Changes\n* perf(theme-default): load theme and plugin scripts with defer by @azu\nin https://github.com/honkit/honkit/pull/549\n\n\n**Full Changelog**:\nhttps://github.com/honkit/honkit/compare/v6.2.6...v7.0.0\n\nCo-authored-by: azu <19714+azu@users.noreply.github.com>",
+          "timestamp": "2026-11-15T23:31:03+09:00",
+          "tree_id": "083247c03de13f924dd654f75a7fd73bfb472f10",
+          "url": "https://github.com/honkit/honkit/commit/099914344906b2a1b0a6ef54f1e8fa83408cf954"
+        },
+        "date": 1794753140081,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.2,
+            "range": "±0.74%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
