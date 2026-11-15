@@ -15,8 +15,9 @@ describe("PluginResolver", () => {
     };
 
     beforeEach(() => {
-        // require.resolve returns the real path, and the temporary directory is a symlink on macOS
-        baseDirectory = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), "honkit-plugin-resolver-")));
+        // require.resolve returns the real path: the temporary directory is a symlink on macOS
+        // and a short (8.3) path on Windows, which only the native realpath expands
+        baseDirectory = fs.realpathSync.native(fs.mkdtempSync(path.join(os.tmpdir(), "honkit-plugin-resolver-")));
     });
 
     afterEach(() => {
