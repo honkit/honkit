@@ -74,6 +74,9 @@ test.describe("before fontsettings.js runs", () => {
         await page.goto("book/", { waitUntil: "commit" });
         const classes = await getClassesBeforeFontSettings(page);
         expect(classes).toEqual(expect.arrayContaining(["font-size-4", "font-family-0", "color-theme-2"]));
+        // The classes of the plugin config are replaced
+        expect(classes).not.toContain("font-size-2");
+        expect(classes).not.toContain("font-family-1");
     });
 
     test("the text does not move when fontsettings.js runs", async ({ page }) => {

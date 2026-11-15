@@ -62,38 +62,20 @@
         }
     }
 
-    function getPageConfig() {
-        const element = document.getElementById("honkit-page-context");
-        if (!element) {
-            return null;
-        }
-        const context = JSON.parse(element.textContent);
-        return context && context.config;
-    }
-
     /*
-        Apply the classes of honkit-plugin-fontsettings (font size, font family and color theme) before the page is shown.
-        fontsettings.js is loaded with `defer` and runs after the first paint: when it adds the classes,
-        the text changes its size (layout shift) and a night theme user sees the white theme first.
-        This is the same logic as `init()` in fontsettings.js, and fontsettings.js applies the classes again when it runs.
+        Apply the font settings that the reader saved with honkit-plugin-fontsettings before the page is shown.
+        The classes of the plugin config are rendered in page.html, and only the reader's choice is in localStorage.
+        fontsettings.js is loaded with `defer` and runs after the first paint: without this,
+        the text changes its size (layout shift) and a night theme reader sees the white theme first.
+        fontsettings.js applies the same classes again when it runs.
     */
-    function restoreFontSettings(config) {
-        const pluginConfig = config && config.pluginsConfig && config.pluginsConfig.fontsettings;
-        if (!pluginConfig) {
-            // fontsettings plugin is not used
+    function restoreFontSettings(book) {
+        const fontState = getStorageValue(":fontState", null);
+        if (!fontState) {
+            // The reader has not changed the font settings
             return;
         }
-        const themeIds = { white: 0, sepia: 1, night: 2 };
-        const familyIds = { serif: 0, sans: 1 };
-        const fontState = getStorageValue(":fontState", {
-            size: pluginConfig.size || 2,
-            family: familyIds[pluginConfig.family] || 0,
-            theme: themeIds[pluginConfig.theme] || 0
-        });
-        const book = document.querySelector(".book");
-        if (!book || typeof fontState !== "object") {
-            return;
-        }
+        book.className = book.className.replace(/\b(font|color-theme)-\S+/g, "");
         book.classList.add("font-size-" + fontState.size, "font-family-" + fontState.family);
         if (fontState.theme !== 0) {
             book.classList.add("color-theme-" + fontState.theme);
@@ -103,7 +85,7 @@
     // Show the page even if restoring the last state throws. The error is not caught, so it is reported in the console
     try {
         restoreLastSidebarState();
-        restoreFontSettings(getPageConfig());
+        restoreFontSettings(document.querySelector(".book"));
     } finally {
         const book = document.querySelector(".book");
         if (book) {
