@@ -9,8 +9,8 @@
 */
 (function () {
     if (!window.jQuery) {
-        var queue = (window.__honkitBootQueue = window.__honkitBootQueue || []);
-        var queueReady = function (fn) {
+        const queue = (window.__honkitBootQueue = window.__honkitBootQueue || []);
+        const queueReady = function (fn) {
             if (typeof fn !== "function") {
                 throw new Error(
                     "HonKit: jQuery is not loaded yet. Use $(function () { ... }) or require([\"jquery\"], function ($) { ... })"
@@ -36,27 +36,27 @@
 (function () {
     // Same key and format as `gitbook.storage` (src/js/core/storage.js)
     function getSidebarState(defaultValue) {
-        var key = ":sidebar";
+        const key = ":sidebar";
         try {
-            var value = localStorage[key];
+            const value = localStorage[key];
             if (value === undefined) {
                 return defaultValue;
             }
-            var parsed = JSON.parse(value);
+            const parsed = JSON.parse(value);
             return parsed == null ? defaultValue : parsed;
-        } catch (e) { // eslint-disable-line no-unused-vars
+        } catch {
             return defaultValue;
         }
     }
 
     function restoreLastSidebarState() {
-        var isMobile = window.matchMedia("(max-width: 600px)").matches;
+        const isMobile = window.matchMedia("(max-width: 600px)").matches;
         if (isMobile) {
             // The sidebar is closed by default on mobile
             return;
         }
-        var sidebarState = getSidebarState(true);
-        var book = document.querySelector(".book");
+        const sidebarState = getSidebarState(true);
+        const book = document.querySelector(".book");
         // Show sidebar if it enabled
         if (sidebarState && book) {
             book.classList.add("without-animation", "with-summary");
@@ -66,7 +66,7 @@
     try {
         restoreLastSidebarState();
     } finally {
-        var book = document.querySelector(".book");
+        const book = document.querySelector(".book");
         if (book) {
             book.classList.remove("honkit-cloak");
         }

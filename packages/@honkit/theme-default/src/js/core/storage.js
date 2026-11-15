@@ -1,4 +1,4 @@
-var baseKey = "";
+let baseKey = "";
 
 /*
  * Simple module for storing data in the browser's local storage
@@ -14,25 +14,29 @@ module.exports = {
 
         try {
             localStorage[key] = JSON.stringify(value);
-        } catch (e) {} // eslint-disable-line no-empty, no-unused-vars
+        } catch {
+            // localStorage is unavailable (e.g. cookies are disabled): ignore
+        }
     },
 
     // Read a value from localstorage
     get: function (key, def) {
-        var value;
+        let value;
         key = baseKey + ":" + key;
         // We need a try block here because window.localStorage is
         // inaccessible when browser cookies are disabled.
         try {
             value = localStorage[key];
-        } catch (e) {} // eslint-disable-line no-empty, no-unused-vars
+        } catch {
+            // localStorage is unavailable (e.g. cookies are disabled): ignore
+        }
 
         if (value === undefined) return def;
 
         try {
-            var parsed = JSON.parse(value);
+            const parsed = JSON.parse(value);
             return parsed == null ? def : parsed;
-        } catch (err) { // eslint-disable-line no-unused-vars
+        } catch {
             return value || def;
         }
     },
@@ -42,6 +46,8 @@ module.exports = {
         key = baseKey + ":" + key;
         try {
             localStorage.removeItem(key);
-        } catch (e) {} // eslint-disable-line no-empty, no-unused-vars
+        } catch {
+            // localStorage is unavailable (e.g. cookies are disabled): ignore
+        }
     },
 };

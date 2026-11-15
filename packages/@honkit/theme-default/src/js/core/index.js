@@ -1,18 +1,18 @@
-var $ = require("jquery");
+const $ = require("jquery");
 
-var events = require("./events");
-var storage = require("./storage");
-var page = require("./page");
+const events = require("./events");
+const storage = require("./storage");
+const page = require("./page");
 
-var isPageReady = false;
-var onLoad = Array.isArray(window.gitbook) ? window.gitbook : [];
+let isPageReady = false;
+const onLoad = Array.isArray(window.gitbook) ? window.gitbook : [];
 
 // Calls queued by boot.js while this script was loading with `defer`
-var bootQueue = Array.isArray(window.__honkitBootQueue) ? window.__honkitBootQueue : [];
+const bootQueue = Array.isArray(window.__honkitBootQueue) ? window.__honkitBootQueue : [];
 delete window.__honkitBootQueue;
 
 // Export APIs for plugins
-var honkit = {
+const honkit = {
     events: events,
     page: page,
 
@@ -30,10 +30,10 @@ var honkit = {
 };
 
 // Define `gitbook` as alias
-var gitbook = honkit;
+const gitbook = honkit;
 
 // Modules mapping for plugins
-var MODULES = {
+const MODULES = {
     gitbook: gitbook,
     honkit: honkit,
     jquery: $
@@ -60,10 +60,10 @@ window.require = function (mods, fn) {
 // `<script type="application/json" id="honkit-page-context">` before this script.
 // It is queued at the same position as the inline `gitbook.push(...)` of older layouts (recorded by boot.js),
 // so the order of the functions pushed by plugins and inline scripts does not change.
-var pageContextElement = document.querySelector("script#honkit-page-context");
+const pageContextElement = document.querySelector("script#honkit-page-context");
 if (pageContextElement) {
-    var pageContext = JSON.parse(pageContextElement.textContent);
-    var pageContextIndex =
+    const pageContext = JSON.parse(pageContextElement.textContent);
+    const pageContextIndex =
         typeof window.__honkitPageContextIndex === "number" ? window.__honkitPageContextIndex : onLoad.length;
     delete window.__honkitPageContextIndex;
     onLoad.splice(pageContextIndex, 0, function () {
@@ -88,7 +88,7 @@ function onReady() {
     already "interactive", before the following plugin scripts run. So the ready is held until
     DOMContentLoaded, which is the same timing as when the scripts were loaded synchronously.
 */
-var isDocumentLoaded = document.readyState === "complete";
+const isDocumentLoaded = document.readyState === "complete";
 if (!isDocumentLoaded) {
     $.holdReady(true);
 }
@@ -96,7 +96,7 @@ if (!isDocumentLoaded) {
 // Registered first, so it runs before the ready callbacks of plugins, like before
 $(onReady);
 
-var released = false;
+let released = false;
 function release() {
     if (released) return;
     released = true;

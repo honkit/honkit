@@ -7,11 +7,11 @@ function closeDropdowns() {
 // Bind all dropdown
 function init() {
     document.addEventListener("click", function (e) {
-        var target = e.target instanceof Element ? e.target : null;
-        var toggle = target && target.closest(".toggle-dropdown");
+        const target = e.target instanceof Element ? e.target : null;
+        const toggle = target && target.closest(".toggle-dropdown");
         if (toggle) {
             e.preventDefault();
-            var menu = toggle.parentElement && toggle.parentElement.querySelector(".dropdown-menu");
+            const menu = toggle.parentElement && toggle.parentElement.querySelector(".dropdown-menu");
             if (menu) menu.classList.toggle("open");
             return;
         }

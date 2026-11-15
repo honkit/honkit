@@ -1,7 +1,7 @@
-var dom = require("./dom");
-var platform = require("./platform");
+const dom = require("./dom");
+const platform = require("./platform");
 
-var gitbook = window.gitbook;
+const gitbook = window.gitbook;
 
 function getBook() {
     return document.querySelector(".book");
@@ -9,13 +9,13 @@ function getBook() {
 
 // Return true if sidebar is open
 function isOpen() {
-    var book = getBook();
+    const book = getBook();
     return book ? book.classList.contains("with-summary") : false;
 }
 
 // Toggle sidebar with or withour animation
 function toggleSidebar(_state, animation) {
-    var book = getBook();
+    const book = getBook();
     if (!book) return;
     if (gitbook.state != null && isOpen() == _state) return;
     if (animation == null) animation = true;
@@ -46,16 +46,16 @@ function setVisible(element, visible) {
 
 // Filter summary with a list of path
 function filterSummary(paths) {
-    var summary = document.querySelector(".book-summary");
+    const summary = document.querySelector(".book-summary");
     if (!summary) return;
 
     summary.querySelectorAll("li").forEach(function (li) {
-        var path = li.getAttribute("data-path");
-        var st = paths == null || paths.indexOf(path) !== -1;
+        const path = li.getAttribute("data-path");
+        const st = paths == null || paths.indexOf(path) !== -1;
 
         setVisible(li, st);
         if (st) {
-            var parent = li.parentElement && li.parentElement.closest("li");
+            let parent = li.parentElement && li.parentElement.closest("li");
             while (parent && summary.contains(parent)) {
                 setVisible(parent, true);
                 parent = parent.parentElement && parent.parentElement.closest("li");

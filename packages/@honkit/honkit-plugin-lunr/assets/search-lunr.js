@@ -5,7 +5,7 @@ require(["gitbook"], function (gitbook) {
         so the promise returned by `then` must have `always` too.
     */
     function compatPromise(promise) {
-        var then = promise.then.bind(promise);
+        const then = promise.then.bind(promise);
         promise.then = function (onFulfilled, onRejected) {
             return compatPromise(then(onFulfilled, onRejected));
         };
@@ -48,7 +48,7 @@ require(["gitbook"], function (gitbook) {
 
     // Initialize lunr by fetching the search index
     LunrSearchEngine.prototype.init = function () {
-        var that = this;
+        const that = this;
 
         return compatPromise(
             fetch(gitbook.state.basePath + "/search_index.json", { credentials: "same-origin" })
@@ -68,12 +68,12 @@ require(["gitbook"], function (gitbook) {
 
     // Search for a term and return results
     LunrSearchEngine.prototype.search = function (q, offset, length) {
-        var that = this;
-        var results = [];
+        const that = this;
+        let results = [];
 
         if (this.index) {
             results = this.index.search(q).map(function (result) {
-                var doc = that.store[result.ref];
+                const doc = that.store[result.ref];
 
                 return {
                     title: doc.title,
@@ -94,7 +94,7 @@ require(["gitbook"], function (gitbook) {
 
     // Set gitbook research
     gitbook.events.bind("start", function (e, config) {
-        var engine = gitbook.search.getEngine();
+        const engine = gitbook.search.getEngine();
         if (!engine) {
             gitbook.search.setEngine(LunrSearchEngine, config);
         }

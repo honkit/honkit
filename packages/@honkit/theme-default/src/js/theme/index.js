@@ -1,10 +1,10 @@
-var dropdown = require("./dropdown");
-var keyboard = require("./keyboard");
-var navigation = require("./navigation");
-var sidebar = require("./sidebar");
-var toolbar = require("./toolbar");
+const dropdown = require("./dropdown");
+const keyboard = require("./keyboard");
+const navigation = require("./navigation");
+const sidebar = require("./sidebar");
+const toolbar = require("./toolbar");
 
-var gitbook = window.gitbook;
+const gitbook = window.gitbook;
 
 function init() {
     // Init sidebar
