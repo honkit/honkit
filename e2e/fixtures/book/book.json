@@ -1,10 +1,13 @@
 {
-    "title": "Theme Default Fixture",
-    "description": "Fixture book for theme-default E2E tests",
-    "language": "en",
-    "links": {
-        "sidebar": {
-            "External Sidebar Link": "https://example.com/"
-        }
+  "title": "Theme Default Fixture",
+  "description": "Fixture book for theme-default E2E tests",
+  "language": "en",
+  "links": {
+    "sidebar": {
+      "External Sidebar Link": "https://example.com/"
     }
+  },
+  "variables": {
+    "scriptProbe": "</script><script>window.__honkitInjected = true;</script><!-- < "
+  }
 }

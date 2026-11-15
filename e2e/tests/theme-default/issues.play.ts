@@ -131,3 +131,28 @@ test(
         expect(violations).toEqual([]);
     }
 );
+
+test("when the page context contains </script>, it is read as data and does not run as a script", async ({ page }) => {
+    // fixtures/book/book.json has `variables.scriptProbe`, which tries to close the JSON data block
+    // and run a script. It is in the page context of every page (`gitbook.state.config`).
+    const expected = "</script><script>window.__honkitInjected = true;</script><!-- < ";
+    type ProbeWindow = Window & {
+        __honkitInjected?: boolean;
+        gitbook: { state: { config: { variables: { scriptProbe: string } } } };
+    };
+
+    await page.goto("book/");
+    await waitForThemeReady(page);
+    expect(
+        await page.evaluate(() => (window as unknown as ProbeWindow).gitbook.state.config.variables.scriptProbe)
+    ).toBe(expected);
+
+    // The context of the next page is read after navigation too
+    await page.getByRole("link", { name: "Next page: Chapter 1" }).click();
+    await expect(getPageHeading(page)).toHaveText("Chapter 1");
+    expect(
+        await page.evaluate(() => (window as unknown as ProbeWindow).gitbook.state.config.variables.scriptProbe)
+    ).toBe(expected);
+
+    expect(await page.evaluate(() => (window as unknown as ProbeWindow).__honkitInjected)).toBeUndefined();
+});
