@@ -104,6 +104,9 @@ test("clicking an absolute URL of the same origin loads the page normally", asyn
     });
 
     await page.getByRole("link", { name: "Absolute link" }).click();
+    // Wait for the full page load: until the stylesheets apply, hidden search result headings are in the accessibility tree
+    await page.waitForURL(/\/book\/last\.html$/, { waitUntil: "load" });
+    await waitForThemeReady(page);
 
     await expect(getPageHeading(page)).toHaveText("Last Page");
     expect(await page.evaluate(() => (window as unknown as { __sameDocument?: boolean }).__sameDocument)).toBeUndefined();
