@@ -10,12 +10,17 @@ var Html = new Entities();
 // so they collide between languages.
 var states = {};
 
-function createState(context) {
-    // Create search index
-    var ignoreSpecialCharacters =
-        context.config.get("pluginsConfig.lunr.ignoreSpecialCharacters") ||
-        context.config.get("lunr.ignoreSpecialCharacters");
-    var searchIndex = lunr(function () {
+// Read an option from "pluginsConfig.lunr" or, for backward compatibility, from "lunr"
+function getOption(context, name) {
+    return context.config.get("pluginsConfig.lunr." + name) || context.config.get("lunr." + name);
+}
+
+function isWebsite(context) {
+    return context.output.name === "website";
+}
+
+function createSearchIndex(ignoreSpecialCharacters) {
+    return lunr(function () {
         this.ref("url");
 
         this.field("title", { boost: 10 });
@@ -27,9 +32,11 @@ function createState(context) {
             this.pipeline.remove(lunr.trimmer);
         }
     });
+}
 
+function createState(context) {
     return {
-        searchIndex: searchIndex,
+        searchIndex: createSearchIndex(getOption(context, "ignoreSpecialCharacters")),
         // Map of Lunr ref to document
         documentsStore: {},
         searchIndexEnabled: true,
@@ -37,13 +44,22 @@ function createState(context) {
     };
 }
 
-// Called with the `this` context provided by Gitbook
+// Called with the `this` context provided by HonKit
 function getState(context) {
     var root = context.output.root();
     if (!states[root]) {
         states[root] = createState(context);
     }
     return states[root];
+}
+
+// Return the text of a page without HTML entities and tags
+function toPlainText(content) {
+    return Html.decode(content).replace(/(<([^>]+)>)/gi, "");
+}
+
+function getKeywords(page) {
+    return (page.search && page.search.keywords) || [];
 }
 
 module.exports = {
@@ -55,13 +71,13 @@ module.exports = {
     hooks: {
         // Start every generation of an output from an empty index ("honkit serve" rebuilds in the same process)
         init: function () {
-            if (this.output.name != "website") return;
+            if (!isWebsite(this)) return;
             states[this.output.root()] = createState(this);
         },
 
         // Index each page
         page: function (page) {
-            if (this.output.name != "website" || page.search === false) {
+            if (!isWebsite(this) || page.search === false) {
                 return page;
             }
 
@@ -70,27 +86,14 @@ module.exports = {
                 return page;
             }
 
-            var text, maxIndexSize;
-            maxIndexSize = this.config.get("pluginsConfig.lunr.maxIndexSize") || this.config.get("lunr.maxIndexSize");
-
             this.log.debug.ln("index page", page.path);
 
-            text = page.content;
-            // Decode HTML
-            text = Html.decode(text);
-            // Strip HTML tags
-            text = text.replace(/(<([^>]+)>)/gi, "");
-
-            state.indexSize = state.indexSize + text.length;
-            if (state.indexSize > maxIndexSize) {
+            var text = toPlainText(page.content);
+            state.indexSize += text.length;
+            if (state.indexSize > getOption(this, "maxIndexSize")) {
                 this.log.warn.ln("search index is too big, indexing is now disabled");
                 state.searchIndexEnabled = false;
                 return page;
-            }
-
-            var keywords = [];
-            if (page.search) {
-                keywords = page.search.keywords || [];
             }
 
             // Add to index
@@ -98,7 +101,7 @@ module.exports = {
                 url: this.output.toURL(page.path),
                 title: page.title,
                 summary: page.description,
-                keywords: keywords.join(" "),
+                keywords: getKeywords(page).join(" "),
                 body: text
             };
 
@@ -110,7 +113,7 @@ module.exports = {
 
         // Write index to disk
         finish: function () {
-            if (this.output.name != "website") return;
+            if (!isWebsite(this)) return;
 
             var state = getState(this);
             this.log.debug.ln("write search index");

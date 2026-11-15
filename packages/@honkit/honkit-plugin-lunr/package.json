@@ -33,7 +33,8 @@
   "scripts": {
     "build": "node -e \"require('fs').copyFileSync(require.resolve('lunr/lunr.min.js'), 'assets/lunr.min.js')\"",
     "prepublish": "npm run build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "node --test test/index.test.js"
   },
   "gitbook": {
     "properties": {
