@@ -1,4 +1,4 @@
-import { expect, getPageHeading, getSummary, test } from "./fixtures";
+import { expect, getPageHeading, getSummary, test } from "../helpers";
 
 test.use({ javaScriptEnabled: false });
 

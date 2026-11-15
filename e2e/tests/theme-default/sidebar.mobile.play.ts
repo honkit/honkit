@@ -1,4 +1,4 @@
-import { expect, getPageHeading, getSidebarToggle, getSummary, test, waitForThemeReady } from "./fixtures";
+import { expect, getPageHeading, getSidebarToggle, getSummary, test, waitForThemeReady } from "../helpers";
 
 test.beforeEach(async ({ page }) => {
     await page.goto("book/");

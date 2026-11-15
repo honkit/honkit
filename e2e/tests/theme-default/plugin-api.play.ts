@@ -1,4 +1,4 @@
-import { expect, getPageHeading, getSummary, test, waitForThemeReady } from "./fixtures";
+import { expect, getPageHeading, getSummary, test, waitForThemeReady } from "../helpers";
 
 /**
  * Tests for the browser API that themes and plugins use

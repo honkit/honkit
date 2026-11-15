@@ -1,4 +1,4 @@
-import { expect, getMain, getPageHeading, getSummary, getSummaryItem, test, waitForThemeReady } from "./fixtures";
+import { expect, getMain, getPageHeading, getSummary, getSummaryItem, test, waitForThemeReady } from "../helpers";
 
 type HonKitWindow = Window & {
     __navigationMarker?: string;

@@ -27,6 +27,21 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
 
+  e2e:
+    devDependencies:
+      '@playwright/test':
+        specifier: 1.63.0
+        version: 1.63.0
+      '@types/node':
+        specifier: ^22.7.4
+        version: 22.7.4
+      honkit:
+        specifier: workspace:*
+        version: link:../packages/honkit
+      typescript:
+        specifier: ^5.6.2
+        version: 5.6.2
+
   examples/benchmark:
     devDependencies:
       '@honkit/internal-test-utils':
@@ -360,21 +375,6 @@ importers:
       uglify-js:
         specifier: ^3.17.0
         version: 3.17.0
-
-  packages/@honkit/theme-default-e2e:
-    devDependencies:
-      '@playwright/test':
-        specifier: 1.63.0
-        version: 1.63.0
-      '@types/node':
-        specifier: ^22.7.4
-        version: 22.7.4
-      honkit:
-        specifier: workspace:*
-        version: link:../../honkit
-      typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
 
   packages/honkit:
     dependencies:

@@ -1,4 +1,4 @@
-import { expect, getPageHeading, test, waitForThemeReady } from "./fixtures";
+import { expect, getPageHeading, test, waitForThemeReady } from "../helpers";
 
 type Toolbar = {
     createButton: (opts: Record<string, unknown>) => string;

@@ -1,4 +1,4 @@
-import { checkPage, expect, getMain, getPageHeading, test, waitForThemeReady } from "./fixtures";
+import { checkPage, expect, getMain, getPageHeading, test, waitForThemeReady } from "../helpers";
 
 const PAGES = [
     { path: "book/", title: "Introduction" },
@@ -48,7 +48,7 @@ test("the stylesheet configured in styles.website is applied to the page", async
     await page.goto("book/");
     await waitForThemeReady(page);
 
-    // fixtures/book/styles/website.css sets letter-spacing on the page heading.
+    // e2e/fixtures/book/styles/website.css sets letter-spacing on the page heading.
     await expect(getPageHeading(page)).toHaveCSS("letter-spacing", "1px");
 });
 

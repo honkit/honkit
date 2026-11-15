@@ -2,3 +2,4 @@ packages:
   - "packages/*"
   - "packages/@honkit/*"
   - "examples/*"
+  - "e2e"

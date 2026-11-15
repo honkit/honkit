@@ -1,10 +1,14 @@
-# @honkit/theme-default-e2e
+# @honkit/e2e
 
-End-to-end tests for [`@honkit/honkit-plugin-theme-default`](../theme-default/).
+End-to-end tests for HonKit.
 
-The tests build the fixture books in [`fixtures/`](./fixtures/) with `honkit build`,
-serve the static output, and check the behavior in Chromium with [Playwright Test](https://playwright.dev/).
+The tests build the fixture books in [`fixtures/`](./fixtures/) with `honkit build` of this workspace,
+serve the static output, and check it in Chromium with [Playwright Test](https://playwright.dev/).
 They run against the same output that users deploy, not against `honkit serve`.
+
+| Directory              | Target                                                                       |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| `tests/theme-default/` | The default theme (`@honkit/honkit-plugin-theme-default`) and its plugin API |
 
 ## Usage
 
@@ -13,20 +17,20 @@ They run against the same output that users deploy, not against `honkit serve`.
 pnpm install
 pnpm run build
 # first time only
-pnpm --filter @honkit/theme-default-e2e run test:e2e:setup
+pnpm --filter @honkit/e2e run test:e2e:setup
 # run the tests
 pnpm run test:e2e
 # run one file
-pnpm --filter @honkit/theme-default-e2e run test:e2e e2e/navigation.play.ts
+pnpm --filter @honkit/e2e run test:e2e tests/theme-default/navigation.play.ts
 ```
 
 `test:e2e` builds the fixtures and starts the static server automatically.
 
 ## Writing tests
 
-- Test files are `e2e/*.play.ts`. `*.mobile.play.ts` runs only in the `mobile` project (Pixel 7),
+- Test files are `tests/**/*.play.ts`. `*.mobile.play.ts` runs only in the `mobile` project (Pixel 7),
   and the other files run in the `desktop` project. `pages.play.ts` runs in both.
-- Import `test` and `expect` from `e2e/fixtures.ts`. It blocks requests to other hosts and fails the test
+- Import `test` and `expect` from `tests/helpers.ts`. It blocks requests to other hosts and fails the test
   when the page throws, logs `console.error`, or receives a 4xx/5xx response.
 - Name a test by the behavior a reader sees: "when … , … is shown".
 - Locate elements by role and accessible name (`getByRole`, `getByLabel`).

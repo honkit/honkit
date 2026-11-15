@@ -19,7 +19,7 @@ export default [
             ".yarn",
             ".nx/",
             "**/_assets/",
-            "packages/@honkit/theme-default-e2e/dist/",
+            "e2e/dist/",
             "**/playwright-report/",
             "**/test-results/"
         ]

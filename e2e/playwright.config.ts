@@ -4,7 +4,7 @@ const port = Number(process.env.PORT ?? 4180);
 const isCI = Boolean(process.env.CI);
 
 export default defineConfig({
-    testDir: "./e2e",
+    testDir: "./tests",
     testMatch: "**/*.play.ts",
     fullyParallel: true,
     forbidOnly: true,

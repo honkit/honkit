@@ -1,4 +1,4 @@
-import { expect, getPageHeading, test, waitForThemeReady } from "./fixtures";
+import { expect, getPageHeading, test, waitForThemeReady } from "../helpers";
 
 test.beforeEach(async ({ page }) => {
     await page.goto("book/");

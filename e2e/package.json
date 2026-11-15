@@ -1,8 +1,8 @@
 {
-  "name": "@honkit/theme-default-e2e",
+  "name": "@honkit/e2e",
   "version": "6.2.6",
   "private": true,
-  "description": "End-to-end tests for @honkit/honkit-plugin-theme-default",
+  "description": "End-to-end tests for HonKit: build books with honkit and check the output in a browser",
   "license": "Apache-2.0",
   "author": "azu",
   "type": "module",

@@ -40,7 +40,7 @@ jobs:
         working-directory: examples/benchmark
 
   e2e:
-    name: "E2E tests of the default theme"
+    name: "E2E tests"
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -59,19 +59,19 @@ jobs:
         run: pnpm run build
       - name: Install Playwright browser
         run: pnpm run test:e2e:setup
-        working-directory: packages/@honkit/theme-default-e2e
+        working-directory: e2e
       - name: Type check
         run: pnpm run typecheck
-        working-directory: packages/@honkit/theme-default-e2e
+        working-directory: e2e
       - name: Run E2E tests
         run: pnpm run test:e2e
-        working-directory: packages/@honkit/theme-default-e2e
+        working-directory: e2e
       - name: Upload Playwright report
         if: ${{ failure() }}
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: theme-default-e2e-playwright-report
-          path: packages/@honkit/theme-default-e2e/playwright-report
+          name: e2e-playwright-report
+          path: e2e/playwright-report
           retention-days: 7
 
   docker-image:
