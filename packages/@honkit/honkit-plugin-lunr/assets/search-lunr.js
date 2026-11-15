@@ -12,8 +12,8 @@ require(["gitbook", "jquery"], function (gitbook, $) {
         var d = $.Deferred();
 
         $.getJSON(gitbook.state.basePath + "/search_index.json").then(function (data) {
-            // eslint-disable-next-line no-undef
-            that.index = lunr.Index.load(data.index);
+            // lunr.min.js defines lunr as a global variable
+            that.index = window.lunr.Index.load(data.index);
             that.store = data.store;
             d.resolve();
         });

@@ -5,6 +5,10 @@ import stylisticJs from "@stylistic/eslint-plugin-js";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
+    {
+        // minified files are build output, such as lunr.min.js copied from the lunr package
+        ignores: ["**/*.min.js"]
+    },
     eslint.configs.recommended,
     {
         plugins: {
