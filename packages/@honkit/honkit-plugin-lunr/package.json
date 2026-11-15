@@ -2,7 +2,7 @@
   "name": "@honkit/honkit-plugin-lunr",
   "description": "Index book in a lunr index accessible from the search plugin",
   "main": "index.js",
-  "version": "6.2.6",
+  "version": "7.0.0",
   "license": "Apache-2.0",
   "homepage": "https://github.com/honkit/honkit",
   "engines": {
