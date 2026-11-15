@@ -150,4 +150,28 @@ describe("WebsiteGenerator", () => {
             expect(folder).toHaveFile("index.html");
         });
     });
+
+    longTest("should write a separate search index for each language", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "LANGS.md": "# Languages\n\n* [en](en)\n* [fr](fr)",
+            en: {
+                "README.md": "# Hello\n\nenglishonly"
+            },
+            fr: {
+                "README.md": "# Bonjour\n\nfrenchonly"
+            }
+        });
+        const readIndex = (language) =>
+            JSON.parse(fs.readFileSync(`${folder}/${language}/search_index.json`, "utf8"));
+
+        const en = readIndex("en");
+        const fr = readIndex("fr");
+        expect(Object.values(en.store).map((doc: any) => doc.body.trim())).toEqual(["Hello\nenglishonly"]);
+        expect(Object.values(fr.store).map((doc: any) => doc.body.trim())).toEqual(["Bonjour\nfrenchonly"]);
+        // The index itself, not only the store, must not contain words of the other language
+        expect(JSON.stringify(en.index)).toContain("englishon");
+        expect(JSON.stringify(en.index)).not.toContain("frenchon");
+        expect(JSON.stringify(fr.index)).toContain("frenchon");
+        expect(JSON.stringify(fr.index)).not.toContain("englishon");
+    });
 });

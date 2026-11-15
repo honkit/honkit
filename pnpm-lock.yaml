@@ -143,6 +143,22 @@ importers:
         specifier: ^3.13.1
         version: 3.13.1
 
+  packages/@honkit/honkit-plugin-lunr:
+    dependencies:
+      html-entities:
+        specifier: 1.2.0
+        version: 1.2.0
+      lunr:
+        specifier: 0.5.12
+        version: 0.5.12
+    devDependencies:
+      '@honkit/cleaning-tools':
+        specifier: workspace:*
+        version: link:../cleaning-tools
+      eslint:
+        specifier: ^9.39.4
+        version: 9.39.4
+
   packages/@honkit/html:
     dependencies:
       cheerio:
@@ -356,6 +372,9 @@ importers:
       '@honkit/honkit-plugin-highlight':
         specifier: workspace:*
         version: link:../@honkit/honkit-plugin-highlight
+      '@honkit/honkit-plugin-lunr':
+        specifier: workspace:*
+        version: link:../@honkit/honkit-plugin-lunr
       '@honkit/honkit-plugin-theme-default':
         specifier: workspace:*
         version: link:../@honkit/theme-default
@@ -419,9 +438,6 @@ importers:
       gitbook-plugin-livereload:
         specifier: ^0.0.1
         version: 0.0.1
-      gitbook-plugin-lunr:
-        specifier: ^1.2.0
-        version: 1.2.0
       gitbook-plugin-search:
         specifier: ^2.2.1
         version: 2.2.1
@@ -2354,10 +2370,6 @@ packages:
   gitbook-plugin-livereload@0.0.1:
     resolution: {integrity: sha512-+5xinicId2ZcbP6jBTFfQBnjz8nhoBgcOuQfKTEM6Yg9fBsmo2mxY6ubrx1b5ozuIMyfDLkSihx97A7+X+EtQQ==}
 
-  gitbook-plugin-lunr@1.2.0:
-    resolution: {integrity: sha512-QBfFLMZmoyOfLzc5aZrlRCkmzb9YcSjzdnyJFiRI/nX+Nd6kK1XyN4DLGnNSMHkRcJchcpWiQ6XGqSqo7e+d+g==}
-    engines: {gitbook: '>=3.0.0-pre.0'}
-
   gitbook-plugin-page-toc-button@0.1.1:
     resolution: {integrity: sha512-htlxoEWhPkKze4W8xaWJ6KmC95e706dEVH06dKQSmgMEXzfovtxW67PxDwy78f0JB4z1B/3ZkaEoFmbWazAMow==}
     engines: {gitbook: '>=3.1.1'}
@@ -2570,6 +2582,7 @@ packages:
   image-size@0.5.5:
     resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
     engines: {node: '>=0.10.0'}
+    deprecated: Please migrate to image-size@2.x
     hasBin: true
 
   immutable@3.8.3:
@@ -6820,12 +6833,6 @@ snapshots:
       codemirror-console-ui: 2.0.5
 
   gitbook-plugin-livereload@0.0.1: {}
-
-  gitbook-plugin-lunr@1.2.0:
-    dependencies:
-      gitbook-plugin-search: 2.2.1
-      html-entities: 1.2.0
-      lunr: 0.5.12
 
   gitbook-plugin-page-toc-button@0.1.1: {}
 
