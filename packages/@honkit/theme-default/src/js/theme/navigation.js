@@ -28,7 +28,9 @@ function findHashTarget(hash) {
     let id = hash.slice(1);
     try {
         id = decodeURIComponent(id);
-    } catch (e) {}  
+    } catch {
+        // Malformed escape sequence: use the hash as is
+    }
     const element = document.getElementById(id);
     return element && scroller.contains(element) ? element : null;
 }

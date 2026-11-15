@@ -14,7 +14,9 @@ module.exports = {
 
         try {
             localStorage[key] = JSON.stringify(value);
-        } catch (e) {}  
+        } catch {
+            // localStorage is unavailable (e.g. cookies are disabled): ignore
+        }
     },
 
     // Read a value from localstorage
@@ -25,14 +27,16 @@ module.exports = {
         // inaccessible when browser cookies are disabled.
         try {
             value = localStorage[key];
-        } catch (e) {}  
+        } catch {
+            // localStorage is unavailable (e.g. cookies are disabled): ignore
+        }
 
         if (value === undefined) return def;
 
         try {
             const parsed = JSON.parse(value);
             return parsed == null ? def : parsed;
-        } catch (err) {  
+        } catch {
             return value || def;
         }
     },
@@ -42,6 +46,8 @@ module.exports = {
         key = baseKey + ":" + key;
         try {
             localStorage.removeItem(key);
-        } catch (e) {}  
+        } catch {
+            // localStorage is unavailable (e.g. cookies are disabled): ignore
+        }
     },
 };

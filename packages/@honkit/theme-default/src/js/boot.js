@@ -44,7 +44,7 @@
             }
             const parsed = JSON.parse(value);
             return parsed == null ? defaultValue : parsed;
-        } catch (e) {  
+        } catch {
             return defaultValue;
         }
     }
