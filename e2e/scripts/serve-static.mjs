@@ -31,7 +31,8 @@ const CONTENT_TYPES = {
 
 const resolveFile = (urlPath) => {
     const filePath = path.join(rootDir, decodeURIComponent(urlPath));
-    if (!filePath.startsWith(rootDir)) {
+    // Reject paths outside the root, including sibling directories such as `dist-other`
+    if (filePath !== rootDir && !filePath.startsWith(rootDir + path.sep)) {
         return null;
     }
     try {
