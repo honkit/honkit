@@ -244,8 +244,9 @@ function handleNavigation(relativeUrl, push) {
         return;
     }
 
-    // Don't fetch same page
-    if (!pathHasChanged) {
+    // Don't fetch same page, unless search results are shown instead of it:
+    // loading the page closes them (https://github.com/honkit/honkit/issues/488)
+    if (!pathHasChanged && !$("body").hasClass("with-search")) {
         if (push) history.pushState({ path: uri }, null, uri);
         return scrollToHash(hash);
     }
