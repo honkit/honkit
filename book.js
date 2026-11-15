@@ -8,6 +8,4 @@ module.exports = {
     variables: {
         version: pkg.version
     }
-    // If enable new theme
-    // plugins: ["-theme-default", "-search", "-lunr", "@honkit/honkit-plugin-fontsettings", "@honkit/honkit-plugin-theme"]
 };

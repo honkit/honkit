@@ -13,7 +13,7 @@ const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".
 const fromPackage = (...segments) => path.join(packageDir, ...segments);
 const assetsDir = fromPackage("_assets");
 
-// Browsers supported by the output: same baseline as the `@honkit/honkit-plugin-theme`
+// Browsers supported by the output (modern browsers only)
 const TARGET = ["chrome100", "edge100", "firefox100", "safari15"];
 
 const buildJs = async (entry, outfile) => {
