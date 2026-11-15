@@ -100,11 +100,10 @@
         }
     }
 
+    // Show the page even if restoring the last state throws. The error is not caught, so it is reported in the console
     try {
         restoreLastSidebarState();
         restoreFontSettings(getPageConfig());
-    } catch {
-        // Show the page even if the last state can not be restored
     } finally {
         const book = document.querySelector(".book");
         if (book) {
