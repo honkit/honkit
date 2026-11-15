@@ -1,0 +1,50 @@
+.book-langs-index {
+    width: 100%;
+    height: 100%;
+    padding: 40px 0px;
+    margin: 0px;
+    overflow: auto;
+}
+@media (max-width: 600px) {
+    .book-langs-index {
+        padding: 0px;
+    }
+}
+.book-langs-index .inner {
+    max-width: 600px;
+    width: 100%;
+    margin: 0px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 3px;
+}
+.book-langs-index .inner h3 {
+    margin: 0px;
+}
+.book-langs-index .inner .languages {
+    list-style: none;
+    padding: 20px 30px;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+}
+.book-langs-index .inner .languages:before,
+.book-langs-index .inner .languages:after {
+    content: " ";
+    display: table;
+    line-height: 0;
+}
+.book-langs-index .inner .languages:after {
+    clear: both;
+}
+.book-langs-index .inner .languages li {
+    width: 50%;
+    float: left;
+    padding: 10px 5px;
+    font-size: 16px;
+}
+@media (max-width: 600px) {
+    .book-langs-index .inner .languages li {
+        width: 100%;
+        max-width: 100%;
+    }
+}

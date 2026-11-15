@@ -20,11 +20,16 @@ These are also Apache License.
 ## Development
 
 ```sh
-# Build _assets/ (JavaScript with esbuild, CSS from LESS)
+# Build _assets/ (JavaScript and CSS with esbuild)
 pnpm --filter @honkit/honkit-plugin-theme-default run build
 # Run the E2E tests of the theme
 pnpm run test:e2e
 ```
+
+Stylesheets are plain CSS in `src/css/`. `src/css/website.css`, `ebook.css`, `epub.css`, `mobi.css` and `pdf.css`
+are the entry points, and their `@import`s are bundled into one file per output.
+Values are written as they are (the theme had no runtime variables), so a custom theme can still override
+any rule with a more specific or later selector.
 
 The theme's own scripts do not depend on jQuery.
 jQuery is still bundled into `gitbook.js` and exposed as `window.$`, `window.jQuery` and `require(["jquery"])`

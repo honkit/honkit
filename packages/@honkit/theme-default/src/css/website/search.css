@@ -1,0 +1,307 @@
+/*
+    Search input and results, works in sync with the "search" plugin
+*/
+#book-search-input {
+    padding: 6px;
+    background: transparent;
+    transition: top 0.5s ease;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+    margin-bottom: 10px;
+    /* Move top to hide top border */
+    margin-top: -1px;
+}
+#book-search-input input,
+#book-search-input input:focus,
+#book-search-input input:hover {
+    width: 100%;
+    background: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
+    outline: none;
+    line-height: 22px;
+    padding: 7px 7px;
+    color: inherit;
+}
+#book-search-results {
+    opacity: 1;
+}
+#book-search-results .search-results .search-results-title {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 200;
+    margin-bottom: 35px;
+    opacity: 0.6;
+}
+#book-search-results .search-results .has-results .search-results-item {
+    display: block;
+    word-wrap: break-word;
+    overflow: hidden;
+    color: #333333;
+    line-height: 1.7;
+    text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    /* Printing */
+    /* Typography */
+    /* Spacing */
+    /* Links */
+    /* Images */
+    /* Horizontal lines */
+    /* Headings */
+    /* Code blocks */
+    /* Tables */
+    /* Lists */
+    /* Blockquote */
+    /* Description Lists */
+    /* Task Lists */
+}
+#book-search-results .search-results .has-results .search-results-item * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-size: inherit;
+}
+#book-search-results .search-results .has-results .search-results-item > *:first-child {
+    margin-top: 0 !important;
+}
+#book-search-results .search-results .has-results .search-results-item > *:last-child {
+    margin-bottom: 0 !important;
+}
+#book-search-results .search-results .has-results .search-results-item pre,
+#book-search-results .search-results .has-results .search-results-item code,
+#book-search-results .search-results .has-results .search-results-item blockquote,
+#book-search-results .search-results .has-results .search-results-item tr,
+#book-search-results .search-results .has-results .search-results-item img,
+#book-search-results .search-results .has-results .search-results-item table,
+#book-search-results .search-results .has-results .search-results-item figure {
+    page-break-inside: avoid;
+}
+#book-search-results .search-results .has-results .search-results-item p,
+#book-search-results .search-results .has-results .search-results-item h2,
+#book-search-results .search-results .has-results .search-results-item h3,
+#book-search-results .search-results .has-results .search-results-item h4,
+#book-search-results .search-results .has-results .search-results-item h5 {
+    orphans: 3;
+    widows: 3;
+}
+#book-search-results .search-results .has-results .search-results-item h1,
+#book-search-results .search-results .has-results .search-results-item h2,
+#book-search-results .search-results .has-results .search-results-item h3,
+#book-search-results .search-results .has-results .search-results-item h4,
+#book-search-results .search-results .has-results .search-results-item h5 {
+    page-break-after: avoid;
+}
+#book-search-results .search-results .has-results .search-results-item strong,
+#book-search-results .search-results .has-results .search-results-item b {
+    font-weight: bold;
+}
+#book-search-results .search-results .has-results .search-results-item em {
+    font-style: italic;
+}
+#book-search-results .search-results .has-results .search-results-item p,
+#book-search-results .search-results .has-results .search-results-item blockquote,
+#book-search-results .search-results .has-results .search-results-item ul,
+#book-search-results .search-results .has-results .search-results-item ol,
+#book-search-results .search-results .has-results .search-results-item dl,
+#book-search-results .search-results .has-results .search-results-item table {
+    margin-top: 0;
+    margin-bottom: 0.85em;
+}
+#book-search-results .search-results .has-results .search-results-item a {
+    color: #4183c4;
+    text-decoration: none;
+    background: transparent;
+}
+#book-search-results .search-results .has-results .search-results-item a:hover,
+#book-search-results .search-results .has-results .search-results-item a:focus,
+#book-search-results .search-results .has-results .search-results-item a:active {
+    outline: 0;
+    text-decoration: underline;
+}
+#book-search-results .search-results .has-results .search-results-item img {
+    border: 0;
+    max-width: 100%;
+}
+#book-search-results .search-results .has-results .search-results-item hr {
+    height: 4px;
+    padding: 0;
+    margin: 1.7em 0;
+    overflow: hidden;
+    background-color: #e7e7e7;
+    border: none;
+}
+#book-search-results .search-results .has-results .search-results-item hr:before,
+#book-search-results .search-results .has-results .search-results-item hr:after {
+    display: table;
+    content: " ";
+}
+#book-search-results .search-results .has-results .search-results-item hr:after {
+    clear: both;
+}
+#book-search-results .search-results .has-results .search-results-item h1,
+#book-search-results .search-results .has-results .search-results-item h2,
+#book-search-results .search-results .has-results .search-results-item h3,
+#book-search-results .search-results .has-results .search-results-item h4,
+#book-search-results .search-results .has-results .search-results-item h5,
+#book-search-results .search-results .has-results .search-results-item h6 {
+    margin-top: 1.275em;
+    margin-bottom: 0.85em;
+    font-weight: bold;
+}
+#book-search-results .search-results .has-results .search-results-item h1 {
+    font-size: 2em;
+}
+#book-search-results .search-results .has-results .search-results-item h2 {
+    font-size: 1.75em;
+}
+#book-search-results .search-results .has-results .search-results-item h3 {
+    font-size: 1.5em;
+}
+#book-search-results .search-results .has-results .search-results-item h4 {
+    font-size: 1.25em;
+}
+#book-search-results .search-results .has-results .search-results-item h5 {
+    font-size: 1em;
+}
+#book-search-results .search-results .has-results .search-results-item h6 {
+    font-size: 1em;
+    color: #777;
+}
+#book-search-results .search-results .has-results .search-results-item code,
+#book-search-results .search-results .has-results .search-results-item pre {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    direction: ltr;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    color: inherit;
+}
+#book-search-results .search-results .has-results .search-results-item pre {
+    overflow: auto;
+    word-wrap: normal;
+    margin: 0px;
+    padding: 0.85em 1em;
+    margin-bottom: 1.275em;
+    background: #f7f7f7;
+}
+#book-search-results .search-results .has-results .search-results-item pre > code {
+    display: inline;
+    max-width: initial;
+    padding: 0;
+    margin: 0;
+    overflow: initial;
+    line-height: inherit;
+    font-size: 0.85em;
+    white-space: pre;
+    background: transparent;
+}
+#book-search-results .search-results .has-results .search-results-item pre > code:before,
+#book-search-results .search-results .has-results .search-results-item pre > code:after {
+    content: normal;
+}
+#book-search-results .search-results .has-results .search-results-item code {
+    padding: 0.2em;
+    margin: 0;
+    font-size: 0.85em;
+    background-color: #f7f7f7;
+}
+#book-search-results .search-results .has-results .search-results-item code:before,
+#book-search-results .search-results .has-results .search-results-item code:after {
+    letter-spacing: -0.2em;
+    content: "\00a0";
+}
+#book-search-results .search-results .has-results .search-results-item table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow: auto;
+}
+#book-search-results .search-results .has-results .search-results-item table td,
+#book-search-results .search-results .has-results .search-results-item table th {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+}
+#book-search-results .search-results .has-results .search-results-item table tr {
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+#book-search-results .search-results .has-results .search-results-item table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}
+#book-search-results .search-results .has-results .search-results-item table th {
+    font-weight: bold;
+}
+#book-search-results .search-results .has-results .search-results-item ul,
+#book-search-results .search-results .has-results .search-results-item ol {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.85em;
+    padding-left: 2em;
+}
+#book-search-results .search-results .has-results .search-results-item ul ol,
+#book-search-results .search-results .has-results .search-results-item ol ol,
+#book-search-results .search-results .has-results .search-results-item ul ul,
+#book-search-results .search-results .has-results .search-results-item ol ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#book-search-results .search-results .has-results .search-results-item ol ol {
+    list-style-type: lower-roman;
+}
+#book-search-results .search-results .has-results .search-results-item blockquote {
+    margin: 0;
+    margin-bottom: 0.85em;
+    padding: 0 15px;
+    color: #858585;
+    border-left: 4px solid #e5e5e5;
+}
+#book-search-results .search-results .has-results .search-results-item blockquote:first-child {
+    margin-top: 0;
+}
+#book-search-results .search-results .has-results .search-results-item blockquote:last-child {
+    margin-bottom: 0;
+}
+#book-search-results .search-results .has-results .search-results-item dl {
+    padding: 0;
+}
+#book-search-results .search-results .has-results .search-results-item dl dt {
+    padding: 0;
+    margin-top: 0.85em;
+    font-style: italic;
+    font-weight: bold;
+}
+#book-search-results .search-results .has-results .search-results-item dl dd {
+    padding: 0 0.85em;
+    margin-bottom: 0.85em;
+}
+#book-search-results .search-results .has-results .search-results-item dd {
+    margin-left: 0;
+}
+#book-search-results .search-results .has-results .search-results-item .task-list,
+#book-search-results .search-results .has-results .search-results-item .contains-task-list {
+    padding: 0;
+    padding-left: 0.8em;
+    list-style: none;
+}
+#book-search-results .search-results .has-results .search-results-item .task-list .task-list-item-checkbox,
+#book-search-results .search-results .has-results .search-results-item .contains-task-list .task-list-item-checkbox {
+    margin: 0 0.2em 0.25em 0em;
+    vertical-align: middle;
+}
+#book-search-results .search-results .has-results .search-results-item h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#book-search-results .search-results .no-results {
+    padding: 40px 0px;
+}
+body.search-loading #book-search-results {
+    opacity: 0.3;
+}
+/* When search is enabled, we hide the navigation left/right */
+body.with-search .navigation {
+    display: none;
+}

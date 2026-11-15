@@ -38,8 +38,7 @@
     "@honkit/cleaning-tools": "workspace:*",
     "esbuild": "^0.27.4",
     "eslint": "^9.39.4",
-    "jquery": "^3.7.1",
-    "less": "^4.2.0"
+    "jquery": "^3.7.1"
   },
   "engines": {
     "gitbook": ">=3.0.0"

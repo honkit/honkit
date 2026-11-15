@@ -1,13 +1,12 @@
 // Build the assets of the default theme into `_assets/`.
 //
 // - JavaScript: bundled and minified with esbuild
-// - CSS: compiled from LESS and minified with esbuild
+// - CSS: bundled (`@import`) and minified with esbuild
 // - Images and fonts: copied
-import { copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, rm } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import * as esbuild from "esbuild";
-import less from "less";
 
 const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const fromPackage = (...segments) => path.join(packageDir, ...segments);
@@ -30,19 +29,17 @@ const buildJs = async (entry, outfile) => {
 };
 
 const buildCss = async (entry, outfile) => {
-    const input = fromPackage(entry);
-    const { css } = await less.render(await readFile(input, "utf8"), {
-        filename: input,
-        // Keep the LESS 2 behavior: evaluate every math operation (e.g. `@a / 2`)
-        math: "always"
-    });
-    const result = await esbuild.transform(css, {
-        loader: "css",
+    await esbuild.build({
+        entryPoints: [fromPackage(entry)],
+        outfile: path.join(assetsDir, outfile),
+        bundle: true,
         minify: true,
         target: TARGET,
-        legalComments: "inline"
+        // Fonts are copied next to the stylesheet (see below)
+        external: ["./fonts/*"],
+        legalComments: "inline",
+        logLevel: "warning"
     });
-    await writeFile(path.join(assetsDir, outfile), result.code);
 };
 
 const copy = async (from, to) => {
@@ -63,11 +60,11 @@ const main = async () => {
         buildJs("src/js/core/index.js", "website/gitbook.js"),
         buildJs("src/js/theme/index.js", "website/theme.js"),
         buildJs("src/js/boot.js", "website/boot.js"),
-        buildCss("src/less/website.less", "website/style.css"),
-        buildCss("src/less/ebook.less", "ebook/ebook.css"),
-        buildCss("src/less/epub.less", "ebook/epub.css"),
-        buildCss("src/less/mobi.less", "ebook/mobi.css"),
-        buildCss("src/less/pdf.less", "ebook/pdf.css"),
+        buildCss("src/css/website.css", "website/style.css"),
+        buildCss("src/css/ebook.css", "ebook/ebook.css"),
+        buildCss("src/css/epub.css", "ebook/epub.css"),
+        buildCss("src/css/mobi.css", "ebook/mobi.css"),
+        buildCss("src/css/pdf.css", "ebook/pdf.css"),
         copy("src/css/noscript.css", "website/noscript.css"),
         copy("logo/favicon.ico", "website/images/favicon.ico"),
         copy("logo/apple-touch-icon.png", "website/images/apple-touch-icon-precomposed-152.png"),

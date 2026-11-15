@@ -1,0 +1,27 @@
+/* Stylesheet of the MOBI output */
+@import "./ebook.css";
+
+body {
+    font-family: serif;
+}
+
+.page .section a {
+    color: #000;
+}
+
+a {
+    color: #000;
+    text-decoration: underline !important;
+}
+
+.page-toc li {
+    list-style-type: lower-alpha;
+}
+
+.page-toc li .inner {
+    border: none;
+}
+
+.page-toc li .inner span.page {
+    display: none;
+}
