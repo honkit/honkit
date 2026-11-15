@@ -94,6 +94,21 @@ test("after navigating, an inline page script runs after the external page scrip
     );
 });
 
+test("after navigating to a page with a nomodule script, the page is shown and the page state is updated", async ({
+    page
+}) => {
+    await getSummary(page).getByRole("link", { name: "Section 1.2" }).click();
+
+    await expect(getPageHeading(page)).toBeVisible();
+    await expect
+        .poll(() =>
+            page.evaluate(
+                () => (window as unknown as { gitbook: { state: { file: { path: string } } } }).gitbook.state.file.path
+            )
+        )
+        .toBe("chapter1/section2.md");
+});
+
 test("clicking an absolute URL of the same origin loads the page normally", async ({ page }) => {
     await page.evaluate(() => {
         const link = document.createElement("a");

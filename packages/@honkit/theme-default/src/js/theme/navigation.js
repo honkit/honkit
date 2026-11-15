@@ -278,6 +278,10 @@ function runScript(oldScript) {
     if (type && !/^(text|application)\/(javascript|ecmascript)$|^module$/i.test(type)) {
         return;
     }
+    // Browsers that support modules skip `nomodule` scripts without firing load or error
+    if (oldScript.hasAttribute("nomodule") && "noModule" in HTMLScriptElement.prototype) {
+        return;
+    }
     var newScript = document.createElement("script");
     Array.prototype.forEach.call(oldScript.attributes, function (attribute) {
         newScript.setAttribute(attribute.name, attribute.value);

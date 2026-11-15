@@ -4,3 +4,4 @@ Section 1.2 content.
 
 <script src="../assets/page-widget.js"></script>
 <script>window.__pageWidget = window.PageWidget.render();</script>
+<script nomodule src="../assets/page-widget.js"></script>
