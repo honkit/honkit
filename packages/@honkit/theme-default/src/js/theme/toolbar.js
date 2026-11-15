@@ -1,4 +1,4 @@
-var $ = require("jquery");
+var dom = require("./dom");
 
 var gitbook = window.gitbook;
 
@@ -11,16 +11,27 @@ function generateId() {
     return "btn-" + BTN_ID++;
 }
 
-// Insert a jquery element at a specific position
+function isNumeric(value) {
+    return (typeof value === "number" || typeof value === "string") && value !== "" && isFinite(value);
+}
+
+function matchingChildren(parent, selector) {
+    return Array.prototype.filter.call(parent.children, function (child) {
+        return child.matches(selector);
+    });
+}
+
+// Insert an element at a specific position
 function insertAt(parent, selector, index, element) {
-    var lastIndex = parent.children(selector).length;
+    var lastIndex = matchingChildren(parent, selector).length;
     if (index < 0) {
         index = Math.max(0, lastIndex + 1 + index);
     }
-    parent.append(element);
+    parent.appendChild(element);
 
     if (index < lastIndex) {
-        parent.children(selector).eq(index).before(parent.children(selector).last());
+        var children = matchingChildren(parent, selector);
+        parent.insertBefore(children[children.length - 1], children[index]);
     }
 }
 
@@ -29,58 +40,69 @@ function defaultOnClick(e) {
     e.preventDefault();
 }
 
+function assign(defaults, opts) {
+    var result = {};
+    Object.keys(defaults).forEach(function (key) {
+        result[key] = defaults[key];
+    });
+    Object.keys(opts || {}).forEach(function (key) {
+        if (opts[key] !== undefined) result[key] = opts[key];
+    });
+    return result;
+}
+
 // Create a dropdown menu
 function createDropdownMenu(dropdown) {
-    var $menu = $("<div>", {
+    var menu = dom.createElement("div", {
         class: "dropdown-menu",
-        html: '<div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div>',
+        html: '<div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div>'
     });
 
     if (typeof dropdown == "string") {
-        $menu.append(dropdown);
+        menu.insertAdjacentHTML("beforeend", dropdown);
     } else {
         var groups = dropdown.map(function (group) {
-            if ($.isArray(group)) return group;
+            if (Array.isArray(group)) return group;
             else return [group];
         });
 
         // Create buttons groups
         groups.forEach(function (group) {
-            var $group = $("<div>", {
-                class: "buttons",
+            var groupElement = dom.createElement("div", {
+                class: "buttons"
             });
             var sizeClass = "size-" + group.length;
 
             // Append buttons
             group.forEach(function (btn) {
-                btn = $.extend(
+                btn = assign(
                     {
                         text: "",
                         className: "",
-                        onClick: defaultOnClick,
+                        onClick: defaultOnClick
                     },
-                    btn || {}
+                    btn
                 );
 
-                var $btn = $("<button>", {
+                var btnElement = dom.createElement("button", {
                     class: "button " + sizeClass + " " + btn.className,
-                    text: btn.text,
+                    text: btn.text
                 });
-                $btn.click(btn.onClick);
+                btnElement.addEventListener("click", btn.onClick);
 
-                $group.append($btn);
+                groupElement.appendChild(btnElement);
             });
 
-            $menu.append($group);
+            menu.appendChild(groupElement);
         });
     }
 
-    return $menu;
+    return menu;
 }
 
 // Create a new button in the toolbar
 function createButton(opts) {
-    opts = $.extend(
+    opts = assign(
         {
             // Aria label for the button
             label: "",
@@ -107,9 +129,9 @@ function createButton(opts) {
             index: null,
 
             // Button id for removal
-            id: generateId(),
+            id: generateId()
         },
-        opts || {}
+        opts
     );
 
     buttons.push(opts);
@@ -118,75 +140,87 @@ function createButton(opts) {
     return opts.id;
 }
 
+function addClasses(element, classNames) {
+    String(classNames || "")
+        .split(/\s+/)
+        .filter(Boolean)
+        .forEach(function (className) {
+            element.classList.add(className);
+        });
+}
+
 // Update a button
 function updateButton(opts) {
-    var $result;
-    var $toolbar = $(".book-header");
-    var $title = $toolbar.find("h1");
+    var result;
+    var toolbar = document.querySelector(".book-header");
+    if (!toolbar) return;
+    var title = toolbar.querySelector("h1");
 
     // Build class name
     var positionClass = "pull-" + opts.position;
 
     // Create button
-    var $btn = $("<a>", {
+    var btn = dom.createElement("a", {
         class: "btn",
         text: opts.text ? " " + opts.text : "",
         "aria-label": opts.label,
-        href: "#",
+        href: "#"
     });
 
     // Bind click
-    $btn.click(opts.onClick);
+    btn.addEventListener("click", opts.onClick);
 
     // Prepend icon
     if (opts.icon) {
-        $("<i>", {
-            class: opts.icon,
-        }).prependTo($btn);
+        btn.insertBefore(dom.createElement("i", { class: opts.icon }), btn.firstChild);
     }
 
     // Prepare dropdown
     if (opts.dropdown) {
-        var $container = $("<div>", {
-            class: "dropdown " + positionClass + " " + opts.className,
+        var container = dom.createElement("div", {
+            class: "dropdown " + positionClass + " " + opts.className
         });
 
         // Add button to container
-        $btn.addClass("toggle-dropdown");
-        $container.append($btn);
+        btn.classList.add("toggle-dropdown");
+        container.appendChild(btn);
 
         // Create inner menu
-        var $menu = createDropdownMenu(opts.dropdown);
+        var menu = createDropdownMenu(opts.dropdown);
 
         // Menu position
-        $menu.addClass("dropdown-" + (opts.position == "right" ? "left" : "right"));
+        menu.classList.add("dropdown-" + (opts.position == "right" ? "left" : "right"));
 
-        $container.append($menu);
-        $result = $container;
+        container.appendChild(menu);
+        result = container;
     } else {
-        $btn.addClass(positionClass);
-        $btn.addClass(opts.className);
-        $result = $btn;
+        btn.classList.add(positionClass);
+        addClasses(btn, opts.className);
+        result = btn;
     }
 
-    $result.addClass("js-toolbar-action");
+    result.classList.add("js-toolbar-action");
 
-    if ($.isNumeric(opts.index) && opts.index >= 0) {
-        insertAt($toolbar, ".btn, .dropdown, h1", opts.index, $result);
+    if (isNumeric(opts.index) && opts.index >= 0) {
+        insertAt(toolbar, ".btn, .dropdown, h1", Number(opts.index), result);
+    } else if (title) {
+        toolbar.insertBefore(result, title);
     } else {
-        $result.insertBefore($title);
+        toolbar.appendChild(result);
     }
 }
 
 // Update all buttons
 function updateAllButtons() {
-    $(".js-toolbar-action").remove();
+    document.querySelectorAll(".js-toolbar-action").forEach(function (element) {
+        element.remove();
+    });
     buttons.forEach(updateButton);
 }
 
 // Remove a button provided its id
 function removeButton(id) {
-    buttons = $.grep(buttons, function (button) {
+    buttons = buttons.filter(function (button) {
         return button.id != id;
     });
 
@@ -195,7 +229,7 @@ function removeButton(id) {
 
 // Remove multiple buttons from an array of ids
 function removeButtons(ids) {
-    buttons = $.grep(buttons, function (button) {
+    buttons = buttons.filter(function (button) {
         return ids.indexOf(button.id) == -1;
     });
 
@@ -210,5 +244,5 @@ gitbook.events.on("page.change", function () {
 module.exports = {
     createButton: createButton,
     removeButton: removeButton,
-    removeButtons: removeButtons,
+    removeButtons: removeButtons
 };

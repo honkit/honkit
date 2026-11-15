@@ -1,11 +1,10 @@
-var $ = require("jquery");
-
+// Breakpoints are the same as `@sidebar-breakpoint` and `@mobileMaxWidth` in src/less/website/variables.less
 module.exports = {
     isMobile: function () {
-        return $(document).width() <= 600;
+        return window.matchMedia("(max-width: 600px)").matches;
     },
     // Breakpoint for navigation links position
     isSmallScreen: function () {
-        return $(document).width() <= 1240;
-    },
+        return window.matchMedia("(max-width: 1240px)").matches;
+    }
 };
