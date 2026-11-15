@@ -1,12 +1,12 @@
-var navigation = require("./navigation");
-var sidebar = require("./sidebar");
+const navigation = require("./navigation");
+const sidebar = require("./sidebar");
 
 /*
     Minimal keyboard shortcut handling, compatible with the subset of
     Mousetrap that HonKit used: single keys such as "right", "left", "s",
     and modifier combinations such as "ctrl+k" or "mod+k".
 */
-var KEY_ALIASES = {
+const KEY_ALIASES = {
     left: "arrowleft",
     right: "arrowright",
     up: "arrowup",
@@ -17,17 +17,17 @@ var KEY_ALIASES = {
     del: "delete",
     plus: "+"
 };
-var isMac = typeof navigator !== "undefined" && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
-var bindings = [];
+const isMac = typeof navigator !== "undefined" && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+const bindings = [];
 
 function parseCombo(combo) {
-    var parts = combo.toLowerCase().split("+");
-    var key = parts.pop();
+    const parts = combo.toLowerCase().split("+");
+    let key = parts.pop();
     if (key === "") {
         key = "+";
         parts.pop();
     }
-    var modifiers = { ctrl: false, alt: false, shift: false, meta: false };
+    const modifiers = { ctrl: false, alt: false, shift: false, meta: false };
     parts.forEach(function (part) {
         if (part === "mod") {
             modifiers[isMac ? "meta" : "ctrl"] = true;
@@ -54,12 +54,12 @@ function isEditableTarget(target) {
 }
 
 function matches(e, combo) {
-    var key = (e.key || "").toLowerCase();
+    const key = (e.key || "").toLowerCase();
     if (key !== combo.key) {
         return false;
     }
     // Shift is part of the character for symbols such as "?" or "+"
-    var shiftMatters = combo.key.length > 1 || /[a-z0-9]/.test(combo.key);
+    const shiftMatters = combo.key.length > 1 || /[a-z0-9]/.test(combo.key);
     return (
         e.ctrlKey === combo.modifiers.ctrl &&
         e.altKey === combo.modifiers.alt &&
@@ -72,8 +72,8 @@ function onKeyDown(e) {
     if (isEditableTarget(e.target)) {
         return;
     }
-    for (var i = 0; i < bindings.length; i++) {
-        var binding = bindings[i];
+    for (let i = 0; i < bindings.length; i++) {
+        const binding = bindings[i];
         if (binding.combos.some(matches.bind(null, e))) {
             // Returning false from a Mousetrap callback prevented the default action
             e.preventDefault();
@@ -88,7 +88,7 @@ document.addEventListener("keydown", onKeyDown);
 
 // Bind a keyboard shortcuts
 function bindShortcut(keys, fn) {
-    var combos = (Array.isArray(keys) ? keys : [keys]).map(parseCombo);
+    const combos = (Array.isArray(keys) ? keys : [keys]).map(parseCombo);
     // The last binding for a key wins, like Mousetrap
     bindings.unshift({ combos: combos, fn: fn });
 }

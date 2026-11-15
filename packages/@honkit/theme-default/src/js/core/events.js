@@ -1,3 +1,3 @@
-var $ = require("jquery");
+const $ = require("jquery");
 
 module.exports = $({});

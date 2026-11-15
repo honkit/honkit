@@ -5,7 +5,7 @@
 // Add an event listener on `document` for elements matching `selector` (event delegation)
 function delegate(eventName, selector, handler) {
     document.addEventListener(eventName, function (e) {
-        var target = e.target instanceof Element ? e.target.closest(selector) : null;
+        const target = e.target instanceof Element ? e.target.closest(selector) : null;
         if (target) {
             handler.call(target, e, target);
         }
@@ -14,9 +14,9 @@ function delegate(eventName, selector, handler) {
 
 // Create an element with attributes
 function createElement(tagName, attributes) {
-    var element = document.createElement(tagName);
+    const element = document.createElement(tagName);
     Object.keys(attributes || {}).forEach(function (name) {
-        var value = attributes[name];
+        const value = attributes[name];
         if (name === "class") {
             element.className = value;
         } else if (name === "text") {
@@ -33,7 +33,7 @@ function createElement(tagName, attributes) {
 // Return the jQuery object for an element when jQuery is available.
 // `gitbook.state.$book` is a deprecated API that plugins still read.
 function toJQuery(element) {
-    var $ = window.jQuery;
+    const $ = window.jQuery;
     return typeof $ === "function" ? $(element) : element;
 }
 

@@ -1,10 +1,10 @@
-var dom = require("./dom");
-var loading = require("./loading");
-var platform = require("./platform");
+const dom = require("./dom");
+const loading = require("./loading");
+const platform = require("./platform");
 
-var gitbook = window.gitbook;
+const gitbook = window.gitbook;
 
-var usePushState = typeof history.pushState !== "undefined";
+const usePushState = typeof history.pushState !== "undefined";
 
 /*
     Get current scroller element
@@ -21,15 +21,15 @@ function getScroller() {
     Return the element targeted by a hash ("#id") inside the scroller
 */
 function findHashTarget(hash) {
-    var scroller = getScroller();
+    const scroller = getScroller();
     if (!scroller || !hash || hash.charAt(0) !== "#" || hash.length < 2) {
         return null;
     }
-    var id = hash.slice(1);
+    let id = hash.slice(1);
     try {
         id = decodeURIComponent(id);
-    } catch (e) {} // eslint-disable-line no-empty, no-unused-vars
-    var element = document.getElementById(id);
+    } catch (e) {}  
+    const element = document.getElementById(id);
     return element && scroller.contains(element) ? element : null;
 }
 
@@ -43,24 +43,24 @@ function pageHasElement(hash) {
 /*
     Scroll the scroller with the same easing as jQuery's "swing"
 */
-var scrollAnimation = null;
+let scrollAnimation = null;
 function animateScrollTop(scroller, dest, duration, done) {
     if (scrollAnimation) {
         cancelAnimationFrame(scrollAnimation);
         scrollAnimation = null;
     }
-    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var start = scroller.scrollTop;
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const start = scroller.scrollTop;
     if (reduceMotion || duration <= 0 || start === dest) {
         scroller.scrollTop = dest;
         done();
         return;
     }
-    var startTime = null;
+    let startTime = null;
     function step(time) {
         if (startTime === null) startTime = time;
-        var progress = Math.min(1, (time - startTime) / duration);
-        var eased = 0.5 - Math.cos(progress * Math.PI) / 2;
+        const progress = Math.min(1, (time - startTime) / duration);
+        const eased = 0.5 - Math.cos(progress * Math.PI) / 2;
         scroller.scrollTop = start + (dest - start) * eased;
         if (progress < 1) {
             scrollAnimation = requestAnimationFrame(step);
@@ -76,8 +76,8 @@ function animateScrollTop(scroller, dest, duration, done) {
     Scroll to a specific hash tag in the content
 */
 function scrollToHash(hash) {
-    var scroller = getScroller(),
-        dest = 0;
+    const scroller = getScroller();
+    let dest = 0;
 
     // Don't try to scroll if element doesn't exist
     if (!pageHasElement(hash)) {
@@ -103,18 +103,18 @@ function scrollToHash(hash) {
     Return the top position of an element, relative to the content (.page-inner)
  */
 function getElementTopPosition(hash) {
-    var scroller = getScroller();
-    var container = scroller ? scroller.querySelector(".page-inner") : null;
-    var element = findHashTarget(hash);
+    const scroller = getScroller();
+    const container = scroller ? scroller.querySelector(".page-inner") : null;
+    const element = findHashTarget(hash);
 
     // Exit early if we can't find any of those elements
     if (!scroller || !container || !element) {
         return 0;
     }
 
-    var containerStyle = window.getComputedStyle(container);
-    var elementStyle = window.getComputedStyle(element);
-    var dest =
+    const containerStyle = window.getComputedStyle(container);
+    const elementStyle = window.getComputedStyle(element);
+    const dest =
         element.getBoundingClientRect().top -
         (parseFloat(elementStyle.marginTop) || 0) -
         (container.getBoundingClientRect().top + (parseFloat(containerStyle.borderTopWidth) || 0));
@@ -126,7 +126,7 @@ function getElementTopPosition(hash) {
 /*
     Handle updating summary at scrolling
 */
-var chapters = [],
+let chapters = [],
     activeChapter = null;
 
 // Set a chapter as active in summary and update state
@@ -168,7 +168,7 @@ function setChapterActive(chapter, hash) {
     // Update history state if needed
     hash = getChapterHash(chapter);
 
-    var oldUri = window.location.pathname + window.location.hash,
+    const oldUri = window.location.pathname + window.location.hash,
         uri = window.location.pathname + hash;
 
     if (uri != oldUri) {
@@ -178,7 +178,7 @@ function setChapterActive(chapter, hash) {
 
 // Return the link that is a direct child of a chapter
 function getChapterLink(chapter) {
-    for (var i = 0; i < chapter.children.length; i++) {
+    for (let i = 0; i < chapter.children.length; i++) {
         if (chapter.children[i].tagName === "A") return chapter.children[i];
     }
     return null;
@@ -186,9 +186,9 @@ function getChapterLink(chapter) {
 
 // Return the hash of link for a chapter
 function getChapterHash(chapter) {
-    var link = getChapterLink(chapter),
-        href = link ? link.getAttribute("href") : null,
-        hash = href ? href.split("#")[1] : null;
+    const link = getChapterLink(chapter);
+    const href = link ? link.getAttribute("href") : null;
+    let hash = href ? href.split("#")[1] : null;
 
     if (hash) hash = "#" + hash;
     return hash || "";
@@ -201,20 +201,20 @@ function handleScrolling() {
     }
 
     // Get current page scroll
-    var scroller = getScroller(),
-        scrollTop = scroller.scrollTop,
-        scrollHeight = scroller.scrollHeight,
-        clientHeight = scroller.clientHeight,
-        nbChapters = chapters.length,
-        chapter = null;
+    const scroller = getScroller();
+    const scrollTop = scroller.scrollTop;
+    const scrollHeight = scroller.scrollHeight;
+    const clientHeight = scroller.clientHeight;
+    const nbChapters = chapters.length;
+    let chapter = null;
 
     // Find each title position in reverse order
     chapters
         .slice()
         .reverse()
         .forEach(function (item, index) {
-            var titleId = getChapterHash(item),
-                titleTop;
+            const titleId = getChapterHash(item);
+            let titleTop;
 
             if (!!titleId && !chapter) {
                 titleTop = getElementTopPosition(titleId);
@@ -243,7 +243,7 @@ function handleScrolling() {
     setChapterActive(chapter);
 }
 
-var boundScroller = null;
+let boundScroller = null;
 function unbindScrolling() {
     if (boundScroller) {
         boundScroller.removeEventListener("scroll", handleScrolling);
@@ -266,7 +266,7 @@ function bindScrolling(scroller) {
     an inline script that calls `gitbook.page.hasChanged()`).
 */
 function runScripts(container) {
-    var scripts = Array.prototype.slice.call(container.querySelectorAll("script"));
+    const scripts = Array.prototype.slice.call(container.querySelectorAll("script"));
     return scripts.reduce(function (previous, oldScript) {
         return previous.then(function () {
             return runScript(oldScript);
@@ -280,7 +280,7 @@ function runScript(oldScript) {
         gitbook.page.hasChanged(JSON.parse(oldScript.textContent));
         return;
     }
-    var type = oldScript.getAttribute("type");
+    const type = oldScript.getAttribute("type");
     if (type && !/^(text|application)\/(javascript|ecmascript)$|^module$/i.test(type)) {
         return;
     }
@@ -288,7 +288,7 @@ function runScript(oldScript) {
     if (oldScript.hasAttribute("nomodule") && "noModule" in HTMLScriptElement.prototype) {
         return;
     }
-    var newScript = document.createElement("script");
+    const newScript = document.createElement("script");
     Array.prototype.forEach.call(oldScript.attributes, function (attribute) {
         newScript.setAttribute(attribute.name, attribute.value);
     });
@@ -310,7 +310,7 @@ function runScript(oldScript) {
 /*
     Handle a change of url withotu refresh the whole page
 */
-var prevUri = location.href;
+let prevUri = location.href;
 
 /*
     Remember the scroll position of the current history entry,
@@ -318,10 +318,10 @@ var prevUri = location.href;
     https://github.com/honkit/honkit/issues/339
 */
 function saveScrollPosition() {
-    var scroller = getScroller();
+    const scroller = getScroller();
     if (!scroller) return;
-    var state = history.state && typeof history.state === "object" ? history.state : {};
-    var newState = {};
+    const state = history.state && typeof history.state === "object" ? history.state : {};
+    const newState = {};
     Object.keys(state).forEach(function (key) {
         newState[key] = state[key];
     });
@@ -336,22 +336,22 @@ function isSearchOpen() {
 }
 
 function restoreScrollTop(scrollTop) {
-    var scroller = getScroller();
+    const scroller = getScroller();
     if (scroller) scroller.scrollTop = scrollTop;
 }
 
 function handleNavigation(relativeUrl, push, scrollTop) {
-    var prevUriParsed = new URL(prevUri, location.href);
-    var uriParsed = new URL(relativeUrl, location.href);
-    var uri = uriParsed.pathname + uriParsed.search + uriParsed.hash;
-    var hash = uriParsed.hash;
+    const prevUriParsed = new URL(prevUri, location.href);
+    const uriParsed = new URL(relativeUrl, location.href);
+    const uri = uriParsed.pathname + uriParsed.search + uriParsed.hash;
+    const hash = uriParsed.hash;
 
     // Is it the same url (just hash changed?)
-    var pathHasChanged = uriParsed.pathname !== prevUriParsed.pathname;
+    const pathHasChanged = uriParsed.pathname !== prevUriParsed.pathname;
 
     // Is it an absolute url (with a scheme or "//")? Load it normally, even on the same origin,
     // because it can be another book that needs its own scripts and styles.
-    var isAbsolute = /^([a-z][a-z0-9+.-]*:|\/\/)/i.test(relativeUrl) || uriParsed.origin !== location.origin;
+    const isAbsolute = /^([a-z][a-z0-9+.-]*:|\/\/)/i.test(relativeUrl) || uriParsed.origin !== location.origin;
 
     if (!usePushState || isAbsolute) {
         // Refresh the page to the new URL if pushState not supported
@@ -359,7 +359,7 @@ function handleNavigation(relativeUrl, push, scrollTop) {
         return;
     }
 
-    var hasScrollTop = typeof scrollTop === "number";
+    const hasScrollTop = typeof scrollTop === "number";
 
     if (push) {
         saveScrollPosition();
@@ -378,7 +378,7 @@ function handleNavigation(relativeUrl, push, scrollTop) {
 
     prevUri = uri;
 
-    var promise = fetch(uriParsed.pathname + uriParsed.search, {
+    const promise = fetch(uriParsed.pathname + uriParsed.search, {
         // Revalidate so that using the back button shows the latest page
         cache: "no-cache",
         credentials: "same-origin"
@@ -388,14 +388,14 @@ function handleNavigation(relativeUrl, push, scrollTop) {
                 throw new Error("Failed to load " + uri + ": " + response.status);
             }
             // For GitBook.com, we handle redirection signaled by the server
-            var responseURL = response.headers.get("X-Current-Location") || uri;
+            const responseURL = response.headers.get("X-Current-Location") || uri;
             return response.text().then(function (html) {
                 return { html: html, responseURL: responseURL };
             });
         })
         .then(function (result) {
-            var newDocument = new DOMParser().parseFromString(result.html, "text/html");
-            var pageBody = newDocument.querySelector(".book");
+            const newDocument = new DOMParser().parseFromString(result.html, "text/html");
+            const pageBody = newDocument.querySelector(".book");
 
             // We only use history.pushState for pages generated with HonKit
             if (!pageBody) {
@@ -428,18 +428,18 @@ function handleNavigation(relativeUrl, push, scrollTop) {
             });
 
             // Merge body
-            var currentBook = document.querySelector(".book");
-            var bodyClass = currentBook.getAttribute("class");
-            var currentSummary = document.querySelector(".book-summary");
-            var scrollPosition = currentSummary ? currentSummary.scrollTop : 0;
+            const currentBook = document.querySelector(".book");
+            const bodyClass = currentBook.getAttribute("class");
+            const currentSummary = document.querySelector(".book-summary");
+            const scrollPosition = currentSummary ? currentSummary.scrollTop : 0;
 
-            var newBook = document.importNode(pageBody, true);
+            const newBook = document.importNode(pageBody, true);
             newBook.classList.toggle("with-summary", currentBook.classList.contains("with-summary"));
 
             currentBook.parentNode.replaceChild(newBook, currentBook);
             return runScripts(newBook).then(function () {
                 newBook.setAttribute("class", bodyClass);
-                var newSummary = document.querySelector(".book-summary");
+                const newSummary = document.querySelector(".book-summary");
                 if (newSummary) newSummary.scrollTop = scrollPosition;
 
                 // Update state
@@ -470,9 +470,9 @@ function getWidth(element) {
 }
 
 function updateNavigationPosition() {
-    var bodyInnerWidth = getWidth(document.querySelector(".body-inner")),
+    const bodyInnerWidth = getWidth(document.querySelector(".body-inner")),
         pageWrapperWidth = getWidth(document.querySelector(".page-wrapper"));
-    var next = document.querySelector(".navigation-next");
+    const next = document.querySelector(".navigation-next");
     if (next) {
         next.style.marginRight = bodyInnerWidth - pageWrapperWidth + "px";
     }
@@ -482,7 +482,7 @@ function updateNavigationPosition() {
 }
 
 function preparePage(resetScroll, focusContent) {
-    var pageWrapper = document.querySelector(".book-body .body-inner .page-wrapper");
+    const pageWrapper = document.querySelector(".book-body .body-inner .page-wrapper");
 
     // Update navigation position
     updateNavigationPosition();
@@ -497,7 +497,7 @@ function preparePage(resetScroll, focusContent) {
     }
 
     // Get scroller
-    var scroller = getScroller();
+    const scroller = getScroller();
 
     // Reset scroll
     if (resetScroll && scroller) {
@@ -508,14 +508,14 @@ function preparePage(resetScroll, focusContent) {
     chapters = Array.prototype.filter.call(
         document.querySelectorAll(".book-summary .summary .chapter"),
         function (chapter) {
-            var link = getChapterLink(chapter);
+            const link = getChapterLink(chapter);
 
             // Chapter doesn't have a link
             if (!link) {
                 return false;
             }
-            var linkHref = link.getAttribute("href");
-            var href = linkHref ? linkHref.split("#")[0] : null;
+            const linkHref = link.getAttribute("href");
+            const href = linkHref ? linkHref.split("#")[0] : null;
             if (!href) {
                 return false;
             }
@@ -539,7 +539,7 @@ function isModifiedEvent(e) {
     Handle click on a link
 */
 function handleLinkClick(e, link) {
-    var target = link.getAttribute("target");
+    const target = link.getAttribute("target");
 
     if (isModifiedEvent(e) || !isLeftClickEvent(e) || target) {
         return;
@@ -548,19 +548,19 @@ function handleLinkClick(e, link) {
     e.stopPropagation();
     e.preventDefault();
 
-    var url = link.getAttribute("href");
+    const url = link.getAttribute("href");
     if (url) handleNavigation(url, true);
 }
 
 function goNext() {
-    var next = document.querySelector(".navigation-next");
-    var url = next ? next.getAttribute("href") : null;
+    const next = document.querySelector(".navigation-next");
+    const url = next ? next.getAttribute("href") : null;
     if (url) handleNavigation(url, true);
 }
 
 function goPrev() {
-    var prev = document.querySelector(".navigation-prev");
-    var url = prev ? prev.getAttribute("href") : null;
+    const prev = document.querySelector(".navigation-prev");
+    const url = prev ? prev.getAttribute("href") : null;
     if (url) handleNavigation(url, true);
 }
 

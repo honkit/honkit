@@ -1,8 +1,8 @@
-var $ = require("jquery");
-var events = require("./events");
+const $ = require("jquery");
+const events = require("./events");
 
-var started = false;
-var state = {};
+let started = false;
+const state = {};
 
 /*
     Signal that page has changed, this function must be called by
@@ -48,7 +48,7 @@ function setState(newState) {
     state.innerLanguage = state.book.language || "";
 
     // Absolute url to the root of the book (inner book)
-    var pageUrl = location.protocol + "//" + location.host + location.pathname;
+    const pageUrl = location.protocol + "//" + location.host + location.pathname;
     state.root = new URL(String(state.basePath).replace(/\/?$/, "/"), pageUrl).href;
 
     // Absolute root to the language (for multilingual book)

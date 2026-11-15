@@ -1,9 +1,9 @@
-var dom = require("./dom");
+const dom = require("./dom");
 
-var gitbook = window.gitbook;
+const gitbook = window.gitbook;
 
 // List of created buttons
-var buttons = [],
+let buttons = [],
     // Generated Id for buttons
     BTN_ID = 0;
 
@@ -23,14 +23,14 @@ function matchingChildren(parent, selector) {
 
 // Insert an element at a specific position
 function insertAt(parent, selector, index, element) {
-    var lastIndex = matchingChildren(parent, selector).length;
+    const lastIndex = matchingChildren(parent, selector).length;
     if (index < 0) {
         index = Math.max(0, lastIndex + 1 + index);
     }
     parent.appendChild(element);
 
     if (index < lastIndex) {
-        var children = matchingChildren(parent, selector);
+        const children = matchingChildren(parent, selector);
         parent.insertBefore(children[children.length - 1], children[index]);
     }
 }
@@ -41,7 +41,7 @@ function defaultOnClick(e) {
 }
 
 function assign(defaults, opts) {
-    var result = {};
+    const result = {};
     Object.keys(defaults).forEach(function (key) {
         result[key] = defaults[key];
     });
@@ -53,7 +53,7 @@ function assign(defaults, opts) {
 
 // Create a dropdown menu
 function createDropdownMenu(dropdown) {
-    var menu = dom.createElement("div", {
+    const menu = dom.createElement("div", {
         class: "dropdown-menu",
         html: '<div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div>'
     });
@@ -61,17 +61,17 @@ function createDropdownMenu(dropdown) {
     if (typeof dropdown == "string") {
         menu.insertAdjacentHTML("beforeend", dropdown);
     } else {
-        var groups = dropdown.map(function (group) {
+        const groups = dropdown.map(function (group) {
             if (Array.isArray(group)) return group;
             else return [group];
         });
 
         // Create buttons groups
         groups.forEach(function (group) {
-            var groupElement = dom.createElement("div", {
+            const groupElement = dom.createElement("div", {
                 class: "buttons"
             });
-            var sizeClass = "size-" + group.length;
+            const sizeClass = "size-" + group.length;
 
             // Append buttons
             group.forEach(function (btn) {
@@ -84,7 +84,7 @@ function createDropdownMenu(dropdown) {
                     btn
                 );
 
-                var btnElement = dom.createElement("button", {
+                const btnElement = dom.createElement("button", {
                     class: "button " + sizeClass + " " + btn.className,
                     text: btn.text
                 });
@@ -155,7 +155,7 @@ function addClasses(element, classNames) {
 */
 function jQueryStyleHandler(fn) {
     return function (e) {
-        var result = fn.call(this, e);
+        const result = fn.call(this, e);
         if (result === false) {
             e.preventDefault();
             e.stopPropagation();
@@ -166,16 +166,16 @@ function jQueryStyleHandler(fn) {
 
 // Update a button
 function updateButton(opts) {
-    var result;
-    var toolbar = document.querySelector(".book-header");
+    let result;
+    const toolbar = document.querySelector(".book-header");
     if (!toolbar) return;
-    var title = toolbar.querySelector("h1");
+    const title = toolbar.querySelector("h1");
 
     // Build class name
-    var positionClass = "pull-" + opts.position;
+    const positionClass = "pull-" + opts.position;
 
     // Create button
-    var btn = dom.createElement("a", {
+    const btn = dom.createElement("a", {
         class: "btn",
         text: opts.text ? " " + opts.text : "",
         "aria-label": opts.label,
@@ -192,7 +192,7 @@ function updateButton(opts) {
 
     // Prepare dropdown
     if (opts.dropdown) {
-        var container = dom.createElement("div", {
+        const container = dom.createElement("div", {
             class: "dropdown " + positionClass + " " + opts.className
         });
 
@@ -201,7 +201,7 @@ function updateButton(opts) {
         container.appendChild(btn);
 
         // Create inner menu
-        var menu = createDropdownMenu(opts.dropdown);
+        const menu = createDropdownMenu(opts.dropdown);
 
         // Menu position
         menu.classList.add("dropdown-" + (opts.position == "right" ? "left" : "right"));

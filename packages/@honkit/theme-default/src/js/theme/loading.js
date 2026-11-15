@@ -4,10 +4,10 @@ function getBook() {
 
 // Show the loading state while the promise is pending
 function showLoading(p) {
-    var book = getBook();
+    const book = getBook();
     if (book) book.classList.add("is-loading");
-    var done = function () {
-        var current = getBook();
+    const done = function () {
+        const current = getBook();
         if (current) current.classList.remove("is-loading");
     };
     p.then(done, done);
