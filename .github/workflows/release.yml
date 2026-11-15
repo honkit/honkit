@@ -147,13 +147,18 @@ jobs:
       - name: Set Honkit package version
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
       # A just-published version and its @honkit/* dependencies can take a while to be installable from the registry.
-      # Check with a real install, as the Docker build does, instead of only the honkit metadata.
+      # Check the honkit metadata first, which is cheap, and then a real install, as the Docker build does.
       - name: Wait for package to be installable from npm
         run: |
+          INSTALL_DIR="$(mktemp -d)"
           for i in $(seq 1 30); do
-            if npm install --prefix "$(mktemp -d)" --no-save --no-audit --no-fund --ignore-scripts --prefer-online "honkit@${PACKAGE_VERSION}" >/dev/null 2>&1; then
-              echo "honkit@${PACKAGE_VERSION} is installable"
-              exit 0
+            if [ "$(npm view "honkit@${PACKAGE_VERSION}" version --prefer-online 2>/dev/null)" = "${PACKAGE_VERSION}" ]; then
+              rm -rf "${INSTALL_DIR:?}"/*
+              if npm install --prefix "${INSTALL_DIR}" --no-save --no-audit --no-fund --ignore-scripts --prefer-online "honkit@${PACKAGE_VERSION}" >/dev/null 2>&1; then
+                echo "honkit@${PACKAGE_VERSION} is installable"
+                rm -rf "${INSTALL_DIR}"
+                exit 0
+              fi
             fi
             echo "Waiting for honkit@${PACKAGE_VERSION} to be installable from npm ($i/30)"
             sleep 10
