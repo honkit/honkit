@@ -7,6 +7,12 @@ This plugin adds font settings button in the HonKit website.
 The feature itself (JavaScript and CSS) is part of the default theme, so that the font settings are applied before the page is shown.
 This plugin enables it and defines its configuration.
 
+#### Limitation: custom themes with their own `theme.js`
+
+The font settings are in `gitbook/theme.js` and `gitbook/style.css` of the default theme.
+A custom theme that ships its own `_assets/website/theme.js` replaces the default `gitbook/theme.js`, so a book with such a theme has no font settings button and no `gitbook.fontsettings` API.
+Themes that only add CSS or templates, or that add scripts under their own file names, are not affected.
+
 ### Disable this plugin
 
 This is a default plugin and it can be disabled using a `book.json` configuration:
