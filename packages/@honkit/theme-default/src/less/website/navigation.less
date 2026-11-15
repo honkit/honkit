@@ -7,8 +7,12 @@
     top: @header-height;
     bottom: 0px;
     margin: 0;
+    // Use only the space beside the content column (`.page-inner`, max-width 800px),
+    // so that the links do not cover the content
+    // https://github.com/honkit/honkit/issues/119
+    width: ~"calc((100% - 800px) / 2)";
     max-width: 150px;
-    min-width: 90px;
+    min-width: 0;
 
     display: flex;
     justify-content: center;

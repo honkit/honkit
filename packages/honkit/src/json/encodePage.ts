@@ -15,6 +15,24 @@ export type EncodedPage = {
 }>;
 
 /**
+ Return the closest article in a direction that is a page of the book.
+ Entries without a link (e.g. a chapter that only groups sections) and external links
+ are skipped, so that the previous/next page links always point to a page.
+ https://github.com/honkit/honkit/issues/314
+ */
+function findNavigableArticle(
+    summary: Summary,
+    article: SummaryArticle,
+    getSibling: (current: SummaryArticle) => SummaryArticle | undefined
+): SummaryArticle | undefined {
+    let sibling = getSibling(article);
+    while (sibling && !sibling.getPath()) {
+        sibling = getSibling(sibling);
+    }
+    return sibling;
+}
+
+/**
  Return a JSON representation of a page
  */
 function encodePage(page: Page, summary: Summary): EncodedPage {
@@ -29,12 +47,12 @@ function encodePage(page: Page, summary: Summary): EncodedPage {
         result.level = article.getLevel();
         result.depth = article.getDepth();
 
-        const nextArticle = summary.getNextArticle(article);
+        const nextArticle = findNavigableArticle(summary, article, (current) => summary.getNextArticle(current));
         if (nextArticle) {
             result.next = encodeSummaryArticle(nextArticle);
         }
 
-        const prevArticle = summary.getPrevArticle(article);
+        const prevArticle = findNavigableArticle(summary, article, (current) => summary.getPrevArticle(current));
         if (prevArticle) {
             result.previous = encodeSummaryArticle(prevArticle);
         }

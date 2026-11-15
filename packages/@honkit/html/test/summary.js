@@ -88,3 +88,34 @@ describe("Summary parsing", () => {
         assertObjectsEqual(html.summary(text), LEXED);
     });
 });
+
+describe("Summary parsing of loose lists", () => {
+    // https://github.com/honkit/honkit/issues/314
+    it("should not take the link of a nested entry for an entry without link", () => {
+        const LEXED = html.summary(`<ul>
+<li><p>Chapter One</p>
+<ul>
+<li><p><a href="chapter1/section1.md">section1</a></p></li>
+<li><p><a href="chapter1/section2.md">section2</a></p></li>
+</ul>
+</li>
+<li><p><a href="chapter2/README.md">Chapter Two</a></p>
+<ul>
+<li><p><a href="chapter2/section1.md">section1</a></p></li>
+</ul>
+</li>
+</ul>`);
+        const [chapterOne, chapterTwo] = LEXED.parts[0].articles;
+        assert.equal(chapterOne.title, "Chapter One");
+        assert.equal(chapterOne.ref, undefined);
+        assert.deepEqual(
+            chapterOne.articles.map((article) => [article.title, article.ref]),
+            [
+                ["section1", "chapter1/section1.md"],
+                ["section2", "chapter1/section2.md"]
+            ]
+        );
+        assert.equal(chapterTwo.title, "Chapter Two");
+        assert.equal(chapterTwo.ref, "chapter2/README.md");
+    });
+});

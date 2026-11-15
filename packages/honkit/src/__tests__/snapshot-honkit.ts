@@ -8,6 +8,8 @@ it("HonKit snapshots", async () => {
     const maskContent = (content) => {
         return content
             .replace(/gitbook\.page\.hasChanged\(.*\);/g, ``)
+            // The page context contains the build time and file mtime
+            .replace(/(<script type="application\/json" id="honkit-page-context">).*(<\/script>)/g, "$1$2")
             .replace(/<meta name="generator" content="HonKit .*">/g, "");
     };
     for await (const item of iterateDirectoryContents({
