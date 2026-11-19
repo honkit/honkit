@@ -1,5 +1,4 @@
 import path from "path";
-import url from "url";
 import LocationUtils from "../../utils/location";
 import editHTMLElement from "./editHTMLElement";
 
@@ -27,9 +26,12 @@ function resolveLinks(currentFile, resolveFile, $) {
             return;
         }
 
-        // Split anchor
-        const parsed = url.parse(href);
-        href = parsed.pathname || "";
+        // Split query string and anchor
+        const queryIndex = href.indexOf("?");
+        const hashIndex = href.indexOf("#");
+        const splitIndex = queryIndex >= 0 && (hashIndex < 0 || queryIndex < hashIndex) ? queryIndex : hashIndex;
+        const hash = hashIndex >= 0 ? href.slice(hashIndex) : "";
+        href = splitIndex >= 0 ? href.slice(0, splitIndex) : href;
 
         if (href) {
             // Calcul absolute path for this
@@ -43,7 +45,7 @@ function resolveLinks(currentFile, resolveFile, $) {
         }
 
         // Add back anchor
-        href = href + (parsed.hash || "");
+        href = href + hash;
 
         $a.attr("href", href);
     });
