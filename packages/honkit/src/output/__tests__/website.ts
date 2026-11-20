@@ -31,6 +31,24 @@ describe("WebsiteGenerator", () => {
         });
     });
 
+    test("should link summary downloads from root and nested pages", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "README.md": "Hello World",
+            "SUMMARY.md": "# Summary\n\n* [Home](README.md)\n* [Nested](nested/page.md)\n* [Download PDF](download/book.pdf)\n* [Missing](missing.pdf)\n* [External](https://example.com/book.pdf)",
+            nested: { "page.md": "Nested page" },
+            download: { "book.pdf": "%PDF-1.4\n" }
+        });
+        const index = fs.readFileSync(`${folder}/index.html`, "utf8");
+        expect(index).toHaveDOMElement('.book-summary a[href="download/book.pdf"]');
+        const nested = fs.readFileSync(`${folder}/nested/page.html`, "utf8");
+        expect(nested).toHaveDOMElement('.book-summary a[href="../download/book.pdf"]');
+        expect(folder).toHaveFile("download/book.pdf");
+        expect(index).toHaveDOMElement('.book-summary a[href="https://example.com/book.pdf"]');
+        expect(index).not.toHaveDOMElement('.book-summary a[href="missing.pdf"]');
+        expect(index).toContain("Missing");
+        expect(index).not.toMatch(/<span>\s*Missing\s*<\/a>/);
+    }, 60 * 1000);
+
     describe("Glossary", () => {
         let folder;
 

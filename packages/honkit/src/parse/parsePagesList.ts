@@ -18,6 +18,8 @@ function parseFilePage(book, filePath) {
         .statFile(filePath)
         .then(
             (file) => {
+                // Summary entries can point to downloadable assets, not only pages.
+                if (!file.getParser()) return null;
                 const page = Page.createForFile(file);
                 return parsePage(book, page);
             },
