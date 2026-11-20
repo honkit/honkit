@@ -66,9 +66,15 @@ function createTemplateEngine(output: Output, currentFile: string): TemplateEngi
             return false;
         }
 
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
-        const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
-        return fs.existsSync(filePath);
+        try {
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
+            const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+            return fs.existsSync(filePath);
+        } catch (err) {
+            // Parent-relative summary entries must not escape a language book's output root.
+            if (err.type === "file.out-of-scope") return false;
+            throw err;
+        }
     }
 
     /**

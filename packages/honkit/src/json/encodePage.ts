@@ -1,5 +1,6 @@
 import encodeSummaryArticle from "./encodeSummaryArticle";
 import Page from "../models/page";
+import File from "../models/file";
 import Summary from "../models/summary";
 import SummaryArticle from "../models/summaryArticle";
 
@@ -16,7 +17,7 @@ export type EncodedPage = {
 
 /**
  Return the closest article in a direction that is a page of the book.
- Entries without a link (e.g. a chapter that only groups sections) and external links
+ Entries without a link (e.g. a chapter that only groups sections), downloads and external links
  are skipped, so that the previous/next page links always point to a page.
  https://github.com/honkit/honkit/issues/314
  */
@@ -26,7 +27,7 @@ function findNavigableArticle(
     getSibling: (current: SummaryArticle) => SummaryArticle | undefined
 ): SummaryArticle | undefined {
     let sibling = getSibling(article);
-    while (sibling && !sibling.getPath()) {
+    while (sibling && (!sibling.getPath() || !File.createWithFilepath(sibling.getPath()).getParser())) {
         sibling = getSibling(sibling);
     }
     return sibling;

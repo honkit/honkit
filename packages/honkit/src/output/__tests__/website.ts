@@ -49,6 +49,38 @@ describe("WebsiteGenerator", () => {
         expect(index).not.toMatch(/<span>\s*Missing\s*<\/a>/);
     }, 60 * 1000);
 
+    test("should skip downloads in chapter navigation", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "README.md": "First chapter",
+            "second.md": "Second chapter",
+            "SUMMARY.md": "* [First](README.md)\n* [Download](manual.pdf)\n* [Second](second.md)",
+            "manual.pdf": "%PDF-1.4\n"
+        });
+        const first = fs.readFileSync(`${folder}/index.html`, "utf8");
+        const second = fs.readFileSync(`${folder}/second.html`, "utf8");
+        expect(first).toHaveDOMElement('.navigation-next[href="second.html"]');
+        expect(second).toHaveDOMElement('.navigation-prev[href="./"]');
+        expect(first).toHaveDOMElement('.book-summary a[href="manual.pdf"]');
+    }, 60 * 1000);
+
+    test("should keep out-of-scope multilingual downloads as text", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "LANGS.md": "# Languages\n\n* [en](en)",
+            "shared.pdf": "%PDF-1.4\n",
+            en: {
+                "README.md": "Hello",
+                "SUMMARY.md": "* [Home](README.md)\n* [Shared](../shared.pdf)\n* [Missing](../missing.pdf)\n* [Local](manual.pdf)",
+                "manual.pdf": "%PDF-1.4\n"
+            }
+        });
+        const html = fs.readFileSync(`${folder}/en/index.html`, "utf8");
+        expect(html).not.toHaveDOMElement('.book-summary a[href="../shared.pdf"]');
+        expect(html).not.toHaveDOMElement('.book-summary a[href="../missing.pdf"]');
+        expect(html).toMatch(/<span>\s*Shared\s*<\/span>/);
+        expect(html).toMatch(/<span>\s*Missing\s*<\/span>/);
+        expect(html).toHaveDOMElement('.book-summary a[href="manual.pdf"]');
+    }, 60 * 1000);
+
     describe("Glossary", () => {
         let folder;
 
