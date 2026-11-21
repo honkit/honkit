@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795226775302,
+  "lastUpdate": 1795226892141,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -13111,6 +13111,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.26,
             "range": "±0.91%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "87b6f68372e31031aa76a2377dfda41b5192c02b",
+          "message": "Release v7.0.1 (#559)\n\n<!-- Release notes generated using configuration in .github/release.yml\nat master -->\n\n## What's Changed\n### Bug Fixes\n* fix: link SUMMARY entries to files that are not pages, like PDFs by\n@azu in https://github.com/honkit/honkit/pull/558\n\n\n**Full Changelog**:\nhttps://github.com/honkit/honkit/compare/v7.0.0...v7.0.1\n\nCo-authored-by: azu <19714+azu@users.noreply.github.com>",
+          "timestamp": "2026-11-21T11:06:03+09:00",
+          "tree_id": "d799bbcb885d944b468c2eb667d3d295e7fc6434",
+          "url": "https://github.com/honkit/honkit/commit/87b6f68372e31031aa76a2377dfda41b5192c02b"
+        },
+        "date": 1795226891089,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.33,
+            "range": "±1.70%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
