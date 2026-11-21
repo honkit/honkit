@@ -1,4 +1,6 @@
 import fs from "fs";
+import path from "path";
+import { PluginResolver } from "../../plugins/PluginResolver";
 import generateMock from "../testing/generateMock";
 import WebsiteGenerator from "../website";
 
@@ -209,6 +211,37 @@ describe("WebsiteGenerator", () => {
             expect(folder).toHaveFile("index.html");
         });
     });
+
+    test("should copy language-specific plugin resources without overwriting other languages", async () => {
+        const resolve = PluginResolver.prototype.resolvePluginPackageName;
+        const resolver = jest.spyOn(PluginResolver.prototype, "resolvePluginPackageName").mockImplementation(function (name) {
+            return name === "language-resources-test"
+                ? path.join(__dirname, "../testing/fixtures/language-resources")
+                : resolve.call(this, name);
+        });
+        try {
+            const folder = await generateMock(WebsiteGenerator, {
+                "book.json": JSON.stringify({ plugins: ["language-resources-test"] }),
+                "LANGS.md": "# Languages\n\n* [en](en)\n* [fr](fr)",
+                en: { "README.md": "Hello", "SUMMARY.md": "* [Home](README.md)\n* [Nested](nested/page.md)", nested: { "page.md": "Nested" } },
+                fr: { "README.md": "Bonjour" }
+            });
+            for (const language of ["en", "fr"]) {
+                const resource = `gitbook/${language}/honkit-plugin-language-resources-test/style.css`;
+                expect(fs.readFileSync(path.join(folder, resource), "utf8")).toBe(`/* ${language} language resource */\n`);
+                const html = fs.readFileSync(`${folder}/${language}/index.html`, "utf8");
+                expect(html).toHaveDOMElement(`link[href="../${resource}"]`);
+                expect(html).toHaveDOMElement('link[href="../gitbook/style.css"]');
+            }
+            const nested = fs.readFileSync(`${folder}/en/nested/page.html`, "utf8");
+            expect(nested).toHaveDOMElement('link[href="../../gitbook/en/honkit-plugin-language-resources-test/style.css"]');
+            expect(folder).toHaveFile("gitbook/style.css");
+            expect(folder).not.toHaveFile("en/gitbook/style.css");
+            expect(fs.readFileSync(`${folder}/gitbook/honkit-plugin-language-resources-test/style.css`, "utf8")).toBe("/* root language resource */\n");
+        } finally {
+            resolver.mockRestore();
+        }
+    }, 60 * 1000);
 
     longTest("should write a separate search index for each language", async () => {
         const folder = await generateMock(WebsiteGenerator, {

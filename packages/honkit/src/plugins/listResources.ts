@@ -8,7 +8,7 @@ import Plugin from "../models/plugin";
  List all resources from a list of plugins
  @return {Map<String:List<{url, path}>}
  */
-function listResources(plugins: Plugin[], resources) {
+function listResources(plugins: Plugin[], resources, language = "") {
     return plugins.reduce((result, plugin) => {
         const npmId = plugin.getNpmID();
         const pluginResources = resources.get(plugin.getName());
@@ -26,7 +26,9 @@ function listResources(plugins: Plugin[], resources) {
                     };
                 } else {
                     return {
-                        path: LocationUtils.normalize(path.join(npmId, assetFile))
+                        path: LocationUtils.normalize(
+                            path.join(language && pluginResources.get("assets") ? language : "", npmId, assetFile)
+                        )
                     };
                 }
             });

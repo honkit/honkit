@@ -16,12 +16,6 @@ import Plugin from "../../models/plugin";
 function copyPluginAssets(output) {
     const book = output.getBook();
 
-    // Don't copy plugins assets for language book
-    // It'll be resolved to the parent folder
-    if (book.isLanguageBook()) {
-        return Promise(output);
-    }
-
     const plugins = output
         .getPlugins()
 
@@ -30,7 +24,9 @@ function copyPluginAssets(output) {
         .reverse();
 
     return Promise.forEach(plugins, (plugin) => {
-        return copyAssets(output, plugin).then(() => {
+        // Static theme assets are shared, but resource functions can vary by language.
+        const assets = book.isLanguageBook() ? Promise() : copyAssets(output, plugin);
+        return assets.then(() => {
             return copyResources(output, plugin);
         });
     }).thenResolve(output);
@@ -82,7 +78,10 @@ function copyResources(output: Output, plugin: Plugin) {
     const pluginResources = resources.get(plugin.getName());
 
     let assetsFolder = pluginResources.get("assets");
-    const assetOutputFolder = path.join(outputRoot, "gitbook", plugin.getNpmID());
+    const book = output.getBook();
+    const assetOutputFolder = book.isLanguageBook()
+        ? path.join(outputRoot, "..", "gitbook", book.getLanguage(), plugin.getNpmID())
+        : path.join(outputRoot, "gitbook", plugin.getNpmID());
 
     if (!assetsFolder) {
         return Promise();
