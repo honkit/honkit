@@ -77,6 +77,19 @@ describe("WebsiteGenerator", () => {
         expect(html).toMatch(/<span>\s*Downloads\s*<\/span>/);
     }, 60 * 1000);
 
+    // https://github.com/honkit/honkit/issues/453
+    test("should render a summary entry to an invalid file path as text", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "README.md": "Hello",
+            "SUMMARY.md":
+                "# Summary\n\n* [Home](README.md)\n* [Through a file](downloads/guide.pdf)\n* [Null byte](bad%00.pdf)",
+            downloads: "not a folder"
+        });
+        const html = fs.readFileSync(`${folder}/index.html`, "utf8");
+        expect(html).toMatch(/<span>\s*Through a file\s*<\/span>/);
+        expect(html).toMatch(/<span>\s*Null byte\s*<\/span>/);
+    }, 60 * 1000);
+
     describe("Glossary", () => {
         let folder;
 
