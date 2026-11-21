@@ -156,3 +156,53 @@ test("when the page context contains </script>, it is read as data and does not 
 
     expect(await page.evaluate(() => (window as unknown as ProbeWindow).__honkitInjected)).toBeUndefined();
 });
+
+test(
+    "when the table of contents links to a file that is not a page, the entry links to the copied file",
+    issue(453),
+    async ({ page, request }) => {
+        // fixtures/book/SUMMARY.md has `[Download PDF](download/handbook.pdf)`
+        await page.goto("book/chapter1/section1.html");
+        await waitForThemeReady(page);
+        const pdfLink = getSummary(page).getByRole("link", { name: "Download PDF" });
+
+        await expect(pdfLink).toHaveAttribute("href", "../download/handbook.pdf");
+        const response = await request.get(new URL((await pdfLink.getAttribute("href")) ?? "", page.url()).href);
+        expect(response.ok()).toBe(true);
+        expect((await response.body()).toString("latin1")).toMatch(/^%PDF-/);
+    }
+);
+
+test(
+    "when a link to a file that is not a page is clicked, the browser opens the file instead of the theme",
+    issue(453),
+    async ({ page }) => {
+        await page.goto("book/");
+        await waitForThemeReady(page);
+        // The theme must not fetch the file to read it as a page before the browser opens it
+        const pdfRequests: string[] = [];
+        page.on("request", (request) => {
+            if (request.url().endsWith(".pdf")) pdfRequests.push(request.url());
+        });
+
+        const [download] = await Promise.all([
+            page.waitForEvent("download"),
+            getSummary(page).getByRole("link", { name: "Download PDF" }).click()
+        ]);
+
+        expect(new URL(download.url()).pathname).toBe("/book/download/handbook.pdf");
+        expect(pdfRequests).toHaveLength(1);
+    }
+);
+
+test(
+    "the previous and next page links skip a file that is not a page in the table of contents",
+    issue(453),
+    async ({ page }) => {
+        // In fixtures/book/SUMMARY.md, the PDF is the entry after the last page
+        await page.goto("book/last.html");
+        await waitForThemeReady(page);
+
+        await expect(page.getByRole("link", { name: /^Next page:/ })).toHaveCount(0);
+    }
+);

@@ -1,4 +1,6 @@
+import path from "path";
 import encodeSummaryArticle from "./encodeSummaryArticle";
+import parsers from "../parsers";
 import Page from "../models/page";
 import Summary from "../models/summary";
 import SummaryArticle from "../models/summaryArticle";
@@ -15,10 +17,24 @@ export type EncodedPage = {
 }>;
 
 /**
+ Is the article a link to a file that HonKit renders as a page?
+ */
+function isPageArticle(article: SummaryArticle): boolean {
+    const articlePath = article.getPath();
+    if (!articlePath) return false;
+    const extension = path.extname(articlePath).toLowerCase();
+    // Keep a path without an extension as before, because it is not a known non-page file
+    if (!extension) return true;
+    return Boolean(parsers.getByExt(extension));
+}
+
+/**
  Return the closest article in a direction that is a page of the book.
- Entries without a link (e.g. a chapter that only groups sections) and external links
- are skipped, so that the previous/next page links always point to a page.
+ Entries without a link (e.g. a chapter that only groups sections), external links
+ and links to files that are not pages (e.g. a PDF) are skipped,
+ so that the previous/next page links always point to a page.
  https://github.com/honkit/honkit/issues/314
+ https://github.com/honkit/honkit/issues/453
  */
 function findNavigableArticle(
     summary: Summary,
@@ -26,7 +42,7 @@ function findNavigableArticle(
     getSibling: (current: SummaryArticle) => SummaryArticle | undefined
 ): SummaryArticle | undefined {
     let sibling = getSibling(article);
-    while (sibling && !sibling.getPath()) {
+    while (sibling && !isPageArticle(sibling)) {
         sibling = getSibling(sibling);
     }
     return sibling;

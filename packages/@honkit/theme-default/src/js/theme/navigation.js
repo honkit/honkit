@@ -538,12 +538,32 @@ function isModifiedEvent(e) {
 }
 
 /*
+    Is the link to a file that is not a HTML page, like "book.pdf"?
+    The browser opens such a file by itself.
+    https://github.com/honkit/honkit/issues/453
+*/
+function isLinkToNonPageFile(link) {
+    const href = link.getAttribute("href");
+    if (!href) return false;
+    const pathname = new URL(href, location.href).pathname;
+    const fileName = pathname.slice(pathname.lastIndexOf("/") + 1);
+    const extensionIndex = fileName.lastIndexOf(".");
+    if (extensionIndex <= 0) return false;
+    const extension = fileName.slice(extensionIndex + 1).toLowerCase();
+    return extension !== "html" && extension !== "htm";
+}
+
+/*
     Handle click on a link
 */
 function handleLinkClick(e, link) {
     const target = link.getAttribute("target");
 
-    if (isModifiedEvent(e) || !isLeftClickEvent(e) || target) {
+    if (isModifiedEvent(e) || !isLeftClickEvent(e) || target || link.hasAttribute("download")) {
+        return;
+    }
+
+    if (isLinkToNonPageFile(link)) {
         return;
     }
 
