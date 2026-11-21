@@ -22,10 +22,7 @@ export type EncodedPage = {
 function isPageArticle(article: SummaryArticle): boolean {
     const articlePath = article.getPath();
     if (!articlePath) return false;
-    const extension = path.extname(articlePath).toLowerCase();
-    // Keep a path without an extension as before, because it is not a known non-page file
-    if (!extension) return true;
-    return Boolean(parsers.getByExt(extension));
+    return Boolean(parsers.getByExt(path.extname(articlePath).toLowerCase()));
 }
 
 /**

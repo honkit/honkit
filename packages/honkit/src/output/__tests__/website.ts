@@ -46,6 +46,23 @@ describe("WebsiteGenerator", () => {
         expect(html).toMatch(/<span>\s*Shared\s*<\/span>/);
     }, 60 * 1000);
 
+    // https://github.com/honkit/honkit/issues/453
+    test("should skip summary entries to files that are not pages in the previous and next page links", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "README.md": "First",
+            "second.md": "Second",
+            "SUMMARY.md": "# Summary\n\n* [First](README.md)\n* [Manual](manual.pdf)\n* [License](LICENSE)\n* [Second](second.md)",
+            "manual.pdf": "%PDF-1.4\n",
+            LICENSE: "MIT"
+        });
+        const first = fs.readFileSync(`${folder}/index.html`, "utf8");
+        const second = fs.readFileSync(`${folder}/second.html`, "utf8");
+        expect(first).toHaveDOMElement('.navigation-next[href="second.html"]');
+        expect(second).toHaveDOMElement('.navigation-prev[href="./"]');
+        expect(first).toHaveDOMElement('.book-summary a[href="manual.pdf"]');
+        expect(first).toHaveDOMElement('.book-summary a[href="LICENSE"]');
+    }, 60 * 1000);
+
     describe("Glossary", () => {
         let folder;
 
