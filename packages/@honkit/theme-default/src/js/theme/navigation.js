@@ -404,6 +404,18 @@ function handleNavigation(relativeUrl, push, scrollTop) {
                 throw new Error("Invalid gitbook page, redirecting...");
             }
 
+            // Each language can have its own plugin styles and scripts outside .book.
+            // A body-only swap would keep the resources of the previous language active.
+            const pageContext = newDocument.getElementById("honkit-page-context");
+            if (pageContext) {
+                const context = JSON.parse(pageContext.textContent);
+                const language = (context.book && context.book.language) || "";
+                if (language !== gitbook.state.innerLanguage) {
+                    location.href = result.responseURL;
+                    return;
+                }
+            }
+
             // Push url to history
             if (push) {
                 history.pushState(

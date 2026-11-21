@@ -208,3 +208,32 @@ test("scrolling a page whose headings are listed in the table of contents highli
     await expect(getSummaryItem(page, "Long Page: Beta")).toHaveClass(/\bactive\b/);
     await expect(page).toHaveURL(/\/book\/long\.html#beta$/);
 });
+
+// https://github.com/honkit/honkit/issues/381
+test("a relative link to another language loads its styles and scripts in a new document", async ({ page }) => {
+    await page.goto("multilingual/en/");
+    await waitForThemeReady(page);
+    await page.evaluate(() => {
+        const link = document.createElement("a");
+        link.setAttribute("href", "../ja/");
+        link.textContent = "Japanese translation";
+        document.querySelector(".markdown-section")?.appendChild(link);
+    });
+    await expect(page.locator(".markdown-section")).toHaveCSS("--fixture-language", "en");
+    await markWindow(page);
+
+    await page.getByRole("link", { name: "Japanese translation" }).click();
+    await page.waitForURL(/\/multilingual\/ja\/$/, { waitUntil: "load" });
+    await waitForThemeReady(page);
+
+    await expect(getPageHeading(page)).toHaveText("日本語のはじめに");
+    await expect(page.locator(".markdown-section")).toHaveCSS("--fixture-language", "ja");
+    expect(await getWindowMarker(page)).toBeNull();
+    await expect
+        .poll(() =>
+            page.evaluate(
+                () => (window as unknown as { gitbook: { state: { innerLanguage: string } } }).gitbook.state.innerLanguage
+            )
+        )
+        .toBe("ja");
+});
