@@ -31,6 +31,21 @@ describe("WebsiteGenerator", () => {
         });
     });
 
+    // https://github.com/honkit/honkit/issues/453
+    test("should render a summary entry to a file outside of a language book as text", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "LANGS.md": "# Languages\n\n* [en](en/)",
+            "shared.pdf": "%PDF-1.4\n",
+            en: {
+                "README.md": "Hello",
+                "SUMMARY.md": "# Summary\n\n* [Home](README.md)\n* [Shared](../shared.pdf)"
+            }
+        });
+        const html = fs.readFileSync(`${folder}/en/index.html`, "utf8");
+        expect(html).not.toHaveDOMElement('.book-summary a[href="../shared.pdf"]');
+        expect(html).toMatch(/<span>\s*Shared\s*<\/span>/);
+    }, 60 * 1000);
+
     describe("Glossary", () => {
         let folder;
 

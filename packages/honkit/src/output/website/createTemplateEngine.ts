@@ -66,9 +66,17 @@ function createTemplateEngine(output: Output, currentFile: string): TemplateEngi
             return false;
         }
 
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
-        const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
-        return fs.existsSync(filePath);
+        try {
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
+            const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+            return fs.existsSync(filePath);
+        } catch (error) {
+            // A path outside the output folder, like "../shared.pdf" in a language book, is not a file of the book
+            if (error.type === "file.out-of-scope") {
+                return false;
+            }
+            throw error;
+        }
     }
 
     /**
