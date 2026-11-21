@@ -17,3 +17,7 @@
 * Chapter 2 without link
     * [Section 2.1](chapter2/section1.md)
 * [Last Page](last.md)
+
+## Downloads
+
+* [Download PDF](download/handbook.pdf)

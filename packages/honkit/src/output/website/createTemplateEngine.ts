@@ -72,6 +72,37 @@ function createTemplateEngine(output: Output, currentFile: string): TemplateEngi
     }
 
     /**
+     * Check if a link of the summary points to a file copied to the output, like a PDF.
+     * The link is URL encoded (e.g. "Field%20Guide.pdf"), and a folder is not a file.
+     * https://github.com/honkit/honkit/issues/453
+     * @param {string} linkPath
+     * @return {boolean}
+     */
+    function isCopiedFile(linkPath) {
+        if (!linkPath) {
+            return false;
+        }
+
+        let fileName = linkPath;
+        try {
+            fileName = decodeURIComponent(linkPath);
+        } catch {
+            // Keep a path that is not valid URL encoding as it is
+        }
+
+        try {
+            // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
+            const filePath = PathUtils.resolveInRoot(outputFolder, fileName);
+            return fs.statSync(filePath, { throwIfNoEntry: false })?.isFile() ?? false;
+        } catch {
+            // A link that is not a file of the book renders as text instead of failing the build:
+            // a path outside the output folder (like "../shared.pdf" in a language book),
+            // a path through a file (ENOTDIR), or an invalid path (like a null byte)
+            return false;
+        }
+    }
+
+    /**
      * Return an article by its path
      * @param {string} filePath
      * @return {Object|undefined}
@@ -103,7 +134,8 @@ function createTemplateEngine(output: Output, currentFile: string): TemplateEngi
         globals: {
             getArticleByPath: memoizeOne(getArticleByPath),
             getPageByPath: memoizeOne(getPageByPath),
-            fileExists: fileExists
+            fileExists: fileExists,
+            isCopiedFile: isCopiedFile
         },
 
         filters: defaultFilters.merge({

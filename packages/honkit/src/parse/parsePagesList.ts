@@ -18,6 +18,12 @@ function parseFilePage(book, filePath) {
         .statFile(filePath)
         .then(
             (file) => {
+                // A file without a parser, like a PDF, is not a page.
+                // It is copied as an asset instead.
+                // https://github.com/honkit/honkit/issues/453
+                if (!file.getParser()) {
+                    return null;
+                }
                 const page = Page.createForFile(file);
                 return parsePage(book, page);
             },

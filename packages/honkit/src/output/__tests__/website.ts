@@ -31,6 +31,65 @@ describe("WebsiteGenerator", () => {
         });
     });
 
+    // https://github.com/honkit/honkit/issues/453
+    test("should render a summary entry to a file outside of a language book as text", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "LANGS.md": "# Languages\n\n* [en](en/)",
+            "shared.pdf": "%PDF-1.4\n",
+            en: {
+                "README.md": "Hello",
+                "SUMMARY.md": "# Summary\n\n* [Home](README.md)\n* [Shared](../shared.pdf)"
+            }
+        });
+        const html = fs.readFileSync(`${folder}/en/index.html`, "utf8");
+        expect(html).not.toHaveDOMElement('.book-summary a[href="../shared.pdf"]');
+        expect(html).toMatch(/<span>\s*Shared\s*<\/span>/);
+    }, 60 * 1000);
+
+    // https://github.com/honkit/honkit/issues/453
+    test("should skip summary entries to files that are not pages in the previous and next page links", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "README.md": "First",
+            "second.md": "Second",
+            "SUMMARY.md": "# Summary\n\n* [First](README.md)\n* [Manual](manual.pdf)\n* [License](LICENSE)\n* [Second](second.md)",
+            "manual.pdf": "%PDF-1.4\n",
+            LICENSE: "MIT"
+        });
+        const first = fs.readFileSync(`${folder}/index.html`, "utf8");
+        const second = fs.readFileSync(`${folder}/second.html`, "utf8");
+        expect(first).toHaveDOMElement('.navigation-next[href="second.html"]');
+        expect(second).toHaveDOMElement('.navigation-prev[href="./"]');
+        expect(first).toHaveDOMElement('.book-summary a[href="manual.pdf"]');
+        expect(first).toHaveDOMElement('.book-summary a[href="LICENSE"]');
+    }, 60 * 1000);
+
+    // https://github.com/honkit/honkit/issues/453
+    test("should link a summary entry to a copied file with an encoded name, but not to a folder", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "README.md": "Hello",
+            "SUMMARY.md":
+                "# Summary\n\n* [Home](README.md)\n* [Field Guide](downloads/Field%20Guide.pdf)\n* [Downloads](downloads/)",
+            downloads: { "Field Guide.pdf": "%PDF-1.4\n" }
+        });
+        const html = fs.readFileSync(`${folder}/index.html`, "utf8");
+        expect(html).toHaveDOMElement('.book-summary a[href="downloads/Field%20Guide.pdf"]');
+        expect(html).not.toHaveDOMElement('.book-summary a[href="downloads"]');
+        expect(html).toMatch(/<span>\s*Downloads\s*<\/span>/);
+    }, 60 * 1000);
+
+    // https://github.com/honkit/honkit/issues/453
+    test("should render a summary entry to an invalid file path as text", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "README.md": "Hello",
+            "SUMMARY.md":
+                "# Summary\n\n* [Home](README.md)\n* [Through a file](downloads/guide.pdf)\n* [Null byte](bad%00.pdf)",
+            downloads: "not a folder"
+        });
+        const html = fs.readFileSync(`${folder}/index.html`, "utf8");
+        expect(html).toMatch(/<span>\s*Through a file\s*<\/span>/);
+        expect(html).toMatch(/<span>\s*Null byte\s*<\/span>/);
+    }, 60 * 1000);
+
     describe("Glossary", () => {
         let folder;
 
