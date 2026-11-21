@@ -237,3 +237,30 @@ test("a relative link to another language loads its styles and scripts in a new 
         )
         .toBe("ja");
 });
+
+for (const serverHash of ["", "#installation"]) {
+    test(`cross-language navigation preserves heading fragments with a preview header ${serverHash || "without a hash"}`, async ({ page }) => {
+        await page.route("**/multilingual/ja/?preview=1", async (route) => {
+            const response = await route.fetch();
+            await route.fulfill({ response, headers: {
+                ...response.headers(),
+                "X-Current-Location": "/multilingual/ja/?preview=1" + serverHash
+            }});
+        });
+        await page.goto("multilingual/en/");
+        await waitForThemeReady(page);
+        await page.evaluate((fragment) => {
+            const link = document.createElement("a");
+            link.setAttribute("href", "../ja/?preview=1" + fragment);
+            link.textContent = "Translation heading";
+            document.querySelector(".markdown-section")?.appendChild(link);
+        }, serverHash ? "#missing" : "#installation");
+        await markWindow(page);
+        await page.getByRole("link", { name: "Translation heading" }).click();
+        await page.waitForURL(/\/multilingual\/ja\/\?preview=1#installation$/, { waitUntil: "load" });
+        await waitForThemeReady(page);
+        await expect(page.getByRole("heading", { name: "Installation", exact: true })).toBeInViewport();
+        expect(await getWindowMarker(page)).toBeNull();
+        await expect(page.locator(".markdown-section")).toHaveCSS("--fixture-language", "ja");
+    });
+}

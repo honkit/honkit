@@ -411,7 +411,13 @@ function handleNavigation(relativeUrl, push, scrollTop) {
                 const context = JSON.parse(pageContext.textContent);
                 const language = (context.book && context.book.language) || "";
                 if (language !== gitbook.state.innerLanguage) {
-                    location.href = result.responseURL;
+                    const destination = new URL(result.responseURL, location.href);
+                    // Preview servers receive no fragment in the request URL.
+                    // Keep the clicked heading unless the destination specifies one.
+                    if (!destination.hash && hash) {
+                        destination.hash = hash;
+                    }
+                    location.href = destination.href;
                     return;
                 }
             }
