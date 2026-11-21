@@ -63,6 +63,20 @@ describe("WebsiteGenerator", () => {
         expect(first).toHaveDOMElement('.book-summary a[href="LICENSE"]');
     }, 60 * 1000);
 
+    // https://github.com/honkit/honkit/issues/453
+    test("should link a summary entry to a copied file with an encoded name, but not to a folder", async () => {
+        const folder = await generateMock(WebsiteGenerator, {
+            "README.md": "Hello",
+            "SUMMARY.md":
+                "# Summary\n\n* [Home](README.md)\n* [Field Guide](downloads/Field%20Guide.pdf)\n* [Downloads](downloads/)",
+            downloads: { "Field Guide.pdf": "%PDF-1.4\n" }
+        });
+        const html = fs.readFileSync(`${folder}/index.html`, "utf8");
+        expect(html).toHaveDOMElement('.book-summary a[href="downloads/Field%20Guide.pdf"]');
+        expect(html).not.toHaveDOMElement('.book-summary a[href="downloads"]');
+        expect(html).toMatch(/<span>\s*Downloads\s*<\/span>/);
+    }, 60 * 1000);
+
     describe("Glossary", () => {
         let folder;
 

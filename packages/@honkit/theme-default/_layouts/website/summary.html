@@ -3,7 +3,7 @@
         <li class="chapter {% if article.path == file.path and not article.anchor %}active{% endif %}" data-level="{{ article.level }}" {% if article.path %}data-path="{{ article.path|resolveFile }}"{% endif %}>
             {% if article.path and getPageByPath(article.path) %}
                 <a href="{{ article.path|resolveFile }}{{ article.anchor }}">
-            {% elif article.path and fileExists(article.path) %}
+            {% elif article.path and isCopiedFile(article.path) %}
                 {# A file that is not a page, like a PDF: link to the copied file #}
                 <a href="{{ article.path|resolveFile }}{{ article.anchor }}">
             {% elif article.url %}
@@ -15,7 +15,7 @@
                         <b>{{ article.level }}.</b>
                     {% endif %}
                     {{ article.title }}
-            {% if (article.path and (getPageByPath(article.path) or fileExists(article.path))) or article.url %}
+            {% if (article.path and (getPageByPath(article.path) or isCopiedFile(article.path))) or article.url %}
                 </a>
             {% else %}
                 </span>
