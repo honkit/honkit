@@ -11,8 +11,8 @@ import Promise from "../../utils/promise";
  */
 function modifyHTML(page, operations) {
     const html = page.getContent();
-    // @ts-expect-error
-    const $ = cheerio.load(html, { _useHtmlParser2: true });
+    // Use htmlparser2 in HTML mode for both parsing and serialization of void elements.
+    const $ = cheerio.load(html, { xml: { xmlMode: false, encodeEntities: "utf8" } });
 
     return Promise.forEach(operations, (op) => {
         return op($);
