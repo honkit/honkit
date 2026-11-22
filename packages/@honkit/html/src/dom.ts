@@ -6,7 +6,7 @@ import * as cheerio from "cheerio";
  * @param html
  */
 export function loadHtml(html: string): cheerio.CheerioAPI {
-    return cheerio.load(html, { xml: { xmlMode: false, encodeEntities: "utf8" } });
+    return cheerio.load(html, {}, false);
 }
 /**
  Parse an HTML string and return its content
@@ -15,7 +15,7 @@ export function loadHtml(html: string): cheerio.CheerioAPI {
  @return {cheerio.Root}
  */
 export function parse(html: string): cheerio.CheerioAPI {
-    const $ = cheerio.load(html, { xml: { xmlMode: false, encodeEntities: "utf8" } });
+    const $ = cheerio.load(html, {}, false);
     const $el = $("html, body").first();
 
     return ($el.length > 0 ? $el : $) as cheerio.CheerioAPI;
