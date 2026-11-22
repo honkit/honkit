@@ -1,17 +1,12 @@
 import reduce from "lodash/reduce";
 import * as cheerio from "cheerio";
 
-type CheerioOptions = cheerio.CheerioOptions & {
-    // https://github.com/cheeriojs/cheerio/issues/1260
-    // useHtmlParser2 is not in the types
-    _useHtmlParser2: boolean;
-};
 /**
  * Load an HTML string and return a cheerio instance
  * @param html
  */
 export function loadHtml(html: string): cheerio.CheerioAPI {
-    return cheerio.load(html, { _useHtmlParser2: true } as CheerioOptions);
+    return cheerio.load(html, {}, false);
 }
 /**
  Parse an HTML string and return its content
@@ -20,7 +15,7 @@ export function loadHtml(html: string): cheerio.CheerioAPI {
  @return {cheerio.Root}
  */
 export function parse(html: string): cheerio.CheerioAPI {
-    const $ = cheerio.load(html, { _useHtmlParser2: true } as CheerioOptions);
+    const $ = cheerio.load(html, {}, false);
     const $el = $("html, body").first();
 
     return ($el.length > 0 ? $el : $) as cheerio.CheerioAPI;

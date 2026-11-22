@@ -3865,7 +3865,7 @@ In some case, <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit
 <p>Yes, HonKits can be created in <a href="structure.html#subdirectory">sub-directories</a>. </p>
 <h4 id="does-honkit-supports-rtl-languages">Does HonKit supports RTL languages?</h4>
 <p>Yes, <a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> automatically detect the direction in your pages (<code>rtl</code> or <code>ltr</code>) and adjust the layout accordingly. The direction can also be specified globally in the <a href="config.html">book.json</a>.</p>
-<hr></hr>
+<hr>
 <h4 id="does-honkit-support-math-equations">Does HonKit support Math equations?</h4>
 <p><a href="GLOSSARY.html#honkit" class="glossary-term" title="Honkit is a command line tool for building beautiful books using GitHub/Git and Markdown (or AsciiDoc).">HonKit</a> supports math equations and TeX thanks to <a href="GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">plugins</a>. There are currently 2 official <a href="GLOSSARY.html#plugins" class="glossary-term" title="Plugins are the best way to extend HonKit functionalities (ebook and website).">plugins</a> to display math: <a href="https://plugins.honkit.com/plugin/mathjax" target="_blank">mathjax</a> and <a href="https://plugins.honkit.com/plugin/katex" target="_blank">katex</a>.</p>
 <h4 id="can-i-customizetheme-the-output">Can I customize/theme the output?</h4>
