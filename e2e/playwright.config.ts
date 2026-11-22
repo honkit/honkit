@@ -28,12 +28,17 @@ export default defineConfig({
             use: { ...devices["Pixel 7"] }
         }
     ],
-    webServer: {
+    webServer: [{
         // Build the fixture books first, then serve the static output.
         command: "pnpm run test:e2e:build && pnpm run test:e2e:server",
         url: `http://127.0.0.1:${port}/book/`,
         env: { PORT: String(port) },
         reuseExistingServer: !isCI,
         timeout: 180_000
-    }
+    }, {
+        command: "node scripts/serve-preview.mjs",
+        url: `http://127.0.0.1:${Number(process.env.PREVIEW_PORT ?? 4181)}/multilingual/en/`,
+        reuseExistingServer: !isCI,
+        timeout: 180_000
+    }]
 });

@@ -39,3 +39,11 @@ pnpm --filter @honkit/e2e run test:e2e tests/theme-default/navigation.play.ts
   Do not use `page.waitForTimeout`.
 - When fixing a bug, first add a test that reproduces it and link the issue with
   `annotation: { type: "issue", description: "https://github.com/honkit/honkit/issues/<number>" }`.
+
+## Multilingual resource regression
+
+`plugins/honkit-plugin-language-resources-test` is a real plugin loaded by the CLI through Node's `NODE_PATH` during fixture builds. Its `website` function selects a language directory. Each directory has the same `style.css` and `language.js` names but different contents.
+
+The resource test checks the generated root and language files, nested-page links and the shared theme stylesheet. The navigation test follows a Markdown translation link and checks the destination plugin's computed CSS and JavaScript-set language attribute. It does not inject links or replace the plugin resolver.
+
+The preview navigation test uses HonKit's own server implementation on port 4181 (`PREVIEW_PORT` overrides it). This checks heading fragments with the real `X-Current-Location` header instead of intercepting responses.

@@ -16,6 +16,11 @@ const honkitBin = path.join(path.dirname(require.resolve("honkit/package.json"))
 rmSync(outputDir, { recursive: true, force: true });
 for (const name of readdirSync(fixturesDir)) {
     execFileSync(process.execPath, [honkitBin, "build", path.join(fixturesDir, name), path.join(outputDir, name)], {
-        stdio: "inherit"
+        stdio: "inherit",
+        // Use Node's normal module lookup to load the real fixture plugin in the CLI process.
+        env: {
+            ...process.env,
+            NODE_PATH: [path.join(packageDir, "plugins"), process.env.NODE_PATH].filter(Boolean).join(path.delimiter)
+        }
     });
 }

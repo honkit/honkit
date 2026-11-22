@@ -210,57 +210,19 @@ test("scrolling a page whose headings are listed in the table of contents highli
 });
 
 // https://github.com/honkit/honkit/issues/381
-test("a relative link to another language loads its styles and scripts in a new document", async ({ page }) => {
+// The same plugin returns style.css and language.js from different language folders.
+// A body-only page swap would show Japanese content with the English CSS and JS.
+test("following a translation link loads the destination plugin CSS and JavaScript", async ({ page }) => {
     await page.goto("multilingual/en/");
     await waitForThemeReady(page);
-    await page.evaluate(() => {
-        const link = document.createElement("a");
-        link.setAttribute("href", "../ja/");
-        link.textContent = "Japanese translation";
-        document.querySelector(".markdown-section")?.appendChild(link);
-    });
-    await expect(page.locator(".markdown-section")).toHaveCSS("--fixture-language", "en");
-    await markWindow(page);
+    await expect(page.locator(".markdown-section")).toHaveCSS("--plugin-language", "en");
+    await expect(page.locator("html")).toHaveAttribute("data-plugin-language", "en");
 
-    await page.getByRole("link", { name: "Japanese translation" }).click();
-    await page.waitForURL(/\/multilingual\/ja\/$/, { waitUntil: "load" });
+    await getMain(page).getByRole("link", { name: "Japanese translation", exact: true }).click();
+    await page.waitForURL(/\/multilingual\/ja\/index\.html$/, { waitUntil: "load" });
     await waitForThemeReady(page);
 
     await expect(getPageHeading(page)).toHaveText("日本語のはじめに");
-    await expect(page.locator(".markdown-section")).toHaveCSS("--fixture-language", "ja");
-    expect(await getWindowMarker(page)).toBeNull();
-    await expect
-        .poll(() =>
-            page.evaluate(
-                () => (window as unknown as { gitbook: { state: { innerLanguage: string } } }).gitbook.state.innerLanguage
-            )
-        )
-        .toBe("ja");
+    await expect(page.locator(".markdown-section")).toHaveCSS("--plugin-language", "ja");
+    await expect(page.locator("html")).toHaveAttribute("data-plugin-language", "ja");
 });
-
-for (const serverHash of ["", "#installation"]) {
-    test(`cross-language navigation preserves heading fragments with a preview header ${serverHash || "without a hash"}`, async ({ page }) => {
-        await page.route("**/multilingual/ja/?preview=1", async (route) => {
-            const response = await route.fetch();
-            await route.fulfill({ response, headers: {
-                ...response.headers(),
-                "X-Current-Location": "/multilingual/ja/?preview=1" + serverHash
-            }});
-        });
-        await page.goto("multilingual/en/");
-        await waitForThemeReady(page);
-        await page.evaluate((fragment) => {
-            const link = document.createElement("a");
-            link.setAttribute("href", "../ja/?preview=1" + fragment);
-            link.textContent = "Translation heading";
-            document.querySelector(".markdown-section")?.appendChild(link);
-        }, serverHash ? "#missing" : "#installation");
-        await markWindow(page);
-        await page.getByRole("link", { name: "Translation heading" }).click();
-        await page.waitForURL(/\/multilingual\/ja\/\?preview=1#installation$/, { waitUntil: "load" });
-        await waitForThemeReady(page);
-        await expect(page.getByRole("heading", { name: "Installation", exact: true })).toBeInViewport();
-        expect(await getWindowMarker(page)).toBeNull();
-        await expect(page.locator(".markdown-section")).toHaveCSS("--fixture-language", "ja");
-    });
-}

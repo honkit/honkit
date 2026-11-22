@@ -1,3 +1,6 @@
 {
-    "title": "Multilingual Fixture"
+    "title": "Multilingual Fixture",
+    "plugins": [
+        "language-resources-test"
+    ]
 }
