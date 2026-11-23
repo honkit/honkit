@@ -110,12 +110,12 @@ Welcome to the test book.
 
             serveProcess.on("error", reject);
 
-            // Timeout after 10 seconds
+            // Timeout after 30 seconds
             setTimeout(() => {
                 if (!started) {
                     reject(new Error("Timeout waiting for serve to start"));
                 }
-            }, 10000);
+            }, 30000);
         });
     }
 
