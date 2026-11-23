@@ -261,8 +261,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       immutable:
-        specifier: ^3.8.3
-        version: 3.8.3
+        specifier: ^4.3.9
+        version: 4.3.9
       is:
         specifier: ^3.3.0
         version: 3.3.0
@@ -406,8 +406,8 @@ importers:
         specifier: ^5.3.2
         version: 5.3.2
       immutable:
-        specifier: ^3.8.3
-        version: 3.8.3
+        specifier: ^4.3.9
+        version: 4.3.9
       is:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2072,6 +2072,7 @@ packages:
   gitbook-plugin-page-toc-button@0.1.1:
     resolution: {integrity: sha512-htlxoEWhPkKze4W8xaWJ6KmC95e706dEVH06dKQSmgMEXzfovtxW67PxDwy78f0JB4z1B/3ZkaEoFmbWazAMow==}
     engines: {gitbook: '>=3.1.1'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   gitbook-plugin-search@2.2.1:
     resolution: {integrity: sha512-oP9jhaKFUVPo756G9ywuuI43YdkZClSjfpFzNKe/a/Rcn3oVsrAM/PjdQ+dt65KfZVo3iW1LY4WdiZnNqzRP8g==}
@@ -2247,9 +2248,8 @@ packages:
     deprecated: Please migrate to image-size@2.x
     hasBin: true
 
-  immutable@3.8.3:
-    resolution: {integrity: sha512-AUY/VyX0E5XlibOmWt10uabJzam1zlYjwiEgQSDc5+UIkFNaF9WM0JxXKaNMGf+F/ffUF+7kRKXM9A7C0xXqMg==}
-    engines: {node: '>=0.10.0'}
+  immutable@4.3.9:
+    resolution: {integrity: sha512-ObHy4YN7ycwZOUCLI1/6svfyAFu7vL8RhAvVu/bh/RZW9EPlOyDaQ9jDQWCtdqzaXUjgXZCW1migtHE7YI7UGQ==}
 
   import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
@@ -5909,7 +5909,7 @@ snapshots:
   image-size@0.5.5:
     optional: true
 
-  immutable@3.8.3: {}
+  immutable@4.3.9: {}
 
   import-fresh@3.3.1:
     dependencies:
