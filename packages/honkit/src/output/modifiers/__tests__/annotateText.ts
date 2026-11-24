@@ -50,6 +50,34 @@ describe("annotateText", () => {
         expect(words.hasClass("glossary-term")).toBeTruthy();
     });
 
+    test("should keep escaped characters around a term", () => {
+        const $ = loadHtml("<p>Use &lt;div&gt; &amp; &amp;lt; with a word, or &lt;b&gt;</p>");
+
+        annotateText(entries, "GLOSSARY.md", $);
+
+        expect($("div").length).toBe(0);
+        expect($("b").length).toBe(0);
+        expect($("p").text()).toBe("Use <div> & &lt; with a word, or <b>");
+        expect($("a.glossary-term").text()).toBe("word");
+    });
+
+    test("should keep dollar signs around a term", () => {
+        const $ = loadHtml("<p>$$ and $&amp; cost a word $1</p>");
+
+        annotateText(entries, "GLOSSARY.md", $);
+
+        expect($("p").text()).toBe("$$ and $& cost a word $1");
+        expect($("a.glossary-term").length).toBe(1);
+    });
+
+    test("should escape the term", () => {
+        const $ = loadHtml("<p>A List&lt;T&gt; value</p>");
+
+        annotateText(Immutable.List([new GlossaryEntry({ name: "List<T>" })]), "GLOSSARY.md", $);
+
+        expect($("a.glossary-term").text()).toBe("List<T>");
+    });
+
     test("should not annotate scripts", () => {
         const $ = loadHtml("<script>This is a word, and multiple words</script>");
 
