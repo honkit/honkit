@@ -81,6 +81,19 @@ describe("resolveLinks", () => {
         });
     });
 
+    describe("Encoded path", () => {
+        test("should resolve a page whose file name has a space", () => {
+            const TEST = "<p>This is a <a href=\"my%20page.md\"></a></p>";
+            const $ = loadHtml(TEST);
+            const resolvePage = (href) => (href === "my page.md" ? "my page.html" : href);
+
+            return resolveLinks("hello.md", resolvePage, $).then(() => {
+                const link = $("a");
+                expect(link.attr("href")).toBe("my%20page.html");
+            });
+        });
+    });
+
     describe("External link", () => {
         const TEST = "<p>This is a <a href=\"http://www.github.com\">external link</a></p>";
 

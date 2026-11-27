@@ -32,6 +32,15 @@ function resolveLinks(currentFile, resolveFile, $) {
         href = parsed.pathname || "";
 
         if (href) {
+            // Pages are keyed by their real file name, not the encoded one (my%20page.md)
+            const encoded = href;
+            try {
+                href = decodeURI(href);
+            } catch {
+                // keep malformed hrefs as they are
+            }
+            const wasEncoded = href !== encoded;
+
             // Calcul absolute path for this
             href = LocationUtils.toAbsolute(href, currentDirectory, ".");
 
@@ -40,6 +49,10 @@ function resolveLinks(currentFile, resolveFile, $) {
 
             // Convert back to relative
             href = LocationUtils.relative(currentDirectory, href);
+
+            if (wasEncoded) {
+                href = encodeURI(href);
+            }
         }
 
         // Add back anchor
