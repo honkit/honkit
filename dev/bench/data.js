@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795866321706,
+  "lastUpdate": 1795866449106,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -13266,6 +13266,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.33,
             "range": "±2.69%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "749aa719c78eb0a9207f6948f176018fbb8944e2",
+          "message": "Release v7.0.2 (#568)\n\n<!-- Release notes generated using configuration in .github/release.yml\nat master -->\n\n## What's Changed\n### Bug Fixes\n* fix: resolve page links with percent-encoded file names by @azu in\nhttps://github.com/honkit/honkit/pull/564\n* fix(glossary): keep the text around a glossary term as text by\n@bardrop in https://github.com/honkit/honkit/pull/562\n* fix: resolve encoded page links with a colon or from a folder with a\nspace by @azu in https://github.com/honkit/honkit/pull/566\n* fix(glossary): keep the spaces around a term with non-word characters\nby @azu in https://github.com/honkit/honkit/pull/567\n\n## New Contributors\n* @bardrop made their first contribution in\nhttps://github.com/honkit/honkit/pull/562\n\n**Full Changelog**:\nhttps://github.com/honkit/honkit/compare/v7.0.1...v7.0.2\n\nCo-authored-by: azu <19714+azu@users.noreply.github.com>",
+          "timestamp": "2026-11-28T20:46:10+09:00",
+          "tree_id": "c1718153e65cb3c5872482dc6e5b41f599c63e02",
+          "url": "https://github.com/honkit/honkit/commit/749aa719c78eb0a9207f6948f176018fbb8944e2"
+        },
+        "date": 1795866448089,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.34,
+            "range": "±2.68%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
