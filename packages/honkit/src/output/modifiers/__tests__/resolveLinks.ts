@@ -99,7 +99,9 @@ describe("resolveLinks", () => {
             "Field + Guide.md": "Field + Guide.html",
             "日本語.md": "日本語.html",
             "docs/a#b?.md": "docs/a#b?.html",
-            "a%20b.md": "a%20b.html"
+            "a%20b.md": "a%20b.html",
+            "guide/API:setup.md": "guide/API:setup.html",
+            "chapter one/target.md": "chapter one/target.html"
         };
         const resolvePages = (href) => pages[href] ?? href;
         const resolve = (href, currentFile = "hello.md") => {
@@ -135,6 +137,22 @@ describe("resolveLinks", () => {
 
         test("should not treat an escaped slash as a directory", async () => {
             expect(await resolve("docs%2Fa%23b%3F.md")).toBe("docs%2Fa%23b%3F.md");
+        });
+
+        test("should resolve a sibling page with an encoded colon", async () => {
+            expect(await resolve("API%3Asetup.md", "guide/intro.md")).toBe("API%3Asetup.html");
+        });
+
+        test("should not mix up an encoded folder with a folder whose name is the encoded one", async () => {
+            expect(await resolve("/chapter%20one/target.md", "chapter%20one/intro.md")).toBe(
+                "../chapter%20one/target.html"
+            );
+            expect(await resolve("target.md", "chapter one/intro.md")).toBe("target.html");
+            expect(await resolve("/chapter%20one/target.md", "chapter one/intro.md")).toBe("target.html");
+        });
+
+        test("should not go above the book root with an encoded root-relative link", async () => {
+            expect(await resolve("/docs/../../my%20page.md")).toBe("my%20page.html");
         });
 
         test("should keep a malformed escape as it is", async () => {
