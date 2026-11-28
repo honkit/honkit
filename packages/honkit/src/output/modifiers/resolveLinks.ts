@@ -33,22 +33,20 @@ function resolveLinks(currentFile, resolveFile, $) {
 
         if (href) {
             const absolute = LocationUtils.toAbsolute(href, currentDirectory, ".");
-            let resolved = resolveFile(absolute);
+            const resolved = resolveFile(absolute);
 
             // Pages are keyed by their real file name, not the encoded one (my%20page.md).
-            // Look the decoded name up only when the encoded one is not a page,
+            // Look the decoded name up only when the name as written is not a page,
             // so links to other files keep their escapes as written.
-            const decoded = decodePathname(href);
-            if (decoded !== href && LocationUtils.areIdenticalPaths(resolved, absolute)) {
-                const decodedAbsolute = LocationUtils.toAbsolute(decoded, currentDirectory, ".");
-                const decodedResolved = resolveFile(decodedAbsolute);
-                if (!LocationUtils.areIdenticalPaths(decodedResolved, decodedAbsolute)) {
-                    resolved = encodePathname(decodedResolved);
-                }
-            }
+            const page = LocationUtils.areIdenticalPaths(resolved, absolute)
+                ? resolveEncodedPage(href, currentDirectory, resolveFile)
+                : undefined;
 
             // Convert back to relative
-            href = LocationUtils.relative(currentDirectory, resolved);
+            href =
+                page === undefined
+                    ? LocationUtils.relative(currentDirectory, resolved)
+                    : encodePathname(LocationUtils.relative(currentDirectory, page));
         }
 
         // Add back anchor
@@ -56,6 +54,24 @@ function resolveLinks(currentFile, resolveFile, $) {
 
         $a.attr("href", href);
     });
+}
+
+/**
+ * Resolve an encoded pathname to a page: "my%20page.md" -> "my page.html"
+ * Returns undefined when the pathname is not encoded, or when the decoded file is not a page.
+ */
+function resolveEncodedPage(pathname: string, currentDirectory: string, resolveFile): string | undefined {
+    const decoded = decodePathname(pathname);
+    if (decoded === pathname) {
+        return undefined;
+    }
+
+    // The decoded pathname is a file path, not a URL: a ":" in it is not a scheme (API%3Asetup.md)
+    const file = LocationUtils.normalize(
+        decoded.startsWith("/") ? decoded.slice(1) : path.join(currentDirectory, decoded)
+    );
+    const resolved = resolveFile(file);
+    return LocationUtils.areIdenticalPaths(resolved, file) ? undefined : resolved;
 }
 
 /**
