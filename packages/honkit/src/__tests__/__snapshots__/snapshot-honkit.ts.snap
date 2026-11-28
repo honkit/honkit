@@ -4630,7 +4630,7 @@ exports[`HonKit snapshots: index.html 1`] = `
 <h3 id="contribute-to-this-documentation">Contribute to this documentation</h3>
 <p>You can contribute to improve this documentation on <a href="https://github.com/honkit/honkit" target="_blank">GitHub</a> by signaling issues or proposing changes.</p>
 <h3 id="additional-test-case">Additional test case</h3>
-<p>Der Papst gehört nicht nach Anagni oder Lyon, nicht nach Perugia oder Assisi, sondern nach Rom.« Ein kraftvoller Mann gab den Römern diese Sprache ein,<a href="GLOSSARY.html#brancaleone-von-andalò" class="glossary-term" title="An Italian Senator? He's the subject of the bug report at https://github.com/honkit/honkit/issues/312.">Brancaleone von Andalò</a>, ihr damaliger Senator.</p>
+<p>Der Papst gehört nicht nach Anagni oder Lyon, nicht nach Perugia oder Assisi, sondern nach Rom.« Ein kraftvoller Mann gab den Römern diese Sprache ein, <a href="GLOSSARY.html#brancaleone-von-andalò" class="glossary-term" title="An Italian Senator? He's the subject of the bug report at https://github.com/honkit/honkit/issues/312.">Brancaleone von Andalò</a>, ihr damaliger Senator.</p>
 
                                 
 <hr>

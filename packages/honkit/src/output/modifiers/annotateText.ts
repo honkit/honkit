@@ -72,7 +72,7 @@ function annotateText(entries, glossaryFilePath, $) {
         const searchRegex =
             nameLowerCase === nameCleaned
                 ? new RegExp(`\\b(${quotedName})\\b`, "gi")
-                : new RegExp(`(?:\\s*)(${quotedName})(?:\\s*)`, "gi");
+                : new RegExp(`(${quotedName})`, "gi");
 
         const description = entry.getDescription();
 
