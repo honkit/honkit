@@ -1,6 +1,6 @@
 {
   "name": "@honkit/e2e",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "private": true,
   "description": "End-to-end tests for HonKit: build books with honkit and check the output in a browser",
   "license": "Apache-2.0",
