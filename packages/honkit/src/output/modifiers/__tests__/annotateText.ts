@@ -78,6 +78,28 @@ describe("annotateText", () => {
         expect($("a.glossary-term").text()).toBe("List<T>");
     });
 
+    test("should keep the spaces around a term with non-word characters", () => {
+        const $ = loadHtml("<p>Use C++ now, or a List&lt;T&gt; value</p>");
+
+        annotateText(
+            Immutable.List([new GlossaryEntry({ name: "C++" }), new GlossaryEntry({ name: "List<T>" })]),
+            "GLOSSARY.md",
+            $
+        );
+
+        expect($("a.glossary-term").length).toBe(2);
+        expect($("p").text()).toBe("Use C++ now, or a List<T> value");
+    });
+
+    test("should keep the spaces around a term with starting dots", () => {
+        const $ = loadHtml("<p>I write in .MD files when documenting.</p>");
+
+        annotateText(entries, "GLOSSARY.md", $);
+
+        expect($("a.glossary-term").text()).toBe(".MD files");
+        expect($("p").text()).toBe("I write in .MD files when documenting.");
+    });
+
     test("should not annotate scripts", () => {
         const $ = loadHtml("<script>This is a word, and multiple words</script>");
 
