@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795865532627,
+  "lastUpdate": 1795865871479,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -13173,6 +13173,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.22,
             "range": "±1.66%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "mradulsingh524.ms@gmail.com",
+            "name": "bardrop",
+            "username": "bardrop"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a3f1ca0cb79b7393d967ff6e64001d5cfbfed619",
+          "message": "fix(glossary): keep the text around a glossary term as text (#562)\n\nWhen a paragraph contains a glossary term, the rest of its text is\nchanged. With the term `Word` in `GLOSSARY.md`:\n\n| source | page shows |\n|---|---|\n| `Use &lt;div&gt; with a word` | `Use` + a real `<div>` element |\n| `$$ and $&amp; cost a word $1` | `$ and $$ and $& cost a word $1 cost\na word $1` |\n\nTwo causes in `annotateText`:\n\n- `node.nodeValue` is decoded text. After the term is replaced with a\nlink, the whole string is used as HTML, so a decoded `<` starts a tag.\n- `val.replace(val, new_val)` uses the text as a replacement string, so\n`$$`, `$&`, `` $` `` and `$'` in it are expanded.\n\nNow the text around the matches is escaped and the HTML is used\ndirectly. A term with special characters (`List<T>`) is escaped too.\n\nThree tests added; they fail before the change. `jest src` in\n`packages/honkit`: 338 passed, 3 skipped. Text without special\ncharacters gives the same HTML as before.",
+          "timestamp": "2026-11-28T20:37:00+09:00",
+          "tree_id": "e49df9bf8e7ff8d7711f16e9c683b041057aa85a",
+          "url": "https://github.com/honkit/honkit/commit/a3f1ca0cb79b7393d967ff6e64001d5cfbfed619"
+        },
+        "date": 1795865870715,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.32,
+            "range": "±3.39%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
