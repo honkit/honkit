@@ -68,7 +68,7 @@ function resolveEncodedPage(pathname: string, currentDirectory: string, resolveF
 
     // The decoded pathname is a file path, not a URL: a ":" in it is not a scheme (API%3Asetup.md)
     const file = LocationUtils.normalize(
-        decoded.startsWith("/") ? decoded.slice(1) : path.join(currentDirectory, decoded)
+        decoded.startsWith("/") ? LocationUtils.normalize(decoded).slice(1) : path.join(currentDirectory, decoded)
     );
     const resolved = resolveFile(file);
     return LocationUtils.areIdenticalPaths(resolved, file) ? undefined : resolved;

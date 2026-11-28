@@ -151,6 +151,10 @@ describe("resolveLinks", () => {
             expect(await resolve("/chapter%20one/target.md", "chapter one/intro.md")).toBe("target.html");
         });
 
+        test("should not go above the book root with an encoded root-relative link", async () => {
+            expect(await resolve("/docs/../../my%20page.md")).toBe("my%20page.html");
+        });
+
         test("should keep a malformed escape as it is", async () => {
             expect(await resolve("100%.md")).toBe("100%.md");
         });
