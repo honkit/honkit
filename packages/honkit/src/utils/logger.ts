@@ -1,6 +1,6 @@
 import is from "is";
 import util from "util";
-import color from "bash-color";
+import color from "kleur";
 import Immutable from "immutable";
 
 const LEVELS = Immutable.Map({
@@ -12,7 +12,7 @@ const LEVELS = Immutable.Map({
 });
 
 const COLORS = Immutable.Map({
-    DEBUG: color.purple,
+    DEBUG: color.magenta,
     INFO: color.cyan,
     WARN: color.yellow,
     ERROR: color.red
