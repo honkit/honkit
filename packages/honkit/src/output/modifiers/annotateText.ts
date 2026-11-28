@@ -8,11 +8,25 @@ function pregQuote(str) {
     return `${str}`.replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
 }
 
-function replaceText($: cheerio.CheerioAPI, el, search, replace, text_only) {
+/**
+ * Build the HTML of a text, with the matches of `search` replaced by the HTML from `replace`.
+ * Return null if there is no match.
+ */
+function replaceTextToHTML(text, search, replace) {
+    let html = "";
+    let lastIndex = 0;
+
+    for (const match of text.matchAll(search)) {
+        html += escape(text.slice(lastIndex, match.index)) + replace(...match);
+        lastIndex = match.index + match[0].length;
+    }
+
+    return lastIndex === 0 ? null : html + escape(text.slice(lastIndex));
+}
+
+function replaceText($: cheerio.CheerioAPI, el, search, replace) {
     return $(el).each(function () {
         let node = this.firstChild;
-        let val;
-        let new_val;
         // Only continue if firstChild exists.
         const replaceMap = new Map();
         if (node) {
@@ -20,28 +34,14 @@ function replaceText($: cheerio.CheerioAPI, el, search, replace, text_only) {
             while (node) {
                 // Only process text nodes.
                 if (node.nodeType === 3 && node.nodeValue) {
-                    // The original node value.
-                    val = node.nodeValue;
+                    // The node value is decoded text, so the text around a match needs to be escaped again.
+                    const newHTML = replaceTextToHTML(node.nodeValue, search, replace);
 
-                    new_val = val.replace(search, replace);
-
-                    // Only replace text if the new value is actually different!
-                    if (new_val !== val) {
-                        if (!text_only && /</.test(new_val)) {
-                            // The new value contains HTML, set it in a slower but far more
-                            // robust way.
-                            // Don't remove the node yet, or the loop will lose its place.
-                            const currentTextNode = $(node);
-                            const newHTML = val.replace(val, new_val);
-                            if (newHTML !== val) {
-                                // should not replace in looping, keep it in map
-                                replaceMap.set(currentTextNode, newHTML);
-                            }
-                        } else {
-                            // The new value contains no HTML, so it can be set in this
-                            // very fast, simple way.
-                            node.nodeValue = new_val;
-                        }
+                    // Only replace text if there is a match
+                    if (newHTML !== null) {
+                        // Don't remove the node yet, or the loop will lose its place.
+                        // should not replace in looping, keep it in map
+                        replaceMap.set($(node), newHTML);
                     }
                 }
                 node = node.nextSibling;
@@ -81,11 +81,10 @@ function annotateText(entries, glossaryFilePath, $) {
 
             if ($this.is(ANNOTATION_IGNORE) || $this.parents(ANNOTATION_IGNORE).length > 0) return;
 
-            // @ts-expect-error ts-migrate(2554) FIXME: Expected 5 arguments, but got 4.
             replaceText($, this, searchRegex, (match, matchedTerm) => {
                 return (
                     `<a href="/${glossaryFilePath}#${entryId}" ` +
-                    `class="glossary-term" title="${escape(description)}">${matchedTerm}</a>`
+                    `class="glossary-term" title="${escape(description)}">${escape(matchedTerm)}</a>`
                 );
             });
         });
